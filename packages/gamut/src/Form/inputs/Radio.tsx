@@ -1,7 +1,6 @@
-import { screenReaderOnly } from '@codecademy/gamut-styles';
+import { screenReaderOnly, useVariance } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, InputHTMLAttributes, LabelHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../../Box';
@@ -46,15 +45,30 @@ export interface RadioElementProps
   extends RadioProps,
     StyleProps<typeof conditionalRadioInputStyles> {}
 
-const RadioLabel = styled.label<RadioElementProps>(
-  radioLabel,
-  conditionalRadioLabelStyles
-);
-const RadioInput = styled.input<RadioElementProps>(
-  screenReaderOnly,
-  radioInput,
-  conditionalRadioInputStyles
-);
+const RadioLabel = forwardRef<
+  HTMLLabelElement,
+  RadioElementProps & LabelHTMLAttributes<HTMLLabelElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    radioLabel,
+    conditionalRadioLabelStyles
+  );
+  return <label ref={ref} {...rest} />;
+});
+
+const RadioInput = forwardRef<
+  HTMLInputElement,
+  RadioElementProps & InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    screenReaderOnly,
+    radioInput,
+    conditionalRadioInputStyles
+  );
+  return <input ref={ref} {...rest} />;
+});
 
 const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
   return error ? 'error' : disabled ? 'disabled' : undefined;

@@ -1,7 +1,6 @@
-import { variant } from '@codecademy/gamut-styles';
+import { css, useVariance, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { ComponentProps } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 import * as React from 'react';
 
 import { Box } from '../../Box';
@@ -45,13 +44,19 @@ const formGroupSpacing = variant({
   },
 });
 
-const StyledFormGroupContainer = styled(Box)<
-  StyleProps<typeof formGroupSpacing>
->`
-  ${formGroupSpacing}
-  position: relative;
-  height: max-content;
-`;
+const formGroupStaticStyles = css({ position: 'relative', height: 'max-content' });
+
+const StyledFormGroupContainer = forwardRef<
+  HTMLDivElement,
+  ComponentProps<typeof Box> & StyleProps<typeof formGroupSpacing>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    formGroupSpacing,
+    formGroupStaticStyles
+  );
+  return <Box ref={ref} {...(rest as any)} />;
+});
 
 const FormGroupContainer: React.FC<
   ComponentProps<typeof StyledFormGroupContainer>

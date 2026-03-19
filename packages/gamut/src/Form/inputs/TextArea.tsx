@@ -1,5 +1,5 @@
+import { css, useVariance } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import {
   ChangeEvent,
   forwardRef,
@@ -24,12 +24,19 @@ export interface TextAreaProps
   extends TextWrapperProps,
     StyleProps<typeof conditionalStyles> {}
 
-const StyledTextArea = styled.textarea<TextAreaProps>`
-  ${formFieldStyles}
-  ${conditionalStyles}
-  position: initial;
-  border-radius: 'md';
-`;
+const textAreaExtraStyles = css({ position: 'initial', borderRadius: 'md' });
+
+const StyledTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  (props, ref) => {
+    const { rest } = useVariance(
+      props as Record<string, unknown>,
+      formFieldStyles,
+      conditionalStyles,
+      textAreaExtraStyles
+    );
+    return <textarea ref={ref} {...rest} />;
+  }
+);
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
   ({ error, className, id, ...rest }, ref) => {

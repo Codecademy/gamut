@@ -3,9 +3,8 @@ import {
   CheckCircledIcon,
   GamutIconProps,
 } from '@codecademy/gamut-icons';
-import { css } from '@codecademy/gamut-styles';
+import { css, useVariance } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled, { StyledComponent } from '@emotion/styled';
 import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
 import * as React from 'react';
 
@@ -50,7 +49,7 @@ export interface StyledInputProps
  * @see https://github.com/Microsoft/TypeScript/issues/21048
  */
 export interface InputWrapperProps extends InputProps {
-  as?: StyledComponent<StyledInputProps, React.PropsWithChildren<any>>;
+  as?: React.ComponentType<any>;
   /**
    * A custom icon svg from gamut-icons.
    */
@@ -65,22 +64,36 @@ export const reactRecurlyFormFieldFocusStyles = css(formFieldFocusStyles);
 
 export const reactRecurlyFormFieldPaddingStyles = css(formFieldPaddingStyles);
 
-export const iFrameWrapper = styled.div<conditionalStyleProps>(
-  formBaseFieldStyles,
-  conditionalStyles,
-  css({ textIndent: 0 })
-);
+export const iFrameWrapper = forwardRef<
+  HTMLDivElement,
+  conditionalStyleProps & React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    formBaseFieldStyles,
+    conditionalStyles,
+    css({ textIndent: 0 })
+  );
+  return <div ref={ref} {...rest} />;
+});
 
-const InputElement = styled.input<StyledInputProps>(
-  formFieldStyles,
-  conditionalStyles,
-  inputSizeStyles,
-  (props) =>
-    css({
-      paddingRight: props.icon ? `2.3rem` : `initial`,
-      textIndent: 0,
-    })
-);
+const InputElement = forwardRef<
+  HTMLInputElement,
+  StyledInputProps & InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    formFieldStyles,
+    conditionalStyles,
+    inputSizeStyles,
+    (p) =>
+      css({
+        paddingRight: (p as any).icon ? `2.3rem` : `initial`,
+        textIndent: 0,
+      })
+  );
+  return <input ref={ref} {...rest} />;
+});
 
 const inputStates = {
   error: {

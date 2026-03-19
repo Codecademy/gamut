@@ -1,12 +1,17 @@
 import {
-  styledOptions,
   system,
   transitionConcat,
+  useVariance,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import isObject from 'lodash/isObject';
-import { ComponentProps, forwardRef } from 'react';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ComponentProps,
+  forwardRef,
+  HTMLAttributes,
+} from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
@@ -43,28 +48,38 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   showBorder?: boolean;
 }
 
-const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
-  system.css({
-    listStyle: 'none',
-    width: 1,
-    bg: 'inherit',
-    display: 'inline-block',
-    pl: 24,
-    WebkitFontSmoothing: 'antialiased',
-    MozOsxFontSmoothing: 'grayscale',
-  }),
-  system.states({
-    root: {
-      bg: 'background',
-      p: 0,
-    },
-    showBorder: {
-      border: 1,
-      borderRadius: 'sm',
-    },
-  }),
-  sharedStates,
-  listProps
+const listBaseStyles = system.css({
+  listStyle: 'none',
+  width: 1,
+  bg: 'inherit',
+  display: 'inline-block',
+  pl: 24,
+  WebkitFontSmoothing: 'antialiased',
+  MozOsxFontSmoothing: 'grayscale',
+});
+
+const listStateStyles = system.states({
+  root: {
+    bg: 'background',
+    p: 0,
+  },
+  showBorder: {
+    border: 1,
+    borderRadius: 'sm',
+  },
+});
+
+const StyledList = forwardRef<HTMLUListElement, ListProps>(
+  (props, ref) => {
+    const { rest } = useVariance(
+      props as Record<string, unknown>,
+      listBaseStyles,
+      listStateStyles,
+      sharedStates,
+      listProps
+    );
+    return <ul ref={ref} {...rest} />;
+  }
 );
 
 export const List = forwardRef<
@@ -199,27 +214,41 @@ export interface ListItemProps
     StyleProps<typeof activeStates>,
     StyleProps<typeof sizeVariants> {}
 
-export const ListItem = styled('li', styledOptions<'li'>())<ListItemProps>(
-  interactiveVariants,
-  activeStates,
-  sizeVariants,
-  sharedStates,
-  listProps
-);
+export const ListItem = forwardRef<
+  HTMLLIElement,
+  ListItemProps & HTMLAttributes<HTMLLIElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    interactiveVariants,
+    activeStates,
+    sizeVariants,
+    sharedStates,
+    listProps
+  );
+  return <li ref={ref} {...rest} />;
+});
 
 export interface ListLinkProps extends ListItemProps {
   active?: boolean;
   navlink?: boolean;
 }
 
-const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
-  resetStyles,
-  interactiveVariants,
-  activeStates,
-  sizeVariants,
-  sharedStates,
-  listProps
-);
+const StyledListLink = forwardRef<
+  HTMLAnchorElement,
+  ListLinkProps & AnchorHTMLAttributes<HTMLAnchorElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    resetStyles,
+    interactiveVariants,
+    activeStates,
+    sizeVariants,
+    sharedStates,
+    listProps
+  );
+  return <a ref={ref} {...rest} />;
+});
 
 export const ListLink = forwardRef<
   HTMLAnchorElement,
@@ -228,17 +257,21 @@ export const ListLink = forwardRef<
   <StyledListLink ref={ref} zIndex={zIndex} {...rest} />
 ));
 
-export const ListButton = styled(
-  'button',
-  styledOptions<'button'>()
-)<ListLinkProps>(
-  resetStyles,
-  interactiveVariants,
-  activeStates,
-  sizeVariants,
-  sharedStates,
-  listProps
-);
+export const ListButton = forwardRef<
+  HTMLButtonElement,
+  ListLinkProps & ButtonHTMLAttributes<HTMLButtonElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    resetStyles,
+    interactiveVariants,
+    activeStates,
+    sizeVariants,
+    sharedStates,
+    listProps
+  );
+  return <button ref={ref} {...rest} />;
+});
 
 export const MenuToolTipWrapper: React.FC<
   Pick<ComponentProps<typeof MenuItem>, 'children' | 'label'> & {

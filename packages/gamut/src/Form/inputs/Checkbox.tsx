@@ -1,12 +1,18 @@
 import {
   noSelect,
   screenReaderOnly,
-  styledOptions,
+  system,
   timing,
+  useVariance,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
+import {
+  forwardRef,
+  InputHTMLAttributes,
+  SVGAttributes,
+  useEffect,
+  useRef,
+} from 'react';
 
 import { FlexBox } from '../../Box';
 import { InfoTip } from '../../Tip/InfoTip';
@@ -86,54 +92,113 @@ export type CheckboxProps = Omit<
     dontAriaHideLabel?: boolean;
   };
 
-const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
-  noSelect,
-  checkboxLabel,
-  checkboxPadding,
-  checkboxLabelStates
-);
+const CheckboxLabel = forwardRef<
+  HTMLLabelElement,
+  Pick<CheckboxProps, 'disabled' | 'spacing'> & React.LabelHTMLAttributes<HTMLLabelElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    noSelect,
+    checkboxLabel,
+    checkboxPadding,
+    checkboxLabelStates
+  );
+  return <label ref={ref} {...rest} />;
+});
 
 type CheckboxElementProps = StyleProps<typeof checkboxElementStates>;
 
-const CheckboxElement = styled('div', styledOptions)<CheckboxElementProps>(
-  checkboxElement,
-  checkboxElementStates
+const CheckboxElement = forwardRef<
+  HTMLDivElement,
+  CheckboxElementProps & React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    checkboxElement,
+    checkboxElementStates
+  );
+  return <div ref={ref} {...rest} />;
+});
+
+const checkboxVectorStyles = system.css({
+  position: 'absolute',
+  top: '-1px',
+  left: '-1px',
+});
+
+const CheckboxVector = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>(
+  (props, ref) => {
+    const { rest } = useVariance(props as Record<string, unknown>, checkboxVectorStyles);
+    return <svg ref={ref} {...rest} />;
+  }
 );
 
-const CheckboxVector = styled.svg`
-  position: absolute;
-  top: -1px;
-  left: -1px;
-`;
+const checkmarkStaticStyles = system.css({
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+  strokeDasharray: '18px',
+});
 
-const Checkmark = styled.polyline<Pick<CheckboxProps, 'checked'>>`
-  ${polyline}
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 18px;
-  stroke-dashoffset: ${({ checked }) => (checked ? 0 : `18px`)};
-  transition: stroke-dashoffset ${timing.fast};
-`;
+const Checkmark = forwardRef<
+  SVGPolylineElement,
+  Pick<CheckboxProps, 'checked'> & SVGAttributes<SVGPolylineElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    polyline,
+    checkmarkStaticStyles,
+    (p) => ({
+      strokeDashoffset: (p as any).checked ? 0 : '18px',
+      transition: `stroke-dashoffset ${timing.fast}`,
+    })
+  );
+  return <polyline ref={ref} {...rest} />;
+});
 
-const Line = styled.line<Pick<CheckboxProps, 'indeterminate'>>`
-  ${polyline}
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-dasharray: 18px;
-  stroke-dashoffset: ${({ indeterminate }) => (indeterminate ? 0 : `18px`)};
-  transition: stroke-dashoffset ${timing.fast};
-`;
+const lineStaticStyles = system.css({
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeDasharray: '18px',
+});
 
-const Input = styled.input`
-  ${screenReaderOnly}
-  ${checkboxInput}
-`;
+const Line = forwardRef<
+  SVGLineElement,
+  Pick<CheckboxProps, 'indeterminate'> & SVGAttributes<SVGLineElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    polyline,
+    lineStaticStyles,
+    (p) => ({
+      strokeDashoffset: (p as any).indeterminate ? 0 : '18px',
+      transition: `stroke-dashoffset ${timing.fast}`,
+    })
+  );
+  return <line ref={ref} {...rest} />;
+});
 
-const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
+const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
+  (props, ref) => {
+    const { rest } = useVariance(
+      props as Record<string, unknown>,
+      screenReaderOnly,
+      checkboxInput
+    );
+    return <input ref={ref} {...rest} />;
+  }
+);
+
+const CheckboxText = forwardRef<
+  HTMLSpanElement,
+  CheckboxTextProps & React.HTMLAttributes<HTMLSpanElement>
+>((props, ref) => {
+  const { rest } = useVariance(props as Record<string, unknown>, checkboxTextStates);
+  return <span ref={ref} {...rest} />;
+});
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (

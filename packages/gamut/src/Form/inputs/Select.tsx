@@ -2,12 +2,11 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
+import { css, useVariance, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import {
   ChangeEvent,
+  ComponentProps,
   forwardRef,
   SelectHTMLAttributes,
   useMemo,
@@ -58,21 +57,36 @@ const selectSizeVariants = variant({
   },
 });
 
-const SelectBase = styled.select<SelectProps>`
-  ${formFieldStyles}
-  ${conditionalStyles}
-  ${selectSizeVariants}
-  cursor: pointer;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-`;
+const selectExtraStyles = css({
+  cursor: 'pointer',
+  MozAppearance: 'none',
+  WebkitAppearance: 'none',
+  appearance: 'none',
+});
 
-const allowClickStyle = css`
-  pointer-events: none;
-`;
+const SelectBase = forwardRef<
+  HTMLSelectElement,
+  SelectProps & SelectHTMLAttributes<HTMLSelectElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    formFieldStyles,
+    conditionalStyles,
+    selectSizeVariants,
+    selectExtraStyles
+  );
+  return <select ref={ref} {...rest} />;
+});
 
-const StyledFlexbox = styled(FlexBox)(allowClickStyle);
+const pointerEventsStyle = css({ pointerEvents: 'none' });
+
+const StyledFlexbox = forwardRef<
+  HTMLDivElement,
+  ComponentProps<typeof FlexBox>
+>((props, ref) => {
+  const { rest } = useVariance(props as Record<string, unknown>, pointerEventsStyle);
+  return <FlexBox ref={ref} {...(rest as any)} />;
+});
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (

@@ -2,9 +2,10 @@ import {
   css,
   theme,
   transitionConcat,
+  useVariance,
   variant,
 } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { forwardRef, HTMLAttributes } from 'react';
 
 export type conditionalStyleProps = {
   error?: boolean;
@@ -100,7 +101,13 @@ const inputWrapper = css({
   display: 'flex',
 });
 
-export const InputWrapper = styled.div(inputWrapper);
+export const InputWrapper = forwardRef<
+  HTMLDivElement,
+  HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { rest } = useVariance(props as Record<string, unknown>, inputWrapper);
+  return <div ref={ref} {...rest} />;
+});
 
 export const formFieldStyles = css({
   ...formBaseFieldStylesObject,
