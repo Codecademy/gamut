@@ -1,5 +1,5 @@
 import { FormGroup, GridForm, Input, Text } from '@codecademy/gamut';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof GridForm> = {

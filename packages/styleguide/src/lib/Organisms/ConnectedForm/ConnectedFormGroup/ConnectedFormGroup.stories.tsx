@@ -7,7 +7,7 @@ import {
   Text,
   useConnectedForm,
 } from '@codecademy/gamut';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 

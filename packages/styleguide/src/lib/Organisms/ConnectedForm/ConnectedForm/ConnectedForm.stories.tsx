@@ -12,7 +12,7 @@ import {
   useConnectedForm,
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import type { Meta } from '@storybook/react';
 import { useState } from 'react';
 
