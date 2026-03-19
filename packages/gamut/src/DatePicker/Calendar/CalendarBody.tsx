@@ -23,6 +23,12 @@ const TableHeader = styled.th(
   })
 );
 
+const DateCell = styled.td(
+  css({
+    padding: 0,
+  })
+);
+
 const DateButton = styled(TextButton)(
   states({
     isToday: {
@@ -47,6 +53,12 @@ const DateButton = styled(TextButton)(
       '&::after': {
         bg: 'background',
       },
+    },
+    isRangeStart: {
+      borderRadiusRight: 'none',
+    },
+    isRangeEnd: {
+      borderRadiusLeft: 'none',
     },
     isInRange: {
       bg: 'text-disabled',
@@ -178,15 +190,17 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 return (
                   // fix this error
                   // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
-                  <td key={`empty-${rowIndex}-${colIndex}`} role="gridcell" />
+                  <DateCell
+                    key={`empty-${rowIndex}-${colIndex}`}
+                    role="gridcell"
+                  />
                 );
               }
               const selected =
                 isSameDay(date, selectedDate) || isSameDay(date, endDate);
+              const range = !!selectedDate && !!endDate;
               const inRange =
-                !!selectedDate &&
-                !!endDate &&
-                isDateInRange(date, selectedDate, endDate);
+                range && isDateInRange(date, selectedDate, endDate);
               const disabled = isDateDisabled(date, disabledDates);
               const today = isToday(date);
               // this is making the selected date a differnet color bc it is focused, look into further
@@ -194,7 +208,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 focusTarget !== null && isSameDay(date, focusTarget);
 
               return (
-                <td
+                <DateCell
                   aria-selected={selected}
                   key={date.getTime()}
                   role="gridcell"
@@ -202,6 +216,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   <DateButton
                     disabled={disabled}
                     isInRange={inRange}
+                    isRangeEnd={range && isSameDay(date, endDate)}
+                    isRangeStart={range && isSameDay(date, selectedDate)}
                     isSelected={selected}
                     isToday={today}
                     ref={(el) => setButtonRef(date, el as HTMLElement | null)}
@@ -215,7 +231,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   >
                     {date.getDate()}
                   </DateButton>
-                </td>
+                </DateCell>
               );
             })}
           </tr>
