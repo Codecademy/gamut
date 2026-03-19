@@ -1726,7 +1726,7 @@ __metadata:
     polished: "npm:^4.1.2"
     react-aria-components: "npm:1.7.1"
     react-focus-on: "npm:3.10.0"
-    react-hook-form: "npm:^7.65.0"
+    react-hook-form: "npm:^7.71.2"
     react-player: "npm:^2.16.0"
     react-select: "npm:^5.2.2"
     react-truncate-markup: "npm:^5.1.2"
@@ -21605,12 +21605,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.65.0":
-  version: 7.66.0
-  resolution: "react-hook-form@npm:7.66.0"
+"react-hook-form@npm:^7.71.2":
+  version: 7.71.2
+  resolution: "react-hook-form@npm:7.71.2"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18 || ^19
-  checksum: 10c0/9faeafdaedfabfcbf5f8bb1aeefb81863b8e158eef4b089e2a32180fe474aec47d05fe3ed7d4faea085ca9f689118fb1135b94cdeed2022bd7d3fa3a56530c63
+  checksum: 10c0/bff61c229f5f2516e650325e0c450146cb8a08dc323e5e9aa0753eb937be0b66fe17f40a7b4be9aabc2b5cb770d03de07db7f4912c6c9452a86924072cc1cb46
   languageName: node
   linkType: hard
 
