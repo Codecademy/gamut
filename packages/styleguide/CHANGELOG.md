@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [79.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.1...@codecademy/styleguide@79.2.2) (2026-03-19)
+
+### Bug Fixes
+
+- **DataList:** Padding on first column and alignment for headers ([1b55acd](https://github.com/Codecademy/gamut/commit/1b55acdaba8c33be5e3cc7a19b0c9a3b50987ab5))
+
+### [79.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.0...@codecademy/styleguide@79.2.1) (2026-03-17)
+
+### Bug Fixes
+
+- update reboot file to conditionally use logical properties or physical properties ([404937b](https://github.com/Codecademy/gamut/commit/404937be816a16ffbf7cb4c5b3a2a1999969f31d))
+
 ## [79.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.4...@codecademy/styleguide@79.2.0) (2026-03-12)
 
 ### Features

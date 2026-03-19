@@ -61,11 +61,12 @@ describe('List', () => {
       : 'paddingRight';
 
     const { view } = renderView();
+    const rowEl = view.getByRole('listitem');
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyle({ [paddingLeft]: theme.spacing[8] });
-    expect(colEl).toHaveStyle({ [paddingRight]: theme.spacing[8] });
+    expect(rowEl).toHaveStyle({ [paddingLeft]: theme.spacing[8] });
+    expect(rowEl).toHaveStyle({ [paddingRight]: theme.spacing[8] });
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
 
