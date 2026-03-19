@@ -9,7 +9,6 @@ import {
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
 import { ColProps } from '../../../List/elements';
-import { useListContext } from '../../../List/ListProvider';
 import { Shimmer } from '../../../Loading/Shimmer';
 import { ExpandControl, SelectControl } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
@@ -48,10 +47,7 @@ export const TableRow: DataRow = ({
     prefixId,
   } = useControlContext();
 
-  const { variant, listType } = useListContext();
-  const dataTablePadding = listType === 'table' && variant === 'table';
-
-  const listColProps = { dataTablePadding, showOverflow };
+  const listColProps = { showOverflow };
 
   const controlIndices = useMemo(() => {
     const controlIndices = new Map<number, number>();
@@ -113,7 +109,6 @@ export const TableRow: DataRow = ({
           fill,
           type,
         };
-
         if (type === 'control') {
           const controlIndex = controlIndices.get(index) ?? 0;
 
