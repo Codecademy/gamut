@@ -139,16 +139,16 @@ const preview: Preview = {
           },
           type: 'desktop',
         },
-      }
+      },
     },
   },
 
   initialGlobals: {
     viewport: {
       value: 'responsive',
-      isRotated: false
-    }
-  }
+      isRotated: false,
+    },
+  },
 };
 
 export const globalTypes = {
