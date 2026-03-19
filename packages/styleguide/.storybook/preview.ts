@@ -4,9 +4,9 @@ import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints, css } from '@codecademy/gamut-styles';
 import { DocsContainer } from './components/Elements/DocsContainer';
-import { CodeOrSourceMdx, HeadersMdx } from '@storybook/blocks';
-import { components as htmlComponents } from '@storybook/components';
-import { styled } from '@storybook/theming';
+import { CodeOrSourceMdx, HeadersMdx } from '@storybook/addon-docs/blocks';
+import { components as htmlComponents } from 'storybook/internal/components';
+import { styled } from 'storybook/theming';
 import { Link } from './components/Elements/Markdown';
 
 const WrappedPre = styled(htmlComponents.pre)(
@@ -26,8 +26,11 @@ const mdxComponents = {
 
 const preview: Preview = {
   parameters: {
+    a11y: {
+      test: 'todo',
+    },
     backgrounds: {
-      disable: true,
+      disabled: true,
     },
     deepControls: { enabled: true },
     docs: {
@@ -85,11 +88,16 @@ const preview: Preview = {
       },
     },
     viewport: {
-      defaultViewport: 'responsive',
-      viewports: {
+      options: {
         responsive: {
           name: 'Responsive',
           type: 'desktop',
+          // Storybook 10 requires `styles` on every viewport; missing it breaks the
+          // iframe wrapper (e.g. "can't access property 'width', … is undefined").
+          styles: {
+            width: '100%',
+            height: '100%',
+          },
         },
         xs: {
           name: `XS - ${breakpoints.xs}`,
@@ -131,9 +139,16 @@ const preview: Preview = {
           },
           type: 'desktop',
         },
-      },
+      }
     },
   },
+
+  initialGlobals: {
+    viewport: {
+      value: 'responsive',
+      isRotated: false
+    }
+  }
 };
 
 export const globalTypes = {
