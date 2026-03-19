@@ -238,11 +238,11 @@ BarChart supports custom color styling through the `styleConfig` prop, allowing 
 
 The `styleConfig` prop accepts an object with the following optional properties:
 
-- **`textColor`**: Color for text labels (y-axis labels). Defaults to `'text'`
-- **`seriesOneBarColor`**: Color for the series one bar (seriesOneValue: overlay in stacked charts, only bar in simple charts). Defaults to `'text'`
-- **`seriesTwoBarColor`**: Color for the series two bar (seriesTwoValue: full bar in stacked charts; unused in simple charts). Defaults to `'primary'`
-- **`seriesOneLabel`**: Color for the series one value label (first right label when stacked, or displayValue when not stacked). Defaults to `'text-secondary'`
-- **`seriesTwoLabel`**: Color for the series two value label (displayValue when stacked). Defaults to `'primary'`
+- **`textColor`**: Color for each bar row's `categoryLabel`. Defaults to `'text'`
+- **`seriesOneBarColor`**: Color for the bar that represents `seriesOneValue` (the only bar in simple charts; the overlay segment in stacked charts). Defaults to `'text'`
+- **`seriesTwoBarColor`**: Color for the bar that represents `seriesTwoValue` (the full-length bar behind the overlay in stacked charts; unused when only `seriesOneValue` is set). Defaults to `'primary'`
+- **`seriesOneLabel`**: Color for the numeric label for `seriesOneValue` (when stacked: the value before the arrow). In simple charts, color for the value label beside the bar (`seriesOneValue`). Defaults to `'text-secondary'`
+- **`seriesTwoLabel`**: Color for the numeric label for `seriesTwoValue` (stacked charts only—the total at the end of the bar). Defaults to `'primary'`
 
 All color values should be valid color tokens from the Gamut design system. When customizing colors, ensure they maintain at least a 3:1 contrast ratio with the background for accessibility.
 

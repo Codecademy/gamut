@@ -52,9 +52,10 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
   rowBaseStyles,
   interactiveStyles,
   css({
-    [`&:hover ${TotalValueLabelsHoverTarget}`]: {
-      textDecoration: 'underline',
-    },
+    [`&:hover ${TotalValueLabelsHoverTarget}, &:focus-visible ${TotalValueLabelsHoverTarget}`]:
+      {
+        textDecoration: 'underline',
+      },
   })
 );
 
