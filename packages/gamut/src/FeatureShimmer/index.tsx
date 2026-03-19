@@ -1,11 +1,10 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import { motion, useReducedMotion } from 'framer-motion';
+import { createComponent, css } from '@codecademy/gamut-styles';
+import { motion, MotionProps, useReducedMotion } from 'framer-motion';
 
 import { Box, BoxProps } from '../Box';
 
 const BaseContainer = motion.create(Box);
-const Shimmer = styled(BaseContainer)(
+const Shimmer = createComponent(BaseContainer)<BoxProps & MotionProps>(
   css({
     height: '150%',
     width: 'calc(100% / 9)',

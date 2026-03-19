@@ -1,6 +1,5 @@
 import { FilterIcon } from '@codecademy/gamut-icons';
-import { states } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, states } from '@codecademy/gamut-styles';
 import kebabCase from 'lodash/kebabCase';
 import { useRef, useState } from 'react';
 import * as React from 'react';
@@ -39,7 +38,7 @@ const SELECT_ALL = {
   value: 'all',
 };
 
-const FilterToggle = styled(Anchor)(
+const FilterToggle = createComponent(Anchor)<{ open?: boolean }>(
   states({
     open: {
       pointerEvents: 'none',

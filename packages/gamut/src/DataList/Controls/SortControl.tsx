@@ -1,6 +1,5 @@
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { css, states } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, css, states } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Anchor } from '../..';
@@ -8,7 +7,7 @@ import { FlexBox } from '../../Box';
 import { useListState } from '../hooks/useListState';
 import { OnSort, SortDirection, SortOrder } from '../types';
 
-const SortAnchor = styled(Anchor)(
+const SortAnchor = createComponent(Anchor)(
   css({
     color: 'text',
     textAlign: 'left',
@@ -26,7 +25,10 @@ const SortAnchor = styled(Anchor)(
   })
 );
 
-const SortIcon = styled(ArrowChevronDownFilledIcon)(
+const SortIcon = createComponent(ArrowChevronDownFilledIcon)<{
+  asc?: boolean;
+  active?: boolean;
+}>(
   states({
     asc: {
       transform: 'rotate(180deg)',

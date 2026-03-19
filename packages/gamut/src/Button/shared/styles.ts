@@ -1,4 +1,5 @@
 import {
+  createComponent,
   fontSmoothPixel,
   modeColorProps,
   styledOptions,
@@ -6,7 +7,6 @@ import {
   transitionConcat,
 } from '@codecademy/gamut-styles';
 import { CSSObject, ThemeProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 
 import { ButtonBase, ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import { ButtonBaseProps } from './types';
@@ -77,7 +77,7 @@ export const buttonStyles = system.css({
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>
-  styled(ButtonBase)<ButtonBaseProps & P>(
+  createComponent(ButtonBase)<ButtonBaseProps & P>(
     fontSmoothPixel,
     modeColorProps,
     buttonStyles,

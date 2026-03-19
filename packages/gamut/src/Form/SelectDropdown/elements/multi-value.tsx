@@ -1,7 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { createComponent, css, theme } from '@codecademy/gamut-styles';
 import { KeyboardEvent, useContext } from 'react';
 import {
   components as SelectDropdownElements,
@@ -74,7 +72,7 @@ export const MultiValueRemoveButton = (
  * Provides keyboard navigation and accessible removal of all selected values.
  */
 
-const CustomStyledRemoveAllDiv = styled('div')(
+const CustomStyledRemoveAllDiv = createComponent('div')(
   css({
     '&:focus': {
       outline: `2px solid ${theme.colors.primary}`,

@@ -1,11 +1,11 @@
 import {
   Colors,
+  createComponent,
   styledOptions,
   system,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 
 import { appendIconToContent } from '../helpers';
 import { IconComponentType, WithChildrenProp } from '../utils';
@@ -108,7 +108,7 @@ export type BadgeBaseProps = StyleProps<typeof badgeProps> &
   BadgeBgPropsType &
   WithChildrenProp;
 
-const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
+const BadgeBase = createComponent('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
   colorVariants,
   sizeVariants

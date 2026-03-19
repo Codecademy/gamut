@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { createComponent } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import * as React from 'react';
@@ -63,6 +63,6 @@ export const AccordionAreaDeprecated: React.FC<
   );
 };
 
-const StyledAccordionBody = styled(motion.div)`
-  overflow: hidden;
-`;
+const StyledAccordionBody = createComponent(motion.div)(() => ({
+  overflow: 'hidden',
+}));

@@ -1,9 +1,8 @@
-import { styledOptions } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, styledOptions } from '@codecademy/gamut-styles';
 
 import { BoxProps, boxProps, sharedStates } from './props';
 
-export const Box = styled('div', styledOptions(['fit']))<BoxProps>(
+export const Box = createComponent('div', styledOptions(['fit']))<BoxProps>(
   sharedStates,
   boxProps
 );

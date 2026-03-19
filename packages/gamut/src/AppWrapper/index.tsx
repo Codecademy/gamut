@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { createComponent } from '@codecademy/gamut-styles';
 /**
  *
  * This element safely resets the stacking context with limited side effects.
@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
  * to these properties as it will no longer guarantee a predictable behavior
  */
 
-export const AppWrapper = styled.div`
-  position: relative;
-  z-index: 1;
-`;
+export const AppWrapper = createComponent('div')(() => ({
+  position: 'relative',
+  zIndex: 1,
+}));

@@ -1,5 +1,4 @@
-import { contentWidths, variant } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { contentWidths, createComponent, variant } from '@codecademy/gamut-styles';
 
 import { Box } from '../Box';
 
@@ -28,4 +27,4 @@ const contentContainerVariants = variant({
   },
 });
 
-export const ContentContainer = styled(Box)(contentContainerVariants);
+export const ContentContainer = createComponent(Box)(contentContainerVariants);

@@ -1,9 +1,11 @@
-import { states } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, states } from '@codecademy/gamut-styles';
 
 import { TableHeader } from '../../../List';
 
-export const StyledHeaderRow = styled(TableHeader)(
+export const StyledHeaderRow = createComponent(TableHeader)<{
+  invisible?: boolean;
+  isDataList?: boolean;
+}>(
   states({
     invisible: { visibility: 'hidden', height: 0, overflow: 'hidden' },
     isDataList: {

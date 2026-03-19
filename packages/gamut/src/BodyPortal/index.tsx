@@ -1,21 +1,18 @@
-import { ColorMode, system, useCurrentMode } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { ColorMode, createComponent, system, useCurrentMode } from '@codecademy/gamut-styles';
 import { useState } from 'react';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
-const PortalWrapper = styled
-  .div(
-    system.css({
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: 0,
-    })
-  )
-  .withComponent(ColorMode);
+const PortalWrapper = createComponent(ColorMode)(
+  system.css({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 0,
+  })
+);
 
 interface BodyPortalProps {
   /**

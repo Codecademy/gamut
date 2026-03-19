@@ -1,6 +1,5 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { createComponent, states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
 
 import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
@@ -39,12 +38,14 @@ type DisclosureWrapperVariantProps = StyleProps<
 export type DisclosureWrapperStyles = DisclosureWrapperStateProps &
   DisclosureWrapperVariantProps;
 
-export const DisclosureWrapper = styled(FlexBox)<DisclosureWrapperStyles>(
+export const DisclosureWrapper = createComponent(FlexBox)<DisclosureWrapperStyles>(
   disclosureWrapperStates,
   disclosureWrapperVariants
 );
 
-export const DisclosureButtonWrapper = styled(Anchor)(
+export const DisclosureButtonWrapper = createComponent(Anchor)<{
+  isWrapper?: string;
+}>(
   variant({
     prop: 'isWrapper',
     defaultVariant: 'default',
@@ -82,21 +83,27 @@ const sharedVariants = {
   },
 };
 
-export const StyledTextButton = styled(TextButton)(
+export const StyledTextButton = createComponent(TextButton)<{
+  placement?: 'left' | 'right';
+}>(
   variant({
     prop: 'placement',
     variants: sharedVariants,
   })
 );
 
-export const StyledStrokeButton = styled(StrokeButton)(
+export const StyledStrokeButton = createComponent(StrokeButton)<{
+  placement?: 'left' | 'right';
+}>(
   variant({
     prop: 'placement',
     variants: sharedVariants,
   })
 );
 
-export const StyledFillButton = styled(FillButton)(
+export const StyledFillButton = createComponent(FillButton)<{
+  placement?: 'left' | 'right';
+}>(
   variant({
     prop: 'placement',
     variants: sharedVariants,
@@ -114,6 +121,6 @@ export type DisclosureBodyWrapperStyles = StyleProps<
   typeof disclosureBodyWrapperStates
 >;
 
-export const DisclosureBodyWrapper = styled(
+export const DisclosureBodyWrapper = createComponent(
   FlexBox
 )<DisclosureBodyWrapperStyles>(disclosureBodyWrapperStates);

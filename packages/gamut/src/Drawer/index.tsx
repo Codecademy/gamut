@@ -1,6 +1,5 @@
-import { breakpoints, css, timingValues } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import { AnimatePresence, motion } from 'framer-motion';
+import { breakpoints, createComponent, css, timingValues } from '@codecademy/gamut-styles';
+import { AnimatePresence, motion, MotionProps } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { useMedia } from 'react-use';
 
@@ -8,7 +7,7 @@ import { Box, BoxProps } from '../Box';
 import { focusVisibleStyle } from '../utils';
 
 const drawerVisibleStyle = focusVisibleStyle('-3px');
-const DrawerBase = styled(motion.create(Box))(css(drawerVisibleStyle));
+const DrawerBase = createComponent(motion.create(Box))<BoxProps & MotionProps>(css(drawerVisibleStyle));
 
 export interface DrawerProps extends Omit<BoxProps, 'width'> {
   /**

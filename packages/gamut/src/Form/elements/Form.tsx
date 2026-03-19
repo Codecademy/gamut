@@ -1,6 +1,5 @@
-import { styledOptions, system } from '@codecademy/gamut-styles';
+import { createComponent, styledOptions, system } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import { ComponentProps, forwardRef } from 'react';
 import * as React from 'react';
 
@@ -13,7 +12,7 @@ const formSystemProps = variance.compose(
   system.grid
 );
 
-const StyledForm = styled('form', styledOptions<'form'>())(formSystemProps);
+const StyledForm = createComponent('form', styledOptions<'form'>())(formSystemProps);
 
 export type FormProps = ComponentProps<typeof StyledForm>;
 

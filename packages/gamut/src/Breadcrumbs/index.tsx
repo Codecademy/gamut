@@ -1,12 +1,11 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, css } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Anchor } from '../Anchor';
 import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 
-const BreadcrumbAnchor = styled(Anchor)(
+const BreadcrumbAnchor = createComponent(Anchor)(
   css({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
@@ -15,7 +14,7 @@ const BreadcrumbAnchor = styled(Anchor)(
   })
 );
 
-const BreadcrumbPart = styled(Box)(
+const BreadcrumbPart = createComponent(Box)(
   css({
     listStyleType: 'none',
     whiteSpace: 'nowrap',

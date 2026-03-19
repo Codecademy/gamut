@@ -62,7 +62,8 @@ export const gridStates = system.states({
 });
 
 export interface BoxProps
-  extends StyleProps<typeof boxProps>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, 'color'>,
+    StyleProps<typeof boxProps>,
     StyleProps<typeof sharedStates>,
     WithChildrenProp {}
 

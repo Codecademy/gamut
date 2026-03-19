@@ -1,6 +1,7 @@
 import '@emotion/react';
 
 export * from './AssetProvider';
+export * from './createComponent';
 export * from './GamutProvider';
 export * from './ColorMode';
 export * from './Background';

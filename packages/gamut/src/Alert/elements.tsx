@@ -1,20 +1,24 @@
-import { Background, css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { Background, createComponent, css } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
-import { ComponentProps, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { FillButton } from '../Button';
 import { AlertProps } from './Alert';
 import { placementVariants } from './variants';
 
-const StyledAlertBanner =
-  styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
+type AlertContainerProps = Pick<AlertProps, 'type' | 'placement'> &
+  BoxProps &
+  React.AriaAttributes & {
+    role?: string;
+    'aria-label'?: string;
+    'aria-live'?: string;
+  };
 
-export const AlertBanner = forwardRef<
-  HTMLDivElement,
-  ComponentProps<typeof StyledAlertBanner>
->(
+const StyledAlertBanner =
+  createComponent(Background)<AlertContainerProps>(placementVariants);
+
+export const AlertBanner = forwardRef<HTMLDivElement, AlertContainerProps>(
   (
     {
       'aria-label': ariaLabel = 'alert banner',
@@ -27,20 +31,17 @@ export const AlertBanner = forwardRef<
     <StyledAlertBanner
       aria-label={ariaLabel}
       aria-live={ariaLive}
-      ref={ref}
+      ref={ref as any}
       role={role}
-      {...rest}
+      {...(rest as any)}
     />
   )
 );
 
 const StyledAlertBox =
-  styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
+  createComponent(Box)<AlertContainerProps>(placementVariants);
 
-export const AlertBox = forwardRef<
-  HTMLDivElement,
-  ComponentProps<typeof StyledAlertBox>
->(
+export const AlertBox = forwardRef<HTMLDivElement, AlertContainerProps>(
   (
     {
       'aria-label': ariaLabel = 'alert box',
@@ -53,9 +54,9 @@ export const AlertBox = forwardRef<
     <StyledAlertBox
       aria-label={ariaLabel}
       aria-live={ariaLive}
-      ref={ref}
+      ref={ref as any}
       role={role}
-      {...rest}
+      {...(rest as any)}
     />
   )
 );
@@ -66,7 +67,7 @@ export const alertContentProps = {
   width: '100%',
 } as const;
 
-export const CollapsibleContent = styled(motion.div)(
+export const CollapsibleContent = createComponent(motion.div)(
   css({
     py: 4,
     overflowY: 'hidden',
@@ -75,7 +76,7 @@ export const CollapsibleContent = styled(motion.div)(
   })
 );
 
-export const CleanFillButton = styled(FillButton)(
+export const CleanFillButton = createComponent(FillButton)(
   css({
     // Otherwise VoiceOver annouces the button's text twice
     '::before': {

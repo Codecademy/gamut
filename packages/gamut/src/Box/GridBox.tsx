@@ -1,9 +1,8 @@
-import { styledOptions, system } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, styledOptions, system } from '@codecademy/gamut-styles';
 
 import { boxProps, GridBoxProps, gridStates, sharedStates } from './props';
 
-export const GridBox = styled(
+export const GridBox = createComponent(
   'div',
   styledOptions(['fit', 'center', 'fitContent'])
 )<GridBoxProps>(

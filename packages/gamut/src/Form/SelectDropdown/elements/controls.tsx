@@ -1,5 +1,4 @@
-import { css, theme } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, css, theme } from '@codecademy/gamut-styles';
 import { KeyboardEvent, useContext } from 'react';
 import {
   AriaOnFocus,
@@ -51,7 +50,7 @@ export const DropdownButton = (props: SizedIndicatorProps) => {
   );
 };
 
-const CustomStyledRemoveAllDiv = styled('div')(
+const CustomStyledRemoveAllDiv = createComponent('div')(
   css({
     '&:focus': {
       outline: `2px solid ${theme.colors.primary}`,

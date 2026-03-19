@@ -1,5 +1,4 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, css } from '@codecademy/gamut-styles';
 import { useEffect } from 'react';
 import * as React from 'react';
 
@@ -11,7 +10,7 @@ import { InfoTipSubComponentProps } from '../Tip/InfoTip/type-utils';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
-const ErrorAnchor = styled(Anchor)(
+const ErrorAnchor = createComponent(Anchor)(
   css({
     color: 'feedback-error',
   })
