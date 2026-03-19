@@ -58,11 +58,10 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
   })
 );
 
-export const BarWrapper = styled(Box)(
+export const BarWrapper = styled(FlexBox)(
   css({
     alignItems: 'center',
     borderRadius: { _: 'md' as any, c_xs: 'xl' },
-    display: 'flex',
     flex: { _: 'none', c_xs: 1 },
     height: { _: 8, c_xs: 24 },
     overflow: 'hidden',
@@ -72,13 +71,12 @@ export const BarWrapper = styled(Box)(
   })
 );
 
-export const Bar = styled(motion.create(Box))(
+export const Bar = styled(motion.create(FlexBox))(
   css({
     alignItems: 'center',
     borderRadius: 'inherit',
     borderStyle: 'solid',
     borderWidth: '1px',
-    display: 'flex',
     height: '100%',
     left: 0,
     position: 'absolute',
