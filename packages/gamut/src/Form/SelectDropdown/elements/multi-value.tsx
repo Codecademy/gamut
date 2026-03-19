@@ -1,7 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { css, theme, useVariance } from '@codecademy/gamut-styles';
 import { KeyboardEvent, useContext } from 'react';
 import {
   components as SelectDropdownElements,
@@ -74,16 +72,14 @@ export const MultiValueRemoveButton = (
  * Provides keyboard navigation and accessible removal of all selected values.
  */
 
-const CustomStyledRemoveAllDiv = styled('div')(
-  css({
-    '&:focus': {
-      outline: `2px solid ${theme.colors.primary}`,
-    },
-    '&:focus-visible': {
-      outline: `2px solid ${theme.colors.primary}`,
-    },
-  })
-);
+const removeAllFocusStyles = css({
+  '&:focus': {
+    outline: `2px solid ${theme.colors.primary}`,
+  },
+  '&:focus-visible': {
+    outline: `2px solid ${theme.colors.primary}`,
+  },
+});
 
 export const RemoveAllButton = (props: SizedIndicatorProps) => {
   const {
@@ -115,18 +111,24 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
 
   const style = getStyles('clearIndicator', props) as React.CSSProperties;
 
+  const { className: focusClassName } = useVariance({}, removeAllFocusStyles);
+  const mergedClassName = [focusClassName, (restInnerProps as any).className]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <CustomStyledRemoveAllDiv
+    <div
       aria-label="Remove all selected"
       role="button"
       tabIndex={0}
       {...restInnerProps}
       ref={removeAllButtonRef}
+      className={mergedClassName}
       // eslint-disable-next-line gamut/no-inline-style
       style={style}
       onKeyDown={onKeyPress}
     >
       <IndicatorIcon {...iconProps} color="text" />
-    </CustomStyledRemoveAllDiv>
+    </div>
   );
 };

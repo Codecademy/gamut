@@ -1,18 +1,27 @@
-import styled from '@emotion/styled';
+import { css, useVariance } from '@codecademy/gamut-styles';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import get from 'lodash/get';
+import { forwardRef } from 'react';
 import * as React from 'react';
 
 import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = HtmlToReact.ProcessNodeDefinitions();
 
-const CheckboxParentLi = styled.li`
-  &::before {
-    display: none !important;
-  }
-`;
+const checkboxParentLiStyles = css({
+  '&::before': {
+    display: 'none !important',
+  },
+});
+
+const CheckboxParentLi = forwardRef<
+  HTMLLIElement,
+  React.HTMLAttributes<HTMLLIElement>
+>((props, ref) => {
+  const { rest } = useVariance(props, checkboxParentLiStyles);
+  return <li ref={ref} {...rest} />;
+});
 
 export interface AttributesMap {
   [key: string]: string | boolean;

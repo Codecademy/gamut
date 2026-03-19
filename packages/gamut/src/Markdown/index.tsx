@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import { useVariance } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import { marked } from 'marked';
-import { PureComponent } from 'react';
+import { ElementType, forwardRef, PureComponent } from 'react';
 import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
 
@@ -36,12 +36,29 @@ const preprocessingInstructions = createPreprocessingInstructions();
 
 const isValidNode = () => true;
 
-const MarkdownWrapper = styled.div<{ spacing: 'loose' | 'tight' | 'none' }>`
-  ${({ theme, spacing }) => {
-    const spacingStyleFunction = markdownStyles[spacing];
-    return spacingStyleFunction ? spacingStyleFunction(theme) : '';
-  }}
-`;
+const markdownWrapperStyle = (props: Record<string, unknown>) => {
+  const fn = markdownStyles[(props.spacing as string) ?? 'tight'];
+  return fn ? fn(props as any) : {};
+};
+
+type MarkdownWrapperProps = {
+  spacing?: 'loose' | 'tight' | 'none';
+  as?: ElementType;
+  className?: string;
+  children?: React.ReactNode;
+};
+
+const MarkdownWrapper = forwardRef<HTMLElement, MarkdownWrapperProps>(
+  ({ as: As = 'div' as ElementType, ...props }, ref) => {
+    const { rest } = useVariance(
+      props as Record<string, unknown>,
+      markdownWrapperStyle
+    );
+    // `spacing` passes isPropValid so manually strip it from DOM props
+    const { spacing: _spacing, ...domRest } = rest as any;
+    return <As ref={ref} {...domRest} />;
+  }
+);
 
 export type SkipDefaultOverridesSettings = {
   a?: boolean;

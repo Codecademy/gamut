@@ -1,6 +1,6 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { states, useVariance, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import { forwardRef } from 'react';
 
 import { ButtonBase } from '../ButtonBase';
 import {

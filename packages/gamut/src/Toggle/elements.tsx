@@ -1,13 +1,17 @@
 import {
-  screenReaderOnly,
+  css,
   states,
   system,
   theme,
+  useVariance,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import {
+  ComponentProps,
+  forwardRef,
+} from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 
@@ -56,18 +60,56 @@ const ToggleTrackVariants = variant({
 
 const ToggleTrackSystemProps = variance.compose(system.space, system.color);
 
-export const ToggleTrack = styled.div<
+export const ToggleTrack = forwardRef<
+  HTMLDivElement,
   StyleProps<typeof ToggleTrackVariants> &
-    StyleProps<typeof ToggleTrackSystemProps>
->(ToggleTrackVariants, ToggleTrackSystemProps);
+    StyleProps<typeof ToggleTrackSystemProps> &
+    React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    ToggleTrackVariants,
+    ToggleTrackSystemProps
+  );
+  return <div ref={ref} {...rest} />;
+});
 
-export const Circle = styled(Box)(
-  css({
-    transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
-  })
+const circleTransitionStyles = css({
+  transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
+});
+
+export const Circle = forwardRef<HTMLElement, ComponentProps<typeof Box>>(
+  (props, ref) => {
+    const { rest } = useVariance(
+      props as Record<string, unknown>,
+      circleTransitionStyles
+    );
+    return <Box ref={ref as any} {...(rest as any)} />;
+  }
 );
 
-export const ToggleInput = styled.input(screenReaderOnly);
+const screenReaderOnlyStyles = css({
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  overflow: 'hidden',
+  clip: 'rect(0,0,0,0)',
+  whiteSpace: 'nowrap',
+  clipPath: 'inset(50%)',
+  border: 0,
+});
+
+export const ToggleInput = forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    screenReaderOnlyStyles
+  );
+  return <input ref={ref} {...rest} />;
+});
 
 const ToggleLabelStates = states({
   disabled: { cursor: 'not-allowed', opacity: 0.5 },
@@ -76,16 +118,25 @@ const ToggleLabelStates = states({
 
 export type ToggleStyleProps = StyleProps<typeof system.space>;
 
-export const ToggleLabel = styled.label<
-  StyleProps<typeof ToggleLabelStates> & ToggleStyleProps
->(
-  css({
-    alignItems: 'center',
-    border: 'none',
-    cursor: 'pointer',
-    display: 'flex',
-    width: 'fit-content',
-  }),
-  ToggleLabelStates,
-  system.space
-);
+const toggleLabelBaseStyles = css({
+  alignItems: 'center',
+  border: 'none',
+  cursor: 'pointer',
+  display: 'flex',
+  width: 'fit-content',
+});
+
+export const ToggleLabel = forwardRef<
+  HTMLLabelElement,
+  StyleProps<typeof ToggleLabelStates> &
+    ToggleStyleProps &
+    React.LabelHTMLAttributes<HTMLLabelElement>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    toggleLabelBaseStyles,
+    ToggleLabelStates,
+    system.space
+  );
+  return <label ref={ref} {...rest} />;
+});

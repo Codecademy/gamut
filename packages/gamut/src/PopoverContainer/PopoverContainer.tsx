@@ -1,7 +1,6 @@
-import { system } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { system, useVariance } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -15,16 +14,22 @@ import {
 import { ContainerState, PopoverContainerProps } from './types';
 import { getContainers, getPosition, isOutOfView } from './utils';
 
-const PopoverContent = styled.div(
-  variance.compose(
-    system.positioning,
-    variance.create({
-      transform: {
-        property: 'transform',
-      },
-    })
-  )
+const popoverContentProps = variance.compose(
+  system.positioning,
+  variance.create({
+    transform: {
+      property: 'transform',
+    },
+  })
 );
+
+const PopoverContent = forwardRef<
+  HTMLDivElement,
+  StyleProps<typeof popoverContentProps> & React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { rest } = useVariance(props as Record<string, unknown>, popoverContentProps);
+  return <div ref={ref} {...rest} />;
+});
 
 export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   alignment = 'bottom-left',

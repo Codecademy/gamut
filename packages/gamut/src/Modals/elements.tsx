@@ -1,6 +1,6 @@
-import { variant } from '@codecademy/gamut-styles';
+import { variant, useVariance } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import { ComponentProps, forwardRef } from 'react';
 
 import { InternalFloatingCard } from '../InternalFloatingCard/InternalFloatingCard';
 import { focusVisibleStyle } from '../utils';
@@ -50,7 +50,14 @@ export interface ModalContainerProps
   extends StyleProps<typeof sizeVariant>,
     StyleProps<typeof layoutVariant> {}
 
-export const ModalContainer = styled(InternalFloatingCard)<ModalContainerProps>(
-  sizeVariant,
-  layoutVariant
-);
+export const ModalContainer = forwardRef<
+  HTMLDivElement,
+  ModalContainerProps & ComponentProps<typeof InternalFloatingCard>
+>((props, ref) => {
+  const { rest } = useVariance(
+    props as Record<string, unknown>,
+    sizeVariant,
+    layoutVariant
+  );
+  return <InternalFloatingCard ref={ref} {...(rest as any)} />;
+});
