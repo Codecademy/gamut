@@ -138,7 +138,7 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "nx storybook styleguide",
     "test": "nx run-many --target=test --all",
-    "test:storybook": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"http-server dist/storybook/styleguide -p 6007 --silent\" \"wait-on http://127.0.0.1:6007 && test-storybook --url http://127.0.0.1:6007 --config-dir packages/styleguide/.storybook\"",
+    "test:storybook": "nx run styleguide:test",
     "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify"
   },
