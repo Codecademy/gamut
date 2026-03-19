@@ -29,7 +29,7 @@ export type BarChartSingleValueBarSummaryContext =
 /**
  * BarChart translation configuration for internationalization.
  *
- * **Accessibility** is function-only. Two optional summary functions; when omitted, default English summaries are used.
+ * **accessibility** is function-only. Two optional summary functions; when omitted, default English summaries are used.
  * - **stackedBarSummary**: Used for stacked (two-value) rows. Context includes `gained` (seriesTwoValue - seriesOneValue).
  * - **singleValueBarSummary**: Used for all single-value rows. Return value is placed as aria-label (when row is link/button) or screenreader-only text (when not).
  *
