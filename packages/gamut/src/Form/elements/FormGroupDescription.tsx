@@ -1,6 +1,12 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { css, useVariance } from '@codecademy/gamut-styles';
+import { forwardRef, HTMLAttributes } from 'react';
 
 import { formBaseStyles } from '../styles';
 
-export const FormGroupDescription = styled.div(css(formBaseStyles));
+export const FormGroupDescription = forwardRef<
+  HTMLDivElement,
+  HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { rest } = useVariance(props, css(formBaseStyles));
+  return <div ref={ref} {...rest} />;
+});

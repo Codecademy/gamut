@@ -1,7 +1,6 @@
-import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import { system, useVariance, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
+import { ComponentProps, ElementType, forwardRef, HTMLProps, RefObject } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { AppendedIconProps, appendIconToContent } from '../helpers';
@@ -107,10 +106,13 @@ const anchorProps = variance.compose(
   system.typography
 );
 
-export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
-  anchorVariants,
-  anchorProps
-);
+export const AnchorBase = forwardRef<
+  HTMLAnchorElement,
+  AnchorProps & HTMLProps<HTMLAnchorElement> & { as?: ElementType }
+>(({ as: As = 'a' as ElementType, ...props }, ref) => {
+  const { rest } = useVariance(props, anchorVariants, anchorProps);
+  return <As ref={ref} {...rest} />;
+});
 
 type AnchorBaseProps =
   | ComponentProps<typeof AnchorBase>

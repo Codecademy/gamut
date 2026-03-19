@@ -1,7 +1,6 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { theme, useVariance, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import * as React from 'react';
 
 const errorSpanVariants = variant({
@@ -27,10 +26,13 @@ const errorSpanVariants = variant({
   },
 });
 
-const ErrorSpan = styled.span(errorSpanVariants);
-
 type FormErrorProps = StyleProps<typeof errorSpanVariants> &
   HTMLAttributes<HTMLSpanElement>;
+
+const ErrorSpan = forwardRef<HTMLSpanElement, FormErrorProps>((props, ref) => {
+  const { rest } = useVariance(props, errorSpanVariants);
+  return <span ref={ref} {...rest} />;
+});
 
 export const FormError: React.FC<FormErrorProps> = (props) => {
   return <ErrorSpan {...props} />;

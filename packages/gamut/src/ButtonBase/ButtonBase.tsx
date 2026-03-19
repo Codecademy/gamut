@@ -1,6 +1,11 @@
-import { css, styledOptions } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, MutableRefObject } from 'react';
+import { css, useVariance } from '@codecademy/gamut-styles';
+import {
+  ComponentProps,
+  ElementType,
+  forwardRef,
+  HTMLProps,
+  MutableRefObject,
+} from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
 export type ButtonBaseRef =
@@ -54,8 +59,21 @@ export const resetStyles = css({
   },
 });
 
-const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
-const ResetElementAnchor = styled('a', styledOptions<'a'>())(resetStyles);
+const ResetElement = forwardRef<
+  HTMLButtonElement,
+  HTMLProps<HTMLButtonElement> & { as?: ElementType }
+>(({ as: As = 'button' as ElementType, ...props }, ref) => {
+  const { rest } = useVariance(props, resetStyles);
+  return <As ref={ref} {...rest} />;
+});
+
+const ResetElementAnchor = forwardRef<
+  HTMLAnchorElement,
+  HTMLProps<HTMLAnchorElement> & { as?: ElementType }
+>(({ as: As = 'a' as ElementType, ...props }, ref) => {
+  const { rest } = useVariance(props, resetStyles);
+  return <As ref={ref} {...rest} />;
+});
 
 type ButtonBaseProps =
   | ComponentProps<typeof ResetElement>

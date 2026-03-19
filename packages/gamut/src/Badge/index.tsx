@@ -1,11 +1,11 @@
 import {
   Colors,
-  styledOptions,
   system,
+  useVariance,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import { forwardRef } from 'react';
 
 import { appendIconToContent } from '../helpers';
 import { IconComponentType, WithChildrenProp } from '../utils';
@@ -108,11 +108,10 @@ export type BadgeBaseProps = StyleProps<typeof badgeProps> &
   BadgeBgPropsType &
   WithChildrenProp;
 
-const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
-  badgeProps,
-  colorVariants,
-  sizeVariants
-);
+const BadgeBase = forwardRef<HTMLDivElement, BadgeBaseProps>((props, ref) => {
+  const { rest } = useVariance(props, badgeProps, colorVariants, sizeVariants);
+  return <div ref={ref} {...rest} />;
+});
 
 export type BadgeProps = Partial<IconComponentType> & BadgeBaseProps;
 

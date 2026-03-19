@@ -1,11 +1,13 @@
-import { styledOptions } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { useVariance } from '@codecademy/gamut-styles';
+import { ElementType, forwardRef } from 'react';
 
 import { BoxProps, boxProps, sharedStates } from './props';
 
-export const Box = styled('div', styledOptions(['fit']))<BoxProps>(
-  sharedStates,
-  boxProps
+export const Box = forwardRef<HTMLElement, BoxProps & { as?: ElementType }>(
+  ({ as: As = 'div' as ElementType, ...props }, ref) => {
+    const { rest } = useVariance(props, sharedStates, boxProps);
+    return <As ref={ref} {...rest} />;
+  }
 );
 
 export type { BoxProps } from './props';

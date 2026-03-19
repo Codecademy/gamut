@@ -1,7 +1,6 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { states, useVariance, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
-import { HTMLAttributes } from 'react';
+import { ElementType, forwardRef, HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../..';
@@ -53,7 +52,13 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     isSoloField?: boolean;
   };
 
-const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
+const Label = forwardRef<
+  HTMLElement,
+  FormGroupLabelProps & { as?: ElementType }
+>(({ as: As = 'label' as ElementType, ...props }, ref) => {
+  const { rest } = useVariance(props, labelSizeVariants, labelStates);
+  return <As ref={ref} {...rest} />;
+});
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,
