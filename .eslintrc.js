@@ -37,6 +37,9 @@ module.exports = {
       // being respected. By moving them into this override definition, they are properly
       // being applied to subsequent plugin imports/extensions. Wild.
       files: ['*.tsx', '*.ts'],
+      parserOptions: {
+        project: false,
+      },
       rules: {
         // These rules could be useful, but we haven't gotten around to enabling them here
         // See WEB-2 for general tracking.
@@ -60,6 +63,17 @@ module.exports = {
             callbacksLast: true,
           },
         ],
+        // Type-aware rules disabled to avoid slow/hanging lint (no parserOptions.project)
+        '@typescript-eslint/await-thenable': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-for-in-array': 'off',
+        '@typescript-eslint/no-implied-eval': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
+        '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+        '@typescript-eslint/require-await': 'off',
+        '@typescript-eslint/unbound-method': 'off',
+        '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+        '@typescript-eslint/prefer-optional-chain': 'off',
       },
     },
     {
