@@ -19,6 +19,19 @@ permissions:
   issues: write
 
 jobs:
+  storybook-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: ./.github/actions/yarn
+      - name: Build All Packages
+        run: yarn build
+      - name: Install Playwright (Storybook test runner)
+        run: yarn playwright install chromium --with-deps
+      - name: Storybook build and accessibility tests
+        run: npx nx run styleguide:test --skip-nx-cache
+
   test:
     runs-on: ubuntu-24.04
     timeout-minutes: 30

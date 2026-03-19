@@ -32,6 +32,14 @@
           "quiet": true
         }
       }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "start-server-and-test \"http-server dist/storybook/styleguide -p 6007 --silent\" http://127.0.0.1:6007 \"test-storybook --url http://127.0.0.1:6007 --config-dir packages/styleguide/.storybook\""
+      }
     }
   }
 }
