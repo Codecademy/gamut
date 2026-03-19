@@ -232,7 +232,7 @@ Custom sort functions can access additional properties on `BarProps` for domain-
 
 ## Custom styling
 
-BarChart supports custom color styling through the `styleConfig` prop, allowing you to customize the appearance of chart elements to match your design needs.
+`BarChart` supports custom color styling through the `styleConfig` prop, allowing you to customize the appearance of chart elements to match your design needs.
 
 ### Style configuration options
 
@@ -250,11 +250,11 @@ All color values should be valid color tokens from the Gamut design system. When
 
 ## Custom scale
 
-BarChart allows you to customize the x-axis scale interval using the `scaleInterval` prop, which controls the spacing and granularity of scale markers along the horizontal axis.
+`BarChart` allows you to customize the scale interval using the `scaleInterval` prop, which controls the spacing and granularity of scale markers that measure the length of the bars.
 
 ### Scale configuration
 
-The `scaleInterval` prop determines the interval between scale markers on the x-axis. By default, BarChart automatically calculates an appropriate scale interval based on the `maxScaleValue` value (the scale always starts at 0). However, you can override this with a custom interval to achieve more granular or specific scale markings.
+The `scaleInterval` prop determines the interval between scale markers that show the length of the bars. By default, `BarChart` automatically calculates an appropriate scale interval based on the `maxScaleValue` value (the scale always starts at 0). However, you can override this with a custom interval to achieve more granular or specific scale markings.
 
 **When to use custom scale:**
 
@@ -278,7 +278,7 @@ The number of tick marks is automatically calculated as: `Math.ceil(maxScaleValu
 
 ## Color modes
 
-BarChart automatically adapts to both light and dark color modes, ensuring proper contrast and readability in all themes. The component uses semantic color tokens that adjust based on the current color mode. The `styleConfig` prop should be provided by semantic color tokens to ensure the `BarChart` is accessible in all color modes.
+`BarChart` uses semantic color tokens via `styleConfig`, so colors automatically adapt to light and dark color modes to ensure proper contrast and readability in all themes.
 
 ## Accessibility considerations
 
@@ -297,13 +297,13 @@ BarChart automatically adapts to both light and dark color modes, ensuring prope
 
 ## UX writing
 
-- Keep y-axis labels concise (1-3 words)
+- Keep the category labels concise (1-3 words)
 - Use consistent unit labels (e.g., "XP", "hours", "points")
 - Consider locale-aware number formatting for international audiences
 
 ## Interactive states
 
-BarChart supports both interactive and static bar rows, each with distinct visual states.
+`BarChart` supports both interactive and static bar rows, each with distinct visual states.
 
 ### Static bars
 
@@ -321,11 +321,11 @@ When bars have `onClick` handlers or `href` links, they become interactive. Inte
 
 <Callout text="We are currently updating global internationalization in Gamut, so the following features are subject to change." />
 
-BarChart supports internationalization through the `translations` prop. You can customize user-facing strings (including sort dropdown and accessibility summaries) and configure locale-aware number formatting. The prop accepts `PartialBarChartTranslations`: override only the keys you need; nested `accessibility` and `sortOptions` are merged with defaults at runtime.
+`BarChart` supports internationalization through the `translations` prop. You can customize user-facing strings (including sort dropdown and accessibility summaries) and configure locale-aware number formatting. The prop accepts `PartialBarChartTranslations`: override only the keys you need; nested `accessibility` and `sortOptions` are merged with defaults at runtime.
 
 ### Translation structure
 
-- **sortLabel**, **sortOptions**, and **locale** — Always strings. Control the sort dropdown label, option labels, and number-formatting locale.
+- `**sortLabel**`, `**sortOptions**`, and `**locale**` — Always strings. Control the sort dropdown label, option labels, and number-formatting locale.
 - **Accessibility** — Two optional summary functions; when omitted, default English summaries are used. Each function receives context and returns the full summary string.
   - `**stackedBarSummary**` — Used for stacked (two-value) rows. Context includes `seriesOneValue`, `seriesTwoValue`, **gained** (seriesTwoValue - seriesOneValue), `unit`, `locale`, `categoryLabel`.
   - `**singleValueBarSummary**` — Used for all single-value rows. Context includes `value`, `unit`, `locale`, `categoryLabel`.
