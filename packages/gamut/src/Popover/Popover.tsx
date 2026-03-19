@@ -199,7 +199,9 @@ export const Popover: React.FC<PopoverProps> = ({
       data-floating="popover"
       data-testid="popover-content-container"
       position={position}
-      {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
+      {...(popoverContainerRef
+        ? { ref: popoverContainerRef as React.Ref<HTMLDivElement> }
+        : {})}
       role={role}
       // eslint-disable-next-line gamut/no-inline-style
       style={getPopoverPosition()}
@@ -208,7 +210,7 @@ export const Popover: React.FC<PopoverProps> = ({
       <RaisedDiv
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
-        ref={combinedRef}
+        ref={combinedRef as React.Ref<HTMLDivElement>}
         variant={variant}
         widthRestricted={widthRestricted}
       >
