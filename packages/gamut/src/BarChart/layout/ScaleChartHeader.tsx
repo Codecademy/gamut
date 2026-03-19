@@ -16,8 +16,8 @@ const StyledLabelText = styled(Text)<{
   css({
     position: 'absolute',
     whiteSpace: 'nowrap',
-    margin: 0,
-    padding: 0,
+    m: 0,
+    p: 0,
   }),
   ({ positionPercent, textAlign }) => {
     let transform = '';
