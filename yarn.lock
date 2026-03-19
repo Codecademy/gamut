@@ -13399,7 +13399,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-gamut@npm:^2.0.0, eslint-plugin-gamut@workspace:packages/eslint-plugin-gamut":
+"eslint-plugin-gamut@workspace:*, eslint-plugin-gamut@workspace:packages/eslint-plugin-gamut":
   version: 0.0.0-use.local
   resolution: "eslint-plugin-gamut@workspace:packages/eslint-plugin-gamut"
   dependencies:
@@ -14625,7 +14625,7 @@ __metadata:
     core-js: "npm:3.7.0"
     cpy-cli: "npm:^4.1.0"
     eslint: "npm:^8.11.0"
-    eslint-plugin-gamut: "npm:^2.0.0"
+    eslint-plugin-gamut: "workspace:*"
     eslint-plugin-local-rules: "npm:^1.1.0"
     eslint-plugin-lodash: "npm:^7.4.0"
     gh-pages: "npm:^5.0.0"
