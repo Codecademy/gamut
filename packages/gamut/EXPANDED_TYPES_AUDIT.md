@@ -25,10 +25,10 @@ Components whose `.d.ts` emit **expanded/inlined** types (e.g. `StyledComponent<
 
 - **Box, FlexBox, GridBox** – Reverted. Adding `ComponentPropsWithoutRef<'div'>` (or similar) to `BoxProps` caused conflicts: variance `color` vs HTML `color`, and casting to `ForwardRefExoticComponent<BoxProps>` removed `className`, `role`, `onClick`, etc. from the public type, breaking many usages. Fixing Box properly likely needs a separate strategy (e.g. polymorphic `BoxProps` that merges div props without conflicting keys, or leaving Box as-is for now).
 
-**Blocked / known issues (need resolution before full green build):**
+**Blocked / known issues (resolved):**
 
-1. **GridForm / ButtonTypes** – `GridFormButtons` expects `ComponentType<ButtonProps>`. After the fix, CTAButton is typed as `ForwardRefExoticComponent<CTAButtonProps & RefAttributes<...>>` with `CTAButtonProps.variant?: 'primary'`, so `ButtonProps` (variant = primary | secondary | danger | interface) is not assignable to `CTAButtonProps`. Options: widen `CTAButtonProps.variant` to match `ButtonBaseProps` for assignability, or change GridForm to accept a looser component type.
-2. **IconButton** – Spreading props to `InfoTipButtonBase` triggers a type error: `onAnimationStart` (and similar) from `ButtonElementProps` (button) are not assignable to the styled component’s internal union (button | anchor). May need a more permissive internal props type or a local type assertion where props are spread.
+1. **GridForm / ButtonTypes** – Fixed by widening `CTAButtonProps`: removed the `variant?: 'primary'` override so it inherits `variant` from `ButtonBaseProps` (full union). CTAButton still only supports one variant at runtime; the type is wider for assignability with `ComponentType<ButtonProps>`.
+2. **IconButton** – Fixed by asserting the spread: `{...(props as IconButtonBaseProps)}` when passing props to `IconButtonBase`, where `IconButtonBaseProps = ComponentProps<typeof IconButtonBase>`. This satisfies the styled component's union (button | anchor) without changing the public `IconButtonProps`.
 
 ---
 
@@ -58,7 +58,7 @@ After editing source under `packages/gamut/src`:
    ```
 
    Fix any TypeScript errors before proceeding.  
-   **Note:** As of handoff, this command still reports 2 errors (GridForm ButtonTypes, IconButton props). Resolve those before considering the work complete.
+   **Note:** The two previous errors (GridForm ButtonTypes, IconButton props) have been resolved; this command should pass.
 
 2. **Full build (if you have Nx):**
 
@@ -178,9 +178,8 @@ These export parser/variant config types that get inlined; lower impact for typi
 - **Medium:** ListCol, TableHeader – **done**.
 - **Lower:** Many `*/elements.d.ts` and internal styled components – not started.
 
-**Next steps for the next owner:**
+**Next steps (optional):**
 
-1. Run the **Validation steps** above (tsc, build, spot-check dist, lint).
-2. Resolve the two **Blocked / known issues**: GridForm ButtonTypes vs CTAButtonProps variant, and IconButton props spread. Once those are fixed, the build should pass.
-3. Optionally tackle **Box** with a different approach (e.g. polymorphic props that avoid `color`/style conflicts, or accept expanded Box declarations for now).
-4. Optionally run the full build and commit; update this doc if you change status of any row.
+1. Run the **Validation steps** above to confirm (tsc and full build now pass).
+2. Optionally tackle **Box** with a different approach (e.g. polymorphic props that avoid `color`/style conflicts, or accept expanded Box declarations for now).
+3. Update this doc if you change status of any row.

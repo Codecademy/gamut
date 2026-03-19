@@ -1,4 +1,8 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type {
+  ComponentProps,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
 import { forwardRef } from 'react';
 
 import type { ButtonBaseElements } from '../ButtonBase/ButtonBase';
@@ -17,6 +21,8 @@ const IconButtonBase = createButtonComponent(
   iconSizeVariants,
   textButtonVariants
 );
+
+type IconButtonBaseProps = ComponentProps<typeof IconButtonBase>;
 
 /** Props for IconButton. Use this type when wrapping or composing IconButton. */
 export interface IconButtonProps
@@ -48,7 +54,7 @@ const IconButtonComponent = forwardRef<ButtonBaseElements, IconButtonProps>(
     return (
       <ToolTip info={tip} {...(tipProps as any)}>
         <IconButtonBase
-          {...props}
+          {...(props as IconButtonBaseProps)}
           aria-label={ariaLabel || tip}
           ref={ref}
           size={size}
