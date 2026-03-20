@@ -1782,6 +1782,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@commander-js/extra-typings@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@commander-js/extra-typings@npm:14.0.0"
+  peerDependencies:
+    commander: ~14.0.0
+  checksum: 10c0/b064889e254e1c895886ec8148ac6e0d9bfa3c0336b9ee58124178308819dcf008f15e2a7abdc89b6c1ac3bdbd8003d8cfdaf363971d41dcce64b28c9714af12
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -13012,6 +13021,7 @@ __metadata:
     "@codecademy/eslint-config": "npm:8.0.0"
     "@codecademy/prettier-config": "npm:^0.2.0"
     "@codecademy/tsconfig": "npm:^0.3.0"
+    "@commander-js/extra-typings": "npm:^14.0.0"
     "@emotion/babel-plugin": "npm:11.13.5"
     "@emotion/jest": "npm:^11.11.0"
     "@emotion/react": "npm:11.14.0"

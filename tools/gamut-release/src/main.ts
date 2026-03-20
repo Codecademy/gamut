@@ -12,12 +12,12 @@
  *   npx nx run gamut-release:alpha --preid=alpha.abc123 [--manifest[=path]]
  */
 
+import { Command } from '@commander-js/extra-typings';
 import {
   createProjectGraphAsync,
   readJsonFile,
   workspaceRoot,
 } from '@nx/devkit';
-import { Command } from 'commander';
 import { writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { releasePublish, releaseVersion } from 'nx/release/index.js';
@@ -106,9 +106,7 @@ async function buildPublishManifest(
   return entries.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-const program = new Command();
-
-program
+const program = new Command()
   .name('gamut-release-alpha')
   .description('Publish alpha versions of packages using Nx Release.')
   .requiredOption('--preid <preid>', 'Prerelease identifier, e.g. alpha.abc123')
@@ -121,7 +119,8 @@ program
 
 program.parse(process.argv);
 
-const options = program.opts() as AlphaReleaseOptions;
+const options = program.opts();
+
 const preidArg = options.preid;
 const dryRun = options.dryRun ?? false;
 const verbose = options.verbose ?? false;
