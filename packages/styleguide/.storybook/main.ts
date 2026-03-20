@@ -9,9 +9,6 @@ const __dirname = dirname(__filename);
 const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
-  features: {
-    developmentModeForBuild: true,
-  },
   stories: [
     '../src/lib/**/*.@(mdx)',
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
@@ -19,7 +16,10 @@ const config: StorybookConfig = {
   staticDirs: ['../src/static'],
   addons: [
     getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
-    join(dirname(require.resolve('@nx/react/plugins/storybook')), 'index.js'),
+    // the @nx/react storybook plugin is just a subdirectory of the @nx/react package
+    // so getting the absolute path of the package.json won't work. they do expose
+    // a require export though, so we can just use that directly
+    require.resolve('@nx/react/plugins/storybook'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-a11y'),
@@ -69,8 +69,6 @@ const config: StorybookConfig = {
           __dirname,
           '../../gamut-illustrations/src'
         ),
-        // Dist bundles use Rolldown `require("react")` shims that break under Storybook's
-        // webpack iframe build; source resolves through normal ESM imports.
         '@codecademy/gamut-icons$': resolve(__dirname, '../../gamut-icons/src'),
         '@codecademy/gamut-patterns$': resolve(
           __dirname,
