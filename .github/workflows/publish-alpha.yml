@@ -79,8 +79,8 @@ jobs:
             }
 
             const tableLines = [
-              '| Package | Version | Diff |',
-              '| --- | --- | --- |',
+              '| Package | Version | npm | Diff |',
+              '| --- | --- | --- | --- |',
               ...entries.map((entry) => {
                 const pkgUrl = `https://www.npmjs.com/package/${entry.name}`;
                 const versionUrl = `${pkgUrl}/v/${entry.version}`;
@@ -90,9 +90,10 @@ jobs:
                       entry.name
                     )}/${baseVersion}/${entry.version}/`
                   : null;
+                const npmLink = `[npm](${versionUrl})`;
                 const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
 
-                return `| [${entry.name}](${pkgUrl}) | [${entry.version}](${versionUrl}) | ${diffLink} |`;
+                return `| ${entry.name} | ${entry.version} | ${npmLink} | ${diffLink} |`;
               }),
             ];
             const comment = `📬 Published Alpha Packages:\n\n${tableLines.join(
