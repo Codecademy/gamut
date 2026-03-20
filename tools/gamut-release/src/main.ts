@@ -4,10 +4,12 @@
 /**
  * Alpha Release Script
  *
- * This script uses the NX Release programmatic API to publish alpha versions
- * of packages. It is designed to run in CI for pull requests.
+ * This script uses the Nx Release programmatic API to publish alpha versions
+ * of packages. It is designed to run in CI for pull requests via the Nx target
+ * `gamut-release:alpha`, which injects the required Node experimental flags.
  *
- * Usage: node --experimental-strip-types script/release-alpha.ts --preid=alpha.abc123 [--manifest[=path]]
+ * Usage:
+ *   npx nx run gamut-release:alpha --preid=alpha.abc123 [--manifest[=path]]
  */
 
 import {

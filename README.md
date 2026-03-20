@@ -97,9 +97,9 @@ Add new Button variant and fix spacing issues
 #### Publishing Process
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
-1.  After your code has been reviewed and tested, you can merge your branch into main.
-1.  Make sure to update your PR title following the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide)
-1.  To merge your changes, add the `Ship It` label to your Pull Request.
+1.  Create and commit a version plan for the changes (`yarn nx release plan`)
+1.  CI checks that a version plan is present for the PR
+1.  After reviews and checks pass, you can merge your branch into main
 1.  Once your branch is merged into main, it will be published automatically by GitHub Actions using NX Release.
     - NX Release will apply all version plans found in `.nx/version-plans/`
     - It will bump package versions according to the plans
@@ -241,69 +241,7 @@ The config for NX is located at [/nx.json](/nx.json), along with `project.json` 
 
 For new packages, please use an NX generator plugin to create your initial package, this will ensure that all of the configuration for linting & testing is set up correctly.
 
-### PR Title Guide
-
-Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
-
-Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines.
-
-**Note:** With the migration to NX Release and Version Plans, the version bumps are now determined by the version plan files you create using `yarn nx release plan`, rather than commit messages. However, we still recommend following Conventional Commits format for consistency and clarity.
-
-### PR Title Format
-
-When you click squash and merge, the title should follow this format:
-
-```
-type(scope): message
-```
-
-Examples:
-
-```
-fix: fixes a bug in some component
-```
-
-```
-test: adds test to component
-```
-
-With a scope:
-
-```
-feat(Button): :sparkles: An awesome feature for the Button component
-```
-
-Breaking change:
-
-```
-feat(Button)!: :fire: Deleted the Button component
-```
-
-Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) page for more detailed options
-
-**Type**
-
-The `type` describes what kind of change you're making. With NX Release and Version Plans, you'll specify the version bump (major/minor/patch) directly when creating your version plan using `yarn nx release plan`.
-
-`type` must be one of the following options:
-
-Standard types:
-
-- **feat**: A new feature
-- **fix**: A bug fix
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **docs**: Documentation only changes
-- **perf**: A code change that improves performance
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **test**: Adding missing tests or correcting existing tests
-- **ci**: Changes to our CI configuration files and scripts
-- **build**: Changes that affect the build system or external dependencies
-
-**Scope**
-
-A scope is optional and consists of a noun describing a section of the codebase surrounded by parenthesis, e.g., feat(Button):
-
-**Breaking Changes**
+### Breaking Changes
 
 Breaking changes are indicated in version plans by specifying a `major` version bump. When creating a version plan with `yarn nx release plan`, select "major" as the bump type for packages that introduce breaking changes.
 
@@ -336,13 +274,9 @@ If your changes will require changes in any downstream repositories:
 
 This process minimizes the likelihood of accidental breaking changes in Gamut negatively affecting development on our other repositories.
 
-**Body**
+### Changelog Descriptions
 
-Optional extra description for your changes.
-
-This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
-
-With NX Release and Version Plans, changelog content is primarily driven by the description in your version plan files, not the PR description. The version plan description will appear in the generated CHANGELOG.md files.
+Changelog content is driven by the description in version plan files (in `.nx/version-plans/`), not the PR title or PR description.
 
 ## Publishing Storybook
 
