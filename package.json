@@ -140,7 +140,7 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "nx storybook styleguide",
     "test": "nx run-many --target=test --all",
-    "test:storybook": "nx run styleguide:test",
+    "test:storybook": "nx run styleguide:storybook-test",
     "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify"
   },
