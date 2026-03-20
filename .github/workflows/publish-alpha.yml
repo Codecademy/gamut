@@ -79,12 +79,20 @@ jobs:
             }
 
             const tableLines = [
-              '| Package | Version |',
-              '| --- | --- |',
+              '| Package | Version | Diff |',
+              '| --- | --- | --- |',
               ...entries.map((entry) => {
                 const pkgUrl = `https://www.npmjs.com/package/${entry.name}`;
                 const versionUrl = `${pkgUrl}/v/${entry.version}`;
-                return `| [${entry.name}](${pkgUrl}) | [${entry.version}](${versionUrl}) |`;
+                const baseVersion = entry.previousVersion || null;
+                const diffUrl = baseVersion
+                  ? `https://npmdiff.dev/${encodeURIComponent(
+                      entry.name
+                    )}/${baseVersion}/${entry.version}/`
+                  : null;
+                const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
+
+                return `| [${entry.name}](${pkgUrl}) | [${entry.version}](${versionUrl}) | ${diffLink} |`;
               }),
             ];
             const comment = `📬 Published Alpha Packages:\n\n${tableLines.join(

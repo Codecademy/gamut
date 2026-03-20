@@ -37,6 +37,7 @@ type ProjectsVersionData = Record<string, VersionDataEntry>;
 type PublishManifestEntry = {
   name: string;
   version: string;
+  previousVersion: string;
 };
 
 function resolveManifestPath(
@@ -90,13 +91,14 @@ async function buildPublishManifest(
 
     const versionData = projectsVersionData[projectName];
     const version = versionData?.newVersion ?? versionData?.currentVersion;
-    if (!version) {
+    const previousVersion = versionData?.currentVersion;
+    if (!version || !previousVersion) {
       throw new Error(
         `Manifest requested but version data missing for "${projectName}".`
       );
     }
 
-    entries.push({ name: packageJson.name, version });
+    entries.push({ name: packageJson.name, version, previousVersion });
   }
 
   return entries.sort((a, b) => a.name.localeCompare(b.name));
@@ -117,7 +119,7 @@ program
 
 program.parse(process.argv);
 
-const options = program.opts<AlphaReleaseOptions>();
+const options = program.opts() as AlphaReleaseOptions;
 const preidArg = options.preid;
 const dryRun = options.dryRun ?? false;
 const verbose = options.verbose ?? false;
