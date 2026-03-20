@@ -66,14 +66,15 @@ jobs:
           script: |
             const fs = require('fs');
             const manifestPath = 'alpha-publish-manifest.json';
+            const outputPath = 'alpha-publish-comment.md';
             if (!fs.existsSync(manifestPath)) {
-              core.setOutput('result', '');
+              fs.writeFileSync(outputPath, '');
               return;
             }
 
             const entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
             if (!Array.isArray(entries) || entries.length === 0) {
-              core.setOutput('result', '');
+              fs.writeFileSync(outputPath, '');
               return;
             }
 
@@ -84,15 +85,15 @@ jobs:
                 (entry) => `| ${entry.name} | ${entry.version} |`
               ),
             ];
-            core.setOutput('result', tableLines.join('\n'));
+            const comment = `📬 Published Alpha Packages:\n\n${tableLines.join(
+              '\n'
+            )}\n`;
+            fs.writeFileSync(outputPath, comment);
 
       - name: Comment with published alpha packages
         uses: ./.github/actions/sticky-comment
-        if: steps.published.outputs.result
+        if: ${{ !cancelled() && hashFiles('alpha-publish-comment.md') != '' }}
         with:
           github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
-          message: |
-            📬 Published Alpha Packages:
-
-            ${{ steps.published.outputs.result }}
+          message-path: alpha-publish-comment.md
