@@ -30,7 +30,7 @@ const preview: Preview = {
       test: 'todo',
     },
     backgrounds: {
-      disabled: true,
+      disable: true,
     },
     deepControls: { enabled: true },
     docs: {
