@@ -9581,7 +9581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.0.0, axios@npm:^1.12.0, axios@npm:^1.12.1, axios@npm:^1.13.5, axios@npm:^1.6.0, axios@npm:^1.6.1":
+"axios@npm:^1.0.0, axios@npm:^1.12.0, axios@npm:^1.13.5, axios@npm:^1.6.0, axios@npm:^1.6.1":
   version: 1.13.6
   resolution: "axios@npm:1.13.6"
   dependencies:
@@ -10932,23 +10932,6 @@ __metadata:
   dependencies:
     source-map: "npm:^0.6.1"
   checksum: 10c0/d30cec83a320d20d7e9482a4d011fa84319a0a8f9107acb632c48493d608be3a2b879608866d9edba2ce304ee52bc798138c26ad16eda6fbe7ec5e7bec99a683
-  languageName: node
-  linkType: hard
-
-"concurrently@npm:^9.1.2":
-  version: 9.2.1
-  resolution: "concurrently@npm:9.2.1"
-  dependencies:
-    chalk: "npm:4.1.2"
-    rxjs: "npm:7.8.2"
-    shell-quote: "npm:1.8.3"
-    supports-color: "npm:8.1.1"
-    tree-kill: "npm:1.2.2"
-    yargs: "npm:17.7.2"
-  bin:
-    conc: dist/bin/concurrently.js
-    concurrently: dist/bin/concurrently.js
-  checksum: 10c0/da37f239f82eb7ac24f5ddb56259861e5f1d6da2ade7602b6ea7ad3101b13b5ccec02a77b7001402d1028ff2fdc38eed55644b32853ad5abf30e057002a963aa
   languageName: node
   linkType: hard
 
@@ -14354,7 +14337,6 @@ __metadata:
     babel-jest: "npm:29.6.4"
     babel-plugin-macros: "npm:3.0.1"
     component-test-setup: "npm:^0.3.1"
-    concurrently: "npm:^9.1.2"
     conventional-changelog-cli: "npm:^2.0.34"
     conventional-changelog-conventionalcommits: "npm:^4.3.0"
     core-js: "npm:3.7.0"
@@ -14385,8 +14367,6 @@ __metadata:
     react-dom: "npm:18.3.1"
     react-helmet-async: "npm:^2.0.5"
     react-test-renderer: "npm:18.3.1"
-    sass: "npm:^1.77.0"
-    sass-loader: "npm:^16.0.0"
     start-server-and-test: "npm:^2.1.5"
     storybook: "npm:^10.3.1"
     storybook-addon-deep-controls: "npm:^0.9.5"
@@ -14397,7 +14377,6 @@ __metadata:
     ts-node: "npm:10.9.1"
     tslib: "npm:2.4.0"
     typescript: "npm:5.1.3"
-    wait-on: "npm:^8.0.1"
   languageName: unknown
   linkType: soft
 
@@ -17388,7 +17367,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^18.0.1, joi@npm:^18.0.2":
+"joi@npm:^18.0.2":
   version: 18.0.2
   resolution: "joi@npm:18.0.2"
   dependencies:
@@ -22542,7 +22521,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.2, rxjs@npm:^7.4.0, rxjs@npm:^7.5.5, rxjs@npm:^7.8.0, rxjs@npm:^7.8.1, rxjs@npm:^7.8.2":
+"rxjs@npm:^7.4.0, rxjs@npm:^7.5.5, rxjs@npm:^7.8.0, rxjs@npm:^7.8.1, rxjs@npm:^7.8.2":
   version: 7.8.2
   resolution: "rxjs@npm:7.8.2"
   dependencies:
@@ -22823,7 +22802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^16.0.0, sass-loader@npm:^16.0.4":
+"sass-loader@npm:^16.0.4":
   version: 16.0.7
   resolution: "sass-loader@npm:16.0.7"
   dependencies:
@@ -22849,7 +22828,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.77.0, sass@npm:^1.85.0":
+"sass@npm:^1.85.0":
   version: 1.98.0
   resolution: "sass@npm:1.98.0"
   dependencies:
@@ -23151,7 +23130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shell-quote@npm:1.8.3, shell-quote@npm:^1.8.1":
+"shell-quote@npm:^1.8.1":
   version: 1.8.3
   resolution: "shell-quote@npm:1.8.3"
   checksum: 10c0/bee87c34e1e986cfb4c30846b8e6327d18874f10b535699866f368ade11ea4ee45433d97bf5eada22c4320c27df79c3a6a7eb1bf3ecfc47f2c997d9e5e2672fd
@@ -24033,15 +24012,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:8.1.1, supports-color@npm:^8.0.0, supports-color@npm:^8.1.1":
-  version: 8.1.1
-  resolution: "supports-color@npm:8.1.1"
-  dependencies:
-    has-flag: "npm:^4.0.0"
-  checksum: 10c0/ea1d3c275dd604c974670f63943ed9bd83623edc102430c05adb8efc56ba492746b6e95386e7831b872ec3807fd89dd8eb43f735195f37b5ec343e4234cc7e89
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -24057,6 +24027,15 @@ __metadata:
   dependencies:
     has-flag: "npm:^4.0.0"
   checksum: 10c0/afb4c88521b8b136b5f5f95160c98dee7243dc79d5432db7efc27efb219385bbc7d9427398e43dd6cc730a0f87d5085ce1652af7efbe391327bc0a7d0f7fc124
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:^8.0.0, supports-color@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "supports-color@npm:8.1.1"
+  dependencies:
+    has-flag: "npm:^4.0.0"
+  checksum: 10c0/ea1d3c275dd604c974670f63943ed9bd83623edc102430c05adb8efc56ba492746b6e95386e7831b872ec3807fd89dd8eb43f735195f37b5ec343e4234cc7e89
   languageName: node
   linkType: hard
 
@@ -25579,21 +25558,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wait-on@npm:^8.0.1":
-  version: 8.0.5
-  resolution: "wait-on@npm:8.0.5"
-  dependencies:
-    axios: "npm:^1.12.1"
-    joi: "npm:^18.0.1"
-    lodash: "npm:^4.17.21"
-    minimist: "npm:^1.2.8"
-    rxjs: "npm:^7.8.2"
-  bin:
-    wait-on: bin/wait-on
-  checksum: 10c0/714825226a8b726edb43e3428bfe4d7282510309a10cc5cc280546dc4d61a30a39faa4db80a91ba6a0454831fb6dd9ad3d5a32eebc3fa2a17d48f91912dd98ec
-  languageName: node
-  linkType: hard
-
 "wait-port@npm:^0.2.9":
   version: 0.2.14
   resolution: "wait-port@npm:0.2.14"
@@ -26294,21 +26258,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:17.7.2, yargs@npm:^17.1.1, yargs@npm:^17.3.1, yargs@npm:^17.6.2, yargs@npm:^17.7.2":
-  version: 17.7.2
-  resolution: "yargs@npm:17.7.2"
-  dependencies:
-    cliui: "npm:^8.0.1"
-    escalade: "npm:^3.1.1"
-    get-caller-file: "npm:^2.0.5"
-    require-directory: "npm:^2.1.1"
-    string-width: "npm:^4.2.3"
-    y18n: "npm:^5.0.5"
-    yargs-parser: "npm:^21.1.1"
-  checksum: 10c0/ccd7e723e61ad5965fffbb791366db689572b80cca80e0f96aad968dfff4156cd7cd1ad18607afe1046d8241e6fb2d6c08bf7fa7bfb5eaec818735d8feac8f05
-  languageName: node
-  linkType: hard
-
 "yargs@npm:^15.0.2":
   version: 15.4.1
   resolution: "yargs@npm:15.4.1"
@@ -26325,6 +26274,21 @@ __metadata:
     y18n: "npm:^4.0.0"
     yargs-parser: "npm:^18.1.2"
   checksum: 10c0/f1ca680c974333a5822732825cca7e95306c5a1e7750eb7b973ce6dc4f97a6b0a8837203c8b194f461969bfe1fb1176d1d423036635285f6010b392fa498ab2d
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^17.1.1, yargs@npm:^17.3.1, yargs@npm:^17.6.2, yargs@npm:^17.7.2":
+  version: 17.7.2
+  resolution: "yargs@npm:17.7.2"
+  dependencies:
+    cliui: "npm:^8.0.1"
+    escalade: "npm:^3.1.1"
+    get-caller-file: "npm:^2.0.5"
+    require-directory: "npm:^2.1.1"
+    string-width: "npm:^4.2.3"
+    y18n: "npm:^5.0.5"
+    yargs-parser: "npm:^21.1.1"
+  checksum: 10c0/ccd7e723e61ad5965fffbb791366db689572b80cca80e0f96aad968dfff4156cd7cd1ad18607afe1046d8241e6fb2d6c08bf7fa7bfb5eaec818735d8feac8f05
   languageName: node
   linkType: hard
 
