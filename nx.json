@@ -74,7 +74,7 @@
   },
   "analytics": false,
   "release": {
-    "projects": ["packages/*", "!packages/styleguide"],
+    "projects": ["packages/*", "!packages/styleguide", "!packages/macros"],
     "projectsRelationship": "independent",
     "versionPlans": true,
     "changelog": {
