@@ -1,0 +1,42 @@
+[
+  {
+    "name": "@codecademy/gamut",
+    "version": "68.1.5-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/gamut-icons",
+    "version": "9.57.1-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/gamut-illustrations",
+    "version": "0.58.8-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/gamut-kit",
+    "version": "0.6.590-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/gamut-patterns",
+    "version": "0.10.27-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/gamut-styles",
+    "version": "17.12.2-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/gamut-tests",
+    "version": "5.3.2-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/macros",
+    "version": "3.1.1-alpha-1234.0"
+  },
+  {
+    "name": "@codecademy/variance",
+    "version": "0.26.1-alpha-1234.0"
+  },
+  {
+    "name": "eslint-plugin-gamut",
+    "version": "2.4.3-alpha-1234.0"
+  }
+]

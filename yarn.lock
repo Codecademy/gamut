@@ -10095,6 +10095,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^14.0.3":
+  version: 14.0.3
+  resolution: "commander@npm:14.0.3"
+  checksum: 10c0/755652564bbf56ff2ff083313912b326450d3f8d8c85f4b71416539c9a05c3c67dbd206821ca72635bf6b160e2afdefcb458e86b317827d5cb333b69ce7f1a24
+  languageName: node
+  linkType: hard
+
 "commander@npm:^2.18.0, commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
@@ -13049,6 +13056,7 @@ __metadata:
     "@vidstack/react": "npm:^1.12.12"
     babel-jest: "npm:29.6.4"
     babel-plugin-macros: "npm:3.0.1"
+    commander: "npm:^14.0.3"
     component-test-setup: "npm:^0.3.1"
     core-js: "npm:3.7.0"
     cpy-cli: "npm:^4.1.0"
