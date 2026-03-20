@@ -17,10 +17,10 @@ This guide covers how to reference code elements, UI components, file paths, and
 
 ## Code in Text
 
-- Use backticks for inline code: `onClick`, `flex-direction`, `Box`, `StrokeButton`, `variant`, backgroundColor`, etc.
+- Use backticks for inline code: `onClick`, `flex-direction`, `Box`, `StrokeButton`, `variant`, `backgroundColor`, etc.
 - File and package names: `Button.tsx`, `package.json`, `@codecademy/gamut`
-  - When linking to them, use permalinks instead
-- Values assigned for props or variables: `true`, `15px`, `null`
+  - When linking to stories, use Storybook's `<LinkTo />` component
+- Values assigned for props or variables: `true`, `16px`, `null`
 - "The `Box` component" (first mention) → "the component" (subsequent mentions)
 - When plural, the component should stay singular and the “component” is the pluralized, e.g
   - ✅ “These `Box` components are…”
@@ -33,9 +33,9 @@ Code samples help developers understand how to implement components and patterns
 ### Format:
 
 ```tsx
-import { Button } from '@codecademy/gamut';
-export const Example: React.FC = () => (
-  <Button variant="primary">Click me</Button>
+import { StrokeButton } from '@codecademy/gamut';
+export const SimpleButtonExample: React.FC = () => (
+  <StrokeButton variant="primary">Click me</StrokeButton>
 );
 ```
 
