@@ -77,6 +77,9 @@ const config: StorybookConfig = {
         '@codecademy/variance$': resolve(__dirname, '../../variance/src'),
       },
     };
+    config.infrastructureLogging = {
+      level: 'warn',
+    };
     return config;
   },
 };
