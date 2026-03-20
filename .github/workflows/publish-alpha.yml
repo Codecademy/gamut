@@ -93,7 +93,7 @@ jobs:
                 const npmLink = `[npm](${versionUrl})`;
                 const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
 
-                return `| ${entry.name} | ${entry.version} | ${npmLink} | ${diffLink} |`;
+                return `| \`${entry.name}\` | \`${entry.version}\` | ${npmLink} | ${diffLink} |`;
               }),
             ];
             const comment = `📬 Published Alpha Packages:\n\n${tableLines.join(
