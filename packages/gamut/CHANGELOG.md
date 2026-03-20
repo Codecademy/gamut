@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.3...@codecademy/gamut@68.1.4) (2026-03-19)
+
+### Bug Fixes
+
+- **DataList:** Padding on first column and alignment for headers ([1b55acd](https://github.com/Codecademy/gamut/commit/1b55acdaba8c33be5e3cc7a19b0c9a3b50987ab5))
+
 ### [68.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.2...@codecademy/gamut@68.1.3) (2026-03-18)
 
 **Note:** Version bump only for package @codecademy/gamut
