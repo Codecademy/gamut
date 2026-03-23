@@ -1,7 +1,7 @@
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import { useCallback, useId, useMemo, useRef, useState } from 'react';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
 import { DatePickerProvider } from './DatePickerContext';
@@ -109,7 +109,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       children
     ) : (
       <>
-        <FlexBox gap={8} width="fit-content" wrap>
+        <FlexBox gap={8} width="fit-content">
           {mode === 'range' ? (
             <>
               <DatePickerInput
@@ -118,8 +118,9 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 rangePart="start"
                 ref={inputRef}
               />
-              <MiniArrowRightIcon alignSelf="center" />
-              {/* hide when they stack */}
+              <Box alignSelf="center" mt={32}>
+                <MiniArrowRightIcon />
+              </Box>
               <DatePickerInput
                 label={props.endLabel}
                 placeholder={placeholder}

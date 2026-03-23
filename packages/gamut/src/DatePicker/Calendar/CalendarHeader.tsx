@@ -42,7 +42,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   };
 
   return (
-    <FlexBox alignItems="center" justifyContent="space-between" pb={16}>
+    <FlexBox alignItems="center" pb={16} width="100%">
       <IconButton
         aria-label={lastMonth}
         icon={MiniChevronLeftIcon}
@@ -50,27 +50,42 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
         tip={lastMonth}
         onClick={handleLastMonth}
       />
-      <Text
-        aria-live="polite"
-        as="h2"
-        fontSize={16}
-        fontWeight="title"
-        id={headingId}
+      <FlexBox
+        flexGrow={1}
+        gap={{ _: 0, xs: secondMonthYear ? 32 : 0 }}
+        minWidth={0}
       >
-        {formatMonthYear(currentMonthYear, locale)}
-      </Text>
-      {secondMonthYear && (
-        <Text
-          aria-live="polite"
-          as="h2"
-          display={{ _: 'none', xs: 'initial' }}
-          fontSize={16}
-          fontWeight="title"
-          id={headingId}
-        >
-          {formatMonthYear(secondMonthYear, locale)}
-        </Text>
-      )}
+        <FlexBox flexGrow={1} justifyContent="center" minWidth={0}>
+          <Text
+            aria-live="polite"
+            as="h2"
+            fontSize={16}
+            fontWeight="title"
+            id={headingId}
+            textAlign="center"
+          >
+            {formatMonthYear(currentMonthYear, locale)}
+          </Text>
+        </FlexBox>
+        {secondMonthYear && (
+          <FlexBox
+            display={{ _: 'none', xs: 'flex' }}
+            flexGrow={1}
+            justifyContent="center"
+            minWidth={0}
+          >
+            <Text
+              aria-live="polite"
+              as="h2"
+              fontSize={16}
+              fontWeight="title"
+              textAlign="center"
+            >
+              {formatMonthYear(secondMonthYear, locale)}
+            </Text>
+          </FlexBox>
+        )}
+      </FlexBox>
       <IconButton
         aria-label={nextMonth}
         icon={MiniChevronRightIcon}
