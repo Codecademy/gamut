@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { FlexBox } from '../../Box';
 import { TextButton } from '../../Button';
+import { DEFAULT_DATE_PICKER_TRANSLATIONS } from '../translations';
 import { CalendarFooterProps } from './types';
 import { getRelativeTodayLabel } from './utils/format';
 
@@ -30,7 +31,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   onClearDate,
   onTodayClick,
   locale,
-  clearText,
+  clearText = DEFAULT_DATE_PICKER_TRANSLATIONS.clearText,
   disabled,
   showClearButton,
 }) => {

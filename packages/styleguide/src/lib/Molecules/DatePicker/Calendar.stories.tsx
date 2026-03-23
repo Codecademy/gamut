@@ -1,4 +1,5 @@
 import {
+  Box,
   Calendar,
   CalendarBody,
   CalendarFooter,
@@ -19,7 +20,7 @@ type Story = StoryObj<typeof Calendar>;
 export const Default: Story = {
   render: function CalendarStory() {
     const headingId = useId();
-    const [visibleDate, setVisibleDate] = useState(() => new Date());
+    const [displayDate, setDisplayDate] = useState(() => new Date());
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [focusedDate, setFocusedDate] = useState<Date | null>(
       () => new Date()
@@ -27,25 +28,31 @@ export const Default: Story = {
 
     return (
       <Calendar>
-        <CalendarHeader
-          currentMonthYear={visibleDate}
-          headingId={headingId}
-          locale="en-US"
-          onCurrentMonthYearChange={setVisibleDate}
-        />
-        <CalendarBody
-          focusedDate={focusedDate}
-          labelledById={headingId}
-          locale="en-US"
-          selectedDate={selectedDate}
-          visibleDate={visibleDate}
-          onDateSelect={setSelectedDate}
-          onFocusedDateChange={setFocusedDate}
-          onVisibleDateChange={setVisibleDate}
-        />
+        <Box p={24}>
+          <CalendarHeader
+            displayDate={displayDate}
+            headingId={headingId}
+            onDisplayDateChange={setDisplayDate}
+          />
+          <CalendarBody
+            displayDate={displayDate}
+            focusedDate={focusedDate}
+            labelledById={headingId}
+            selectedDate={selectedDate}
+            onDateSelect={setSelectedDate}
+            onDisplayDateChange={setDisplayDate}
+            onFocusedDateChange={setFocusedDate}
+          />
+        </Box>
         <CalendarFooter
-          onCurrentMonthYearChange={setVisibleDate}
-          onSelectedDateChange={setSelectedDate}
+          showClearButton
+          onClearDate={() => setSelectedDate(null)}
+          onTodayClick={() => {
+            const today = new Date();
+            setSelectedDate(today);
+            setDisplayDate(today);
+            setFocusedDate(today);
+          }}
         />
       </Calendar>
     );
