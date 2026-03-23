@@ -102,3 +102,14 @@ export const isDateInRange = (
 export const isDateDisabled = (date: Date, disabledDates: Date[] = []) => {
   return disabledDates.some((d) => isSameDay(date, d));
 };
+
+/** Flat list of dates in grid order (row-major, non-null only) with row index for Home/End */
+export const getDatesWithRow = (weeks: (Date | null)[][]) => {
+  const result: { date: Date; rowIndex: number }[] = [];
+  weeks.forEach((week, rowIndex) => {
+    week.forEach((date) => {
+      if (date !== null) result.push({ date, rowIndex });
+    });
+  });
+  return result;
+};

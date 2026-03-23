@@ -6,13 +6,14 @@ import * as React from 'react';
 import { TextButton } from '../../Button';
 import { CalendarBodyProps } from './types';
 import {
+  getDatesWithRow,
   getMonthGrid,
   isDateDisabled,
   isDateInRange,
   isSameDay,
 } from './utils/dateGrid';
 import { getWeekdayNames } from './utils/format';
-import { getDatesWithRow, keyHandler } from './utils/keyHandler';
+import { keyHandler } from './utils/keyHandler';
 
 const TableHeader = styled.th(
   css({
@@ -87,7 +88,7 @@ const DateButton = styled(TextButton)(
 );
 
 export const CalendarBody: React.FC<CalendarBodyProps> = ({
-  visibleDate,
+  displayDate,
   selectedDate,
   endDate = null,
   disabledDates = [],
@@ -97,13 +98,13 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   labelledById,
   focusedDate,
   onFocusedDateChange,
-  onVisibleDateChange,
+  onDisplayDateChange,
   onEscapeKeyPress,
   hasAdjacentMonthRight,
   hasAdjacentMonthLeft,
 }) => {
-  const year = visibleDate.getFullYear();
-  const month = visibleDate.getMonth();
+  const year = displayDate.getFullYear();
+  const month = displayDate.getMonth();
   const weeks = getMonthGrid(year, month, weekStartsOn);
   const weekdayLabels = getWeekdayNames('short', locale, weekStartsOn);
   const weekdayFullNames = getWeekdayNames('long', locale, weekStartsOn);
@@ -143,7 +144,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         disabledDates,
         onDateSelect,
         onEscapeKeyPress,
-        onVisibleDateChange,
+        onDisplayDateChange,
         hasAdjacentMonthRight,
         hasAdjacentMonthLeft
       ),
@@ -155,7 +156,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       disabledDates,
       onDateSelect,
       onEscapeKeyPress,
-      onVisibleDateChange,
+      onDisplayDateChange,
       hasAdjacentMonthLeft,
       hasAdjacentMonthRight,
     ]
