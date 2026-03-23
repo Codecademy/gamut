@@ -11,9 +11,9 @@ import { CalendarHeaderProps } from './types';
 import { formatMonthYear, getRelativeMonthLabels } from './utils/format';
 
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
-  currentMonthYear,
-  onCurrentMonthYearChange,
-  secondMonthYear,
+  displayDate,
+  onDisplayDateChange,
+  secondDisplayDate,
   onLastMonthClick,
   onNextMonthClick,
   locale,
@@ -23,21 +23,21 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
 
   const handleLastMonth = () => {
     const lastMonth = new Date(
-      currentMonthYear.getFullYear(),
-      currentMonthYear.getMonth() - 1,
+      displayDate.getFullYear(),
+      displayDate.getMonth() - 1,
       1
     );
-    onCurrentMonthYearChange?.(lastMonth);
+    onDisplayDateChange?.(lastMonth);
     onLastMonthClick?.();
   };
 
   const handleNextMonth = () => {
     const nextMonth = new Date(
-      currentMonthYear.getFullYear(),
-      currentMonthYear.getMonth() + 1,
+      displayDate.getFullYear(),
+      displayDate.getMonth() + 1,
       1
     );
-    onCurrentMonthYearChange?.(nextMonth);
+    onDisplayDateChange?.(nextMonth);
     onNextMonthClick?.();
   };
 
@@ -52,7 +52,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       />
       <FlexBox
         flexGrow={1}
-        gap={{ _: 0, xs: secondMonthYear ? 32 : 0 }}
+        gap={{ _: 0, xs: secondDisplayDate ? 32 : 0 }}
         minWidth={0}
       >
         <FlexBox flexGrow={1} justifyContent="center" minWidth={0}>
@@ -64,10 +64,10 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
             id={headingId}
             textAlign="center"
           >
-            {formatMonthYear(currentMonthYear, locale)}
+            {formatMonthYear(displayDate, locale)}
           </Text>
         </FlexBox>
-        {secondMonthYear && (
+        {secondDisplayDate && (
           <FlexBox
             display={{ _: 'none', xs: 'flex' }}
             flexGrow={1}
@@ -81,7 +81,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
               fontWeight="title"
               textAlign="center"
             >
-              {formatMonthYear(secondMonthYear, locale)}
+              {formatMonthYear(secondDisplayDate, locale)}
             </Text>
           </FlexBox>
         )}

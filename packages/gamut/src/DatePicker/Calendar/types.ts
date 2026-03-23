@@ -4,11 +4,11 @@
 
 export interface CalendarHeaderProps {
   /** Currently displayed month and year (used for heading and prev/next range) */
-  currentMonthYear: Date;
-  /** Called when the user navigates to a different month. Pass the new date (e.g. setVisibleDate) so the calendar updates. */
-  onCurrentMonthYearChange: (newDate: Date) => void;
+  displayDate: Date;
+  /** Called when the user navigates to a different month. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
+  onDisplayDateChange: (newDate: Date) => void;
   /** Currently displayed second month and year (used for heading and prev/next range) */
-  secondMonthYear?: Date;
+  secondDisplayDate?: Date;
   /** Called after navigating to previous month; use for click tracking. */
   onLastMonthClick?: () => void;
   /** Called after navigating to next month; use for click tracking. */
@@ -21,7 +21,9 @@ export interface CalendarHeaderProps {
 
 export interface CalendarBodyProps {
   /** The month to display (typically first day of that month) */
-  visibleDate: Date;
+  displayDate: Date;
+  /** Called when grid keyboard nav changes month (e.g. Page Up/Down). Pass setDisplayDate so the calendar updates. */
+  onDisplayDateChange: (newDate: Date) => void;
   /** Selected start date (single or range start) */
   selectedDate: Date | null;
   /** Selected end date (range only; undefined for single-date mode) */
@@ -40,8 +42,6 @@ export interface CalendarBodyProps {
   focusedDate: Date | null;
   /** Callback when focused date changes (e.g. arrow keys) */
   onFocusedDateChange: (date: Date | null) => void;
-  /** Called when grid keyboard nav changes month (e.g. Page Up/Down). Pass setVisibleDate so the calendar updates. */
-  onVisibleDateChange: (newDate: Date) => void;
   /** Called when the escape key is pressed */
   onEscapeKeyPress?: () => void;
   /** When true (e.g. two-month view), arrow keys move focus to adjacent month without changing visible date. */
@@ -59,7 +59,7 @@ export interface CalendarFooterProps {
   disabled?: boolean;
   showClearButton?: boolean;
   locale?: string;
-  clearText: string;
+  clearText?: string;
   onClearDate?: () => void;
   onTodayClick?: () => void;
   /** Max 3 quick actions (e.g. "7 days", "1 month") */
