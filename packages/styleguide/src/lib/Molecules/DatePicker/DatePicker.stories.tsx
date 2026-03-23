@@ -42,6 +42,7 @@ export const WithInitialDate: Story = {
     );
     return (
       <DatePicker
+        inputSize="small"
         label="Date"
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
@@ -60,6 +61,29 @@ export const Range: Story = {
         <DatePicker
           disabledDates={[new Date(2026, 3, 15)]}
           endDate={endDate}
+          mode="range"
+          setEndDate={setEndDate}
+          setStartDate={setStartDate}
+          startDate={startDate}
+          translations={{
+            startDateLabel: 'Beginning date',
+          }}
+        />
+      </Box>
+    );
+  },
+};
+
+export const RangeSmall: Story = {
+  render: function DatePickerStory() {
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
+    return (
+      <Box>
+        <DatePicker
+          disabledDates={[new Date(2026, 3, 15)]}
+          endDate={endDate}
+          inputSize="small"
           mode="range"
           setEndDate={setEndDate}
           setStartDate={setStartDate}

@@ -2,6 +2,10 @@
  * Public and internal types for the DatePicker (single-date and range).
  */
 
+import { ComponentProps } from 'react';
+
+import { Input } from '../Form/inputs/Input';
+
 /** Result of custom validation; null means valid. */
 export interface DatePickerValidationResult {
   errorMessage: string;
@@ -20,6 +24,7 @@ export interface DatePickerBaseProps {
   placeholder?: string;
   /** Override UI strings (e.g. clear button). Merged with defaults. */
   translations?: DatePickerTranslations;
+  inputSize?: ComponentProps<typeof Input>['size'];
 }
 
 /** Props for the DatePicker (single-date mode). */

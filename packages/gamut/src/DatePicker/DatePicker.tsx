@@ -30,6 +30,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     mode,
     children,
     translations: translationsProp,
+    inputSize,
   } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [activeRangePart, setActiveRangePart] = useState<
@@ -109,7 +110,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       children
     ) : (
       <>
-        <FlexBox gap={8} width="fit-content">
+        <FlexBox gap={inputSize === 'small' ? 4 : 8} width="fit-content">
           {mode === 'range' ? (
             <>
               <DatePickerInput
@@ -117,6 +118,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 placeholder={placeholder}
                 rangePart="start"
                 ref={inputRef}
+                size={inputSize}
               />
               <Box alignSelf="center" mt={32}>
                 <MiniArrowRightIcon />
@@ -125,6 +127,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 label={props.endLabel}
                 placeholder={placeholder}
                 rangePart="end"
+                size={inputSize}
                 // does this need a ref?
               />
             </>
@@ -133,6 +136,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
               label={props.label}
               placeholder={placeholder}
               ref={inputRef}
+              size={inputSize}
             />
           )}
         </FlexBox>
