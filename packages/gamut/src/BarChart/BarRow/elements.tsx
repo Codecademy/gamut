@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 import { FlexBox } from '../../Box';
+import { Text } from '../../Typography';
 import { barListItemPadding } from '../shared/styles';
 
 export const TotalValueLabelsHoverTarget = styled(FlexBox)(
@@ -14,6 +15,14 @@ export const TotalValueLabelsHoverTarget = styled(FlexBox)(
   })
 );
 
+export const CategoryLabel = styled(Text)(
+  css({
+    fontWeight: 'bold',
+
+    whiteSpace: 'nowrap',
+  })
+);
+
 const rowBaseStyles = css({
   alignItems: 'center',
   bg: 'transparent',
@@ -21,7 +30,6 @@ const rowBaseStyles = css({
   cursor: 'inherit',
   display: 'flex',
   flexDirection: { _: 'column', c_xs: 'row' },
-
   p: barListItemPadding,
   position: 'relative',
   textDecoration: 'none',
@@ -38,8 +46,9 @@ const rowBaseStyles = css({
 
 const interactiveStyles = css({
   cursor: 'pointer',
-  '&:hover': {
+  '&:hover, &:focus-visible': {
     bg: 'background-hover',
+    textDecoration: 'none',
   },
 });
 
@@ -52,10 +61,10 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
   rowBaseStyles,
   interactiveStyles,
   css({
-    [`&:hover ${TotalValueLabelsHoverTarget}, &:focus-visible ${TotalValueLabelsHoverTarget}`]:
-      {
-        textDecoration: 'underline',
-      },
+    [`&:focus-visible ${CategoryLabel}, &:hover ${CategoryLabel}`]: {
+      textDecoration: 'underline',
+      textDecorationColor: 'primary',
+    },
   })
 );
 

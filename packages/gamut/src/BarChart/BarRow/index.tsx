@@ -24,6 +24,7 @@ import {
 import {
   Bar,
   BarWrapper,
+  CategoryLabel,
   RowAnchor,
   RowButton,
   RowWrapper,
@@ -163,7 +164,7 @@ export const BarRow = forwardRef<
       ]
     );
 
-    const labelsContainer = useMemo(
+    const desktopLabelsContainer = useMemo(
       () => (
         <FlexBox
           alignItems="center"
@@ -175,14 +176,9 @@ export const BarRow = forwardRef<
         >
           <FlexBox alignItems="center" color={textColor} flexShrink={0}>
             {Icon && <Icon mr={iconPadding} size={iconWidth} />}
-            <Text
-              fontWeight="bold"
-              truncate="ellipsis"
-              truncateLines={1}
-              whiteSpace="nowrap"
-            >
+            <CategoryLabel truncate="ellipsis" truncateLines={1}>
               {categoryLabel}
-            </Text>
+            </CategoryLabel>
           </FlexBox>
 
           <TotalValueLabelsHoverTarget gap={8}>
@@ -193,7 +189,7 @@ export const BarRow = forwardRef<
       [textColor, Icon, categoryLabel, valueLabelsContent]
     );
 
-    const categoryLabelNode = useMemo(
+    const xsLabelNode = useMemo(
       () => (
         <FlexBox
           alignItems="center"
@@ -206,14 +202,9 @@ export const BarRow = forwardRef<
           width={{ _: 'auto', c_xs: widthValue }}
         >
           {Icon && <Icon mr={iconPadding} size={iconWidth} />}
-          <Text
-            fontWeight="bold"
-            truncate="ellipsis"
-            truncateLines={1}
-            whiteSpace="nowrap"
-          >
+          <CategoryLabel truncate="ellipsis" truncateLines={1}>
             {categoryLabel}
-          </Text>
+          </CategoryLabel>
         </FlexBox>
       ),
       [textColor, Icon, categoryLabel, widthValue]
@@ -236,8 +227,8 @@ export const BarRow = forwardRef<
     const rowContent = useMemo(
       () => (
         <>
-          {labelsContainer}
-          {categoryLabelNode}
+          {desktopLabelsContainer}
+          {xsLabelNode}
           <BarWrapper>
             <Bar
               animate={animate ? { width: bgWidthStr } : undefined}
@@ -271,8 +262,8 @@ export const BarRow = forwardRef<
         bgWidthStr,
         fgWidthStr,
         isStacked,
-        labelsContainer,
-        categoryLabelNode,
+        desktopLabelsContainer,
+        xsLabelNode,
         totalValueLabelNode,
         seriesOneBarColor,
         seriesOneBorderColor,
