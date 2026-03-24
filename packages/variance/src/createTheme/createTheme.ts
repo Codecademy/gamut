@@ -62,7 +62,8 @@ class ThemeBuilder<T extends AbstractTheme> {
   > {
     const flatColors = flattenScale(colors);
     const { variables, tokens } = serializeTokens(
-      flatColors,
+      // TS 5.9+ no longer resolves LiteralPaths<> as assignable to SerializedTokensInput; flattened scales are plain token maps at runtime.
+      flatColors as Record<string, string | number | CSSObject>,
       'color',
       this.#theme
     );

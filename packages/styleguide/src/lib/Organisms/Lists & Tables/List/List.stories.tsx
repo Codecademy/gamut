@@ -65,7 +65,7 @@ const ListExample: React.FC = (args) => {
   return (
     <List {...args}>
       {rows.map(({ name, ship }) => (
-        <ListRow>
+        <ListRow key={name}>
           <ListCol size="md" type="header">
             {name}
           </ListCol>
@@ -157,7 +157,7 @@ const ListCardExample: React.FC = (args) => {
   return (
     <List {...args}>
       {rows.map(({ name, ship, role }) => (
-        <ListRow>
+        <ListRow key={name}>
           <ListCol fill>
             <Text truncate="ellipsis" truncateLines={1} variant="title-lg">
               {name}
@@ -218,7 +218,7 @@ const ColumnExample: React.FC<ListProps> = (args) => {
   return (
     <List {...args}>
       {sizes.map((size: 'content' | 'sm' | 'md' | 'lg' | 'xl') => (
-        <ListRow>
+        <ListRow key={size}>
           <ListCol size={size}>
             <Box bg="background-selected" flex={1} height={1} p={8}>
               {size}

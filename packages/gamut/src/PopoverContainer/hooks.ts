@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 
+import { isNullish } from '../utils/nullish';
 import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
 
 /**
@@ -15,7 +16,7 @@ export interface PopoverTargetElement {
 export function getRefElement(
   ref: React.Ref<PopoverTargetElement | null>
 ): PopoverTargetElement | null {
-  if (ref == null) return null;
+  if (isNullish(ref)) return null;
   if (typeof ref === 'function') return null;
   return ref.current;
 }
