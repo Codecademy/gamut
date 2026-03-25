@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.2.0...@codecademy/gamut@68.2.1) (2026-03-25)
+
+### Bug Fixes
+
+- **DataList:** Go back to first-of-type approach for padding ([f0dd919](https://github.com/Codecademy/gamut/commit/f0dd9194f8c2c347b7566e77466e719c85901786))
+
 ## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.4...@codecademy/gamut@68.2.0) (2026-03-25)
 
 ### Features
