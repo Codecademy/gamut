@@ -11,6 +11,7 @@ import {
   type DatePickerContextValue,
   type DatePickerProps,
   type DatePickerRangeProps,
+  type OpenCalendarOptions,
 } from './types';
 
 function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
@@ -33,6 +34,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     inputSize,
   } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [focusGridSignal, setFocusGridSignal] = useState(false);
+  const [gridFocusRequested, setGridFocusRequested] = useState(false);
   const [activeRangePart, setActiveRangePart] = useState<
     'start' | 'end' | null
   >(null);
@@ -40,10 +43,30 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
 
-  const openCalendar = useCallback(() => setIsCalendarOpen(true), []);
+  const clearGridFocusRequest = useCallback(() => {
+    setGridFocusRequested(false);
+  }, []);
+
+  const openCalendar = useCallback((options?: OpenCalendarOptions) => {
+    const moveFocus = options?.moveFocusIntoCalendar ?? false;
+    setIsCalendarOpen(true);
+    if (moveFocus) {
+      setGridFocusRequested(true);
+      setFocusGridSignal((signal) => !signal);
+    } else {
+      setGridFocusRequested(false);
+    }
+  }, []);
+
+  const focusCalendarGrid = useCallback(() => {
+    setGridFocusRequested(true);
+    setFocusGridSignal((signal) => !signal);
+  }, []);
+
   const closeCalendar = useCallback(() => {
     setIsCalendarOpen(false);
     setActiveRangePart(null);
+    setGridFocusRequested(false);
     inputRef.current?.focus();
   }, []);
 
@@ -74,6 +97,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       setSelection,
       isCalendarOpen,
       openCalendar,
+      focusCalendarGrid,
+      focusGridSignal,
+      gridFocusRequested,
+      clearGridFocusRequest,
       closeCalendar,
       locale,
       disabledDates,
@@ -98,6 +125,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     setActiveRangePart,
     isCalendarOpen,
     openCalendar,
+    focusCalendarGrid,
+    focusGridSignal,
+    gridFocusRequested,
+    clearGridFocusRequest,
     closeCalendar,
     locale,
     disabledDates,

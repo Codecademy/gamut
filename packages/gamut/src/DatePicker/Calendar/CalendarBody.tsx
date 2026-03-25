@@ -102,6 +102,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   onEscapeKeyPress,
   hasAdjacentMonthRight,
   hasAdjacentMonthLeft,
+  focusGridSync,
 }) => {
   const year = displayDate.getFullYear();
   const month = displayDate.getMonth();
@@ -109,6 +110,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   const weekdayLabels = getWeekdayNames('short', locale, weekStartsOn);
   const weekdayFullNames = getWeekdayNames('long', locale, weekStartsOn);
   const buttonRefs = useRef<Map<number, HTMLElement>>(new Map());
+  const tableRef = useRef<HTMLTableElement>(null);
 
   const datesWithRow = useMemo(() => getDatesWithRow(weeks), [weeks]);
   const focusTarget = focusedDate ?? selectedDate;
@@ -118,19 +120,47 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     []
   );
 
-  const focusButton = useCallback((date: Date | null) => {
-    if (date === null) return;
+  const focusButton = useCallback((date: Date | null): boolean => {
+    if (date === null) return false;
     const key = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate()
     ).getTime();
-    buttonRefs.current.get(key)?.focus();
+    const el = buttonRefs.current.get(key);
+    if (!el) return false;
+    el.focus();
+    return true;
   }, []);
 
   useEffect(() => {
-    if (focusTarget !== null) focusButton(focusTarget);
-  }, [focusTarget, focusButton]);
+    // Keep the roving tabindex / focused day aligned with `focusTarget` when it makes sense for a11y.
+    if (focusTarget === null) return;
+
+    // Standalone calendar (e.g. Storybook): always move DOM focus to the active day.
+    if (!focusGridSync) {
+      focusButton(focusTarget);
+      return;
+    }
+
+    const inGrid = tableRef.current?.contains(document.activeElement);
+    const requested = focusGridSync.gridFocusRequested;
+
+    // Focus is already in this grid (keyboard nav): update which day is focused as `focusTarget` changes.
+    if (inGrid) {
+      focusButton(focusTarget);
+      return;
+    }
+
+    // DatePicker opened via keyboard / ArrowDown: parent asked to move focus into the grid once.
+    if (requested) {
+      const success = focusButton(focusTarget);
+      if (success) {
+        focusGridSync.onGridFocusRequestHandled();
+      }
+    }
+    // If !inGrid && !requested (e.g. calendar opened with the mouse): leave focus on the input — do not call focusButton.
+  }, [focusTarget, focusButton, focusGridSync]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent, date: Date) =>
@@ -173,7 +203,12 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   }, []);
 
   return (
-    <table aria-labelledby={labelledById} role="grid" width="100%">
+    <table
+      aria-labelledby={labelledById}
+      ref={tableRef}
+      role="grid"
+      width="100%"
+    >
       <thead>
         <tr>
           {weekdayLabels.map((label, i) => (

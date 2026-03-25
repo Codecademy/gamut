@@ -75,10 +75,30 @@ export interface DatePickerTranslations {
   calendarDialogAriaLabel?: string;
 }
 
+/** Options for opening the calendar popover. */
+export type OpenCalendarOptions = {
+  /**
+   * When true, move DOM focus into the date grid after open (keyboard / explicit request).
+   * When false (default), keep focus on the input so pointer users can type (WCAG 3.2.1).
+   */
+  moveFocusIntoCalendar?: boolean;
+};
+
 /** Shared state provided by DatePicker via context. */
 export interface DatePickerBaseContextValue {
   isCalendarOpen: boolean;
-  openCalendar: () => void;
+  openCalendar: (options?: OpenCalendarOptions) => void;
+  /** Move focus from the input into the grid when the calendar is already open (e.g. ArrowDown). */
+  focusCalendarGrid: () => void;
+  /**
+   * Flips on each grid focus request so `CalendarBody` effects re-run when `focusTarget` is unchanged.
+   * Not a semantic true/false — only the change matters; pair with `gridFocusRequested`.
+   */
+  focusGridSignal: boolean;
+  /** When true, `CalendarBody` runs a one-shot move of DOM focus into the grid if it is not already there. */
+  gridFocusRequested: boolean;
+  /** Clears `gridFocusRequested` after focus has moved into the grid (or call when closing). */
+  clearGridFocusRequest: () => void;
   closeCalendar: () => void;
   locale?: string;
   disabledDates: Date[];

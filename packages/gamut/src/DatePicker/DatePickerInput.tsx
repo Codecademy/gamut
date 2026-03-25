@@ -39,18 +39,7 @@ export const DatePickerInput = forwardRef<
   DatePickerInputProps
 >(({ placeholder, label, rangePart, ...rest }, ref) => {
   const context = useDatePicker();
-  // do we want to do this or just throw an error?
-  // if (context == null) {
-  //   return (
-  //     <Input
-  //       {...rest}
-  //       icon={CalendarIcon}
-  //       placeholder={placeholder ?? 'MM/DD/YYYY'}
-  //       ref={ref}
-  //       type="text"
-  //     />
-  //   );
-  // }
+
   if (context == null) {
     throw new Error(
       'DatePickerInput must be used inside a DatePicker (it reads shared state from context).'
@@ -62,6 +51,7 @@ export const DatePickerInput = forwardRef<
     startOrSelectedDate,
     setSelection,
     openCalendar,
+    focusCalendarGrid,
     locale,
     isCalendarOpen,
     calendarDialogId,
@@ -124,12 +114,16 @@ export const DatePickerInput = forwardRef<
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'ArrowDown' || e.key === 'Down') {
       e.preventDefault();
-      openCalendar();
+      if (isCalendarOpen) {
+        focusCalendarGrid();
+      } else {
+        openCalendar({ moveFocusIntoCalendar: true });
+      }
     }
   };
 
   const handleOpenCalendar = () => {
-    openCalendar();
+    openCalendar({ moveFocusIntoCalendar: false });
   };
 
   const defaultLabel = !isRange

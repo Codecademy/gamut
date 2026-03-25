@@ -1,5 +1,5 @@
 import { breakpoints } from '@codecademy/gamut-styles';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useMedia } from 'react-use';
 
 import { Box, FlexBox } from '../Box';
@@ -51,7 +51,19 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     closeCalendar,
     isCalendarOpen,
     translations,
+    focusGridSignal,
+    gridFocusRequested,
+    clearGridFocusRequest,
   } = context;
+
+  const focusGridSync = useMemo(
+    () => ({
+      gridFocusRequested,
+      signal: focusGridSignal,
+      onGridFocusRequestHandled: clearGridFocusRequest,
+    }),
+    [gridFocusRequested, focusGridSignal, clearGridFocusRequest]
+  );
 
   const isRange = mode === 'range';
   const endDate = isRange ? context.endDate : undefined;
@@ -131,6 +143,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             disabledDates={disabledDates}
             displayDate={displayDate}
             endDate={endDate}
+            focusGridSync={focusGridSync}
             focusedDate={focusTarget}
             hasAdjacentMonthRight={isTwoMonthsVisible}
             labelledById={headingId}
@@ -147,6 +160,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
               disabledDates={disabledDates}
               displayDate={secondMonthDate}
               endDate={endDate}
+              focusGridSync={focusGridSync}
               focusedDate={focusTarget}
               hasAdjacentMonthLeft={isTwoMonthsVisible}
               labelledById={headingId}

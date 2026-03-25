@@ -48,6 +48,16 @@ export interface CalendarBodyProps {
   hasAdjacentMonthRight?: boolean;
   /** When true (e.g. two-month view), arrow keys move focus to adjacent month without changing visible date. */
   hasAdjacentMonthLeft?: boolean;
+  /**
+   * When set (DatePicker), only programmatically focuses a day when the grid already has focus
+   * or `gridFocusRequested` is true (keyboard open / ArrowDown from input).
+   * Omit for standalone calendar stories — keeps legacy behavior (always sync focus to focusedDate).
+   */
+  focusGridSync?: {
+    gridFocusRequested: boolean;
+    signal: boolean;
+    onGridFocusRequestHandled: () => void;
+  };
 }
 
 export interface QuickAction {
@@ -65,25 +75,3 @@ export interface CalendarFooterProps {
   /** Max 3 quick actions (e.g. "7 days", "1 month") */
   quickActions?: QuickAction[];
 }
-
-// interface CalendarFooterBaseProps {
-//   disabled?: boolean;
-//   locale?: string;
-//   onTodayClick?: () => void;
-//   /** Max 3 quick actions (e.g. "7 days", "1 month") */
-//   quickActions?: QuickAction[];
-// }
-
-// interface CalendarFooterWithClearProps extends CalendarFooterBaseProps {
-//   showClearButton: true;
-//   clearText: string;
-//   onClearDate: () => void;
-// }
-
-// interface CalendarFooterNoClearProps extends CalendarFooterBaseProps {
-//   showClearButton?: false;
-// }
-
-// export type CalendarFooterProps =
-//   | CalendarFooterWithClearProps
-//   | CalendarFooterNoClearProps;
