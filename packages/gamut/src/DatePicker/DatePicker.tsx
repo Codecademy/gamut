@@ -7,16 +7,12 @@ import { DatePickerCalendar } from './DatePickerCalendar';
 import { DatePickerProvider } from './DatePickerContext';
 import { DatePickerInput } from './DatePickerInput';
 import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './translations';
-import {
-  type DatePickerContextValue,
-  type DatePickerProps,
-  type DatePickerRangeProps,
-  type OpenCalendarOptions,
+import type {
+  DatePickerContextValue,
+  DatePickerProps,
+  OpenCalendarOptions,
 } from './types';
-
-function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
-  return props.mode === 'range';
-}
+import { isRangeProps } from './utils';
 
 /**
  * DatePicker: single-date or range. Holds shared state and provides it via context.

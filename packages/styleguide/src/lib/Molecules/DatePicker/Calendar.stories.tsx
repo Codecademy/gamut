@@ -1,21 +1,21 @@
 import {
   Box,
-  Calendar,
   CalendarBody,
   CalendarFooter,
   CalendarHeader,
+  CalendarWrapper,
 } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useId, useState } from 'react';
 
-const meta: Meta<typeof Calendar> = {
-  component: Calendar,
+const meta: Meta<typeof CalendarWrapper> = {
+  component: CalendarWrapper,
   title: 'Molecules/DatePicker/Calendar',
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Calendar>;
+type Story = StoryObj<typeof CalendarWrapper>;
 
 export const Default: Story = {
   render: function CalendarStory() {
@@ -27,7 +27,7 @@ export const Default: Story = {
     );
 
     return (
-      <Calendar>
+      <CalendarWrapper>
         <Box p={24}>
           <CalendarHeader
             displayDate={displayDate}
@@ -54,7 +54,7 @@ export const Default: Story = {
             setFocusedDate(today);
           }}
         />
-      </Calendar>
+      </CalendarWrapper>
     );
   },
 };

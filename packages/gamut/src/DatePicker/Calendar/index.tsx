@@ -1,4 +1,4 @@
-export { Calendar } from './Calendar';
+export { CalendarWrapper } from './CalendarWrapper';
 export { CalendarHeader } from './CalendarHeader';
 export { CalendarBody } from './CalendarBody';
 export { CalendarFooter } from './CalendarFooter';

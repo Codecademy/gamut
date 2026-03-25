@@ -1,9 +1,6 @@
-import { css, states } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
-import { TextButton } from '../../Button';
 import { CalendarBodyProps } from './types';
 import {
   getDatesWithRow,
@@ -12,80 +9,9 @@ import {
   isDateInRange,
   isSameDay,
 } from './utils/dateGrid';
+import { DateButton, DateCell, TableHeader } from './utils/elements';
 import { getWeekdayNames } from './utils/format';
 import { keyHandler } from './utils/keyHandler';
-
-const TableHeader = styled.th(
-  css({
-    fontSize: 14,
-    fontWeight: 'base',
-    color: 'text-disabled',
-    textAlign: 'center',
-  })
-);
-
-const DateCell = styled.td(
-  css({
-    padding: 0,
-  })
-);
-
-const DateButton = styled(TextButton)(
-  states({
-    isToday: {
-      position: 'relative',
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        bottom: 4,
-        width: 4,
-        height: 4,
-        borderRadius: 'full',
-        bg: 'hyper',
-      },
-    },
-    isSelected: {
-      bg: 'text',
-      color: 'background',
-      '&:hover, &:focus': {
-        bg: 'secondary-hover',
-        color: 'background',
-      },
-      '&::after': {
-        bg: 'background',
-      },
-    },
-    isRangeStart: {
-      borderRadiusRight: 'none',
-    },
-    isRangeEnd: {
-      borderRadiusLeft: 'none',
-    },
-    isInRange: {
-      bg: 'text-disabled',
-      color: 'background',
-      borderRadius: 'none',
-      '&:hover, &:focus': {
-        bg: 'secondary-hover',
-        color: 'background',
-      },
-      '&::after': {
-        bg: 'background',
-      },
-    },
-    disabled: {
-      color: 'text-disabled',
-      textDecoration: 'line-through',
-      '&:hover': {
-        textDecoration: 'line-through',
-      },
-    },
-  }),
-  css({
-    fontWeight: 'base',
-    width: '32px',
-  })
-);
 
 export const CalendarBody: React.FC<CalendarBodyProps> = ({
   displayDate,
@@ -224,9 +150,9 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
             {week.map((date, colIndex) => {
               if (date === null) {
                 return (
-                  // fix this error
-                  // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
                   <DateCell
+                    // fix this error
+                    // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
                     key={`empty-${rowIndex}-${colIndex}`}
                     role="gridcell"
                   />

@@ -1,5 +1,13 @@
 import { isDateInRange, isSameDay } from './Calendar/utils/dateGrid';
-import { ActiveRangePart } from './types';
+import {
+  ActiveRangePart,
+  DatePickerProps,
+  DatePickerRangeProps,
+} from './types';
+
+export const isRangeProps = (
+  props: DatePickerProps
+): props is DatePickerRangeProps => props.mode === 'range';
 
 /** True if any disabled date falls within [start, end] (inclusive, by calendar day). */
 export const rangeContainsDisabled = (
@@ -50,7 +58,7 @@ export const handleDateSelectRange = (
   startDate: Date | null,
   endDate: Date | null,
   setSelection: (startDate: Date | null, endDate?: Date | null) => void,
-  disabledDates: Date[]
+  disabledDates: Date[] = []
 ) => {
   // Range mode: field targeting (start or end input was focused)
   if (activeRangePart === 'start') {

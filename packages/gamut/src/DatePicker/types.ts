@@ -1,23 +1,11 @@
-/**
- * Public and internal types for the DatePicker (single-date and range).
- */
-
 import { ComponentProps } from 'react';
 
 import { Input } from '../Form/inputs/Input';
+import { CalendarBaseProps } from './Calendar/types';
+import { DatePickerTranslations } from './translations';
 
-/** Result of custom validation; null means valid. */
-export interface DatePickerValidationResult {
-  errorMessage: string;
-  errorType: string;
-}
-
-/** Shared props for all DatePicker modes. */
-export interface DatePickerBaseProps {
-  /** Locale for formatting (e.g. 'en-US'). */
-  locale?: string;
-  /** Dates that are disabled (unselectable) in the calendar. */
-  disabledDates?: Date[];
+export interface DatePickerBaseProps
+  extends Pick<CalendarBaseProps, 'locale' | 'disabledDates'> {
   /** When provided, only the provider is rendered and children compose Input + Calendar. */
   children?: React.ReactNode;
   /** Placeholder for the input. */
@@ -27,7 +15,6 @@ export interface DatePickerBaseProps {
   inputSize?: ComponentProps<typeof Input>['size'];
 }
 
-/** Props for the DatePicker (single-date mode). */
 export interface DatePickerSingleProps extends DatePickerBaseProps {
   mode?: 'single';
   /** Controlled selected date. */
@@ -38,7 +25,6 @@ export interface DatePickerSingleProps extends DatePickerBaseProps {
   label?: string;
 }
 
-/** Props for the DatePicker (range mode). */
 export interface DatePickerRangeProps extends DatePickerBaseProps {
   mode: 'range';
   /** Controlled start date. */
@@ -55,27 +41,8 @@ export interface DatePickerRangeProps extends DatePickerBaseProps {
   endLabel?: string;
 }
 
-/** Props for the DatePicker provider / standalone component. */
 export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
 
-/** Which range input is active (focused); null = calendar drives both (selection mode). */
-export type ActiveRangePart = 'start' | 'end' | null;
-
-/** Optional translations for DatePicker UI strings. Pass to override defaults. */
-export interface DatePickerTranslations {
-  /** Label for the clear date button (default: "Clear"). */
-  clearText?: string;
-  /** Default label for the date input in single mode (default: "Date"). */
-  dateLabel?: string;
-  /** Default label for the start date input in range mode (default: "Start date"). */
-  startDateLabel?: string;
-  /** Default label for the end date input in range mode (default: "End date"). */
-  endDateLabel?: string;
-  /** aria-label for the calendar dialog (default: "Choose date"). */
-  calendarDialogAriaLabel?: string;
-}
-
-/** Options for opening the calendar popover. */
 export type OpenCalendarOptions = {
   /**
    * When true, move DOM focus into the date grid after open (keyboard / explicit request).
@@ -84,8 +51,8 @@ export type OpenCalendarOptions = {
   moveFocusIntoCalendar?: boolean;
 };
 
-/** Shared state provided by DatePicker via context. */
-export interface DatePickerBaseContextValue {
+export interface DatePickerBaseContextValue
+  extends Pick<CalendarBaseProps, 'locale' | 'disabledDates'> {
   isCalendarOpen: boolean;
   openCalendar: (options?: OpenCalendarOptions) => void;
   /** Move focus from the input into the grid when the calendar is already open (e.g. ArrowDown). */
@@ -100,8 +67,6 @@ export interface DatePickerBaseContextValue {
   /** Clears `gridFocusRequested` after focus has moved into the grid (or call when closing). */
   clearGridFocusRequest: () => void;
   closeCalendar: () => void;
-  locale?: string;
-  disabledDates: Date[];
   calendarDialogId: string;
   /** UI string overrides (e.g. clear button). */
   translations: Required<DatePickerTranslations>;
@@ -119,14 +84,15 @@ export interface DatePickerSingleContextValue
   mode: 'single';
 }
 
+export type ActiveRangePart = 'start' | 'end' | null;
+
 export interface DatePickerRangeContextValue
   extends DatePickerBaseContextValue {
   mode: 'range';
-  /** Range only: end date. */
   endDate: Date | null;
-  /** Range only: which input is active (start/end focused); null = selection mode. */
+  /** Which input is active (start/end focused); null = selection mode. */
   activeRangePart: ActiveRangePart;
-  /** Range only: set which input is active (e.g. when input receives focus). */
+  /** Set which input is active (e.g. when input receives focus). */
   setActiveRangePart: (part: ActiveRangePart) => void;
 }
 

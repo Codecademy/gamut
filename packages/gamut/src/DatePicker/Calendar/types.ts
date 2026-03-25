@@ -1,39 +1,32 @@
-/**
- * Internal types for the Calendar subcomponents (used by DatePickerCalendar).
- */
-
-export interface CalendarHeaderProps {
-  /** Currently displayed month and year (used for heading and prev/next range) */
+export interface CalendarBaseProps {
+  /** Used for the currently displayed month and year */
   displayDate: Date;
-  /** Called when the user navigates to a different month. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
+  /** Called when the displayed month changes. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
   onDisplayDateChange: (newDate: Date) => void;
-  /** Currently displayed second month and year (used for heading and prev/next range) */
-  secondDisplayDate?: Date;
-  /** Called after navigating to previous month; use for click tracking. */
-  onLastMonthClick?: () => void;
-  /** Called after navigating to next month; use for click tracking. */
-  onNextMonthClick?: () => void;
-  /** Locale for month/year formatting (e.g. 'en-US') */
+  /** Locale for month/year formatting and translations (e.g. 'en-US') */
   locale?: string;
+  /** Dates that should be disabled (unselectable) */
+  disabledDates?: Date[];
+}
+export interface CalendarHeaderProps
+  extends Omit<CalendarBaseProps, 'disabledDates'> {
+  /** Used for the currently displayed second month and year when in two-month view */
+  secondDisplayDate?: Date;
+  /** Called after navigating to previous month. */
+  onLastMonthClick?: () => void;
+  /** Called after navigating to next month */
+  onNextMonthClick?: () => void;
   /** id for the heading (for grid aria-labelledby) */
   headingId: string;
 }
 
-export interface CalendarBodyProps {
-  /** The month to display (typically first day of that month) */
-  displayDate: Date;
-  /** Called when grid keyboard nav changes month (e.g. Page Up/Down). Pass setDisplayDate so the calendar updates. */
-  onDisplayDateChange: (newDate: Date) => void;
+export interface CalendarBodyProps extends CalendarBaseProps {
   /** Selected start date (single or range start) */
   selectedDate: Date | null;
   /** Selected end date (range only; undefined for single-date mode) */
   endDate?: Date | null;
-  /** Dates that should be disabled (unselectable) */
-  disabledDates?: Date[];
   /** Called when a date cell is selected */
   onDateSelect: (date: Date) => void;
-  /** Locale for weekday names and week start */
-  locale?: string;
   /** 0 = Sunday, 1 = Monday (default from locale if not set) */
   weekStartsOn?: 0 | 1;
   /** Id of the month/year heading (aria-labelledby on grid) */
@@ -65,10 +58,9 @@ export interface QuickAction {
   timePeriod: 'day' | 'week' | 'month' | 'year';
   onClick: () => void;
 }
-export interface CalendarFooterProps {
+export interface CalendarFooterProps extends Pick<CalendarBaseProps, 'locale'> {
   disabled?: boolean;
   showClearButton?: boolean;
-  locale?: string;
   clearText?: string;
   onClearDate?: () => void;
   onTodayClick?: () => void;

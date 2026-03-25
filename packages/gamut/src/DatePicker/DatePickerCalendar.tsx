@@ -4,10 +4,10 @@ import { useMedia } from 'react-use';
 
 import { Box, FlexBox } from '../Box';
 import {
-  Calendar,
   CalendarBody,
   CalendarFooter,
   CalendarHeader,
+  CalendarWrapper,
 } from './Calendar';
 import { useDatePicker } from './DatePickerContext';
 import { handleDateSelectRange, handleDateSelectSingle } from './utils';
@@ -129,7 +129,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   const isTwoMonthsVisible = useMedia(`(min-width: ${breakpoints.xs})`);
 
   return (
-    <Calendar>
+    <CalendarWrapper>
       <Box p={24}>
         <CalendarHeader
           displayDate={displayDate}
@@ -183,6 +183,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         onClearDate={handleClearDate}
         onTodayClick={handleTodayClick}
       />
-    </Calendar>
+    </CalendarWrapper>
   );
 };
