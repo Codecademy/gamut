@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.4...@codecademy/gamut@68.2.0) (2026-03-25)
+
+### Features
+
+- **BarChart:** new component ([f6242fd](https://github.com/Codecademy/gamut/commit/f6242fdbc517128e8afcc80f8d0128d03577e96d))
+
 ### [68.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.3...@codecademy/gamut@68.1.4) (2026-03-19)
 
 ### Bug Fixes
