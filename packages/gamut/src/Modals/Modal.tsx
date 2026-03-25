@@ -110,7 +110,12 @@ export const Modal: React.FC<ModalProps> = ({
       <ModalContainer
         aria-hidden="false"
         aria-label={ariaLabel}
-        aria-labelledby={titleText ? String(titleText) : undefined}
+        aria-labelledby={
+          titleText != null &&
+          (typeof titleText === 'string' || typeof titleText === 'number')
+            ? String(titleText)
+            : undefined
+        }
         aria-modal="true"
         className={className}
         data-autofocus

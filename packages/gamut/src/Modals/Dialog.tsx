@@ -65,7 +65,11 @@ export const Dialog: React.FC<DialogProps> = ({
       <ModalContainer
         aria-hidden="false"
         aria-label="dialog"
-        aria-labelledby={String(title)}
+        aria-labelledby={
+          typeof title === 'string' || typeof title === 'number'
+            ? String(title)
+            : undefined
+        }
         aria-modal="true"
         data-autofocus
         layout="dialog"

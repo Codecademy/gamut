@@ -30,9 +30,11 @@ export type InlineIconButtonProps<
     iconPosition?: 'right' | 'left';
   };
 
+/* eslint-disable @typescript-eslint/no-duplicate-type-constituents -- createButtonComponent yields structurally identical typeofs; union documents distinct components */
 export type ButtonTypes =
   | typeof CTAButton
   | typeof FillButton
   | typeof IconButton
   | typeof StrokeButton
   | typeof TextButton;
+/* eslint-enable @typescript-eslint/no-duplicate-type-constituents */

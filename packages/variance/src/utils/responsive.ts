@@ -29,7 +29,7 @@ const BREAKPOINT_KEYS = [
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
 export const parseBreakpoints = (
-  breakpoints?: Breakpoints | undefined
+  breakpoints?: Breakpoints
 ): BreakpointCache | null => {
   if (breakpoints === undefined) return null;
   const { xs, sm, md, lg, xl, c_base, c_xs, c_sm, c_md, c_lg, c_xl } =

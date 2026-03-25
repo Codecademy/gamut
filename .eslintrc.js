@@ -10,6 +10,21 @@ module.exports = {
 
   ignorePatterns: ['packages/code-connect/**/*'],
 
+  settings: {
+    'import/parsers': {
+      [require.resolve('@typescript-eslint/parser')]: [
+        '.ts',
+        '.cts',
+        '.mts',
+        '.tsx',
+        '.js',
+        '.jsx',
+        '.mjs',
+        '.cjs',
+      ],
+    },
+  },
+
   rules: {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
@@ -38,6 +53,13 @@ module.exports = {
       // being applied to subsequent plugin imports/extensions. Wild.
       files: ['*.tsx', '*.ts'],
       rules: {
+        '@typescript-eslint/no-empty-object-type': [
+          'error',
+          {
+            allowInterfaces: 'with-single-extends',
+            allowObjectTypes: 'always',
+          },
+        ],
         // These rules could be useful, but we haven't gotten around to enabling them here
         // See WEB-2 for general tracking.
         '@typescript-eslint/no-explicit-any': 'off',
