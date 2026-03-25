@@ -8,13 +8,14 @@ export default createRule({
   create(context) {
     return {
       TaggedTemplateExpression(node) {
+        /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison -- @typescript-eslint/types use string enums; literals match ESTree */
         if (node.tag.type === 'MemberExpression') {
           if (node.tag.object.type !== 'Identifier') return;
           const expressionVariable = node.tag.object.name;
           const arrowFuncExpression = node.quasi.expressions[0];
 
-          if (arrowFuncExpression?.type !== 'ArrowFunctionExpression')
-            return;
+          if (arrowFuncExpression?.type !== 'ArrowFunctionExpression') return;
+          /* eslint-enable @typescript-eslint/no-unsafe-enum-comparison */
 
           if (!isNamedVariableTheme(arrowFuncExpression)) return;
 

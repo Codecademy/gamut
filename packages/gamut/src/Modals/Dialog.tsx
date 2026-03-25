@@ -6,6 +6,7 @@ import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import { isNullish } from '../utils/nullish';
 import { ModalContainer, ModalContainerProps } from './elements';
 import { ImageContainer } from './ImageContainer';
 import { CloseButtonProps, ModalBaseProps } from './types';
@@ -66,7 +67,8 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-hidden="false"
         aria-label="dialog"
         aria-labelledby={
-          typeof title === 'string' || typeof title === 'number'
+          !isNullish(title) &&
+          (typeof title === 'string' || typeof title === 'number')
             ? String(title)
             : undefined
         }

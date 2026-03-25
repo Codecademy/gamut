@@ -93,8 +93,8 @@ export const Tag: React.FC<TagProps> = ({
             disabled
               ? ''
               : typeof children === 'string' || typeof children === 'number'
-                ? `Dismiss ${children} Tag`
-                : 'Dismiss tag'
+              ? `Dismiss ${children} Tag`
+              : 'Dismiss tag'
           }
           disabled={disabled}
           icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
