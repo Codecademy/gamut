@@ -152,7 +152,7 @@ export const BarChart = <
         </Box>
         <Text
           as="figcaption"
-          color="text-disabled"
+          color="text-secondary"
           hidden={hideDescription}
           mt={8}
           variant="p-small"
