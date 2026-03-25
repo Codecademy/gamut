@@ -1,0 +1,165 @@
+import { useId, useMemo } from 'react';
+
+import { Box, FlexBox } from '../Box';
+import { Text } from '../Typography/Text';
+import { BarChartProvider } from './BarChartProvider';
+import { BarRow } from './BarRow';
+import { GridLines } from './layout/GridLines';
+import { ScaleChartHeader } from './layout/ScaleChartHeader';
+import { BarsList } from './shared/elements';
+import {
+  BarChartSingleValueBarSummaryContext,
+  BarChartStackedSummaryContext,
+  BarChartTranslations,
+  defaultBarChartTranslations,
+  PartialBarChartTranslations,
+} from './shared/translations';
+import { BarChartProps, BarProps, InferBarType } from './shared/types';
+import { StyledFormGroupLabel, WidthSelect } from './SortSelect';
+import { getBarRowKey } from './utils';
+import { useBarChart, useBarChartSort } from './utils/hooks';
+
+export type {
+  BarChartSingleValueBarSummaryContext,
+  BarChartStackedSummaryContext,
+  BarProps,
+  InferBarType,
+  BarChartTranslations,
+  PartialBarChartTranslations,
+};
+
+export const BarChart = <
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+>({
+  'aria-labelledby': ariaLabelledBy,
+  animate = false,
+  barValues,
+  description,
+  hideDescription = false,
+  hideTitle = false,
+  maxScaleValue,
+  sortFns,
+  styleConfig,
+  title,
+  translations,
+  unit = '',
+  scaleInterval,
+}: BarChartProps<TBarValues>) => {
+  const mergedTranslations = useMemo(
+    () => ({
+      ...defaultBarChartTranslations,
+      ...translations,
+      sortOptions: {
+        ...defaultBarChartTranslations.sortOptions,
+        ...translations?.sortOptions,
+      },
+      accessibility: {
+        ...defaultBarChartTranslations.accessibility,
+        ...translations?.accessibility,
+      },
+    }),
+    [translations]
+  );
+
+  const { sortedBars, selectProps } = useBarChartSort<TBarValues>({
+    bars: barValues,
+    sortFns,
+    translations: mergedTranslations,
+  });
+
+  const contextValue = useBarChart({
+    maxScaleValue,
+    scaleInterval,
+    unit,
+    styleConfig,
+    animate,
+    barCount: sortedBars?.length,
+    translations: mergedTranslations,
+  });
+
+  const tickCount = Math.ceil(maxScaleValue / contextValue.scaleInterval) + 1;
+
+  const titleId = useId();
+  const sortSelectId = useId();
+
+  const titleProps =
+    typeof title === 'string'
+      ? {
+          as: 'h2' as const,
+          children: title,
+          hidden: hideTitle,
+          id: titleId,
+          variant: 'title-xs' as const,
+        }
+      : title
+      ? { ...title, children: title.title, hidden: hideTitle, id: titleId }
+      : null;
+
+  const titleContent =
+    (title && !hideTitle) || selectProps ? (
+      <Box
+        borderBottom={1}
+        borderColor="background-disabled"
+        mb={24}
+        pb={8}
+        width="100%"
+      >
+        <FlexBox
+          alignItems="center"
+          justifyContent="space-between"
+          width="100%"
+        >
+          {titleProps && <Text mb={4} {...titleProps} />}
+          {selectProps && (
+            <FlexBox alignItems="center">
+              <StyledFormGroupLabel
+                htmlFor={sortSelectId}
+                isSoloField
+                size="small"
+              >
+                {mergedTranslations.sortLabel}
+              </StyledFormGroupLabel>
+              <WidthSelect
+                sizeVariant="small"
+                {...selectProps}
+                id={sortSelectId}
+              />
+            </FlexBox>
+          )}
+        </FlexBox>
+      </Box>
+    ) : titleProps ? (
+      <Text {...titleProps} />
+    ) : null;
+
+  return (
+    <BarChartProvider value={contextValue}>
+      {titleContent}
+      <Box
+        as="figure"
+        containerType="inline-size"
+        position="relative"
+        width="100%"
+      >
+        <ScaleChartHeader maxScaleValue={maxScaleValue} tickCount={tickCount} />
+        <Box position="relative" width="100%">
+          <GridLines maxScaleValue={maxScaleValue} tickCount={tickCount} />
+          <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
+            {sortedBars.map((bar, index) => (
+              <BarRow index={index} key={getBarRowKey(bar, index)} {...bar} />
+            ))}
+          </BarsList>
+        </Box>
+        <Text
+          as="figcaption"
+          color="text-secondary"
+          hidden={hideDescription}
+          mt={8}
+          variant="p-small"
+        >
+          {description}
+        </Text>
+      </Box>
+    </BarChartProvider>
+  );
+};

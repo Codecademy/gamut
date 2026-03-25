@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.1...@codecademy/gamut-styles@17.13.0) (2026-03-25)
+
+### Features
+
+- **BarChart:** new component ([f6242fd](https://github.com/Codecademy/gamut/commit/f6242fdbc517128e8afcc80f8d0128d03577e96d))
+
 ### [17.12.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.0...@codecademy/gamut-styles@17.12.1) (2026-03-17)
 
 ### Bug Fixes

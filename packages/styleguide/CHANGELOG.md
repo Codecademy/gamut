@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [79.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.4...@codecademy/styleguide@79.3.0) (2026-03-25)
+
+### Features
+
+- **BarChart:** new component ([f6242fd](https://github.com/Codecademy/gamut/commit/f6242fdbc517128e8afcc80f8d0128d03577e96d))
+
 ### [79.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.3...@codecademy/styleguide@79.2.4) (2026-03-23)
 
 **Note:** Version bump only for package @codecademy/styleguide
