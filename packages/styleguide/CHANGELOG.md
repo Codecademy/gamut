@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [79.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.4...@codecademy/styleguide@79.3.0) (2026-03-25)
+
+### Features
+
+- **BarChart:** new component ([f6242fd](https://github.com/Codecademy/gamut/commit/f6242fdbc517128e8afcc80f8d0128d03577e96d))
+
+### [79.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.3...@codecademy/styleguide@79.2.4) (2026-03-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [79.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.2...@codecademy/styleguide@79.2.3) (2026-03-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [79.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.1...@codecademy/styleguide@79.2.2) (2026-03-19)
+
+### Bug Fixes
+
+- **DataList:** Padding on first column and alignment for headers ([1b55acd](https://github.com/Codecademy/gamut/commit/1b55acdaba8c33be5e3cc7a19b0c9a3b50987ab5))
+
+### [79.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.0...@codecademy/styleguide@79.2.1) (2026-03-17)
+
+### Bug Fixes
+
+- update reboot file to conditionally use logical properties or physical properties ([404937b](https://github.com/Codecademy/gamut/commit/404937be816a16ffbf7cb4c5b3a2a1999969f31d))
+
+## [79.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.4...@codecademy/styleguide@79.2.0) (2026-03-12)
+
+### Features
+
+- Logical properties ([4c340c3](https://github.com/Codecademy/gamut/commit/4c340c3949bad30fce4f9ffabb2018763df5c4ba))
+
+### [79.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.3...@codecademy/styleguide@79.1.4) (2026-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [79.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.2...@codecademy/styleguide@79.1.3) (2026-03-02)
+
+### Bug Fixes
+
+- **GamutProvider:** CSP improvements ([1026353](https://github.com/Codecademy/gamut/commit/10263537c190aff0e5686872da2be2a30b1d9201)), closes [/github.com/adobe/react-spectrum/issues/8273#issuecomment-3897820426](https://github.com/Codecademy//github.com/adobe/react-spectrum/issues/8273/issues/issuecomment-3897820426)
+
+### [79.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.1...@codecademy/styleguide@79.1.2) (2026-02-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [79.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.0...@codecademy/styleguide@79.1.1) (2026-02-11)
 
 **Note:** Version bump only for package @codecademy/styleguide

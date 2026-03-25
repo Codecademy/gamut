@@ -1,0 +1,302 @@
+import {
+  forwardRef,
+  MouseEventHandler,
+  MutableRefObject,
+  useMemo,
+  useRef,
+} from 'react';
+
+import { Box, FlexBox } from '../../Box';
+import { Text } from '../../Typography';
+import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
+import { BarProps } from '../shared/types';
+import {
+  calculateBarWidth,
+  formatValueWithUnit,
+  getValuesSummary,
+} from '../utils';
+import {
+  useBarBorderColor,
+  useBarChartContext,
+  useMeasureCategoryLabelWidth,
+  useMeasureTotalValueLabelWidth,
+} from '../utils/hooks';
+import {
+  Bar,
+  BarWrapper,
+  CategoryLabel,
+  RowAnchor,
+  RowButton,
+  RowWrapper,
+  TotalValueLabelsHoverTarget,
+} from './elements';
+import { ValueLabelsContent } from './ValueLabelsContent';
+
+export type BarRowProps = BarProps & {
+  index?: number;
+};
+
+export const BarRow = forwardRef<
+  HTMLDivElement | HTMLButtonElement | HTMLAnchorElement,
+  BarRowProps
+>(
+  (
+    {
+      categoryLabel,
+      seriesOneValue,
+      seriesTwoValue,
+      icon: Icon,
+      onClick,
+      href,
+      index = 0,
+    },
+    ref
+  ) => {
+    const {
+      maxScaleValue,
+      unit,
+      styleConfig,
+      animate,
+      widestCategoryLabelWidth,
+      widestTotalValueLabelWidth,
+      translations,
+    } = useBarChartContext();
+
+    const {
+      textColor,
+      seriesOneBarColor,
+      seriesTwoBarColor,
+      seriesOneLabel,
+      seriesTwoLabel,
+    } = styleConfig;
+
+    const labelRef = useRef<HTMLDivElement>(null);
+    const totalValueLabelRef = useRef<HTMLDivElement>(null);
+    useMeasureCategoryLabelWidth({ ref: labelRef });
+    useMeasureTotalValueLabelWidth({ ref: totalValueLabelRef });
+
+    const getBorderColor = useBarBorderColor();
+
+    const isStacked = seriesTwoValue !== undefined;
+    const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
+
+    const { seriesOneBorderColor, seriesTwoBorderColor } = useMemo(
+      () => ({
+        seriesOneBorderColor: getBorderColor(seriesOneBarColor),
+        seriesTwoBorderColor: getBorderColor(seriesTwoBarColor),
+      }),
+      [getBorderColor, seriesOneBarColor, seriesTwoBarColor]
+    );
+
+    const { bgWidthStr, fgWidthStr } = useMemo(() => {
+      const bgWidth = calculateBarWidth({
+        value: displayValue,
+        maxScaleValue,
+      });
+      const fgWidth = isStacked
+        ? calculateBarWidth({
+            value: seriesOneValue,
+            maxScaleValue,
+          })
+        : 0;
+      return {
+        bgWidthStr: `${Math.max(minBarWidth, bgWidth)}%`,
+        fgWidthStr: `${Math.max(minBarWidth, fgWidth)}%`,
+      };
+    }, [displayValue, isStacked, seriesOneValue, maxScaleValue]);
+
+    const valuesSummary = useMemo(
+      () =>
+        getValuesSummary({
+          seriesOneValue,
+          seriesTwoValue,
+          unit,
+          categoryLabel,
+          translations,
+        }),
+      [seriesOneValue, seriesTwoValue, unit, categoryLabel, translations]
+    );
+
+    const animationDelay = animate ? index * 0.1 : 0;
+
+    const widthValue =
+      widestCategoryLabelWidth === null
+        ? 'min-content'
+        : widestCategoryLabelWidth;
+
+    const totalValueLabelWidthValue =
+      widestTotalValueLabelWidth === null
+        ? 'min-content'
+        : widestTotalValueLabelWidth;
+
+    const { seriesOneFormatted, displayValueFormatted } = useMemo(
+      () => ({
+        seriesOneFormatted: formatValueWithUnit({
+          value: seriesOneValue,
+          unit,
+          locale: translations.locale,
+        }),
+        displayValueFormatted: formatValueWithUnit({
+          value: displayValue,
+          unit,
+          locale: translations.locale,
+        }),
+      }),
+      [seriesOneValue, displayValue, unit, translations.locale]
+    );
+
+    const valueLabelsContent = useMemo(
+      () => (
+        <ValueLabelsContent
+          displayValueFormatted={displayValueFormatted}
+          isStacked={isStacked}
+          seriesOneFormatted={seriesOneFormatted}
+          seriesOneLabel={seriesOneLabel}
+          seriesTwoLabel={seriesTwoLabel}
+        />
+      ),
+      [
+        displayValueFormatted,
+        isStacked,
+        seriesOneFormatted,
+        seriesOneLabel,
+        seriesTwoLabel,
+      ]
+    );
+
+    const desktopLabelsContainer = useMemo(
+      () => (
+        <FlexBox
+          alignItems="center"
+          display={{ _: 'flex', c_xs: 'none' }}
+          flexWrap="wrap"
+          gap={8}
+          justifyContent="space-between"
+          width="100%"
+        >
+          <FlexBox alignItems="center" color={textColor} flexShrink={0}>
+            {Icon && <Icon mr={iconPadding} size={iconWidth} />}
+            <CategoryLabel truncate="ellipsis" truncateLines={1}>
+              {categoryLabel}
+            </CategoryLabel>
+          </FlexBox>
+
+          <TotalValueLabelsHoverTarget gap={8}>
+            {valueLabelsContent}
+          </TotalValueLabelsHoverTarget>
+        </FlexBox>
+      ),
+      [textColor, Icon, categoryLabel, valueLabelsContent]
+    );
+
+    const xsLabelNode = useMemo(
+      () => (
+        <FlexBox
+          alignItems="center"
+          aria-hidden
+          color={textColor}
+          display={{ _: 'none', c_xs: 'flex' }}
+          flexShrink={0}
+          pr={{ _: 0, c_xs: 24 }}
+          ref={labelRef}
+          width={{ _: 'auto', c_xs: widthValue }}
+        >
+          {Icon && <Icon mr={iconPadding} size={iconWidth} />}
+          <CategoryLabel truncate="ellipsis" truncateLines={1}>
+            {categoryLabel}
+          </CategoryLabel>
+        </FlexBox>
+      ),
+      [textColor, Icon, categoryLabel, widthValue]
+    );
+
+    const totalValueLabelNode = useMemo(
+      () => (
+        <TotalValueLabelsHoverTarget
+          display={{ _: 'none', c_xs: 'flex' }}
+          pl={{ _: 0, c_xs: 24 }}
+          ref={totalValueLabelRef}
+          width={{ _: 'auto', c_xs: totalValueLabelWidthValue }}
+        >
+          {valueLabelsContent}
+        </TotalValueLabelsHoverTarget>
+      ),
+      [valueLabelsContent, totalValueLabelWidthValue]
+    );
+
+    const rowContent = useMemo(
+      () => (
+        <>
+          {desktopLabelsContainer}
+          {xsLabelNode}
+          <BarWrapper>
+            <Bar
+              animate={animate ? { width: bgWidthStr } : undefined}
+              bg={isStacked ? seriesTwoBarColor : seriesOneBarColor}
+              borderColor={
+                isStacked ? seriesTwoBorderColor : seriesOneBorderColor
+              }
+              data-testid="background-bar"
+              initial={animate ? { width: '0%' } : undefined}
+              transition={{ duration: 0.5, delay: animationDelay }}
+              width={!animate ? bgWidthStr : undefined}
+            />
+            {isStacked && (
+              <Bar
+                animate={animate ? { width: fgWidthStr } : undefined}
+                bg={seriesOneBarColor}
+                borderColor={seriesOneBorderColor}
+                data-testid="foreground-bar"
+                initial={animate ? { width: '0%' } : undefined}
+                transition={{ duration: 0.5, delay: animationDelay + 0.25 }}
+                width={!animate ? fgWidthStr : undefined}
+              />
+            )}
+          </BarWrapper>
+          {totalValueLabelNode}
+        </>
+      ),
+      [
+        animate,
+        animationDelay,
+        bgWidthStr,
+        fgWidthStr,
+        isStacked,
+        desktopLabelsContainer,
+        xsLabelNode,
+        totalValueLabelNode,
+        seriesOneBarColor,
+        seriesOneBorderColor,
+        seriesTwoBarColor,
+        seriesTwoBorderColor,
+      ]
+    );
+
+    const content = href ? (
+      <RowAnchor
+        aria-label={valuesSummary}
+        href={href}
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
+        onClick={onClick as MouseEventHandler<HTMLAnchorElement>}
+      >
+        {rowContent}
+      </RowAnchor>
+    ) : onClick ? (
+      <RowButton
+        aria-label={valuesSummary}
+        ref={ref as MutableRefObject<HTMLButtonElement>}
+        onClick={onClick}
+      >
+        {rowContent}
+      </RowButton>
+    ) : (
+      <>
+        <RowWrapper ref={ref as MutableRefObject<HTMLDivElement>}>
+          <Text screenreader>{valuesSummary}</Text> {rowContent}
+        </RowWrapper>
+      </>
+    );
+
+    return <Box as="li">{content}</Box>;
+  }
+);

@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Linking',
+  title: 'Linking',
+  subtitle: 'Best practices for linking within documentation',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Linking" />
+
+<AboutHeader {...parameters} />
+
+Use links to help users navigate between related components and resources. This guide covers linking within Storybook, to external sites, and writing clear link text.
+
+## Internal Links
+
+Use the `LinkTo` component from `~styleguide/blocks` and set the id prop as the story's id value.
+
+```tsx
+import { LinkTo } from '~styleguide/blocks';
+<LinkTo id="Meta/Stories">Stories</LinkTo>
+<LinkTo id="Atoms/Animations/About">Animation</LinkTo>
+```
+
+### Guidelines:
+
+- Link text describes the destination, not the action: "See the [Stories page](#)" not "[See the Stories page](#)"
+- Use descriptive link text that makes sense out of context: "[Stories page](#)" not "[Click here](#)"
+- Link component names to their documentation
+- Verify that the link works correctly
+- 2-3 words minimum for easy clicking
+- Unique link text when multiple links on page
+- Meaningful and descriptive: conveys destination
+- Action-oriented when appropriate: "View the component"
+
+## External Links
+
+When linking to external resources like official documentation or tools, use the following guidelines.
+
+### Markdown Links:
+
+Use Markdown for external links. The examples below will open in a new tab:
+
+```markdown
+[GitHub Repository](https://github.com/Codecademy/gamut)
+[React Documentation](https://react.dev)
+```
+
+### Anchor Component:
+
+For more control over the link, use the `Anchor` component. The example below will open in the current tab:
+
+```tsx
+<Anchor href="https://github.com/Codecademy/gamut">Gamut Repository</Anchor>
+```
+
+<Callout text='To open external links in new tabs, use `target="_blank" rel="noreferrer"` together for security. However, avoid forcing this behavior unless necessary — users can choose to open links in new tabs themselves.' />

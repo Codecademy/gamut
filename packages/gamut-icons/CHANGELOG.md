@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.57.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.57.0...@codecademy/gamut-icons@9.57.1) (2026-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.57.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.4...@codecademy/gamut-icons@9.57.0) (2026-03-17)
+
+### Features
+
+- **icon:** Adds MiniCalendarIcon ([f93a00a](https://github.com/Codecademy/gamut/commit/f93a00af990f869cb0e30bb1b894c9307a05cd3a))
+
+### [9.56.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.3...@codecademy/gamut-icons@9.56.4) (2026-03-17)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.56.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.2...@codecademy/gamut-icons@9.56.3) (2026-03-12)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.56.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.1...@codecademy/gamut-icons@9.56.2) (2026-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.56.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.0...@codecademy/gamut-icons@9.56.1) (2026-03-02)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.56.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.55.1...@codecademy/gamut-icons@9.56.0) (2026-02-19)
+
+### Features
+
+- **Icons:** add reply-to-message and add-reaction icons ([df1803a](https://github.com/Codecademy/gamut/commit/df1803a47de5dcf5b9de9ce7e26e8fbda1ad8817))
+
+### [9.55.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.55.0...@codecademy/gamut-icons@9.55.1) (2026-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
 ## [9.55.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.54.2...@codecademy/gamut-icons@9.55.0) (2026-02-04)
 
 ### Features

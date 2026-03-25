@@ -5,7 +5,9 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
-import { useContext, useRef } from 'react';
+import { MotionConfig } from 'framer-motion';
+import { setNonce } from 'get-nonce';
+import { useContext, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
 import { createEmotionCache } from './cache';
@@ -27,17 +29,28 @@ export interface GamutProviderProps {
    * Pass a nonce to the cache to prevent CSP errors
    */
   nonce?: string;
+  /**
+   * Whether to use logical properties for the theme
+   */
+  useLogicalProperties?: boolean;
 }
 
 export const GamutContext = React.createContext<{
   hasGlobals?: boolean;
   hasCache?: boolean;
+  nonce?: string;
 }>({
   hasGlobals: false,
   hasCache: false,
 });
 
 GamutContext.displayName = 'GamutContext';
+
+/**
+ * Returns the CSP nonce passed to GamutProvider, if any.
+ */
+export const useNonce = (): string | undefined =>
+  useContext(GamutContext).nonce;
 
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
@@ -47,10 +60,18 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   useGlobals = true,
   useCache = true,
   nonce,
+  useLogicalProperties = false,
 }) => {
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;
   const shouldInsertGlobals = useGlobals && !hasGlobals;
+
+  // Feed nonce to get-nonce singleton so react-style-singleton (e.g. via react-aria-components) can set it on injected style tags for CSP
+  useEffect(() => {
+    if (nonce) {
+      setNonce(nonce);
+    }
+  }, [nonce]);
 
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
@@ -60,15 +81,36 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
+    useLogicalProperties,
+    nonce,
   };
+
+  // Merge useLogicalProperties into theme so variance can access it via props.theme.
+  const themeWithLogicalProperties = useMemo(
+    () => ({ ...theme, useLogicalProperties }),
+    [theme, useLogicalProperties]
+  );
 
   const globals = shouldInsertGlobals && (
     <>
-      <Typography theme={theme} />
-      <Reboot theme={theme} />
+      <Typography theme={themeWithLogicalProperties} />
+      <Reboot theme={themeWithLogicalProperties} />
       <Variables variables={theme._variables} />
       {variables && <Variables variables={variables} />}
     </>
+  );
+
+  const content = useMemo(
+    () => (
+      <ThemeProvider theme={themeWithLogicalProperties}>
+        {nonce ? (
+          <MotionConfig nonce={nonce}>{children}</MotionConfig>
+        ) : (
+          children
+        )}
+      </ThemeProvider>
+    ),
+    [themeWithLogicalProperties, nonce, children]
   );
 
   if (activeCache.current) {
@@ -76,7 +118,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
           {globals}
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          {content}
         </CacheProvider>
       </GamutContext.Provider>
     );
@@ -85,7 +127,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      {content}
     </GamutContext.Provider>
   );
 };
