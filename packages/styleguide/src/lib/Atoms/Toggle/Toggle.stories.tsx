@@ -1,6 +1,7 @@
 import { Text, Toggle } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { expect } from 'storybook/test';
 
 const meta: Meta<typeof Toggle> = {
   component: Toggle,
@@ -78,19 +79,36 @@ export const ButtonElement: Story = {
   },
 };
 
-export const InteractiveInputToggle: React.FC = () => {
-  const [checked, setChecked] = useState(false);
-  const changeHandler = () => {
-    setChecked(!checked);
-  };
+export const InteractiveInputToggle: Story = {
+  // this can be removed when we enable globally in preview.ts
+  parameters: {
+    interactions: {
+      disable: false,
+    },
+  },
+  render: function InteractiveInputToggleStory() {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Toggle
+        checked={checked}
+        label="interactive input toggle"
+        onChange={() => setChecked((value) => !value)}
+      />
+    );
+  },
+  play: async ({ canvas, userEvent }) => {
+    const toggle = canvas.getByRole('checkbox');
+    // initial state assertion
+    await expect(toggle).not.toBeChecked();
 
-  return (
-    <Toggle
-      checked={checked}
-      label="interactive input toggle"
-      onChange={changeHandler}
-    />
-  );
+    // click and assert its new state
+    await userEvent.click(toggle);
+    await expect(toggle).toBeChecked();
+
+    // restore to initial state
+    await userEvent.click(toggle);
+    await expect(toggle).not.toBeChecked();
+  },
 };
 
 export const InteractiveButtonToggle: React.FC = () => {
