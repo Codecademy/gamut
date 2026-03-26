@@ -16,6 +16,7 @@ export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
 export * from './DatePicker';
+export * from './DatePicker/Calendar';
 export * from './DelayedRenderWrapper';
 export * from './Disclosure';
 export * from './DataList';
