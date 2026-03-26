@@ -29,6 +29,9 @@ const preview: Preview = {
     a11y: {
       test: 'todo',
     },
+    interactions: {
+      disable: true,
+    },
     backgrounds: {
       disable: true,
     },
