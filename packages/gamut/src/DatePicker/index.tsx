@@ -21,7 +21,7 @@ export { DatePickerInput } from './DatePickerInput';
 export type { DatePickerInputProps } from './DatePickerInput';
 
 export {
-  Calendar,
+  CalendarWrapper,
   CalendarHeader,
   CalendarBody,
   CalendarFooter,

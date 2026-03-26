@@ -93,17 +93,21 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const onDateSelect = (date: Date) => {
     if (!isRange) {
-      handleDateSelectSingle(date, startOrSelectedDate, setSelection);
+      handleDateSelectSingle({
+        date,
+        selectedDate: startOrSelectedDate,
+        setSelection,
+      });
     } else {
       context.setActiveRangePart(null);
-      handleDateSelectRange(
+      handleDateSelectRange({
         date,
-        context.activeRangePart,
-        startOrSelectedDate,
-        context.endDate,
+        activeRangePart: context.activeRangePart,
+        startDate: startOrSelectedDate,
+        endDate: context.endDate,
         setSelection,
-        disabledDates
-      );
+        disabledDates,
+      });
     }
   };
 

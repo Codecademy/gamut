@@ -1,4 +1,24 @@
-import { isDateDisabled } from './dateGrid';
+import type { CalendarBodyProps } from '../types';
+import { type DateWithRow,isDateDisabled } from './dateGrid';
+
+/** Calendar grid props and callbacks used by `keyHandler`, aligned with `CalendarBodyProps`. */
+export type KeyHandlerParams = Pick<
+  CalendarBodyProps,
+  | 'onFocusedDateChange'
+  | 'onDateSelect'
+  | 'onDisplayDateChange'
+  | 'onEscapeKeyPress'
+  | 'hasAdjacentMonthRight'
+  | 'hasAdjacentMonthLeft'
+  | 'disabledDates'
+> & {
+  e: React.KeyboardEvent;
+  /** The date for the day cell that received the key event */
+  date: Date;
+  datesWithRow: DateWithRow[];
+  month: number;
+  year: number;
+};
 
 /**
  * Clamp a day to the last day of the given month (e.g. Jan 31 -> Feb 28).
@@ -8,22 +28,20 @@ const clampToMonth = (year: number, month: number, day: number) => {
   return new Date(year, month, Math.min(day, last));
 };
 
-export const keyHandler = (
-  e: React.KeyboardEvent,
-  date: Date,
-  onFocusedDateChange: (date: Date | null) => void,
-  datesWithRow: { date: Date; rowIndex: number }[],
-  month: number,
-  year: number,
-  disabledDates: Date[],
-  onDateSelect: (date: Date) => void,
-  onEscapeKeyPress?: () => void,
-  onDisplayDateChange?: (newDate: Date) => void,
-  /** When true, adjacent month to the right is visible; don't change visible date when moving focus there. */
-  hasAdjacentMonthRight?: boolean,
-  /** When true, adjacent month to the left is visible; don't change visible date when moving focus there. */
-  hasAdjacentMonthLeft?: boolean
-) => {
+export const keyHandler = ({
+  e,
+  date,
+  onFocusedDateChange,
+  datesWithRow,
+  month,
+  year,
+  disabledDates = [],
+  onDateSelect,
+  onEscapeKeyPress,
+  onDisplayDateChange,
+  hasAdjacentMonthRight,
+  hasAdjacentMonthLeft,
+}: KeyHandlerParams) => {
   const idx = datesWithRow.findIndex(
     ({ date: dateWithRow }) => dateWithRow.getTime() === date.getTime()
   );

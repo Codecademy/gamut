@@ -90,7 +90,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent, date: Date) =>
-      keyHandler(
+      keyHandler({
         e,
         date,
         onFocusedDateChange,
@@ -102,8 +102,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         onEscapeKeyPress,
         onDisplayDateChange,
         hasAdjacentMonthRight,
-        hasAdjacentMonthLeft
-      ),
+        hasAdjacentMonthLeft,
+      }),
     [
       onFocusedDateChange,
       datesWithRow,
