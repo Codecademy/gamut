@@ -1,8 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.2.0...@codecademy/gamut@68.2.1) (2026-03-25)
 
 ### Bug Fixes

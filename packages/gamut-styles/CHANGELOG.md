@@ -1,8 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [17.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.1...@codecademy/gamut-styles@17.13.0) (2026-03-25)
 
 ### Features
