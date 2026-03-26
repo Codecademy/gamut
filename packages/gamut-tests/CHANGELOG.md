@@ -1,3 +1,18 @@
+## 5.3.3 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
 ### [5.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.3.1...@codecademy/gamut-tests@5.3.2) (2026-03-25)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

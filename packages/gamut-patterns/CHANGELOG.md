@@ -1,3 +1,19 @@
+## 0.10.28 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
 ### [0.10.27](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.10.26...@codecademy/gamut-patterns@0.10.27) (2026-03-25)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

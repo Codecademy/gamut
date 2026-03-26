@@ -1,3 +1,14 @@
+## 0.26.1 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
 ## [0.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.25.2...@codecademy/variance@0.26.0) (2026-03-12)
 
 ### Features

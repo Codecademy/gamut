@@ -1,3 +1,20 @@
+## 9.57.2 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+- Updated gamut-tests to 5.3.3
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
 ### [9.57.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.57.0...@codecademy/gamut-icons@9.57.1) (2026-03-25)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

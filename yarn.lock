@@ -1616,12 +1616,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.57.1, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.57.2, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.13.0"
-    "@codecademy/variance": "npm:0.26.0"
+    "@codecademy/gamut-styles": "npm:17.13.1"
+    "@codecademy/variance": "npm:0.26.1"
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
@@ -1630,11 +1630,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-illustrations@npm:0.58.8, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
+"@codecademy/gamut-illustrations@npm:0.58.9, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-illustrations@workspace:packages/gamut-illustrations"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.13.0"
+    "@codecademy/gamut-styles": "npm:17.13.1"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1648,23 +1648,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:68.2.1"
-    "@codecademy/gamut-icons": "npm:9.57.1"
-    "@codecademy/gamut-illustrations": "npm:0.58.8"
-    "@codecademy/gamut-patterns": "npm:0.10.27"
-    "@codecademy/gamut-styles": "npm:17.13.0"
-    "@codecademy/gamut-tests": "npm:5.3.2"
-    "@codecademy/variance": "npm:0.26.0"
+    "@codecademy/gamut": "npm:68.2.2"
+    "@codecademy/gamut-icons": "npm:9.57.2"
+    "@codecademy/gamut-illustrations": "npm:0.58.9"
+    "@codecademy/gamut-patterns": "npm:0.10.28"
+    "@codecademy/gamut-styles": "npm:17.13.1"
+    "@codecademy/gamut-tests": "npm:5.3.3"
+    "@codecademy/variance": "npm:0.26.1"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-patterns@npm:0.10.27, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
+"@codecademy/gamut-patterns@npm:0.10.28, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-patterns@workspace:packages/gamut-patterns"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.13.0"
-    "@codecademy/variance": "npm:0.26.0"
+    "@codecademy/gamut-styles": "npm:17.13.1"
+    "@codecademy/variance": "npm:0.26.1"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1674,11 +1674,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:17.13.0, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:17.13.1, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
-    "@codecademy/variance": "npm:0.26.0"
+    "@codecademy/variance": "npm:0.26.1"
     "@emotion/is-prop-valid": "npm:^1.1.0"
     framer-motion: "npm:^11.18.0"
     get-nonce: "npm:^1.0.0"
@@ -1693,11 +1693,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:5.3.2, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:5.3.3, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.13.0"
+    "@codecademy/gamut-styles": "npm:17.13.1"
     component-test-setup: "npm:*"
     lodash: "npm:^4.17.23"
   peerDependencies:
@@ -1705,15 +1705,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.2.1, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.2.2, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.57.1"
-    "@codecademy/gamut-illustrations": "npm:0.58.8"
-    "@codecademy/gamut-patterns": "npm:0.10.27"
-    "@codecademy/gamut-styles": "npm:17.13.0"
-    "@codecademy/variance": "npm:0.26.0"
+    "@codecademy/gamut-icons": "npm:9.57.2"
+    "@codecademy/gamut-illustrations": "npm:0.58.9"
+    "@codecademy/gamut-patterns": "npm:0.10.28"
+    "@codecademy/gamut-styles": "npm:17.13.1"
+    "@codecademy/variance": "npm:0.26.1"
     "@react-aria/interactions": "npm:3.25.0"
     "@types/marked": "npm:^4.0.8"
     "@vidstack/react": "npm:^1.12.12"
@@ -1770,7 +1770,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/variance@npm:0.26.0, @codecademy/variance@workspace:packages/variance":
+"@codecademy/variance@npm:0.26.1, @codecademy/variance@workspace:packages/variance":
   version: 0.0.0-use.local
   resolution: "@codecademy/variance@workspace:packages/variance"
   dependencies:
