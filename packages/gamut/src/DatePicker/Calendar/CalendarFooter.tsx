@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import { FlexBox } from '../../Box';
 import { TextButton } from '../../Button';
-import { DEFAULT_DATE_PICKER_TRANSLATIONS } from '../translations';
+import { useResolvedLocale } from '../utils/locale';
+import { DEFAULT_DATE_PICKER_TRANSLATIONS } from '../utils/translations';
 import { CalendarFooterProps } from './types';
 import { getRelativeTodayLabel } from './utils/format';
 
@@ -35,6 +36,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   disabled,
   showClearButton,
 }) => {
+  const resolvedLocale = useResolvedLocale(locale);
   // const actions = quickActions.slice(0, 3);
 
   return (
@@ -51,7 +53,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
       )}
       <FlexBox gap={32}>
         <TextButton onClick={() => onTodayClick?.()}>
-          {getRelativeTodayLabel(locale)}
+          {getRelativeTodayLabel(resolvedLocale)}
         </TextButton>
       </FlexBox>
     </FlexBox>

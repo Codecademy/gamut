@@ -7,6 +7,7 @@ import * as React from 'react';
 import { FlexBox } from '../../Box';
 import { IconButton } from '../../Button';
 import { Text } from '../../Typography';
+import { useResolvedLocale } from '../utils/locale';
 import { CalendarHeaderProps } from './types';
 import { formatMonthYear, getRelativeMonthLabels } from './utils/format';
 
@@ -19,7 +20,8 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   locale,
   headingId,
 }) => {
-  const { nextMonth, lastMonth } = getRelativeMonthLabels(locale);
+  const resolvedLocale = useResolvedLocale(locale);
+  const { nextMonth, lastMonth } = getRelativeMonthLabels(resolvedLocale);
 
   const handleLastMonth = () => {
     const lastMonth = new Date(
@@ -64,7 +66,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
             id={headingId}
             textAlign="center"
           >
-            {formatMonthYear(displayDate, locale)}
+            {formatMonthYear(displayDate, resolvedLocale)}
           </Text>
         </FlexBox>
         {secondDisplayDate && (
@@ -81,7 +83,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
               fontWeight="title"
               textAlign="center"
             >
-              {formatMonthYear(secondDisplayDate, locale)}
+              {formatMonthYear(secondDisplayDate, resolvedLocale)}
             </Text>
           </FlexBox>
         )}

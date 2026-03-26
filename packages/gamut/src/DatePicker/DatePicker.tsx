@@ -6,13 +6,14 @@ import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
 import { DatePickerProvider } from './DatePickerContext';
 import { DatePickerInput } from './DatePickerInput';
-import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './translations';
 import type {
   DatePickerContextValue,
   DatePickerProps,
   OpenCalendarOptions,
 } from './types';
-import { isRangeProps } from './utils';
+import { isRangeProps } from './utils/dateSelect';
+import { useResolvedLocale } from './utils/locale';
+import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './utils/translations';
 
 /**
  * DatePicker: single-date or range. Holds shared state and provides it via context.
@@ -42,6 +43,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const clearGridFocusRequest = useCallback(() => {
     setGridFocusRequested(false);
   }, []);
+
+  const resolvedLocale = useResolvedLocale(locale);
 
   const openCalendar = useCallback((options?: OpenCalendarOptions) => {
     const moveFocus = options?.moveFocusIntoCalendar ?? false;
@@ -98,7 +101,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       gridFocusRequested,
       clearGridFocusRequest,
       closeCalendar,
-      locale,
+      locale: resolvedLocale,
       disabledDates,
       calendarDialogId,
       translations,
@@ -126,7 +129,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     gridFocusRequested,
     clearGridFocusRequest,
     closeCalendar,
-    locale,
+    resolvedLocale,
     disabledDates,
     calendarDialogId,
     translationsProp,

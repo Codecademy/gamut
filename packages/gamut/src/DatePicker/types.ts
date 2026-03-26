@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 
 import { Input } from '../Form/inputs/Input';
 import { CalendarBaseProps } from './Calendar/types';
-import { DatePickerTranslations } from './translations';
+import { DatePickerTranslations } from './utils/translations';
 
 export interface DatePickerBaseProps
   extends Pick<CalendarBaseProps, 'locale' | 'disabledDates'> {
@@ -52,7 +52,12 @@ export type OpenCalendarOptions = {
 };
 
 export interface DatePickerBaseContextValue
-  extends Pick<CalendarBaseProps, 'locale' | 'disabledDates'> {
+  extends Pick<CalendarBaseProps, 'disabledDates'> {
+  /**
+   * Resolved `Intl.Locale` from the `locale` prop (or runtime default). Same instance passed to
+   * formatters and available for `getWeekInfo()` etc.
+   */
+  locale: Intl.Locale;
   isCalendarOpen: boolean;
   openCalendar: (options?: OpenCalendarOptions) => void;
   /** Move focus from the input into the grid when the calendar is already open (e.g. ArrowDown). */

@@ -10,7 +10,10 @@ import {
   CalendarWrapper,
 } from './Calendar';
 import { useDatePicker } from './DatePickerContext';
-import { handleDateSelectRange, handleDateSelectSingle } from './utils';
+import {
+  handleDateSelectRange,
+  handleDateSelectSingle,
+} from './utils/dateSelect';
 
 export type DatePickerCalendarProps = {
   /** id for the dialog (for aria-controls from input). */

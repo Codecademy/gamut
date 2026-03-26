@@ -3,8 +3,11 @@ export interface CalendarBaseProps {
   displayDate: Date;
   /** Called when the displayed month changes. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
   onDisplayDateChange: (newDate: Date) => void;
-  /** Locale for month/year formatting and translations (e.g. 'en-US') */
-  locale?: string;
+  /**
+   * Locale for formatting and `Intl.Locale` APIs. Accepts `Intl.LocalesArgument` (e.g. `'en-US'`,
+   * `['en-GB', 'en']`, or a prebuilt `Intl.Locale`). Omitted → runtime default (user agent).
+   */
+  locale?: Intl.LocalesArgument;
   /** Dates that should be disabled (unselectable) */
   disabledDates?: Date[];
 }

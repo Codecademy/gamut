@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
+import { useResolvedLocale } from '../utils/locale';
 import { CalendarBodyProps } from './types';
 import {
   getDatesWithRow,
@@ -30,11 +31,16 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   hasAdjacentMonthLeft,
   focusGridSync,
 }) => {
+  const resolvedLocale = useResolvedLocale(locale);
   const year = displayDate.getFullYear();
   const month = displayDate.getMonth();
   const weeks = getMonthGrid(year, month, weekStartsOn);
-  const weekdayLabels = getWeekdayNames('short', locale, weekStartsOn);
-  const weekdayFullNames = getWeekdayNames('long', locale, weekStartsOn);
+  const weekdayLabels = getWeekdayNames('short', resolvedLocale, weekStartsOn);
+  const weekdayFullNames = getWeekdayNames(
+    'long',
+    resolvedLocale,
+    weekStartsOn
+  );
   const buttonRefs = useRef<Map<number, HTMLElement>>(new Map());
   const tableRef = useRef<HTMLTableElement>(null);
 
@@ -171,7 +177,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
               return (
                 <DateCell
-                  aria-label={formatDateForAriaLabel(date, locale)}
+                  aria-label={formatDateForAriaLabel(date, resolvedLocale)}
                   aria-selected={selected}
                   key={date.getTime()}
                   role="gridcell"
