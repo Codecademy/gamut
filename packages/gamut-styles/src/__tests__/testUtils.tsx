@@ -5,8 +5,10 @@ import * as React from 'react';
 import { GamutProvider } from '../GamutProvider';
 import { coreTheme as theme } from '../themes';
 
-// This is effectively a duplicate of the `MockGamutProvider` in `gamut-tests`
-// Because gamut-tests depends on gamut-styles, it creates a circular dependency.
+/**
+ * This is effectively a duplicate of the `MockGamutProvider` in `gamut-tests`.
+ * Because gamut-tests depends on gamut-styles, it creates a circular dependency.
+ */
 function withMockGamutProvider<Props extends JSX.IntrinsicAttributes>(
   WrappedComponent: React.ComponentType<Props>
 ) {
