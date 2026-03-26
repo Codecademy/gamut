@@ -10,7 +10,10 @@ inputs:
     required: true
   message:
     description: 'Message content for the comment'
-    required: true
+    required: false
+  message-path:
+    description: 'Path to file containing the comment message'
+    required: false
   recreate:
     description: 'Whether to recreate the comment on each run'
     required: false
@@ -26,3 +29,4 @@ runs:
         header: ${{ inputs.header }}
         recreate: ${{ inputs.recreate }}
         message: ${{ inputs.message }}
+        path: ${{ inputs.message-path }}

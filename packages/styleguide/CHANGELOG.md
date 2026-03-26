@@ -1,8 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [79.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.2.4...@codecademy/styleguide@79.3.0) (2026-03-25)
 
 ### Features

@@ -1,0 +1,25 @@
+{
+  "name": "gamut-release",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/gamut-release/src",
+  "projectType": "library",
+  "tags": ["scope:nx"],
+  "targets": {
+    "alpha": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/gamut-release/src/main.ts"],
+        "env": {
+          "NODE_OPTIONS": "--experimental-strip-types --experimental-transform-types --disable-warning=ExperimentalWarning"
+        },
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "compile": {
+      "command": "tools/script/ts-compile {projectRoot}"
+    }
+  }
+}

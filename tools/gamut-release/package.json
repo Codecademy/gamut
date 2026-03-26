@@ -1,0 +1,9 @@
+{
+  "name": "@codecademy/release-alpha",
+  "version": "0.0.1",
+  "description": "A CLI tool for publishing packages in the gamut repo using NX release",
+  "private": true,
+  "type": "module",
+  "main": "src/main.ts",
+  "types": "src/main.ts"
+}
