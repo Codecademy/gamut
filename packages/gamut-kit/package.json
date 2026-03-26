@@ -4,7 +4,7 @@
   "version": "0.6.591",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut": "68.2.1",
+    "@codecademy/gamut": "1.1.0",
     "@codecademy/gamut-icons": "9.57.1",
     "@codecademy/gamut-illustrations": "0.58.8",
     "@codecademy/gamut-patterns": "0.10.27",
