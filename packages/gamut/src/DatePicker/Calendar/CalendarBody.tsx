@@ -10,7 +10,7 @@ import {
   isSameDay,
 } from './utils/dateGrid';
 import { DateButton, DateCell, TableHeader } from './utils/elements';
-import { getWeekdayNames } from './utils/format';
+import { formatDateForAriaLabel, getWeekdayNames } from './utils/format';
 import { keyHandler } from './utils/keyHandler';
 
 export const CalendarBody: React.FC<CalendarBodyProps> = ({
@@ -171,6 +171,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
               return (
                 <DateCell
+                  aria-label={formatDateForAriaLabel(date, locale)}
                   aria-selected={selected}
                   key={date.getTime()}
                   role="gridcell"

@@ -123,3 +123,11 @@ export const parseDateFromInput = (value: string, locale?: string) => {
   if (parts.length >= 3) return parsed;
   return null;
 };
+
+export const formatDateForAriaLabel = (date: Date, locale?: string) => {
+  return new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+};
