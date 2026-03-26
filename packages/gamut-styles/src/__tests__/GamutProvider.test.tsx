@@ -1,4 +1,3 @@
-import { setupRtl } from '@codecademy/gamut-tests';
 import createCache from '@emotion/cache';
 import { ThemeContext } from '@emotion/react';
 import { screen } from '@testing-library/react';
@@ -7,6 +6,7 @@ import { setNonce } from 'get-nonce';
 import { createEmotionCache } from '../cache';
 import { GamutProvider, useNonce } from '../GamutProvider';
 import { coreTheme as theme } from '../themes';
+import { setupRtl } from './testUtils';
 
 jest.mock('../cache', () => {
   const cacheMock = jest.fn();

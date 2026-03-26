@@ -1,7 +1,17 @@
-# Change Log
+## 17.13.1 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
 
 ## [17.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.1...@codecademy/gamut-styles@17.13.0) (2026-03-25)
 

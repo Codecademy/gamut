@@ -1,7 +1,13 @@
-# Change Log
+## 2.4.3 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
 
 ### [2.4.2](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.4.1...eslint-plugin-gamut@2.4.2) (2026-01-26)
 

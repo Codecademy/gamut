@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 
-import { setupRtl } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 
 import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
+import { setupRtl } from './testUtils';
 
 const renderView = setupRtl(AssetProvider, {});
 
