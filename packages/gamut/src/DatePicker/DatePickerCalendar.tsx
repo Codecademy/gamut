@@ -139,15 +139,15 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   return (
     <CalendarWrapper>
-      <Box p={24} pb={16}>
-        <CalendarHeader
-          displayDate={displayDate}
-          headingId={headingId}
-          locale={locale}
-          secondDisplayDate={secondMonthDate}
-          onDisplayDateChange={setDisplayDate}
-        />
-        <FlexBox>
+      <FlexBox p={24} pb={16}>
+        <Box>
+          <CalendarHeader
+            displayDate={displayDate}
+            headingId={headingId}
+            hideNextNav={isTwoMonthsVisible}
+            locale={locale}
+            onDisplayDateChange={setDisplayDate}
+          />
           <CalendarBody
             disabledDates={disabledDates}
             displayDate={displayDate}
@@ -164,26 +164,33 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onEscapeKeyPress={closeCalendar}
             onFocusedDateChange={setFocusedDate}
           />
-          <Box display={{ _: 'none', xs: 'initial' }} pl={{ _: 0, xs: 32 }}>
-            <CalendarBody
-              disabledDates={disabledDates}
-              displayDate={secondMonthDate}
-              endDate={endDate}
-              focusGridSync={focusGridSync}
-              focusedDate={focusTarget}
-              hasAdjacentMonthLeft={isTwoMonthsVisible}
-              labelledById={headingId}
-              locale={locale}
-              selectedDate={startOrSelectedDate}
-              weekStartsOn={weekStartsOn}
-              onDateSelect={onDateSelect}
-              onDisplayDateChange={setDisplayDate}
-              onEscapeKeyPress={closeCalendar}
-              onFocusedDateChange={setFocusedDate}
-            />
-          </Box>
-        </FlexBox>
-      </Box>
+        </Box>
+        <Box display={{ _: 'none', xs: 'initial' }} pl={{ _: 0, xs: 32 }}>
+          <CalendarHeader
+            displayDate={secondMonthDate}
+            headingId={headingId}
+            hideLastNav
+            locale={locale}
+            onDisplayDateChange={setDisplayDate}
+          />
+          <CalendarBody
+            disabledDates={disabledDates}
+            displayDate={secondMonthDate}
+            endDate={endDate}
+            focusGridSync={focusGridSync}
+            focusedDate={focusTarget}
+            hasAdjacentMonthLeft={isTwoMonthsVisible}
+            labelledById={headingId}
+            locale={locale}
+            selectedDate={startOrSelectedDate}
+            weekStartsOn={weekStartsOn}
+            onDateSelect={onDateSelect}
+            onDisplayDateChange={setDisplayDate}
+            onEscapeKeyPress={closeCalendar}
+            onFocusedDateChange={setFocusedDate}
+          />
+        </Box>
+      </FlexBox>
       <CalendarFooter
         clearText={translations.clearText}
         disabled={startOrSelectedDate === null && endDate === null}

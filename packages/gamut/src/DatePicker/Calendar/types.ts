@@ -13,14 +13,20 @@ export interface CalendarBaseProps {
   /** Dates that should be disabled (unselectable) */
   disabledDates?: Date[];
 }
-export interface CalendarHeaderProps
+
+export interface CalendarNavProps
   extends Omit<CalendarBaseProps, 'disabledDates'> {
-  /** Used for the currently displayed second month and year when in two-month view */
-  secondDisplayDate?: Date;
   /** Called after navigating to previous month. */
   onLastMonthClick?: () => void;
   /** Called after navigating to next month */
   onNextMonthClick?: () => void;
+}
+
+export interface CalendarHeaderProps extends CalendarNavProps {
+  hideLastNav?: boolean;
+  hideNextNav?: boolean;
+  /** Used for the currently displayed second month and year when in two-month view */
+  secondDisplayDate?: Date;
   /** id for the heading (for grid aria-labelledby) */
   headingId: string;
 }
