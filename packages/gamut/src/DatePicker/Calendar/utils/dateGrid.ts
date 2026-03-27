@@ -3,6 +3,8 @@
  * Each row has 7 cells; leading/trailing cells may be null (padding from adjacent months).
  */
 
+import type { IsoWeekday } from '../../utils/locale';
+
 const DAYS_PER_WEEK = 7;
 
 /**
@@ -17,13 +19,16 @@ const normalizeDate = (date: Date) => {
 };
 
 /**
- * Get the weekday for a date (0 = Sunday, 6 = Saturday).
- * Optionally use weekStartsOn to compute "offset" for display (e.g. Monday = 0).
+ * Number of empty cells before the 1st of the month, for a grid whose first column is
+ * `firstWeekday` (ISO: 1 = Monday … 7 = Sunday from `Intl.Locale#getWeekInfo`).
  */
-export const getDayOfWeek = (date: Date, weekStartsOn: 0 | 1 = 0) => {
-  const sundayBased = date.getDay();
-  if (weekStartsOn === 0) return sundayBased;
-  return (sundayBased + 6) % 7; // Monday = 0
+export const getWeekdayOffsetInGrid = (
+  date: Date,
+  firstWeekday: IsoWeekday
+) => {
+  const js = date.getDay();
+  const iso = js === 0 ? 7 : js;
+  return (iso - firstWeekday + 14) % 7;
 };
 
 /**
@@ -32,16 +37,16 @@ export const getDayOfWeek = (date: Date, weekStartsOn: 0 | 1 = 0) => {
  *
  * @param year - Full year (e.g. 2026)
  * @param month - Month 0-11 (0 = January)
- * @param weekStartsOn - 0 = Sunday, 1 = Monday
+ * @param firstWeekday - First day of the week for the calendar row (ISO 1–7, from `getWeekInfo().firstDay`)
  */
 export const getMonthGrid = (
   year: number,
   month: number,
-  weekStartsOn: 0 | 1 = 0
+  firstWeekday: IsoWeekday
 ) => {
   const first = new Date(year, month, 1);
   const last = new Date(year, month + 1, 0);
-  const firstDayOfWeek = getDayOfWeek(first, weekStartsOn);
+  const firstDayOfWeek = getWeekdayOffsetInGrid(first, firstWeekday);
   const daysInMonth = last.getDate();
 
   const weeks: (Date | null)[][] = [];

@@ -1,3 +1,5 @@
+import type { IsoWeekday } from '../utils/locale';
+
 export interface CalendarBaseProps {
   /** Used for the currently displayed month and year */
   displayDate: Date;
@@ -30,8 +32,11 @@ export interface CalendarBodyProps extends CalendarBaseProps {
   endDate?: Date | null;
   /** Called when a date cell is selected */
   onDateSelect: (date: Date) => void;
-  /** 0 = Sunday, 1 = Monday (default from locale if not set) */
-  weekStartsOn?: 0 | 1;
+  /**
+   * Force first column to this ISO weekday (1 = Monday … 7 = Sunday). Same scale as
+   * `Intl.Locale#getWeekInfo().firstDay`. Omit to use locale (polyfill where needed).
+   */
+  weekStartsOn?: IsoWeekday;
   /** Id of the month/year heading (aria-labelledby on grid) */
   labelledById: string;
   /** For keyboard nav: which cell has focus (roving tabindex) */

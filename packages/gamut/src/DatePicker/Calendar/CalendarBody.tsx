@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
-import { useResolvedLocale } from '../utils/locale';
+import { useIsoFirstWeekday, useResolvedLocale } from '../utils/locale';
 import { CalendarBodyProps } from './types';
 import {
   getDatesWithRow,
@@ -21,7 +21,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   disabledDates = [],
   onDateSelect,
   locale,
-  weekStartsOn = 0,
+  weekStartsOn,
   labelledById,
   focusedDate,
   onFocusedDateChange,
@@ -32,15 +32,12 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   focusGridSync,
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
+  const firstWeekday = useIsoFirstWeekday(resolvedLocale, weekStartsOn);
   const year = displayDate.getFullYear();
   const month = displayDate.getMonth();
-  const weeks = getMonthGrid(year, month, weekStartsOn);
-  const weekdayLabels = getWeekdayNames('short', resolvedLocale, weekStartsOn);
-  const weekdayFullNames = getWeekdayNames(
-    'long',
-    resolvedLocale,
-    weekStartsOn
-  );
+  const weeks = getMonthGrid(year, month, firstWeekday);
+  const weekdayLabels = getWeekdayNames('short', resolvedLocale, firstWeekday);
+  const weekdayFullNames = getWeekdayNames('long', resolvedLocale, firstWeekday);
   const buttonRefs = useRef<Map<number, HTMLElement>>(new Map());
   const tableRef = useRef<HTMLTableElement>(null);
 

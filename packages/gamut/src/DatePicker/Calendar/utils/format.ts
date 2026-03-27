@@ -1,3 +1,4 @@
+import type { IsoWeekday } from '../../utils/locale';
 import { stringifyLocale } from '../../utils/locale';
 import { isValidDate } from './validation';
 
@@ -21,28 +22,27 @@ export const formatMonthYear = (date: Date, locale: Intl.Locale) => {
 
 /**
  * Get weekday names for column headers or abbr attributes.
- * Order depends on weekStartsOn: 0 = Sunday first, 1 = Monday first.
+ * Column order follows `firstWeekday` (ISO 1 = Monday … 7 = Sunday), matching `Intl.Locale#getWeekInfo().firstDay`.
  * @param format - 'short' for abbreviated (e.g. "Su", "Mo"), 'long' for full (e.g. "Sunday", "Monday")
  */
 export const getWeekdayNames = (
   format: 'short' | 'long',
   locale: Intl.Locale,
-  weekStartsOn: 0 | 1 = 0
+  firstWeekday: IsoWeekday
 ) => {
   const formatter = new Intl.DateTimeFormat(stringifyLocale(locale), {
     weekday: format,
   });
-  // Jan 7, 2024 is a Sunday; add 0..6 days to get Sun..Sat
-  const sunday = new Date(2024, 0, 7);
-  const names = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date(sunday);
-    date.setDate(sunday.getDate() + i);
+  const monday = new Date(2024, 0, 8);
+  const namesMonToSun = Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(monday);
+    date.setDate(monday.getDate() + i);
     return formatter.format(date);
   });
-  if (weekStartsOn === 1) {
-    return [...names.slice(1), names[0]];
-  }
-  return names;
+  return Array.from({ length: 7 }, (_, j) => {
+    const iso = ((firstWeekday - 1 + j) % 7) + 1;
+    return namesMonToSun[iso - 1];
+  });
 };
 
 /**

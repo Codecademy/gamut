@@ -9,17 +9,19 @@ import {
   CalendarHeader,
   CalendarWrapper,
 } from './Calendar';
+import type { CalendarBodyProps } from './Calendar/types';
 import { useDatePicker } from './DatePickerContext';
 import {
   handleDateSelectRange,
   handleDateSelectSingle,
 } from './utils/dateSelect';
 
-export type DatePickerCalendarProps = {
+export type DatePickerCalendarProps = Pick<
+  CalendarBodyProps,
+  'weekStartsOn'
+> & {
   /** id for the dialog (for aria-controls from input). */
   dialogId: string;
-  /** Whether to start the calendar on Sunday (0) or Monday (1). Default is Sunday. */
-  weekStartsOn?: 0 | 1;
 };
 
 /**
@@ -29,7 +31,7 @@ export type DatePickerCalendarProps = {
  */
 export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   dialogId,
-  weekStartsOn = 0,
+  weekStartsOn,
 }) => {
   const context = useDatePicker();
   const generatedId = useId();
