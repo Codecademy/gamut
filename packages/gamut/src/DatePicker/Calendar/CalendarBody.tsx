@@ -10,7 +10,7 @@ import {
   isDateInRange,
   isSameDay,
 } from './utils/dateGrid';
-import { DateButton, DateCell, TableHeader } from './utils/elements';
+import { CalendarTable, DateCell, TableHeader } from './utils/elements';
 import { formatDateForAriaLabel, getWeekdayNames } from './utils/format';
 import { keyHandler } from './utils/keyHandler';
 
@@ -37,7 +37,11 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   const month = displayDate.getMonth();
   const weeks = getMonthGrid(year, month, firstWeekday);
   const weekdayLabels = getWeekdayNames('short', resolvedLocale, firstWeekday);
-  const weekdayFullNames = getWeekdayNames('long', resolvedLocale, firstWeekday);
+  const weekdayFullNames = getWeekdayNames(
+    'long',
+    resolvedLocale,
+    firstWeekday
+  );
   const buttonRefs = useRef<Map<number, HTMLElement>>(new Map());
   const tableRef = useRef<HTMLTableElement>(null);
 
@@ -132,12 +136,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   }, []);
 
   return (
-    <table
-      aria-labelledby={labelledById}
-      ref={tableRef}
-      role="grid"
-      width="100%"
-    >
+    <CalendarTable aria-labelledby={labelledById} ref={tableRef} role="grid">
       <thead>
         <tr>
           {weekdayLabels.map((label, i) => (
@@ -153,7 +152,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
             {week.map((date, colIndex) => {
               if (date === null) {
                 return (
-                  <DateCell
+                  <td
                     // fix this error
                     // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
                     key={`empty-${rowIndex}-${colIndex}`}
@@ -176,33 +175,27 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 <DateCell
                   aria-label={formatDateForAriaLabel(date, resolvedLocale)}
                   aria-selected={selected}
+                  isDisabled={disabled}
+                  isInRange={inRange}
+                  isRangeEnd={range && isSameDay(date, endDate)}
+                  isRangeStart={range && isSameDay(date, selectedDate)}
+                  isSelected={selected}
+                  isToday={today}
                   key={date.getTime()}
+                  ref={(el) => setButtonRef(date, el as HTMLElement | null)}
                   role="gridcell"
+                  tabIndex={isFocused ? 0 : -1}
+                  onClick={() => onDateSelect(date)}
+                  onFocus={() => onFocusedDateChange?.(date)}
+                  onKeyDown={(e: React.KeyboardEvent) => handleKeyDown(e, date)}
                 >
-                  <DateButton
-                    disabled={disabled}
-                    isInRange={inRange}
-                    isRangeEnd={range && isSameDay(date, endDate)}
-                    isRangeStart={range && isSameDay(date, selectedDate)}
-                    isSelected={selected}
-                    isToday={today}
-                    ref={(el) => setButtonRef(date, el as HTMLElement | null)}
-                    tabIndex={isFocused ? 0 : -1}
-                    variant="secondary"
-                    onClick={() => onDateSelect(date)}
-                    onFocus={() => onFocusedDateChange?.(date)}
-                    onKeyDown={(e: React.KeyboardEvent) =>
-                      handleKeyDown(e, date)
-                    }
-                  >
-                    {date.getDate()}
-                  </DateButton>
+                  {date.getDate()}
                 </DateCell>
               );
             })}
           </tr>
         ))}
       </tbody>
-    </table>
+    </CalendarTable>
   );
 };

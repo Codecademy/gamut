@@ -139,7 +139,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   return (
     <CalendarWrapper>
-      <Box p={24}>
+      <Box p={24} pb={16}>
         <CalendarHeader
           displayDate={displayDate}
           headingId={headingId}

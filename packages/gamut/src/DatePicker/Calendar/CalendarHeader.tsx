@@ -44,7 +44,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   };
 
   return (
-    <FlexBox alignItems="center" pb={16} width="100%">
+    <FlexBox alignItems="center" pb={8} width="100%">
       <IconButton
         aria-label={lastMonth}
         icon={MiniChevronLeftIcon}
