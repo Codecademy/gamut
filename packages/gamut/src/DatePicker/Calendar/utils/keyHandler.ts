@@ -1,5 +1,5 @@
 import type { CalendarBodyProps } from '../types';
-import { type DateWithRow,isDateDisabled } from './dateGrid';
+import { type DateWithRow, isDateDisabled } from './dateGrid';
 
 /** Calendar grid props and callbacks used by `keyHandler`, aligned with `CalendarBodyProps`. */
 export type KeyHandlerParams = Pick<

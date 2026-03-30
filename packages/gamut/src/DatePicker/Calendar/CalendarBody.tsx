@@ -152,6 +152,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
             {week.map((date, colIndex) => {
               if (date === null) {
                 return (
+                  // eslint-disable-next-line jsx-a11y/control-has-associated-label
                   <td
                     // fix this error
                     // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
