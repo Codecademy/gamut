@@ -49,9 +49,11 @@ jobs:
       - run: npx nx run-many --target=publish-build --parallel=3
 
       - name: Publish alpha packages
+        id: publish-alpha
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
-          yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
+          PREID="alpha.${SHORT_SHA}"
+          npx nx run gamut-release:alpha --preid="${PREID}" --manifest
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
@@ -59,21 +61,50 @@ jobs:
       - name: List alpha packages versions
         id: published
         continue-on-error: true
-        run: |
-          {
-            echo 'result<<EOF'
-            yarn lerna ll --parseable | grep alpha | awk -F: '{print $2"@"$3}' || true
-            echo 'EOF'
-          } >> $GITHUB_OUTPUT
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const manifestPath = 'alpha-publish-manifest.json';
+            const outputPath = 'alpha-publish-comment.md';
+            if (!fs.existsSync(manifestPath)) {
+              fs.writeFileSync(outputPath, '');
+              return;
+            }
+
+            const entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+            if (!Array.isArray(entries) || entries.length === 0) {
+              fs.writeFileSync(outputPath, '');
+              return;
+            }
+
+            const tableLines = [
+              '| Package | Version | npm | Diff |',
+              '| --- | --- | --- | --- |',
+              ...entries.map((entry) => {
+                const pkgUrl = `https://www.npmjs.com/package/${entry.name}`;
+                const versionUrl = `${pkgUrl}/v/${entry.version}`;
+                const baseVersion = entry.previousVersion || null;
+                const diffUrl = baseVersion
+                  ? `https://npmdiff.dev/${encodeURIComponent(
+                      entry.name
+                    )}/${baseVersion}/${entry.version}/`
+                  : null;
+                const npmLink = `[npm](${versionUrl})`;
+                const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
+
+                return `| \`${entry.name}\` | \`${entry.version}\` | ${npmLink} | ${diffLink} |`;
+              }),
+            ];
+            const comment = `📬 Published Alpha Packages:\n\n${tableLines.join(
+              '\n'
+            )}\n`;
+            fs.writeFileSync(outputPath, comment);
 
       - name: Comment with published alpha packages
         uses: ./.github/actions/sticky-comment
-        if: steps.published.outputs.result
+        if: ${{ !cancelled() && hashFiles('alpha-publish-comment.md') != '' }}
         with:
           github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
-          message: |
-            📬 Published Alpha Packages:
-            ```
-            ${{ steps.published.outputs.result }}
-            ```
+          message-path: alpha-publish-comment.md

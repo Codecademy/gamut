@@ -110,7 +110,6 @@ const spacingVariants = variant({
       columnGap: { _: 32, c_base: 8, c_sm: 32 },
       gap: { _: 40, c_base: 8, c_sm: 40 },
     },
-
     compact: {
       gap: 0,
       py: 0,
@@ -485,6 +484,8 @@ export const StickyHeaderColWrapper = styled.th(
       left: 0,
       zIndex: -1,
     },
+    // p: 0 removes the browser's default padding of 1px
+    p: 0,
     display: 'flex',
     flexShrink: 0,
     position: 'sticky',
