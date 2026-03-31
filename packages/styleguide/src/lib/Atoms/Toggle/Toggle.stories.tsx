@@ -80,7 +80,7 @@ export const ButtonElement: Story = {
 };
 
 export const InteractiveInputToggle: Story = {
-  // this can be removed when we enable globally in preview.ts
+  // TODO: remove parameters block when we enable interactions globally in preview.ts
   parameters: {
     interactions: {
       disable: false,
