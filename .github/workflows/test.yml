@@ -29,7 +29,7 @@ jobs:
       - name: Install Playwright (Storybook test runner)
         run: yarn playwright install chromium --with-deps
       - name: Storybook build and accessibility tests
-        run: npx nx run styleguide:storybook-test --skip-nx-cache
+        run: npx nx run styleguide:storybook-test
 
   test:
     runs-on: ubuntu-24.04
