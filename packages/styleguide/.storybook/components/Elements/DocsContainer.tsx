@@ -15,8 +15,8 @@ import {
   DocsContainer as StorybookDocsContainer,
   DocsContextProps,
   SourceContainer,
-} from '@storybook/blocks';
-import { ThemeProvider } from '@storybook/theming';
+} from '@storybook/addon-docs/blocks';
+import { ThemeProvider } from 'storybook/theming';
 import { useMemo } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import theme from '../../theming/GamutTheme';
