@@ -6,7 +6,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Figma } from '@storybook/addon-designs/blocks';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import * as React from 'react';
 
 import { StatusIndicator } from '../Elements/StatusIndicator';
