@@ -18,6 +18,27 @@ If you **extract** `gamut-cursor-plugins/` to its own Git repository, move `.cur
 
 Admins can mark **codecademy-gamut** as required and **a11y** / **themes** as optional or required per distribution group. See [Team marketplaces](https://cursor.com/docs/plugins).
 
+## CI (GitHub Actions)
+
+Workflow [`.github/workflows/cursor-plugins.yml`](../.github/workflows/cursor-plugins.yml) runs on pull requests and pushes to `main` when **Cursor-related paths** change: [`.cursor/`](../.cursor/) (monorepo rules/skills), `gamut-cursor-plugins/`, [`.cursor-plugin/`](../.cursor-plugin/), or the workflow/script. You can also run it manually via **Actions → Cursor plugins → Run workflow**. It uses Node (see [`.nvmrc`](../.nvmrc)) and runs [`.github/scripts/validate-cursor-plugins.mjs`](../.github/scripts/validate-cursor-plugins.mjs); the job **fails** (red PR check) if validation errors are reported.
+
+Checks:
+
+- Root [`.cursor-plugin/marketplace.json`](../.cursor-plugin/marketplace.json) is valid JSON with `name`, `owner.name`, and a non-empty `plugins` list.
+- Each plugin `source` directory exists and contains `.cursor-plugin/plugin.json` whose `name` matches the marketplace entry and whose `version` is semver.
+- Each plugin has `rules/*.mdc` and/or `skills/*/SKILL.md` with YAML frontmatter including `description` (and `name` for skills).
+- Monorepo [`.cursor/rules/*.mdc`](../.cursor/rules) and [`.cursor/skills/*/SKILL.md`](../.cursor/skills) use the same frontmatter requirements when those paths exist.
+- **Pull requests only** (second workflow step, `if: github.event_name == 'pull_request'`): if any file under a marketplace plugin `source` tree (e.g. `gamut-cursor-plugins/gamut-core/`) differs from the PR base commit, that plugin’s `.cursor-plugin/plugin.json` **version** must be **strictly greater** than on the base (semver). New plugins with no prior `plugin.json` on the base are exempt from the comparison. The layout step does not run this check; it is `node …/validate-cursor-plugins.mjs --pr-version-bumps`.
+
+It does **not** call Cursor’s marketplace API, install plugins in Cursor, or lint Markdown body content beyond those structural checks.
+
+## Human tasks (not automated)
+
+- **Public marketplace**: Submit or update listings per [Publish to Cursor Marketplace](https://cursor.com/marketplace/publish) (open source and review requirements apply).
+- **Update review**: Changes to plugins on the public marketplace are **manually reviewed** before users receive updates; plan for latency. See [Marketplace security](https://cursor.com/help/security-and-privacy/marketplace-security.md).
+- **Team marketplace**: Import the repo (or fork) in the Cursor dashboard (**Settings → Plugins → Team Marketplaces**), assign required vs optional plugins per group, and confirm installs on a developer machine (see §5 below).
+- **Version bumps**: When you change rules, skills, or `plugin.json` metadata in a meaningful way, bump semver in each affected `gamut-*/.cursor-plugin/plugin.json` so teams can tell updates apart.
+
 ## Testing instructions
 
 Use these steps whenever you change plugin content and need to confirm Cursor loads rules and skills correctly. See [Creating plugins — Test plugins locally](https://cursor.com/docs/plugins#test-plugins-locally).
@@ -79,8 +100,8 @@ With the **Gamut** repo open, `.cursor/skills/gamut-library-authoring/` and `.cu
 
 ## Publishing
 
-- [Publish to Cursor Marketplace](https://cursor.com/marketplace/publish) (public; open source and review required).
-- Or attach this repository as a **team marketplace** in the Cursor dashboard.
+- [Publish to Cursor Marketplace](https://cursor.com/marketplace/publish) (public; open source and review required)—a human step; CI does not publish.
+- Or attach this repository as a **team marketplace** in the Cursor dashboard (also configured outside CI).
 
 ## Versioning
 
