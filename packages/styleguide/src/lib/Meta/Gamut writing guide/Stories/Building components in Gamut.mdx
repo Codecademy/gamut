@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Building components in Gamut',
+  title: 'Building components in Gamut',
+  subtitle:
+    'Repo layout, TypeScript, React, and Storybook conventions for contributors—mirrors Cursor skill and rules for agents.',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Stories/Building components in Gamut" />
+
+<AboutHeader {...parameters} />
+
+This page summarizes how we build and document components in the Gamut monorepo. It aligns with the **gamut-library-authoring** Cursor skill and project rules **gamut-library** / **gamut-component-building** (under `.cursor/rules/` and `.cursor/skills/gamut-library-authoring/` in the repo).
+
+## Packages and placement
+
+- **UI primitives** live in `packages/gamut` (and shared tokens in `packages/gamut-styles`).
+- **Page-level compositions** belong in `packages/gamut-patterns`.
+- **Icons and illustrations** use `packages/gamut-icons` and `packages/gamut-illustrations`.
+
+Prefer extending an existing component before adding an overlapping primitive.
+
+## Folder and export shape (`packages/gamut`)
+
+- One **PascalCase** directory per component or family, with `index.tsx` or an `index.ts` barrel.
+- Tests: `__tests__/<Component>.test.tsx` with `setupRtl` from `gamut-tests` (see <LinkTo id="Meta/Contributing">Contributing</LinkTo>).
+- Register public exports in `packages/gamut/src/index.tsx`; use `export type { … }` when only types should be public.
+- Large components split helpers into `shared/`, `elements/`, or domain subfolders (see `Button/`, `Form/`, `BarChart/`).
+
+## TypeScript and variance
+
+Derive props from implementation instead of duplicating shapes:
+
+- **`StyleProps<typeof …>`** after `variance.compose` or `variant`.
+- **`ComponentProps<typeof StyledX>`** for Emotion styled roots.
+- **Discriminated unions** and **`never`** for variant-specific or mutually exclusive props.
+
+Exemplars: `Tag/types.tsx`, `Badge/index.tsx`, `Button/shared/types.ts`, `Form/elements/Form.tsx`, `Anchor/index.tsx`.
+
+## React
+
+Match neighboring files (`React.FC` is common). Use `forwardRef` when refs matter. Follow Rules of Hooks, clean up effects, and favor composition over huge prop lists. Prefer semantic HTML and documented a11y patterns (see <LinkTo id="Meta/Best practices">Best practices</LinkTo> where applicable).
+
+## Storybook (`packages/styleguide`)
+
+- Add `ComponentName.stories.tsx` and `ComponentName.mdx` under `packages/styleguide/src/lib/<Atoms|Molecules|…>/<Component>/`.
+- Use repo snippets: **`component-story`**, **`component-doc`**, **`toc-story`** (`.vscode/stories.code-snippets`).
+- For narrative structure and Canvas/Controls patterns, see <LinkTo id="Meta/Stories">Stories</LinkTo> and the **Component story documentation** / **Component code examples** pages in this section.
+
+## Further reading
+
+- <LinkTo id="Meta/Contributing">Contributing</LinkTo> — props documentation and PR expectations.
+- Published Storybook: [gamut.codecademy.com](https://gamut.codecademy.com/).
