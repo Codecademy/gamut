@@ -9,8 +9,8 @@ import {
   DataScienceIcon,
   TerminalIcon,
 } from '@codecademy/gamut-icons';
-import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from 'storybook/actions';
 
 const meta: Meta<typeof BarChart> = {
   component: BarChart,
