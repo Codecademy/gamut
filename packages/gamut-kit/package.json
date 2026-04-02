@@ -4,12 +4,12 @@
   "version": "0.6.592",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut": "68.2.2",
+    "@codecademy/gamut": "1.1.0",
     "@codecademy/gamut-icons": "9.57.2",
     "@codecademy/gamut-illustrations": "0.58.9",
     "@codecademy/gamut-patterns": "0.10.28",
-    "@codecademy/gamut-styles": "17.13.1",
-    "@codecademy/gamut-tests": "5.3.3",
+    "@codecademy/gamut-styles": "1.1.3",
+    "@codecademy/gamut-tests": "1.1.0",
     "@codecademy/variance": "0.26.1",
     "component-test-setup": "^0.3.1"
   },
