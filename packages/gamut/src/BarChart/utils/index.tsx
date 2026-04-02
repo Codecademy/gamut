@@ -1,0 +1,178 @@
+import {
+  BarChartTranslations,
+  getDefaultSingleValueBarSummary,
+  getDefaultStackedBarSummary,
+} from '../shared/translations';
+import {
+  BarChartUnit,
+  BarProps,
+  MaxScaleValue,
+  ScaleTickCount,
+} from '../shared/types';
+
+export const calculatePercent = ({
+  value,
+  total,
+}: {
+  value: number;
+  total: number;
+}) => {
+  return (value / total) * 100;
+};
+
+export const calculateBarWidth = ({
+  value,
+  maxScaleValue,
+}: {
+  value: number;
+  maxScaleValue: MaxScaleValue;
+}) => {
+  const adjustedValue = Math.max(0, Math.min(maxScaleValue, value));
+  return Math.floor(
+    calculatePercent({ value: adjustedValue, total: maxScaleValue })
+  );
+};
+
+/**
+ * Formats a numeric value with optional unit for bar chart labels.
+ */
+export const formatValueWithUnit = ({
+  value,
+  unit,
+  locale = 'en',
+}: {
+  value: number;
+  unit: string;
+  locale?: string;
+}): string => {
+  const formatted = Intl.NumberFormat(locale).format(value);
+  return unit ? `${formatted} ${unit}` : formatted;
+};
+
+export const formatNumberUnitCompact = ({
+  num,
+  locale = 'en',
+}: {
+  num: number;
+  locale?: string;
+}) =>
+  Intl.NumberFormat(locale, {
+    notation: 'compact',
+    compactDisplay: 'short',
+  }).format(num);
+
+/**
+ * Sort bars based on sortBy and order configuration
+ */
+export const sortBars = <T extends BarProps>({
+  bars,
+  sortBy,
+  order,
+}: {
+  bars: T[];
+  sortBy: 'label' | 'value' | 'none';
+  order: 'ascending' | 'descending';
+}): T[] => {
+  if (sortBy === 'none' || !sortBy) {
+    return bars;
+  }
+
+  const sorted = [...bars].sort((a, b) => {
+    if (sortBy === 'label') {
+      return a.categoryLabel.localeCompare(b.categoryLabel);
+    }
+    const aValue = a.seriesTwoValue ?? a.seriesOneValue;
+    const bValue = b.seriesTwoValue ?? b.seriesOneValue;
+    return aValue - bValue;
+  });
+
+  return order === 'descending' ? sorted.reverse() : sorted;
+};
+
+/**
+ * Returns the accessibility summary for a bar row. The summary is used as aria-label on the row's link/button when interactive, or as screenreader-only text when not. Summaries come from stackedBarSummary (stacked rows) or singleValueBarSummary (single-value rows), with default implementations when not overridden.
+ */
+export const getValuesSummary = ({
+  seriesOneValue,
+  seriesTwoValue,
+  unit,
+  categoryLabel,
+  translations,
+}: Pick<BarProps, 'seriesOneValue' | 'seriesTwoValue' | 'categoryLabel'> &
+  Required<Pick<BarChartUnit, 'unit'>> & {
+    translations: BarChartTranslations;
+  }): string => {
+  const { locale } = translations;
+  const singleValueCtx = {
+    value: seriesOneValue,
+    unit,
+    locale,
+    categoryLabel,
+  };
+
+  if (seriesTwoValue !== undefined) {
+    const gained = seriesTwoValue - seriesOneValue;
+    const stackedCtx = {
+      categoryLabel,
+      seriesOneValue,
+      seriesTwoValue,
+      unit,
+      locale,
+      gained,
+    };
+    return (
+      translations.accessibility.stackedBarSummary ??
+      getDefaultStackedBarSummary
+    )(stackedCtx);
+  }
+
+  return (
+    translations.accessibility.singleValueBarSummary ??
+    getDefaultSingleValueBarSummary
+  )(singleValueCtx);
+};
+
+/**
+ * Calculates the value for a given label position (scale min is always 0).
+ */
+export const getLabel = ({
+  tickCount,
+  labelIndex,
+  maxScaleValue,
+}: {
+  tickCount: ScaleTickCount;
+  labelIndex: number;
+  maxScaleValue: MaxScaleValue;
+}): number => {
+  if (tickCount <= 1) return maxScaleValue;
+  const incrementalDecimal = labelIndex / (tickCount - 1);
+  return Math.floor(incrementalDecimal * maxScaleValue);
+};
+
+/**
+ * Calculates the percentage position for a given value within 0–maxScaleValue range.
+ * Returns a value between 0 and 100 representing the position percentage.
+ */
+export const calculatePositionPercent = ({
+  value,
+  maxScaleValue,
+}: {
+  value: number;
+  maxScaleValue: MaxScaleValue;
+}): number => {
+  if (maxScaleValue === 0) return 0;
+  return (value / maxScaleValue) * 100;
+};
+
+/**
+ * Generates a stable key for a bar row (for React list keys).
+ */
+export const getBarRowKey = (
+  bar: Pick<BarProps, 'categoryLabel' | 'seriesOneValue' | 'seriesTwoValue'>,
+  index: number
+): string =>
+  bar.categoryLabel && bar.seriesOneValue
+    ? `${bar.categoryLabel}-${bar.seriesOneValue}-${
+        bar.seriesTwoValue ?? ''
+      }-${index}`
+    : String(index);

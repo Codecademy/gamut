@@ -113,7 +113,6 @@ export const TableRow: DataRow = ({
           fill,
           type,
         };
-
         if (type === 'control') {
           const controlIndex = controlIndices.get(index) ?? 0;
 
