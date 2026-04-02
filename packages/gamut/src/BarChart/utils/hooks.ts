@@ -233,7 +233,7 @@ const useMeasureWidth = ({
     }
 
     const element = ref.current;
-    const width = element.getBoundingClientRect().width;
+    const { width } = element.getBoundingClientRect();
 
     if (width > 0) {
       onMeasure(width);
