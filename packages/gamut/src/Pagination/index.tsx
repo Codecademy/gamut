@@ -2,7 +2,7 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Text } from '..';
@@ -73,7 +73,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   );
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
-  const isRtl = useDirectionIsRtl();
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isRtl = useDirectionIsRtl(rootRef);
 
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||
@@ -135,6 +136,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <FlexBox
+      ref={rootRef}
       aria-label={
         navigation
           ? `Browse Content By Page, total pages ${totalPages}`
