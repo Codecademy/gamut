@@ -2,39 +2,63 @@
 
 exports[`parseSelectOptions creates an option list 1`] = `
 [
-  <option
-    data-testid="test-val"
-    label="Value"
-    value="val"
-  >
-    Value
-  </option>,
-  <option
-    data-testid="test-val2"
-    label="Value 2"
-    value="val2"
-  >
-    Value 2
-  </option>,
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": "test-val",
+    "props": {
+      "children": "Value",
+      "data-testid": "test-val",
+      "label": "Value",
+      "value": "val",
+    },
+    "type": "option",
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": "test-val2",
+    "props": {
+      "children": "Value 2",
+      "data-testid": "test-val2",
+      "label": "Value 2",
+      "value": "val2",
+    },
+    "type": "option",
+  },
 ]
 `;
 
 exports[`parseSelectOptions creates an option list 2`] = `
 [
-  <option
-    data-testid="test-val"
-    label="val"
-    value="val"
-  >
-    val
-  </option>,
-  <option
-    data-testid="test-val2"
-    label="val2"
-    value="val2"
-  >
-    val2
-  </option>,
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": "test-val",
+    "props": {
+      "children": "val",
+      "data-testid": "test-val",
+      "label": "val",
+      "value": "val",
+    },
+    "type": "option",
+  },
+  {
+    "$$typeof": Symbol(react.transitional.element),
+    "_owner": null,
+    "_store": {},
+    "key": "test-val2",
+    "props": {
+      "children": "val2",
+      "data-testid": "test-val2",
+      "label": "val2",
+      "value": "val2",
+    },
+    "type": "option",
+  },
 ]
 `;
 
