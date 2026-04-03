@@ -5,7 +5,7 @@ import {
 import { useMemo, useState } from 'react';
 import * as React from 'react';
 
-import { HiddenText } from '..';
+import { Text } from '..';
 import { FlexBox } from '../Box';
 import {
   AnimatedFadeButton,
@@ -14,6 +14,7 @@ import {
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 import { hideOnMobile } from './styles';
+import { useDirectionIsRtl } from '@codecademy/gamut-styles';
 import {
   getBackPageNumber,
   getForwardPageNumber,
@@ -72,6 +73,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   );
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
+  const isRtl = useDirectionIsRtl();
 
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||
@@ -113,9 +115,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         )
       );
       setLiveText(`Viewing navigation for pages ${shownPageArray[0]} through
-          ${
-            shownPageArray[shownPageArray.length - 1]
-          }, current page ${currentPage}`);
+          ${shownPageArray[shownPageArray.length - 1]
+        }, current page ${currentPage}`);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [changeShownPages, totalPages]
@@ -146,12 +147,12 @@ export const Pagination: React.FC<PaginationProps> = ({
         sm: `${showSkipToButtons ? getMinWidth({ chapterSize }) : 'initial'}`,
       }}
     >
-      <HiddenText aria-live="polite">{liveText}</HiddenText>
+      <Text screenreader aria-live="polite">{liveText}</Text>
       <AnimatedFadeButton
         aria-label={`Navigate back to page ${currentPage - 1}`}
         buttonType={variant}
         href={navigation}
-        icon={MiniChevronLeftIcon}
+        icon={isRtl ? MiniChevronRightIcon : MiniChevronLeftIcon}
         showButton={currentPage === 1 ? 'hidden' : 'shown'}
         onClick={() => changeHandler(currentPage - 1)}
       />
@@ -230,7 +231,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         aria-label={`Navigate forward to page ${currentPage + 1}`}
         buttonType={variant}
         href={navigation}
-        icon={MiniChevronRightIcon}
+        icon={isRtl ? MiniChevronLeftIcon : MiniChevronRightIcon}
         showButton={currentPage === totalPages ? 'hidden' : 'shown'}
         onClick={() => changeHandler(currentPage + 1)}
       />
