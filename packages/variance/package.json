@@ -5,7 +5,7 @@
   "author": "codecaaron <aaron@codecademy.com>",
   "dependencies": {
     "csstype": "^3.0.7",
-    "lodash": "^4.17.23"
+    "lodash": "^4.18.1"
   },
   "files": [
     "dist"
