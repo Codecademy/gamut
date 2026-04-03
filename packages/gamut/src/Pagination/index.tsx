@@ -2,6 +2,7 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
+import { useDirectionIsRtl } from '@codecademy/gamut-styles';
 import { useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
@@ -14,7 +15,6 @@ import {
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 import { hideOnMobile } from './styles';
-import { useDirectionIsRtl } from '@codecademy/gamut-styles';
 import {
   getBackPageNumber,
   getForwardPageNumber,
@@ -116,8 +116,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         )
       );
       setLiveText(`Viewing navigation for pages ${shownPageArray[0]} through
-          ${shownPageArray[shownPageArray.length - 1]
-        }, current page ${currentPage}`);
+          ${
+            shownPageArray[shownPageArray.length - 1]
+          }, current page ${currentPage}`);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [changeShownPages, totalPages]
@@ -136,7 +137,6 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <FlexBox
-      ref={rootRef}
       aria-label={
         navigation
           ? `Browse Content By Page, total pages ${totalPages}`
@@ -148,8 +148,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         _: 'initial',
         sm: `${showSkipToButtons ? getMinWidth({ chapterSize }) : 'initial'}`,
       }}
+      ref={rootRef}
     >
-      <Text screenreader aria-live="polite">{liveText}</Text>
+      <Text aria-live="polite" screenreader>
+        {liveText}
+      </Text>
       <AnimatedFadeButton
         aria-label={`Navigate back to page ${currentPage - 1}`}
         buttonType={variant}
