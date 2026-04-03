@@ -99,7 +99,7 @@ export const Table: Story = {
 export const Plain: Story = {
   args: { spacing: 'condensed', variant: 'plain' },
   render: (args) => (
-    <Box bg="red" width={1}>
+    <Box width={1}>
       <ListExample {...args} />
     </Box>
   ),

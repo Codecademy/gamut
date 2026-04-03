@@ -17,9 +17,7 @@
   "homepage": "https://github.com/Codecademy/gamut#readme",
   "license": "MIT",
   "main": "lib",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "repository": "Codecademy/gamut.git",
   "scripts": {
     "test": "jest"

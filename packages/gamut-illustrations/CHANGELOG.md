@@ -1,7 +1,21 @@
-# Change Log
+## 0.58.9 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
+### [0.58.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.58.7...@codecademy/gamut-illustrations@0.58.8) (2026-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
 
 ### [0.58.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.58.6...@codecademy/gamut-illustrations@0.58.7) (2026-03-17)
 

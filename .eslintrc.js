@@ -60,6 +60,7 @@ module.exports = {
             allowObjectTypes: 'always',
           },
         ],
+        'no-void': ['error', { allowAsStatement: true }],
         // These rules could be useful, but we haven't gotten around to enabling them here
         // See WEB-2 for general tracking.
         '@typescript-eslint/no-explicit-any': 'off',

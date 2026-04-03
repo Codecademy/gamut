@@ -1,0 +1,418 @@
+import { Colors, isColorAlias, useColorModes } from '@codecademy/gamut-styles';
+import { getContrast } from 'polished';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+
+import { SelectOptions } from '../../Form/inputs/Select';
+import {
+  BarChartContext,
+  BarChartContextProps,
+  defaultStyleConfig,
+} from '../BarChartProvider';
+import { BarChartTranslations } from '../shared/translations';
+import {
+  BarChartStyles,
+  BarProps,
+  InferBarType,
+  MaxScaleValue,
+  ScaleTickCount,
+} from '../shared/types';
+import { calculatePositionPercent, getLabel, sortBars } from './index';
+
+export interface LabelPosition {
+  value: number;
+  positionPercent: number;
+}
+
+/**
+ * Hook that calculates label positions for a given maxScaleValue and tickCount (scale min is always 0).
+ * Returns an array of { value, positionPercent } objects.
+ */
+export const useLabelPositions = ({
+  maxScaleValue,
+  tickCount,
+}: {
+  maxScaleValue: MaxScaleValue;
+  tickCount: ScaleTickCount;
+}): LabelPosition[] => {
+  return useMemo(
+    () =>
+      Array.from({ length: tickCount }, (_, i) => {
+        const value = getLabel({
+          labelIndex: i,
+          maxScaleValue,
+          tickCount,
+        });
+        const positionPercent = calculatePositionPercent({
+          value,
+          maxScaleValue,
+        });
+        return { value, positionPercent };
+      }),
+    [maxScaleValue, tickCount]
+  );
+};
+
+export const useBarChartContext = (): BarChartContextProps => {
+  return useContext(BarChartContext);
+};
+
+export interface UseBarChartOptions {
+  maxScaleValue: MaxScaleValue;
+  scaleInterval?: number;
+  unit?: string;
+  styleConfig?: BarChartStyles;
+  animate?: boolean;
+  barCount?: number;
+  translations: BarChartTranslations;
+}
+
+export const useBarChart = ({
+  maxScaleValue,
+  scaleInterval,
+  unit = '',
+  styleConfig,
+  animate = false,
+  barCount = 0,
+  translations,
+}: UseBarChartOptions) => {
+  const [widestCategoryLabelWidth, setWidestCategoryLabelWidthState] = useState<
+    number | null
+  >(null);
+  const [widestTotalValueLabelWidth, setWidestTotalValueLabelWidthState] =
+    useState<number | null>(null);
+  const [isMeasuring, setIsMeasuring] = useState(true);
+  const measuredCountRef = useRef(0);
+  const maxCategoryLabelWidthRef = useRef(0);
+  const maxTotalValueLabelWidthRef = useRef(0);
+
+  const setWidestCategoryLabelWidth = useCallback(
+    (width: number) => {
+      if (width > maxCategoryLabelWidthRef.current) {
+        maxCategoryLabelWidthRef.current = width;
+        setWidestCategoryLabelWidthState(width);
+      }
+
+      measuredCountRef.current += 1;
+      // Only stop measuring when we've received measurements from all bars
+      if (measuredCountRef.current >= barCount * 2 && barCount > 0) {
+        setIsMeasuring(false);
+      }
+    },
+    [barCount]
+  );
+
+  const setWidestTotalValueLabelWidth = useCallback(
+    (width: number) => {
+      if (width > maxTotalValueLabelWidthRef.current) {
+        maxTotalValueLabelWidthRef.current = width;
+        setWidestTotalValueLabelWidthState(width);
+      }
+
+      measuredCountRef.current += 1;
+      // Only stop measuring when we've received measurements from all bars (category + total value)
+      if (measuredCountRef.current >= barCount * 2 && barCount > 0) {
+        setIsMeasuring(false);
+      }
+    },
+    [barCount]
+  );
+
+  useEffect(() => {
+    if (barCount > 0) {
+      measuredCountRef.current = 0;
+      maxCategoryLabelWidthRef.current = 0;
+      maxTotalValueLabelWidthRef.current = 0;
+      setIsMeasuring(true);
+    }
+  }, [barCount]);
+
+  return useMemo(
+    () => ({
+      maxScaleValue,
+      scaleInterval: scaleInterval ?? Math.ceil(maxScaleValue / 5),
+      unit,
+      styleConfig: {
+        ...defaultStyleConfig,
+        ...styleConfig,
+      },
+      animate,
+      widestCategoryLabelWidth,
+      setWidestCategoryLabelWidth,
+      widestTotalValueLabelWidth,
+      setWidestTotalValueLabelWidth,
+      isMeasuring,
+      translations,
+    }),
+    [
+      maxScaleValue,
+      scaleInterval,
+      unit,
+      styleConfig,
+      animate,
+      widestCategoryLabelWidth,
+      setWidestCategoryLabelWidth,
+      widestTotalValueLabelWidth,
+      setWidestTotalValueLabelWidth,
+      isMeasuring,
+      translations,
+    ]
+  );
+};
+
+/**
+ * Hook that returns a function to get the highest contrast border color
+ * (white or navy-900) for a given background color.
+ *
+ * Similar to the Background component, this resolves color aliases and
+ * compares contrast ratios to determine the best border color.
+ *
+ * @returns A function that takes a background color and returns either 'white' or 'navy-900'
+ */
+export const useBarBorderColor = () => {
+  const [, activeColors, , getColorValue] = useColorModes();
+
+  const getBorderColor = useCallback(
+    (bg: Colors): 'white' | 'navy-900' => {
+      /** If a color alias was used then look up the true color key from the active mode */
+      const trueColor = isColorAlias(activeColors, bg) ? activeColors[bg] : bg;
+
+      const backgroundColor = getColorValue(trueColor);
+      const whiteContrast = getContrast(
+        getColorValue('white'),
+        backgroundColor
+      );
+      const navyContrast = getContrast(
+        getColorValue('navy-900'),
+        backgroundColor
+      );
+
+      return whiteContrast > navyContrast ? 'white' : 'navy-900';
+    },
+    [activeColors, getColorValue]
+  );
+
+  return getBorderColor;
+};
+
+/**
+ * Generic hook for measuring element width and reporting to a callback.
+ * Used internally by useMeasureCategoryLabelWidth and useMeasureTotalValueLabelWidth.
+ */
+const useMeasureWidth = ({
+  ref,
+  onMeasure,
+  isMeasuring,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+  onMeasure: (width: number) => void;
+  isMeasuring: boolean;
+}): void => {
+  const hasMeasuredRef = useRef(false);
+
+  // Reset measurement flag when a new measurement cycle starts
+  const prevIsMeasuringRef = useRef(isMeasuring);
+  useEffect(() => {
+    if (isMeasuring && !prevIsMeasuringRef.current) {
+      // New measurement cycle started
+      hasMeasuredRef.current = false;
+    }
+    prevIsMeasuringRef.current = isMeasuring;
+  }, [isMeasuring]);
+
+  useLayoutEffect(() => {
+    if (!ref.current || hasMeasuredRef.current || !isMeasuring) {
+      return;
+    }
+
+    const element = ref.current;
+    const { width } = element.getBoundingClientRect();
+
+    if (width > 0) {
+      onMeasure(width);
+      hasMeasuredRef.current = true;
+    }
+  }, [ref, onMeasure, isMeasuring]);
+};
+
+export const useMeasureCategoryLabelWidth = ({
+  ref,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}): void => {
+  const { setWidestCategoryLabelWidth, isMeasuring } = useBarChartContext();
+  useMeasureWidth({
+    ref,
+    onMeasure: setWidestCategoryLabelWidth,
+    isMeasuring,
+  });
+};
+
+export const useMeasureTotalValueLabelWidth = ({
+  ref,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+}): void => {
+  const { setWidestTotalValueLabelWidth, isMeasuring } = useBarChartContext();
+  useMeasureWidth({
+    ref,
+    onMeasure: setWidestTotalValueLabelWidth,
+    isMeasuring,
+  });
+};
+
+export interface CustomSortOption<TBar extends BarProps = BarProps> {
+  label: string;
+  value: string;
+  sortFn: (bars: TBar[]) => TBar[];
+}
+
+export interface UseBarChartSortOptions<
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+> {
+  bars: TBarValues;
+  sortFns?: (
+    | 'alphabetically'
+    | 'numerically'
+    | 'none'
+    | CustomSortOption<InferBarType<TBarValues>>
+  )[];
+  translations: BarChartTranslations;
+}
+
+export interface UseBarChartSortReturn<
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+> {
+  sortedBars: TBarValues;
+  sortValue: string;
+  onSortChange: (value: string) => void;
+  selectProps: {
+    options: SelectOptions;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  } | null;
+}
+
+/**
+ * Hook that manages bar sorting state and provides memoized sorted bars.
+ * Supports predefined sort options (via string literals) and custom sort functions.
+ * Only returns selectProps if sortFns is provided.
+ */
+export const useBarChartSort = <
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+>({
+  bars,
+  sortFns,
+  translations,
+}: UseBarChartSortOptions<TBarValues>): UseBarChartSortReturn<TBarValues> => {
+  type TBar = InferBarType<TBarValues>;
+  // Build options map and custom sort map from sortFns array
+  const { allSortOptions, customSortMap, defaultSortValue } = useMemo(() => {
+    if (!sortFns || sortFns.length === 0) {
+      return {
+        allSortOptions: null,
+        customSortMap: new Map<string, (bars: TBar[]) => TBar[]>(),
+        defaultSortValue: 'none',
+      };
+    }
+
+    const options: Record<string, string> = {};
+    const customMap = new Map<string, (bars: TBar[]) => TBar[]>();
+    const availableValues: string[] = [];
+
+    sortFns.forEach((item) => {
+      if (typeof item === 'string') {
+        if (item === 'alphabetically') {
+          options['label-asc'] = translations.sortOptions.labelAsc;
+          options['label-desc'] = translations.sortOptions.labelDesc;
+          availableValues.push('label-asc', 'label-desc');
+        } else if (item === 'numerically') {
+          options['value-asc'] = translations.sortOptions.valueAsc;
+          options['value-desc'] = translations.sortOptions.valueDesc;
+          availableValues.push('value-asc', 'value-desc');
+        } else if (item === 'none') {
+          options.none = translations.sortOptions.none;
+          availableValues.push('none');
+        }
+      } else {
+        // CustomSortOption
+        options[item.value] = item.label;
+        customMap.set(item.value, item.sortFn);
+        availableValues.push(item.value);
+      }
+    });
+
+    // Default to "none" if available, otherwise first option
+    const defaultVal = availableValues.includes('none')
+      ? 'none'
+      : availableValues[0] || 'none';
+
+    return {
+      allSortOptions: options,
+      customSortMap: customMap,
+      defaultSortValue: defaultVal,
+    };
+  }, [sortFns, translations]);
+
+  const [sortValue, setSortValue] = useState<string>(defaultSortValue);
+
+  // Update sortValue when defaultSortValue changes (e.g., when sortFns changes)
+  useEffect(() => {
+    setSortValue(defaultSortValue);
+  }, [defaultSortValue]);
+
+  const sortedBars = useMemo(() => {
+    // Check if current selection is a custom sort function
+    const customSortFn = customSortMap.get(sortValue);
+    if (customSortFn) {
+      return customSortFn([...bars] as TBar[]) as unknown as TBarValues;
+    }
+
+    // Otherwise use predefined sort options
+    if (sortValue === 'none') {
+      return bars;
+    }
+
+    const [sortBy, order] = sortValue.split('-');
+    const sortByValue = sortBy as 'label' | 'value';
+    const orderValue = order === 'desc' ? 'descending' : 'ascending';
+
+    return sortBars({
+      bars: bars as TBar[],
+      sortBy: sortByValue,
+      order: orderValue,
+    }) as unknown as TBarValues;
+  }, [bars, sortValue, customSortMap]);
+
+  const onSortChange = useCallback((value: string) => {
+    setSortValue(value);
+  }, []);
+
+  const selectProps = useMemo(() => {
+    if (!allSortOptions) {
+      return null;
+    }
+
+    return {
+      options: allSortOptions,
+      value: sortValue,
+      onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
+        onSortChange(e.target.value);
+      },
+    };
+  }, [sortValue, onSortChange, allSortOptions]);
+
+  return {
+    sortedBars,
+    sortValue,
+    onSortChange,
+    selectProps,
+  };
+};

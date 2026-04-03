@@ -23,7 +23,7 @@
     "default": ["{projectRoot}/**/*"],
     "production": [
       "default",
-      "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/**/__tests__/**/*",
       "!{projectRoot}/**/__fixtures__/**/*",
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
@@ -65,6 +65,28 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudAccessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ=",
   "parallel": 3,
-  "useInferencePlugins": false,
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true,
+      "projectsAffectedByDependencyUpdates": "auto"
+    }
+  },
+  "analytics": false,
+  "release": {
+    "projects": ["packages/*", "!packages/styleguide", "!packages/macros"],
+    "projectsRelationship": "independent",
+    "versionPlans": true,
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "createRelease": "github"
+      }
+    },
+    "git": {
+      "commit": true,
+      "commitMessage": "chore(release): publish",
+      "tag": true
+    }
+  }
 }

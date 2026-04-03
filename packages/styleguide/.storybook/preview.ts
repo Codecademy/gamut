@@ -4,9 +4,9 @@ import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints, css } from '@codecademy/gamut-styles';
 import { DocsContainer } from './components/Elements/DocsContainer';
-import { CodeOrSourceMdx, HeadersMdx } from '@storybook/blocks';
-import { components as htmlComponents } from '@storybook/components';
-import { styled } from '@storybook/theming';
+import { CodeOrSourceMdx, HeadersMdx } from '@storybook/addon-docs/blocks';
+import { components as htmlComponents } from 'storybook/internal/components';
+import { styled } from 'storybook/theming';
 import { Link } from './components/Elements/Markdown';
 
 const WrappedPre = styled(htmlComponents.pre)(
@@ -26,6 +26,12 @@ const mdxComponents = {
 
 const preview: Preview = {
   parameters: {
+    a11y: {
+      test: 'todo',
+    },
+    interactions: {
+      disable: true,
+    },
     backgrounds: {
       disable: true,
     },
@@ -45,15 +51,35 @@ const preview: Preview = {
           'Meta',
           [
             'About',
-            'Best Practices',
+            'Brand',
+            'Best practices',
             'Contributing',
+            'Deep Controls add-on',
             'ESLint rules',
             'FAQs',
             'Logical and physical CSS properties',
             'Stories',
             'Brand',
             'Installation',
-            'Usage Guide',
+            'Stories',
+            'Usage guide',
+            'Gamut writing guide',
+            [
+              'About',
+              'General principles',
+              'Documentation in code',
+              'Formatting',
+              'Language and grammar',
+              'Linking',
+              'Referencing code',
+              'Stories',
+              [
+                'About',
+                'About pages',
+                'Component story documentation',
+                'Component code examples',
+              ],
+            ],
             'MCP',
           ],
           'Foundations',
@@ -85,12 +111,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      defaultViewport: 'responsive',
-      viewports: {
-        responsive: {
-          name: 'Responsive',
-          type: 'desktop',
-        },
+      options: {
         xs: {
           name: `XS - ${breakpoints.xs}`,
           styles: {
@@ -134,6 +155,7 @@ const preview: Preview = {
       },
     },
   },
+  tags: ['autodocs'],
 };
 
 export const globalTypes = {
@@ -145,8 +167,8 @@ export const globalTypes = {
       icon: 'circlehollow',
       // Array of plain string values or MenuItem shape (see below)
       items: [
-        { value: 'light', icon: 'circlehollow', title: 'light' },
-        { value: 'dark', icon: 'circle', title: 'dark' },
+        { value: 'light', icon: 'circlehollow', title: 'Light' },
+        { value: 'dark', icon: 'circle', title: 'Dark' },
       ],
       // Property that specifies if the name of the item will be displayed
       showName: true,

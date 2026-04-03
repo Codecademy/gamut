@@ -3,8 +3,9 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 
 interface ImageWrapperProps {
-  src: string;
   alt: string;
+  height: number | string;
+  src: string;
 }
 
 const StyledImage = styled.img`
@@ -15,12 +16,13 @@ const StyledImage = styled.img`
 export const ImageWrapper: React.FC<ImageWrapperProps & BoxProps> = ({
   src,
   alt,
+  height = '216px',
   ...props
 }) => {
   return (
     <Box
       width={'100%'}
-      height="216px"
+      height={height}
       display="flex"
       justifyContent={'center'}
       alignItems="center"

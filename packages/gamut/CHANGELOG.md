@@ -1,7 +1,44 @@
-# Change Log
+## 68.2.2 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.9
+- Updated gamut-patterns to 0.10.28
+- Updated gamut-styles to 17.13.1
+- Updated gamut-icons to 9.57.2
+- Updated gamut-tests to 5.3.3
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
+### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.2.0...@codecademy/gamut@68.2.1) (2026-03-25)
+
+### Bug Fixes
+
+- **DataList:** Go back to first-of-type approach for padding ([f0dd919](https://github.com/Codecademy/gamut/commit/f0dd9194f8c2c347b7566e77466e719c85901786))
+
+## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.4...@codecademy/gamut@68.2.0) (2026-03-25)
+
+### Features
+
+- **BarChart:** new component ([f6242fd](https://github.com/Codecademy/gamut/commit/f6242fdbc517128e8afcc80f8d0128d03577e96d))
+
+### [68.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.3...@codecademy/gamut@68.1.4) (2026-03-19)
+
+### Bug Fixes
+
+- **DataList:** Padding on first column and alignment for headers ([1b55acd](https://github.com/Codecademy/gamut/commit/1b55acdaba8c33be5e3cc7a19b0c9a3b50987ab5))
+
+### [68.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.2...@codecademy/gamut@68.1.3) (2026-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut
 
 ### [68.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.1...@codecademy/gamut@68.1.2) (2026-03-17)
 
