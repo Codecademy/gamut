@@ -1641,7 +1641,7 @@ __metadata:
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
     "@codecademy/gamut-styles": "npm:17.13.1"
-    component-test-setup: "npm:*"
+    component-test-setup: "npm:^0.3.1"
     lodash: "npm:^4.17.23"
   peerDependencies:
     react: ^17.0.2 || ^18.3.0 || ^19.0.0
@@ -9501,17 +9501,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-macros@npm:3.0.1":
-  version: 3.0.1
-  resolution: "babel-plugin-macros@npm:3.0.1"
-  dependencies:
-    "@babel/runtime": "npm:^7.12.5"
-    cosmiconfig: "npm:^7.0.0"
-    resolve: "npm:^1.19.0"
-  checksum: 10c0/d9b89cbe63888dd417326160d1e3fdf8d0a19f8b4f760329e13faf0a780a9b0a847468b8a03978fbb562e665605a6ef65f17125867e5fdc6d65312f437a036ca
-  languageName: node
-  linkType: hard
-
 "babel-plugin-macros@npm:^3.0.1, babel-plugin-macros@npm:^3.1.0":
   version: 3.1.0
   resolution: "babel-plugin-macros@npm:3.1.0"
@@ -10501,7 +10490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"component-test-setup@npm:*, component-test-setup@npm:^0.3.1":
+"component-test-setup@npm:^0.3.1":
   version: 0.3.3
   resolution: "component-test-setup@npm:0.3.3"
   checksum: 10c0/f85ee9a5bf5f65b8440cd6fe03a626e1222b1bba2f29798a4de1c1d7fdbf87397a5ad11e19b0ed20030033c7bede66d2ae6c5bfba426e00b9383adbe0dd0a584
@@ -13687,7 +13676,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.57.0"
     "@vidstack/react": "npm:^1.12.12"
     babel-jest: "npm:29.6.4"
-    babel-plugin-macros: "npm:3.0.1"
+    babel-plugin-macros: "npm:^3.0.1"
     commander: "npm:^14.0.3"
     component-test-setup: "npm:^0.3.1"
     core-js: "npm:3.7.0"
