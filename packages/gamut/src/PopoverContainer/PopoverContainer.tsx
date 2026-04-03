@@ -1,4 +1,4 @@
-import { system, useLogicalProperties } from '@codecademy/gamut-styles';
+import { system, useDirectionIsRtl } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -48,6 +48,9 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const [containers, setContainers] = useState<ContainerState>();
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const parent = containers?.parent;
+  const isRtl = useDirectionIsRtl(
+    targetRef as React.RefObject<HTMLElement | null>
+  );
 
   // Memoize scrolling parents to avoid expensive DOM traversals
   const scrollingParents = useScrollingParents(
@@ -58,27 +61,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   useEffect(() => {
     onRequestCloseRef.current = onRequestClose;
   }, [onRequestClose]);
-
-  // Detect RTL direction from the target element and watch for attribute changes so the
-  // position recalculates when changes occur
-  const [isRtl, setIsRtl] = useState(false);
-  useEffect(() => {
-    const checkDirection = () => {
-      const target = targetRef?.current;
-      const el = target instanceof Element ? target : document.documentElement;
-      setIsRtl(getComputedStyle(el).direction === 'rtl');
-    };
-
-    checkDirection();
-
-    const observer = new MutationObserver(checkDirection);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['dir'],
-      subtree: true,
-    });
-    return () => observer.disconnect();
-  }, [targetRef]);
 
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
@@ -94,10 +76,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     }
     return { styles: {}, physicalStyles: undefined };
   }, [parent, x, y, offset, alignment, invertAxis, isRtl]);
-
-  // Log logical properties to the console TEST CODE
-  const logicalProperties = useLogicalProperties();
-  console.log('logicalProperties', logicalProperties);
 
   useEffect(() => {
     const target = targetRef?.current;
