@@ -36,7 +36,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const [activeRangePart, setActiveRangePart] = useState<
     'start' | 'end' | null
   >(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLDivElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
 
@@ -66,7 +66,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     setIsCalendarOpen(false);
     setActiveRangePart(null);
     setGridFocusRequested(false);
-    inputRef.current?.focus();
+    const shell = inputRef.current;
+    const toFocus =
+      shell?.querySelector<HTMLElement>('[role="spinbutton"]') ?? shell;
+    toFocus?.focus();
   }, []);
 
   const startOrSelectedDate = isRangeProps(props)
@@ -140,14 +143,17 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       children
     ) : (
       <>
-        <FlexBox gap={inputSize === 'small' ? 4 : 8} width="fit-content">
+        <FlexBox
+          gap={inputSize === 'small' ? 4 : 8}
+          ref={inputRef}
+          width="fit-content"
+        >
           {mode === 'range' ? (
             <>
               <DatePickerInput
                 label={props.startLabel}
                 placeholder={placeholder}
                 rangePart="start"
-                ref={inputRef}
                 size={inputSize}
               />
               <Box alignSelf="center" mt={32}>
@@ -158,14 +164,13 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 placeholder={placeholder}
                 rangePart="end"
                 size={inputSize}
-                // does this need a ref?
               />
             </>
           ) : (
             <DatePickerInput
               label={props.label}
               placeholder={placeholder}
-              ref={inputRef}
+              // ref={inputRef}
               size={inputSize}
             />
           )}
