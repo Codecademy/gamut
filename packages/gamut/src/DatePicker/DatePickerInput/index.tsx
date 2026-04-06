@@ -125,7 +125,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       [isRange, rangePart, setSelection, endDate, startOrSelectedDate]
     );
 
-
     const clearSelection = useCallback(() => {
       if (isRange && rangePart) {
         if (rangePart === 'start') setSelection(null, endDate);
