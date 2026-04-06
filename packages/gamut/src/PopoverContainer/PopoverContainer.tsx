@@ -1,4 +1,8 @@
-import { system, useLogicalProperties } from '@codecademy/gamut-styles';
+import {
+  system,
+  useDirectionIsRtl,
+  useLogicalProperties,
+} from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -97,7 +101,8 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   // Log logical properties to the console TEST CODE
   const logicalProperties = useLogicalProperties();
-  console.log('logicalProperties', logicalProperties);
+  const dir = useDirectionIsRtl();
+  console.log('dir', dir, 'logicalProperties', logicalProperties);
 
   useEffect(() => {
     const target = targetRef?.current;
