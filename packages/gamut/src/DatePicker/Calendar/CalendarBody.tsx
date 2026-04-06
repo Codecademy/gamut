@@ -174,8 +174,10 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
               return (
                 <DateCell
+                  aria-current={today ? 'date' : undefined}
+                  aria-disabled={disabled}
                   aria-label={formatDateForAriaLabel(date, resolvedLocale)}
-                  aria-selected={selected}
+                  aria-selected={selected || inRange}
                   isDisabled={disabled}
                   isInRange={inRange}
                   isRangeEnd={range && isSameDay(date, endDate)}
