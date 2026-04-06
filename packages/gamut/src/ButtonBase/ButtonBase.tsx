@@ -75,7 +75,7 @@ export const ButtonBase = forwardRef<
       <ResetElement
         {...filteredProps}
         as="button"
-        disabled={!!disabled}
+        disabled={Boolean(disabled)}
         ref={ref as MutableRefObject<HTMLButtonElement>}
         role={role}
         type={type}

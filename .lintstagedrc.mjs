@@ -1,5 +1,9 @@
 /** Staged paths use forward slashes; lint-staged may pass absolute or relative paths. */
 
+// Manual pre-commit check (no extra scripts): change any file(s) you care about, `git add` them, then run
+// `npx lint-staged` — that is exactly what `.husky/pre-commit` runs, so you will see the same lint-staged
+// output and task list. Add ` --verbose` to print each command’s stdout/stderr.
+
 /**
  * Returns whether any staged path is a file named `name` at the root of the path list
  * or nested under a directory (e.g. `package.json` or `packages/foo/package.json`).
@@ -18,12 +22,15 @@ export default {
   // Use custom function to avoid overlaps that could cause race conditions
   [`*`]: (allChanges) => {
     const commands = [];
+    console.log('allChanges are:', allChanges);
 
     if (hasFilename(allChanges, 'package.json')) {
+      console.log('formatting package.json');
       commands.push(`yarn syncpack format`);
     }
 
     if (hasFilename(allChanges, 'yarn.lock')) {
+      console.log('deduping yarn.lock');
       commands.push(`yarn dedupe`);
     }
 
@@ -31,6 +38,8 @@ export default {
     const eslintFiles = allChanges.filter((file) => ESLINT_EXT.test(file));
 
     if (eslintFiles.length) {
+      console.log('fixing eslint files');
+      console.log('here are the files', eslintFiles);
       commands.push(
         `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles
           .map(shellArg)
