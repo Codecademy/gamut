@@ -1,7 +1,33 @@
-# Change Log
+## 9.57.2 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+- Updated gamut-tests to 5.3.3
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
+### [9.57.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.57.0...@codecademy/gamut-icons@9.57.1) (2026-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.57.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.4...@codecademy/gamut-icons@9.57.0) (2026-03-17)
+
+### Features
+
+- **icon:** Adds MiniCalendarIcon ([f93a00a](https://github.com/Codecademy/gamut/commit/f93a00af990f869cb0e30bb1b894c9307a05cd3a))
+
+### [9.56.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.3...@codecademy/gamut-icons@9.56.4) (2026-03-17)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
 
 ### [9.56.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.56.2...@codecademy/gamut-icons@9.56.3) (2026-03-12)
 

@@ -1,11 +1,9 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "79.2.0",
+  "version": "79.3.0",
   "author": "Codecademy Engineering",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "repository": "git@github.com:Codecademy/gamut.git"
 }

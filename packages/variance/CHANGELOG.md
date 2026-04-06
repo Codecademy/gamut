@@ -1,7 +1,13 @@
-# Change Log
+## 0.26.1 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
 
 ## [0.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.25.2...@codecademy/variance@0.26.0) (2026-03-12)
 

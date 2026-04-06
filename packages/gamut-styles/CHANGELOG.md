@@ -1,7 +1,29 @@
-# Change Log
+## 17.13.1 (2026-03-26)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
+## [17.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.1...@codecademy/gamut-styles@17.13.0) (2026-03-25)
+
+### Features
+
+- **BarChart:** new component ([f6242fd](https://github.com/Codecademy/gamut/commit/f6242fdbc517128e8afcc80f8d0128d03577e96d))
+
+### [17.12.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.0...@codecademy/gamut-styles@17.12.1) (2026-03-17)
+
+### Bug Fixes
+
+- update reboot file to conditionally use logical properties or physical properties ([404937b](https://github.com/Codecademy/gamut/commit/404937be816a16ffbf7cb4c5b3a2a1999969f31d))
 
 ## [17.12.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.11.5...@codecademy/gamut-styles@17.12.0) (2026-03-12)
 
