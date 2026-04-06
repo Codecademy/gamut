@@ -163,7 +163,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isPopoverOpen}
+        isOpen
         outline
         popoverContainerRef={contentRef}
         skipFocusTrap

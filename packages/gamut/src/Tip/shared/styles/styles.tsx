@@ -47,7 +47,34 @@ const beakBackgroundRotation = {
   below: 'rotate(-135deg)',
   right: 'rotate(135deg)',
   left: 'rotate(-45deg)',
-};
+} as const;
+
+type SideCenterBeakSide = 'left' | 'right';
+
+/**
+ * Inline ToolTip / InfoTip: RTL beak rotation on the container that owns `::after`
+ * (avoids invalid `::after:dir(rtl)` when the same beak object is merged under `&::after`).
+ */
+export const sideCenterBeakRtlOnTooltipRoot = (side: SideCenterBeakSide) => ({
+  '&:dir(rtl)': {
+    '&::after': {
+      transform:
+        side === 'right'
+          ? beakBackgroundRotation.left
+          : beakBackgroundRotation.right,
+    },
+  },
+});
+
+/** Popover beak is a real node; `:dir(rtl)` applies on that element (not under `&::after`). */
+export const sideCenterBeakRtlOnBeakBox = (side: SideCenterBeakSide) => ({
+  '&:dir(rtl)': {
+    transform:
+      side === 'right'
+        ? beakBackgroundRotation.left
+        : beakBackgroundRotation.right,
+  },
+});
 
 type GetBeakBackgroundType = {
   alignment: keyof typeof beakBackgroundRotation;
