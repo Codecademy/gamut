@@ -150,7 +150,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         const parsed = parseSegmentsToDate(normalized);
         if (parsed) {
           commitParsedDate(parsed);
-          return getDateSegmentsFromDate(parsed);
+          return normalized;
         }
         if (!normalized.month && !normalized.day && !normalized.year) {
           clearSelection();
