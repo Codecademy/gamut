@@ -13399,7 +13399,6 @@ __metadata:
     jest-junit: "npm:^16.0.0"
     lint-staged: "npm:^16.4.0"
     lodash: "npm:^4.17.23"
-    micromatch: "npm:^4.0.5"
     mutationobserver-shim: "npm:^0.3.3"
     nx: "npm:22.6.0"
     nx-cloud: "npm:19.1.0"
