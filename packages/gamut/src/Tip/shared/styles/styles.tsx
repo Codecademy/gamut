@@ -51,28 +51,25 @@ const beakBackgroundRotation = {
 
 type SideCenterBeakSide = 'left' | 'right';
 
+const sideCenterMirroredTransform = (side: SideCenterBeakSide) =>
+  side === 'right' ? beakBackgroundRotation.left : beakBackgroundRotation.right;
+
 /**
  * Inline ToolTip / InfoTip: RTL beak rotation on the container that owns `::after`
  * (avoids invalid `::after:dir(rtl)` when the same beak object is merged under `&::after`).
  */
-export const sideCenterBeakRtlOnTooltipRoot = (side: SideCenterBeakSide) => ({
+export const horizontalCenterBeakRtlInline = (side: SideCenterBeakSide) => ({
   '&:dir(rtl)': {
     '&::after': {
-      transform:
-        side === 'right'
-          ? beakBackgroundRotation.left
-          : beakBackgroundRotation.right,
+      transform: sideCenterMirroredTransform(side),
     },
   },
 });
 
 /** Popover beak is a real node; `:dir(rtl)` applies on that element (not under `&::after`). */
-export const sideCenterBeakRtlOnBeakBox = (side: SideCenterBeakSide) => ({
+export const horizontalCenterBeakRtlPopover = (side: SideCenterBeakSide) => ({
   '&:dir(rtl)': {
-    transform:
-      side === 'right'
-        ? beakBackgroundRotation.left
-        : beakBackgroundRotation.right,
+    transform: sideCenterMirroredTransform(side),
   },
 });
 
@@ -163,7 +160,8 @@ export const bottomStylesAfter = {
 export const rightAlignStyles = {
   pl: containerOffsetVertical,
   left: '100%',
-} as const;
+  ...horizontalCenterBeakRtlInline('right'),
+};
 
 export const horizontalCenterStyles = {
   ...horizontalCenterWidths,
@@ -178,7 +176,8 @@ export const horizontalCenterStyles = {
 export const leftAlignStyles = {
   pr: containerOffsetVertical,
   right: '100%',
-} as const;
+  ...horizontalCenterBeakRtlInline('left'),
+};
 
 export const verticalCenterStyles = {
   ...verticalCenterWidths,

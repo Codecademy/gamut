@@ -21,7 +21,6 @@ import {
   rightAlignStylesAfter,
   rightVertStyles,
   rightVertStylesAfter,
-  sideCenterBeakRtlOnTooltipRoot,
   topStyles,
   topStylesAfter,
   topStylesBefore,
@@ -145,9 +144,6 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
 
   return {
     ...styleObject,
-    ...(isLRAligned
-      ? sideCenterBeakRtlOnTooltipRoot(isRight ? 'right' : 'left')
-      : {}),
     '&::after': styleObjectAfter,
     '&::before': styleObjectBefore,
   };
