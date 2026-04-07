@@ -80,7 +80,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   // Log logical properties to the console TEST CODE
   const logicalProperties = useLogicalProperties();
-  // eslint-disable-next-line no-console -- temporary debug
   console.log('dir', isRtl, 'logicalProperties', logicalProperties);
 
   useEffect(() => {
