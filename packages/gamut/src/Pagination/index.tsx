@@ -2,7 +2,7 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import { useDirectionIsRtl } from '@codecademy/gamut-styles';
+import { useElementDir } from '@codecademy/gamut-styles';
 import { useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
@@ -74,7 +74,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
   const rootRef = useRef<HTMLDivElement>(null);
-  const isRtl = useDirectionIsRtl(rootRef);
+  const isRtl = useElementDir(rootRef);
 
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||

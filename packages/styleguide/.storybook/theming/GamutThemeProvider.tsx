@@ -62,7 +62,6 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
     if (storyEl) storyEl.style.backgroundColor = background;
   }, [storyRef.current, context.globals.colorMode]);
 
-  // App
   useLayoutEffect(() => {
     if (typeof document === 'undefined') return;
     const doc = storyRef.current?.ownerDocument ?? document;
