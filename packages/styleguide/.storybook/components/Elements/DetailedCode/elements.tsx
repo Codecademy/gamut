@@ -22,9 +22,9 @@ export const DetailedCodeBodyWrapper = styled(FlexBox)<{
       borderRadius: 'none',
       margin: 0,
     },
-    /* Reserves space under the text for the overlay. */
+    /* Reserves space under the text for the overlay */
     '& .docblock-source pre': {
-      pb: hasShowCodeButton ? 48 : 12,
+      pb: hasShowCodeButton ? 48 : 20,
     },
   })
 );
@@ -34,13 +34,9 @@ export const FloatingIndicator = styled(Box)(
     position: 'absolute',
     bottom: 16,
     left: 16,
-    zIndex: 1,
-    bg: 'inherit',
     px: 12,
-    py: 4,
     fontSize: 14,
     fontFamily: 'monospace',
-    letterSpacing: '0.1em',
     textColor: '#C9CDCF',
   })
 );
