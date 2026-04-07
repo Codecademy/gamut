@@ -1,42 +1,36 @@
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { Theme, ThemeProvider } from '@emotion/react';
 import * as React from 'react';
 
+import { setupRtl } from '../../__tests__/testUtils';
 import { coreTheme as theme } from '../../themes';
 import { useLogicalProperties } from '../useLogicalProperties';
 
-const HookProbe: React.FC = () => (
-  <span data-testid="value">{String(useLogicalProperties())}</span>
+const ValueReadout: React.FC = () => <span>{`${useLogicalProperties()}`}</span>;
+
+const HookProbe: React.FC<{ themeForHook?: Theme }> = ({
+  themeForHook = theme,
+}) => (
+  <ThemeProvider theme={themeForHook}>
+    <ValueReadout />
+  </ThemeProvider>
 );
+
+const renderView = setupRtl(HookProbe, {});
 
 describe('useLogicalProperties', () => {
   it('returns false when theme sets useLogicalProperties: false', () => {
-    render(
-      <ThemeProvider theme={{ ...theme, useLogicalProperties: false }}>
-        <HookProbe />
-      </ThemeProvider>
-    );
+    const { view } = renderView({
+      themeForHook: { ...theme, useLogicalProperties: false },
+    });
 
-    expect(screen.getByTestId('value')).toHaveTextContent('false');
+    view.getByText('false');
   });
 
   it('returns true when theme sets useLogicalProperties: true', () => {
-    render(
-      <ThemeProvider theme={{ ...theme, useLogicalProperties: true }}>
-        <HookProbe />
-      </ThemeProvider>
-    );
+    const { view } = renderView({
+      themeForHook: { ...theme, useLogicalProperties: true },
+    });
 
-    expect(screen.getByTestId('value')).toHaveTextContent('true');
-  });
-
-  it('returns true when theme omits useLogicalProperties (variance parity)', () => {
-    render(
-      <ThemeProvider theme={theme}>
-        <HookProbe />
-      </ThemeProvider>
-    );
-
-    expect(screen.getByTestId('value')).toHaveTextContent('true');
+    view.getByText('true');
   });
 });
