@@ -7,14 +7,14 @@ export const DetailedCodeBody: React.FC<DetailedCodeBodyProps> = ({
   code,
   language,
   showEllipses = false,
-  codeLines,
+  hiddenLineCount,
 }) => {
   return (
     <DetailedCodeBodyWrapper hasShowCodeButton={showEllipses}>
       <Source code={code} dark language={language} />
       {showEllipses && (
         <FloatingIndicator aria-label="More code below">
-          ... {codeLines} more line{codeLines === 1 ? '' : 's'}
+          ... {hiddenLineCount} more line{hiddenLineCount === 1 ? '' : 's'}
         </FloatingIndicator>
       )}
     </DetailedCodeBodyWrapper>

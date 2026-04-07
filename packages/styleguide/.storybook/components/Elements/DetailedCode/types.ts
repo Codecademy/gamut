@@ -21,5 +21,5 @@ export interface DetailedCodeBodyProps {
   code: string;
   language: SourceLanguage;
   showEllipses?: boolean;
-  codeLines: number;
+  hiddenLineCount: number;
 }

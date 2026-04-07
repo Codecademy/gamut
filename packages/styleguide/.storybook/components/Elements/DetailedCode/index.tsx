@@ -19,15 +19,17 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
   const normalizedPreviewLines = Math.max(0, previewLines);
   const previewEnabled = preview && normalizedPreviewLines > 0;
 
-  const codeLines = code.trimEnd().split('\n');
-  const hasMoreCode =
-    previewEnabled && codeLines.length > normalizedPreviewLines;
+  const allLines = code.trimEnd().split('\n');
+  const hiddenLineCount = previewEnabled
+    ? Math.max(0, allLines.length - normalizedPreviewLines)
+    : 0;
+  const hasMoreCode = hiddenLineCount > 0;
 
-  const previewCode = previewEnabled
-    ? codeLines.slice(0, normalizedPreviewLines).join('\n')
+  const codeSnippet = previewEnabled
+    ? allLines.slice(0, normalizedPreviewLines).join('\n')
     : code;
 
-  const displayedCode = isExpanded ? code : previewCode;
+  const displayedCode = isExpanded ? code : codeSnippet;
 
   return (
     <DetailedCodeWrapper>
@@ -35,11 +37,7 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
         code={displayedCode}
         language={language}
         showEllipses={hasMoreCode && !isExpanded}
-        codeLines={
-          previewEnabled
-            ? Math.max(0, codeLines.length - normalizedPreviewLines)
-            : 0
-        }
+        hiddenLineCount={hiddenLineCount}
       />
       {hasMoreCode && (
         <DetailedCodeButton
