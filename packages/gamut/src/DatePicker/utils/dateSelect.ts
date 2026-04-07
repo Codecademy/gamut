@@ -56,7 +56,7 @@ type ApplyRangeOrNewStartParams = {
   disabledDates: Date[];
 } & Pick<DatePickerBaseContextValue, 'setSelection'>;
 
-const applyRangeOrNewStart = ({
+export const applyRangeOrNewStart = ({
   start,
   end,
   clickedDate,
