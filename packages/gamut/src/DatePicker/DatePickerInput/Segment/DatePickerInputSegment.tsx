@@ -23,7 +23,6 @@ export type DatePickerInputSegmentProps = {
   segments: SegmentValues;
   disabled: boolean;
   error: boolean;
-  handleOnClick: () => void;
   handleOnFocus: () => void;
   focusOrOpenCalendarGrid: () => void;
   setSegments: Dispatch<SetStateAction<SegmentValues>>;
@@ -40,7 +39,6 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   segments,
   disabled,
   error,
-  handleOnClick,
   handleOnFocus,
   focusOrOpenCalendarGrid,
   setSegments,
@@ -181,7 +179,6 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       }}
       role="spinbutton"
       tabIndex={disabled ? -1 : 0}
-      onClick={handleOnClick}
       onFocus={handleOnFocus}
       onKeyDown={handleSegmentKeyDown(field)}
     >

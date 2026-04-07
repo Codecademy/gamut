@@ -25,7 +25,9 @@ export const Segment = styled.span<SegmentStyleProps>(
       color: 'text',
       cursor: 'text',
       '&:focus': {
-        outline: '1px solid blue',
+        bg: 'primary',
+        color: 'background',
+        borderRadius: 'md',
       },
     }),
   segmentStyles

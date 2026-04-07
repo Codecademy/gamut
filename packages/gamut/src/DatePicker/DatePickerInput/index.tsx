@@ -194,6 +194,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           variant={error ? 'error' : undefined}
           width="113px"
           onBlur={handleContainerBlur}
+          onClick={handleOpenCalendar}
           onFocus={handleContainerFocus}
           {...rest}
         >
@@ -222,7 +223,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
                   error={Boolean(error)}
                   field={item.field}
                   focusOrOpenCalendarGrid={focusOrOpenCalendarGrid}
-                  handleOnClick={handleOpenCalendar}
                   handleOnFocus={handleSegmentFocus}
                   key={item.field}
                   nextField={nextField}
@@ -247,7 +247,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
             pl={16}
             pr={8}
             role="presentation"
-            onClick={handleOpenCalendar}
           >
             <MiniCalendarIcon aria-hidden size={16} />
           </FlexBox>
