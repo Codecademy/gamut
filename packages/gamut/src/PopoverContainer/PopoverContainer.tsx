@@ -1,6 +1,6 @@
 import {
   system,
-  useDirectionIsRtl,
+  useElementDir,
   useLogicalProperties,
 } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
@@ -54,35 +54,14 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const parent = containers?.parent;
 
   // Memoize scrolling parents to avoid expensive DOM traversals
-  const scrollingParents = useScrollingParents(
-    targetRef as React.RefObject<HTMLElement | null>
-  );
+  const scrollingParents = useScrollingParents(targetRef);
 
   // Keep onRequestClose ref up to date
   useEffect(() => {
     onRequestCloseRef.current = onRequestClose;
   }, [onRequestClose]);
 
-  // Detect RTL direction from the target element and watch for attribute changes so the
-  // position recalculates when changes occur
-  const [isRtl, setIsRtl] = useState(false);
-  useEffect(() => {
-    const checkDirection = () => {
-      const target = targetRef?.current;
-      const el = target instanceof Element ? target : document.documentElement;
-      setIsRtl(getComputedStyle(el).direction === 'rtl');
-    };
-
-    checkDirection();
-
-    const observer = new MutationObserver(checkDirection);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['dir'],
-      subtree: true,
-    });
-    return () => observer.disconnect();
-  }, [targetRef]);
+  const isRtl = useElementDir(targetRef) === 'rtl';
 
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
@@ -101,8 +80,8 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   // Log logical properties to the console TEST CODE
   const logicalProperties = useLogicalProperties();
-  const dir = useDirectionIsRtl();
-  console.log('dir', dir, 'logicalProperties', logicalProperties);
+  // eslint-disable-next-line no-console -- temporary debug
+  console.log('dir', isRtl, 'logicalProperties', logicalProperties);
 
   useEffect(() => {
     const target = targetRef?.current;

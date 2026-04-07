@@ -1,25 +1,25 @@
-import { directionIsRtl } from '../directionIsRtl';
+import { elementDir } from '../elementDir';
 
-describe('directionIsRtl', () => {
+describe('elementDir', () => {
   afterEach(() => {
     document.documentElement.removeAttribute('dir');
   });
 
-  it('returns true when the element has dir="rtl"', () => {
+  it('returns rtl when the element has dir="rtl"', () => {
     const el = document.createElement('div');
     el.setAttribute('dir', 'rtl');
-    expect(directionIsRtl(el)).toBe(true);
+    expect(elementDir(el)).toBe('rtl');
   });
 
-  it('returns false when the element has dir="ltr"', () => {
+  it('returns ltr when the element has dir="ltr"', () => {
     const el = document.createElement('div');
     el.setAttribute('dir', 'ltr');
-    expect(directionIsRtl(el)).toBe(false);
+    expect(elementDir(el)).toBe('ltr');
   });
 
   it('falls back to documentElement dir when computed style is empty (JSDOM)', () => {
     const el = document.createElement('div');
     document.documentElement.setAttribute('dir', 'rtl');
-    expect(directionIsRtl(el)).toBe(true);
+    expect(elementDir(el)).toBe('rtl');
   });
 });
