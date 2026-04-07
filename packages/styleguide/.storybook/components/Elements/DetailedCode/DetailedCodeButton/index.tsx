@@ -20,7 +20,7 @@ export const DetailedCodeButton: React.FC<DetailedCodeButtonProps> = ({
     >
       <FlexBox columnGap={16} justifyContent="space-between">
         <Text>{language}</Text>
-        <FlexBox columnGap={8} flexDirection="row" alignItems="center">
+        <FlexBox columnGap={8} alignItems="center">
           <Text>{isExpanded ? 'Show Less Code' : 'Show More Code'}</Text>
           <Rotation rotated={isExpanded}>
             <MiniChevronDownIcon aria-hidden size={16} />

@@ -35,7 +35,11 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
         code={displayedCode}
         language={language}
         showEllipses={hasMoreCode && !isExpanded}
-        codeLines={codeLines.length}
+        codeLines={
+          previewEnabled
+            ? Math.max(0, codeLines.length - normalizedPreviewLines)
+            : 0
+        }
       />
       {hasMoreCode && (
         <DetailedCodeButton

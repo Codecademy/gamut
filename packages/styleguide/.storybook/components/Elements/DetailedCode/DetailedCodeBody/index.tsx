@@ -1,4 +1,4 @@
-import { Source } from '@storybook/blocks';
+import { Source } from '@storybook/addon-docs/blocks';
 
 import { DetailedCodeBodyWrapper, FloatingIndicator } from '../elements';
 import { DetailedCodeBodyProps } from '../types';
@@ -14,7 +14,7 @@ export const DetailedCodeBody: React.FC<DetailedCodeBodyProps> = ({
       <Source code={code} dark language={language} />
       {showEllipses && (
         <FloatingIndicator aria-label="More code below">
-          ...{codeLines} more lines
+          ... {codeLines} more line{codeLines === 1 ? '' : 's'}
         </FloatingIndicator>
       )}
     </DetailedCodeBodyWrapper>

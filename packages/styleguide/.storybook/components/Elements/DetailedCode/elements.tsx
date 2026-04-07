@@ -4,7 +4,6 @@ import { FlexBox, Box } from '@codecademy/gamut';
 
 export const DetailedCodeWrapper = styled(FlexBox)(
   css({
-    width: '100%',
     flexDirection: 'column',
     borderRadius: 'md',
     border: 1,
@@ -22,7 +21,10 @@ export const DetailedCodeBodyWrapper = styled(FlexBox)<{
     '& .docblock-source': {
       borderRadius: 'none',
       margin: 0,
-      pb: hasShowCodeButton ? 32 : 0,
+    },
+    /* Reserves space under the text for the overlay. */
+    '& .docblock-source pre': {
+      pb: hasShowCodeButton ? 48 : 12,
     },
   })
 );
@@ -39,7 +41,6 @@ export const FloatingIndicator = styled(Box)(
     fontSize: 14,
     fontFamily: 'monospace',
     letterSpacing: '0.1em',
-    /* Color to match the text color in the Source component */
     textColor: '#C9CDCF',
   })
 );

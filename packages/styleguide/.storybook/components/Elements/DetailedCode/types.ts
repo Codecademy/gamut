@@ -1,4 +1,4 @@
-import { Source } from '@storybook/blocks';
+import { Source } from '@storybook/addon-docs/blocks';
 import { ComponentProps } from 'react';
 
 type SourceLanguage = ComponentProps<typeof Source>['language'];
