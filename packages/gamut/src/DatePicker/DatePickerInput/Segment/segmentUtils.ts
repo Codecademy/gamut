@@ -22,17 +22,21 @@ export const parseSegmentsToDate = (segments: SegmentValues) => {
   const { month, day, year } = segments;
   if (year.length !== 4) return null;
   if (month.length === 0 || day.length === 0) return null;
-  const m = parseInt(month, 10);
-  const d = parseInt(day, 10);
-  const y = parseInt(year, 10);
-  if (!Number.isFinite(m) || !Number.isFinite(d) || !Number.isFinite(y))
-    return null;
-  if (m < 1 || m > 12) return null;
-  const parsed = new Date(y, m - 1, d);
+  const monthNumber = parseInt(month, 10);
+  const dayNumber = parseInt(day, 10);
+  const yearNumber = parseInt(year, 10);
   if (
-    parsed.getFullYear() !== y ||
-    parsed.getMonth() !== m - 1 ||
-    parsed.getDate() !== d
+    !Number.isFinite(monthNumber) ||
+    !Number.isFinite(dayNumber) ||
+    !Number.isFinite(yearNumber)
+  )
+    return null;
+  if (monthNumber < 1 || monthNumber > 12) return null;
+  const parsed = new Date(yearNumber, monthNumber - 1, dayNumber);
+  if (
+    parsed.getFullYear() !== yearNumber ||
+    parsed.getMonth() !== monthNumber - 1 ||
+    parsed.getDate() !== dayNumber
   ) {
     return null;
   }
@@ -133,13 +137,7 @@ export const parseSegmentNumericString = (str: string) => {
   return Number.isFinite(numericValue) ? numericValue : null;
 };
 
-const parseSegmentDigits = (_field: DatePartKind, str: string) =>
-  parseSegmentNumericString(str);
-
-const padSegmentNumber = (
-  field: DatePartKind,
-  numericValue: number
-): string => {
+export const padSegmentNumber = (field: DatePartKind, numericValue: number) => {
   if (field === 'year') {
     const clamped = Math.min(9999, Math.max(1, numericValue));
     return String(clamped).padStart(4, '0');
@@ -176,7 +174,7 @@ export const spinSegment = (
   delta: 1 | -1
 ) => {
   const { min, max } = getSegmentSpinBounds(field, segments);
-  let cur = parseSegmentDigits(field, segments[field]);
+  let cur = parseSegmentNumericString(segments[field]);
 
   if (cur == null) {
     cur =
