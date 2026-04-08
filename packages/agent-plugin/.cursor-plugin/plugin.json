@@ -1,6 +1,6 @@
 {
   "name": "gamut",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Codecademy Gamut design system: consumption, accessibility, theming, and Storybook-aligned rules for application code.",
   "author": {
     "name": "Codecademy"

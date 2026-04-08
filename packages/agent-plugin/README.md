@@ -6,30 +6,28 @@ Single editor plugin (**name: `gamut`**) for the [Codecademy Gamut](https://gamu
 
 ## Canonical docs on GitHub
 
-Published markdown under `main` (same content as this repo):
+Published URLs for `main` are defined once in **[`docs/agents/canonical-urls.json`](../../docs/agents/canonical-urls.json)** (`docsAgentsBlobBaseOnMain`, `docsAgentsTreeOnMain`, `githubRepo`).
 
-`https://github.com/Codecademy/gamut/blob/main/docs/agents/`
-
-**Skills** embed links under that base. The exact base string is defined once in [`skills/skills.manifest.json`](skills/skills.manifest.json) as `canonicalDocsBase` and applied by the generator below.
+**Plugin `SKILL.md` files** get their `blob/main` links from that JSON when you run **`yarn generate:agent-skills`** (see below). Do not hand-edit the GitHub base inside generated skills.
 
 ## Layout
 
 - **`.cursor-plugin/plugin.json`** — Cursor marketplace / local plugin manifest
 - **`.claude-plugin/plugin.json`** — Claude Code plugin manifest (same version as Cursor; keep both in sync)
 - **`rules/`** — optional context rules (`.mdc`) with globs
-- **`skills/`** — invocable skills; bodies are generated from **`skills.manifest.json`**
-- **`scripts/generate-skills.mjs`** — regenerates `skills/*/SKILL.md` from the manifest
+- **`skills/`** — invocable skills; bodies are generated from **`skills/skills.manifest.json`** + **`docs/agents/canonical-urls.json`**
+- **`scripts/generate-skills.mjs`** — regenerates packaged skills and monorepo Cursor skills (see [docs/agents/README.md](../../docs/agents/README.md) conventions)
 
 ## Regenerating skills
 
-After editing **`skills/skills.manifest.json`** (new skill, description, or doc filename), run from the **repository root**:
+After editing **`skills/skills.manifest.json`**, **`docs/agents/monorepo-skills.manifest.json`**, or **`docs/agents/canonical-urls.json`**, run from the **repository root**:
 
 ```bash
 yarn generate:agent-skills
 # or: node packages/agent-plugin/scripts/generate-skills.mjs
 ```
 
-Commit the updated `SKILL.md` files together with manifest changes.
+Commit updated `SKILL.md` files together with manifest or URL changes.
 
 ## Cursor (local symlink)
 

@@ -16,7 +16,9 @@ export const parameters = {
 
 <Callout text="Any MCP generated code is EXPERIMENTAL! You should always validate the code generated and adapt it to your own needs — do NOT simply use the MCP to generate code and push it to production! Additionally, you must have a Dev or Full account to be able to be able to use the Figma MCP." />
 
-The offical guidance and documentation comes from Figma. Please reference [Figma Dev Mode MCP documentation](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server) for the most up to date information. This documentation below has been adapted to fit the context of the Gamut repository.
+The official guidance and documentation comes from Figma. Please reference [Figma Dev Mode MCP documentation](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server) for the most up to date information. This documentation below has been adapted to fit the context of the Gamut repository.
+
+Any **MCP-capable** editor or agent (Cursor, Claude Code, and others) can talk to the same local Figma MCP server; configuration shape varies by product. The steps below use **Cursor** as the primary example.
 
 ## Figma (desktop client app)
 
@@ -35,20 +37,20 @@ Go to [Figma's download page](https://www.figma.com/downloads/) to download the 
 
 ## Set up MCP Client for your text editor/IDE
 
-We currently support Figma MCP for Cursor. Please let the Gamut team know if you'd like support for other editors.
+Point your client at the local server URL (same host/port Figma exposes—often `http://127.0.0.1:3845/mcp` or `/sse` depending on Figma and client). The Gamut repo includes a team default for Cursor in [`.cursor/mcp.json`](https://github.com/Codecademy/gamut/blob/main/.cursor/mcp.json) on `main`.
 
 ### Cursor
 
 1. Open **Cursor** → **Settings** → **Cursor Settings**.
 2. Go to the **MCP** tab (might be called **MCP & Integrations**) from the left-hand sidebar.
 3. Under **MCP Tools**, click **+ Add MCP server**.
-4. Enter the following configuration and save:
+4. Enter the following configuration and save (the path may be `/sse` or `/mcp` depending on your Figma desktop version; the Gamut repo’s [`.cursor/mcp.json`](https://github.com/Codecademy/gamut/blob/main/.cursor/mcp.json) on `main` uses `/sse`):
 
 ```
 {
   "mcpServers": {
     "Figma": {
-      "url": "http://127.0.0.1:3845/mcp"
+      "url": "http://127.0.0.1:3845/sse"
     }
   }
 }
@@ -56,13 +58,13 @@ We currently support Figma MCP for Cursor. Please let the Gamut team know if you
 
 ### Verify your MCP server is running
 
-To check if your MCP server is running, you can visit the endpoint: `http://127.0.0.1:3845/mcp`. You should see a response, e.g.: `{"jsonrpc":"2.0","error":{"code":-32001,"message":"Invalid sessionId"},"id":null}`.
+To check if your MCP server is running, you can visit the endpoint: `http://127.0.0.1:3845/sse` (or `/mcp` if that is what your client uses). You should see a response, e.g.: `{"jsonrpc":"2.0","error":{"code":-32001,"message":"Invalid sessionId"},"id":null}`.
 Yes, it's an odd response, but it indicates that the MCP server is running — otherwise if it's not running you'll see an error "This site can’t be reached" on the page.
 
 Similarly you can test the end point using:
 
 ```bash
-curl http://127.0.0.1:3845/mcp
+curl http://127.0.0.1:3845/sse
 ```
 
 ## Prompt your MCP client
