@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as PopoverContainerStories from './PopoverContainer.stories';
 
@@ -47,6 +47,8 @@ const MyComponent = () => {
 ```
 
 ## Positioning
+
+PopoverContainer uses `useElementDir` from `@codecademy/gamut-styles` with `targetRef` (`useElementDir(targetRef) === 'rtl'`) so alignment and placement respect right-to-left when the anchor lives in an RTL subtree. Non-React code can use the same resolution rules via the imperative `elementDir(el)` export from that package. See <LinkTo id="Meta/Logical and physical CSS properties">Logical and physical CSS properties</LinkTo> for full documentation on `useElementDir`, `elementDir`, and logical vs physical CSS in Gamut.
 
 There are multiple props that can be used to position the popover. Progressively getting more specific:
 

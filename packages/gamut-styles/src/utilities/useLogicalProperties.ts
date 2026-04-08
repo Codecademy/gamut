@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react';
 
 /**
- * Whether Gamut system props emit logical CSS properties (`marginInlineStart`, etc.)
+ * Whether Gamut system props map to logical CSS properties (`marginInlineStart`, etc.)
  * vs physical (`marginLeft`, etc.).
  *
  * `GamutProvider` always merges an explicit boolean (default `false`).
