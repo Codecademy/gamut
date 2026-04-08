@@ -1,12 +1,3 @@
----
-name: gamut-theming
-description: >-
-  Configures and debugs ColorMode, Background, semantic color tokens, and hooks
-  from @codecademy/gamut-styles in application code. Use when implementing
-  light/dark/system modes, branded sections, background-current, or platform
-  themes—not for one-off hex colors. Complements codecademy-gamut (core).
----
-
 # Gamut theming
 
 ## Documentation
@@ -61,5 +52,5 @@ Platform-specific themes (e.g. Percipio, LX Studio) are documented under stylegu
 
 ## Related
 
-- **codecademy-gamut** — system props, layout, eslint, general consumption.
-- **codecademy-gamut-a11y** — focus, ARIA, overlays (often interacts with themed surfaces).
+- [gamut-consumer.md](./gamut-consumer.md) — system props, layout, eslint, general consumption.
+- [gamut-accessibility.md](./gamut-accessibility.md) — focus, ARIA, overlays (often interacts with themed surfaces).

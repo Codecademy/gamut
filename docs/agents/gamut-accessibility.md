@@ -1,14 +1,3 @@
----
-name: gamut-accessibility
-description: >-
-  Reviews and implements accessible UI with @codecademy/gamut: WCAG-oriented
-  patterns, keyboard and focus, documented Gamut components, and MDN-grounded
-  patterns when building custom widgets. Use when auditing accessibility,
-  implementing bespoke controls, or fixing a11y bugs in Gamut consumer apps.
-  Pair with codecademy-gamut (core) and codecademy-gamut-themes for tokens and
-  color context.
----
-
 # Gamut accessibility
 
 ## Principles
@@ -43,7 +32,7 @@ Gamut’s styleguide ([Form elements — About](https://gamut.codecademy.com/?pa
 
 If no Gamut primitive fits, base behavior on **[MDN accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)** and **[ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)** guidance, and on **[keyboard-navigable JavaScript widgets](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)**. Prefer native HTML elements and built-in keyboard behavior; add ARIA only when semantics or state cannot be expressed otherwise (see MDN’s ARIA guides for roles, properties, and live regions).
 
-Style custom UI with **`@codecademy/gamut-styles`** semantic tokens and **`ColorMode` / `Background`** (**codecademy-gamut-themes**), not one-off hex or raw theme object drilling.
+Style custom UI with **`@codecademy/gamut-styles`** semantic tokens and **`ColorMode` / `Background`** per [gamut-theming.md](./gamut-theming.md), not one-off hex or raw theme object drilling.
 
 ### React focus management
 

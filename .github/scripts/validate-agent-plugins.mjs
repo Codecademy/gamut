@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Validate Gamut Cursor plugin layout for CI.
+ * Validate Gamut agent plugin layout for CI (Cursor marketplace + monorepo .cursor + dual manifests).
  * @see https://cursor.com/docs/reference/plugins.md
  */
 
@@ -14,7 +14,7 @@ import {
   extractFrontmatterBlockFromText,
   fmHasKey,
   SEMVER,
-} from './validate-cursor-plugins-helpers.mjs';
+} from './validate-agent-plugins-helpers.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
@@ -78,7 +78,7 @@ function validatePrPluginVersionBumps() {
   const head = process.env.CURSOR_PR_HEAD_SHA?.trim();
   if (!base || !head) {
     errors.push(
-      'version bump check: set CURSOR_PR_BASE_SHA and CURSOR_PR_HEAD_SHA (e.g. from github.event.pull_request)',
+      'version bump check: set CURSOR_PR_BASE_SHA and CURSOR_PR_HEAD_SHA (e.g. from github.event.pull_request)'
     );
     return errors;
   }
@@ -111,7 +111,7 @@ function validatePrPluginVersionBumps() {
     const headRaw = gitShow(head, manifestPosix);
     if (!headRaw) {
       errors.push(
-        `plugin '${pname}': cannot read ${manifestPosix} at PR head (required for version bump check)`,
+        `plugin '${pname}': cannot read ${manifestPosix} at PR head (required for version bump check)`
       );
       continue;
     }
@@ -125,7 +125,7 @@ function validatePrPluginVersionBumps() {
     }
     if (typeof headVer !== 'string' || !SEMVER.test(headVer)) {
       errors.push(
-        `plugin '${pname}': PR head plugin.json must have valid semver version`,
+        `plugin '${pname}': PR head plugin.json must have valid semver version`
       );
       continue;
     }
@@ -139,20 +139,23 @@ function validatePrPluginVersionBumps() {
       baseVer = JSON.parse(baseRaw).version;
     } catch {
       errors.push(
-        `plugin '${pname}': invalid plugin.json on base ${base.slice(0, 7)}`,
+        `plugin '${pname}': invalid plugin.json on base ${base.slice(0, 7)}`
       );
       continue;
     }
     if (typeof baseVer !== 'string' || !SEMVER.test(baseVer)) {
       errors.push(
-        `plugin '${pname}': base plugin.json must have valid semver version`,
+        `plugin '${pname}': base plugin.json must have valid semver version`
       );
       continue;
     }
 
     if (cmpSemver(headVer, baseVer) <= 0) {
       errors.push(
-        `plugin '${pname}': files under ${src}/ changed vs ${base.slice(0, 7)} but version was not bumped (${baseVer} → ${headVer}); increase semver in .cursor-plugin/plugin.json`,
+        `plugin '${pname}': files under ${src}/ changed vs ${base.slice(
+          0,
+          7
+        )} but version was not bumped (${baseVer} → ${headVer}); increase semver in .cursor-plugin/plugin.json`
       );
     }
   }
@@ -229,7 +232,7 @@ function validateMarketplace() {
     }
     if (!fs.existsSync(manifest)) {
       errors.push(
-        `plugin '${pname}': missing ${src}/.cursor-plugin/plugin.json`,
+        `plugin '${pname}': missing ${src}/.cursor-plugin/plugin.json`
       );
       continue;
     }
@@ -246,7 +249,7 @@ function validateMarketplace() {
       errors.push(`plugin '${pname}': plugin.json must include string name`);
     } else if (pm.name !== pname) {
       errors.push(
-        `plugin '${pname}': plugin.json name '${pm.name}' must match marketplace entry`,
+        `plugin '${pname}': plugin.json name '${pm.name}' must match marketplace entry`
       );
     }
 
@@ -254,11 +257,43 @@ function validateMarketplace() {
     if (ver != null) {
       if (typeof ver !== 'string' || !SEMVER.test(ver)) {
         errors.push(
-          `plugin '${pname}': plugin.json version must be semver (e.g. 1.0.0), got '${ver}'`,
+          `plugin '${pname}': plugin.json version must be semver (e.g. 1.0.0), got '${ver}'`
         );
       }
     } else {
-      errors.push(`plugin '${pname}': plugin.json should include semver version`);
+      errors.push(
+        `plugin '${pname}': plugin.json should include semver version`
+      );
+    }
+
+    const claudeManifest = path.join(
+      pluginRoot,
+      '.claude-plugin',
+      'plugin.json'
+    );
+    if (!fs.existsSync(claudeManifest)) {
+      errors.push(
+        `plugin '${pname}': missing ${src}/.claude-plugin/plugin.json (keep in sync with Cursor manifest)`
+      );
+    } else {
+      let cm;
+      try {
+        cm = JSON.parse(fs.readFileSync(claudeManifest, 'utf8'));
+      } catch (e) {
+        errors.push(`plugin '${pname}': invalid Claude plugin.json (${e})`);
+      }
+      if (cm && typeof cm === 'object') {
+        if (cm.name !== pm.name) {
+          errors.push(
+            `plugin '${pname}': .claude-plugin/plugin.json name must match .cursor-plugin name`
+          );
+        }
+        if (cm.version !== pm.version) {
+          errors.push(
+            `plugin '${pname}': .claude-plugin/plugin.json version must match .cursor-plugin version`
+          );
+        }
+      }
     }
 
     const rulesDir = path.join(pluginRoot, 'rules');
@@ -269,7 +304,7 @@ function validateMarketplace() {
       fs.existsSync(skillsDir) && fs.statSync(skillsDir).isDirectory();
     if (!hasRules && !hasSkills) {
       errors.push(
-        `plugin '${pname}': expected rules/ and/or skills/ under ${src}`,
+        `plugin '${pname}': expected rules/ and/or skills/ under ${src}`
       );
     }
 
@@ -287,7 +322,10 @@ function validateMarketplace() {
           errors.push(result.error);
         } else if (!fmHasKey(result.block, 'description')) {
           errors.push(
-            `${path.relative(ROOT, mdc)}: frontmatter must include description (Cursor rules)`,
+            `${path.relative(
+              ROOT,
+              mdc
+            )}: frontmatter must include description (Cursor rules)`
           );
         }
       }
@@ -310,12 +348,12 @@ function validateMarketplace() {
         }
         if (!fmHasKey(result.block, 'name')) {
           errors.push(
-            `${path.relative(ROOT, sm)}: frontmatter must include name`,
+            `${path.relative(ROOT, sm)}: frontmatter must include name`
           );
         }
         if (!fmHasKey(result.block, 'description')) {
           errors.push(
-            `${path.relative(ROOT, sm)}: frontmatter must include description`,
+            `${path.relative(ROOT, sm)}: frontmatter must include description`
           );
         }
       }
@@ -343,7 +381,10 @@ function validateMonorepoCursor() {
         errors.push(result.error);
       } else if (!fmHasKey(result.block, 'description')) {
         errors.push(
-          `${path.relative(ROOT, mdc)}: frontmatter must include description (Cursor rules)`,
+          `${path.relative(
+            ROOT,
+            mdc
+          )}: frontmatter must include description (Cursor rules)`
         );
       }
     }
@@ -364,12 +405,12 @@ function validateMonorepoCursor() {
       }
       if (!fmHasKey(result.block, 'name')) {
         errors.push(
-          `${path.relative(ROOT, sm)}: frontmatter must include name`,
+          `${path.relative(ROOT, sm)}: frontmatter must include name`
         );
       }
       if (!fmHasKey(result.block, 'description')) {
         errors.push(
-          `${path.relative(ROOT, sm)}: frontmatter must include description`,
+          `${path.relative(ROOT, sm)}: frontmatter must include description`
         );
       }
     }
@@ -387,7 +428,7 @@ if (process.argv.includes(PR_VERSION_BUMPS)) {
     console.error(`\n${prErrors.length} validation issue(s).`);
     process.exit(1);
   }
-  console.log('Cursor plugins: PR semver bump check OK.');
+  console.log('Agent plugins: PR semver bump check OK.');
 } else {
   const errors = [...validateMarketplace(), ...validateMonorepoCursor()];
   if (errors.length) {
@@ -396,6 +437,6 @@ if (process.argv.includes(PR_VERSION_BUMPS)) {
     process.exit(1);
   }
   console.log(
-    'Cursor config: marketplace, plugins, and monorepo .cursor rules/skills OK.',
+    'Agent plugins: marketplace, plugins, and monorepo .cursor rules/skills OK.'
   );
 }

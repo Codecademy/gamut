@@ -1,10 +1,9 @@
 /**
- * Pure helpers for Cursor plugin layout validation (unit-tested).
- * @see validate-cursor-plugins.mjs
+ * Pure helpers for agent plugin layout validation (unit-tested).
+ * @see validate-agent-plugins.mjs
  */
 
-export const SEMVER =
-  /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$/;
+export const SEMVER = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$/;
 
 /** @param {string} key */
 export function escapeRe(key) {

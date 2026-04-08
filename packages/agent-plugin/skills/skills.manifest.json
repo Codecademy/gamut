@@ -1,0 +1,26 @@
+{
+  "canonicalDocsBase": "https://github.com/Codecademy/gamut/blob/main/docs/agents",
+  "skills": [
+    {
+      "id": "gamut-consumer",
+      "docFile": "gamut-consumer.md",
+      "title": "Gamut consumer (core)",
+      "detailLine": "the linked document is the source of truth for tokens, layout, lint, and Storybook URLs.",
+      "description": "Builds and refactors UI using @codecademy/gamut and @codecademy/gamut-styles:\nsystem props, semantic tokens, css/variant/states, eslint-plugin-gamut, and\nStorybook documentation links. Use when implementing screens in apps that depend\non Gamut—not when authoring the Gamut library itself. Pair with gamut-theming\nfor ColorMode/Background; gamut-accessibility for WCAG-focused work."
+    },
+    {
+      "id": "gamut-accessibility",
+      "docFile": "gamut-accessibility.md",
+      "title": "Gamut accessibility",
+      "detailLine": "the linked document is the source of truth for forms, overlays, focus management, and checklists.",
+      "description": "Reviews and implements accessible UI with @codecademy/gamut: WCAG-oriented\npatterns, keyboard and focus, documented Gamut components, and MDN-grounded\npatterns when building custom widgets. Use when auditing accessibility,\nimplementing bespoke controls, or fixing a11y bugs in Gamut consumer apps.\nPair with gamut-consumer and gamut-theming for tokens and color context."
+    },
+    {
+      "id": "gamut-theming",
+      "docFile": "gamut-theming.md",
+      "title": "Gamut theming",
+      "detailLine": "the linked document is the source of truth for providers, hooks, and troubleshooting.",
+      "description": "Configures and debugs ColorMode, Background, semantic color tokens, and hooks\nfrom @codecademy/gamut-styles in application code. Use when implementing\nlight/dark/system modes, branded sections, background-current, or platform\nthemes—not for one-off hex colors. Complements gamut-consumer."
+    }
+  ]
+}

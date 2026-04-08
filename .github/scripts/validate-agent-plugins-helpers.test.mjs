@@ -6,7 +6,7 @@ import {
   extractFrontmatterBlockFromText,
   fmHasKey,
   SEMVER,
-} from './validate-cursor-plugins-helpers.mjs';
+} from './validate-agent-plugins-helpers.mjs';
 
 describe('cmpSemver', () => {
   it('returns 0 for equal versions', () => {
@@ -64,7 +64,7 @@ describe('escapeRe', () => {
 describe('extractFrontmatterBlockFromText', () => {
   it('returns block between first and second ---', () => {
     const r = extractFrontmatterBlockFromText(
-      '---\ndescription: ok\n---\n# body\n',
+      '---\ndescription: ok\n---\n# body\n'
     );
     assert.ok('block' in r);
     assert.equal(r.block, 'description: ok');

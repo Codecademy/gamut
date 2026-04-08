@@ -1,26 +1,16 @@
 {
-  "name": "codecademy-gamut-cursor",
+  "name": "gamut",
   "owner": {
     "name": "Codecademy"
   },
   "metadata": {
-    "description": "Cursor plugins for the Gamut design system: core usage, accessibility, and theming."
+    "description": "Gamut design system agent pack (Cursor + Claude): consumption, accessibility, and theming. Single plugin; see packages/agent-plugin."
   },
   "plugins": [
     {
-      "name": "codecademy-gamut",
-      "source": "gamut-cursor-plugins/gamut-core",
-      "description": "Core Gamut consumption: layout, system props, gamut-styles utilities, ESLint alignment, Storybook links."
-    },
-    {
-      "name": "codecademy-gamut-a11y",
-      "source": "gamut-cursor-plugins/gamut-a11y",
-      "description": "WCAG-minded Gamut usage and composition when primitives are incomplete."
-    },
-    {
-      "name": "codecademy-gamut-themes",
-      "source": "gamut-cursor-plugins/gamut-themes",
-      "description": "ColorMode, Background, semantic tokens, hooks, and platform themes."
+      "name": "gamut",
+      "source": "packages/agent-plugin",
+      "description": "Core Gamut usage, accessibility patterns, and ColorMode/Background theming for application code. Rules + skills; canonical docs in docs/agents/."
     }
   ]
 }
