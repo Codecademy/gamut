@@ -142,7 +142,9 @@ By default, Storybook matches `GamutProvider` and uses physical properties. Turn
 
 In custom components, read the same flag Emotion-styled Gamut components use via `useLogicalProperties()` from `@codecademy/gamut-styles`:
 
-<Code>{`import { useLogicalProperties } from '@codecademy/gamut-styles';`}</Code>
+```ts
+import { useLogicalProperties } from '@codecademy/gamut-styles';
+```
 
 The hook returns `theme.useLogicalProperties` from `@emotion/react`’s `useTheme()`. `GamutProvider` merges the prop into the theme object, so this value stays aligned with system props.
 
