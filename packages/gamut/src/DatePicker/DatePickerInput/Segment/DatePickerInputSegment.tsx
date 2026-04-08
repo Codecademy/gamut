@@ -163,13 +163,12 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   return (
     <Segment
       aria-disabled={disabled}
-      aria-invalid={Boolean(error)}
+      aria-invalid={error}
       aria-label={field}
       aria-valuemax={max}
       aria-valuemin={min}
       aria-valuenow={ariaValue}
       aria-valuetext={display}
-      contentEditable={false}
       data-segment={field}
       default={segments[field].length === 0}
       field={field}
