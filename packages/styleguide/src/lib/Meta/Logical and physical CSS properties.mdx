@@ -42,7 +42,7 @@ Logical properties reference the flow of content:
 
 ## `GamutProvider` and `useLogicalProperties`
 
-Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. By default it is `false`, so Gamut emits **physical** CSS (`margin-left`, `width`, and so on). Pass `useLogicalProperties={true}` to emit **logical** CSS (`margin-inline-start`, `inline-size`, and so on).
+Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. By default it is `false`, so Gamut maps system props to **physical** CSS (`margin-left`, `width`, and so on). With `useLogicalProperties={true}`, Gamut maps them to **logical** CSS (`margin-inline-start`, `inline-size`, and so on).
 
 ### Affected Props
 
@@ -159,5 +159,3 @@ Pass an optional ref to the element whose direction matters. If the ref is omitt
 The return value updates when `dir` changes anywhere under the document root (`MutationObserver`) and when the ref identity changes after layout (`useLayoutEffect`) so `ref.current` is respected. During SSR or when `document` is unavailable, the hook returns `'ltr'`.
 
 For non-React code, the same rules apply via the imperative `elementDir(el)` export.
-
-`PopoverContainer` uses `useElementDir(targetRef) === 'rtl'` for RTL-aware positioning and visuals.

@@ -1,12 +1,18 @@
 import type { RefObject } from 'react';
 import { useEffect, useLayoutEffect, useReducer } from 'react';
 
-/** Resolved HTML `dir` keyword: effective writing direction after `dir`, then CSS `direction`, then document root. */
+/**
+ * Resolved HTML `dir` keyword: effective writing direction after `dir`, then CSS
+ * `direction`, then document root.
+ */
 export type DirValue = 'rtl' | 'ltr';
 
 /**
  * Resolves the effective `dir` for an element (`rtl` or `ltr`), including JSDOM where
  * `getComputedStyle(el).direction` is often empty while `dir` is set on the root.
+ *
+ * @param el - DOM node whose effective direction is resolved.
+ * @returns `rtl` or `ltr`.
  */
 export function elementDir(el: Element): DirValue {
   const ownDir = el.getAttribute('dir');
@@ -23,6 +29,8 @@ export function elementDir(el: Element): DirValue {
  * Ref whose `current` may be any DOM {@link Element} subclass (`HTMLElement`, `SVGElement`,
  * `HTMLButtonElement`, etc.). For structural/minimal types (e.g. tests), intersect with
  * `Element` so `current` is still typed as an `Element` (e.g. `Pick<HTMLAnchorElement, 'id'> & Element`).
+ *
+ * @template T - DOM element type for `current`; defaults to {@link Element}.
  */
 export type ElementDirRef<T extends Element = Element> = RefObject<T | null>;
 
@@ -39,7 +47,9 @@ function resolveElement<T extends Element>(
  * changes on the document subtree or after layout (so `ref.current` is current).
  * Resolution uses {@link elementDir}.
  *
+ * @template T - DOM element type for the optional ref; defaults to {@link Element}.
  * @param elementRef - Optional ref; when missing or `current` is not an `Element`, uses `document.documentElement`.
+ * @returns Effective direction for the resolved element, or `ltr` when `document` is undefined (SSR).
  */
 export function useElementDir<T extends Element = Element>(
   elementRef?: ElementDirRef<T>
