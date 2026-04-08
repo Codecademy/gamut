@@ -74,7 +74,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
   const rootRef = useRef<HTMLDivElement>(null);
-  const isRtl = useElementDir(rootRef);
+  const isRtl = useElementDir(rootRef) === 'rtl';
 
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||
