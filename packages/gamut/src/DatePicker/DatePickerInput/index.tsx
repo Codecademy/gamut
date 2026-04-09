@@ -98,6 +98,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       ? formatDateISO8601DateOnly(parsedForHidden)
       : '';
 
+    /** True only while a segment spinbutton is focused — avoids clobbering partial typing. Icon/shell-only focus must not set this or calendar picks won't sync to segments. */
     const isInputFocusedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const segmentElRefs = useRef<
@@ -174,17 +175,25 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       });
     };
 
-    const handleContainerFocus = () => {
-      isInputFocusedRef.current = true;
-    };
-
-    const handleSegmentFocus = () => {
-      handleContainerFocus();
+    const setActiveRangePartForField = () => {
       if (isRange && rangePart) context.setActiveRangePart(rangePart);
     };
 
-    const handleOpenCalendar = () => {
-      if (!disabled) openCalendar({ moveFocusIntoCalendar: false });
+    const handleSegmentFocus = () => {
+      isInputFocusedRef.current = true;
+      setActiveRangePartForField();
+    };
+
+    /** Focus entered the shell (segment, icon, etc.). Range targeting only — does not mark segment editing. */
+    const handleShellFocus = () => {
+      setActiveRangePartForField();
+    };
+
+    /** Pointer activation on the shell (bubbles from segments/icon). Ensures range targeting even if focus order differs from click. */
+    const handleShellClick = () => {
+      if (disabled) return;
+      setActiveRangePartForField();
+      openCalendar({ moveFocusIntoCalendar: false });
     };
 
     const focusOrOpenCalendarGrid = () => {
@@ -209,8 +218,8 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           variant={error ? 'error' : undefined}
           width="113px"
           onBlur={handleContainerBlur}
-          onClick={handleOpenCalendar}
-          onFocus={handleContainerFocus}
+          onClick={handleShellClick}
+          onFocus={handleShellFocus}
           {...rest}
         >
           <FlexBox alignItems="center" justifyContent="center">

@@ -117,7 +117,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       setSelection,
       disabledDates,
     });
-    if (shouldClose) closeCalendar();
+    if (shouldClose) queueMicrotask(closeCalendar);
   };
 
   const handleClearDate = () => {
