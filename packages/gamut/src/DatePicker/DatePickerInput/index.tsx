@@ -24,6 +24,7 @@ import {
   SegmentLiteral,
 } from './Segment';
 import {
+  type DatePartKind,
   formatDateISO8601DateOnly,
   getDateFieldOrder,
   getDateFormatLayout,
@@ -99,6 +100,20 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const isInputFocusedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const segmentElRefs = useRef<
+      Partial<Record<DatePartKind, HTMLSpanElement | null>>
+    >({});
+
+    const assignSegmentRef = useCallback(
+      (field: DatePartKind, el: HTMLSpanElement | null) => {
+        segmentElRefs.current[field] = el;
+      },
+      []
+    );
+
+    const focusSegmentField = useCallback((field: DatePartKind) => {
+      segmentElRefs.current[field]?.focus();
+    }, []);
 
     const setShellRef = useCallback(
       (el: HTMLDivElement | null) => {
@@ -219,10 +234,12 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
               return (
                 <DatePickerInputSegment
                   applySegments={applySegments}
-                  disabled={Boolean(disabled)}
-                  error={Boolean(error)}
+                  assignSegmentRef={assignSegmentRef}
+                  disabled={!!disabled}
+                  error={!!error}
                   field={item.field}
                   focusOrOpenCalendarGrid={focusOrOpenCalendarGrid}
+                  focusSegmentField={focusSegmentField}
                   handleOnFocus={handleSegmentFocus}
                   key={item.field}
                   nextField={nextField}

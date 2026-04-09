@@ -7,9 +7,14 @@ import userEvent from '@testing-library/user-event';
 
 import { DatePickerInputSegment } from '../DatePickerInputSegment';
 import type { DatePartKind } from '../../utils';
+import type { AssignSegmentRef } from '../DatePickerInputSegment';
 import type { SegmentValues } from '../segmentUtils';
 
 const noop = () => undefined;
+
+const noopAssignSegmentRef: AssignSegmentRef = () => undefined;
+
+const noopFocusSegmentField = () => undefined;
 
 type HarnessProps = {
   field?: DatePartKind;
@@ -37,10 +42,12 @@ const SegmentHarness: FC<HarnessProps> = ({
   return (
     <DatePickerInputSegment
       applySegments={applySegments}
+      assignSegmentRef={noopAssignSegmentRef}
       disabled={disabled}
       error={error}
       field={field}
       focusOrOpenCalendarGrid={focusOrOpenCalendarGrid}
+      focusSegmentField={noopFocusSegmentField}
       handleOnFocus={noop}
       nextField={null}
       prevField={null}

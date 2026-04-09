@@ -1,10 +1,4 @@
-import {
-  type Dispatch,
-  type SetStateAction,
-  useCallback,
-  useId,
-  useRef,
-} from 'react';
+import { type Dispatch, type SetStateAction, useCallback, useId } from 'react';
 
 import type { DatePartKind } from '../utils';
 import { Segment } from './elements';
@@ -18,6 +12,11 @@ import {
   spinSegment,
 } from './segmentUtils';
 
+export type AssignSegmentRef = (
+  field: DatePartKind,
+  el: HTMLSpanElement | null
+) => void;
+
 export type DatePickerInputSegmentProps = {
   field: DatePartKind;
   segments: SegmentValues;
@@ -25,6 +24,9 @@ export type DatePickerInputSegmentProps = {
   error: boolean;
   handleOnFocus: () => void;
   focusOrOpenCalendarGrid: () => void;
+  /** Focus a sibling segment; must use refs registered via `assignSegmentRef` (owned by parent). */
+  focusSegmentField: (field: DatePartKind) => void;
+  assignSegmentRef: AssignSegmentRef;
   setSegments: Dispatch<SetStateAction<SegmentValues>>;
   prevField: DatePartKind | null;
   nextField: DatePartKind | null;
@@ -41,6 +43,8 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   error,
   handleOnFocus,
   focusOrOpenCalendarGrid,
+  focusSegmentField,
+  assignSegmentRef,
   setSegments,
   prevField,
   nextField,
@@ -53,13 +57,6 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
     segments[field].length > 0 ? segments[field] : segmentPlaceholder(field);
   const inputID = useId();
   const inputId = `datepicker-input-${inputID.replace(/:/g, '')}`;
-  const segmentRefs = useRef<
-    Partial<Record<DatePartKind, HTMLSpanElement | null>>
-  >({});
-
-  const focusField = useCallback((field: DatePartKind) => {
-    segmentRefs.current[field]?.focus();
-  }, []);
 
   const handleSegmentKeyDown = useCallback(
     (field: DatePartKind) => (e: React.KeyboardEvent<HTMLSpanElement>) => {
@@ -74,7 +71,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       if (e.key === 'ArrowLeft') {
         if (prevField) {
           e.preventDefault();
-          focusField(prevField);
+          focusSegmentField(prevField);
         }
         return;
       }
@@ -82,7 +79,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       if (e.key === 'ArrowRight') {
         if (nextField) {
           e.preventDefault();
-          focusField(nextField);
+          focusSegmentField(nextField);
         }
         return;
       }
@@ -125,7 +122,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
             return next;
           }
           if (prevField) {
-            queueMicrotask(() => focusField(prevField));
+            queueMicrotask(() => focusSegmentField(prevField));
           }
           return prev;
         });
@@ -143,7 +140,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
           applySegments(next);
           const maxLen = segmentMaxLength(field);
           if (next[field].length >= maxLen && nextField) {
-            queueMicrotask(() => focusField(nextField));
+            queueMicrotask(() => focusSegmentField(nextField));
           }
           return next;
         });
@@ -153,7 +150,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       disabled,
       focusOrOpenCalendarGrid,
       prevField,
-      focusField,
+      focusSegmentField,
       nextField,
       setSegments,
       applySegments,
@@ -173,9 +170,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       default={segments[field].length === 0}
       field={field}
       id={`${inputId}-${field}`}
-      ref={(el) => {
-        segmentRefs.current[field] = el;
-      }}
+      ref={(el) => assignSegmentRef(field, el)}
       role="spinbutton"
       tabIndex={disabled ? -1 : 0}
       onFocus={handleOnFocus}
