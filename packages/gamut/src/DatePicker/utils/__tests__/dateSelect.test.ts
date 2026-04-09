@@ -91,13 +91,15 @@ describe('applyRangeOrNewStart', () => {
     const start = createDate(2024, 5, 10);
     const end = createDate(2024, 5, 20);
     const clicked = createDate(2024, 5, 10);
-    applyRangeOrNewStart({
-      start,
-      end,
-      clickedDate: clicked,
-      disabledDates: [createDate(2024, 5, 30)],
-      setSelection: mockSetSelection,
-    });
+    expect(
+      applyRangeOrNewStart({
+        start,
+        end,
+        clickedDate: clicked,
+        disabledDates: [createDate(2024, 5, 30)],
+        setSelection: mockSetSelection,
+      })
+    ).toBe(true);
     expect(mockSetSelection).toHaveBeenCalledWith(start, end);
   });
 
@@ -105,18 +107,55 @@ describe('applyRangeOrNewStart', () => {
     const start = createDate(2024, 5, 10);
     const end = createDate(2024, 5, 20);
     const clicked = createDate(2024, 5, 10);
-    applyRangeOrNewStart({
-      start,
-      end,
-      clickedDate: clicked,
-      disabledDates: [createDate(2024, 5, 12)],
-      setSelection: mockSetSelection,
-    });
+    expect(
+      applyRangeOrNewStart({
+        start,
+        end,
+        clickedDate: clicked,
+        disabledDates: [createDate(2024, 5, 12)],
+        setSelection: mockSetSelection,
+      })
+    ).toBe(false);
     expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
   });
 });
 
 describe('handleDateSelectRange', () => {
+  describe('close calendar return value', () => {
+    it('returns false when only a start date is chosen (calendar mode)', () => {
+      const setSelection = jest.fn();
+      expect(
+        handleDateSelectRange({
+          date: createDate(2024, 5, 10),
+          activeRangePart: null,
+          startDate: null,
+          endDate: null,
+          setSelection,
+          disabledDates: [],
+        })
+      ).toBe(false);
+      expect(setSelection).toHaveBeenCalledWith(createDate(2024, 5, 10), null);
+    });
+
+    it('returns true when end date is chosen after start (calendar mode)', () => {
+      const setSelection = jest.fn();
+      expect(
+        handleDateSelectRange({
+          date: createDate(2024, 5, 20),
+          activeRangePart: null,
+          startDate: createDate(2024, 5, 10),
+          endDate: null,
+          setSelection,
+          disabledDates: [],
+        })
+      ).toBe(true);
+      expect(setSelection).toHaveBeenCalledWith(
+        createDate(2024, 5, 10),
+        createDate(2024, 5, 20)
+      );
+    });
+  });
+
   describe('activeRangePart === start', () => {
     describe('start date is set', () => {
       it('clears start when the start date is clicked again', () => {

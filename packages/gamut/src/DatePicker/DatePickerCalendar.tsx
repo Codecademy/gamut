@@ -103,17 +103,21 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         selectedDate: startOrSelectedDate,
         setSelection,
       });
-    } else {
-      context.setActiveRangePart(null);
-      handleDateSelectRange({
-        date,
-        activeRangePart: context.activeRangePart,
-        startDate: startOrSelectedDate,
-        endDate: context.endDate,
-        setSelection,
-        disabledDates,
-      });
+      // Defer close so React can commit the new date and the input can sync segments
+      // before closeCalendar focuses the spinbutton (which blocks segment sync while "focused").
+      queueMicrotask(closeCalendar);
+      return;
     }
+    context.setActiveRangePart(null);
+    const shouldClose = handleDateSelectRange({
+      date,
+      activeRangePart: context.activeRangePart,
+      startDate: startOrSelectedDate,
+      endDate: context.endDate,
+      setSelection,
+      disabledDates,
+    });
+    if (shouldClose) closeCalendar();
   };
 
   const handleClearDate = () => {
@@ -126,6 +130,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     setSelection(today);
     setDisplayDate(firstOfMonth(today));
     setFocusedDate(today);
+    if (!isRange) queueMicrotask(closeCalendar);
   };
 
   const focusTarget =

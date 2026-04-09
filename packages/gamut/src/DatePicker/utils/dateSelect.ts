@@ -56,6 +56,7 @@ type ApplyRangeOrNewStartParams = {
   disabledDates: Date[];
 } & Pick<DatePickerBaseContextValue, 'setSelection'>;
 
+/** @returns whether a full start+end range was committed (calendar may close). */
 export const applyRangeOrNewStart = ({
   start,
   end,
@@ -66,9 +67,10 @@ export const applyRangeOrNewStart = ({
   // if range contains disabled dates, set start date to clicked date and end date to null
   if (rangeContainsDisabled({ start, end, disabledDates })) {
     setSelection(clickedDate, null);
-  } else {
-    setSelection(start, end);
+    return false;
   }
+  setSelection(start, end);
+  return true;
 };
 
 export type HandleDateSelectRangeParams = {
@@ -79,6 +81,7 @@ export type HandleDateSelectRangeParams = {
   'activeRangePart' | 'endDate' | 'setSelection' | 'disabledDates'
 >;
 
+/** @returns whether the calendar should close (full range selected and committed). */
 export const handleDateSelectRange = ({
   date,
   activeRangePart,
@@ -91,44 +94,42 @@ export const handleDateSelectRange = ({
   if (activeRangePart === 'start') {
     if (date.getTime() === startDate?.getTime()) {
       setSelection(null, endDate);
-      return;
+      return false;
     }
     const newEnd =
       endDate != null && date.getTime() <= endDate.getTime() ? endDate : null;
     if (newEnd != null) {
-      applyRangeOrNewStart({
+      return applyRangeOrNewStart({
         start: date,
         end: newEnd,
         clickedDate: date,
         disabledDates,
         setSelection,
       });
-    } else {
-      setSelection(date, newEnd);
     }
-    return;
+    setSelection(date, newEnd);
+    return false;
   }
   if (activeRangePart === 'end') {
     if (date.getTime() === endDate?.getTime()) {
       setSelection(startDate, null);
-      return;
+      return false;
     }
     const newStart =
       startDate != null && date.getTime() >= startDate.getTime()
         ? startDate
         : null;
     if (newStart != null) {
-      applyRangeOrNewStart({
+      return applyRangeOrNewStart({
         start: newStart,
         end: date,
         clickedDate: date,
         disabledDates,
         setSelection,
       });
-    } else {
-      setSelection(newStart, date);
     }
-    return;
+    setSelection(newStart, date);
+    return false;
   }
 
   // Range selection mode (no field focused: calendar drives both)
@@ -139,55 +140,53 @@ export const handleDateSelectRange = ({
       date.getTime() === startDate.getTime()
     ) {
       setSelection(null, null);
-      return;
+      return false;
     }
     // if clicked on start date, end date becomes start date
     if (date.getTime() === startDate.getTime()) {
       setSelection(endDate, null);
-      return;
+      return false;
     }
     // if clicked on end date, clears end date and start remains
     if (date.getTime() === endDate.getTime()) {
       setSelection(startDate, null);
-      return;
+      return false;
     }
     // If clicked date > Start: Updates End Date to new date (Start remains)
     if (date.getTime() > startDate.getTime()) {
-      applyRangeOrNewStart({
+      return applyRangeOrNewStart({
         start: startDate,
         end: date,
         clickedDate: date,
         disabledDates,
         setSelection,
       });
-      return;
     }
     // If clicked date < Start: Updates Start Date to new date (End remains) - extends range to the left
-    applyRangeOrNewStart({
+    return applyRangeOrNewStart({
       start: date,
       end: endDate,
       clickedDate: date,
       disabledDates,
       setSelection,
     });
-    return;
   }
   // Start is Set, End is Empty
   if (startDate && !endDate) {
     // If clicked date < Start: Restarts selection with clicked date as new Start
     if (date.getTime() < startDate.getTime()) {
       setSelection(date, null);
-    } else {
-      // If clicked date > Start: Sets it as End Date (if range valid)
-      applyRangeOrNewStart({
-        start: startDate,
-        end: date,
-        clickedDate: date,
-        disabledDates,
-        setSelection,
-      });
+      return false;
     }
-    return;
+    // If clicked date > Start: Sets it as End Date (if range valid)
+    return applyRangeOrNewStart({
+      start: startDate,
+      end: date,
+      clickedDate: date,
+      disabledDates,
+      setSelection,
+    });
   }
   setSelection(date, null);
+  return false;
 };

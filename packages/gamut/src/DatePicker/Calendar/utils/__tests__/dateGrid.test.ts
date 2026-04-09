@@ -42,9 +42,7 @@ describe('isSameDay', () => {
   });
 
   it('returns false for different days or null', () => {
-    expect(isSameDay(new Date(2024, 5, 15), new Date(2024, 5, 16))).toBe(
-      false
-    );
+    expect(isSameDay(new Date(2024, 5, 15), new Date(2024, 5, 16))).toBe(false);
     expect(isSameDay(new Date(), null)).toBe(false);
   });
 });
@@ -77,9 +75,9 @@ describe('isDateDisabled', () => {
 
   it('returns false when the list is empty or no match', () => {
     expect(isDateDisabled(new Date(2024, 4, 10), [])).toBe(false);
-    expect(
-      isDateDisabled(new Date(2024, 4, 10), [new Date(2024, 4, 11)])
-    ).toBe(false);
+    expect(isDateDisabled(new Date(2024, 4, 10), [new Date(2024, 4, 11)])).toBe(
+      false
+    );
   });
 });
 
