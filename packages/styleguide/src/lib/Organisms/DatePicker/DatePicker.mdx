@@ -1,0 +1,126 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as DatePickerStories from './DatePicker.stories';
+
+export const parameters = {
+  title: 'DatePicker',
+  subtitle: `Single-date or range selection with a segmented date field, calendar popover, and shared React context for custom layouts.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DatePicker/DatePicker.tsx',
+  },
+};
+
+<Meta of={DatePickerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Overview
+
+`DatePicker` is a **controlled** component: you own the selected value in React state and pass setters back in. It wraps children in `DatePickerProvider` so subcomponents can read calendar open/close, locale, disabled dates, and selection via **`useDatePicker()`**.
+
+With **no `children`**, it renders the default layout: segmented inputs (and a range arrow in range mode), a calendar icon, and a **`PopoverContainer`**-anchored calendar dialog. Pass **`children`** to compose your own shell (for example a different popover target or layout) while still using **`DatePickerInput`**, **`DatePickerCalendar`**, and the same context.
+
+The lower-level **Calendar** building blocks (month grid, header, footer) are documented under <LinkTo id="Molecules/DatePicker/Calendar">DatePicker/Calendar</LinkTo>.
+
+## Modes
+
+### Single date (`mode` omitted or `'single'`)
+
+- **`selectedDate`** / **`setSelectedDate`**: the current value (`Date | null`).
+- Optional **`label`** for the field.
+
+### Range (`mode="range"`)
+
+- **`startDate`**, **`endDate`**, **`setStartDate`**, **`setEndDate`**.
+- Optional **`startLabel`** and **`endLabel`** for the two inputs.
+
+## Common props
+
+| Area            | Props                                                                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Locale**      | **`locale`**: `string` or `Intl.Locale` — drives date format order in the input (e.g. MM/DD/YYYY vs DD/MM/YYYY) and calendar copy. |
+| **Constraints** | **`disabledDates`**: individual days that cannot be selected; range selection avoids ranges that include disabled days.            |
+| **Copy**        | **`translations`**: optional overrides (e.g. clear button, dialog `aria-label`, start/end labels) merged with defaults.            |
+| **Size**        | **`inputSize`**: forwarded to the segmented inputs (`small` vs default).                                                           |
+
+## Subcomponents and context
+
+- **`DatePickerInput`**: segmented month/day/year spinbuttons; must be used inside a `DatePicker` (or `DatePickerProvider` with a matching value). In range mode, pass **`rangePart="start"`** or **`"end"`** on each input.
+- **`DatePickerCalendar`**: full calendar UI wired to context; pass a stable **`dialogId`** that matches the dialog wrapper (see default `DatePicker` implementation).
+- **`useDatePicker()`**: **`openCalendar`**, **`closeCalendar`**, **`isCalendarOpen`**, **`calendarDialogId`**, **`setSelection`**, **`locale`**, **`focusCalendarGrid`**, etc.
+
+For floating UI, the default implementation uses <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo> with **`allowPageInteraction`** and focus settings so users can type in the field without focus jumping into the grid on every open.
+
+## Code examples
+
+### Single date (minimal)
+
+```tsx
+const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+return (
+  <DatePicker
+    label="Ship date"
+    selectedDate={selectedDate}
+    setSelectedDate={setSelectedDate}
+  />
+);
+```
+
+### Range
+
+```tsx
+const [startDate, setStartDate] = useState<Date | null>(null);
+const [endDate, setEndDate] = useState<Date | null>(null);
+
+return (
+  <DatePicker
+    mode="range"
+    startDate={startDate}
+    endDate={endDate}
+    setStartDate={setStartDate}
+    setEndDate={setEndDate}
+    disabledDates={[someHoliday]}
+  />
+);
+```
+
+### Custom layout (`children`)
+
+Render **`DatePicker`** with **`children`** only (no default input/calendar). Inside the tree, call **`useDatePicker()`** and place **`DatePickerInput`** and **`DatePickerCalendar`** wherever you need, and wire your own **`PopoverContainer`** (or other overlay) to **`openCalendar`**, **`closeCalendar`**, and **`calendarDialogId`**. See the **Composed with context** story below.
+
+## Accessibility notes
+
+- The calendar is exposed as a **`role="dialog"`** region with an id used for labeling.
+- Segments use **`role="spinbutton"`** with arrow keys to change values, **Arrow Left/Right** to move between segments, and **Alt+Arrow Down** to move focus into the calendar grid when appropriate.
+
+## Playground
+
+<Canvas sourceState="shown" of={DatePickerStories.Default} />
+
+<Controls />
+
+## Examples
+
+### With initial date
+
+<Canvas of={DatePickerStories.WithInitialDate} />
+
+### Range
+
+<Canvas of={DatePickerStories.Range} />
+
+### Range (small inputs)
+
+<Canvas of={DatePickerStories.RangeSmall} />
+
+### Composed with context
+
+Custom composition using **`children`**, **`useDatePicker`**, **`DatePickerInput`**, **`DatePickerCalendar`**, and **`PopoverContainer`**.
+
+<Canvas of={DatePickerStories.ComposedWithContext} />
