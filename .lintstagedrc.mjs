@@ -1,5 +1,7 @@
 import micromatch from 'micromatch';
 
+const shellArg = (file) => JSON.stringify(file);
+
 export default {
   // Use custom function to avoid overlaps that could cause race conditions
   [`*`]: (allChanges) => {
@@ -22,9 +24,9 @@ export default {
 
     if (eslintFiles.length) {
       commands.push(
-        `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles.join(
-          ' '
-        )}`
+        `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles
+          .map(shellArg)
+          .join(' ')}`
       );
     }
 

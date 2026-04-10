@@ -1,0 +1,42 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ListHeaderColStories from './ListHeaderCol.stories';
+
+export const parameters = {
+  id: 'Organisms/Lists & Tables/List/ListHeaderCol',
+  title: 'List header columns',
+  subtitle: `How to mark header cells in Lists and tables.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/ListCol.tsx',
+  },
+};
+
+<Meta of={ListHeaderColStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+There is **no separate `ListHeaderCol` export** in `@codecademy/gamut`. Header cells are **`ListCol`** components with header semantics:
+
+- In **`TableHeader`**, set **`columnHeader`** on each **`ListCol`** so cells render with header styling and appropriate table tags where needed. See <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo> (**`WithTableHeader`**).
+- In body rows, use **`type="header"`** on the column that carries the primary label or identifier—especially for **`scrollable`** lists (sticky first column) and for **responsive** stacking (`header` / `control` / `content`).
+
+Optional props such as **`aria-sort`** on **`ListCol`** support sortable table headers when **`List`** uses **`as="table"`**.
+
+For a full column API reference, see <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo>.
+
+<Canvas of={ListHeaderColStories.HeaderColumnCells} />
+
+## Playground
+
+Adjust **`List`** props (e.g. **`spacing`**, **`variant`**) while the example keeps **`ListCol`** header cells in **`TableHeader`** and label columns in body rows.
+
+<Canvas sourceState="shown" of={ListHeaderColStories.Playground} />
+
+<Controls />

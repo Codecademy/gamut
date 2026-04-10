@@ -1,0 +1,57 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ListRowStories from './ListRow.stories';
+
+export const parameters = {
+  id: 'Organisms/Lists & Tables/List/ListRow',
+  title: 'ListRow',
+  subtitle: `A single row in a List, with optional expandable content.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/ListRow.tsx',
+  },
+};
+
+<Meta of={ListRowStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`ListRow` renders one logical row. It reads spacing, variant, and layout from **`List`** via **`ListProvider`**. Compose rows with <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> children.
+
+For table layouts (`List` with `as="table"`), body rows still use `ListRow`. Header labels belong in <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo> with `ListCol` cells—see <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo>.
+
+### Plain variant styling
+
+When the parent `List` uses `variant="plain"`, you can still style individual rows (for example with Emotion `styled`) to emphasize or group items.
+
+<Canvas of={ListRowStories.PlainStyled} />
+
+## Expandable rows
+
+You can define collapsible content by passing an `expanded` prop and a `renderExpanded` callback that returns the expanded region.
+
+### Expand on button click
+
+The `ListRow` can include **`ExpandControl`** in a `ListCol` with `type="control"` to toggle expansion. `ExpandControl` rotates its icon based on `expanded`.
+
+<Canvas of={ListRowStories.ExpandableButtonGuide} />
+
+### Expand on row click
+
+An entire row can toggle expansion via `onClick` on `ListRow` (non-table lists).
+
+<Canvas of={ListRowStories.ExpandedRowGuide} />
+
+## Playground
+
+For full `List` props and variants, see <LinkTo id="Organisms/Lists & Tables/List/List">List</LinkTo>.
+
+<Canvas sourceState="shown" of={ListRowStories.ExpandableButtonGuide} />
+
+<Controls />
