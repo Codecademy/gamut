@@ -11,7 +11,7 @@ import { useRef, useState } from 'react';
 
 const meta: Meta<typeof DatePicker> = {
   component: DatePicker,
-  title: 'Molecules/DatePicker/DatePicker',
+  title: 'Organisms/DatePicker',
 };
 
 export default meta;

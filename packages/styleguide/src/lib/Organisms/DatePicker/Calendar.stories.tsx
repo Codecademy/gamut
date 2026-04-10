@@ -10,7 +10,7 @@ import { useId, useState } from 'react';
 
 const meta: Meta<typeof CalendarWrapper> = {
   component: CalendarWrapper,
-  title: 'Molecules/DatePicker/Calendar',
+  title: 'Organisms/DatePicker/Calendar',
 };
 
 export default meta;
