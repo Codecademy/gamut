@@ -1,0 +1,16 @@
+{
+  "name": "ai-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/ai-tools",
+  "projectType": "library",
+  "tags": ["scope:ai-tooling"],
+  "targets": {
+    "validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/ai-tools/scripts/validate-manifests.mjs"],
+        "parallel": false
+      }
+    }
+  }
+}

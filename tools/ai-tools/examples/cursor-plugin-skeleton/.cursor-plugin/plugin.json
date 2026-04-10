@@ -1,0 +1,14 @@
+{
+  "name": "cursor-plugin-skeleton",
+  "displayName": "Cursor plugin skeleton (Gamut)",
+  "version": "0.0.0",
+  "description": "Minimal example Cursor plugin for the Gamut repo. Replace name and paths when copying.",
+  "author": {
+    "name": "Codecademy Engineers",
+    "email": "dev@codecademy.com"
+  },
+  "license": "MIT",
+  "keywords": ["gamut", "example", "skeleton"],
+  "rules": "./rules/",
+  "skills": "./skills/"
+}

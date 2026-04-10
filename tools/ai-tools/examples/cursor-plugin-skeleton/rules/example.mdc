@@ -1,0 +1,8 @@
+---
+description: Example project rule for the Cursor plugin skeleton (replace with real guidance).
+alwaysApply: false
+---
+
+# Example rule
+
+This file demonstrates where **rules** live in a Cursor plugin. Replace this content with conventions relevant to your project.
