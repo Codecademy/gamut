@@ -60,9 +60,9 @@ async function claudePluginSpecFromMarketplace(
       `Missing ${mp}. For Claude Code, add a local marketplace file (see https://code.claude.com/docs/en/plugin-marketplaces ) or use: claude --plugin-dir ${sourceRoot}`
     );
   }
-  const j = JSON.parse(text) as MarketplaceJson;
-  const marketplaceName = j.name;
-  const plugins = j.plugins;
+  const { name: marketplaceName, plugins } = JSON.parse(
+    text
+  ) as MarketplaceJson;
   if (!marketplaceName || !Array.isArray(plugins) || plugins.length === 0) {
     throw new Error(
       `Invalid marketplace.json (need name and plugins[]): ${mp}`
@@ -116,8 +116,8 @@ async function installClaudeCode(
     'user',
   ]);
   if (code !== 0) {
-    console.warn(
-      `warning: claude plugin marketplace add exited ${code} (if the marketplace is already registered, you can ignore this).`
+    process.stderr.write(
+      `warning: claude plugin marketplace add exited ${code} (if the marketplace is already registered, you can ignore this).\n`
     );
     code = await runCommand('claude', [
       'plugin',
@@ -145,11 +145,11 @@ async function installClaudeCode(
     );
   }
 
-  console.log(
-    `Claude Code: installed ${pluginSpec} (user scope). Run /reload-plugins in Claude if needed.`
+  process.stdout.write(
+    `Claude Code: installed ${pluginSpec} (user scope). Run /reload-plugins in Claude if needed.\n`
   );
-  console.log(
-    `One-off without install: claude --plugin-dir ${root} (https://code.claude.com/docs/en/plugins )`
+  process.stdout.write(
+    `One-off without install: claude --plugin-dir ${root} (https://code.claude.com/docs/en/plugins )\n`
   );
 }
 
@@ -169,7 +169,7 @@ async function installCursor(
   } else {
     await symlink(sourceRoot, dest, 'dir');
   }
-  console.log(`Cursor plugin installed to ${dest}`);
+  process.stdout.write(`Cursor plugin installed to ${dest}\n`);
 }
 
 const installCmd = new Command()

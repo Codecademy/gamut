@@ -19,5 +19,5 @@ const manifests = [
 for (const file of manifests) {
   const text = fs.readFileSync(file, 'utf8');
   JSON.parse(text);
-  console.log('OK', path.relative(process.cwd(), file));
+  process.stdout.write(`OK ${path.relative(process.cwd(), file)}\n`);
 }
