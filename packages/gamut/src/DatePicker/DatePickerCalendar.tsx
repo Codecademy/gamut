@@ -9,12 +9,15 @@ import {
   CalendarHeader,
   CalendarWrapper,
 } from './Calendar';
-import type { CalendarBodyProps } from './Calendar/types';
+import type { CalendarBodyProps, QuickAction } from './Calendar/types';
 import { useDatePicker } from './DatePickerContext';
 import {
+  applyRangeOrNewStart,
   handleDateSelectRange,
   handleDateSelectSingle,
+  rangeContainsDisabled,
 } from './utils/dateSelect';
+import { computeQuickAction } from './utils/quickActions';
 
 export type DatePickerCalendarProps = Pick<
   CalendarBodyProps,
@@ -59,6 +62,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     focusGridSignal,
     gridFocusRequested,
     clearGridFocusRequest,
+    quickActions: quickActionsFromContext,
   } = context;
 
   const focusGridSync = useMemo(
@@ -72,6 +76,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const isRange = mode === 'range';
   const endDate = isRange ? context.endDate : undefined;
+  const setActiveRangePart =
+    context.mode === 'range' ? context.setActiveRangePart : undefined;
   const firstOfMonth = (date: Date) =>
     new Date(date.getFullYear(), date.getMonth(), 1);
 
@@ -125,13 +131,55 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     setFocusedDate(displayDate);
   };
 
-  const handleTodayClick = () => {
-    const today = new Date();
-    setSelection(today);
-    setDisplayDate(firstOfMonth(today));
-    setFocusedDate(today);
-    if (!isRange) queueMicrotask(closeCalendar);
-  };
+  const footerQuickActions: QuickAction[] = useMemo(() => {
+    const safeDisabled = disabledDates ?? [];
+    return quickActionsFromContext.slice(0, 3).map((action) => ({
+      ...action,
+      onClick: () => {
+        action.onClick?.();
+        setActiveRangePart?.(null);
+        const { start, end } = computeQuickAction(
+          action.num,
+          action.timePeriod,
+          isRange
+        );
+        if (isRange) {
+          if (
+            rangeContainsDisabled({
+              start,
+              end,
+              disabledDates: safeDisabled,
+            })
+          ) {
+            applyRangeOrNewStart({
+              start,
+              end,
+              clickedDate: end,
+              disabledDates: safeDisabled,
+              setSelection,
+            });
+          } else {
+            setSelection(start, end);
+          }
+          setDisplayDate(firstOfMonth(end));
+          setFocusedDate(end);
+          queueMicrotask(closeCalendar);
+        } else {
+          setSelection(start);
+          setDisplayDate(firstOfMonth(start));
+          setFocusedDate(start);
+          queueMicrotask(closeCalendar);
+        }
+      },
+    }));
+  }, [
+    closeCalendar,
+    disabledDates,
+    isRange,
+    quickActionsFromContext,
+    setActiveRangePart,
+    setSelection,
+  ]);
 
   const focusTarget =
     focusedDate ?? startOrSelectedDate ?? endDate ?? new Date();
@@ -199,10 +247,9 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       <CalendarFooter
         clearText={translations.clearText}
         disabled={startOrSelectedDate === null && endDate === null}
-        locale={locale}
+        quickActions={footerQuickActions}
         showClearButton={isRange}
         onClearDate={handleClearDate}
-        onTodayClick={handleTodayClick}
       />
     </CalendarWrapper>
   );

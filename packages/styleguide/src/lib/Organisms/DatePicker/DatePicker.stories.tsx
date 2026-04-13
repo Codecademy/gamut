@@ -74,6 +74,32 @@ export const Range: Story = {
   },
 };
 
+/** Range mode with footer quick actions (calendar month or rolling days through today). */
+export const RangeWithQuickActions: Story = {
+  render: function DatePickerStory() {
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
+    return (
+      <Box>
+        <DatePicker
+          endDate={endDate}
+          mode="range"
+          quickActions={[
+            { num: -1, timePeriod: 'month', displayText: 'Last month' },
+            { num: -30, timePeriod: 'day', displayText: 'Last 30 days' },
+          ]}
+          setEndDate={setEndDate}
+          setStartDate={setStartDate}
+          startDate={startDate}
+          translations={{
+            startDateLabel: 'Beginning date',
+          }}
+        />
+      </Box>
+    );
+  },
+};
+
 export const RangeSmall: Story = {
   render: function DatePickerStory() {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -126,7 +152,12 @@ function ComposedDatePickerLayout() {
 
   return (
     <>
-      <Box width="fit-content" onClick={openCalendar}>
+      <Box
+        width="fit-content"
+        onClick={() => {
+          openCalendar();
+        }}
+      >
         <DatePickerInput ref={inputRef} />
       </Box>
       <PopoverContainer

@@ -13,6 +13,10 @@ import type {
 } from './types';
 import { isRangeProps } from './utils/dateSelect';
 import { useResolvedLocale } from './utils/locale';
+import {
+  getDefaultRangeQuickActions,
+  getDefaultSingleQuickActions,
+} from './utils/quickActions';
 import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './utils/translations';
 
 /**
@@ -29,6 +33,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     children,
     translations: translationsProp,
     inputSize,
+    quickActions,
   } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [focusGridSignal, setFocusGridSignal] = useState(false);
@@ -94,6 +99,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       ...DEFAULT_DATE_PICKER_TRANSLATIONS,
       ...translationsProp,
     };
+    const resolvedQuickActions =
+      quickActions ?? mode === 'range'
+        ? getDefaultRangeQuickActions(translations)
+        : getDefaultSingleQuickActions(resolvedLocale);
     const base = {
       startOrSelectedDate,
       setSelection,
@@ -108,6 +117,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       disabledDates,
       calendarDialogId,
       translations,
+      quickActions: quickActions === null ? [] : resolvedQuickActions,
     };
     return mode === 'range'
       ? {
@@ -117,14 +127,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           activeRangePart,
           setActiveRangePart,
         }
-      : { ...base, mode: 'single' };
+      : {
+          ...base,
+          mode: 'single',
+        };
   }, [
-    mode,
+    translationsProp,
     startOrSelectedDate,
-    endDate,
     setSelection,
-    activeRangePart,
-    setActiveRangePart,
     isCalendarOpen,
     openCalendar,
     focusCalendarGrid,
@@ -135,7 +145,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     resolvedLocale,
     disabledDates,
     calendarDialogId,
-    translationsProp,
+    mode,
+    endDate,
+    activeRangePart,
+    quickActions,
   ]);
 
   const content =
@@ -170,7 +183,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
             <DatePickerInput
               label={props.label}
               placeholder={placeholder}
-              // ref={inputRef}
               size={inputSize}
             />
           )}

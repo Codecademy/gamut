@@ -2,42 +2,17 @@ import * as React from 'react';
 
 import { FlexBox } from '../../Box';
 import { TextButton } from '../../Button';
-import { useResolvedLocale } from '../utils/locale';
 import { DEFAULT_DATE_PICKER_TRANSLATIONS } from '../utils/translations';
 import { CalendarFooterProps } from './types';
-import { getRelativeTodayLabel } from './utils/format';
-
-// function formatQuickActionLabel(action: QuickAction): string {
-//   const { num, timePeriod } = action;
-//   const period =
-//     timePeriod === 'day'
-//       ? num === 1
-//         ? 'day'
-//         : 'days'
-//       : timePeriod === 'week'
-//       ? num === 1
-//         ? 'week'
-//         : 'weeks'
-//       : timePeriod === 'month'
-//       ? num === 1
-//         ? 'month'
-//         : 'months'
-//       : num === 1
-//       ? 'year'
-//       : 'years';
-//   return `${num} ${period}`;
-// }
 
 export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   onClearDate,
-  onTodayClick,
-  locale,
   clearText = DEFAULT_DATE_PICKER_TRANSLATIONS.clearText,
   disabled,
   showClearButton,
+  quickActions = [],
 }) => {
-  const resolvedLocale = useResolvedLocale(locale);
-  // const actions = quickActions.slice(0, 3);
+  const actions = quickActions.slice(0, 3);
 
   return (
     <FlexBox
@@ -51,10 +26,16 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
           {clearText}
         </TextButton>
       )}
-      <FlexBox gap={32}>
-        <TextButton onClick={() => onTodayClick?.()}>
-          {getRelativeTodayLabel(resolvedLocale)}
-        </TextButton>
+      <FlexBox gap={8}>
+        {actions.map((action, index) => (
+          <TextButton
+            // eslint-disable-next-line react/no-array-index-key -- displayText may duplicate
+            key={`${action.displayText}-${index}`}
+            onClick={action.onClick}
+          >
+            {action.displayText}
+          </TextButton>
+        ))}
       </FlexBox>
     </FlexBox>
   );

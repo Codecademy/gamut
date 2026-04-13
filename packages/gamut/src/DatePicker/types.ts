@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react';
 
 import { Input } from '../Form/inputs/Input';
-import { CalendarBaseProps } from './Calendar/types';
+import { CalendarBaseProps, QuickAction } from './Calendar/types';
 import { DatePickerTranslations } from './utils/translations';
 
 export interface DatePickerBaseProps
@@ -13,6 +13,11 @@ export interface DatePickerBaseProps
   /** Override UI strings (e.g. clear button). Merged with defaults. */
   translations?: DatePickerTranslations;
   inputSize?: ComponentProps<typeof Input>['size'];
+  /**
+   * Calendar footer quick actions (max 3). Omit `onClick` on an action to use default
+   * range from `num` + `timePeriod` (range mode) or today as single date (single mode).
+   */
+  quickActions?: QuickAction[] | null;
 }
 
 export interface DatePickerSingleProps extends DatePickerBaseProps {
@@ -75,6 +80,8 @@ export interface DatePickerBaseContextValue
   calendarDialogId: string;
   /** UI string overrides (e.g. clear button). */
   translations: Required<DatePickerTranslations>;
+  /** Calendar footer quick actions (max 3 shown). */
+  quickActions: QuickAction[];
   /** Start date (range) or selected date (single). */
   startOrSelectedDate: Date | null;
   /** Set selection. Single: (date). Range: (start, end). */

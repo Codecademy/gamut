@@ -10,6 +10,12 @@ export interface DatePickerTranslations {
   endDateLabel?: string;
   /** aria-label for the calendar dialog (default: "Choose date"). */
   calendarDialogAriaLabel?: string;
+  /** Default label for the last 7 days quick action (default: "Last 7 days"). */
+  last7DaysDisplayText?: string;
+  /** Default label for the last 30 days quick action (default: "Last 30 days"). */
+  last30DaysDisplayText?: string;
+  /** Default label for the last 90 days quick action (default: "Last 90 days"). */
+  last90DaysDisplayText?: string;
 }
 
 /** Default UI strings; pass translations prop to override. */
@@ -20,4 +26,7 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> 
     startDateLabel: 'Start date',
     endDateLabel: 'End date',
     calendarDialogAriaLabel: 'Choose date',
+    last7DaysDisplayText: 'Last 7 days',
+    last30DaysDisplayText: 'Last 30 days',
+    last90DaysDisplayText: 'Last 90 days',
   };

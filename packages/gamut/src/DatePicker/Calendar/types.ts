@@ -70,14 +70,14 @@ export interface CalendarBodyProps extends CalendarBaseProps {
 export interface QuickAction {
   num: number;
   timePeriod: 'day' | 'week' | 'month' | 'year';
-  onClick: () => void;
+  displayText: string;
+  onClick?: () => void;
 }
-export interface CalendarFooterProps extends Pick<CalendarBaseProps, 'locale'> {
+export interface CalendarFooterProps {
   disabled?: boolean;
   showClearButton?: boolean;
   clearText?: string;
   onClearDate?: () => void;
-  onTodayClick?: () => void;
   /** Max 3 quick actions (e.g. "7 days", "1 month") */
   quickActions?: QuickAction[];
 }
