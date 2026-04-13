@@ -154,7 +154,9 @@ Use it when you need conditional styles or layout logic that must mirror Gamut�
 
 `useElementDir` resolves the effective text direction (`'rtl'` or `'ltr'`) for a DOM subtree. Import it from `@codecademy/gamut-styles`:
 
-<Code>{`import { useElementDir } from '@codecademy/gamut-styles';`}</Code>
+```ts
+import { useElementDir } from '@codecademy/gamut-styles';
+```
 
 Pass an optional ref to the element whose direction matters. If the ref is omitted or `current` is not an `Element`, the hook uses `document.documentElement`. Resolution follows the `elementDir` helper: the element’s `dir` attribute, then computed `direction`, then the root element’s `dir` (which helps in test environments where computed style may be empty).
 
