@@ -12,6 +12,9 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   showClearButton,
   quickActions = [],
 }) => {
+  // if there are no quick actions and the clear button is not shown, don't render anything
+  if (quickActions.length === 0 && !showClearButton) return null;
+
   const actions = quickActions.slice(0, 3);
 
   return (
