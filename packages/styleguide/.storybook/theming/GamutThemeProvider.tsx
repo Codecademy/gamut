@@ -39,10 +39,6 @@ type GlobalsContext = {
     logicalProps: 'true' | 'false';
     direction: 'ltr' | 'rtl';
   };
-  /**
-   * Storybook view mode (`story` is Canvas, `docs` is the Docs tab).
-   */
-  viewMode?: 'story' | 'docs';
 };
 
 export const withEmotion = (Story: any, context: GlobalsContext) => {
@@ -53,7 +49,6 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
   const currentTheme = themeMap[selectedTheme];
-  const { viewMode } = context;
 
   useLayoutEffect(() => {
     const storyEl = storyRef.current?.closest(
@@ -61,17 +56,6 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
     ) as HTMLDivElement | null;
     if (storyEl) storyEl.style.backgroundColor = background;
   }, [storyRef.current, context.globals.colorMode]);
-
-  useLayoutEffect(() => {
-    if (typeof document === 'undefined') return;
-    const doc = storyRef.current?.ownerDocument ?? document;
-    const root = doc.documentElement;
-    if (viewMode === 'story') {
-      root.setAttribute('dir', direction);
-    } else {
-      root.removeAttribute('dir');
-    }
-  }, [direction, viewMode]);
 
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
