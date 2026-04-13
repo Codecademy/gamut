@@ -6,8 +6,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
 const manifests = [
-  path.join(root, 'examples/cursor-plugin-skeleton/.cursor-plugin/plugin.json'),
-  path.join(root, 'examples/claude-plugin-skeleton/.claude-plugin/plugin.json'),
+  path.join(
+    root,
+    'examples/templates/cursor-plugin/.cursor-plugin/plugin.json'
+  ),
+  path.join(
+    root,
+    'examples/templates/claude-plugin/.claude-plugin/plugin.json'
+  ),
 ];
 
 for (const file of manifests) {

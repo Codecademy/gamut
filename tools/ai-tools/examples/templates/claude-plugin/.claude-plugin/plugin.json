@@ -1,6 +1,7 @@
 {
-  "name": "claude-plugin-skeleton",
+  "name": "claude-plugin-template",
   "description": "Minimal example Claude Code plugin for the Gamut repo. Replace name and metadata when copying.",
+  "version": "0.0.0",
   "author": {
     "name": "Codecademy Engineers",
     "email": "dev@codecademy.com"

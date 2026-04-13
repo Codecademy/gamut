@@ -1,6 +1,6 @@
 ---
-name: example-skeleton
-description: Placeholder skill for the Gamut Cursor plugin skeleton; replace when authoring a real skill.
+name: example-template
+description: Placeholder skill for the Gamut Cursor plugin template; replace when authoring a real skill.
 ---
 
 # Example skill
