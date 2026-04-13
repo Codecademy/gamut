@@ -22,7 +22,7 @@ export const parameters = {
 
 ## Usage
 
-`ListRow` renders one logical row. It reads spacing, variant, and layout from **`List`** via **`ListProvider`**. Compose rows with <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> children.
+`ListRow` renders one logical row. It reads spacing, variant, and layout from `List` via `ListProvider`. Compose rows with <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> children.
 
 For table layouts (`List` with `as="table"`), body rows still use `ListRow`. Header labels belong in <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo> with `ListCol` cells—see <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo>.
 
@@ -38,7 +38,7 @@ You can define collapsible content by passing an `expanded` prop and a `renderEx
 
 ### Expand on button click
 
-The `ListRow` can include **`ExpandControl`** in a `ListCol` with `type="control"` to toggle expansion. `ExpandControl` rotates its icon based on `expanded`.
+The `ListRow` can include `ExpandControl` in a `ListCol` with `type="control"` to toggle expansion. `ExpandControl` rotates its icon based on `expanded`.
 
 <Canvas of={ListRowStories.ExpandableButtonGuide} />
 

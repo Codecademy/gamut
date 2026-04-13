@@ -22,15 +22,15 @@ export const parameters = {
 
 ## Usage
 
-`ListCol` renders a single cell. It inherits **`List`** context (variant, spacing, `listType`, `scrollable`) from **`ListProvider`** so columns stay aligned across rows.
+`ListCol` renders a single cell. It inherits `List` context (variant, spacing, `listType`, `scrollable`) from `ListProvider` so columns stay aligned across rows.
 
-Use **`type`** so responsive layouts can reorder content on small screens—see **Responsive layout** below. For table header rows, use **`columnHeader`** (and often `TableHeader`)—see <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo>.
+Use `type` so responsive layouts can reorder content on small screens—see **Responsive layout** below. For table header rows, use `columnHeader` (and often `TableHeader`)—see <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo>.
 
 ## Sizing
 
-Column size can either be a fixed token (`xs`, `sm`, `md`, `lg`, `xl`) or **`content`** so width follows the cell contents.
+Column size can either be a fixed token (`xs`, `sm`, `md`, `lg`, `xl`) or `content` so width follows the cell contents.
 
-Use the size tokens when content length may vary so columns line up row to row. For static content such as icon buttons or truncated text, **`content`** avoids extra whitespace while staying consistent.
+Use the size tokens when content length may vary so columns line up row to row. For static content such as icon buttons or truncated text, `content` avoids extra whitespace while staying consistent.
 
 ```tsx
 <ListCol size="md" />
@@ -40,34 +40,34 @@ Use the size tokens when content length may vary so columns line up row to row. 
 
 ## Filling empty space
 
-Use **`fill`** so a column grows to use remaining horizontal space and pushes later columns toward the end of the row. You can combine `fill` with any `size`.
+Use `fill` so a column grows to use remaining horizontal space and pushes later columns toward the end of the row. You can combine `fill` with any `size`.
 
 <Canvas of={ListColStories.FillingEmptySpace} />
 
 ## Justification
 
-Use **`justify`** (for example `right`) to align content within the column.
+Use `justify` (for example `right`) to align content within the column.
 
 - Avoid mixing left and right alignment in arbitrary patterns; after switching to right alignment, keep additional columns right-aligned for a predictable scan line.
-- Consider **`fill`** on a neighboring column to add comfortable space before a right-aligned block.
+- Consider `fill` on a neighboring column to add comfortable space before a right-aligned block.
 
 <Canvas of={ListColStories.Justification} />
 
 ## Horizontal scrolling
 
-When **`List`** has **`scrollable`**, the column with **`type="header"`** stays pinned while the row scrolls horizontally so identifying information remains visible. All rows scroll together.
+When `List` has `scrollable`, the column with `type="header"` stays pinned while the row scrolls horizontally so identifying information remains visible. All rows scroll together.
 
 <Canvas of={ListColStories.HorizontalScrolling} />
 
 ## Responsive layout
 
-Below the list’s configured breakpoint (by default the smallest step, 480px—or the list container when using container queries), rows switch to a stacked, card-like layout. Name column **`type`** values so the layout knows how to reorder cells:
+Below the list’s configured breakpoint (by default the smallest step, 480px—or the list container when using container queries), rows switch to a stacked, card-like layout. Name column `type` values so the layout knows how to reorder cells:
 
-- **`header`**: Primary identifying information (for ordered lists, numbering is associated with this column).
-- **`control`**: Actions such as icon buttons or menus. Use at most **one** `control` column to avoid overlap on small screens.
-- **`content`**: Remaining fields; they follow in declaration order.
+- `header`: Primary identifying information (for ordered lists, numbering is associated with this column).
+- `control`: Actions such as icon buttons or menus. Use at most **one** `control` column to avoid overlap on small screens.
+- `content`: Remaining fields; they follow in declaration order.
 
-You can override behavior with **`List`**’s **`breakpoint`** prop. Resize the viewport or container to see the change.
+You can override behavior with `List`’s `breakpoint` prop. Resize the viewport or container to see the change.
 
 <Canvas of={ListColStories.ResponsiveAnatomy} />
 <Canvas of={ListColStories.Responsive} />

@@ -22,11 +22,11 @@ export const parameters = {
 
 ## Usage
 
-`TableHeader` renders a **`thead`** with a single header row (`HeaderRowEl`). Use it when **`List`** has **`as="table"`** so column titles sit above **`ListRow`** body rows.
+`TableHeader` renders a `thead` with a single header row (`HeaderRowEl`). Use it when `List` has `as="table"` so column titles sit above `ListRow` body rows.
 
-Place **`ListCol`** cells **directly inside** `TableHeader` (not wrapped in `ListRow`). Mark header cells with **`columnHeader`** (and optional **`aria-sort`** for sortable tables). See <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo> for semantics and props.
+Place `ListCol` cells **directly inside** `TableHeader` (not wrapped in `ListRow`). Mark header cells with `columnHeader` (and optional `aria-sort` for sortable tables). See <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo> for semantics and props.
 
-`TableHeader` reads **`spacing`** and **`variant`** from the same **`ListProvider`** context as rows and columns, so the header stays visually aligned with the table body.
+`TableHeader` reads `spacing` and `variant` from the same `ListProvider` context as rows and columns, so the header stays visually aligned with the table body.
 
 <Canvas of={TableHeaderStories.WithTableHeader} />
 

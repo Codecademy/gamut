@@ -22,17 +22,17 @@ export const parameters = {
 
 ## Usage
 
-**`ListProvider`** is the React context provider for list layout. **`List`** wraps its contents in `ListProvider` and computes the context value with the internal **`useList`** hook—you normally **do not** mount `ListProvider` yourself unless you are building advanced list internals that must sit inside the same context tree as **`ListRow`** / **`ListCol`**.
+`ListProvider` is the React context provider for list layout. `List` wraps its contents in `ListProvider` and computes the context value with the internal `useList` hook—you normally **do not** mount `ListProvider` yourself unless you are building advanced list internals that must sit inside the same context tree as `ListRow` / `ListCol`.
 
-Child components call **`useListContext()`** to read:
+Child components call `useListContext()` to read:
 
-- **`variant`** and **`spacing`** (with support for nested lists inheriting from a parent context when applicable)
-- **`listType`** (`ul` | `ol` | `table`) from `List`’s `as` prop
-- **`scrollable`**, **`rowBreakpoint`**, and **`depth`** for nested structures
+- `variant` and `spacing` (with support for nested lists inheriting from a parent context when applicable)
+- `listType` (`ul` | `ol` | `table`) from `List`’s `as` prop
+- `scrollable`, `rowBreakpoint`, and `depth` for nested structures
 
 ### `useList` (internal)
 
-**`useList`** merges props from the current **`List`** with any parent list context (for example **`depth`** and inherited variant/spacing). It is used inside **`List`** to build the value passed to **`ListProvider`**. Prefer configuring **`List`** props rather than calling **`useList`** directly in application code.
+`useList` merges props from the current `List` with any parent list context (for example `depth` and inherited variant/spacing). It is used inside `List` to build the value passed to `ListProvider`. Prefer configuring `List` props rather than calling `useList` directly in application code.
 
 ### Related APIs
 
@@ -41,7 +41,7 @@ Child components call **`useListContext()`** to read:
 
 ## Example
 
-`List` mounts **`ListProvider`** for its subtree:
+`List` mounts `ListProvider` for its subtree:
 
 <Canvas of={ListProviderStories.ProvidedByList} />
 
