@@ -29,6 +29,9 @@ export const Segment = styled.span<SegmentStyleProps>(
         color: 'background',
         borderRadius: 'md',
       },
+      '&:focus-visible': {
+        outline: 'none',
+      },
     }),
   segmentStyles
 );

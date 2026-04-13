@@ -64,6 +64,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
 
       if (e.altKey && (e.key === 'ArrowDown' || e.key === 'Down')) {
         e.preventDefault();
+        e.stopPropagation();
         focusOrOpenCalendarGrid();
         return;
       }
