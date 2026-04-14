@@ -6,14 +6,11 @@ import { DEFAULT_DATE_PICKER_TRANSLATIONS } from '../utils/translations';
 import { CalendarFooterProps } from './types';
 
 export const CalendarFooter: React.FC<CalendarFooterProps> = ({
-  onClearDate,
-  clearText = DEFAULT_DATE_PICKER_TRANSLATIONS.clearText,
-  disabled,
-  showClearButton,
+  clear,
   quickActions = [],
 }) => {
   // if there are no quick actions and the clear button is not shown, don't render anything
-  if (quickActions.length === 0 && !showClearButton) return null;
+  if (quickActions.length === 0 && !clear) return null;
 
   const actions = quickActions.slice(0, 3);
 
@@ -24,9 +21,9 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
       justifyContent="space-between"
       p={12}
     >
-      {showClearButton && (
-        <TextButton disabled={disabled} onClick={() => onClearDate?.()}>
-          {clearText}
+      {clear && (
+        <TextButton disabled={clear.disabled} onClick={() => clear.onClick?.()}>
+          {clear.text ?? DEFAULT_DATE_PICKER_TRANSLATIONS.clearText}
         </TextButton>
       )}
       <FlexBox gap={8}>

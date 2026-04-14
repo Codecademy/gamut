@@ -58,9 +58,9 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
     const {
       mode,
       startOrSelectedDate,
-      setSelection,
+      onSelection,
       openCalendar,
-      focusCalendarGrid,
+      focusCalendar,
       locale,
       isCalendarOpen,
       translations,
@@ -87,7 +87,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const boundDate =
       isRange && rangePart === 'end' ? endDate : startOrSelectedDate;
-    const segmentsFromBound = useCallback(
+    const segmentsFromBound = useMemo(
       () => getDateSegmentsFromDate(boundDate),
       [boundDate]
     );
@@ -109,14 +109,17 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       (field: DatePartKind, el: HTMLSpanElement | null) => {
         segmentElRefs.current[field] = el;
       },
-      []
+      [segmentElRefs]
     );
 
-    const focusSegmentField = useCallback((field: DatePartKind) => {
-      segmentElRefs.current[field]?.focus();
-    }, []);
+    const onSiblingSegmentFocus = useCallback(
+      (field: DatePartKind) => {
+        segmentElRefs.current[field]?.focus();
+      },
+      [segmentElRefs]
+    );
 
-    const setShellRef = useCallback(
+    const shellRef = useCallback(
       (el: HTMLDivElement | null) => {
         containerRef.current = el;
         if (typeof ref === 'function') ref(el);
@@ -127,28 +130,28 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     useEffect(() => {
       if (!isInputFocusedRef.current) {
-        setSegments(segmentsFromBound());
+        setSegments(segmentsFromBound);
       }
     }, [segmentsFromBound]);
 
     const commitParsedDate = useCallback(
       (parsed: Date) => {
         if (isRange && rangePart) {
-          if (rangePart === 'start') setSelection(parsed, endDate);
-          else setSelection(startOrSelectedDate, parsed);
-        } else setSelection(parsed);
+          if (rangePart === 'start') onSelection(parsed, endDate);
+          else onSelection(startOrSelectedDate, parsed);
+        } else onSelection(parsed);
       },
-      [isRange, rangePart, setSelection, endDate, startOrSelectedDate]
+      [isRange, rangePart, onSelection, endDate, startOrSelectedDate]
     );
 
     const clearSelection = useCallback(() => {
       if (isRange && rangePart) {
-        if (rangePart === 'start') setSelection(null, endDate);
-        else setSelection(startOrSelectedDate, null);
-      } else setSelection(null);
-    }, [isRange, rangePart, setSelection, endDate, startOrSelectedDate]);
+        if (rangePart === 'start') onSelection(null, endDate);
+        else onSelection(startOrSelectedDate, null);
+      } else onSelection(null);
+    }, [isRange, rangePart, onSelection, endDate, startOrSelectedDate]);
 
-    const applySegments = useCallback(
+    const onSegmentChange = useCallback(
       (next: SegmentValues) => {
         const parsed = parseSegmentsToDate(next);
         if (parsed) commitParsedDate(parsed);
@@ -157,49 +160,52 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       [clearSelection, commitParsedDate]
     );
 
-    const handleContainerBlur = (e: FocusEvent<HTMLDivElement>) => {
-      if (containerRef.current?.contains(e.relatedTarget as Node)) return;
-      isInputFocusedRef.current = false;
-      setSegments((prev) => {
-        const normalized = normalizeSegmentValues(prev);
-        const parsed = parseSegmentsToDate(normalized);
-        if (parsed) {
-          commitParsedDate(parsed);
-          return normalized;
-        }
-        if (!normalized.month && !normalized.day && !normalized.year) {
-          clearSelection();
-          return getDateSegmentsFromDate(null);
-        }
-        return segmentsFromBound();
-      });
-    };
+    const onContainerBlur = useCallback(
+      (e: FocusEvent<HTMLDivElement>) => {
+        if (containerRef.current?.contains(e.relatedTarget as Node)) return;
+        isInputFocusedRef.current = false;
+        setSegments((prev) => {
+          const normalized = normalizeSegmentValues(prev);
+          const parsed = parseSegmentsToDate(normalized);
+          if (parsed) {
+            commitParsedDate(parsed);
+            return normalized;
+          }
+          if (!normalized.month && !normalized.day && !normalized.year) {
+            clearSelection();
+            return getDateSegmentsFromDate(null);
+          }
+          return segmentsFromBound;
+        });
+      },
+      [containerRef, segmentsFromBound, clearSelection, commitParsedDate]
+    );
 
-    const setActiveRangePartForField = () => {
+    const setActiveRangePartForField = useCallback(() => {
       if (isRange && rangePart) context.setActiveRangePart(rangePart);
-    };
+    }, [isRange, rangePart, context]);
 
-    const handleSegmentFocus = () => {
+    const onSegmentFocus = useCallback(() => {
       isInputFocusedRef.current = true;
       setActiveRangePartForField();
-    };
+    }, [isInputFocusedRef, setActiveRangePartForField]);
 
     /** Focus entered the shell (segment, icon, etc.). Range targeting only — does not mark segment editing. */
-    const handleShellFocus = () => {
+    const onShellFocus = useCallback(() => {
       setActiveRangePartForField();
-    };
+    }, [setActiveRangePartForField]);
 
     /** Pointer activation on the shell (bubbles from segments/icon). Ensures range targeting even if focus order differs from click. */
-    const handleShellClick = () => {
+    const onShellClick = useCallback(() => {
       if (disabled) return;
       setActiveRangePartForField();
-      openCalendar({ moveFocusIntoCalendar: false });
-    };
+      openCalendar();
+    }, [disabled, setActiveRangePartForField, openCalendar]);
 
-    const focusOrOpenCalendarGrid = () => {
-      if (isCalendarOpen) focusCalendarGrid();
-      else openCalendar({ moveFocusIntoCalendar: true });
-    };
+    const onSegmentAltArrowDown = useCallback(() => {
+      if (!isCalendarOpen) openCalendar();
+      focusCalendar();
+    }, [isCalendarOpen, openCalendar, focusCalendar]);
 
     return (
       <FormGroup
@@ -213,13 +219,13 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       >
         <SegmentedShell
           inputSize={size === 'small' ? 'small' : 'base'}
-          ref={setShellRef}
+          ref={shellRef}
           role="group"
           variant={error ? 'error' : undefined}
           width="113px"
-          onBlur={handleContainerBlur}
-          onClick={handleShellClick}
-          onFocus={handleShellFocus}
+          onBlur={onContainerBlur}
+          onClick={onShellClick}
+          onFocus={onShellFocus}
           {...rest}
         >
           <FlexBox alignItems="center" justifyContent="center">
@@ -242,19 +248,19 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
               return (
                 <DatePickerInputSegment
-                  applySegments={applySegments}
+                  applySegments={onSegmentChange}
                   assignSegmentRef={assignSegmentRef}
                   disabled={!!disabled}
                   error={!!error}
                   field={item.field}
-                  focusOrOpenCalendarGrid={focusOrOpenCalendarGrid}
-                  focusSegmentField={focusSegmentField}
-                  handleOnFocus={handleSegmentFocus}
                   key={item.field}
                   nextField={nextField}
                   prevField={prevField}
                   segments={segments}
                   setSegments={setSegments}
+                  onAltArrowDown={onSegmentAltArrowDown}
+                  onFocus={onSegmentFocus}
+                  onSiblingFocus={onSiblingSegmentFocus}
                 />
               );
             })}

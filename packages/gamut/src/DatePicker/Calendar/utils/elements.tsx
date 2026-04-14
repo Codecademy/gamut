@@ -26,7 +26,7 @@ const datecellStates = states({
       content: '""',
       position: 'absolute',
       bottom: 4,
-      // Half of dot width (4px) so the marker sits under the centered date numeral.
+      /** Half of dot width (4px) so the marker sits under the centered date numeral. */
       insetInlineStart: 'calc(50% - 2px)',
       width: 4,
       height: 4,

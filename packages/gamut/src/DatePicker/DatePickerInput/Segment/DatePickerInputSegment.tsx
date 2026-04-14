@@ -4,10 +4,10 @@ import type { DatePartKind } from '../utils';
 import { Segment } from './elements';
 import {
   appendSegmentDigit,
+  getSegmentPlaceholder,
   getSegmentSpinBounds,
   parseSegmentNumericString,
   segmentMaxLength,
-  segmentPlaceholder,
   SegmentValues,
   spinSegment,
 } from './segmentUtils';
@@ -22,10 +22,10 @@ export type DatePickerInputSegmentProps = {
   segments: SegmentValues;
   disabled: boolean;
   error: boolean;
-  handleOnFocus: () => void;
-  focusOrOpenCalendarGrid: () => void;
+  onFocus: () => void;
+  onAltArrowDown: () => void;
   /** Focus a sibling segment; must use refs registered via `assignSegmentRef` (owned by parent). */
-  focusSegmentField: (field: DatePartKind) => void;
+  onSiblingFocus: (field: DatePartKind) => void;
   assignSegmentRef: AssignSegmentRef;
   setSegments: Dispatch<SetStateAction<SegmentValues>>;
   prevField: DatePartKind | null;
@@ -41,9 +41,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   segments,
   disabled,
   error,
-  handleOnFocus,
-  focusOrOpenCalendarGrid,
-  focusSegmentField,
+  onFocus,
+  onAltArrowDown,
+  onSiblingFocus,
   assignSegmentRef,
   setSegments,
   prevField,
@@ -51,28 +51,31 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   applySegments,
 }) => {
   const { min, max } = getSegmentSpinBounds(field, segments);
-  const n = parseSegmentNumericString(segments[field]);
-  const ariaValue = segments[field].length > 0 && n != null ? n : undefined;
+  const numericValue = parseSegmentNumericString(segments[field]);
+  const ariaValue =
+    segments[field].length > 0 && numericValue != null
+      ? numericValue
+      : undefined;
   const display =
-    segments[field].length > 0 ? segments[field] : segmentPlaceholder(field);
+    segments[field].length > 0 ? segments[field] : getSegmentPlaceholder(field);
   const inputID = useId();
   const inputId = `datepicker-input-${inputID.replace(/:/g, '')}`;
 
-  const handleSegmentKeyDown = useCallback(
+  const onKeyDown = useCallback(
     (field: DatePartKind) => (e: React.KeyboardEvent<HTMLSpanElement>) => {
       if (disabled) return;
 
       if (e.altKey && (e.key === 'ArrowDown' || e.key === 'Down')) {
         e.preventDefault();
         e.stopPropagation();
-        focusOrOpenCalendarGrid();
+        onAltArrowDown();
         return;
       }
 
       if (e.key === 'ArrowLeft') {
         if (prevField) {
           e.preventDefault();
-          focusSegmentField(prevField);
+          onSiblingFocus(prevField);
         }
         return;
       }
@@ -80,7 +83,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       if (e.key === 'ArrowRight') {
         if (nextField) {
           e.preventDefault();
-          focusSegmentField(nextField);
+          onSiblingFocus(nextField);
         }
         return;
       }
@@ -123,7 +126,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
             return next;
           }
           if (prevField) {
-            queueMicrotask(() => focusSegmentField(prevField));
+            queueMicrotask(() => onSiblingFocus(prevField));
           }
           return prev;
         });
@@ -141,7 +144,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
           applySegments(next);
           const maxLen = segmentMaxLength(field);
           if (next[field].length >= maxLen && nextField) {
-            queueMicrotask(() => focusSegmentField(nextField));
+            queueMicrotask(() => onSiblingFocus(nextField));
           }
           return next;
         });
@@ -149,9 +152,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
     },
     [
       disabled,
-      focusOrOpenCalendarGrid,
+      onAltArrowDown,
       prevField,
-      focusSegmentField,
+      onSiblingFocus,
       nextField,
       setSegments,
       applySegments,
@@ -174,8 +177,8 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       ref={(el) => assignSegmentRef(field, el)}
       role="spinbutton"
       tabIndex={disabled ? -1 : 0}
-      onFocus={handleOnFocus}
-      onKeyDown={handleSegmentKeyDown(field)}
+      onFocus={onFocus}
+      onKeyDown={onKeyDown(field)}
     >
       {display}
     </Segment>

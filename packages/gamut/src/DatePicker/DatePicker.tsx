@@ -4,13 +4,13 @@ import { useCallback, useId, useMemo, useRef, useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
-import { DatePickerProvider } from './DatePickerContext';
-import { DatePickerInput } from './DatePickerInput';
-import type {
+import {
   DatePickerContextValue,
-  DatePickerProps,
-  OpenCalendarOptions,
-} from './types';
+  DatePickerProvider,
+  DatePickerRangeContextValue,
+} from './DatePickerContext';
+import { DatePickerInput } from './DatePickerInput';
+import type { DatePickerProps } from './types';
 import { isRangeProps } from './utils/dateSelect';
 import { useResolvedLocale } from './utils/locale';
 import {
@@ -28,7 +28,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
     locale,
     disabledDates = [],
-    placeholder,
     mode,
     children,
     translations: translationsProp,
@@ -38,9 +37,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [focusGridSignal, setFocusGridSignal] = useState(false);
   const [gridFocusRequested, setGridFocusRequested] = useState(false);
-  const [activeRangePart, setActiveRangePart] = useState<
-    'start' | 'end' | null
-  >(null);
+  const [activeRangePart, setActiveRangePart] =
+    useState<DatePickerRangeContextValue['activeRangePart']>(null);
   const inputRef = useRef<HTMLDivElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
@@ -51,18 +49,11 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
 
   const resolvedLocale = useResolvedLocale(locale);
 
-  const openCalendar = useCallback((options?: OpenCalendarOptions) => {
-    const moveFocus = options?.moveFocusIntoCalendar ?? false;
+  const openCalendar = useCallback(() => {
     setIsCalendarOpen(true);
-    if (moveFocus) {
-      setGridFocusRequested(true);
-      setFocusGridSignal((signal) => !signal);
-    } else {
-      setGridFocusRequested(false);
-    }
   }, []);
 
-  const focusCalendarGrid = useCallback(() => {
+  const focusCalendar = useCallback(() => {
     setGridFocusRequested(true);
     setFocusGridSignal((signal) => !signal);
   }, []);
@@ -82,13 +73,13 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     : props.selectedDate;
   const endDate = isRangeProps(props) ? props.endDate : null;
 
-  const setSelection = useCallback(
-    (start: Date | null, end?: Date | null) => {
+  const onSelection = useCallback(
+    (date: Date | null, endDate?: Date | null) => {
       if (isRangeProps(props)) {
-        props.setStartDate(start);
-        props.setEndDate(end ?? null);
+        props.onStartSelected(date);
+        props.onEndSelected(endDate ?? null);
       } else {
-        props.setSelectedDate(start);
+        props.onSelected(date);
       }
     },
     [props]
@@ -105,10 +96,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         : getDefaultSingleQuickActions(resolvedLocale);
     const base = {
       startOrSelectedDate,
-      setSelection,
+      onSelection,
       isCalendarOpen,
       openCalendar,
-      focusCalendarGrid,
+      focusCalendar,
       focusGridSignal,
       gridFocusRequested,
       clearGridFocusRequest,
@@ -133,22 +124,22 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         };
   }, [
     translationsProp,
+    quickActions,
+    mode,
+    resolvedLocale,
     startOrSelectedDate,
-    setSelection,
+    onSelection,
     isCalendarOpen,
     openCalendar,
-    focusCalendarGrid,
+    focusCalendar,
     focusGridSignal,
     gridFocusRequested,
     clearGridFocusRequest,
     closeCalendar,
-    resolvedLocale,
     disabledDates,
     calendarDialogId,
-    mode,
     endDate,
     activeRangePart,
-    quickActions,
   ]);
 
   const content =
@@ -163,28 +154,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         >
           {mode === 'range' ? (
             <>
-              <DatePickerInput
-                label={props.startLabel}
-                placeholder={placeholder}
-                rangePart="start"
-                size={inputSize}
-              />
+              <DatePickerInput rangePart="start" size={inputSize} />
               <Box alignSelf="center" mt={32}>
                 <MiniArrowRightIcon />
               </Box>
-              <DatePickerInput
-                label={props.endLabel}
-                placeholder={placeholder}
-                rangePart="end"
-                size={inputSize}
-              />
+              <DatePickerInput rangePart="end" size={inputSize} />
             </>
           ) : (
-            <DatePickerInput
-              label={props.label}
-              placeholder={placeholder}
-              size={inputSize}
-            />
+            <DatePickerInput size={inputSize} />
           )}
         </FlexBox>
         <PopoverContainer

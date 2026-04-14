@@ -95,7 +95,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     // If !inGrid && !requested (e.g. calendar opened with the mouse): leave focus on the input — do not call focusButton.
   }, [focusTarget, focusButton, focusGridSync]);
 
-  const handleKeyDown = useCallback(
+  const onKeyDown = useCallback(
     (e: React.KeyboardEvent, date: Date) =>
       keyHandler({
         e,
@@ -190,7 +190,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   tabIndex={isFocused ? 0 : -1}
                   onClick={() => onDateSelect(date)}
                   onFocus={() => onFocusedDateChange?.(date)}
-                  onKeyDown={(e: React.KeyboardEvent) => handleKeyDown(e, date)}
+                  onKeyDown={(e: React.KeyboardEvent) => onKeyDown(e, date)}
                 >
                   {date.getDate()}
                 </DateCell>

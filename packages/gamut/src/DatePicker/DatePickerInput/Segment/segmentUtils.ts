@@ -95,7 +95,7 @@ export const normalizeSegmentValues = (
   return { month, day, year };
 };
 
-export const segmentPlaceholder = (field: DatePartKind) =>
+export const getSegmentPlaceholder = (field: DatePartKind) =>
   field === 'year' ? 'YYYY' : field === 'month' ? 'MM' : 'DD';
 
 /** Digit capacity per field (typing / spinbutton editing). */

@@ -1,6 +1,6 @@
 import type { IsoWeekday } from '../utils/locale';
 
-export interface CalendarBaseProps {
+interface CalendarBaseProps {
   /** Used for the currently displayed month and year */
   displayDate: Date;
   /** Called when the displayed month changes. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
@@ -68,16 +68,21 @@ export interface CalendarBodyProps extends CalendarBaseProps {
 }
 
 export interface QuickAction {
+  /** Number of days, weeks, months, or years to add or subtract from the current date. */
   num: number;
+  /** Time period to add or subtract from the current date. */
   timePeriod: 'day' | 'week' | 'month' | 'year';
+  /** Text to display for the quick action. */
   displayText: string;
+  /** Callback when the quick action is clicked. */
   onClick?: () => void;
 }
 export interface CalendarFooterProps {
-  disabled?: boolean;
-  showClearButton?: boolean;
-  clearText?: string;
-  onClearDate?: () => void;
+  clear?: {
+    disabled?: boolean;
+    onClick?: () => void;
+    text?: string;
+  };
   /** Max 3 quick actions (e.g. "7 days", "1 month") */
   quickActions?: QuickAction[];
 }

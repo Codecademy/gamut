@@ -31,6 +31,10 @@ export const getWeekdayOffsetInGrid = (
   return (iso - firstWeekday + 14) % 7;
 };
 
+export const getFirstOfMonth = (date: Date) => {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+};
+
 /**
  * Returns an array of weeks for the given month. Each week is an array of 7 items:
  * each item is either a Date (that day) or null (padding from previous/next month).
@@ -44,7 +48,7 @@ export const getMonthGrid = (
   month: number,
   firstWeekday: IsoWeekday
 ) => {
-  const first = new Date(year, month, 1);
+  const first = getFirstOfMonth(new Date(year, month, 1));
   const last = new Date(year, month + 1, 0);
   const firstDayOfWeek = getWeekdayOffsetInGrid(first, firstWeekday);
   const daysInMonth = last.getDate();
@@ -121,3 +125,7 @@ export const getDatesWithRow = (weeks: (Date | null)[][]) => {
   });
   return result;
 };
+
+/** Add `n` months to the given date. */
+export const addMonths = (date: Date, n: number) =>
+  new Date(date.getFullYear(), date.getMonth() + n, 1);

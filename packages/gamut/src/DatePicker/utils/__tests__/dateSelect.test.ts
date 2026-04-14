@@ -8,7 +8,7 @@ import {
 const createDate = (y: number, month: number, day: number) =>
   new Date(y, month, day);
 
-const mockSetSelection = jest.fn();
+const mockOnSelection = jest.fn();
 describe('rangeContainsDisabled', () => {
   const start = createDate(2024, 0, 10);
   const end = createDate(2024, 0, 20);
@@ -60,9 +60,9 @@ describe('handleDateSelectSingle', () => {
     handleDateSelectSingle({
       date: selected,
       selectedDate: selected,
-      setSelection: mockSetSelection,
+      onSelection: mockOnSelection,
     });
-    expect(mockSetSelection).toHaveBeenCalledWith(null);
+    expect(mockOnSelection).toHaveBeenCalledWith(null);
   });
 
   it('sets selection when no date was previously selected', () => {
@@ -70,9 +70,9 @@ describe('handleDateSelectSingle', () => {
     handleDateSelectSingle({
       date: newSelected,
       selectedDate: null,
-      setSelection: mockSetSelection,
+      onSelection: mockOnSelection,
     });
-    expect(mockSetSelection).toHaveBeenCalledWith(newSelected);
+    expect(mockOnSelection).toHaveBeenCalledWith(newSelected);
   });
 
   it('sets selection to a new day when a date was previously selected', () => {
@@ -80,9 +80,9 @@ describe('handleDateSelectSingle', () => {
     handleDateSelectSingle({
       date: newSelected,
       selectedDate: createDate(2024, 5, 15),
-      setSelection: mockSetSelection,
+      onSelection: mockOnSelection,
     });
-    expect(mockSetSelection).toHaveBeenCalledWith(newSelected);
+    expect(mockOnSelection).toHaveBeenCalledWith(newSelected);
   });
 });
 
@@ -97,10 +97,10 @@ describe('applyRangeOrNewStart', () => {
         end,
         clickedDate: clicked,
         disabledDates: [createDate(2024, 5, 30)],
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       })
     ).toBe(true);
-    expect(mockSetSelection).toHaveBeenCalledWith(start, end);
+    expect(mockOnSelection).toHaveBeenCalledWith(start, end);
   });
 
   it('sets selection to the clicked date as start and null as end when the range contains a disabled date', () => {
@@ -113,28 +113,30 @@ describe('applyRangeOrNewStart', () => {
         end,
         clickedDate: clicked,
         disabledDates: [createDate(2024, 5, 12)],
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       })
     ).toBe(false);
-    expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+    expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
   });
 });
 
 describe('handleDateSelectRange', () => {
   describe('close calendar return value', () => {
     it('returns false when only a start date is chosen (calendar mode)', () => {
-      const setSelection = jest.fn();
       expect(
         handleDateSelectRange({
           date: createDate(2024, 5, 10),
           activeRangePart: null,
           startDate: null,
           endDate: null,
-          setSelection,
+          onSelection: mockOnSelection,
           disabledDates: [],
         })
       ).toBe(false);
-      expect(setSelection).toHaveBeenCalledWith(createDate(2024, 5, 10), null);
+      expect(mockOnSelection).toHaveBeenCalledWith(
+        createDate(2024, 5, 10),
+        null
+      );
     });
 
     it('returns true when end date is chosen after start (calendar mode)', () => {
@@ -145,11 +147,11 @@ describe('handleDateSelectRange', () => {
           activeRangePart: null,
           startDate: createDate(2024, 5, 10),
           endDate: null,
-          setSelection,
+          onSelection: mockOnSelection,
           disabledDates: [],
         })
       ).toBe(true);
-      expect(setSelection).toHaveBeenCalledWith(
+      expect(mockOnSelection).toHaveBeenCalledWith(
         createDate(2024, 5, 10),
         createDate(2024, 5, 20)
       );
@@ -166,9 +168,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(null, end);
+        expect(mockOnSelection).toHaveBeenCalledWith(null, end);
       });
 
       it('sets start date when no end date is set', () => {
@@ -179,9 +181,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: start,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
 
       it('sets start date and clears end date when new start is after end', () => {
@@ -193,9 +195,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
 
       it('sets start date and keeps end date when new start is before end', () => {
@@ -207,9 +209,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, end);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, end);
       });
 
       it('sets start date and keeps end date when new start is the same as end', () => {
@@ -221,9 +223,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, end);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, end);
       });
 
       it('sets start date to the clicked date when the range would contain a disabled date', () => {
@@ -235,10 +237,10 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
           disabledDates: [createDate(2024, 2, 12)],
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
     });
     describe('start date is not set', () => {
@@ -249,9 +251,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: null,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
 
       it('sets start date and clears end date when new start is after end', () => {
@@ -262,9 +264,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: null,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
 
       it('sets start date and keeps end date when new start is before end', () => {
@@ -275,9 +277,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: null,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, end);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, end);
       });
 
       it('sets start date and keeps end date when new start is the same as end', () => {
@@ -288,9 +290,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: null,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, end);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, end);
       });
 
       it('sets start date to the clicked date when the range would contain a disabled date', () => {
@@ -301,10 +303,10 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'start',
           startDate: null,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
           disabledDates: [createDate(2024, 2, 12)],
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
     });
   });
@@ -319,9 +321,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(start, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(start, null);
       });
 
       it('sets end date when no start date is set', () => {
@@ -332,9 +334,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: null,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(null, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(null, clicked);
       });
 
       it('sets end date and clears start date when new end is before start', () => {
@@ -346,9 +348,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(null, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(null, clicked);
       });
 
       it('sets end date and keeps start date when new end is after start', () => {
@@ -360,9 +362,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(start, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(start, clicked);
       });
 
       it('sets end date and keeps start date when new end is the same as start', () => {
@@ -374,9 +376,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(start, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(start, clicked);
       });
 
       it('sets start date to the clicked date when the range would contain a disabled date', () => {
@@ -388,10 +390,10 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: end,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
           disabledDates: [createDate(2024, 2, 12)],
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
     });
     describe('end date is not set', () => {
@@ -402,9 +404,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: null,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(null, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(null, clicked);
       });
 
       it('sets end date and clears start date when new end is before start', () => {
@@ -415,9 +417,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(null, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(null, clicked);
       });
 
       it('sets end date and keeps start date when new end is after start', () => {
@@ -428,9 +430,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(start, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(start, clicked);
       });
 
       it('sets end date and keeps start date when new end is the same as start', () => {
@@ -441,9 +443,9 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(start, clicked);
+        expect(mockOnSelection).toHaveBeenCalledWith(start, clicked);
       });
 
       it('sets start date to the clicked date when the range would contain a disabled date', () => {
@@ -454,10 +456,10 @@ describe('handleDateSelectRange', () => {
           activeRangePart: 'end',
           startDate: start,
           endDate: null,
-          setSelection: mockSetSelection,
+          onSelection: mockOnSelection,
           disabledDates: [createDate(2024, 2, 12)],
         });
-        expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+        expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
     });
   });
@@ -470,9 +472,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: day,
         endDate: day,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(null, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(null, null);
     });
 
     it('end date becomes start date when start date is clicked', () => {
@@ -483,9 +485,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(end, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(end, null);
     });
 
     it('clears end date when end date is clicked', () => {
@@ -496,9 +498,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(start, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(start, null);
     });
 
     it('updates end date when a date after start date is clicked', () => {
@@ -510,9 +512,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(start, clicked);
+      expect(mockOnSelection).toHaveBeenCalledWith(start, clicked);
     });
 
     it('updates start date to the clicked date and clears end date when the range extending to right would contain a disabled date', () => {
@@ -524,10 +526,10 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
         disabledDates: [createDate(2024, 2, 12)],
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
 
     it('updates start date when a date before start date is clicked', () => {
@@ -539,9 +541,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, end);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, end);
     });
 
     it('updates start date to the clicked date and clears end date when the range extending to left would contain a disabled date', () => {
@@ -553,10 +555,10 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
         disabledDates: [createDate(2024, 2, 12)],
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
   });
 
@@ -569,9 +571,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: null,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
 
     it('sets end date when clicked date is on or after start date', () => {
@@ -582,9 +584,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: null,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(start, clicked);
+      expect(mockOnSelection).toHaveBeenCalledWith(start, clicked);
     });
 
     it('updates start date to the clicked date and does not set end date when the range would contain a disabled date', () => {
@@ -595,10 +597,10 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: start,
         endDate: null,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
         disabledDates: [createDate(2024, 2, 12)],
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
   });
 
@@ -611,9 +613,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: null,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
 
     it('sets start date and clears end date when clicked date is after end date', () => {
@@ -624,9 +626,9 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: null,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
 
     it('updates start date to the clicked date and clears end date when the range would contain a disabled date', () => {
@@ -637,10 +639,10 @@ describe('handleDateSelectRange', () => {
         activeRangePart: null,
         startDate: null,
         endDate: end,
-        setSelection: mockSetSelection,
+        onSelection: mockOnSelection,
         disabledDates: [createDate(2024, 2, 12)],
       });
-      expect(mockSetSelection).toHaveBeenCalledWith(clicked, null);
+      expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
   });
 });

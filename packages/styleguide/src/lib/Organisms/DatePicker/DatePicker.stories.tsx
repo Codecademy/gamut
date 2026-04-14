@@ -26,9 +26,10 @@ export const Default: Story = {
         <DatePicker
           label="Date"
           locale="de-DE"
+          quickActions={null}
           selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
           translations={{ clearText: 'Löschen' }}
+          onSelected={setSelectedDate}
         />
       </Box>
     );
@@ -45,7 +46,7 @@ export const WithInitialDate: Story = {
         inputSize="small"
         label="Date"
         selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
+        onSelected={setSelectedDate}
       />
     );
   },
@@ -62,12 +63,12 @@ export const Range: Story = {
           disabledDates={[new Date(2026, 3, 15)]}
           endDate={endDate}
           mode="range"
-          setEndDate={setEndDate}
-          setStartDate={setStartDate}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
           }}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
         />
       </Box>
     );
@@ -88,12 +89,12 @@ export const RangeWithQuickActions: Story = {
             { num: -1, timePeriod: 'month', displayText: 'Last month' },
             { num: -30, timePeriod: 'day', displayText: 'Last 30 days' },
           ]}
-          setEndDate={setEndDate}
-          setStartDate={setStartDate}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
           }}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
         />
       </Box>
     );
@@ -111,12 +112,12 @@ export const RangeSmall: Story = {
           endDate={endDate}
           inputSize="small"
           mode="range"
-          setEndDate={setEndDate}
-          setStartDate={setStartDate}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
           }}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
         />
       </Box>
     );
@@ -136,7 +137,7 @@ export const ComposedWithContext: Story = {
         <DatePicker
           label="Start date"
           selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
+          onSelected={setSelectedDate}
         >
           <ComposedDatePickerLayout />
         </DatePicker>

@@ -1,113 +1,156 @@
 import { ComponentProps } from 'react';
 
 import { Input } from '../Form/inputs/Input';
-import { CalendarBaseProps, QuickAction } from './Calendar/types';
+import { CalendarBodyProps, QuickAction } from './Calendar/types';
 import { DatePickerTranslations } from './utils/translations';
 
-export interface DatePickerBaseProps
-  extends Pick<CalendarBaseProps, 'locale' | 'disabledDates'> {
+interface DatePickerBaseProps
+  extends Pick<CalendarBodyProps, 'locale' | 'disabledDates'> {
   /** When provided, only the provider is rendered and children compose Input + Calendar. */
   children?: React.ReactNode;
-  /** Placeholder for the input. */
-  placeholder?: string;
-  /** Override UI strings (e.g. clear button). Merged with defaults. */
+  /** Override default UI strings for internationalization.
+   *
+   * @default DEFAULT_DATE_PICKER_TRANSLATIONS
+   * @see {@link DatePickerTranslations} for the shape of the translations and default values
+   * @example
+   * ```tsx
+   * <DatePicker
+   *   translations={{
+   *     dateLabel: 'Choose a date',
+   *   }}
+   * />
+   * ```
+   */
   translations?: DatePickerTranslations;
+  /** Size of the input.
+   * @default "base"
+   * @see `size` on {@link Input}
+   */
   inputSize?: ComponentProps<typeof Input>['size'];
   /**
-   * Calendar footer quick actions (max 3). Omit `onClick` on an action to use default
-   * range from `num` + `timePeriod` (range mode) or today as single date (single mode).
+   * Calendar footer quick actions. Default values are provided based on the mode, but you can pass your own. Only the first 3 quick actions will be displayed.
+   * Pass `null` to omit quick actions.
+   *
+   * @default for single mode: Yesterday, Today, Tomorrow
+   * for range mode: Last 7 days, Last 30 days, Last 90 days
+   *
+   * @see {@link QuickAction} for the shape of the quick actions.
+   *
+   * @example single mode:
+   * ```tsx
+   * <DatePicker
+   *   quickActions={[
+   *     { num: -1, timePeriod: 'day', displayText: 'Yesterday' },
+   *     { num: 0, timePeriod: 'day', displayText: 'Today' },
+   *     { num: 1, timePeriod: 'day', displayText: 'Tomorrow' },
+   *   ]}
+   * />
+   * ```
+   * @example range mode:
+   * ```tsx
+   * <DatePicker
+   *   mode="range"
+   *   quickActions={[
+   *     { num: -7, timePeriod: 'day', displayText: 'Last 7 days' },
+   *     { num: -30, timePeriod: 'day', displayText: 'Last 30 days' },
+   *     { num: -90, timePeriod: 'day', displayText: 'Last 90 days' },
+   *   ]}
+   * ```
    */
   quickActions?: QuickAction[] | null;
 }
 
 export interface DatePickerSingleProps extends DatePickerBaseProps {
   mode?: 'single';
-  /** Controlled selected date. */
+  /** Controlled selected date. Pass `null` to not have a default selected date. Pass a `Date` to have a default selected date.
+   *
+   * @example
+   * ```tsx
+   * const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+   * <DatePicker
+   *   selectedDate={selectedDate}
+   *   onSelected={setSelectedDate}
+   * />
+   * ```
+   */
   selectedDate: Date | null;
-  /** Called when the user selects a date. */
-  setSelectedDate: (date: Date | null) => void;
-  /** Label for the input. */
-  label?: string;
+  /** Callback called when the user selects a date. Pass the new date to the callback so the component can update the state.
+   *
+   * @example
+   * ```tsx
+   * const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+   * <DatePicker
+   *   selectedDate={selectedDate}
+   *   onSelected={setSelectedDate}
+   * />
+   * ```
+   */
+  onSelected: (date: Date | null) => void;
 }
 
 export interface DatePickerRangeProps extends DatePickerBaseProps {
   mode: 'range';
-  /** Controlled start date. */
+  /** Controlled start date. Pass `null` to not have a default start date. Pass a `Date` to have a default start date.
+   *
+   * @example
+   * ```tsx
+   * const [startDate, setStartDate] = useState<Date | null>(null);
+   * const [endDate, setEndDate] = useState<Date | null>(null);
+   *
+   * <DatePicker
+   *   startDate={startDate}
+   *   onStartSelected={setStartDate}
+   *   endDate={endDate}
+   *   onEndSelected={setEndDate}
+   * />
+   * ```
+   */
   startDate: Date | null;
-  /** Controlled end date. */
+  /** Controlled end date. Pass `null` to not have a default end date. Pass a `Date` to have a default end date.
+   *
+   * @example
+   * ```tsx
+   * const [endDate, setEndDate] = useState<Date | null>(null);
+   * const [startDate, setStartDate] = useState<Date | null>(null);
+   * <DatePicker
+   *   endDate={endDate}
+   *   onEndSelected={setEndDate}
+   *   startDate={startDate}
+   *   onStartSelected={setStartDate}
+   * />
+   * ```
+   */
   endDate: Date | null;
-  /** Called when the user changes the start date. */
-  setStartDate: (date: Date | null) => void;
-  /** Called when the user changes the end date. */
-  setEndDate: (date: Date | null) => void;
-  /** Label for the start date input. */
-  startLabel?: string;
-  /** Label for the end date input. */
-  endLabel?: string;
+  /** Callback called when the user changes the start date. Pass the new start date to the callback so the component can update the state.
+   *
+   * @example
+   * ```tsx
+   * const [startDate, setStartDate] = useState<Date | null>(null);
+   * const [endDate, setEndDate] = useState<Date | null>(null);
+   * <DatePicker
+   *   startDate={startDate}
+   *   onStartSelected={setStartDate}
+   *   endDate={endDate}
+   *   onEndSelected={setEndDate}
+   * />
+   * ```
+   */
+  onStartSelected: (date: Date | null) => void;
+  /** Callback called when the user changes the end date. Pass the new end date to the callback so the component can update the state.
+   *
+   * @example
+   * ```tsx
+   * const [endDate, setEndDate] = useState<Date | null>(null);
+   * const [startDate, setStartDate] = useState<Date | null>(null);
+   * <DatePicker
+   *   endDate={endDate}
+   *   onEndSelected={setEndDate}
+   *   startDate={startDate}
+   *   onStartSelected={setStartDate}
+   * />
+   * ```
+   */
+  onEndSelected: (date: Date | null) => void;
 }
 
 export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
-
-export type OpenCalendarOptions = {
-  /**
-   * When true, move DOM focus into the date grid after open (keyboard / explicit request).
-   * When false (default), keep focus on the input so pointer users can type (WCAG 3.2.1).
-   */
-  moveFocusIntoCalendar?: boolean;
-};
-
-export interface DatePickerBaseContextValue
-  extends Pick<CalendarBaseProps, 'disabledDates'> {
-  /**
-   * Resolved `Intl.Locale` from the `locale` prop (or runtime default). Same instance passed to
-   * formatters and available for `getWeekInfo()` etc.
-   */
-  locale: Intl.Locale;
-  isCalendarOpen: boolean;
-  openCalendar: (options?: OpenCalendarOptions) => void;
-  /** Move focus from the input into the grid when the calendar is already open (e.g. ArrowDown). */
-  focusCalendarGrid: () => void;
-  /**
-   * Flips on each grid focus request so `CalendarBody` effects re-run when `focusTarget` is unchanged.
-   * Not a semantic true/false — only the change matters; pair with `gridFocusRequested`.
-   */
-  focusGridSignal: boolean;
-  /** When true, `CalendarBody` runs a one-shot move of DOM focus into the grid if it is not already there. */
-  gridFocusRequested: boolean;
-  /** Clears `gridFocusRequested` after focus has moved into the grid (or call when closing). */
-  clearGridFocusRequest: () => void;
-  closeCalendar: () => void;
-  calendarDialogId: string;
-  /** UI string overrides (e.g. clear button). */
-  translations: Required<DatePickerTranslations>;
-  /** Calendar footer quick actions (max 3 shown). */
-  quickActions: QuickAction[];
-  /** Start date (range) or selected date (single). */
-  startOrSelectedDate: Date | null;
-  /** Set selection. Single: (date). Range: (start, end). */
-  setSelection: (
-    startOrSelectedDate: Date | null,
-    endDate?: Date | null
-  ) => void;
-}
-
-export interface DatePickerSingleContextValue
-  extends DatePickerBaseContextValue {
-  mode: 'single';
-}
-
-export type ActiveRangePart = 'start' | 'end' | null;
-
-export interface DatePickerRangeContextValue
-  extends DatePickerBaseContextValue {
-  mode: 'range';
-  endDate: Date | null;
-  /** Which input is active (start/end focused); null = selection mode. */
-  activeRangePart: ActiveRangePart;
-  /** Set which input is active (e.g. when input receives focus). */
-  setActiveRangePart: (part: ActiveRangePart) => void;
-}
-
-export type DatePickerContextValue =
-  | DatePickerSingleContextValue
-  | DatePickerRangeContextValue;
