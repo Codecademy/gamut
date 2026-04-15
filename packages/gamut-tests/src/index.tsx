@@ -24,7 +24,7 @@ export const MockGamutProvider: React.FC<{
   );
 };
 
-function withMockGamutProvider<Props extends JSX.IntrinsicAttributes>(
+function withMockGamutProvider<Props extends React.JSX.IntrinsicAttributes>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (

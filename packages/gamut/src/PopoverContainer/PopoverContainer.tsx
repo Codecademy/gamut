@@ -8,11 +8,13 @@ import { useWindowScroll, useWindowSize } from 'react-use';
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
 import {
+  getRefElement,
+  getTargetAsElement,
   useResizingParentEffect,
   useScrollingParents,
   useScrollingParentsEffect,
 } from './hooks';
-import { ContainerState, PopoverContainerProps } from './types';
+import { ContainerState, PopoverContainerProps, TargetRef } from './types';
 import { getContainers, getPosition, isOutOfView } from './utils';
 
 const PopoverContent = styled.div(
@@ -49,10 +51,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const parent = containers?.parent;
 
-  // Memoize scrolling parents to avoid expensive DOM traversals
-  const scrollingParents = useScrollingParents(
-    targetRef as React.RefObject<HTMLElement | null>
-  );
+  const scrollingParents = useScrollingParents(targetRef);
 
   // Keep onRequestClose ref up to date
   useEffect(() => {
@@ -64,7 +63,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const [isRtl, setIsRtl] = useState(false);
   useEffect(() => {
     const checkDirection = () => {
-      const target = targetRef?.current;
+      const target = getRefElement(targetRef);
       const el = target instanceof Element ? target : document.documentElement;
       setIsRtl(getComputedStyle(el).direction === 'rtl');
     };
@@ -96,20 +95,22 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   }, [parent, x, y, offset, alignment, invertAxis, isRtl]);
 
   useEffect(() => {
-    const target = targetRef?.current;
+    const target = getRefElement(targetRef);
     if (!target) return;
-    setContainers(getContainers(target, inline, { x: winX, y: winY }));
+    setContainers(
+      getContainers(target as TargetRef, inline, { x: winX, y: winY })
+    );
   }, [targetRef, inline, winW, winH, winX, winY, targetRect]);
 
   // Update target rectangle when window size/scroll changes
   useEffect(() => {
-    setTargetRect(targetRef?.current?.getBoundingClientRect());
+    setTargetRect(getRefElement(targetRef)?.getBoundingClientRect());
   }, [targetRef, isOpen, winW, winH, winX, winY]);
 
   // Update target rectangle when parent size/scroll changes
   const updateTargetPosition = useCallback(
     (rect?: DOMRect) => {
-      const target = targetRef?.current;
+      const target = getRefElement(targetRef);
       if (!target) return;
 
       const newRect = rect || target.getBoundingClientRect();
@@ -121,14 +122,16 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         window.pageYOffset || document.documentElement.scrollTop;
 
       setContainers(
-        getContainers(target, inline, { x: currentScrollX, y: currentScrollY })
+        getContainers(target as TargetRef, inline, {
+          x: currentScrollX,
+          y: currentScrollY,
+        })
       );
     },
     [targetRef, inline]
   );
 
   useScrollingParentsEffect(targetRef, updateTargetPosition);
-
   useResizingParentEffect(targetRef, setTargetRect);
 
   // Handle closeOnViewportExit with cached scrolling parents for performance
@@ -140,7 +143,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
     const isOut = isOutOfView(
       rect,
-      targetRef?.current as HTMLElement,
+      getTargetAsElement(getRefElement(targetRef)) ?? undefined,
       scrollingParents
     );
 
@@ -165,7 +168,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const handleClickOutside = useCallback(
     (e: MouseEvent | TouchEvent) => {
       const target = e.target as Node;
-      const targetElement = targetRef.current;
+      const targetElement = getRefElement(targetRef);
 
       if (!targetElement) return;
       if (targetElement.contains(target)) return;
@@ -184,7 +187,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const handleGlobalClickOutside = useCallback(
     (e: MouseEvent) => {
       const target = e.target as Node;
-      const targetElement = targetRef.current;
+      const targetElement = getRefElement(targetRef);
 
       if (!targetElement || !isOpen) return;
 

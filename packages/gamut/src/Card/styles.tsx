@@ -49,14 +49,14 @@ export const patternFadeInOut = {
     opacity: 1,
     transition: {
       duration: timingValues.medium / 1000,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   },
   animate: {
     opacity: 0,
     transition: {
       duration: timingValues.medium / 1000,
-      ease: 'easeIn',
+      ease: 'easeIn' as const,
     },
   },
 };
@@ -67,7 +67,7 @@ export const hoverShadowLeft = (borderRadius?: string) => ({
     borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   },
   initialOutline: {
@@ -75,7 +75,7 @@ export const hoverShadowLeft = (borderRadius?: string) => ({
     borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   },
   animate: {
@@ -84,7 +84,7 @@ export const hoverShadowLeft = (borderRadius?: string) => ({
     borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeIn',
+      ease: 'easeIn' as const,
     },
   },
   animateOutline: {
@@ -93,7 +93,7 @@ export const hoverShadowLeft = (borderRadius?: string) => ({
     borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeIn',
+      ease: 'easeIn' as const,
     },
   },
 });
@@ -104,7 +104,7 @@ export const hoverShadowRight = (borderRadius?: string) => ({
     borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   },
   animate: {
@@ -113,7 +113,7 @@ export const hoverShadowRight = (borderRadius?: string) => ({
     borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeIn',
+      ease: 'easeIn' as const,
     },
   },
 });

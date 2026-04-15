@@ -1,6 +1,7 @@
 import { MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
 
 import { Anchor } from '..';
 
@@ -32,5 +33,22 @@ describe('Anchor', () => {
     const buttonElement = view.getByRole('button');
 
     expect(buttonElement).toHaveTextContent(anchorText);
+  });
+
+  it('forwards ref to the anchor element', () => {
+    const ref = React.createRef<HTMLAnchorElement>();
+    render(
+      <Anchor href={href} ref={ref}>
+        {anchorText}
+      </Anchor>
+    );
+    expect(ref.current).toBeInstanceOf(HTMLAnchorElement);
+    expect(ref.current).toHaveAttribute('href', href);
+  });
+
+  it('forwards ref to the button when rendered without href', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    render(<Anchor ref={ref}>{anchorText}</Anchor>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
   });
 });

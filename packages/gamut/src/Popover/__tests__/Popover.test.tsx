@@ -2,7 +2,8 @@ import { CheckerDense } from '@codecademy/gamut-patterns';
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { ThemeProvider } from '@emotion/react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 
 import { Popover, PopoverProps } from '..';
 
@@ -55,6 +56,23 @@ describe('Popover', () => {
   it('renders children when isOpen is true', () => {
     const { view } = renderView({ isOpen: true });
     expect(popoverIsRendered(view)).toBeTruthy();
+  });
+
+  it('accepts targetRef from useRef and renders when open', () => {
+    const PopoverWithUseRefTarget = () => {
+      const targetRef = React.useRef<HTMLDivElement>(null);
+      return (
+        <ThemeProvider theme={theme}>
+          <div data-testid="popover-target" ref={targetRef} />
+          <Popover isOpen targetRef={targetRef}>
+            <div data-testid="popover-content">Content</div>
+          </Popover>
+          <div data-testid="outside-popover">outside</div>
+        </ThemeProvider>
+      );
+    };
+    render(<PopoverWithUseRefTarget />);
+    expect(screen.getByTestId('popover-content')).toBeInTheDocument();
   });
 
   it('triggers onRequestClose callback when clicking outside', () => {

@@ -3,6 +3,7 @@ import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
 import {
+  getRefElement,
   useResizingParentEffect,
   useScrollingParentsEffect,
 } from '../PopoverContainer/hooks';
@@ -137,12 +138,12 @@ export const Popover: React.FC<PopoverProps> = ({
   ]);
 
   useEffect(() => {
-    setTargetRect(targetRef?.current?.getBoundingClientRect());
+    setTargetRect(getRefElement(targetRef)?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
   const updateTargetPosition = useCallback(
     (rect?: DOMRect) => {
-      const target = targetRef?.current;
+      const target = getRefElement(targetRef);
       if (!target) return;
 
       const newRect = rect || target.getBoundingClientRect();
@@ -152,7 +153,6 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   useScrollingParentsEffect(targetRef, updateTargetPosition);
-
   useResizingParentEffect(targetRef, setTargetRect);
 
   useEffect(() => {
@@ -172,7 +172,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
       const target = e.target as Node;
-      const targetElement = targetRef.current;
+      const targetElement = getRefElement(targetRef);
 
       if (!targetElement) return;
 

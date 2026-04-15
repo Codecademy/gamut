@@ -1,5 +1,6 @@
 import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 
 import { PopoverContainer } from '..';
 import { PopoverContainerProps, TargetRef } from '../types';
@@ -89,6 +90,23 @@ describe('Popover', () => {
   it('renders children when isOpen is true', () => {
     renderView({ isOpen: true });
     expect(popoverIsRendered()).toBeTruthy();
+  });
+
+  it('accepts targetRef from useRef and renders when open', () => {
+    const ContainerWithUseRefTarget = () => {
+      const targetRef = React.useRef<HTMLDivElement>(null);
+      return (
+        <MockGamutProvider>
+          <div data-testid="popover-target" ref={targetRef} />
+          <PopoverContainer inline isOpen targetRef={targetRef}>
+            <div data-testid="popover-content">Content</div>
+          </PopoverContainer>
+          <div data-testid="outside-popover">outside</div>
+        </MockGamutProvider>
+      );
+    };
+    render(<ContainerWithUseRefTarget />);
+    expect(screen.getByTestId('popover-content')).toBeInTheDocument();
   });
 
   it('triggers onRequestClose callback when clicking outside', () => {

@@ -4,12 +4,13 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
+import { getFontsMock } from './fontUtilsMock';
 import { setupRtl } from './testUtils';
 
 const renderView = setupRtl(AssetProvider, {});
 
 jest.mock('../utils/fontUtils', () => ({
-  getFonts: jest.fn(),
+  getFonts: require('./fontUtilsMock').getFontsMock,
 }));
 
 jest.mock('../remoteAssets/fonts', () => ({
@@ -43,11 +44,36 @@ jest.mock('../remoteAssets/fonts', () => ({
   },
 }));
 
-const mockGetFonts = require('../utils/fontUtils').getFonts;
+const mockGetFonts = getFontsMock;
+
+function getPreloadLinks(container: HTMLElement): NodeListOf<Element> {
+  const inContainer = container.querySelectorAll('link[rel="preload"]');
+  if (inContainer.length > 0) return inContainer;
+  return document.querySelectorAll('link[rel="preload"]');
+}
+
+const defaultFonts = [
+  {
+    filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+    extensions: ['woff2', 'woff'],
+    name: 'Apercu',
+  },
+  {
+    filePath: 'https://www.codecademy.com/gamut/apercu-bold-pro',
+    extensions: ['woff2', 'woff'],
+    name: 'Apercu',
+    weight: 'bold',
+  },
+];
 
 describe('AssetProvider', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockGetFonts.mockReturnValue(defaultFonts);
+  });
+
+  afterEach(() => {
+    mockGetFonts.mockReturnValue(defaultFonts);
   });
 
   describe('createFontLinks', () => {
@@ -66,7 +92,7 @@ describe('AssetProvider', () => {
       ];
 
       const { container } = render(<>{createFontLinks(fonts)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -80,13 +106,13 @@ describe('AssetProvider', () => {
 
     it('should handle empty fonts array', () => {
       const { container } = render(<>{createFontLinks([])}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(0);
     });
 
     it('should handle undefined fonts parameter', () => {
       const { container } = render(<>{createFontLinks(undefined)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(2);
     });
 
@@ -110,7 +136,7 @@ describe('AssetProvider', () => {
       ];
 
       const { container } = render(<>{createFontLinks(fonts)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -139,7 +165,7 @@ describe('AssetProvider', () => {
       ];
 
       const { container } = render(<>{createFontLinks(fonts)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(2);
     });
   });
@@ -155,14 +181,14 @@ describe('AssetProvider', () => {
       ]);
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
 
+      expect(mockGetFonts).toHaveBeenCalledWith('core');
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
         'https://www.codecademy.com/gamut/apercu-regular-pro.woff2'
       );
-      expect(mockGetFonts).toHaveBeenCalledWith('core');
     });
 
     it('should render font links for percipio theme', () => {
@@ -175,7 +201,7 @@ describe('AssetProvider', () => {
       ]);
 
       const { view } = renderView({ theme: percipioTheme as any });
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -207,7 +233,7 @@ describe('AssetProvider', () => {
       });
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(0);
     });
 
@@ -215,7 +241,7 @@ describe('AssetProvider', () => {
       mockGetFonts.mockReturnValue(undefined);
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(2);
     });
 
@@ -223,7 +249,7 @@ describe('AssetProvider', () => {
       mockGetFonts.mockReturnValue(null);
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(2);
     });
 
@@ -231,7 +257,7 @@ describe('AssetProvider', () => {
       mockGetFonts.mockReturnValue('not-an-array');
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(0);
     });
 
@@ -255,7 +281,7 @@ describe('AssetProvider', () => {
       ]);
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(3);
       expect(links[0]).toHaveAttribute(
@@ -292,7 +318,7 @@ describe('AssetProvider', () => {
       ]);
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -321,7 +347,7 @@ describe('AssetProvider', () => {
       ]);
 
       const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
