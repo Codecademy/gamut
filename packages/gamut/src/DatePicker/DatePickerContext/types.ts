@@ -1,13 +1,11 @@
 import { createContext } from 'react';
 
-import type {
-  CalendarBodyProps,
-  QuickAction,
-} from '../DatePickerCalendar/Calendar/types';
+import { CalendarQuickAction, DatePickerSharedProps } from '../sharedTypes';
 import type { DatePickerTranslations } from '../utils/translations';
 
-interface DatePickerBaseContextValue
-  extends Pick<CalendarBodyProps, 'shouldDisableDate'> {
+interface DatePickerBaseContextValue<Mode extends 'single' | 'range'>
+  extends Pick<DatePickerSharedProps, 'shouldDisableDate'> {
+  mode: Mode;
   /**
    * Resolved `Intl.Locale` from the `locale` prop (or runtime default). Same instance passed to
    * formatters and available for `getWeekInfo()` etc.
@@ -31,24 +29,26 @@ interface DatePickerBaseContextValue
   /** UI string overrides (e.g. clear button). */
   translations: Required<DatePickerTranslations>;
   /** Calendar footer quick actions (max 3 shown). */
-  quickActions: QuickAction[];
-  /** Start date (range) or selected date (single). */
-  startOrSelectedDate: Date | null;
+  quickActions: CalendarQuickAction[];
+  // /** Start date (range) or selected date (single). */
+  // startOrSelectedDate: Date | null;
   /** Set selection. Single: (date). Range: (start, end). */
-  onSelection: (date: Date | null, endDate?: Date | null) => void;
+  // onSelection: (date: Date | null, endDate?: Date | null) => void;
 }
 
 export interface DatePickerSingleContextValue
-  extends DatePickerBaseContextValue {
-  mode: 'single';
+  extends DatePickerBaseContextValue<'single'> {
+  selectedDate: Date | null;
+  onSelection: (date: Date | null) => void;
 }
 
 type ActiveRangePart = 'start' | 'end' | null;
 
 export interface DatePickerRangeContextValue
-  extends DatePickerBaseContextValue {
-  mode: 'range';
+  extends DatePickerBaseContextValue<'range'> {
+  startDate: Date | null;
   endDate: Date | null;
+  onRangeSelection: (startDate: Date | null, endDate: Date | null) => void;
   /** Which input is active (start/end focused); null = selection mode. */
   activeRangePart: ActiveRangePart;
   /** Set which input is active (e.g. when input receives focus). */

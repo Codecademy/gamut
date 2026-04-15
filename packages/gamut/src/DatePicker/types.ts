@@ -1,14 +1,12 @@
 import { ComponentProps } from 'react';
 
 import { Input } from '../Form/inputs/Input';
-import {
-  CalendarBodyProps,
-  QuickAction,
-} from './DatePickerCalendar/Calendar/types';
+import { CalendarQuickAction, DatePickerSharedProps } from './sharedTypes';
 import { DatePickerTranslations } from './utils/translations';
 
-interface DatePickerBaseProps
-  extends Pick<CalendarBodyProps, 'locale' | 'shouldDisableDate'> {
+interface DatePickerBaseProps<Mode extends 'single' | 'range' | undefined>
+  extends DatePickerSharedProps {
+  mode: Mode;
   /** When provided, only the provider is rendered and children compose Input + Calendar. */
   children?: React.ReactNode;
   /** Override default UI strings for internationalization.
@@ -30,6 +28,7 @@ interface DatePickerBaseProps
    * @see `size` on {@link Input}
    */
   inputSize?: ComponentProps<typeof Input>['size'];
+
   /**
    * Calendar footer quick actions. Default values are provided based on the mode, but you can pass your own. Only the first 3 quick actions will be displayed.
    * Pass `null` to omit quick actions.
@@ -37,7 +36,7 @@ interface DatePickerBaseProps
    * @default for single mode: Yesterday, Today, Tomorrow
    * for range mode: Last 7 days, Last 30 days, Last 90 days
    *
-   * @see {@link QuickAction} for the shape of the quick actions.
+   * @see {@link CalendarQuickAction} for the shape of the quick actions.
    *
    * @example single mode:
    * ```tsx
@@ -60,11 +59,11 @@ interface DatePickerBaseProps
    *   ]}
    * ```
    */
-  quickActions?: QuickAction[] | null;
+  quickActions?: CalendarQuickAction[] | null;
 }
 
-export interface DatePickerSingleProps extends DatePickerBaseProps {
-  mode?: 'single';
+export interface DatePickerSingleProps
+  extends DatePickerBaseProps<'single' | undefined> {
   /** Controlled selected date. Pass `null` to not have a default selected date. Pass a `Date` to have a default selected date.
    *
    * @example
@@ -91,8 +90,7 @@ export interface DatePickerSingleProps extends DatePickerBaseProps {
   onSelected: (date: Date | null) => void;
 }
 
-export interface DatePickerRangeProps extends DatePickerBaseProps {
-  mode: 'range';
+export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
   /** Controlled start date. Pass `null` to not have a default start date. Pass a `Date` to have a default start date.
    *
    * @example

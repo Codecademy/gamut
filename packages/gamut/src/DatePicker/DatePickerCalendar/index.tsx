@@ -11,13 +11,14 @@ import { useMedia } from 'react-use';
 
 import { Box, FlexBox } from '../../Box';
 import { useDatePicker } from '../DatePickerContext';
+import { CalendarQuickAction } from '../sharedTypes';
 import {
   CalendarBody,
   CalendarFooter,
   CalendarHeader,
   CalendarWrapper,
 } from './Calendar';
-import type { CalendarBodyProps, QuickAction } from './Calendar/types';
+import type { CalendarBodyProps } from './Calendar/types';
 import { addMonths, getFirstOfMonth } from './Calendar/utils/dateGrid';
 import {
   applyRangeOrNewStart,
@@ -60,8 +61,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const {
     mode,
-    startOrSelectedDate,
-    onSelection,
     shouldDisableDate,
     locale,
     closeCalendar,
@@ -83,14 +82,14 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   );
 
   const isRange = mode === 'range';
+  const selectedDate = isRange ? context.startDate : context.selectedDate;
   const endDate = isRange ? context.endDate : undefined;
   const setActiveRangePart = isRange ? context.setActiveRangePart : undefined;
-
   const [displayDate, setDisplayDate] = useState(() =>
-    getFirstOfMonth(startOrSelectedDate ?? new Date())
+    getFirstOfMonth(selectedDate ?? new Date())
   );
   const [focusedDate, setFocusedDate] = useState<Date | null>(
-    () => startOrSelectedDate ?? endDate ?? new Date()
+    () => selectedDate ?? endDate ?? new Date()
   );
   const onFocusedDateChange = useCallback(
     (date: Date | null) => {
@@ -99,9 +98,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     [setFocusedDate]
   );
 
-  const focusTarget =
-    focusedDate ?? startOrSelectedDate ?? endDate ?? new Date();
-  const secondMonthDate = addMonths(displayDate, 1);
+  const focusTarget = focusedDate ?? selectedDate ?? endDate ?? new Date();
+  const secondMonthDate = addMonths({ date: displayDate, n: 1 });
   const isTwoMonthsVisible = useMedia(`(min-width: ${breakpoints.xs})`);
   const wasOpenRef = useRef(false);
 
@@ -111,20 +109,20 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     const justOpened = isCalendarOpen && !wasOpenRef.current;
     wasOpenRef.current = isCalendarOpen;
     if (!justOpened) return;
-    const anchor = startOrSelectedDate ?? endDate;
+    const anchor = selectedDate ?? endDate;
     if (anchor) {
       setDisplayDate(getFirstOfMonth(anchor));
-      setFocusedDate(startOrSelectedDate ?? endDate ?? new Date());
+      setFocusedDate(selectedDate ?? endDate ?? new Date());
     }
-  }, [isCalendarOpen, startOrSelectedDate, endDate]);
+  }, [isCalendarOpen, selectedDate, endDate]);
 
   const onDateSelect = useCallback(
     (date: Date) => {
       if (!isRange) {
         handleDateSelectSingle({
           date,
-          selectedDate: startOrSelectedDate,
-          onSelection,
+          selectedDate: context.selectedDate,
+          onSelection: context.onSelection,
         });
         // Defer close so React can commit the new date and the input can sync segments
         // before closeCalendar focuses the spinbutton (which blocks segment sync while "focused").
@@ -135,40 +133,33 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       const shouldClose = handleDateSelectRange({
         date,
         activeRangePart: context.activeRangePart,
-        startDate: startOrSelectedDate,
+        startDate: context.startDate,
         endDate: context.endDate,
-        onSelection,
+        onRangeSelection: context.onRangeSelection,
         shouldDisableDate,
       });
       if (shouldClose) queueMicrotask(closeCalendar);
     },
-    [
-      isRange,
-      setActiveRangePart,
-      context,
-      startOrSelectedDate,
-      onSelection,
-      shouldDisableDate,
-      closeCalendar,
-    ]
+    [isRange, setActiveRangePart, context, shouldDisableDate, closeCalendar]
   );
 
   const clearDate = useCallback(() => {
-    onSelection(null);
+    if (isRange) context.onRangeSelection(null, null);
+    else context.onSelection(null);
     setFocusedDate(displayDate);
-  }, [onSelection, setFocusedDate, displayDate]);
+  }, [isRange, context, setFocusedDate, displayDate]);
 
-  const computedQuickActions: QuickAction[] = useMemo(() => {
+  const computedQuickActions: CalendarQuickAction[] = useMemo(() => {
     return quickActions.slice(0, 3).map((action) => ({
       ...action,
       onClick: () => {
         action.onClick?.();
         setActiveRangePart?.(null);
-        const { start, end } = computeQuickAction(
-          action.num,
-          action.timePeriod,
-          isRange
-        );
+        const { start, end } = computeQuickAction({
+          num: action.num,
+          timePeriod: action.timePeriod,
+          isRange,
+        });
         if (isRange) {
           if (
             rangeContainsDisabled({
@@ -182,16 +173,16 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
               end,
               clickedDate: end,
               shouldDisableDate,
-              onSelection,
+              onRangeSelection: context.onRangeSelection,
             });
           } else {
-            onSelection(start, end);
+            context.onRangeSelection(start, end);
           }
           setDisplayDate(getFirstOfMonth(end));
           setFocusedDate(end);
           queueMicrotask(closeCalendar);
         } else {
-          onSelection(start);
+          context.onSelection(start);
           setDisplayDate(getFirstOfMonth(start));
           setFocusedDate(start);
           queueMicrotask(closeCalendar);
@@ -204,7 +195,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     isRange,
     quickActions,
     setActiveRangePart,
-    onSelection,
+    context,
   ]);
 
   return (
@@ -226,7 +217,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             hasAdjacentMonthRight={isTwoMonthsVisible}
             labelledById={headingId}
             locale={locale}
-            selectedDate={startOrSelectedDate}
+            selectedDate={selectedDate}
             shouldDisableDate={shouldDisableDate}
             weekStartsOn={weekStartsOn}
             onDateSelect={onDateSelect}
@@ -251,7 +242,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             hasAdjacentMonthLeft={isTwoMonthsVisible}
             labelledById={headingId}
             locale={locale}
-            selectedDate={startOrSelectedDate}
+            selectedDate={selectedDate}
             shouldDisableDate={shouldDisableDate}
             weekStartsOn={weekStartsOn}
             onDateSelect={onDateSelect}
@@ -265,7 +256,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         clear={
           isRange
             ? {
-                disabled: startOrSelectedDate === null && endDate === null,
+                disabled: context.startDate === null && endDate === null,
                 onClick: clearDate,
                 text: translations.clearText,
               }

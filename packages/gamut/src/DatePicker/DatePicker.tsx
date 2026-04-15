@@ -4,7 +4,6 @@ import { useCallback, useId, useMemo, useRef, useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
-import { isRangeProps } from './DatePickerCalendar/utils/dateSelect';
 import {
   getDefaultRangeQuickActions,
   getDefaultSingleQuickActions,
@@ -68,23 +67,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     toFocus?.focus();
   }, []);
 
-  const startOrSelectedDate = isRangeProps(props)
-    ? props.startDate
-    : props.selectedDate;
-  const endDate = isRangeProps(props) ? props.endDate : null;
-
-  const onSelection = useCallback(
-    (date: Date | null, endDate?: Date | null) => {
-      if (isRangeProps(props)) {
-        props.onStartSelected(date);
-        props.onEndSelected(endDate ?? null);
-      } else {
-        props.onSelected(date);
-      }
-    },
-    [props]
-  );
-
   const contextValue = useMemo<DatePickerContextValue>(() => {
     const translations = {
       ...DEFAULT_DATE_PICKER_TRANSLATIONS,
@@ -95,8 +77,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         ? getDefaultRangeQuickActions(translations)
         : getDefaultSingleQuickActions(resolvedLocale);
     const base = {
-      startOrSelectedDate,
-      onSelection,
       isCalendarOpen,
       openCalendar,
       focusCalendar,
@@ -114,21 +94,26 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       ? {
           ...base,
           mode: 'range',
-          endDate,
+          startDate: props.startDate,
+          endDate: props.endDate,
           activeRangePart,
           setActiveRangePart,
+          onRangeSelection: (startDate: Date | null, endDate: Date | null) => {
+            props.onStartSelected(startDate);
+            props.onEndSelected(endDate);
+          },
         }
       : {
           ...base,
           mode: 'single',
+          selectedDate: props.selectedDate,
+          onSelection: props.onSelected,
         };
   }, [
     translationsProp,
     quickActions,
     mode,
     resolvedLocale,
-    startOrSelectedDate,
-    onSelection,
     isCalendarOpen,
     openCalendar,
     focusCalendar,
@@ -138,7 +123,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     closeCalendar,
     shouldDisableDate,
     calendarDialogId,
-    endDate,
+    props,
     activeRangePart,
   ]);
 

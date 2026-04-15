@@ -1,32 +1,14 @@
+import type {
+  CalendarQuickAction,
+  DatePickerSharedProps,
+} from '../../sharedTypes';
 import type { IsoWeekday } from '../../utils/locale';
 
-interface CalendarBaseProps {
+interface CalendarBaseProps extends DatePickerSharedProps {
   /** Used for the currently displayed month and year */
   displayDate: Date;
   /** Called when the displayed month changes. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
   onDisplayDateChange: (newDate: Date) => void;
-  /**
-   * Locale for formatting and `Intl.Locale` APIs. Accepts `Intl.LocalesArgument` (e.g. `'en-US'`,
-   * `['en-GB', 'en']`, or a prebuilt `Intl.Locale`). Omitted → runtime default (user agent).
-   */
-  locale?: Intl.LocalesArgument;
-  /**
-   * Return `true` to disable that calendar day. Use `matchDisabledDates` from `./utils/dateGrid`
-   * to disable a fixed list of days.
-   *
-   * @example Disable anything older than three calendar months
-   * ```tsx
-   * const cutoff = new Date();
-   * cutoff.setMonth(cutoff.getMonth() - 3);
-   * const startOfCutoff = new Date(
-   *   cutoff.getFullYear(),
-   *   cutoff.getMonth(),
-   *   cutoff.getDate()
-   * );
-   * <DatePicker shouldDisableDate={(d) => d < startOfCutoff} />
-   * ```
-   */
-  shouldDisableDate?: (date: Date) => boolean;
 }
 
 export interface CalendarNavProps
@@ -82,16 +64,6 @@ export interface CalendarBodyProps extends CalendarBaseProps {
   };
 }
 
-export interface QuickAction {
-  /** Number of days, weeks, months, or years to add or subtract from the current date. */
-  num: number;
-  /** Time period to add or subtract from the current date. */
-  timePeriod: 'day' | 'week' | 'month' | 'year';
-  /** Text to display for the quick action. */
-  displayText: string;
-  /** Callback when the quick action is clicked. */
-  onClick?: () => void;
-}
 export interface CalendarFooterProps {
   clear?: {
     disabled?: boolean;
@@ -99,5 +71,5 @@ export interface CalendarFooterProps {
     text?: string;
   };
   /** Max 3 quick actions (e.g. "7 days", "1 month") */
-  quickActions?: QuickAction[];
+  quickActions?: CalendarQuickAction[];
 }

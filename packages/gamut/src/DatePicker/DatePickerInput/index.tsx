@@ -57,8 +57,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const {
       mode,
-      startOrSelectedDate,
-      onSelection,
       openCalendar,
       focusCalendar,
       locale,
@@ -68,6 +66,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const isRange = mode === 'range';
     const endDate = isRange ? context.endDate : null;
+    const date = isRange ? context.startDate : context.selectedDate;
 
     const inputID = useId();
     const inputId = `datepicker-input-${inputID.replace(/:/g, '')}`;
@@ -85,8 +84,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       ? translations.endDateLabel
       : translations.startDateLabel;
 
-    const boundDate =
-      isRange && rangePart === 'end' ? endDate : startOrSelectedDate;
+    const boundDate = isRange && rangePart === 'end' ? endDate : date;
     const segmentsFromBound = useMemo(
       () => getDateSegmentsFromDate(boundDate),
       [boundDate]
@@ -136,20 +134,26 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const commitParsedDate = useCallback(
       (parsed: Date) => {
+        if (!isRange) {
+          context.onSelection(parsed);
+        }
         if (isRange && rangePart) {
-          if (rangePart === 'start') onSelection(parsed, endDate);
-          else onSelection(startOrSelectedDate, parsed);
-        } else onSelection(parsed);
+          if (rangePart === 'start') context.onRangeSelection(parsed, endDate);
+          else context.onRangeSelection(date, parsed);
+        }
       },
-      [isRange, rangePart, onSelection, endDate, startOrSelectedDate]
+      [isRange, rangePart, context, endDate, date]
     );
 
     const clearSelection = useCallback(() => {
+      if (!isRange) {
+        context.onSelection(null);
+      }
       if (isRange && rangePart) {
-        if (rangePart === 'start') onSelection(null, endDate);
-        else onSelection(startOrSelectedDate, null);
-      } else onSelection(null);
-    }, [isRange, rangePart, onSelection, endDate, startOrSelectedDate]);
+        if (rangePart === 'start') context.onRangeSelection(null, endDate);
+        else context.onRangeSelection(date, null);
+      }
+    }, [isRange, rangePart, context, endDate, date]);
 
     const onSegmentChange = useCallback(
       (next: SegmentValues) => {
