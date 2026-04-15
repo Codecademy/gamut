@@ -3,6 +3,7 @@ import {
   DatePicker,
   DatePickerCalendar,
   DatePickerInput,
+  matchDisabledDates,
   PopoverContainer,
   useDatePicker,
 } from '@codecademy/gamut';
@@ -58,9 +59,9 @@ export const Range: Story = {
     return (
       <Box>
         <DatePicker
-          disabledDates={[new Date(2026, 3, 14)]}
           endDate={endDate}
           mode="range"
+          shouldDisableDate={matchDisabledDates([new Date(2026, 3, 14)])}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
@@ -78,6 +79,12 @@ export const RangeWithQuickActions: Story = {
   render: function DatePickerStory() {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
+    const today = new Date();
+    const startOfToday = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
     return (
       <Box>
         <DatePicker
@@ -87,6 +94,7 @@ export const RangeWithQuickActions: Story = {
             { num: -1, timePeriod: 'month', displayText: 'Last month' },
             { num: -30, timePeriod: 'day', displayText: 'Last 30 days' },
           ]}
+          shouldDisableDate={(d) => d < startOfToday}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
@@ -106,10 +114,10 @@ export const RangeSmall: Story = {
     return (
       <Box>
         <DatePicker
-          disabledDates={[new Date(2026, 3, 15)]}
           endDate={endDate}
           inputSize="small"
           mode="range"
+          shouldDisableDate={matchDisabledDates([new Date(2026, 3, 15)])}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',

@@ -3,7 +3,11 @@ import type {
   DatePickerSingleContextValue,
 } from '../../DatePickerContext/types';
 import type { DatePickerProps, DatePickerRangeProps } from '../../types';
-import { isDateInRange, isSameDay } from '../Calendar/utils/dateGrid';
+import {
+  getOrderedCalendarEndpoints,
+  isDateDisabled,
+  isDateInRange,
+} from '../Calendar/utils/dateGrid';
 
 export const isRangeProps = (
   props: DatePickerProps
@@ -12,21 +16,32 @@ export const isRangeProps = (
 export type RangeContainsDisabledParams = {
   start: Date;
   end: Date;
-  disabledDates: Date[];
+  shouldDisableDate?: (date: Date) => boolean;
 };
 
-/** True if any disabled date falls within [start, end] (inclusive, by calendar day). */
+/** True if any disabled day falls within [start, end] (inclusive, by calendar day). */
 export const rangeContainsDisabled = ({
   start,
   end,
-  disabledDates,
+  shouldDisableDate,
 }: RangeContainsDisabledParams) => {
-  return disabledDates.some(
-    (date) =>
-      isSameDay(date, start) ||
-      isSameDay(date, end) ||
-      isDateInRange(date, start, end)
-  );
+  const { low, high } = getOrderedCalendarEndpoints(start, end);
+
+  if (
+    isDateDisabled(low, shouldDisableDate) ||
+    isDateDisabled(high, shouldDisableDate)
+  ) {
+    return true;
+  }
+
+  let date = new Date(low.getFullYear(), low.getMonth(), low.getDate() + 1);
+  while (isDateInRange(date, start, end)) {
+    if (isDateDisabled(date, shouldDisableDate)) {
+      return true;
+    }
+    date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+  }
+  return false;
 };
 
 export type HandleDateSelectSingleParams = {
@@ -52,7 +67,7 @@ type ApplyRangeOrNewStartParams = {
   start: Date;
   end: Date;
   clickedDate: Date;
-  disabledDates: Date[];
+  shouldDisableDate?: (date: Date) => boolean;
 } & Pick<DatePickerRangeContextValue, 'onSelection'>;
 
 /** @returns whether a full start+end range was committed (calendar may close). */
@@ -60,11 +75,11 @@ export const applyRangeOrNewStart = ({
   start,
   end,
   clickedDate,
-  disabledDates,
+  shouldDisableDate,
   onSelection,
 }: ApplyRangeOrNewStartParams) => {
   // if range contains disabled dates, set start date to clicked date and end date to null
-  if (rangeContainsDisabled({ start, end, disabledDates })) {
+  if (rangeContainsDisabled({ start, end, shouldDisableDate })) {
     onSelection(clickedDate, null);
     return false;
   }
@@ -77,7 +92,7 @@ export type HandleDateSelectRangeParams = {
   startDate: DatePickerRangeContextValue['startOrSelectedDate'];
 } & Pick<
   DatePickerRangeContextValue,
-  'activeRangePart' | 'endDate' | 'onSelection' | 'disabledDates'
+  'activeRangePart' | 'endDate' | 'onSelection' | 'shouldDisableDate'
 >;
 
 /** @returns whether the calendar should close (full range selected and committed). */
@@ -87,7 +102,7 @@ export const handleDateSelectRange = ({
   startDate,
   endDate,
   onSelection,
-  disabledDates = [],
+  shouldDisableDate,
 }: HandleDateSelectRangeParams) => {
   // Range mode: field targeting (start or end input was focused)
   if (activeRangePart === 'start') {
@@ -102,7 +117,7 @@ export const handleDateSelectRange = ({
         start: date,
         end: newEnd,
         clickedDate: date,
-        disabledDates,
+        shouldDisableDate,
         onSelection,
       });
     }
@@ -123,7 +138,7 @@ export const handleDateSelectRange = ({
         start: newStart,
         end: date,
         clickedDate: date,
-        disabledDates,
+        shouldDisableDate,
         onSelection,
       });
     }
@@ -157,7 +172,7 @@ export const handleDateSelectRange = ({
         start: startDate,
         end: date,
         clickedDate: date,
-        disabledDates,
+        shouldDisableDate,
         onSelection,
       });
     }
@@ -166,7 +181,7 @@ export const handleDateSelectRange = ({
       start: date,
       end: endDate,
       clickedDate: date,
-      disabledDates,
+      shouldDisableDate,
       onSelection,
     });
   }
@@ -182,7 +197,7 @@ export const handleDateSelectRange = ({
       start: startDate,
       end: date,
       clickedDate: date,
-      disabledDates,
+      shouldDisableDate,
       onSelection,
     });
   }

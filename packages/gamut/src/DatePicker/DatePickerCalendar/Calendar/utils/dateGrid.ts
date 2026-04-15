@@ -88,6 +88,22 @@ export const isSameDay = (a: Date | null, b: Date | null) => {
 };
 
 /**
+ * Calendar-ordered local-midnight instants for two possibly unordered `Date` values.
+ * Matches the bounds used by {@link isDateInRange} (and range selection).
+ */
+export const getOrderedCalendarEndpoints = (start: Date, end: Date) => {
+  const startDate = new Date(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate()
+  );
+  const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  return startDate <= endDate
+    ? { low: startDate, high: endDate }
+    : { low: endDate, high: startDate };
+};
+
+/**
  * Check if `date` is between `start` and `end` (exclusive), ignoring time.
  */
 export const isDateInRange = (
@@ -96,21 +112,32 @@ export const isDateInRange = (
   end: Date | null
 ) => {
   if (start === null) return false;
-  const normalizedDateTime = normalizeDate(date);
-  const normalizedStartDateTime = normalizeDate(start);
-  const normalizedEndDateTime =
-    end !== null ? normalizeDate(end) : normalizedStartDateTime;
-  const low = Math.min(normalizedStartDateTime, normalizedEndDateTime);
-  const high = Math.max(normalizedStartDateTime, normalizedEndDateTime);
-  return normalizedDateTime > low && normalizedDateTime < high;
+  const endBound = end ?? start;
+  const { low, high } = getOrderedCalendarEndpoints(start, endBound);
+  const normalizedDate = normalizeDate(date);
+  return (
+    normalizedDate > normalizeDate(low) && normalizedDate < normalizeDate(high)
+  );
 };
 
 /**
- * Check if `date` is in the `disabledDates` list (by calendar day).
+ * Build a `shouldDisableDate` that disables each listed calendar day (time-of-day ignored).
+ *
+ * @example
+ * ```tsx
+ * <DatePicker shouldDisableDate={matchDisabledDates([new Date(2026, 3, 14)])} />
+ * ```
  */
-export const isDateDisabled = (date: Date, disabledDates: Date[] = []) => {
-  return disabledDates.some((d) => isSameDay(date, d));
-};
+export const matchDisabledDates =
+  (dates: readonly Date[] = []) =>
+  (date: Date): boolean =>
+    dates.some((d) => isSameDay(date, d));
+
+/** True when `shouldDisableDate` returns true for this calendar day. */
+export const isDateDisabled = (
+  date: Date,
+  shouldDisableDate?: (date: Date) => boolean
+) => Boolean(shouldDisableDate?.(date));
 
 /** One visible day in the month grid with its row (for Home/End and keyboard nav). */
 export type DateWithRow = { date: Date; rowIndex: number };

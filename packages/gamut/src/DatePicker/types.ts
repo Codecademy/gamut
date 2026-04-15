@@ -8,7 +8,7 @@ import {
 import { DatePickerTranslations } from './utils/translations';
 
 interface DatePickerBaseProps
-  extends Pick<CalendarBodyProps, 'locale' | 'disabledDates'> {
+  extends Pick<CalendarBodyProps, 'locale' | 'shouldDisableDate'> {
   /** When provided, only the provider is rendered and children compose Input + Calendar. */
   children?: React.ReactNode;
   /** Override default UI strings for internationalization.

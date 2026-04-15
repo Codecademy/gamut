@@ -10,12 +10,27 @@ interface CalendarBaseProps {
    * `['en-GB', 'en']`, or a prebuilt `Intl.Locale`). Omitted → runtime default (user agent).
    */
   locale?: Intl.LocalesArgument;
-  /** Dates that should be disabled (unselectable) */
-  disabledDates?: Date[];
+  /**
+   * Return `true` to disable that calendar day. Use `matchDisabledDates` from `./utils/dateGrid`
+   * to disable a fixed list of days.
+   *
+   * @example Disable anything older than three calendar months
+   * ```tsx
+   * const cutoff = new Date();
+   * cutoff.setMonth(cutoff.getMonth() - 3);
+   * const startOfCutoff = new Date(
+   *   cutoff.getFullYear(),
+   *   cutoff.getMonth(),
+   *   cutoff.getDate()
+   * );
+   * <DatePicker shouldDisableDate={(d) => d < startOfCutoff} />
+   * ```
+   */
+  shouldDisableDate?: (date: Date) => boolean;
 }
 
 export interface CalendarNavProps
-  extends Omit<CalendarBaseProps, 'disabledDates'> {
+  extends Omit<CalendarBaseProps, 'shouldDisableDate'> {
   /** Called after navigating to previous month. */
   onLastMonthClick?: () => void;
   /** Called after navigating to next month */

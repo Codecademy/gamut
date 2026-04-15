@@ -5,6 +5,7 @@ import {
   isDateDisabled,
   isDateInRange,
   isSameDay,
+  matchDisabledDates,
 } from '../dateGrid';
 
 describe('getWeekdayOffsetInGrid', () => {
@@ -66,18 +67,32 @@ describe('isDateInRange', () => {
   });
 });
 
-describe('isDateDisabled', () => {
-  it('returns true when any disabled date matches the day', () => {
+describe('matchDisabledDates', () => {
+  it('returns true when any listed day matches the calendar day', () => {
     const target = new Date(2024, 4, 10);
-    const disabled = [new Date(2024, 4, 10, 15, 30)];
-    expect(isDateDisabled(target, disabled)).toBe(true);
+    const shouldDisable = matchDisabledDates([new Date(2024, 4, 10, 15, 30)]);
+    expect(shouldDisable(target)).toBe(true);
   });
 
-  it('returns false when the list is empty or no match', () => {
-    expect(isDateDisabled(new Date(2024, 4, 10), [])).toBe(false);
-    expect(isDateDisabled(new Date(2024, 4, 10), [new Date(2024, 4, 11)])).toBe(
-      false
-    );
+  it('returns false when the list is empty or no day matches', () => {
+    expect(matchDisabledDates([])(new Date(2024, 4, 10))).toBe(false);
+    expect(
+      matchDisabledDates([new Date(2024, 4, 11)])(new Date(2024, 4, 10))
+    ).toBe(false);
+  });
+});
+
+describe('isDateDisabled', () => {
+  it('returns true when shouldDisableDate returns true', () => {
+    expect(isDateDisabled(new Date(2024, 4, 10), () => true)).toBe(true);
+    expect(
+      isDateDisabled(new Date(2024, 4, 10), (d) => d.getDate() === 10)
+    ).toBe(true);
+  });
+
+  it('returns false when shouldDisableDate is omitted or returns false', () => {
+    expect(isDateDisabled(new Date(2024, 4, 10))).toBe(false);
+    expect(isDateDisabled(new Date(2024, 4, 10), () => false)).toBe(false);
   });
 });
 

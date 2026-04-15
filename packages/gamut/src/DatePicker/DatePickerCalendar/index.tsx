@@ -62,7 +62,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     mode,
     startOrSelectedDate,
     onSelection,
-    disabledDates,
+    shouldDisableDate,
     locale,
     closeCalendar,
     isCalendarOpen,
@@ -138,7 +138,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         startDate: startOrSelectedDate,
         endDate: context.endDate,
         onSelection,
-        disabledDates,
+        shouldDisableDate,
       });
       if (shouldClose) queueMicrotask(closeCalendar);
     },
@@ -148,7 +148,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       context,
       startOrSelectedDate,
       onSelection,
-      disabledDates,
+      shouldDisableDate,
       closeCalendar,
     ]
   );
@@ -159,7 +159,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   }, [onSelection, setFocusedDate, displayDate]);
 
   const computedQuickActions: QuickAction[] = useMemo(() => {
-    const safeDisabled = disabledDates ?? [];
     return quickActions.slice(0, 3).map((action) => ({
       ...action,
       onClick: () => {
@@ -175,14 +174,14 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             rangeContainsDisabled({
               start,
               end,
-              disabledDates: safeDisabled,
+              shouldDisableDate,
             })
           ) {
             applyRangeOrNewStart({
               start,
               end,
               clickedDate: end,
-              disabledDates: safeDisabled,
+              shouldDisableDate,
               onSelection,
             });
           } else {
@@ -201,7 +200,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     }));
   }, [
     closeCalendar,
-    disabledDates,
+    shouldDisableDate,
     isRange,
     quickActions,
     setActiveRangePart,
@@ -220,7 +219,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onDisplayDateChange={setDisplayDate}
           />
           <CalendarBody
-            disabledDates={disabledDates}
             displayDate={displayDate}
             endDate={endDate}
             focusGridSync={focusGridSync}
@@ -229,6 +227,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             labelledById={headingId}
             locale={locale}
             selectedDate={startOrSelectedDate}
+            shouldDisableDate={shouldDisableDate}
             weekStartsOn={weekStartsOn}
             onDateSelect={onDateSelect}
             onDisplayDateChange={setDisplayDate}
@@ -245,7 +244,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onDisplayDateChange={setDisplayDate}
           />
           <CalendarBody
-            disabledDates={disabledDates}
             displayDate={secondMonthDate}
             endDate={endDate}
             focusGridSync={focusGridSync}
@@ -254,6 +252,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             labelledById={headingId}
             locale={locale}
             selectedDate={startOrSelectedDate}
+            shouldDisableDate={shouldDisableDate}
             weekStartsOn={weekStartsOn}
             onDateSelect={onDateSelect}
             onDisplayDateChange={setDisplayDate}

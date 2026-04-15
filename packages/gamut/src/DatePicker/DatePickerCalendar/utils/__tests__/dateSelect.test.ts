@@ -1,3 +1,4 @@
+import { matchDisabledDates } from '../../Calendar/utils/dateGrid';
 import {
   applyRangeOrNewStart,
   handleDateSelectRange,
@@ -18,7 +19,7 @@ describe('rangeContainsDisabled', () => {
       rangeContainsDisabled({
         start,
         end,
-        disabledDates: [createDate(2024, 0, 10)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 0, 10)]),
       })
     ).toBe(true);
   });
@@ -28,7 +29,7 @@ describe('rangeContainsDisabled', () => {
       rangeContainsDisabled({
         start,
         end,
-        disabledDates: [createDate(2024, 0, 20)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 0, 20)]),
       })
     ).toBe(true);
   });
@@ -38,7 +39,7 @@ describe('rangeContainsDisabled', () => {
       rangeContainsDisabled({
         start,
         end,
-        disabledDates: [createDate(2024, 0, 15)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 0, 15)]),
       })
     ).toBe(true);
   });
@@ -48,9 +49,22 @@ describe('rangeContainsDisabled', () => {
       rangeContainsDisabled({
         start,
         end,
-        disabledDates: [createDate(2024, 0, 5), createDate(2024, 0, 25)],
+        shouldDisableDate: matchDisabledDates([
+          createDate(2024, 0, 5),
+          createDate(2024, 0, 25),
+        ]),
       })
     ).toBe(false);
+  });
+
+  it('returns true when shouldDisableDate marks a day inside the inclusive range', () => {
+    expect(
+      rangeContainsDisabled({
+        start,
+        end,
+        shouldDisableDate: (d) => d.getDate() === 15,
+      })
+    ).toBe(true);
   });
 });
 
@@ -96,7 +110,7 @@ describe('applyRangeOrNewStart', () => {
         start,
         end,
         clickedDate: clicked,
-        disabledDates: [createDate(2024, 5, 30)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 5, 30)]),
         onSelection: mockOnSelection,
       })
     ).toBe(true);
@@ -112,7 +126,7 @@ describe('applyRangeOrNewStart', () => {
         start,
         end,
         clickedDate: clicked,
-        disabledDates: [createDate(2024, 5, 12)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 5, 12)]),
         onSelection: mockOnSelection,
       })
     ).toBe(false);
@@ -130,7 +144,6 @@ describe('handleDateSelectRange', () => {
           startDate: null,
           endDate: null,
           onSelection: mockOnSelection,
-          disabledDates: [],
         })
       ).toBe(false);
       expect(mockOnSelection).toHaveBeenCalledWith(
@@ -148,7 +161,6 @@ describe('handleDateSelectRange', () => {
           startDate: createDate(2024, 5, 10),
           endDate: null,
           onSelection: mockOnSelection,
-          disabledDates: [],
         })
       ).toBe(true);
       expect(mockOnSelection).toHaveBeenCalledWith(
@@ -238,7 +250,7 @@ describe('handleDateSelectRange', () => {
           startDate: start,
           endDate: end,
           onSelection: mockOnSelection,
-          disabledDates: [createDate(2024, 2, 12)],
+          shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
         });
         expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
@@ -304,7 +316,7 @@ describe('handleDateSelectRange', () => {
           startDate: null,
           endDate: end,
           onSelection: mockOnSelection,
-          disabledDates: [createDate(2024, 2, 12)],
+          shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
         });
         expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
@@ -391,7 +403,7 @@ describe('handleDateSelectRange', () => {
           startDate: start,
           endDate: end,
           onSelection: mockOnSelection,
-          disabledDates: [createDate(2024, 2, 12)],
+          shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
         });
         expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
@@ -457,7 +469,7 @@ describe('handleDateSelectRange', () => {
           startDate: start,
           endDate: null,
           onSelection: mockOnSelection,
-          disabledDates: [createDate(2024, 2, 12)],
+          shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
         });
         expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
       });
@@ -527,7 +539,7 @@ describe('handleDateSelectRange', () => {
         startDate: start,
         endDate: end,
         onSelection: mockOnSelection,
-        disabledDates: [createDate(2024, 2, 12)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
       });
       expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
@@ -556,7 +568,7 @@ describe('handleDateSelectRange', () => {
         startDate: start,
         endDate: end,
         onSelection: mockOnSelection,
-        disabledDates: [createDate(2024, 2, 12)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
       });
       expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
@@ -598,7 +610,7 @@ describe('handleDateSelectRange', () => {
         startDate: start,
         endDate: null,
         onSelection: mockOnSelection,
-        disabledDates: [createDate(2024, 2, 12)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
       });
       expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });
@@ -640,7 +652,7 @@ describe('handleDateSelectRange', () => {
         startDate: null,
         endDate: end,
         onSelection: mockOnSelection,
-        disabledDates: [createDate(2024, 2, 12)],
+        shouldDisableDate: matchDisabledDates([createDate(2024, 2, 12)]),
       });
       expect(mockOnSelection).toHaveBeenCalledWith(clicked, null);
     });

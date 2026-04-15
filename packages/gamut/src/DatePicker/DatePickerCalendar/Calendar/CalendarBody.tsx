@@ -18,7 +18,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   displayDate,
   selectedDate,
   endDate = null,
-  disabledDates = [],
+  shouldDisableDate,
   onDateSelect,
   locale,
   weekStartsOn,
@@ -104,7 +104,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         datesWithRow,
         month,
         year,
-        disabledDates,
+        shouldDisableDate,
         onDateSelect,
         onEscapeKeyPress,
         onDisplayDateChange,
@@ -116,7 +116,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       datesWithRow,
       month,
       year,
-      disabledDates,
+      shouldDisableDate,
       onDateSelect,
       onEscapeKeyPress,
       onDisplayDateChange,
@@ -166,7 +166,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
               const range = !!selectedDate && !!endDate;
               const inRange =
                 range && isDateInRange(date, selectedDate, endDate);
-              const disabled = isDateDisabled(date, disabledDates);
+              const disabled = isDateDisabled(date, shouldDisableDate);
               const today = isToday(date);
               // this is making the selected date a differnet color bc it is focused, look into further
               const isFocused =
@@ -188,7 +188,9 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   ref={(el) => setButtonRef(date, el as HTMLElement | null)}
                   role="gridcell"
                   tabIndex={isFocused ? 0 : -1}
-                  onClick={() => onDateSelect(date)}
+                  onClick={() => {
+                    if (!disabled) onDateSelect(date);
+                  }}
                   onFocus={() => onFocusedDateChange?.(date)}
                   onKeyDown={(e: React.KeyboardEvent) => onKeyDown(e, date)}
                 >

@@ -1,6 +1,6 @@
 import type { KeyboardEvent } from 'react';
 
-import { getDatesWithRow, getMonthGrid } from '../dateGrid';
+import { getDatesWithRow, getMonthGrid, matchDisabledDates } from '../dateGrid';
 import { keyHandler, KeyHandlerParams } from '../keyHandler';
 
 const makeEvent = (
@@ -33,7 +33,6 @@ const baseParams: Omit<KeyHandlerParams, 'e'> = {
   datesWithRow,
   month,
   year,
-  disabledDates: [],
   hasAdjacentMonthRight: false,
   hasAdjacentMonthLeft: false,
   onDisplayDateChange: mockOnDisplayDateChange,
@@ -155,7 +154,7 @@ describe('keyHandler', () => {
     keyHandler({
       ...baseParams,
       e: makeEvent('Enter'),
-      disabledDates: [date],
+      shouldDisableDate: matchDisabledDates([date]),
     });
     expect(mockOnDateSelect).not.toHaveBeenCalled();
   });

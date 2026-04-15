@@ -7,7 +7,7 @@ import type {
 import type { DatePickerTranslations } from '../utils/translations';
 
 interface DatePickerBaseContextValue
-  extends Pick<CalendarBodyProps, 'disabledDates'> {
+  extends Pick<CalendarBodyProps, 'shouldDisableDate'> {
   /**
    * Resolved `Intl.Locale` from the `locale` prop (or runtime default). Same instance passed to
    * formatters and available for `getWeekInfo()` etc.
