@@ -196,15 +196,17 @@ export const ExpandableButtonGuide: ListCompositionStory = {
       <Background bg="black">
         <Box p={8}>
           <List {...args}>
-            {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-              <ExpandableButtonClickRow
-                key={key}
-                name={name}
-                role={role}
-                rowKey={key}
-                ship={ship}
-              />
-            ))}
+            {rows.map(
+              ({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+                <ExpandableButtonClickRow
+                  key={key}
+                  name={name}
+                  role={role}
+                  rowKey={key}
+                  ship={ship}
+                />
+              )
+            )}
           </List>
         </Box>
       </Background>
@@ -245,15 +247,17 @@ export const ExpandedRowGuide: ListCompositionStory = {
       <Background bg="black">
         <Box p={8}>
           <List {...args}>
-            {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-              <ExpandableRowClick
-                key={key}
-                name={name}
-                role={role}
-                rowKey={key}
-                ship={ship}
-              />
-            ))}
+            {rows.map(
+              ({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+                <ExpandableRowClick
+                  key={key}
+                  name={name}
+                  role={role}
+                  rowKey={key}
+                  ship={ship}
+                />
+              )
+            )}
           </List>
         </Box>
       </Background>
