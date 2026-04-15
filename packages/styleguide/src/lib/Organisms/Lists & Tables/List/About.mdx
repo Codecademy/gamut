@@ -22,7 +22,7 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-Use `List` as the root container, with `ListRow` and `ListCol` defining each row and column. For table layouts (`as="table"`), add `TableHeader` for a header row. `List` wraps its subtree in `ListProvider` so rows, columns, and the header share spacing, variant, and responsive layout context.
+Use `List` as the root container, with `ListRow` and `ListCol` defining each row and column. For table layouts (`as="table"`), add `TableHeader` for a header row. `List` provides context to its children rows, columns, and the header to share spacing, variant, and responsive layout information.
 
 <TableOfContents
   links={addParentPath(parameters.id, [

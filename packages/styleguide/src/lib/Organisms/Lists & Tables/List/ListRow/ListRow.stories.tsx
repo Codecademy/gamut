@@ -4,7 +4,6 @@ import {
   FlexBox,
   List,
   ListCol,
-  ListProps,
   ListRow,
   Rotation,
   Text,
@@ -20,7 +19,7 @@ import {
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { listStoryRows as rows } from '../listStoryData';
 
@@ -52,35 +51,33 @@ const BorderedListRow = styled(ListRow)(
   })
 );
 
-const PlainStyledExample: React.FC = () => {
-  return (
-    <List variant="plain">
-      <ListRow>
-        <ListCol size="xl">A List item</ListCol>
-        <ListCol size="md">Some normal content</ListCol>
-      </ListRow>
-      {/* eslint-disable-next-line no-alert */}
-      <DangerousListRow onClick={() => alert('Danger!')}>
-        <ListCol size="xl">A dangerous styled item</ListCol>
-        <ListCol size="md">More styled content</ListCol>
-        <ListCol fill justify="right" size="sm">
-          <StopSignIcon size={24} />
-        </ListCol>
-      </DangerousListRow>
-      <ListRow>
-        <ListCol size="xl">Another List item</ListCol>
-        <ListCol size="md">Standard content</ListCol>
-      </ListRow>
-      <BorderedListRow>
-        <ListCol size="xl">A Custom Bordered Item</ListCol>
-        <ListCol size="md">With custom border</ListCol>
-      </BorderedListRow>
-    </List>
-  );
-};
-
 export const PlainStyled: Story = {
-  render: () => <PlainStyledExample />,
+  render: () => {
+    return (
+      <List variant="plain">
+        <ListRow>
+          <ListCol size="xl">A List item</ListCol>
+          <ListCol size="md">Some normal content</ListCol>
+        </ListRow>
+        {/* eslint-disable-next-line no-alert */}
+        <DangerousListRow onClick={() => alert('Danger!')}>
+          <ListCol size="xl">A dangerous styled item</ListCol>
+          <ListCol size="md">More styled content</ListCol>
+          <ListCol fill justify="right" size="sm">
+            <StopSignIcon size={24} />
+          </ListCol>
+        </DangerousListRow>
+        <ListRow>
+          <ListCol size="xl">Another List item</ListCol>
+          <ListCol size="md">Standard content</ListCol>
+        </ListRow>
+        <BorderedListRow>
+          <ListCol size="xl">A Custom Bordered Item</ListCol>
+          <ListCol size="md">With custom border</ListCol>
+        </BorderedListRow>
+      </List>
+    );
+  },
 };
 
 interface ExpandableRowProps {
@@ -193,26 +190,26 @@ const ExpandableButtonClickRow: React.FC<{
   );
 };
 
-const ExpandedTemplateButtonClick: React.FC<ListProps> = ({ variant }) => (
-  <Background bg="black">
-    <Box p={8}>
-      <List variant={variant}>
-        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-          <ExpandableButtonClickRow
-            key={key}
-            name={name}
-            role={role}
-            rowKey={key}
-            ship={ship}
-          />
-        ))}
-      </List>
-    </Box>
-  </Background>
-);
-
 export const ExpandableButtonGuide: ListCompositionStory = {
-  render: (args) => <ExpandedTemplateButtonClick {...args} />,
+  render: (args) => {
+    return (
+      <Background bg="black">
+        <Box p={8}>
+          <List {...args}>
+            {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+              <ExpandableButtonClickRow
+                key={key}
+                name={name}
+                role={role}
+                rowKey={key}
+                ship={ship}
+              />
+            ))}
+          </List>
+        </Box>
+      </Background>
+    );
+  },
 };
 
 const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
@@ -242,24 +239,24 @@ const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
   );
 };
 
-const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
-  <Background bg="black">
-    <Box p={8}>
-      <List as={as} variant={variant}>
-        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-          <ExpandableRowClick
-            key={key}
-            name={name}
-            role={role}
-            rowKey={key}
-            ship={ship}
-          />
-        ))}
-      </List>
-    </Box>
-  </Background>
-);
-
 export const ExpandedRowGuide: ListCompositionStory = {
-  render: (args) => <ExpandedTemplateRowClick {...args} />,
+  render: (args) => {
+    return (
+      <Background bg="black">
+        <Box p={8}>
+          <List {...args}>
+            {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+              <ExpandableRowClick
+                key={key}
+                name={name}
+                role={role}
+                rowKey={key}
+                ship={ship}
+              />
+            ))}
+          </List>
+        </Box>
+      </Background>
+    );
+  },
 };
