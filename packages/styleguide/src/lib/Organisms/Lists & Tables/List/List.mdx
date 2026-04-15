@@ -32,8 +32,7 @@ export const parameters = {
 
 ### Components
 
-- `List`: Root list or table wrapper; sets spacing, variant, `as` (`ul` | `ol` | `table`), scrollable layout, and container-query behavior.
-- `ListProvider`: Supplied by `List`; use <LinkTo id="Organisms/Lists & Tables/List/ListProvider">ListProvider</LinkTo> for `useListContext` / `useList` when building custom list internals.
+- `List`: Root list or table wrapper; sets spacing, variant, `as` (`ul` | `ol` | `table`), scrollable layout, and container-query behavior. It wraps children in `ListProvider` so `ListRow`, `ListCol`, and `TableHeader` share layout context (`useListContext` for advanced list internals; prefer `List` props over the internal `useList` hook).
 - `ListRow`: One logical row; supports expandable content. See <LinkTo id="Organisms/Lists & Tables/List/ListRow">ListRow</LinkTo>.
 - `ListCol`: Column cell with sizing, `type`, and justification. See <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo>.
 - `TableHeader`: Sticky header row for `as="table"`. See <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo>.

@@ -8,7 +8,6 @@ import {
 
 import { parameters as listParameters } from './List.mdx';
 import { parameters as listColParameters } from './ListCol/ListCol.mdx';
-import { parameters as listProviderParameters } from './ListProvider/ListProvider.mdx';
 import { parameters as listRowParameters } from './ListRow/ListRow.mdx';
 import { parameters as tableHeaderParameters } from './TableHeader/TableHeader.mdx';
 
@@ -23,12 +22,11 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-Use `List` as the root container, with `ListRow` and `ListCol` defining each row and column. For table layouts (`as="table"`), add `TableHeader` for a header row. Context from `ListProvider` (provided by `List`) drives spacing, variant, and responsive behavior—see `ListProvider` for hooks and advanced usage.
+Use `List` as the root container, with `ListRow` and `ListCol` defining each row and column. For table layouts (`as="table"`), add `TableHeader` for a header row. `List` wraps its subtree in `ListProvider` so rows, columns, and the header share spacing, variant, and responsive layout context.
 
 <TableOfContents
   links={addParentPath(parameters.id, [
     listParameters,
-    listProviderParameters,
     listRowParameters,
     listColParameters,
     tableHeaderParameters,

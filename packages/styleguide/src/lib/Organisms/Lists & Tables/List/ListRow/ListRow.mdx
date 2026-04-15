@@ -22,35 +22,35 @@ export const parameters = {
 
 ## Usage
 
-`ListRow` renders one logical row. It reads spacing, variant, and layout from `List` via `ListProvider`. Compose rows with <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> children.
+`ListRow` renders a single row. It receives spacing, variant, and layout from `List`. Compose each row with <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> children.
 
-For table layouts (`List` with `as="table"`), body rows still use `ListRow`. Header labels belong in <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo> with `ListCol` cells—see <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> (Header columns).
+For table layouts (`List` with `as="table"`), the rows still use `ListRow`. However, the header row should use <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo>. 
 
 ### Plain variant styling
 
-When the parent `List` uses `variant="plain"`, you can still style individual rows (for example with Emotion `styled`) to emphasize or group items.
+As noted in <LinkTo id="Organisms/Lists & Tables/List/List">List</LinkTo>, when the parent `List` uses `variant="plain"`, style individual `ListRow` components using Emotion's `styled` function to emphasize or group items.
 
 <Canvas of={ListRowStories.PlainStyled} />
 
 ## Expandable rows
 
-You can define collapsible content by passing an `expanded` prop and a `renderExpanded` callback that returns the expanded region.
+Define collapsible content with an `expanded` prop and a `renderExpanded` callback that returns the expanded region.
 
 ### Expand on button click
 
-The `ListRow` can include `ExpandControl` in a `ListCol` with `type="control"` to toggle expansion. `ExpandControl` rotates its icon based on `expanded`.
+Include `ExpandControl` in a `ListCol` with `type="control"` to toggle expansion. `ExpandControl` rotates its icon based on `expanded`.
 
 <Canvas of={ListRowStories.ExpandableButtonGuide} />
 
 ### Expand on row click
 
-An entire row can toggle expansion via `onClick` on `ListRow` (non-table lists).
+When `List` does not use `as="table"`, use `onClick` on `ListRow` so the whole row toggles expansion.
 
 <Canvas of={ListRowStories.ExpandedRowGuide} />
 
 ## Playground
 
-For full `List` props and variants, see <LinkTo id="Organisms/Lists & Tables/List/List">List</LinkTo>.
+Adjust `ListRow` on the expandable example. For `List` props and variants, see <LinkTo id="Organisms/Lists & Tables/List/List">List</LinkTo>.
 
 <Canvas sourceState="shown" of={ListRowStories.ExpandableButtonGuide} />
 
