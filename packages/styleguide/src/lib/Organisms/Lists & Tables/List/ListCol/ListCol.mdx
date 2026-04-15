@@ -7,7 +7,7 @@ import * as ListColStories from './ListCol.stories';
 export const parameters = {
   id: 'Organisms/Lists & Tables/List/ListCol',
   title: 'ListCol',
-  subtitle: `Column cells for List rows: sizing, type, and alignment.`,
+  subtitle: `Column cells for list and table rows: sizing, types, alignment, and header semantics.`,
   status: 'current',
   source: {
     repo: 'gamut',
@@ -24,7 +24,18 @@ export const parameters = {
 
 `ListCol` renders a single cell. It inherits `List` context (variant, spacing, `listType`, `scrollable`) from `ListProvider` so columns stay aligned across rows.
 
-Use `type` so responsive layouts can reorder content on small screens—see **Responsive layout** below. For table header rows, use `columnHeader` (and often `TableHeader`)—see <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo>.
+Use `type` so responsive layouts can reorder content on small screens—see **Responsive layout** below. For table header rows, use `columnHeader` (and often `TableHeader`)—see **Header columns** below.
+
+## Header columns
+
+Header cells are `ListCol` components with header semantics:
+
+- In `TableHeader`, set `columnHeader` on each `ListCol` so cells render with header styling and appropriate table tags where needed. See <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo> (`WithTableHeader`).
+- In body rows, use `type="header"` on the column that carries the primary label or identifier—especially for `scrollable` lists (sticky first column) and for **responsive** stacking (`header` / `control` / `content`).
+
+Optional props such as `aria-sort` on `ListCol` support sortable table headers when `List` uses `as="table"`.
+
+<Canvas of={ListColStories.HeaderColumnCells} />
 
 ## Sizing
 
@@ -74,6 +85,8 @@ You can override behavior with `List`’s `breakpoint` prop. Resize the viewport
 
 ## Playground
 
-<Canvas sourceState="shown" of={ListColStories.ColumnSizing} />
+Adjust `List` props (for example `spacing`, `variant`) while the example keeps `ListCol` header cells in `TableHeader` and label columns in body rows.
+
+<Canvas sourceState="shown" of={ListColStories.Playground} />
 
 <Controls />

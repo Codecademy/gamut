@@ -6,6 +6,7 @@ import {
   ListCol,
   ListProps,
   ListRow,
+  TableHeader,
   Text,
 } from '@codecademy/gamut';
 import {
@@ -278,4 +279,65 @@ export const Responsive: ListCompositionStory = {
     },
   },
   render: (args) => <ResponsiveExample {...args} />,
+};
+
+/** Examples use `List` as the root so controls match `List` props (`spacing`, `variant`, etc.). */
+const HeaderColumnCellsExample: React.FC = () => (
+  <List as="table" spacing="condensed" variant="table">
+    <TableHeader>
+      <ListCol columnHeader size="md">
+        Name
+      </ListCol>
+      <ListCol columnHeader size="md">
+        Role
+      </ListCol>
+      <ListCol columnHeader size="md">
+        Ship
+      </ListCol>
+    </TableHeader>
+    {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+      <ListRow key={key}>
+        <ListCol size="md" type="header">
+          {name}
+        </ListCol>
+        <ListCol size="md">{role}</ListCol>
+        <ListCol fill>{ship}</ListCol>
+      </ListRow>
+    ))}
+  </List>
+);
+
+export const HeaderColumnCells: ListCompositionStory = {
+  render: () => <HeaderColumnCellsExample />,
+};
+
+export const Playground: ListCompositionStory = {
+  args: {
+    spacing: 'condensed',
+    variant: 'table',
+  },
+  render: (args) => (
+    <List {...args} as="table">
+      <TableHeader>
+        <ListCol columnHeader size="md">
+          Name
+        </ListCol>
+        <ListCol columnHeader size="md">
+          Role
+        </ListCol>
+        <ListCol columnHeader size="md">
+          Ship
+        </ListCol>
+      </TableHeader>
+      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+        <ListRow key={key}>
+          <ListCol size="md" type="header">
+            {name}
+          </ListCol>
+          <ListCol size="md">{role}</ListCol>
+          <ListCol fill>{ship}</ListCol>
+        </ListRow>
+      ))}
+    </List>
+  ),
 };

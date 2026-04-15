@@ -9,7 +9,7 @@ import * as ListRowStories from './ListRow/ListRow.stories';
 export const parameters = {
   id: 'Organisms/Lists & Tables/List/List',
   title: 'List',
-  subtitle: `The elements, APIs, and technical operations that support List and Table designs.`,
+  subtitle: `Components and APIs for building list and table layouts from rows, columns, and shared context.`,
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=32521-43421&m=dev',
@@ -26,7 +26,7 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-## Usage
+## Overview
 
 `List` is the root container. It provides `ListProvider` context to child rows and columns. See the <LinkTo id="Organisms/Lists & Tables/List">List</LinkTo> overview for links to `ListRow`, `ListCol`, `TableHeader`, and related APIs.
 
@@ -37,26 +37,7 @@ export const parameters = {
 - `ListRow`: One logical row; supports expandable content. See <LinkTo id="Organisms/Lists & Tables/List/ListRow">ListRow</LinkTo>.
 - `ListCol`: Column cell with sizing, `type`, and justification. See <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo>.
 - `TableHeader`: Sticky header row for `as="table"`. See <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo>.
-- **Header cells**: Use `ListCol` with `columnHeader` or `type="header"` in header rows—see <LinkTo id="Organisms/Lists & Tables/List/ListHeaderCol">List header columns</LinkTo>.
-
-### Sample code
-
-```tsx
-import { List, ListRow, ListCol } from '@codecademy/gamut';
-
-<List variant="default" spacing="condensed">
-  <ListRow>
-    <ListCol size="md">Worf</ListCol>
-    <ListCol size="md">Lieutenant Commander</ListCol>
-  </ListRow>
-  <ListRow>
-    <ListCol size="md">Deanna Troi</ListCol>
-    <ListCol size="lg">Commander</ListCol>
-  </ListRow>
-</List>;
-```
-
-## Overview
+- **Header cells**: Use `ListCol` with `columnHeader` or `type="header"` in header rows—see <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> (Header columns).
 
 ### Design principles
 
@@ -80,13 +61,30 @@ Be careful about placement and positioning
 - Place Lists inside main containers to avoid overflow
 - Use a Table if you have a design that's meant to compare information between items
 
-### When to use a List
+### Usage
 
-Lists are one of the main design tools for displaying information in a structured / repeated way which are visually distinct from cards and functionally distinct from tables.
+Lists are one of the main design tools for displaying information in a structured, repeated way. They read differently from cards and behave differently from tables.
 
 - Lists can function like tables, but aren't exclusively for displaying table data.
 - Lists are distinct from Tables in that they have mixed column content (interactive elements / metrics) whereas tables have only metrics. If you plan on having row controls or options in your table, use a List.
 - When presenting repetitive content prefer using a List view over a Card view.
+
+### Sample code
+
+```tsx
+import { List, ListRow, ListCol } from '@codecademy/gamut';
+
+<List variant="default" spacing="condensed">
+  <ListRow>
+    <ListCol size="md">Worf</ListCol>
+    <ListCol size="md">Lieutenant Commander</ListCol>
+  </ListRow>
+  <ListRow>
+    <ListCol size="md">Deanna Troi</ListCol>
+    <ListCol size="lg">Commander</ListCol>
+  </ListRow>
+</List>;
+```
 
 ## Spacing
 
@@ -136,7 +134,7 @@ Lists have several style variants for different use cases:
 - `default`: Bordered rows for mixed content with no vertical gutter.
 - `card`: Bordered rows with a vertical gutter.
 - `block`: Unbordered rows for mixed content with a vertical gutter.
-- `plain`: Minimal styling with no borders, backgrounds, or special styling - just the basic list structure.
+- `plain`: Minimal styling with no borders, backgrounds, or special styling—just the basic list structure.
 
 ```tsx
 <List variant="default" />
@@ -185,11 +183,11 @@ The `plain` variant is particularly useful when you want to:
 - Maintain consistency with custom design systems
 - Reduce visual noise in minimalist interfaces
 
-#### Ordered List
+#### List as an ordered list (ol)
 
-Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows.
+By default, `List` renders a `ul` (unordered list). All of the above configurations work with ordered lists as well. Pass `ol` to the `as` prop to render an ordered list and add numbering to the rows.
 
-Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
+Ordered lists should always include one column with a `header` type row so numbering renders correctly.
 
 <Canvas of={ListStories.OrderedList} />
 
@@ -199,7 +197,7 @@ Ordered lists should always have a one column with a `header` type row to ensure
 
 #### Horizontal scrolling
 
-If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
+If you have a list with many columns and want to avoid collapsing column content, use the `scrollable` prop. It keeps the row header column pinned on the left and expands every column to at least its minimum flex-basis. Rows and columns scroll together along the horizontal axis so users can compare data and take actions across columns.
 
 Column and header behavior is documented further on the <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> page.
 
