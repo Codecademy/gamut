@@ -35,13 +35,17 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   const firstWeekday = useIsoFirstWeekday(resolvedLocale, weekStartsOn);
   const year = displayDate.getFullYear();
   const month = displayDate.getMonth();
-  const weeks = getMonthGrid(year, month, firstWeekday);
-  const weekdayLabels = getWeekdayNames('short', resolvedLocale, firstWeekday);
-  const weekdayFullNames = getWeekdayNames(
-    'long',
-    resolvedLocale,
-    firstWeekday
-  );
+  const weeks = getMonthGrid({ year, month, firstWeekday });
+  const weekdayLabels = getWeekdayNames({
+    format: 'short',
+    locale: resolvedLocale,
+    firstWeekday,
+  });
+  const weekdayFullNames = getWeekdayNames({
+    format: 'long',
+    locale: resolvedLocale,
+    firstWeekday,
+  });
   const buttonRefs = useRef<Map<number, HTMLElement>>(new Map());
   const tableRef = useRef<HTMLTableElement>(null);
 
@@ -165,8 +169,13 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 isSameDay(date, selectedDate) || isSameDay(date, endDate);
               const range = !!selectedDate && !!endDate;
               const inRange =
-                range && isDateInRange(date, selectedDate, endDate);
-              const disabled = isDateDisabled(date, shouldDisableDate);
+                range &&
+                isDateInRange({
+                  date,
+                  start: selectedDate,
+                  end: endDate,
+                });
+              const disabled = isDateDisabled({ date, shouldDisableDate });
               const today = isToday(date);
               // this is making the selected date a differnet color bc it is focused, look into further
               const isFocused =
@@ -176,7 +185,10 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 <DateCell
                   aria-current={today ? 'date' : undefined}
                   aria-disabled={disabled}
-                  aria-label={formatDateForAriaLabel(date, resolvedLocale)}
+                  aria-label={formatDateForAriaLabel({
+                    date,
+                    locale: resolvedLocale,
+                  })}
                   aria-selected={selected || inRange}
                   isDisabled={disabled}
                   isInRange={inRange}

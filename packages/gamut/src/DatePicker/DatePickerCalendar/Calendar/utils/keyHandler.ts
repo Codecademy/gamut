@@ -141,7 +141,7 @@ export const keyHandler = ({
     case 'Enter':
     case ' ':
       e.preventDefault();
-      if (!isDateDisabled(date, shouldDisableDate)) onDateSelect(date);
+      if (!isDateDisabled({ date, shouldDisableDate })) onDateSelect(date);
       return;
     case 'Escape':
       e.preventDefault();

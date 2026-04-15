@@ -189,28 +189,43 @@ describe('normalizeSegmentValues', () => {
 describe('getSegmentSpinBounds', () => {
   it('bounds month to 1-12', () => {
     expect(
-      getSegmentSpinBounds('month', { month: '', day: '', year: '' })
+      getSegmentSpinBounds({
+        field: 'month',
+        segments: { month: '', day: '', year: '' },
+      })
     ).toEqual({ min: 1, max: 12 });
   });
 
   it('bounds year to 1-9999', () => {
     expect(
-      getSegmentSpinBounds('year', { month: '', day: '', year: '' })
+      getSegmentSpinBounds({
+        field: 'year',
+        segments: { month: '', day: '', year: '' },
+      })
     ).toEqual({ min: 1, max: 9999 });
   });
 
   it('bounds day using parsed month and four-digit year', () => {
     expect(
-      getSegmentSpinBounds('day', { month: '02', year: '2024', day: '' })
+      getSegmentSpinBounds({
+        field: 'day',
+        segments: { month: '02', year: '2024', day: '' },
+      })
     ).toEqual({ min: 1, max: 29 });
     expect(
-      getSegmentSpinBounds('day', { month: '02', year: '2023', day: '' })
+      getSegmentSpinBounds({
+        field: 'day',
+        segments: { month: '02', year: '2023', day: '' },
+      })
     ).toEqual({ min: 1, max: 28 });
   });
 
   it('uses default year 2024 when year segment is incomplete', () => {
     expect(
-      getSegmentSpinBounds('day', { month: '02', year: '20', day: '' })
+      getSegmentSpinBounds({
+        field: 'day',
+        segments: { month: '02', year: '20', day: '' },
+      })
     ).toEqual({ min: 1, max: 29 });
   });
 });
@@ -229,34 +244,46 @@ describe('parseSegmentNumericString', () => {
 
 describe('padSegmentNumber', () => {
   it('pads year to four digits', () => {
-    expect(padSegmentNumber('year', 123)).toBe('0123');
+    expect(padSegmentNumber({ field: 'year', numericValue: 123 })).toBe('0123');
   });
   it('pads month to two digits', () => {
-    expect(padSegmentNumber('month', 3)).toBe('03');
+    expect(padSegmentNumber({ field: 'month', numericValue: 3 })).toBe('03');
   });
 
   it('pads day to two digits', () => {
-    expect(padSegmentNumber('day', 1)).toBe('01');
+    expect(padSegmentNumber({ field: 'day', numericValue: 1 })).toBe('01');
   });
 });
 
 describe('appendSegmentDigit', () => {
   it('ignores non-digit characters', () => {
-    expect(appendSegmentDigit('month', '01', 'x')).toBe('01');
+    expect(appendSegmentDigit({ field: 'month', prev: '01', digit: 'x' })).toBe(
+      '01'
+    );
   });
 
   it('appends until max length', () => {
-    expect(appendSegmentDigit('month', '', '1')).toBe('1');
-    expect(appendSegmentDigit('month', '1', '2')).toBe('12');
+    expect(appendSegmentDigit({ field: 'month', prev: '', digit: '1' })).toBe(
+      '1'
+    );
+    expect(appendSegmentDigit({ field: 'month', prev: '1', digit: '2' })).toBe(
+      '12'
+    );
   });
 
   it('replaces when segment is already full', () => {
-    expect(appendSegmentDigit('month', '12', '5')).toBe('5');
-    expect(appendSegmentDigit('year', '2024', '9')).toBe('9');
+    expect(appendSegmentDigit({ field: 'month', prev: '12', digit: '5' })).toBe(
+      '5'
+    );
+    expect(
+      appendSegmentDigit({ field: 'year', prev: '2024', digit: '9' })
+    ).toBe('9');
   });
 
   it('strips non-digits from previous value before appending', () => {
-    expect(appendSegmentDigit('day', '1a', '2')).toBe('12');
+    expect(appendSegmentDigit({ field: 'day', prev: '1a', digit: '2' })).toBe(
+      '12'
+    );
   });
 });
 
@@ -272,49 +299,89 @@ describe('spinSegment', () => {
   });
 
   it('uses current calendar year when stepping up', () => {
-    expect(spinSegment('year', empty, 1)).toBe('2024');
+    expect(spinSegment({ field: 'year', segments: empty, delta: 1 })).toBe(
+      '2024'
+    );
   });
 
   it('uses max year when stepping down', () => {
-    expect(spinSegment('year', empty, -1)).toBe('9999');
+    expect(spinSegment({ field: 'year', segments: empty, delta: -1 })).toBe(
+      '9999'
+    );
   });
 
   it('steps month up from empty to min', () => {
-    expect(spinSegment('month', { month: '', day: '', year: '' }, 1)).toBe(
-      '01'
-    );
+    expect(
+      spinSegment({
+        field: 'month',
+        segments: { month: '', day: '', year: '' },
+        delta: 1,
+      })
+    ).toBe('01');
   });
 
   it('steps month down from empty to max', () => {
-    expect(spinSegment('month', { month: '', day: '', year: '' }, -1)).toBe(
-      '12'
-    );
+    expect(
+      spinSegment({
+        field: 'month',
+        segments: { month: '', day: '', year: '' },
+        delta: -1,
+      })
+    ).toBe('12');
   });
 
   it('steps day up from empty to min', () => {
-    expect(spinSegment('day', { month: '', day: '', year: '' }, 1)).toBe('01');
+    expect(
+      spinSegment({
+        field: 'day',
+        segments: { month: '', day: '', year: '' },
+        delta: 1,
+      })
+    ).toBe('01');
   });
 
   it('steps day down from empty to max', () => {
-    expect(spinSegment('day', { month: '', day: '', year: '' }, -1)).toBe('31');
+    expect(
+      spinSegment({
+        field: 'day',
+        segments: { month: '', day: '', year: '' },
+        delta: -1,
+      })
+    ).toBe('31');
   });
 
   it('increments within bounds', () => {
-    expect(spinSegment('month', { month: '06', day: '', year: '' }, 1)).toBe(
-      '07'
-    );
-    expect(spinSegment('month', { month: '12', day: '', year: '' }, 1)).toBe(
-      '12'
-    );
+    expect(
+      spinSegment({
+        field: 'month',
+        segments: { month: '06', day: '', year: '' },
+        delta: 1,
+      })
+    ).toBe('07');
+    expect(
+      spinSegment({
+        field: 'month',
+        segments: { month: '12', day: '', year: '' },
+        delta: 1,
+      })
+    ).toBe('12');
   });
 
   it('decrements within bounds', () => {
-    expect(spinSegment('month', { month: '06', day: '', year: '' }, -1)).toBe(
-      '05'
-    );
-    expect(spinSegment('month', { month: '01', day: '', year: '' }, -1)).toBe(
-      '01'
-    );
+    expect(
+      spinSegment({
+        field: 'month',
+        segments: { month: '06', day: '', year: '' },
+        delta: -1,
+      })
+    ).toBe('05');
+    expect(
+      spinSegment({
+        field: 'month',
+        segments: { month: '01', day: '', year: '' },
+        delta: -1,
+      })
+    ).toBe('01');
   });
 });
 
@@ -329,10 +396,10 @@ describe('buildCombinedFromSegments', () => {
     ];
 
     expect(
-      buildCombinedFromSegments(
-        { month: '03', day: '15', year: '2024' },
-        usLayout
-      )
+      buildCombinedFromSegments({
+        segments: { month: '03', day: '15', year: '2024' },
+        layout: usLayout,
+      })
     ).toBe('03/15/2024');
   });
 
@@ -346,17 +413,22 @@ describe('buildCombinedFromSegments', () => {
     ];
 
     expect(
-      buildCombinedFromSegments(
-        { month: '03', day: '15', year: '2024' },
-        ukLayout
-      )
+      buildCombinedFromSegments({
+        segments: { month: '03', day: '15', year: '2024' },
+        layout: ukLayout,
+      })
     ).toBe('15/03/2024');
   });
 });
 
 describe('digitsToSegments', () => {
   it('splits digit string by field order (MDY)', () => {
-    expect(digitsToSegments('03152024', ['month', 'day', 'year'])).toEqual({
+    expect(
+      digitsToSegments({
+        digits: '03152024',
+        fieldOrder: ['month', 'day', 'year'],
+      })
+    ).toEqual({
       month: '03',
       day: '15',
       year: '2024',
@@ -364,7 +436,12 @@ describe('digitsToSegments', () => {
   });
 
   it('splits digit string by field order (DMY)', () => {
-    expect(digitsToSegments('15032024', ['day', 'month', 'year'])).toEqual({
+    expect(
+      digitsToSegments({
+        digits: '15032024',
+        fieldOrder: ['day', 'month', 'year'],
+      })
+    ).toEqual({
       month: '03',
       day: '15',
       year: '2024',

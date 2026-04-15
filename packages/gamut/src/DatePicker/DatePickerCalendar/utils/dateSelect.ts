@@ -2,6 +2,7 @@ import type {
   DatePickerRangeContextValue,
   DatePickerSingleContextValue,
 } from '../../DatePickerContext/types';
+import { DatePickerSharedProps } from '../../sharedTypes';
 import type { DatePickerProps, DatePickerRangeProps } from '../../types';
 import {
   getOrderedCalendarEndpoints,
@@ -13,11 +14,10 @@ export const isRangeProps = (
   props: DatePickerProps
 ): props is DatePickerRangeProps => props.mode === 'range';
 
-export type RangeContainsDisabledParams = {
+type RangeContainsDisabledParams = {
   start: Date;
   end: Date;
-  shouldDisableDate?: (date: Date) => boolean;
-};
+} & Pick<DatePickerSharedProps, 'shouldDisableDate'>;
 
 /** True if any disabled day falls within [start, end] (inclusive, by calendar day). */
 export const rangeContainsDisabled = ({
@@ -25,18 +25,18 @@ export const rangeContainsDisabled = ({
   end,
   shouldDisableDate,
 }: RangeContainsDisabledParams) => {
-  const { low, high } = getOrderedCalendarEndpoints(start, end);
+  const { low, high } = getOrderedCalendarEndpoints({ start, end });
 
   if (
-    isDateDisabled(low, shouldDisableDate) ||
-    isDateDisabled(high, shouldDisableDate)
+    isDateDisabled({ date: low, shouldDisableDate }) ||
+    isDateDisabled({ date: high, shouldDisableDate })
   ) {
     return true;
   }
 
   let date = new Date(low.getFullYear(), low.getMonth(), low.getDate() + 1);
-  while (isDateInRange(date, start, end)) {
-    if (isDateDisabled(date, shouldDisableDate)) {
+  while (isDateInRange({ date, start, end })) {
+    if (isDateDisabled({ date, shouldDisableDate })) {
       return true;
     }
     date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
@@ -44,10 +44,9 @@ export const rangeContainsDisabled = ({
   return false;
 };
 
-export type HandleDateSelectSingleParams = {
+type HandleDateSelectSingleParams = {
   date: Date;
-  selectedDate: DatePickerSingleContextValue['startOrSelectedDate'];
-} & Pick<DatePickerSingleContextValue, 'onSelection'>;
+} & Pick<DatePickerSingleContextValue, 'onSelection' | 'selectedDate'>;
 
 export const handleDateSelectSingle = ({
   date,
@@ -67,8 +66,7 @@ type ApplyRangeOrNewStartParams = {
   start: Date;
   end: Date;
   clickedDate: Date;
-  shouldDisableDate?: (date: Date) => boolean;
-} & Pick<DatePickerRangeContextValue, 'onSelection'>;
+} & Pick<DatePickerRangeContextValue, 'onRangeSelection' | 'shouldDisableDate'>;
 
 /** @returns whether a full start+end range was committed (calendar may close). */
 export const applyRangeOrNewStart = ({
@@ -76,23 +74,26 @@ export const applyRangeOrNewStart = ({
   end,
   clickedDate,
   shouldDisableDate,
-  onSelection,
+  onRangeSelection,
 }: ApplyRangeOrNewStartParams) => {
   // if range contains disabled dates, set start date to clicked date and end date to null
   if (rangeContainsDisabled({ start, end, shouldDisableDate })) {
-    onSelection(clickedDate, null);
+    onRangeSelection(clickedDate, null);
     return false;
   }
-  onSelection(start, end);
+  onRangeSelection(start, end);
   return true;
 };
 
-export type HandleDateSelectRangeParams = {
+type HandleDateSelectRangeParams = {
   date: Date;
-  startDate: DatePickerRangeContextValue['startOrSelectedDate'];
 } & Pick<
   DatePickerRangeContextValue,
-  'activeRangePart' | 'endDate' | 'onSelection' | 'shouldDisableDate'
+  | 'activeRangePart'
+  | 'endDate'
+  | 'onRangeSelection'
+  | 'shouldDisableDate'
+  | 'startDate'
 >;
 
 /** @returns whether the calendar should close (full range selected and committed). */
@@ -101,13 +102,13 @@ export const handleDateSelectRange = ({
   activeRangePart,
   startDate,
   endDate,
-  onSelection,
+  onRangeSelection,
   shouldDisableDate,
 }: HandleDateSelectRangeParams) => {
   // Range mode: field targeting (start or end input was focused)
   if (activeRangePart === 'start') {
     if (date.getTime() === startDate?.getTime()) {
-      onSelection(null, endDate);
+      onRangeSelection(null, endDate);
       return false;
     }
     const newEnd =
@@ -118,15 +119,15 @@ export const handleDateSelectRange = ({
         end: newEnd,
         clickedDate: date,
         shouldDisableDate,
-        onSelection,
+        onRangeSelection,
       });
     }
-    onSelection(date, newEnd);
+    onRangeSelection(date, newEnd);
     return false;
   }
   if (activeRangePart === 'end') {
     if (date.getTime() === endDate?.getTime()) {
-      onSelection(startDate, null);
+      onRangeSelection(startDate, null);
       return false;
     }
     const newStart =
@@ -139,10 +140,10 @@ export const handleDateSelectRange = ({
         end: date,
         clickedDate: date,
         shouldDisableDate,
-        onSelection,
+        onRangeSelection,
       });
     }
-    onSelection(newStart, date);
+    onRangeSelection(newStart, date);
     return false;
   }
 
@@ -153,17 +154,17 @@ export const handleDateSelectRange = ({
       startDate.getTime() === endDate.getTime() &&
       date.getTime() === startDate.getTime()
     ) {
-      onSelection(null, null);
+      onRangeSelection(null, null);
       return false;
     }
     // if clicked on start date, end date becomes start date
     if (date.getTime() === startDate.getTime()) {
-      onSelection(endDate, null);
+      onRangeSelection(endDate, null);
       return false;
     }
     // if clicked on end date, clears end date and start remains
     if (date.getTime() === endDate.getTime()) {
-      onSelection(startDate, null);
+      onRangeSelection(startDate, null);
       return false;
     }
     // If clicked date > Start: Updates End Date to new date (Start remains)
@@ -173,7 +174,7 @@ export const handleDateSelectRange = ({
         end: date,
         clickedDate: date,
         shouldDisableDate,
-        onSelection,
+        onRangeSelection,
       });
     }
     // If clicked date < Start: Updates Start Date to new date (End remains) - extends range to the left
@@ -182,14 +183,14 @@ export const handleDateSelectRange = ({
       end: endDate,
       clickedDate: date,
       shouldDisableDate,
-      onSelection,
+      onRangeSelection,
     });
   }
   // Start is Set, End is Empty
   if (startDate && !endDate) {
     // If clicked date < Start: Restarts selection with clicked date as new Start
     if (date.getTime() < startDate.getTime()) {
-      onSelection(date, null);
+      onRangeSelection(date, null);
       return false;
     }
     // If clicked date > Start: Sets it as End Date (if range valid)
@@ -198,9 +199,9 @@ export const handleDateSelectRange = ({
       end: date,
       clickedDate: date,
       shouldDisableDate,
-      onSelection,
+      onRangeSelection,
     });
   }
-  onSelection(date, null);
+  onRangeSelection(date, null);
   return false;
 };

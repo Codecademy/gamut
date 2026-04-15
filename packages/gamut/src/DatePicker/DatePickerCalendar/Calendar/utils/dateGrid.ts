@@ -22,10 +22,13 @@ const normalizeDate = (date: Date) => {
  * Number of empty cells before the 1st of the month, for a grid whose first column is
  * `firstWeekday` (ISO: 1 = Monday … 7 = Sunday from `Intl.Locale#getWeekInfo`).
  */
-export const getWeekdayOffsetInGrid = (
-  date: Date,
-  firstWeekday: IsoWeekday
-) => {
+export const getWeekdayOffsetInGrid = ({
+  date,
+  firstWeekday,
+}: {
+  date: Date;
+  firstWeekday: IsoWeekday;
+}) => {
   const js = date.getDay();
   const iso = js === 0 ? 7 : js;
   return (iso - firstWeekday + 14) % 7;
@@ -43,14 +46,18 @@ export const getFirstOfMonth = (date: Date) => {
  * @param month - Month 0-11 (0 = January)
  * @param firstWeekday - First day of the week for the calendar row (ISO 1–7, from `getWeekInfo().firstDay`)
  */
-export const getMonthGrid = (
-  year: number,
-  month: number,
-  firstWeekday: IsoWeekday
-) => {
+export const getMonthGrid = ({
+  year,
+  month,
+  firstWeekday,
+}: {
+  year: number;
+  month: number;
+  firstWeekday: IsoWeekday;
+}) => {
   const first = getFirstOfMonth(new Date(year, month, 1));
   const last = new Date(year, month + 1, 0);
-  const firstDayOfWeek = getWeekdayOffsetInGrid(first, firstWeekday);
+  const firstDayOfWeek = getWeekdayOffsetInGrid({ date: first, firstWeekday });
   const daysInMonth = last.getDate();
 
   const weeks: (Date | null)[][] = [];
@@ -91,7 +98,13 @@ export const isSameDay = (a: Date | null, b: Date | null) => {
  * Calendar-ordered local-midnight instants for two possibly unordered `Date` values.
  * Matches the bounds used by {@link isDateInRange} (and range selection).
  */
-export const getOrderedCalendarEndpoints = (start: Date, end: Date) => {
+export const getOrderedCalendarEndpoints = ({
+  start,
+  end,
+}: {
+  start: Date;
+  end: Date;
+}) => {
   const startDate = new Date(
     start.getFullYear(),
     start.getMonth(),
@@ -106,14 +119,21 @@ export const getOrderedCalendarEndpoints = (start: Date, end: Date) => {
 /**
  * Check if `date` is between `start` and `end` (exclusive), ignoring time.
  */
-export const isDateInRange = (
-  date: Date,
-  start: Date | null,
-  end: Date | null
-) => {
+export const isDateInRange = ({
+  date,
+  start,
+  end,
+}: {
+  date: Date;
+  start: Date | null;
+  end: Date | null;
+}) => {
   if (start === null) return false;
   const endBound = end ?? start;
-  const { low, high } = getOrderedCalendarEndpoints(start, endBound);
+  const { low, high } = getOrderedCalendarEndpoints({
+    start,
+    end: endBound,
+  });
   const normalizedDate = normalizeDate(date);
   return (
     normalizedDate > normalizeDate(low) && normalizedDate < normalizeDate(high)
@@ -134,10 +154,13 @@ export const matchDisabledDates =
     dates.some((d) => isSameDay(date, d));
 
 /** True when `shouldDisableDate` returns true for this calendar day. */
-export const isDateDisabled = (
-  date: Date,
-  shouldDisableDate?: (date: Date) => boolean
-) => Boolean(shouldDisableDate?.(date));
+export const isDateDisabled = ({
+  date,
+  shouldDisableDate,
+}: {
+  date: Date;
+  shouldDisableDate?: (date: Date) => boolean;
+}) => Boolean(shouldDisableDate?.(date));
 
 /** One visible day in the month grid with its row (for Home/End and keyboard nav). */
 export type DateWithRow = { date: Date; rowIndex: number };
@@ -154,5 +177,5 @@ export const getDatesWithRow = (weeks: (Date | null)[][]) => {
 };
 
 /** Add `n` months to the given date. */
-export const addMonths = (date: Date, n: number) =>
+export const addMonths = ({ date, n }: { date: Date; n: number }) =>
   new Date(date.getFullYear(), date.getMonth() + n, 1);

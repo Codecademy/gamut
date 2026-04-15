@@ -38,7 +38,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
           id={headingId}
           textAlign="center"
         >
-          {formatMonthYear(displayDate, resolvedLocale)}
+          {formatMonthYear({ date: displayDate, locale: resolvedLocale })}
         </Text>
       </FlexBox>
       {!hideNextNav && (

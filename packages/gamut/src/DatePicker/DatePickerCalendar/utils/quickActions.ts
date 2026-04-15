@@ -1,42 +1,50 @@
+import { CalendarQuickAction } from '../../sharedTypes';
 import { stringifyLocale } from '../../utils/locale';
 import { DatePickerTranslations } from '../../utils/translations';
-import { QuickAction } from '../Calendar/types';
 import { capitalizeFirst } from '../Calendar/utils/format';
 
-const getRelativeDisplayText = (
-  num: number,
-  timePeriod: QuickAction['timePeriod'],
-  locale: Intl.Locale
-) => {
+const getRelativeDisplayText = ({
+  num,
+  timePeriod,
+  locale,
+}: {
+  num: number;
+  timePeriod: CalendarQuickAction['timePeriod'];
+  locale: Intl.Locale;
+}) => {
   const rtf = new Intl.RelativeTimeFormat(stringifyLocale(locale), {
     numeric: 'auto',
   });
-  return capitalizeFirst(rtf.format(num, timePeriod), locale);
+  return capitalizeFirst({ str: rtf.format(num, timePeriod), locale });
 };
 
 export const getDefaultSingleQuickActions = (
   locale: Intl.Locale
-): QuickAction[] => [
+): CalendarQuickAction[] => [
   {
     num: -1,
     timePeriod: 'day',
-    displayText: getRelativeDisplayText(-1, 'day', locale),
+    displayText: getRelativeDisplayText({
+      num: -1,
+      timePeriod: 'day',
+      locale,
+    }),
   },
   {
     num: 0,
     timePeriod: 'day',
-    displayText: getRelativeDisplayText(0, 'day', locale),
+    displayText: getRelativeDisplayText({ num: 0, timePeriod: 'day', locale }),
   },
   {
     num: 1,
     timePeriod: 'day',
-    displayText: getRelativeDisplayText(1, 'day', locale),
+    displayText: getRelativeDisplayText({ num: 1, timePeriod: 'day', locale }),
   },
 ];
 
 export const getDefaultRangeQuickActions = (
   translations: Required<DatePickerTranslations>
-): QuickAction[] => [
+): CalendarQuickAction[] => [
   {
     num: -7,
     timePeriod: 'day',
@@ -71,12 +79,17 @@ export const getDefaultRangeQuickActions = (
  *
  * **Single mode:** same return shape; the calendar uses `start` as the selected day.
  */
-export const computeQuickAction = (
-  num: number,
-  timePeriod: QuickAction['timePeriod'],
-  isRange: boolean,
-  now = new Date()
-) => {
+export const computeQuickAction = ({
+  num,
+  timePeriod,
+  isRange,
+  now = new Date(),
+}: {
+  num: number;
+  timePeriod: CalendarQuickAction['timePeriod'];
+  isRange: boolean;
+  now?: Date;
+}) => {
   const date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   let start: Date;
 

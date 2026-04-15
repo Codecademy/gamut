@@ -50,7 +50,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   nextField,
   applySegments,
 }) => {
-  const { min, max } = getSegmentSpinBounds(field, segments);
+  const { min, max } = getSegmentSpinBounds({ field, segments });
   const numericValue = parseSegmentNumericString(segments[field]);
   const ariaValue =
     segments[field].length > 0 && numericValue != null
@@ -93,7 +93,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
         setSegments((prev) => {
           const next = {
             ...prev,
-            [field]: spinSegment(field, prev, 1),
+            [field]: spinSegment({ field, segments: prev, delta: 1 }),
           };
           applySegments(next);
           return next;
@@ -106,7 +106,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
         setSegments((prev) => {
           const next = {
             ...prev,
-            [field]: spinSegment(field, prev, -1),
+            [field]: spinSegment({ field, segments: prev, delta: -1 }),
           };
           applySegments(next);
           return next;
@@ -139,7 +139,11 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
         setSegments((prev) => {
           const next = {
             ...prev,
-            [field]: appendSegmentDigit(field, prev[field], e.key),
+            [field]: appendSegmentDigit({
+              field,
+              prev: prev[field],
+              digit: e.key,
+            }),
           };
           applySegments(next);
           const maxLen = segmentMaxLength(field);

@@ -4,7 +4,13 @@ import { stringifyLocale } from '../../../utils/locale';
 /**
  * Capitalize the first character of a string using the locale; rest unchanged (e.g. "next month" → "Next month").
  */
-export const capitalizeFirst = (str: string, locale: Intl.Locale) =>
+export const capitalizeFirst = ({
+  str,
+  locale,
+}: {
+  str: string;
+  locale: Intl.Locale;
+}) =>
   str.length === 0
     ? str
     : str[0].toLocaleUpperCase(stringifyLocale(locale)) + str.slice(1);
@@ -12,7 +18,13 @@ export const capitalizeFirst = (str: string, locale: Intl.Locale) =>
 /**
  * Format month and year for the calendar header (e.g. "February 2026").
  */
-export const formatMonthYear = (date: Date, locale: Intl.Locale) => {
+export const formatMonthYear = ({
+  date,
+  locale,
+}: {
+  date: Date;
+  locale: Intl.Locale;
+}) => {
   return new Intl.DateTimeFormat(stringifyLocale(locale), {
     month: 'long',
     year: 'numeric',
@@ -24,11 +36,15 @@ export const formatMonthYear = (date: Date, locale: Intl.Locale) => {
  * Column order follows `firstWeekday` (ISO 1 = Monday … 7 = Sunday), matching `Intl.Locale#getWeekInfo().firstDay`.
  * @param format - 'short' for abbreviated (e.g. "Su", "Mo"), 'long' for full (e.g. "Sunday", "Monday")
  */
-export const getWeekdayNames = (
-  format: 'short' | 'long',
-  locale: Intl.Locale,
-  firstWeekday: IsoWeekday
-) => {
+export const getWeekdayNames = ({
+  format,
+  locale,
+  firstWeekday,
+}: {
+  format: 'short' | 'long';
+  locale: Intl.Locale;
+  firstWeekday: IsoWeekday;
+}) => {
   const formatter = new Intl.DateTimeFormat(stringifyLocale(locale), {
     weekday: format,
   });
@@ -53,8 +69,8 @@ export const getRelativeMonthLabels = (locale: Intl.Locale) => {
     numeric: 'auto',
   });
   return {
-    nextMonth: capitalizeFirst(rtf.format(1, 'month'), locale),
-    lastMonth: capitalizeFirst(rtf.format(-1, 'month'), locale),
+    nextMonth: capitalizeFirst({ str: rtf.format(1, 'month'), locale }),
+    lastMonth: capitalizeFirst({ str: rtf.format(-1, 'month'), locale }),
   };
 };
 
@@ -65,10 +81,16 @@ export const getRelativeTodayLabel = (locale: Intl.Locale) => {
   const rtf = new Intl.RelativeTimeFormat(stringifyLocale(locale), {
     numeric: 'auto',
   });
-  return capitalizeFirst(rtf.format(0, 'day'), locale);
+  return capitalizeFirst({ str: rtf.format(0, 'day'), locale });
 };
 
-export const formatDateForAriaLabel = (date: Date, locale: Intl.Locale) => {
+export const formatDateForAriaLabel = ({
+  date,
+  locale,
+}: {
+  date: Date;
+  locale: Intl.Locale;
+}) => {
   return new Intl.DateTimeFormat(stringifyLocale(locale), {
     month: 'long',
     day: 'numeric',

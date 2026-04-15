@@ -11,24 +11,26 @@ import {
 describe('getWeekdayOffsetInGrid', () => {
   it('returns 0 when the 1st matches the grid first weekday (Monday)', () => {
     const first = new Date(2024, 0, 1);
-    expect(getWeekdayOffsetInGrid(first, 1)).toBe(0);
+    expect(getWeekdayOffsetInGrid({ date: first, firstWeekday: 1 })).toBe(0);
   });
 
   it('returns a positive offset when the 1st is later in the week than firstWeekday', () => {
     const first = new Date(2024, 0, 1);
-    expect(getWeekdayOffsetInGrid(first, 7)).toBeGreaterThan(0);
+    expect(
+      getWeekdayOffsetInGrid({ date: first, firstWeekday: 7 })
+    ).toBeGreaterThan(0);
   });
 });
 
 describe('getMonthGrid', () => {
   it('includes exactly the number of days in the month', () => {
-    const weeks = getMonthGrid(2024, 2, 1);
+    const weeks = getMonthGrid({ year: 2024, month: 2, firstWeekday: 1 });
     const days = weeks.flat().filter((d): d is Date => d !== null);
     expect(days).toHaveLength(31);
   });
 
   it('pads leading and trailing cells with null so each row has 7 cells', () => {
-    const weeks = getMonthGrid(2024, 2, 1);
+    const weeks = getMonthGrid({ year: 2024, month: 2, firstWeekday: 1 });
     weeks.forEach((row) => {
       expect(row).toHaveLength(7);
     });
@@ -53,17 +55,23 @@ describe('isDateInRange', () => {
   const end = new Date(2024, 2, 20);
 
   it('returns true strictly between start and end', () => {
-    expect(isDateInRange(new Date(2024, 2, 15), start, end)).toBe(true);
+    expect(isDateInRange({ date: new Date(2024, 2, 15), start, end })).toBe(
+      true
+    );
   });
 
   it('returns false on start, end, or outside', () => {
-    expect(isDateInRange(start, start, end)).toBe(false);
-    expect(isDateInRange(end, start, end)).toBe(false);
-    expect(isDateInRange(new Date(2024, 2, 5), start, end)).toBe(false);
+    expect(isDateInRange({ date: start, start, end })).toBe(false);
+    expect(isDateInRange({ date: end, start, end })).toBe(false);
+    expect(isDateInRange({ date: new Date(2024, 2, 5), start, end })).toBe(
+      false
+    );
   });
 
   it('returns false when start is null', () => {
-    expect(isDateInRange(new Date(2024, 2, 15), null, end)).toBe(false);
+    expect(
+      isDateInRange({ date: new Date(2024, 2, 15), start: null, end })
+    ).toBe(false);
   });
 });
 
@@ -84,21 +92,34 @@ describe('matchDisabledDates', () => {
 
 describe('isDateDisabled', () => {
   it('returns true when shouldDisableDate returns true', () => {
-    expect(isDateDisabled(new Date(2024, 4, 10), () => true)).toBe(true);
     expect(
-      isDateDisabled(new Date(2024, 4, 10), (d) => d.getDate() === 10)
+      isDateDisabled({
+        date: new Date(2024, 4, 10),
+        shouldDisableDate: () => true,
+      })
+    ).toBe(true);
+    expect(
+      isDateDisabled({
+        date: new Date(2024, 4, 10),
+        shouldDisableDate: (d) => d.getDate() === 10,
+      })
     ).toBe(true);
   });
 
   it('returns false when shouldDisableDate is omitted or returns false', () => {
-    expect(isDateDisabled(new Date(2024, 4, 10))).toBe(false);
-    expect(isDateDisabled(new Date(2024, 4, 10), () => false)).toBe(false);
+    expect(isDateDisabled({ date: new Date(2024, 4, 10) })).toBe(false);
+    expect(
+      isDateDisabled({
+        date: new Date(2024, 4, 10),
+        shouldDisableDate: () => false,
+      })
+    ).toBe(false);
   });
 });
 
 describe('getDatesWithRow', () => {
   it('lists only non-null dates with row indices', () => {
-    const weeks = getMonthGrid(2024, 0, 1);
+    const weeks = getMonthGrid({ year: 2024, month: 0, firstWeekday: 1 });
     const withRow = getDatesWithRow(weeks);
     expect(withRow.length).toBe(31);
     expect(withRow[0].rowIndex).toBe(0);

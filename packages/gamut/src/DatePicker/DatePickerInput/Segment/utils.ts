@@ -106,10 +106,13 @@ export const segmentMaxLength = (field: DatePartKind): number =>
  * Min/max for spinbutton `aria-*` and ArrowUp/ArrowDown stepping (month/day/year).
  * Day max uses month/year when available so February etc. behave correctly.
  */
-export const getSegmentSpinBounds = (
-  field: DatePartKind,
-  segments: SegmentValues
-): { min: number; max: number } => {
+export const getSegmentSpinBounds = ({
+  field,
+  segments,
+}: {
+  field: DatePartKind;
+  segments: SegmentValues;
+}): { min: number; max: number } => {
   switch (field) {
     case 'month':
       return { min: 1, max: 12 };
@@ -137,7 +140,13 @@ export const parseSegmentNumericString = (str: string) => {
   return Number.isFinite(numericValue) ? numericValue : null;
 };
 
-export const padSegmentNumber = (field: DatePartKind, numericValue: number) => {
+export const padSegmentNumber = ({
+  field,
+  numericValue,
+}: {
+  field: DatePartKind;
+  numericValue: number;
+}) => {
   if (field === 'year') {
     const clamped = Math.min(9999, Math.max(1, numericValue));
     return String(clamped).padStart(4, '0');
@@ -147,11 +156,15 @@ export const padSegmentNumber = (field: DatePartKind, numericValue: number) => {
 };
 
 /** Append one digit to a segment string (max length enforced). */
-export const appendSegmentDigit = (
-  field: DatePartKind,
-  prev: string,
-  digit: string
-) => {
+export const appendSegmentDigit = ({
+  field,
+  prev,
+  digit,
+}: {
+  field: DatePartKind;
+  prev: string;
+  digit: string;
+}) => {
   // if the digit is not a single digit, return the previous value
   if (!/^\d$/.test(digit)) return prev;
   const maxLen = segmentMaxLength(field);
@@ -168,12 +181,16 @@ export const appendSegmentDigit = (
 /**
  * Step a segment up/down (ArrowUp / ArrowDown). Empty year steps from the current calendar year.
  */
-export const spinSegment = (
-  field: DatePartKind,
-  segments: SegmentValues,
-  delta: 1 | -1
-) => {
-  const { min, max } = getSegmentSpinBounds(field, segments);
+export const spinSegment = ({
+  field,
+  segments,
+  delta,
+}: {
+  field: DatePartKind;
+  segments: SegmentValues;
+  delta: 1 | -1;
+}) => {
+  const { min, max } = getSegmentSpinBounds({ field, segments });
   let cur = parseSegmentNumericString(segments[field]);
 
   if (cur == null) {
@@ -190,23 +207,29 @@ export const spinSegment = (
   }
 
   cur = Math.min(max, Math.max(min, cur));
-  return padSegmentNumber(field, cur);
+  return padSegmentNumber({ field, numericValue: cur });
 };
 
 /** Build the visible date string from segment state in locale layout order (includes literal separators). */
-export const buildCombinedFromSegments = (
-  segments: SegmentValues,
-  layout: DateFormatLayoutItem[]
-) =>
+export const buildCombinedFromSegments = ({
+  segments,
+  layout,
+}: {
+  segments: SegmentValues;
+  layout: DateFormatLayoutItem[];
+}) =>
   layout
     .map((item) => (item.kind === 'literal' ? item.text : segments[item.field]))
     .join('');
 
 /** Map a digit-only string into segment fields following locale field order (2 / 2 / 4). */
-export const digitsToSegments = (
-  digits: string,
-  fieldOrder: DatePartKind[]
-): SegmentValues => {
+export const digitsToSegments = ({
+  digits,
+  fieldOrder,
+}: {
+  digits: string;
+  fieldOrder: DatePartKind[];
+}): SegmentValues => {
   let rest = digits;
   const out: SegmentValues = { month: '', day: '', year: '' };
   for (const field of fieldOrder) {
