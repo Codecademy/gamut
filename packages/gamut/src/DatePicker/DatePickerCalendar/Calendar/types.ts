@@ -1,4 +1,4 @@
-import type { IsoWeekday } from '../utils/locale';
+import type { IsoWeekday } from '../../utils/locale';
 
 interface CalendarBaseProps {
   /** Used for the currently displayed month and year */

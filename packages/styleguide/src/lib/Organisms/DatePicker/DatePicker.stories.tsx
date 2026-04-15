@@ -24,7 +24,6 @@ export const Default: Story = {
     return (
       <Box>
         <DatePicker
-          label="Date"
           locale="de-DE"
           quickActions={null}
           selectedDate={selectedDate}
@@ -44,7 +43,6 @@ export const WithInitialDate: Story = {
     return (
       <DatePicker
         inputSize="small"
-        label="Date"
         selectedDate={selectedDate}
         onSelected={setSelectedDate}
       />
@@ -60,7 +58,7 @@ export const Range: Story = {
     return (
       <Box>
         <DatePicker
-          disabledDates={[new Date(2026, 3, 15)]}
+          disabledDates={[new Date(2026, 3, 14)]}
           endDate={endDate}
           mode="range"
           startDate={startDate}
@@ -134,11 +132,7 @@ export const ComposedWithContext: Story = {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
       <Box p={32}>
-        <DatePicker
-          label="Start date"
-          selectedDate={selectedDate}
-          onSelected={setSelectedDate}
-        >
+        <DatePicker selectedDate={selectedDate} onSelected={setSelectedDate}>
           <ComposedDatePickerLayout />
         </DatePicker>
       </Box>

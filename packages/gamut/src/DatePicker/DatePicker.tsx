@@ -4,19 +4,19 @@ import { useCallback, useId, useMemo, useRef, useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
-import {
-  DatePickerContextValue,
-  DatePickerProvider,
-  DatePickerRangeContextValue,
-} from './DatePickerContext';
-import { DatePickerInput } from './DatePickerInput';
-import type { DatePickerProps } from './types';
-import { isRangeProps } from './utils/dateSelect';
-import { useResolvedLocale } from './utils/locale';
+import { isRangeProps } from './DatePickerCalendar/utils/dateSelect';
 import {
   getDefaultRangeQuickActions,
   getDefaultSingleQuickActions,
-} from './utils/quickActions';
+} from './DatePickerCalendar/utils/quickActions';
+import { DatePickerProvider } from './DatePickerContext';
+import type {
+  DatePickerContextValue,
+  DatePickerRangeContextValue,
+} from './DatePickerContext/types';
+import { DatePickerInput } from './DatePickerInput';
+import type { DatePickerProps } from './types';
+import { useResolvedLocale } from './utils/locale';
 import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './utils/translations';
 
 /**

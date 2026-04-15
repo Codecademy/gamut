@@ -9,7 +9,8 @@ import {
 } from 'react';
 import { useMedia } from 'react-use';
 
-import { Box, FlexBox } from '../Box';
+import { Box, FlexBox } from '../../Box';
+import { useDatePicker } from '../DatePickerContext';
 import {
   CalendarBody,
   CalendarFooter,
@@ -18,7 +19,6 @@ import {
 } from './Calendar';
 import type { CalendarBodyProps, QuickAction } from './Calendar/types';
 import { addMonths, getFirstOfMonth } from './Calendar/utils/dateGrid';
-import { useDatePicker } from './DatePickerContext';
 import {
   applyRangeOrNewStart,
   handleDateSelectRange,

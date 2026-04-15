@@ -1,8 +1,8 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
 import * as React from 'react';
 
-import { Box } from '../../Box';
-import { WithChildrenProp } from '../../utils';
+import { Box } from '../../../Box';
+import { WithChildrenProp } from '../../../utils';
 
 /**
  * Outer wrapper for the calendar (header + body + footer).

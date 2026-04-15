@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
-import { useIsoFirstWeekday, useResolvedLocale } from '../utils/locale';
+import { useIsoFirstWeekday, useResolvedLocale } from '../../utils/locale';
 import { CalendarBodyProps } from './types';
 import {
   getDatesWithRow,

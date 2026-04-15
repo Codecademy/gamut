@@ -3,7 +3,7 @@
  * Each row has 7 cells; leading/trailing cells may be null (padding from adjacent months).
  */
 
-import type { IsoWeekday } from '../../utils/locale';
+import type { IsoWeekday } from '../../../utils/locale';
 
 const DAYS_PER_WEEK = 7;
 

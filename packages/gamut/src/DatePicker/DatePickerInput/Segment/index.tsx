@@ -10,7 +10,7 @@ import {
   segmentMaxLength,
   SegmentValues,
   spinSegment,
-} from './segmentUtils';
+} from './utils';
 
 export type AssignSegmentRef = (
   field: DatePartKind,

@@ -1,7 +1,7 @@
+import { stringifyLocale } from '../../utils/locale';
+import { DatePickerTranslations } from '../../utils/translations';
 import { QuickAction } from '../Calendar/types';
 import { capitalizeFirst } from '../Calendar/utils/format';
-import { stringifyLocale } from './locale';
-import { DatePickerTranslations } from './translations';
 
 const getRelativeDisplayText = (
   num: number,

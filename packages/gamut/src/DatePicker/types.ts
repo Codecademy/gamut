@@ -1,7 +1,10 @@
 import { ComponentProps } from 'react';
 
 import { Input } from '../Form/inputs/Input';
-import { CalendarBodyProps, QuickAction } from './Calendar/types';
+import {
+  CalendarBodyProps,
+  QuickAction,
+} from './DatePickerCalendar/Calendar/types';
 import { DatePickerTranslations } from './utils/translations';
 
 interface DatePickerBaseProps

@@ -1,8 +1,8 @@
 import { MiniChevronRightIcon } from '@codecademy/gamut-icons';
 import * as React from 'react';
 
-import { IconButton } from '../../Button';
-import { useResolvedLocale } from '../utils/locale';
+import { IconButton } from '../../../Button';
+import { useResolvedLocale } from '../../utils/locale';
 import { CalendarNavProps } from './types';
 import { getRelativeMonthLabels } from './utils/format';
 

@@ -12,7 +12,7 @@ import {
   parseSegmentNumericString,
   parseSegmentsToDate,
   spinSegment,
-} from '../segmentUtils';
+} from '../utils';
 
 describe('getDateSegmentsFromDate', () => {
   it('returns empty strings for null', () => {

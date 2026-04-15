@@ -1,5 +1,5 @@
-import type { IsoWeekday } from '../../utils/locale';
-import { stringifyLocale } from '../../utils/locale';
+import type { IsoWeekday } from '../../../utils/locale';
+import { stringifyLocale } from '../../../utils/locale';
 
 /**
  * Capitalize the first character of a string using the locale; rest unchanged (e.g. "next month" → "Next month").

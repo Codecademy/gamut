@@ -1,7 +1,10 @@
-import { createContext, useContext } from 'react';
+import { createContext } from 'react';
 
-import type { CalendarBodyProps, QuickAction } from './Calendar/types';
-import type { DatePickerTranslations } from './utils/translations';
+import type {
+  CalendarBodyProps,
+  QuickAction,
+} from '../DatePickerCalendar/Calendar/types';
+import type { DatePickerTranslations } from '../utils/translations';
 
 interface DatePickerBaseContextValue
   extends Pick<CalendarBodyProps, 'disabledDates'> {
@@ -59,19 +62,3 @@ export type DatePickerContextValue =
 export const DatePickerContext = createContext<DatePickerContextValue | null>(
   null
 );
-
-/** Provider component; DatePicker uses this to set the context value. */
-export const DatePickerProvider = DatePickerContext.Provider;
-
-/**
- * Returns the DatePicker context value (shared state and callbacks).
- * Must be used inside a DatePicker. For composed layouts, use this to get
- * openCalendar, closeCalendar, isCalendarOpen, inputRef, calendarDialogId, etc.
- */
-export const useDatePicker = (): DatePickerContextValue => {
-  const value = useContext(DatePickerContext);
-  if (value == null) {
-    throw new Error('useDatePickerContext must be used within a DatePicker.');
-  }
-  return value;
-};

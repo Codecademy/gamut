@@ -15,14 +15,14 @@ import { FormGroup } from '../../Form/elements/FormGroup';
 import type { InputWrapperProps } from '../../Form/inputs/Input';
 import { useDatePicker } from '../DatePickerContext';
 import { SegmentedShell } from './elements';
+import { DatePickerInputSegment } from './Segment';
+import { SegmentLiteral } from './Segment/elements';
 import {
   type SegmentValues,
-  DatePickerInputSegment,
   getDateSegmentsFromDate,
   normalizeSegmentValues,
   parseSegmentsToDate,
-  SegmentLiteral,
-} from './Segment';
+} from './Segment/utils';
 import {
   type DatePartKind,
   formatDateISO8601DateOnly,

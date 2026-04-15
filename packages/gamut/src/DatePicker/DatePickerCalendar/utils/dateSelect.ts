@@ -1,9 +1,9 @@
-import { isDateInRange, isSameDay } from '../Calendar/utils/dateGrid';
 import type {
   DatePickerRangeContextValue,
   DatePickerSingleContextValue,
-} from '../DatePickerContext';
-import type { DatePickerProps, DatePickerRangeProps } from '../types';
+} from '../../DatePickerContext/types';
+import type { DatePickerProps, DatePickerRangeProps } from '../../types';
+import { isDateInRange, isSameDay } from '../Calendar/utils/dateGrid';
 
 export const isRangeProps = (
   props: DatePickerProps
