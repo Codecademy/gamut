@@ -114,6 +114,26 @@ export const InteractiveElement: Story = {
           I&apos;ve got my own text
         </StrokeButton>
       </ToolTip>
+      <ToolTip
+        alignment="left-center"
+        id="floating-ex-lc"
+        info="Tooltip for a FillButton"
+        placement="floating"
+      >
+        <FillButton aria-describedby="floating-ex-lc" icon={StudyBookIcon}>
+          lert center
+        </FillButton>
+      </ToolTip>
+      <ToolTip
+        alignment="right-center"
+        id="floating-ex-rc"
+        info="Tooltip for a FillButton"
+        placement="floating"
+      >
+        <FillButton aria-describedby="floating-ex-rc" icon={StudyBookIcon}>
+          right center
+        </FillButton>
+      </ToolTip>
     </FlexBox>
   ),
 };
@@ -130,6 +150,33 @@ export const Disabled: Story = {
           Using aria-disabled
         </FillButton>
       </ToolTip>
+    </FlexBox>
+  ),
+};
+
+export const HorizontalAlignmentsRtl: Story = {
+  render: () => (
+    <FlexBox dir="rtl" justifyContent="space-around" m={24} width="95%">
+      <IconButton
+        icon={SparkleIcon}
+        tip="Leading (left-center)"
+        tipProps={{ alignment: 'left-center' }}
+      />
+      <IconButton
+        icon={SparkleIcon}
+        tip="Trailing (right-center)"
+        tipProps={{ alignment: 'right-center' }}
+      />
+      <IconButton
+        icon={SparkleIcon}
+        tip="Floating leading"
+        tipProps={{ alignment: 'left-center', placement: 'floating' }}
+      />
+      <IconButton
+        icon={SparkleIcon}
+        tip="Floating trailing"
+        tipProps={{ alignment: 'right-center', placement: 'floating' }}
+      />
     </FlexBox>
   ),
 };

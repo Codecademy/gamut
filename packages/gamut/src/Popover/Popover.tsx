@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useElementDir } from '@codecademy/gamut-styles';
+import type { RefObject } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
@@ -50,6 +52,13 @@ export const Popover: React.FC<PopoverProps> = ({
   const { width, height } = useWindowSize();
   const { x, y } = useWindowScroll();
   const popoverRef = useRef<HTMLDivElement>(null);
+
+  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
+
+  const resolvedAlign = useMemo(() => {
+    if (align !== 'left' && align !== 'right') return align;
+    return isRtl ? (align === 'left' ? 'right' : 'left') : align;
+  }, [align, isRtl]);
 
   const updatePopoverDimensions = useCallback(() => {
     if (popoverRef.current) {
@@ -124,14 +133,14 @@ export const Popover: React.FC<PopoverProps> = ({
     };
     return {
       top: positions[position],
-      left: alignments[align],
+      left: alignments[resolvedAlign],
     };
   }, [
-    align,
     horizontalOffset,
     popoverHeight,
     popoverWidth,
     position,
+    resolvedAlign,
     targetRect,
     verticalOffset,
   ]);
@@ -194,7 +203,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const contents = (
     <PopoverContainer
-      align={align}
+      align={resolvedAlign}
       className={className}
       data-floating="popover"
       data-testid="popover-content-container"
@@ -215,7 +224,12 @@ export const Popover: React.FC<PopoverProps> = ({
         {beak && (
           <BeakBox variant={position}>
             <Beak
-              beak={getBeakVariant({ align, position, beak, variant })}
+              beak={getBeakVariant({
+                align: resolvedAlign,
+                position,
+                beak,
+                variant,
+              })}
               data-testid="popover-beak"
               hasBorder={outline || variant === 'secondary'}
               size={variant === 'secondary' ? 'sml' : 'lrg'}
@@ -225,7 +239,7 @@ export const Popover: React.FC<PopoverProps> = ({
         {children}
       </RaisedDiv>
       {Pattern && (
-        <PatternContainer variant={`${position}-${align}`}>
+        <PatternContainer variant={`${position}-${resolvedAlign}`}>
           <Pattern data-testid="popover-pattern" />
         </PatternContainer>
       )}
