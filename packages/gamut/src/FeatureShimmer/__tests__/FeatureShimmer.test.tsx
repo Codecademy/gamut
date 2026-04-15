@@ -19,6 +19,7 @@ describe('FeatureShimmer', () => {
       observe: jest.fn(),
       unobserve: jest.fn(),
       disconnect: jest.fn(),
+      unobserve: jest.fn(),
     });
     window.IntersectionObserver = mockIntersectionObserver;
   });

@@ -21,7 +21,7 @@ export const buttonPresetThemes = {
   royalblue: 'brand-purple',
 } as const;
 
-const themes = [
+const _themes = [
   'hyper',
   'navy',
   'red',
@@ -39,7 +39,7 @@ const themes = [
 
 export type ButtonDeprecatedThemes =
   | keyof typeof buttonPresetThemes
-  | (typeof themes)[number];
+  | (typeof _themes)[number];
 
 const propKeys = [
   'theme',

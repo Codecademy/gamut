@@ -181,7 +181,7 @@ export const ConnectedForm = forwardRef(
       </PropsProvider>
     );
   }
-) as React.ForwardRefExoticComponent<
-  ConnectedFormProps<FormValues<Record<string, unknown>>> &
+) as <Values extends FormValues<Values>>(
+  props: React.PropsWithoutRef<ConnectedFormProps<Values>> &
     React.RefAttributes<HTMLFormElement>
->;
+) => React.ReactElement;

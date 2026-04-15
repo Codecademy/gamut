@@ -6,6 +6,7 @@ import { Box } from '../Box';
 import { ButtonProps, FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import { isNullish } from '../utils/nullish';
 import { ModalContainer } from './elements';
 import { ImageContainer } from './ImageContainer';
 import { CloseButtonProps, ModalBaseProps } from './types';
@@ -110,7 +111,12 @@ export const Modal: React.FC<ModalProps> = ({
       <ModalContainer
         aria-hidden="false"
         aria-label={ariaLabel}
-        aria-labelledby={titleText ? String(titleText) : undefined}
+        aria-labelledby={
+          !isNullish(titleText) &&
+          (typeof titleText === 'string' || typeof titleText === 'number')
+            ? String(titleText)
+            : undefined
+        }
         aria-modal="true"
         className={className}
         data-autofocus

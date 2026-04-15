@@ -1,3 +1,4 @@
+import { isDefined } from '../../utils/nullish';
 import { SelectOptionBase } from '../utils';
 import {
   BaseOnChangeProps,
@@ -18,8 +19,9 @@ export const isSingleSelectProps = (
 ): props is SingleSelectDropdownProps => !props.multiple;
 
 export const isOptionGroup = (obj: unknown): obj is SelectDropdownGroup =>
-  obj != null &&
+  isDefined(obj) &&
   typeof obj === 'object' &&
+  obj !== null &&
   'options' in obj &&
   obj.options !== undefined;
 
