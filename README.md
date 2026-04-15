@@ -108,7 +108,7 @@ Add new Button variant and fix spacing issues
     - It will create git tags and GitHub releases
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
-### Publishing an alpha or beta version of a module
+### Publishing an pre-release version of a module
 
 You can consume prerelease packages from npm before your PR merges. Two flows are available; **alpha** and **beta** are mutually exclusive on a PR.
 

@@ -27,89 +27,15 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prerelease-publish
         with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - name: Setup and Build
-        id: setup
-        uses: ./.github/actions/yarn
-
-      - name: Set git user
-        uses: ./.github/actions/set-git-user
-
-      - name: Set npm token
-        uses: ./.github/actions/set-npm-token
-        with:
-          token-secret: ${{ secrets.NODE_AUTH_TOKEN }}
-
-      - name: Ensure workflow is associated with a pull request
-        uses: ./.github/actions/validate-pr-context
-
-      - name: Skip build from automated commit
-        uses: ./.github/actions/skip-automated-commits
-        with:
+          node-auth-token: ${{ secrets.NODE_AUTH_TOKEN }}
+          gh-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
-
-      - run: npx nx run-many --target=publish-build --parallel=3
-
-      - name: Publish beta packages
-        id: publish-beta
-        run: |
-          PREID="beta.pr${{ github.event.pull_request.number }}.${{ github.run_id }}"
-          npx nx run gamut-release:pre-release --preid="${PREID}" --publish-tag=beta --manifest=beta-publish-manifest.json
-        env:
-          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
-
-      - name: List beta package versions
-        id: published
-        continue-on-error: true
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const manifestPath = 'beta-publish-manifest.json';
-            const outputPath = 'beta-publish-comment.md';
-            if (!fs.existsSync(manifestPath)) {
-              fs.writeFileSync(outputPath, '');
-              return;
-            }
-
-            const entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-            if (!Array.isArray(entries) || entries.length === 0) {
-              fs.writeFileSync(outputPath, '');
-              return;
-            }
-
-            const tableLines = [
-              '| Package | Version | npm | Diff |',
-              '| --- | --- | --- | --- |',
-              ...entries.map((entry) => {
-                const pkgUrl = `https://www.npmjs.com/package/${entry.name}`;
-                const versionUrl = `${pkgUrl}/v/${entry.version}`;
-                const baseVersion = entry.previousVersion || null;
-                const diffUrl = baseVersion
-                  ? `https://npmdiff.dev/${encodeURIComponent(
-                      entry.name
-                    )}/${baseVersion}/${entry.version}/`
-                  : null;
-                const npmLink = `[npm](${versionUrl})`;
-                const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
-
-                return `| \`${entry.name}\` | \`${entry.version}\` | ${npmLink} | ${diffLink} |`;
-              }),
-            ];
-            const comment = `📬 Published Beta Packages (install with \`@beta\`):\n\n${tableLines.join(
-              '\n'
-            )}\n`;
-            fs.writeFileSync(outputPath, comment);
-
-      - name: Comment with published beta packages
-        uses: ./.github/actions/sticky-comment
-        if: ${{ !cancelled() && hashFiles('beta-publish-comment.md') != '' }}
-        with:
-          github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          header: Beta Packages
-          message-path: beta-publish-comment.md
+          manifest-path: beta-publish-manifest.json
+          comment-path: beta-publish-comment.md
+          comment-title: 'Published Beta Packages (install with `@beta`):'
+          sticky-header: Beta Packages
+          publish-run: |
+            PREID="beta.pr${{ github.event.pull_request.number }}.${{ github.run_id }}"
+            npx nx run gamut-release:pre-release --preid="${PREID}" --publish-tag=beta --manifest=beta-publish-manifest.json
