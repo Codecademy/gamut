@@ -4,7 +4,6 @@ import {
   IconButton,
   List,
   ListCol,
-  ListProps,
   ListRow,
   TableHeader,
   Text,
@@ -17,7 +16,6 @@ import {
   TrophyIcon,
 } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 
 import { listStoryRows as rows } from '../listStoryData';
 
@@ -33,241 +31,183 @@ type ListCompositionStory = StoryObj<typeof List>;
 
 const sizes = ['content', 'sm', 'md', 'lg', 'xl'] as const;
 
-const ColumnExample: React.FC<ListProps> = (args) => {
-  return (
-    <List {...args}>
-      {sizes.map((size: 'content' | 'sm' | 'md' | 'lg' | 'xl') => (
-        <ListRow>
-          <ListCol size={size}>
-            <Box bg="background-selected" flex={1} height={1} p={8}>
-              {size}
-            </Box>
-          </ListCol>
-        </ListRow>
-      ))}
-    </List>
-  );
-};
-
 export const ColumnSizing: ListCompositionStory = {
-  render: (args) => <ColumnExample {...args} />,
-};
-
-const FillingEmptySpaceExample: React.FC<ListProps> = (args) => {
-  return (
-    <List {...args}>
-      <ListRow>
-        <ListCol size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Medium
-          </Box>
-        </ListCol>
-        <ListCol fill size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Medium - Fill
-          </Box>
-        </ListCol>
-        <ListCol size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Medium
-          </Box>
-        </ListCol>
-        <ListCol fill size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Medium - Fill
-          </Box>
-        </ListCol>
-        <ListCol size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Medium
-          </Box>
-        </ListCol>
-      </ListRow>
-    </List>
-  );
+  render: (args) => {
+    return (
+      <List {...args}>
+        {sizes.map((size: 'content' | 'sm' | 'md' | 'lg' | 'xl') => (
+          <ListRow key={size}>
+            <ListCol size={size}>
+              <Box bg="background-selected" flex={1} height={1} p={8}>
+                {size}
+              </Box>
+            </ListCol>
+          </ListRow>
+        ))}
+      </List>
+    );
+  },
 };
 
 export const FillingEmptySpace: ListCompositionStory = {
-  render: (args) => <FillingEmptySpaceExample {...args} />,
-};
-
-const JustificationExample: React.FC<ListProps> = (args) => {
-  return (
-    <List {...args}>
-      <ListRow>
-        <ListCol fill size="md">
-          Left
-        </ListCol>
-        <ListCol fill justify="right" size="md">
-          Right
-        </ListCol>
-      </ListRow>
-    </List>
-  );
+  render: (args) => {
+    return (
+      <List {...args}>
+        <ListRow>
+          <ListCol size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Medium
+            </Box>
+          </ListCol>
+          <ListCol fill size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Medium - Fill
+            </Box>
+          </ListCol>
+          <ListCol size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Medium
+            </Box>
+          </ListCol>
+          <ListCol fill size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Medium - Fill
+            </Box>
+          </ListCol>
+          <ListCol size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Medium
+            </Box>
+          </ListCol>
+        </ListRow>
+      </List>
+    );
+  },
 };
 
 export const Justification: ListCompositionStory = {
-  render: (args) => <JustificationExample {...args} />,
-};
-
-const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
-  return (
-    <List {...args}>
-      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-        <ListRow key={key}>
-          <ListCol size="lg" type="header">
-            <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
-              {name}
-            </Text>
+  render: (args) => {
+    return (
+      <List {...args}>
+        <ListRow>
+          <ListCol fill size="md">
+            Left
           </ListCol>
-          <ListCol size="lg">
-            <Text
-              color="text-disabled"
-              truncate="ellipsis"
-              truncateLines={1}
-              variant="p-small"
-            >
-              {role}
-            </Text>
-          </ListCol>
-          <ListCol fill size="lg">
-            <Text
-              color="text-disabled"
-              truncate="ellipsis"
-              truncateLines={1}
-              variant="p-small"
-            >
-              {ship}
-            </Text>
-          </ListCol>
-          <ListCol size="sm">
-            <Text color="text-disabled" lineHeight="title" variant="p-small">
-              <StreakIcon mr={8} verticalAlign="bottom" />
-              87%
-            </Text>
-          </ListCol>
-          <ListCol size="sm">
-            <Text color="text-disabled" lineHeight="title" variant="p-small">
-              <TrophyIcon mr={8} verticalAlign="bottom" />
-              48%
-            </Text>
-          </ListCol>
-          <ListCol size="sm">
-            <Text color="text-disabled" lineHeight="title" variant="p-small">
-              <StarIcon mr={8} verticalAlign="bottom" />
-              66%
-            </Text>
-          </ListCol>
-          <ListCol>
-            <FillButton size="small">Engage</FillButton>
-          </ListCol>
-          <ListCol type="control">
-            <IconButton
-              icon={MiniKebabMenuIcon}
-              size="small"
-              tip="Options"
-              tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
-            />
-            <IconButton
-              icon={MiniDeleteIcon}
-              size="small"
-              tip="Delete"
-              tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
-            />
+          <ListCol fill justify="right" size="md">
+            Right
           </ListCol>
         </ListRow>
-      ))}
-    </List>
-  );
+      </List>
+    );
+  },
 };
 
 export const HorizontalScrolling: ListCompositionStory = {
   args: { spacing: 'condensed', scrollable: true },
-  render: (args) => <HorizontalScrollingExample {...args} />,
-};
-
-const ResponsiveAnatomyExample: React.FC<ListProps> = (args) => {
-  return (
-    <List {...args}>
-      <ListRow>
-        <ListCol size="md" type="header">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Header
-          </Box>
-        </ListCol>
-        <ListCol size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Content
-          </Box>
-        </ListCol>
-        <ListCol fill size="md">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Content
-          </Box>
-        </ListCol>
-        <ListCol size="md" type="control">
-          <Box bg="background-selected" flex={1} height={1} p={8}>
-            Controls
-          </Box>
-        </ListCol>
-      </ListRow>
-    </List>
-  );
+  render: (args) => {
+    return (
+      <List {...args}>
+        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+          <ListRow key={key}>
+            <ListCol size="lg" type="header">
+              <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+                {name}
+              </Text>
+            </ListCol>
+            <ListCol size="lg">
+              <Text
+                color="text-disabled"
+                truncate="ellipsis"
+                truncateLines={1}
+                variant="p-small"
+              >
+                {role}
+              </Text>
+            </ListCol>
+            <ListCol fill size="lg">
+              <Text
+                color="text-disabled"
+                truncate="ellipsis"
+                truncateLines={1}
+                variant="p-small"
+              >
+                {ship}
+              </Text>
+            </ListCol>
+            <ListCol size="sm">
+              <Text color="text-disabled" lineHeight="title" variant="p-small">
+                <StreakIcon mr={8} verticalAlign="bottom" />
+                87%
+              </Text>
+            </ListCol>
+            <ListCol size="sm">
+              <Text color="text-disabled" lineHeight="title" variant="p-small">
+                <TrophyIcon mr={8} verticalAlign="bottom" />
+                48%
+              </Text>
+            </ListCol>
+            <ListCol size="sm">
+              <Text color="text-disabled" lineHeight="title" variant="p-small">
+                <StarIcon mr={8} verticalAlign="bottom" />
+                66%
+              </Text>
+            </ListCol>
+            <ListCol>
+              <FillButton size="small">Engage</FillButton>
+            </ListCol>
+            <ListCol type="control">
+              <IconButton
+                icon={MiniKebabMenuIcon}
+                size="small"
+                tip="Options"
+                tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+              />
+              <IconButton
+                icon={MiniDeleteIcon}
+                size="small"
+                tip="Delete"
+                tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+              />
+            </ListCol>
+          </ListRow>
+        ))}
+      </List>
+    );
+  },
 };
 
 export const ResponsiveAnatomy: ListCompositionStory = {
   parameters: {
     docs: { inlineStories: false, iframeHeight: 180 },
   },
-  render: (args) => <ResponsiveAnatomyExample {...args} />,
-};
-
-const ResponsiveExample: React.FC<ListProps> = (args) => {
-  return (
-    <List {...args}>
-      <ListRow>
-        <ListCol size="lg" type="header">
-          <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
-            Ordered List Header
-          </Text>
-        </ListCol>
-        <ListCol size="lg">
-          <Text
-            color="text-disabled"
-            truncate="ellipsis"
-            truncateLines={1}
-            variant="p-small"
-          >
-            Content
-          </Text>
-        </ListCol>
-        <ListCol fill size="lg">
-          <Text
-            color="text-disabled"
-            truncate="ellipsis"
-            truncateLines={1}
-            variant="p-small"
-          >
-            Content
-          </Text>
-        </ListCol>
-        <ListCol type="control">
-          <IconButton
-            icon={MiniKebabMenuIcon}
-            size="small"
-            tip="Options"
-            tipProps={{ placement: 'floating' }}
-          />
-          <IconButton
-            icon={MiniDeleteIcon}
-            size="small"
-            tip="Delete"
-            tipProps={{ placement: 'floating' }}
-          />
-        </ListCol>
-      </ListRow>
-    </List>
-  );
+  render: (args) => {
+    return (
+      <List {...args}>
+        <ListRow>
+          <ListCol size="md" type="header">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Header
+            </Box>
+          </ListCol>
+          <ListCol size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Content
+            </Box>
+          </ListCol>
+          <ListCol fill size="md">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Content
+            </Box>
+          </ListCol>
+          <ListCol size="md" type="control">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
+              Controls
+            </Box>
+          </ListCol>
+        </ListRow>
+      </List>
+    );
+  },
 };
 
 export const Responsive: ListCompositionStory = {
@@ -278,37 +218,83 @@ export const Responsive: ListCompositionStory = {
       iframeHeight: 180,
     },
   },
-  render: (args) => <ResponsiveExample {...args} />,
+  render: (args) => {
+    return (
+      <List {...args}>
+        <ListRow>
+          <ListCol size="lg" type="header">
+            <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+              Ordered List Header
+            </Text>
+          </ListCol>
+          <ListCol size="lg">
+            <Text
+              color="text-disabled"
+              truncate="ellipsis"
+              truncateLines={1}
+              variant="p-small"
+            >
+              Content
+            </Text>
+          </ListCol>
+          <ListCol fill size="lg">
+            <Text
+              color="text-disabled"
+              truncate="ellipsis"
+              truncateLines={1}
+              variant="p-small"
+            >
+              Content
+            </Text>
+          </ListCol>
+          <ListCol type="control">
+            <IconButton
+              icon={MiniKebabMenuIcon}
+              size="small"
+              tip="Options"
+              tipProps={{ placement: 'floating' }}
+            />
+            <IconButton
+              icon={MiniDeleteIcon}
+              size="small"
+              tip="Delete"
+              tipProps={{ placement: 'floating' }}
+            />
+          </ListCol>
+        </ListRow>
+      </List>
+    );
+  },
 };
 
-/** Examples use `List` as the root so controls match `List` props (`spacing`, `variant`, etc.). */
-const HeaderColumnCellsExample: React.FC = () => (
-  <List as="table" spacing="condensed" variant="table">
-    <TableHeader>
-      <ListCol columnHeader size="md">
-        Name
-      </ListCol>
-      <ListCol columnHeader size="md">
-        Role
-      </ListCol>
-      <ListCol columnHeader size="md">
-        Ship
-      </ListCol>
-    </TableHeader>
-    {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-      <ListRow key={key}>
-        <ListCol size="md" type="header">
-          {name}
-        </ListCol>
-        <ListCol size="md">{role}</ListCol>
-        <ListCol fill>{ship}</ListCol>
-      </ListRow>
-    ))}
-  </List>
-);
-
+/** Table example: `List` is the story root so docs controls match `List` props (`spacing`, `variant`, etc.). */
 export const HeaderColumnCells: ListCompositionStory = {
-  render: () => <HeaderColumnCellsExample />,
+  render: () => {
+    return (
+      <List as="table" spacing="condensed" variant="table">
+        <TableHeader>
+          <ListCol columnHeader size="md">
+            Name
+          </ListCol>
+          <ListCol columnHeader size="md">
+            Role
+          </ListCol>
+          <ListCol columnHeader size="md">
+            Ship
+          </ListCol>
+        </TableHeader>
+        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+          <ListRow key={key}>
+            <ListCol size="md" type="header">
+              {name}
+            </ListCol>
+            <ListCol size="md">{role}</ListCol>
+            <ListCol fill>{ship}</ListCol>
+          </ListRow>
+        ))}
+      </List>
+    );
+  },
 };
 
 export const Playground: ListCompositionStory = {
@@ -316,28 +302,30 @@ export const Playground: ListCompositionStory = {
     spacing: 'condensed',
     variant: 'table',
   },
-  render: (args) => (
-    <List {...args} as="table">
-      <TableHeader>
-        <ListCol columnHeader size="md">
-          Name
-        </ListCol>
-        <ListCol columnHeader size="md">
-          Role
-        </ListCol>
-        <ListCol columnHeader size="md">
-          Ship
-        </ListCol>
-      </TableHeader>
-      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-        <ListRow key={key}>
-          <ListCol size="md" type="header">
-            {name}
+  render: (args) => {
+    return (
+      <List {...args} as="table">
+        <TableHeader>
+          <ListCol columnHeader size="md">
+            Name
           </ListCol>
-          <ListCol size="md">{role}</ListCol>
-          <ListCol fill>{ship}</ListCol>
-        </ListRow>
-      ))}
-    </List>
-  ),
+          <ListCol columnHeader size="md">
+            Role
+          </ListCol>
+          <ListCol columnHeader size="md">
+            Ship
+          </ListCol>
+        </TableHeader>
+        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+          <ListRow key={key}>
+            <ListCol size="md" type="header">
+              {name}
+            </ListCol>
+            <ListCol size="md">{role}</ListCol>
+            <ListCol fill>{ship}</ListCol>
+          </ListRow>
+        ))}
+      </List>
+    );
+  },
 };
