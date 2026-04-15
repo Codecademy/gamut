@@ -14,6 +14,7 @@ export const CalendarNavLastMonth: React.FC<CalendarNavProps> = ({
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
   const { lastMonth } = getRelativeMonthLabels(resolvedLocale);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   const handleLastMonth = () => {
     const lastMonth = new Date(
@@ -23,6 +24,7 @@ export const CalendarNavLastMonth: React.FC<CalendarNavProps> = ({
     );
     onDisplayDateChange?.(lastMonth);
     onLastMonthClick?.();
+    buttonRef.current?.blur();
   };
 
   return (
@@ -30,6 +32,7 @@ export const CalendarNavLastMonth: React.FC<CalendarNavProps> = ({
       alignSelf="flex-start"
       aria-label={lastMonth}
       icon={MiniChevronLeftIcon}
+      ref={buttonRef}
       size="small"
       tip={lastMonth}
       onClick={handleLastMonth}
