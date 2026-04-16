@@ -1,4 +1,4 @@
-import { useElementDir } from '@codecademy/gamut-styles';
+import { useElementDir, useLogicalProperties } from '@codecademy/gamut-styles';
 import type { RefObject } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -54,11 +54,13 @@ export const Popover: React.FC<PopoverProps> = ({
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
+  const logicalPropsEnabled = useLogicalProperties();
 
   const resolvedAlign = useMemo(() => {
     if (align !== 'left' && align !== 'right') return align;
+    if (!logicalPropsEnabled) return align;
     return isRtl ? (align === 'left' ? 'right' : 'left') : align;
-  }, [align, isRtl]);
+  }, [align, isRtl, logicalPropsEnabled]);
 
   const updatePopoverDimensions = useCallback(() => {
     if (popoverRef.current) {

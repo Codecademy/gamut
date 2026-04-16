@@ -25,8 +25,33 @@ const targetRefObj = {
   },
 };
 
+const popoverTestTheme = (useLogicalProperties: boolean) => ({
+  ...theme,
+  useLogicalProperties,
+});
+
 const PopoverTest = (props?: Partial<PopoverProps>) => (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={popoverTestTheme(false)}>
+    <Popover
+      {...({
+        isOpen: true,
+        targetRef: targetRefObj,
+        ...props,
+      } as PopoverProps)}
+    >
+      <div data-testid="popover-content">
+        Howdy!
+        <button aria-label="Click me!" type="button" />
+      </div>
+    </Popover>
+    <div>
+      <h1 data-testid="outside-popover">hi</h1>
+    </div>
+  </ThemeProvider>
+);
+
+const PopoverTestWithLogicalProperties = (props?: Partial<PopoverProps>) => (
+  <ThemeProvider theme={popoverTestTheme(true)}>
     <Popover
       {...({
         isOpen: true,
@@ -50,6 +75,9 @@ const popoverIsRendered = (view: ReturnType<typeof renderView>['view']) => {
 };
 
 const renderView = setupRtl(PopoverTest);
+const renderViewWithLogicalProperties = setupRtl(
+  PopoverTestWithLogicalProperties
+);
 
 /**
  * Popover tests use a mock `targetRef` (not a real Element), so `useElementDir` resolves
@@ -73,7 +101,7 @@ async function expectMirrorHorizontalLeft(
   rtlProps: Partial<PopoverProps>
 ) {
   document.documentElement.setAttribute('dir', 'ltr');
-  const { view: viewLtr } = renderView({
+  const { view: viewLtr } = renderViewWithLogicalProperties({
     isOpen: true,
     ...ltrProps,
   });
@@ -85,7 +113,7 @@ async function expectMirrorHorizontalLeft(
   viewLtr.unmount();
 
   document.documentElement.setAttribute('dir', 'rtl');
-  const { view: viewRtl } = renderView({
+  const { view: viewRtl } = renderViewWithLogicalProperties({
     isOpen: true,
     ...rtlProps,
   });
