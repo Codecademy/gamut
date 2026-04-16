@@ -12,7 +12,12 @@ export interface DatePickerSharedProps {
    *   cutoff.getMonth(),
    *   cutoff.getDate()
    * );
-   * <DatePicker shouldDisableDate={(d) => d < startOfCutoff} />
+   * <DatePicker
+   *   mode="single"
+   *   selectedDate={null}
+   *   onSelected={() => {}}
+   *   shouldDisableDate={(d) => d < startOfCutoff}
+   * />
    * ```
    */
   shouldDisableDate?: (date: Date) => boolean;

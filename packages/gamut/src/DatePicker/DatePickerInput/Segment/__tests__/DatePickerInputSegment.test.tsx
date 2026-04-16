@@ -1,14 +1,10 @@
-/* eslint-disable simple-import-sort/imports -- import sort vs consistent-type-imports for relative paths */
-
-import { useCallback, useState, type FC } from 'react';
-
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
+import { type FC, useCallback, useState } from 'react';
 
-import { DatePickerInputSegment } from '../DatePickerInputSegment';
 import type { DatePartKind } from '../../utils';
-import type { AssignSegmentRef } from '../DatePickerInputSegment';
-import type { SegmentValues } from '../segmentUtils';
+import { type AssignSegmentRef, DatePickerInputSegment } from '..';
+import type { SegmentValues } from '../utils';
 
 const noop = () => undefined;
 
@@ -46,13 +42,13 @@ const SegmentHarness: FC<HarnessProps> = ({
       disabled={disabled}
       error={error}
       field={field}
-      focusOrOpenCalendarGrid={focusOrOpenCalendarGrid}
-      focusSegmentField={noopFocusSegmentField}
-      handleOnFocus={noop}
       nextField={null}
       prevField={null}
       segments={segments}
       setSegments={setSegments}
+      onAltArrowDown={focusOrOpenCalendarGrid}
+      onFocus={noop}
+      onSiblingFocus={noopFocusSegmentField}
     />
   );
 };
@@ -88,6 +84,17 @@ describe('DatePickerInputSegment', () => {
     const month = view.getByRole('spinbutton', { name: 'month' });
     expect(month).toHaveAttribute('aria-disabled', 'true');
     expect(month).toHaveAttribute('tabIndex', '-1');
+  });
+
+  it('ignores digit input when disabled', async () => {
+    const user = userEvent.setup();
+    const { view } = renderView({ disabled: true });
+
+    const month = view.getByRole('spinbutton', { name: 'month' });
+    await user.click(month);
+    await user.keyboard('5');
+
+    expect(month).toHaveAttribute('aria-valuetext', 'MM');
   });
 
   it('increments month with ArrowUp from empty', async () => {

@@ -26,6 +26,7 @@ export const Default: Story = {
       <Box>
         <DatePicker
           locale="de-DE"
+          mode="single"
           quickActions={null}
           selectedDate={selectedDate}
           translations={{ clearButtonText: 'Löschen' }}
@@ -44,6 +45,7 @@ export const WithInitialDate: Story = {
     return (
       <DatePicker
         inputSize="small"
+        mode="single"
         selectedDate={selectedDate}
         onSelected={setSelectedDate}
       />
@@ -131,7 +133,7 @@ export const RangeSmall: Story = {
 };
 
 /**
- * Composed usage: DatePicker with children provides shared state via context.
+ * Composed usage: DatePicker with `mode="single"` and children provides shared state via context.
  * The child uses useDatePicker() to get open/close and inputRef, then composes
  * DatePickerInput and DatePickerCalendar with a custom PopoverContainer layout.
  */
@@ -140,7 +142,11 @@ export const ComposedWithContext: Story = {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
       <Box p={32}>
-        <DatePicker selectedDate={selectedDate} onSelected={setSelectedDate}>
+        <DatePicker
+          mode="single"
+          selectedDate={selectedDate}
+          onSelected={setSelectedDate}
+        >
           <ComposedDatePickerLayout />
         </DatePicker>
       </Box>

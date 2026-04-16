@@ -4,8 +4,9 @@ import { Input } from '../Form/inputs/Input';
 import { CalendarQuickAction, DatePickerSharedProps } from './sharedTypes';
 import { DatePickerTranslations } from './utils/translations';
 
-interface DatePickerBaseProps<Mode extends 'single' | 'range' | undefined>
+interface DatePickerBaseProps<Mode extends 'single' | 'range'>
   extends DatePickerSharedProps {
+  /** Discriminator: set to `"single"` or `"range"`; both are required on `DatePicker`. */
   mode: Mode;
   /** When provided, only the provider is rendered and children compose Input + Calendar. */
   children?: React.ReactNode;
@@ -16,6 +17,7 @@ interface DatePickerBaseProps<Mode extends 'single' | 'range' | undefined>
    * @example
    * ```tsx
    * <DatePicker
+   *   mode="single"
    *   translations={{
    *     dateLabel: 'Choose a date',
    *   }}
@@ -40,6 +42,7 @@ interface DatePickerBaseProps<Mode extends 'single' | 'range' | undefined>
    * @example single mode:
    * ```tsx
    * <DatePicker
+   *   mode="single"
    *   quickActions={[
    *     { num: -1, timePeriod: 'day', displayText: 'Yesterday' },
    *     { num: 0, timePeriod: 'day', displayText: 'Today' },
@@ -61,14 +64,14 @@ interface DatePickerBaseProps<Mode extends 'single' | 'range' | undefined>
   quickActions?: CalendarQuickAction[] | null;
 }
 
-export interface DatePickerSingleProps
-  extends DatePickerBaseProps<'single' | undefined> {
+export interface DatePickerSingleProps extends DatePickerBaseProps<'single'> {
   /** Controlled selected date. Pass `null` to not have a default selected date. Pass a `Date` to have a default selected date.
    *
    * @example
    * ```tsx
    * const [selectedDate, setSelectedDate] = useState<Date | null>(null);
    * <DatePicker
+   *   mode="single"
    *   selectedDate={selectedDate}
    *   onSelected={setSelectedDate}
    * />
@@ -81,6 +84,7 @@ export interface DatePickerSingleProps
    * ```tsx
    * const [selectedDate, setSelectedDate] = useState<Date | null>(null);
    * <DatePicker
+   *   mode="single"
    *   selectedDate={selectedDate}
    *   onSelected={setSelectedDate}
    * />
@@ -98,6 +102,7 @@ export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
    * const [endDate, setEndDate] = useState<Date | null>(null);
    *
    * <DatePicker
+   *   mode="range"
    *   startDate={startDate}
    *   onStartSelected={setStartDate}
    *   endDate={endDate}
@@ -113,6 +118,7 @@ export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
    * const [endDate, setEndDate] = useState<Date | null>(null);
    * const [startDate, setStartDate] = useState<Date | null>(null);
    * <DatePicker
+   *   mode="range"
    *   endDate={endDate}
    *   onEndSelected={setEndDate}
    *   startDate={startDate}
@@ -128,6 +134,7 @@ export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
    * const [startDate, setStartDate] = useState<Date | null>(null);
    * const [endDate, setEndDate] = useState<Date | null>(null);
    * <DatePicker
+   *   mode="range"
    *   startDate={startDate}
    *   onStartSelected={setStartDate}
    *   endDate={endDate}
@@ -143,6 +150,7 @@ export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
    * const [endDate, setEndDate] = useState<Date | null>(null);
    * const [startDate, setStartDate] = useState<Date | null>(null);
    * <DatePicker
+   *   mode="range"
    *   endDate={endDate}
    *   onEndSelected={setEndDate}
    *   startDate={startDate}

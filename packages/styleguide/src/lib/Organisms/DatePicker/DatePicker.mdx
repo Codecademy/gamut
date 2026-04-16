@@ -29,20 +29,23 @@ The lower-level **Calendar** building blocks (month grid, header, footer) are do
 
 ## Modes
 
-### Single date (`mode` omitted or `'single'`)
+Pass **`mode`** explicitly: **`"single"`** or **`"range"`**.
 
-- **`selectedDate`** / **`setSelectedDate`**: the current value (`Date | null`).
-- Optional **`label`** for the field.
+### Single date (`mode="single"`)
+
+- **`selectedDate`** / **`onSelected`**: the current value (`Date | null`) and change handler.
+- Optional **`label`** for the field (via **`DatePickerInput`** / translations).
 
 ### Range (`mode="range"`)
 
-- **`startDate`**, **`endDate`**, **`setStartDate`**, **`setEndDate`**.
-- Optional **`startLabel`** and **`endLabel`** for the two inputs.
+- **`startDate`**, **`endDate`**, **`onStartSelected`**, **`onEndSelected`**.
+- Optional **`startLabel`** and **`endLabel`** for the two inputs (via translations).
 
 ## Common props
 
 | Area            | Props                                                                                                                                                                                                 |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Mode**        | **`mode`**: `"single"` \| `"range"` — required.                                                                                                                                                       |
 | **Locale**      | **`locale`**: `string` or `Intl.Locale` — drives date format order in the input (e.g. MM/DD/YYYY vs DD/MM/YYYY) and calendar copy.                                                                    |
 | **Constraints** | **`shouldDisableDate`**: predicate per calendar day; use **`matchDisabledDates([...])`** from `@codecademy/gamut` to disable specific days. Range selection avoids ranges that include disabled days. |
 | **Copy**        | **`translations`**: optional overrides (e.g. clear button, dialog `aria-label`, start/end labels) merged with defaults.                                                                               |
@@ -65,9 +68,9 @@ const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
 return (
   <DatePicker
-    label="Ship date"
+    mode="single"
     selectedDate={selectedDate}
-    setSelectedDate={setSelectedDate}
+    onSelected={setSelectedDate}
   />
 );
 ```
@@ -85,8 +88,8 @@ return (
     mode="range"
     startDate={startDate}
     endDate={endDate}
-    setStartDate={setStartDate}
-    setEndDate={setEndDate}
+    onStartSelected={setStartDate}
+    onEndSelected={setEndDate}
     shouldDisableDate={matchDisabledDates([someHoliday])}
   />
 );
@@ -94,7 +97,7 @@ return (
 
 ### Custom layout (`children`)
 
-Render **`DatePicker`** with **`children`** only (no default input/calendar). Inside the tree, call **`useDatePicker()`** and place **`DatePickerInput`** and **`DatePickerCalendar`** wherever you need, and wire your own **`PopoverContainer`** (or other overlay) to **`openCalendar`**, **`closeCalendar`**, and **`calendarDialogId`**. See the **Composed with context** story below.
+Render **`DatePicker`** with **`mode`** (e.g. **`mode="single"`**) and **`children`** only (no default input/calendar). Inside the tree, call **`useDatePicker()`** and place **`DatePickerInput`** and **`DatePickerCalendar`** wherever you need, and wire your own **`PopoverContainer`** (or other overlay) to **`openCalendar`**, **`closeCalendar`**, and **`calendarDialogId`**. See the **Composed with context** story below.
 
 ## Accessibility notes
 

@@ -18,17 +18,12 @@ import type { DatePickerProps } from './types';
 import { useResolvedLocale } from './utils/locale';
 import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './utils/translations';
 
-/**
- * DatePicker: single-date or range. Holds shared state and provides it via context.
- * Single: selectedDate, setSelectedDate. Range: startDate, endDate, setStartDate, setEndDate.
- * With no children, renders default layout (input + calendar popover).
- */
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
     locale,
     shouldDisableDate,
-    mode,
     children,
+    mode,
     translations: translationsProp,
     inputSize,
     quickActions,
@@ -73,9 +68,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       ...translationsProp,
     };
     const resolvedQuickActions =
-      quickActions ?? mode === 'range'
+      quickActions ??
+      (mode === 'range'
         ? getDefaultRangeQuickActions(translations)
-        : getDefaultSingleQuickActions(resolvedLocale);
+        : getDefaultSingleQuickActions(resolvedLocale));
     const base = {
       isCalendarOpen,
       openCalendar,
