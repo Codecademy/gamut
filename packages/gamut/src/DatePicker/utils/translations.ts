@@ -1,7 +1,7 @@
 /** Optional translations for DatePicker UI strings. Pass to override defaults. */
 export interface DatePickerTranslations {
   /** Label for the clear date button (default: "Clear"). */
-  clearText?: string;
+  clearButtonText?: string;
   /** Default label for the date input in single mode (default: "Date"). */
   dateLabel?: string;
   /** Default label for the start date input in range mode (default: "Start date"). */
@@ -21,7 +21,7 @@ export interface DatePickerTranslations {
 /** Default UI strings; pass translations prop to override. */
 export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> =
   {
-    clearText: 'Clear',
+    clearButtonText: 'Clear',
     dateLabel: 'Date',
     startDateLabel: 'Start date',
     endDateLabel: 'End date',

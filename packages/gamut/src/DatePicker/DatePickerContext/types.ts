@@ -32,7 +32,7 @@ interface DatePickerBaseContextValue<Mode extends 'single' | 'range'>
   quickActions: CalendarQuickAction[];
   // /** Start date (range) or selected date (single). */
   // startOrSelectedDate: Date | null;
-  /** Set selection. Single: (date). Range: (start, end). */
+  /** Set selection. Single: (date). Range: (startDate, endDate). */
   // onSelection: (date: Date | null, endDate?: Date | null) => void;
 }
 

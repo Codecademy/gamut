@@ -49,7 +49,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
   ) => {
     const context = useDatePicker();
 
-    if (context == null) {
+    if (context === null) {
       throw new Error(
         'DatePickerInput must be used inside a DatePicker (it reads shared state from context).'
       );
@@ -222,10 +222,10 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         width="fit-content"
       >
         <SegmentedShell
-          inputSize={size === 'small' ? 'small' : 'base'}
+          inputSize={size}
           ref={shellRef}
           role="group"
-          variant={error ? 'error' : undefined}
+          variant={error ? 'error' : 'default'}
           width="113px"
           onBlur={onContainerBlur}
           onClick={onShellClick}

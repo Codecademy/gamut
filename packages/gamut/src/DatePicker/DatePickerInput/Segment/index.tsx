@@ -175,9 +175,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       aria-valuenow={ariaValue}
       aria-valuetext={display}
       data-segment={field}
-      default={segments[field].length === 0}
-      field={field}
       id={`${inputId}-${field}`}
+      isEmpty={segments[field].length === 0}
+      isYear={field === 'year'}
       ref={(el) => assignSegmentRef(field, el)}
       role="spinbutton"
       tabIndex={disabled ? -1 : 0}

@@ -8,6 +8,7 @@ import {
   getOrderedCalendarEndpoints,
   isDateDisabled,
   isDateInRange,
+  isSameDay,
 } from '../Calendar/utils/dateGrid';
 
 export const isRangeProps = (
@@ -15,17 +16,17 @@ export const isRangeProps = (
 ): props is DatePickerRangeProps => props.mode === 'range';
 
 type RangeContainsDisabledParams = {
-  start: Date;
-  end: Date;
+  startDate: Date;
+  endDate: Date;
 } & Pick<DatePickerSharedProps, 'shouldDisableDate'>;
 
-/** True if any disabled day falls within [start, end] (inclusive, by calendar day). */
+/** True if any disabled day falls within [startDate, endDate] (inclusive, by calendar day). */
 export const rangeContainsDisabled = ({
-  start,
-  end,
+  startDate,
+  endDate,
   shouldDisableDate,
 }: RangeContainsDisabledParams) => {
-  const { low, high } = getOrderedCalendarEndpoints({ start, end });
+  const { low, high } = getOrderedCalendarEndpoints({ startDate, endDate });
 
   if (
     isDateDisabled({ date: low, shouldDisableDate }) ||
@@ -35,7 +36,7 @@ export const rangeContainsDisabled = ({
   }
 
   let date = new Date(low.getFullYear(), low.getMonth(), low.getDate() + 1);
-  while (isDateInRange({ date, start, end })) {
+  while (isDateInRange({ date, startDate, endDate })) {
     if (isDateDisabled({ date, shouldDisableDate })) {
       return true;
     }
@@ -54,7 +55,7 @@ export const handleDateSelectSingle = ({
   onSelection,
 }: HandleDateSelectSingleParams) => {
   // If clicked date is the same as Start Date: Clear Start Date
-  if (selectedDate && date.getTime() === selectedDate.getTime()) {
+  if (isSameDay(date, selectedDate)) {
     onSelection(null);
     return;
   }
@@ -63,25 +64,25 @@ export const handleDateSelectSingle = ({
 };
 
 type ApplyRangeOrNewStartParams = {
-  start: Date;
-  end: Date;
+  startDate: Date;
+  endDate: Date;
   clickedDate: Date;
 } & Pick<DatePickerRangeContextValue, 'onRangeSelection' | 'shouldDisableDate'>;
 
-/** @returns whether a full start+end range was committed (calendar may close). */
+/** @returns whether a full startDate+endDate range was committed (calendar may close). */
 export const applyRangeOrNewStart = ({
-  start,
-  end,
+  startDate,
+  endDate,
   clickedDate,
   shouldDisableDate,
   onRangeSelection,
 }: ApplyRangeOrNewStartParams) => {
   // if range contains disabled dates, set start date to clicked date and end date to null
-  if (rangeContainsDisabled({ start, end, shouldDisableDate })) {
+  if (rangeContainsDisabled({ startDate, endDate, shouldDisableDate })) {
     onRangeSelection(clickedDate, null);
     return false;
   }
-  onRangeSelection(start, end);
+  onRangeSelection(startDate, endDate);
   return true;
 };
 
@@ -107,71 +108,68 @@ export const handleDateSelectRange = ({
 }: HandleDateSelectRangeParams) => {
   // Range mode: field targeting (start or end input was focused)
   if (activeRangePart === 'start') {
-    if (date.getTime() === startDate?.getTime()) {
+    if (isSameDay(date, startDate)) {
       onRangeSelection(null, endDate);
       return false;
     }
-    const newEnd =
-      endDate != null && date.getTime() <= endDate.getTime() ? endDate : null;
-    if (newEnd != null) {
+    const newEndDate =
+      endDate !== null && date.getTime() <= endDate.getTime() ? endDate : null;
+    if (newEndDate !== null) {
       return applyRangeOrNewStart({
-        start: date,
-        end: newEnd,
+        startDate: date,
+        endDate: newEndDate,
         clickedDate: date,
         shouldDisableDate,
         onRangeSelection,
       });
     }
-    onRangeSelection(date, newEnd);
+    onRangeSelection(date, newEndDate);
     return false;
   }
   if (activeRangePart === 'end') {
-    if (date.getTime() === endDate?.getTime()) {
+    if (isSameDay(date, endDate)) {
       onRangeSelection(startDate, null);
       return false;
     }
-    const newStart =
-      startDate != null && date.getTime() >= startDate.getTime()
+    const newStartDate =
+      startDate !== null && date.getTime() >= startDate.getTime()
         ? startDate
         : null;
-    if (newStart != null) {
+    if (newStartDate !== null) {
       return applyRangeOrNewStart({
-        start: newStart,
-        end: date,
+        startDate: newStartDate,
+        endDate: date,
         clickedDate: date,
         shouldDisableDate,
         onRangeSelection,
       });
     }
-    onRangeSelection(newStart, date);
+    onRangeSelection(newStartDate, date);
     return false;
   }
 
   // Range selection mode (no field focused: calendar drives both)
   if (startDate && endDate) {
     // if start date is end date and is clicked, clears everything
-    if (
-      startDate.getTime() === endDate.getTime() &&
-      date.getTime() === startDate.getTime()
-    ) {
+    if (isSameDay(startDate, endDate) && isSameDay(date, startDate)) {
       onRangeSelection(null, null);
       return false;
     }
     // if clicked on start date, end date becomes start date
-    if (date.getTime() === startDate.getTime()) {
+    if (isSameDay(date, startDate)) {
       onRangeSelection(endDate, null);
       return false;
     }
     // if clicked on end date, clears end date and start remains
-    if (date.getTime() === endDate.getTime()) {
+    if (isSameDay(date, endDate)) {
       onRangeSelection(startDate, null);
       return false;
     }
     // If clicked date > Start: Updates End Date to new date (Start remains)
     if (date.getTime() > startDate.getTime()) {
       return applyRangeOrNewStart({
-        start: startDate,
-        end: date,
+        startDate,
+        endDate: date,
         clickedDate: date,
         shouldDisableDate,
         onRangeSelection,
@@ -179,8 +177,8 @@ export const handleDateSelectRange = ({
     }
     // If clicked date < Start: Updates Start Date to new date (End remains) - extends range to the left
     return applyRangeOrNewStart({
-      start: date,
-      end: endDate,
+      startDate: date,
+      endDate,
       clickedDate: date,
       shouldDisableDate,
       onRangeSelection,
@@ -195,8 +193,8 @@ export const handleDateSelectRange = ({
     }
     // If clicked date > Start: Sets it as End Date (if range valid)
     return applyRangeOrNewStart({
-      start: startDate,
-      end: date,
+      startDate,
+      endDate: date,
       clickedDate: date,
       shouldDisableDate,
       onRangeSelection,

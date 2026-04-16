@@ -7,7 +7,7 @@ export type SegmentValues = {
 };
 
 export const getDateSegmentsFromDate = (date: Date | null): SegmentValues => {
-  if (date == null) return { month: '', day: '', year: '' };
+  if (date === null) return { month: '', day: '', year: '' };
   return {
     month: String(date.getMonth() + 1).padStart(2, '0'),
     day: String(date.getDate()).padStart(2, '0'),
@@ -117,13 +117,14 @@ export const getSegmentSpinBounds = ({
     case 'month':
       return { min: 1, max: 12 };
     case 'day': {
-      const y = segments.year.length === 4 ? parseInt(segments.year, 10) : 2024;
-      const m =
+      const year =
+        segments.year.length === 4 ? parseInt(segments.year, 10) : 2024;
+      const month =
         segments.month.length >= 1
           ? Math.min(12, Math.max(1, parseInt(segments.month, 10) || 1))
           : 1;
-      const maxD = new Date(y, m, 0).getDate();
-      return { min: 1, max: Number.isFinite(maxD) ? maxD : 31 };
+      const maxDay = new Date(year, month, 0).getDate();
+      return { min: 1, max: Number.isFinite(maxDay) ? maxDay : 31 };
     }
     case 'year':
       return { min: 1, max: 9999 };
@@ -191,10 +192,10 @@ export const spinSegment = ({
   delta: 1 | -1;
 }) => {
   const { min, max } = getSegmentSpinBounds({ field, segments });
-  let cur = parseSegmentNumericString(segments[field]);
+  let currentSegementValue = parseSegmentNumericString(segments[field]);
 
-  if (cur == null) {
-    cur =
+  if (currentSegementValue === null) {
+    currentSegementValue =
       field === 'year'
         ? delta > 0
           ? new Date().getFullYear()
@@ -203,11 +204,11 @@ export const spinSegment = ({
         ? min
         : max;
   } else {
-    cur += delta;
+    currentSegementValue += delta;
   }
 
-  cur = Math.min(max, Math.max(min, cur));
-  return padSegmentNumber({ field, numericValue: cur });
+  currentSegementValue = Math.min(max, Math.max(min, currentSegementValue));
+  return padSegmentNumber({ field, numericValue: currentSegementValue });
 };
 
 /** Build the visible date string from segment state in locale layout order (includes literal separators). */
@@ -231,11 +232,11 @@ export const digitsToSegments = ({
   fieldOrder: DatePartKind[];
 }): SegmentValues => {
   let rest = digits;
-  const out: SegmentValues = { month: '', day: '', year: '' };
+  const segments: SegmentValues = { month: '', day: '', year: '' };
   for (const field of fieldOrder) {
     const maxLen = field === 'year' ? 4 : 2;
-    out[field] = rest.slice(0, maxLen);
+    segments[field] = rest.slice(0, maxLen);
     rest = rest.slice(maxLen);
   }
-  return out;
+  return segments;
 };

@@ -69,7 +69,7 @@ const datecellStates = states({
     cursor: 'not-allowed',
     userSelect: 'none',
     textDecoration: 'line-through',
-    '&:hover': {
+    '&:hover, &:focus': {
       color: 'text-disabled',
       bg: 'transparent',
       textDecoration: 'line-through',

@@ -63,8 +63,8 @@ export const getDefaultRangeQuickActions = (
 ];
 
 /**
- * Computes [start, end] for footer quick actions when `onClick` is omitted.
- * `date` (local calendar day of `now`) is the anchor — returned as `end` unless the range
+ * Computes `[startDate, endDate]` for footer quick actions when `onClick` is omitted.
+ * `anchorDate` (local calendar day of `now`) is the anchor — returned as `endDate` unless the range
  * is reordered (see below).
  *
  * **Rolling** offsets (no month/year boundaries):
@@ -73,11 +73,11 @@ export const getDefaultRangeQuickActions = (
  * - **month**: `num × 30` days.
  * - **year**: `num × 365` days.
  *
- * **Range mode (`isRange: true`):** if `start` is after the anchor day, returns
- * `{ start: anchor, end: computed }` so the interval runs forward. Otherwise
- * `{ start: computed, end: anchor }` (past through “today”).
+ * **Range mode (`isRange: true`):** if the computed day is after the anchor day, returns
+ * `{ startDate: anchor, endDate: computed }` so the interval runs forward. Otherwise
+ * `{ startDate: computed, endDate: anchor }` (past through “today”).
  *
- * **Single mode:** same return shape; the calendar uses `start` as the selected day.
+ * **Single mode:** same return shape; the calendar uses `startDate` as the selected day.
  */
 export const computeQuickAction = ({
   num,
@@ -90,34 +90,34 @@ export const computeQuickAction = ({
   isRange: boolean;
   now?: Date;
 }) => {
-  const date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  let start: Date;
+  const anchorDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let startDate: Date;
 
   switch (timePeriod) {
     case 'day': {
-      start = new Date(date);
-      start.setDate(start.getDate() + num);
+      startDate = new Date(anchorDate);
+      startDate.setDate(startDate.getDate() + num);
       break;
     }
     case 'week': {
-      start = new Date(date);
-      start.setDate(start.getDate() + num * 7);
+      startDate = new Date(anchorDate);
+      startDate.setDate(startDate.getDate() + num * 7);
       break;
     }
     case 'month': {
-      start = new Date(date);
-      start.setDate(start.getDate() + num * 30);
+      startDate = new Date(anchorDate);
+      startDate.setDate(startDate.getDate() + num * 30);
       break;
     }
     case 'year': {
-      start = new Date(date);
-      start.setDate(start.getDate() + num * 365);
+      startDate = new Date(anchorDate);
+      startDate.setDate(startDate.getDate() + num * 365);
       break;
     }
   }
 
-  if (isRange && start.getTime() > date.getTime()) {
-    return { start: date, end: start };
+  if (isRange && startDate.getTime() > anchorDate.getTime()) {
+    return { startDate: anchorDate, endDate: startDate };
   }
-  return { start, end: date };
+  return { startDate, endDate: anchorDate };
 };

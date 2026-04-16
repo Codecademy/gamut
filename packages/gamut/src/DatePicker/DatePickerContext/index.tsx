@@ -12,7 +12,7 @@ export const DatePickerProvider = DatePickerContext.Provider;
  */
 export const useDatePicker = (): DatePickerContextValue => {
   const value = useContext(DatePickerContext);
-  if (value == null) {
+  if (value === null) {
     throw new Error('useDatePickerContext must be used within a DatePicker.');
   }
   return value;

@@ -51,26 +51,26 @@ describe('isSameDay', () => {
 });
 
 describe('isDateInRange', () => {
-  const start = new Date(2024, 2, 10);
-  const end = new Date(2024, 2, 20);
+  const startDate = new Date(2024, 2, 10);
+  const endDate = new Date(2024, 2, 20);
 
-  it('returns true strictly between start and end', () => {
-    expect(isDateInRange({ date: new Date(2024, 2, 15), start, end })).toBe(
-      true
-    );
-  });
-
-  it('returns false on start, end, or outside', () => {
-    expect(isDateInRange({ date: start, start, end })).toBe(false);
-    expect(isDateInRange({ date: end, start, end })).toBe(false);
-    expect(isDateInRange({ date: new Date(2024, 2, 5), start, end })).toBe(
-      false
-    );
-  });
-
-  it('returns false when start is null', () => {
+  it('returns true strictly between startDate and endDate', () => {
     expect(
-      isDateInRange({ date: new Date(2024, 2, 15), start: null, end })
+      isDateInRange({ date: new Date(2024, 2, 15), startDate, endDate })
+    ).toBe(true);
+  });
+
+  it('returns false on startDate, endDate, or outside', () => {
+    expect(isDateInRange({ date: startDate, startDate, endDate })).toBe(false);
+    expect(isDateInRange({ date: endDate, startDate, endDate })).toBe(false);
+    expect(
+      isDateInRange({ date: new Date(2024, 2, 5), startDate, endDate })
+    ).toBe(false);
+  });
+
+  it('returns false when startDate is null', () => {
+    expect(
+      isDateInRange({ date: new Date(2024, 2, 15), startDate: null, endDate })
     ).toBe(false);
   });
 });

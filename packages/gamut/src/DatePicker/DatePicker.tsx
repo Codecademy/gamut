@@ -141,6 +141,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
             <>
               <DatePickerInput rangePart="start" size={inputSize} />
               <Box alignSelf="center" mt={32}>
+                {/* TODO: Adjust for RTL */}
                 <MiniArrowRightIcon />
               </Box>
               <DatePickerInput rangePart="end" size={inputSize} />

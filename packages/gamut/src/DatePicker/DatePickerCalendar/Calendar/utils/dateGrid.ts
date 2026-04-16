@@ -29,8 +29,8 @@ export const getWeekdayOffsetInGrid = ({
   date: Date;
   firstWeekday: IsoWeekday;
 }) => {
-  const js = date.getDay();
-  const iso = js === 0 ? 7 : js;
+  const dayOfWeek = date.getDay();
+  const iso = dayOfWeek === 0 ? 7 : dayOfWeek;
   return (iso - firstWeekday + 14) % 7;
 };
 
@@ -75,7 +75,6 @@ export const getMonthGrid = ({
     }
   }
 
-  // Pad end of last week with nulls
   if (currentWeek.length > 0) {
     while (currentWeek.length < DAYS_PER_WEEK) {
       currentWeek.push(null);
@@ -99,40 +98,44 @@ export const isSameDay = (a: Date | null, b: Date | null) => {
  * Matches the bounds used by {@link isDateInRange} (and range selection).
  */
 export const getOrderedCalendarEndpoints = ({
-  start,
-  end,
+  startDate,
+  endDate,
 }: {
-  start: Date;
-  end: Date;
+  startDate: Date;
+  endDate: Date;
 }) => {
-  const startDate = new Date(
-    start.getFullYear(),
-    start.getMonth(),
-    start.getDate()
+  const normalizedStartDate = new Date(
+    startDate.getFullYear(),
+    startDate.getMonth(),
+    startDate.getDate()
   );
-  const endDate = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-  return startDate <= endDate
-    ? { low: startDate, high: endDate }
-    : { low: endDate, high: startDate };
+  const normalizedEndDate = new Date(
+    endDate.getFullYear(),
+    endDate.getMonth(),
+    endDate.getDate()
+  );
+  return normalizedStartDate <= normalizedEndDate
+    ? { low: normalizedStartDate, high: normalizedEndDate }
+    : { low: normalizedEndDate, high: normalizedStartDate };
 };
 
 /**
- * Check if `date` is between `start` and `end` (exclusive), ignoring time.
+ * Check if `date` is between `startDate` and `endDate` (exclusive), ignoring time.
  */
 export const isDateInRange = ({
   date,
-  start,
-  end,
+  startDate,
+  endDate,
 }: {
   date: Date;
-  start: Date | null;
-  end: Date | null;
+  startDate: Date | null;
+  endDate: Date | null;
 }) => {
-  if (start === null) return false;
-  const endBound = end ?? start;
+  if (startDate === null) return false;
+  const endBound = endDate ?? startDate;
   const { low, high } = getOrderedCalendarEndpoints({
-    start,
-    end: endBound,
+    startDate,
+    endDate: endBound,
   });
   const normalizedDate = normalizeDate(date);
   return (

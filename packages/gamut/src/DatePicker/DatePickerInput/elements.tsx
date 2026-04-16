@@ -1,18 +1,39 @@
-import { css, theme } from '@codecademy/gamut-styles';
+import { css, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { FlexBox } from '../../Box';
 import {
-  conditionalStyles,
   formFieldFocusStyles,
   formFieldStyles,
   inputSizeStyles,
 } from '../../Form/styles';
 
+const shellFocusStyles = variant({
+  variants: {
+    error: {
+      // borderColor: 'feedback-error',
+      '&:hover': {
+        borderColor: 'feedback-error',
+      },
+      '&:focus': {
+        borderColor: 'feedback-error',
+        boxShadow: `inset 0 0 0 1px feedback-error`,
+      },
+      '&:focus-within': {
+        borderColor: 'feedback-error',
+        boxShadow: `inset 0 0 0 1px feedback-error`,
+      },
+    },
+    default: {
+      '&:focus-within': formFieldFocusStyles,
+    },
+  },
+});
+
 interface SegmentedShellProps
-  extends StyleProps<typeof conditionalStyles>,
-    StyleProps<typeof inputSizeStyles> {}
+  extends StyleProps<typeof inputSizeStyles>,
+    StyleProps<typeof shellFocusStyles> {}
 
 /**
  * Shell uses the same style stack as `Input`. `formFieldStyles` targets `&:focus`, but the host is a
@@ -20,16 +41,6 @@ interface SegmentedShellProps
  */
 export const SegmentedShell = styled(FlexBox)<SegmentedShellProps>(
   formFieldStyles,
-  conditionalStyles,
   inputSizeStyles,
-  ({ variant }) =>
-    css({
-      '&:focus-within':
-        variant === 'error'
-          ? {
-              borderColor: 'feedback-error',
-              boxShadow: `inset 0 0 0 1px ${theme.colors['feedback-error']}`,
-            }
-          : formFieldFocusStyles,
-    })
+  shellFocusStyles
 );

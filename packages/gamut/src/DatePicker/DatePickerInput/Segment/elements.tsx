@@ -2,37 +2,35 @@ import { css, states } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { DatePartKind } from '../utils';
-
 const segmentStyles = states({
-  default: {
+  isEmpty: {
     color: 'text-secondary',
+  },
+  isYear: {
+    minWidth: '4ch',
   },
 });
 
-type SegmentStyleProps = StyleProps<typeof segmentStyles> & {
-  field: DatePartKind;
-};
+type SegmentStyleProps = StyleProps<typeof segmentStyles>;
 
 export const Segment = styled.span<SegmentStyleProps>(
-  ({ field }) =>
-    css({
-      display: 'inline-block',
-      textAlign: 'center',
-      minWidth: field === 'year' ? '4ch' : '2ch',
-      padding: 0,
-      margin: 0,
-      color: 'text',
-      cursor: 'text',
-      '&:focus': {
-        bg: 'primary',
-        color: 'background',
-        borderRadius: 'md',
-      },
-      '&:focus-visible': {
-        outline: 'none',
-      },
-    }),
+  css({
+    display: 'inline-block',
+    textAlign: 'center',
+    minWidth: '2ch',
+    padding: 0,
+    margin: 0,
+    color: 'text',
+    cursor: 'text',
+    '&:focus': {
+      bg: 'primary',
+      color: 'background',
+      borderRadius: 'md',
+    },
+    '&:focus-visible': {
+      outline: 'none',
+    },
+  }),
   segmentStyles
 );
 

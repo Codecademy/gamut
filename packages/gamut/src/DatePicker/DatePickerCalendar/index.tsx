@@ -53,7 +53,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   )}`;
   const headingId = dialogId ?? context?.calendarDialogId ?? fallbackDialogId;
 
-  if (context == null) {
+  if (context === null) {
     throw new Error(
       'DatePickerCalendar must be used inside a DatePicker (it reads shared state from context).'
     );
@@ -102,6 +102,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   const secondMonthDate = addMonths({ date: displayDate, n: 1 });
   const isTwoMonthsVisible = useMedia(`(min-width: ${breakpoints.xs})`);
   const wasOpenRef = useRef(false);
+  /** Wraps both month grids so keyboard focus can move between them without treating it as “outside” the calendar. */
+  const calendarKeyboardSurfaceRef = useRef<HTMLDivElement>(null);
 
   // Sync visible month to selection only when the calendar opens, not on every
   // date click. Otherwise clicking a date in the second month would jump the view.
@@ -155,7 +157,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       onClick: () => {
         action.onClick?.();
         setActiveRangePart?.(null);
-        const { start, end } = computeQuickAction({
+        const { startDate, endDate } = computeQuickAction({
           num: action.num,
           timePeriod: action.timePeriod,
           isRange,
@@ -163,28 +165,28 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         if (isRange) {
           if (
             rangeContainsDisabled({
-              start,
-              end,
+              startDate,
+              endDate,
               shouldDisableDate,
             })
           ) {
             applyRangeOrNewStart({
-              start,
-              end,
-              clickedDate: end,
+              startDate,
+              endDate,
+              clickedDate: endDate,
               shouldDisableDate,
               onRangeSelection: context.onRangeSelection,
             });
           } else {
-            context.onRangeSelection(start, end);
+            context.onRangeSelection(startDate, endDate);
           }
-          setDisplayDate(getFirstOfMonth(end));
-          setFocusedDate(end);
+          setDisplayDate(getFirstOfMonth(endDate));
+          setFocusedDate(endDate);
           queueMicrotask(closeCalendar);
         } else {
-          context.onSelection(start);
-          setDisplayDate(getFirstOfMonth(start));
-          setFocusedDate(start);
+          context.onSelection(startDate);
+          setDisplayDate(getFirstOfMonth(startDate));
+          setFocusedDate(startDate);
           queueMicrotask(closeCalendar);
         }
       },
@@ -200,7 +202,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   return (
     <CalendarWrapper>
-      <FlexBox p={24} pb={16}>
+      <FlexBox p={24} pb={16} ref={calendarKeyboardSurfaceRef}>
         <Box>
           <CalendarHeader
             displayDate={displayDate}
@@ -210,6 +212,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onDisplayDateChange={setDisplayDate}
           />
           <CalendarBody
+            calendarKeyboardSurfaceRef={calendarKeyboardSurfaceRef}
             displayDate={displayDate}
             endDate={endDate}
             focusGridSync={focusGridSync}
@@ -235,6 +238,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onDisplayDateChange={setDisplayDate}
           />
           <CalendarBody
+            calendarKeyboardSurfaceRef={calendarKeyboardSurfaceRef}
             displayDate={secondMonthDate}
             endDate={endDate}
             focusGridSync={focusGridSync}
@@ -253,12 +257,12 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         </Box>
       </FlexBox>
       <CalendarFooter
-        clear={
+        clearButton={
           isRange
             ? {
                 disabled: context.startDate === null && endDate === null,
                 onClick: clearDate,
-                text: translations.clearText,
+                text: translations.clearButtonText,
               }
             : undefined
         }
