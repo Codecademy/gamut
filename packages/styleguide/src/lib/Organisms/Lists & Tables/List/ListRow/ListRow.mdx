@@ -34,24 +34,78 @@ As noted in <LinkTo id="Organisms/Lists & Tables/List/List">List</LinkTo>, when 
 
 ## Expandable rows
 
-Define collapsible content with an `expanded` prop and a `renderExpanded` callback that returns the expanded region.
+You can define collapsible content by passing an expanded prop and the React.Node to the renderExpanded prop of your ListRow components.
 
 ### Expand on button click
 
-Include `ExpandControl` in a `ListCol` with `type="control"` to toggle expansion. `ExpandControl` rotates its icon based on `expanded`.
+The `ListRow` component has access to the `ExpandControl` component which can be used to toggle the expanded state of the row. The `ExpandControl` component will automatically handle the rotation of the icon based on the expanded state.
 
-<Canvas of={ListRowStories.ExpandableButtonGuide} />
+```tsx
+export const ExpandableButtonClickRow: React.FC<{
+  header: string;
+  content: string;
+  key: string;
+}> = ({ header, content, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      renderExpanded={() => <Text>Surprise</Text>}
+    >
+      <ListCol type="header">{header}</ListCol>
+      <ListCol type="content">{content}</ListCol>
+      <ListCol type="control">
+        <ExpandControl
+          expanded={isExpanded}
+          onExpand={() => setExpanded(!isExpanded)}
+          disabled={false}
+        />
+      </ListCol>
+    </ListRow>
+  );
+};
+```
+
+This example shows a row with a header, content, and a control section. The control section contains an `ExpandControl` component which will toggle the expanded state of the row when clicked.
+
+<Canvas of={ListRowStories.ExpandableButton} />
 
 ### Expand on row click
 
-When `List` does not use `as="table"`, use `onClick` on `ListRow` so the whole row toggles expansion.
+An entire row can be made interactive to expand the row content.
 
-<Canvas of={ListRowStories.ExpandedRowGuide} />
+```tsx
+export const ExpandableRow: React.FC<{
+  header: string;
+  content: string;
+  key: string;
+}> = ({ header, content, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      onClick={() => setExpanded(!isExpanded)}
+      renderExpanded={() => <Text>Surprise</Text>}
+    >
+      <ListCol type="header">{header}</ListCol>
+      <ListCol type="content">{content}</ListCol>
+      <ListCol type="control">
+        <Rotation rotated={isExpanded}>
+          <ArrowChevronDownIcon color="text-disabled" />
+        </Rotation>
+      </ListCol>
+    </ListRow>
+  );
+};
+```
+
+<Canvas of={ListRowStories.ExpandableClickableRow} />
 
 ## Playground
-
-Adjust `ListRow` on the expandable example. For `List` props and variants, see <LinkTo id="Organisms/Lists & Tables/List/List">List</LinkTo>.
-
-<Canvas sourceState="shown" of={ListRowStories.ExpandableButtonGuide} />
+<Canvas sourceState="shown" of={ListRowStories.ExpandableButton} />
 
 <Controls />

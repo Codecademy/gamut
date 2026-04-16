@@ -190,7 +190,7 @@ const ExpandableButtonClickRow: React.FC<{
   );
 };
 
-export const ExpandableButtonGuide: ListCompositionStory = {
+export const ExpandableButton: ListCompositionStory = {
   render: (args) => {
     return (
       <Background bg="black">
@@ -241,7 +241,7 @@ const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
   );
 };
 
-export const ExpandedRowGuide: ListCompositionStory = {
+export const ExpandableClickableRow: ListCompositionStory = {
   render: (args) => {
     return (
       <Background bg="black">

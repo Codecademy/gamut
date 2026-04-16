@@ -22,7 +22,13 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-Use `List` as the root container, with `ListRow` and `ListCol` defining each row and column. For table layouts (`as="table"`), add `TableHeader` for a header row. `List` provides context to its children rows, columns, and the header to share spacing, variant, and responsive layout information.
+`List`, the component you need to build a list or table. It provides context to its children rows, columns, and the header to share spacing, variant, and responsive layout information. 
+
+Use `ListRow` to compose a row of `ListCol` cells.
+
+When building a table, use `TableHeader` for the header row. It's the `thead` row, stays sticky when the list scrolls, and uses the same settings as the rows so the header matches the rows.
+
+Check out the documentation below to see how to use `List`, `ListRow`, `ListCol`, and `TableHeader` to build a list or table.
 
 <TableOfContents
   links={addParentPath(parameters.id, [
