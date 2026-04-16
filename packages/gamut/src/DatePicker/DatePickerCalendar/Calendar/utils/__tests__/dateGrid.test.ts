@@ -4,6 +4,7 @@ import {
   getWeekdayOffsetInGrid,
   isDateDisabled,
   isDateInRange,
+  isDateWithinVisibleMonths,
   isSameDay,
   matchDisabledDates,
 } from '../dateGrid';
@@ -112,6 +113,41 @@ describe('isDateDisabled', () => {
       isDateDisabled({
         date: new Date(2024, 4, 10),
         shouldDisableDate: () => false,
+      })
+    ).toBe(false);
+  });
+});
+
+describe('isDateWithinVisibleMonths', () => {
+  const march2024 = new Date(2024, 2, 1);
+  const april2024 = new Date(2024, 3, 15);
+
+  it('returns true when the date is in the left visible month', () => {
+    expect(
+      isDateWithinVisibleMonths({
+        date: new Date(2024, 2, 20),
+        startOfLeftVisibleMonth: march2024,
+        showSecondMonth: false,
+      })
+    ).toBe(true);
+  });
+
+  it('returns true when the date is in the second column month in a two-month layout', () => {
+    expect(
+      isDateWithinVisibleMonths({
+        date: april2024,
+        startOfLeftVisibleMonth: march2024,
+        showSecondMonth: true,
+      })
+    ).toBe(true);
+  });
+
+  it('returns false when the date is outside the visible month(s)', () => {
+    expect(
+      isDateWithinVisibleMonths({
+        date: new Date(2024, 4, 1),
+        startOfLeftVisibleMonth: march2024,
+        showSecondMonth: true,
       })
     ).toBe(false);
   });

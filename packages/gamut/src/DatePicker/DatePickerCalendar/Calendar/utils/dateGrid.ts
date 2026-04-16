@@ -148,7 +148,12 @@ export const isDateInRange = ({
  *
  * @example
  * ```tsx
- * <DatePicker shouldDisableDate={matchDisabledDates([new Date(2026, 3, 14)])} />
+ * <DatePicker
+ *   mode="single"
+ *   selectedDate={null}
+ *   onSelected={() => {}}
+ *   shouldDisableDate={matchDisabledDates([new Date(2026, 3, 14)])}
+ * />
  * ```
  */
 export const matchDisabledDates =
@@ -184,27 +189,30 @@ export const addMonths = ({ date, n }: { date: Date; n: number }) =>
   new Date(date.getFullYear(), date.getMonth() + n, 1);
 
 /**
- * True when `date` falls in the left visible month (`displayDate`) or, when two months are
- * shown, the following month. Used to avoid jumping the strip when the user selects a day
- * already visible, while still syncing when the selection moves off-strip (e.g. typed input).
+ * True if `date` falls in the left visible month, or—when `showSecondMonth`—in the
+ * month shown in the second column. Used to avoid shifting the visible month pair when
+ * the committed date is already on screen (e.g. a click in the right-hand month).
  */
-export const isDateInVisibleCalendarStrip = ({
+export const isDateWithinVisibleMonths = ({
   date,
-  displayDate,
-  showTwoMonths,
+  startOfLeftVisibleMonth,
+  showSecondMonth,
 }: {
   date: Date;
-  displayDate: Date;
-  showTwoMonths: boolean;
-}): boolean => {
-  const y = date.getFullYear();
-  const m = date.getMonth();
-  const d0y = displayDate.getFullYear();
-  const d0m = displayDate.getMonth();
-  if (y === d0y && m === d0m) return true;
-  if (showTwoMonths) {
-    const second = addMonths({ date: displayDate, n: 1 });
-    return y === second.getFullYear() && m === second.getMonth();
+  /** First day of the month rendered in the left calendar column (`displayDate`). */
+  startOfLeftVisibleMonth: Date;
+  showSecondMonth: boolean;
+}) => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const leftYear = startOfLeftVisibleMonth.getFullYear();
+  const leftMonth = startOfLeftVisibleMonth.getMonth();
+  if (year === leftYear && month === leftMonth) return true;
+  if (showSecondMonth) {
+    const rightMonthStart = addMonths({ date: startOfLeftVisibleMonth, n: 1 });
+    const rightYear = rightMonthStart.getFullYear();
+    const rightMonth = rightMonthStart.getMonth();
+    return year === rightYear && month === rightMonth;
   }
   return false;
 };
