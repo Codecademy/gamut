@@ -28,7 +28,6 @@ interface DatePickerBaseProps<Mode extends 'single' | 'range' | undefined>
    * @see `size` on {@link Input}
    */
   inputSize?: ComponentProps<typeof Input>['size'];
-
   /**
    * Calendar footer quick actions. Default values are provided based on the mode, but you can pass your own. Only the first 3 quick actions will be displayed.
    * Pass `null` to omit quick actions.

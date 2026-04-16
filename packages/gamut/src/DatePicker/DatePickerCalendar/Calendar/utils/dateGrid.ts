@@ -10,7 +10,7 @@ const DAYS_PER_WEEK = 7;
 /**
  * Normalize to start of day in local time for comparison.
  */
-const normalizeDate = (date: Date) => {
+export const normalizeDate = (date: Date) => {
   return new Date(
     date.getFullYear(),
     date.getMonth(),
@@ -182,3 +182,29 @@ export const getDatesWithRow = (weeks: (Date | null)[][]) => {
 /** Add `n` months to the given date. */
 export const addMonths = ({ date, n }: { date: Date; n: number }) =>
   new Date(date.getFullYear(), date.getMonth() + n, 1);
+
+/**
+ * True when `date` falls in the left visible month (`displayDate`) or, when two months are
+ * shown, the following month. Used to avoid jumping the strip when the user selects a day
+ * already visible, while still syncing when the selection moves off-strip (e.g. typed input).
+ */
+export const isDateInVisibleCalendarStrip = ({
+  date,
+  displayDate,
+  showTwoMonths,
+}: {
+  date: Date;
+  displayDate: Date;
+  showTwoMonths: boolean;
+}): boolean => {
+  const y = date.getFullYear();
+  const m = date.getMonth();
+  const d0y = displayDate.getFullYear();
+  const d0m = displayDate.getMonth();
+  if (y === d0y && m === d0m) return true;
+  if (showTwoMonths) {
+    const second = addMonths({ date: displayDate, n: 1 });
+    return y === second.getFullYear() && m === second.getMonth();
+  }
+  return false;
+};

@@ -28,7 +28,7 @@ export const Default: Story = {
           locale="de-DE"
           quickActions={null}
           selectedDate={selectedDate}
-          translations={{ clearText: 'Löschen' }}
+          translations={{ clearButtonText: 'Löschen' }}
           onSelected={setSelectedDate}
         />
       </Box>
@@ -61,7 +61,7 @@ export const Range: Story = {
         <DatePicker
           endDate={endDate}
           mode="range"
-          shouldDisableDate={matchDisabledDates([new Date(2026, 3, 14)])}
+          shouldDisableDate={matchDisabledDates([new Date(2026, 3, 22)])}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',

@@ -136,6 +136,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
       // if the key is a single digit and is a number, append the digit to the segment
       if (e.key.length === 1 && /^\d$/.test(e.key)) {
         e.preventDefault();
+        e.stopPropagation();
         setSegments((prev) => {
           const next = {
             ...prev,

@@ -9,6 +9,7 @@ import {
   isDateDisabled,
   isDateInRange,
   isSameDay,
+  normalizeDate,
 } from './utils/dateGrid';
 import { CalendarTable, DateCell, TableHeader } from './utils/elements';
 import { formatDateForAriaLabel, getWeekdayNames } from './utils/format';
@@ -60,11 +61,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
   const focusButton = useCallback((date: Date | null): boolean => {
     if (date === null) return false;
-    const key = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate()
-    ).getTime();
+    const key = normalizeDate(date);
     const el = buttonRefs.current.get(key);
     if (!el) return false;
     el.focus();
@@ -169,11 +166,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   );
 
   const setButtonRef = useCallback((date: Date, el: HTMLElement | null) => {
-    const normalizedDateTime = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate()
-    ).getTime();
+    const normalizedDateTime = normalizeDate(date);
     if (el) buttonRefs.current.set(normalizedDateTime, el);
     else buttonRefs.current.delete(normalizedDateTime);
   }, []);
