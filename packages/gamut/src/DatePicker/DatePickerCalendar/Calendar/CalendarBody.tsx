@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useLayoutEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
 import { useIsoFirstWeekday, useResolvedLocale } from '../../utils/locale';
@@ -30,6 +30,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   hasAdjacentMonthRight,
   hasAdjacentMonthLeft,
   focusGridSync,
+  calendarKeyboardSurfaceRef,
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
   const firstWeekday = useIsoFirstWeekday(resolvedLocale, weekStartsOn);
@@ -70,7 +71,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     return true;
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Keep the roving tabindex / focused day aligned with `focusTarget` when it makes sense for a11y.
     if (focusTarget === null) return;
 
@@ -80,24 +81,62 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       return;
     }
 
-    const inGrid = tableRef.current?.contains(document.activeElement);
+    const activeEl = document.activeElement;
+    const inThisGrid = tableRef.current?.contains(activeEl) ?? false;
+    const focusInSharedSurface =
+      calendarKeyboardSurfaceRef?.current?.contains(activeEl) ?? false;
     const requested = focusGridSync.gridFocusRequested;
 
-    // Focus is already in this grid (keyboard nav): update which day is focused as `focusTarget` changes.
-    if (inGrid) {
-      focusButton(focusTarget);
+    // Month navigation unmounts the active cell; focus often lands on <body>, the dialog shell,
+    // or another non-grid node — not inside calendarKeyboardSurfaceRef, so we must still sync.
+    const surfaceEl = calendarKeyboardSurfaceRef?.current;
+    const focusLostFromCellUnmount =
+      activeEl === document.body ||
+      activeEl === document.documentElement ||
+      (activeEl instanceof HTMLElement &&
+        surfaceEl != null &&
+        surfaceEl.contains(activeEl) === false &&
+        activeEl.contains(surfaceEl));
+
+    // Sync DOM focus when: navigating inside this table; first focus from input (keyboard open);
+    // focus is in the multi-month strip (cross-grid arrows); or focus was lost after the grid updated.
+    // Do not pull focus from the input when the user opened with the mouse and never entered the surface.
+    const shouldSyncFocus =
+      inThisGrid ||
+      requested ||
+      focusInSharedSurface ||
+      (focusLostFromCellUnmount && surfaceEl != null);
+
+    if (!shouldSyncFocus) return;
+
+    const finish = (success: boolean) => {
+      if (success && requested) {
+        focusGridSync.onGridFocusRequestHandled();
+      }
+    };
+
+    let success = focusButton(focusTarget);
+    if (success) {
+      finish(true);
       return;
     }
 
-    // DatePicker opened via keyboard / ArrowDown: parent asked to move focus into the grid once.
-    if (requested) {
-      const success = focusButton(focusTarget);
-      if (success) {
-        focusGridSync.onGridFocusRequestHandled();
-      }
+    // New cells may not have refs until after this layout pass (e.g. display month just changed).
+    if (shouldSyncFocus) {
+      requestAnimationFrame(() => {
+        success = focusButton(focusTarget);
+        if (success) finish(true);
+      });
     }
-    // If !inGrid && !requested (e.g. calendar opened with the mouse): leave focus on the input — do not call focusButton.
-  }, [focusTarget, focusButton, focusGridSync]);
+  }, [
+    focusTarget,
+    focusButton,
+    focusGridSync,
+    calendarKeyboardSurfaceRef,
+    /** Re-run when the month grid remounts so we can re-attach roving focus after displayDate changes. */
+    year,
+    month,
+  ]);
 
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent, date: Date) =>
@@ -130,13 +169,13 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   );
 
   const setButtonRef = useCallback((date: Date, el: HTMLElement | null) => {
-    const k = new Date(
+    const normalizedDateTime = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate()
     ).getTime();
-    if (el) buttonRefs.current.set(k, el);
-    else buttonRefs.current.delete(k);
+    if (el) buttonRefs.current.set(normalizedDateTime, el);
+    else buttonRefs.current.delete(normalizedDateTime);
   }, []);
 
   return (
@@ -156,10 +195,9 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
             {week.map((date, colIndex) => {
               if (date === null) {
                 return (
-                  // eslint-disable-next-line jsx-a11y/control-has-associated-label
+                  // eslint-disable-next-line jsx-a11y/control-has-associated-label -- this is a false positive
                   <td
-                    // fix this error
-                    // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
+                    // eslint-disable-next-line react/no-array-index-key -- padding slots have no date; position in grid is the stable id
                     key={`empty-${rowIndex}-${colIndex}`}
                     role="gridcell"
                   />
@@ -172,12 +210,11 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 range &&
                 isDateInRange({
                   date,
-                  start: selectedDate,
-                  end: endDate,
+                  startDate: selectedDate,
+                  endDate,
                 });
               const disabled = isDateDisabled({ date, shouldDisableDate });
               const today = isToday(date);
-              // this is making the selected date a differnet color bc it is focused, look into further
               const isFocused =
                 focusTarget !== null && isSameDay(date, focusTarget);
 

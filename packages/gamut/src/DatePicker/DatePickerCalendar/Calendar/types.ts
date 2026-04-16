@@ -1,3 +1,5 @@
+import type { RefObject } from 'react';
+
 import type {
   CalendarQuickAction,
   DatePickerSharedProps,
@@ -62,10 +64,15 @@ export interface CalendarBodyProps extends CalendarBaseProps {
     signal: boolean;
     onGridFocusRequestHandled: () => void;
   };
+  /**
+   * Region that contains all month grids (e.g. two-month layout). When focus is inside this
+   * subtree, roving tabindex may move DOM focus between grids; omit so only this table counts.
+   */
+  calendarKeyboardSurfaceRef?: RefObject<HTMLElement | null>;
 }
 
 export interface CalendarFooterProps {
-  clear?: {
+  clearButton?: {
     disabled?: boolean;
     onClick?: () => void;
     text?: string;
