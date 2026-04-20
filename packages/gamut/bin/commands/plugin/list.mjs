@@ -1,7 +1,7 @@
 import { stat } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
 
 import { cursorDestPath } from '../../lib/cursor.mjs';
+import { findFigmaConfigDir } from '../../lib/figma.mjs';
 import { getFlag, resolvePluginDir } from '../../lib/resolve-plugin-dir.mjs';
 
 export function help() {
@@ -12,7 +12,8 @@ Usage:
 Show installation status for all supported targets.
 
 Options:
-  --output <path>      [figma] Path where DESIGN.md was installed (default: ./DESIGN.md)
+  --output <path>      [figma] Explicit path to DESIGN.md.
+                       If omitted, walks up from cwd to find figma.config.json.
   --plugin-dir <path>  Override the bundled agent-tools directory
   -h, --help           Show this help message
 
@@ -46,12 +47,27 @@ async function claudeStatus() {
 
 /** @param {string | undefined} outputArg */
 async function figmaStatus(outputArg) {
-  const dest = resolve(outputArg ?? join(process.cwd(), 'DESIGN.md'));
+  let dest;
+  if (outputArg) {
+    dest = outputArg;
+  } else {
+    const dir = await findFigmaConfigDir(process.cwd());
+    dest = dir ? `${dir}/DESIGN.md` : null;
+  }
+
+  if (!dest) {
+    return {
+      target: 'figma',
+      status: '? unknown',
+      notes: 'figma.config.json not found — run from your project root or use --output',
+    };
+  }
+
   const installed = !!(await stat(dest).catch(() => null));
   return {
     target: 'figma',
     status: installed ? '✓ installed' : '✗ not installed',
-    notes: installed ? dest : 'run: gamut plugin install figma',
+    notes: installed ? dest : `run: gamut plugin install figma`,
   };
 }
 

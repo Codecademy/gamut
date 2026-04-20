@@ -1,8 +1,8 @@
 import { rm, stat } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
 
 import { claudePluginSpec, marketplaceName } from '../../lib/claude.mjs';
 import { cursorDestPath } from '../../lib/cursor.mjs';
+import { resolveFigmaOutput } from '../../lib/figma.mjs';
 import { getFlag, resolvePluginDir } from '../../lib/resolve-plugin-dir.mjs';
 import { runCommand } from '../../lib/run-command.mjs';
 import { TARGETS } from './install.mjs';
@@ -19,7 +19,8 @@ Arguments:
                        cursor | claude | figma
 
 Options:
-  --output <path>      [figma] Path to the DESIGN.md that was installed (default: ./DESIGN.md)
+  --output <path>      [figma] Path to the DESIGN.md that was installed.
+                       If omitted, walks up from cwd to find figma.config.json.
   --plugin-dir <path>  Override the bundled agent-tools directory
   -h, --help           Show this help message
 
@@ -76,7 +77,7 @@ async function removeClaude(sourceRoot) {
 
 /** @param {string | undefined} outputArg */
 async function removeFigma(outputArg) {
-  const dest = resolve(outputArg ?? join(process.cwd(), 'DESIGN.md'));
+  const { path: dest } = await resolveFigmaOutput(outputArg);
   const st = await stat(dest).catch(() => null);
 
   if (!st) {

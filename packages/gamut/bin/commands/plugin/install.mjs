@@ -3,6 +3,7 @@ import { join, resolve } from 'node:path';
 
 import { claudePluginSpec, marketplaceName } from '../../lib/claude.mjs';
 import { cursorDestPath } from '../../lib/cursor.mjs';
+import { resolveFigmaOutput } from '../../lib/figma.mjs';
 import { getFlag, resolvePluginDir } from '../../lib/resolve-plugin-dir.mjs';
 import { runCommand } from '../../lib/run-command.mjs';
 
@@ -23,7 +24,8 @@ Arguments:
 Options:
   --scope <scope>      Content to install (default: all)
                        all | skills | rules | commands | agents
-  --output <path>      [figma] Destination for DESIGN.md (default: ./DESIGN.md)
+  --output <path>      [figma] Explicit destination for DESIGN.md.
+                       If omitted, walks up from cwd to find figma.config.json.
   --plugin-dir <path>  Override the bundled agent-tools directory
   -h, --help           Show this help message
 
@@ -31,7 +33,7 @@ Examples:
   gamut plugin install
   gamut plugin install claude
   gamut plugin install figma
-  gamut plugin install figma --output ./docs/DESIGN.md
+  gamut plugin install figma --output /path/to/project/DESIGN.md
   gamut plugin install cursor --scope skills
   gamut plugin install cursor --plugin-dir ./my-agent-tools
 `);
@@ -108,7 +110,11 @@ async function installClaude(sourceRoot) {
  */
 async function installFigma(sourceRoot, outputArg) {
   const src = join(sourceRoot, 'DESIGN.md');
-  const dest = resolve(outputArg ?? join(process.cwd(), 'DESIGN.md'));
+  const { path: dest, discovered } = await resolveFigmaOutput(outputArg);
+
+  if (discovered) {
+    console.log(`Figma: found figma.config.json — installing to ${dest}`);
+  }
 
   await copyFile(src, dest);
   console.log(`Figma: installed DESIGN.md → ${dest}`);
