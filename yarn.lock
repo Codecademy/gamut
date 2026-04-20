@@ -1705,7 +1705,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.2.2, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.2.2, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
@@ -1737,6 +1737,8 @@ __metadata:
     "@emotion/styled": ^11.3.0
     react: ^17.0.2 || ^18.3.0
     react-dom: ^17.0.2 || ^18.3.0
+  bin:
+    gamut: ./bin/gamut.mjs
   languageName: unknown
   linkType: soft
 
@@ -13339,6 +13341,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.24.7"
     "@babel/preset-typescript": "npm:^7.24.7"
     "@codecademy/eslint-config": "npm:8.0.0"
+    "@codecademy/gamut": "workspace:*"
     "@codecademy/prettier-config": "npm:^0.2.0"
     "@codecademy/tsconfig": "npm:^0.3.0"
     "@commander-js/extra-typings": "npm:^14.0.0"

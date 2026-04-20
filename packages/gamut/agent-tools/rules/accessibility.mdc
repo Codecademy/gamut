@@ -1,0 +1,40 @@
+---
+description: Accessibility guardrails for Gamut-based UI. Enforces semantic HTML, accessible names, ARIA discipline, and contrast.
+alwaysApply: true
+globs: ["*.tsx", "*.ts", "*.jsx", "*.js"]
+---
+
+# Gamut Accessibility Rules
+
+## Use Gamut components — don't reimplement what they already solve
+
+Gamut wraps `react-aria-components` and `@react-aria/interactions`. Keyboard navigation, focus management, and ARIA attribute management come for free:
+
+- `<Button>` not `<div onClick>` or `<span role="button">`
+- `<Tabs>` / `<Tab>` / `<TabList>` / `<TabPanel>` — arrow key, Home, End navigation is automatic
+- `<Dialog>` / `<Modal>` — `FocusTrap` handles focus lock and `aria-modal`; Escape is wired
+
+ARIA roles belong on semantic HTML elements. If you find yourself adding `role="button"` to a non-button, reach for `<Button>` instead.
+
+## Every interactive control needs an accessible name
+
+- **`<IconButton>`** — provide `tip`; it becomes the accessible label (no separate `aria-label` needed)
+- **`<InfoTip>`** — provide `ariaLabel` or `ariaLabelledby`; there is no automatic fallback
+- **`<Dialog>` / `<Modal>`** — always set `aria-label` or `aria-labelledby`
+- Icon SVGs alongside visible text — add `aria-hidden="true"` to the icon element
+
+## Form label association
+
+Always match `htmlFor` on `<FormGroupLabel>` with the `id` on the input. `<FormGroup>` auto-wires `aria-live` for its `error` and `description` props — do not add redundant live regions manually.
+
+## Screen-reader-only text
+
+Use `<Text screenreader>` for visually hidden but announced content. `<HiddenText>` is deprecated.
+
+## Color and contrast
+
+Do not hardcode hex values. Gamut's semantic color tokens through `ColorMode` are validated for WCAG AA contrast. Hardcoded values bypass that guarantee and break in dark mode.
+
+## Focus visibility
+
+Never suppress focus indicators with `outline: none` or `outline: 0` without a visible replacement. Gamut's focus styles are intentional and meet WCAG 2.4.7.
