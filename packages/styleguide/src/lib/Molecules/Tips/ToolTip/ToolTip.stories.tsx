@@ -108,7 +108,7 @@ export const Floating: Story = {
 
 export const InteractiveElement: Story = {
   render: () => (
-    <FlexBox center m={32}>
+    <FlexBox center justifyContent="space-around">
       <ToolTip id="stroke-button-ex" info="And here's a tooltip">
         <StrokeButton aria-describedby="stroke-button-ex">
           I&apos;ve got my own text
@@ -121,7 +121,7 @@ export const InteractiveElement: Story = {
         placement="floating"
       >
         <FillButton aria-describedby="floating-ex-lc" icon={StudyBookIcon}>
-          lert center
+          left center
         </FillButton>
       </ToolTip>
       <ToolTip
@@ -156,7 +156,7 @@ export const Disabled: Story = {
 
 export const HorizontalAlignmentsRtl: Story = {
   render: () => (
-    <FlexBox dir="rtl" justifyContent="space-around" m={24} width="95%">
+    <FlexBox justifyContent="space-around" width="90%" dir="rtl">
       <IconButton
         icon={SparkleIcon}
         tip="Leading (left-center)"
@@ -173,7 +173,7 @@ export const HorizontalAlignmentsRtl: Story = {
         tipProps={{ alignment: 'left-center', placement: 'floating' }}
       />
       <IconButton
-        icon={SparkleIcon}
+        icon={DeleteIcon}
         tip="Floating trailing"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />
