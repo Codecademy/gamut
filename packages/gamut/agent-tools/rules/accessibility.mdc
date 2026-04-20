@@ -6,15 +6,19 @@ globs: ["*.tsx", "*.ts", "*.jsx", "*.js"]
 
 # Gamut Accessibility Rules
 
-## Use Gamut components — don't reimplement what they already solve
+## No ARIA is better than bad ARIA
 
-Gamut wraps `react-aria-components` and `@react-aria/interactions`. Keyboard navigation, focus management, and ARIA attribute management come for free:
+Incorrect ARIA actively harms AT users — it is worse than no ARIA at all. Broken semantics, missing keyboard behavior, and misused roles mislead screen reader users about what a control is and how to operate it.
+
+**A Role is a Promise.** Adding `role="button"` to a `<div>` promises that you have also implemented every behavior a native button provides: focusability, Space/Enter activation, and correct event semantics. ARIA roles modify the accessibility tree — they do not add behavior. A `<div role="button">` that only handles `onClick` is broken for keyboard users because `click` events on non-interactive elements are not triggered by Space or Enter.
+
+Gamut components backed by React Aria keep this promise. Reach for them before reaching for ARIA attributes.
+
+## Use Gamut components — don't reimplement what they already solve
 
 - `<Button>` not `<div onClick>` or `<span role="button">`
 - `<Tabs>` / `<Tab>` / `<TabList>` / `<TabPanel>` — arrow key, Home, End navigation is automatic
 - `<Dialog>` / `<Modal>` — `FocusTrap` handles focus lock and `aria-modal`; Escape is wired
-
-ARIA roles belong on semantic HTML elements. If you find yourself adding `role="button"` to a non-button, reach for `<Button>` instead.
 
 ## Every interactive control needs an accessible name
 
