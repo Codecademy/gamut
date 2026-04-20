@@ -1,5 +1,5 @@
 {
-  "name": "gamut-agent-tools",
+  "name": "gamut-design-system",
   "owner": {
     "name": "Codecademy"
   },
@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "codecademy-gamut",
+      "name": "gamut-design-system",
       "source": "./",
       "description": "Gamut design system agent tools: skills and rules for AI-assisted development."
     }
