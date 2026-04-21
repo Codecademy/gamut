@@ -156,7 +156,7 @@ export const Disabled: Story = {
 
 export const HorizontalAlignmentsRtl: Story = {
   render: () => (
-    <FlexBox justifyContent="space-around" width="90%" dir="rtl">
+    <FlexBox justifyContent="space-around" width="80%">
       <IconButton
         icon={SparkleIcon}
         tip="Leading (left-center)"
