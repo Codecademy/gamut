@@ -1,10 +1,14 @@
 ---
-description: Review a project's Gamut design system setup — checks dependencies, GamutProvider wiring, import patterns, and hardcoded hex colors with token suggestions.
+description: Audit an existing project's Gamut design system usage — checks dependencies, GamutProvider wiring, import patterns, hardcoded hex colors, and test setup. Reports findings with references to the relevant Gamut skill for each issue.
 argument-hint: [path]
 allowed-tools: Read Glob Grep
 ---
 
-Review the Gamut setup for the project at **`$ARGUMENTS`** (default: current working directory). Run all four checks below, then print a single consolidated report using the format at the end of this file.
+This is an audit of **existing code** at **`$ARGUMENTS`** (default: current working directory). Your job is to find violations and misuse, not to generate new code.
+
+Use `DESIGN.md` in this plugin as the authoritative reference for Gamut's design intent, token names, and component patterns. When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
+
+Run all five checks below, then print a single consolidated report using the format at the end of this file.
 
 ---
 
@@ -106,6 +110,22 @@ For each match outside token files report: `file:line  'HEX'  →  token` (or `�
 
 ---
 
+## Check 5 — Test setup
+
+Grep test files (`**/__tests__/**/*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.{ts,tsx}`) for these patterns. Skip `node_modules`, `dist`.
+
+| Pattern | Verdict | Reason |
+|---|---|---|
+| `jest.mock\(.*@codecademy/gamut` | **Error** | Manual mocking bypasses theme context and produces false-positive tests; use `setupRtl` or `MockGamutProvider` instead |
+| `jest.mock\(.*@codecademy/gamut-styles` | **Error** | Same issue as above — mocking gamut-styles breaks token resolution |
+| `from '@codecademy/gamut-tests'` | Good — report count of files using it | Correct import for `setupRtl` and `MockGamutProvider` |
+| `from 'component-test-setup'` (without gamut-tests) | **Warning** | Should import `setupRtl` from `@codecademy/gamut-tests`, not directly from `component-test-setup` — the gamut-tests wrapper adds `MockGamutProvider` automatically |
+| `new GamutProvider` or `<GamutProvider` in test files | **Warning** | Tests should use `MockGamutProvider` (sets `useCache={false}`, `useGlobals={false}`), not `GamutProvider` directly |
+
+Skill reference for remediation: `gamut-testing`
+
+---
+
 ## Output format
 
 ```
@@ -119,8 +139,8 @@ Dependencies
 
 Setup
   ✓  GamutProvider   found (src/App.tsx)
-  ⚠  ColorMode       not found — use ColorMode for light/dark theming
-  ⚠  Background      not found — use <Background> for semantic surfaces
+  ⚠  ColorMode       not found — use ColorMode for light/dark theming  [→ gamut-color-mode]
+  ⚠  Background      not found — use <Background> for semantic surfaces  [→ gamut-color-mode]
 
 Import patterns
   ✓  Deep dist imports         none found
@@ -128,14 +148,23 @@ Import patterns
        src/Thing.tsx:7
        src/Other.tsx:12
 
-Hardcoded colors
+Hardcoded colors                                                         [→ gamut-color-mode]
   ⚠  src/Hero.tsx:14  '#1557FF'  →  blue-500
   ⚠  src/Nav.tsx:8   '#BADA55'  →  no Gamut token
+
+Test setup                                                               [→ gamut-testing]
+  ✓  @codecademy/gamut-tests   used in 12 test files
+  ✗  jest.mock(@codecademy/gamut)   2 occurrences — remove and use setupRtl instead
+       src/components/Foo/__tests__/Foo.test.tsx:3
+       src/components/Bar/__tests__/Bar.test.tsx:5
+  ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
+       src/components/Baz/__tests__/Baz.test.tsx:2
 
 ══════════════════════════════════════════════════
 <N> error(s), <N> warning(s) found.   (or "All checks passed." if none)
 ```
 
 Icons: `✓` = pass, `⚠` = warning (recommended, not required), `✗` = error (required).
+`[→ skill-name]` annotations indicate which Gamut skill has remediation guidance for that category.
 
 After printing the report, offer one sentence of prioritized next-step advice based on what was found.
