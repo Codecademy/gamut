@@ -4,7 +4,21 @@ Gamut is the Codecademy / Skillsoft design system. It ships a React component li
 
 **Figma file**: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/📐-Gamut
 **Component library**: 52 components have Figma ↔ code mappings in `packages/code-connect/`.
-**Storybook**: Run `yarn start:storybook` in the repo for interactive docs.
+**Storybook**: https://gamut.codecademy.com
+
+---
+
+## Visual Theme & Atmosphere
+
+Gamut communicates **logic with personality** — structured and trustworthy enough for a learning platform, with creative moments that feel engaging and human. The design voice is: *"we are ruled by logic, but are creative and a bit unexpected as well."*
+
+**Density**: Medium. Information-dense layouts use careful whitespace and strong typographic hierarchy to stay readable. Avoid cramped or overly airy layouts.
+
+**Design philosophy**:
+- Components are color mode–aware by default — never hardcode hex values for adaptive UI
+- Every component works across all themes without modification
+- Mobile-first responsive design built on a 12-column grid
+- Accessibility is guaranteed by design: semantic color tokens meet contrast requirements per mode automatically
 
 ---
 
@@ -207,31 +221,84 @@ All spacing is multiples of 4px, placed on an 8px grid.
 
 | Token | Value | Use |
 |---|---|---|
-| `none` | 0px | Square elements |
+| `none` | 0px | Square / non-interactive elements |
 | `sm` | 2px | Subtle rounding, tags |
-| `md` | 4px | Default buttons, inputs |
+| `md` | 4px | Default buttons, inputs, interactive cards |
 | `lg` | 8px | Cards, panels |
 | `xl` | 16px | Large cards, modals |
 | `full` | 999px | Pills, avatars, circular elements |
 
 ---
 
-## Breakpoints
+## Depth & Elevation
+
+Gamut uses border-based and shadow-based depth cues rather than a rigid z-elevation tier system.
+
+### Shadow tokens
+
+Shadow props accept standard CSS `box-shadow` syntax. Always use `shadow-primary` / `shadow-secondary` color tokens so shadows remain visible in both light and dark modes.
+
+```
+box-shadow: 0 4px 0 <shadow-primary>   → Card "outline" shadow
+box-shadow: 0 0 4px rgba(0,0,0,.15)    → Subtle ambient shadow
+```
+
+### Card shadow variants
+
+| Variant | Effect | Use for |
+|---|---|---|
+| `none` (default) | No shadow | Static / non-interactive cards |
+| `outline` | Solid shadow on bottom + left/right using border color | Standard clickable cards |
+| `patternLeft` | Decorative checker pattern on bottom + left | Stylized content cards |
+| `patternRight` | Decorative checker pattern on bottom + right | Stylized content cards |
+
+Interactive cards (`isInteractive` prop) gain a shadow on hover and `borderRadius: md`. Cards with a pattern drop the pattern on hover.
+
+### Z-index
+
+| Token | Value | Use |
+|---|---|---|
+| `headerZ` | 15 | Global page header |
+
+---
+
+## Responsive Behavior
 
 Mobile-first. Apply styles from the named breakpoint and up.
 
-| Token | Min-width | Typical target |
-|---|---|---|
-| _(base)_ | 0 | Mobile |
-| `xs` | 480px | Large mobile |
-| `sm` | 768px | Tablet |
-| `md` | 1024px | Small desktop |
-| `lg` | 1200px | Desktop |
-| `xl` | 1440px | Large desktop |
+### Breakpoints & screen sizes
+
+| Token | Min-width | Screen dimensions | Max content | Fold height |
+|---|---|---|---|---|
+| _(base)_ | 0 | 320×480 | 288px | 440px |
+| `xs` | 480px | 480×900 | 448px | 440px |
+| `sm` | 768px | 768×1024 | 704px | 680px |
+| `md` | 1024px | 1024×768 | 896px | 680px |
+| `lg` | 1200px | 1200×900 | 1072px | 680px |
+| `xl` | 1440px | 1440×900 | 1248px | 680px |
 
 Container query variants (`c_xs` through `c_xl`) mirror these values but trigger on component container size, not viewport.
 
-**Content widths**: max content width is `1200px` (md) or `1440px` (max).
+### Grid
+
+12-column grid at all breakpoints. The designer specifies how many columns a section spans per breakpoint.
+
+| Usage | Recommended values |
+|---|---|
+| Horizontal margins | 64px (lg+), 48px (md), 32px (sm/xs), 16px (base) |
+| Column gaps (gutters) | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base) |
+| Row gaps | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base) |
+
+### Touch targets
+
+Minimum interactive touch target: **44×44px** on mobile breakpoints.
+
+### Collapsing strategies
+
+- Begin design work at 1440px (XL), then adapt to smaller sizes.
+- Wider multi-column layouts collapse to fewer columns — do not simply stretch or squish.
+- Elements not in an explicit lockup (e.g., catalog cards) should align on one axis (usually left) rather than fill column widths.
+- Avoid dense or small components in the base (mobile) breakpoint.
 
 ---
 
@@ -240,18 +307,45 @@ Container query variants (`c_xs` through `c_xl`) mirror these values but trigger
 Components are organized into three tiers:
 
 ### Atoms — foundational, single-purpose
-Badge, Button, ButtonBase, Card, Checkbox, CodeBlock, ColorMode, Drawer, FlexBox, FormGroup, GridBox, HiddenText, Icon, Input, Label, Loader, Radio, Select, Spinner, Tag, TextArea, Toggle, Tooltip
+
+Badge, Button (FillButton, StrokeButton, CTAButton, TextButton, IconButton), ButtonBase, Card, Checkbox, CodeBlock, ColorMode, Drawer, FlexBox, FormGroup, GridBox, HiddenText, Icon, Input, Label, Loader, Radio, Select, Spinner, Tag, TextArea, Toggle, Tooltip
 
 ### Molecules — composed of atoms, handle a discrete task
-Alert, Anchor, Breadcrumbs, Coachmark, Disclosure, GridForm, Markdown, Menu, Modal, Pagination, Popover, ProgressBar, Table, Tabs, TextButton, Toast, Toaster, Video
+
+Alert, Anchor, Breadcrumbs, Coachmark, Disclosure, GridForm, Markdown, Menu, Modal, Pagination, Popover, ProgressBar, Table, Tabs, Toast, Toaster, Video
 
 ### Organisms — page-level compositions
+
 ContentContainer, GridContainer, Layout, LayoutGrid
 
-### Key color-aware components
+### Key component patterns
+
+#### Buttons
+
+| Variant | Component | Use for |
+|---|---|---|
+| Primary action | `FillButton` | Solid fill, high-emphasis CTA |
+| Secondary action | `StrokeButton` | Outlined, secondary CTA |
+| Marketing CTA | `CTAButton` | High-visibility promotional actions |
+| Tertiary / inline | `TextButton` | Low-emphasis, inline text actions |
+| Icon-only | `IconButton` | Compact actions with icon only |
+
+All button variants support sizes: `small`, `normal` (default), `large`. They accept an `icon` prop (leading or trailing) and a `disabled` prop. Passing `href` renders the button as an `<a>` tag.
+
+**States**: default → hover (`primary-hover` / `secondary-hover`) → active → disabled (`text-disabled` + `background-disabled`).
+
+#### Cards
+
+Cards support:
+- **Background variants**: `default` (ColorMode-responsive), `white`, `yellow`, `beige` (light contexts), `navy`, `hyper` (dark contexts)
+- **Shadow variants**: `none` (default), `outline`, `patternLeft`, `patternRight`
+- **Interaction**: wrap in `<Anchor>` and add `isInteractive` for hover shadow + `borderRadius: md`
+- **Border radius**: defaults to `none` (non-interactive); override with the `borderRadius` prop as needed
+
+#### Color-aware components
 
 - **`<ColorMode mode="light|dark|system">`** — wraps a subtree in an explicit color mode.
-- **`<Background bg="<color>">`** — applies a background color and automatically switches the color mode inside to maintain accessible contrast. Use this instead of raw `bg` for any content-bearing surface.
+- **`<Background bg="<color>">`** — applies a background color and automatically switches the color mode inside to maintain accessible contrast. Prefer this over setting a raw `bg` prop on any content-bearing surface.
 
 ---
 
@@ -261,6 +355,75 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 |---|---|---|
 | `headerHeight` | 4rem (64px) base, 5rem (80px) at `md`+ | Global page header height |
 | `headerZ` | 15 | Z-index for global page headers |
+
+---
+
+## Do's and Don'ts
+
+### Colors
+
+- **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) for any UI that must adapt to color mode or theme.
+- **Do** use `<Background bg="...">` when setting a section background — it adjusts the inner color mode for contrast automatically.
+- **Don't** hardcode hex values for anything adaptive.
+- **Don't** use navy or white semi-transparent swatches where they may overlap unpredictably.
+- **Don't** use Aperçu Pro on non-Codecademy products.
+
+### Typography
+
+- **Do** use `title` weight (700) for headlines, CTAs, and buttons.
+- **Do** keep body text at 150–175% line height for readability.
+- **Do** use Suisse sparingly — as an accent for code, captions, and lists only.
+- **Don't** use Aperçu Bold to emphasize text *within* a Regular paragraph — use Italic instead.
+- **Don't** adjust letter-spacing.
+- **Don't** right-align text in normal circumstances.
+- **Don't** center-align body paragraphs with long line lengths.
+
+### Layout & Spacing
+
+- **Do** use multiples of 8px for block-element spacing (4px only for inline / typographic relationships).
+- **Do** begin design work at 1440px (XL), then adapt down to each breakpoint.
+- **Do** align elements to the 12-column grid.
+- **Don't** stretch elements to fill wider space — maintain proper line lengths and component widths.
+
+### Components
+
+- **Do** use `FillButton` for primary actions and `StrokeButton` for secondary actions.
+- **Do** add `isInteractive` to any `Card` that is wrapped in an `<Anchor>`.
+- **Don't** use `CTAButton` for standard UI actions — reserve it for marketing/high-visibility promotions.
+- **Don't** use `<Background>` without an actual color value — it's not a neutral wrapper.
+
+---
+
+## Agent Prompt Guide
+
+Quick color/token reference for generating or specifying UI:
+
+| Scenario | Tokens |
+|---|---|
+| Primary button (light) | `bg: primary (#3A10E5)`, `color: white`, `hover: primary-hover (#5533FF)` |
+| Primary button (dark) | `bg: primary (#FFD300)`, `color: navy-800`, `hover: primary-hover (#CCA900)` |
+| Body text | `color: text`, `font: base (Aperçu Pro)`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)` |
+| Headline | `color: text-accent`, `font: base`, `size: 34–64px`, `weight: title (700)`, `lineHeight: title (1.2)` |
+| Caption / label | `color: text-secondary`, `font: accent (Suisse Int'l Mono)`, `size: 14px` |
+| Card default | `bg: background`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md` |
+| Error state | `color: feedback-error`, `bg: background-error`, `border: danger` |
+| Success state | `color: feedback-success`, `bg: background-success` |
+| Disabled state | `color: text-disabled`, `bg: background-disabled`, `border: border-disabled` |
+
+### Component token cheatsheet
+
+```
+FillButton      → bg: primary,      color: white,        hover: primary-hover
+StrokeButton    → bg: transparent,  border: secondary,   hover: secondary-hover
+CTAButton       → high-visibility; use primary-inverse on colored surfaces
+Card (light)    → variant: "default" | "white" | "yellow" | "beige"
+Card (dark)     → variant: "navy" | "hyper"
+Alert (error)   → uses feedback-error + background-error
+Alert (success) → uses feedback-success + background-success
+Alert (warning) → uses feedback-warning + background-warning
+ColorMode       → <ColorMode mode="light|dark|system">
+Background      → <Background bg="hyper"> — auto-flips color mode for contrast
+```
 
 ---
 
