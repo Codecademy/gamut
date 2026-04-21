@@ -121,7 +121,7 @@ export const InteractiveElement: Story = {
         placement="floating"
       >
         <FillButton aria-describedby="floating-ex-lc" icon={StudyBookIcon}>
-          left center
+          Left center
         </FillButton>
       </ToolTip>
       <ToolTip
@@ -131,7 +131,7 @@ export const InteractiveElement: Story = {
         placement="floating"
       >
         <FillButton aria-describedby="floating-ex-rc" icon={StudyBookIcon}>
-          right center
+          Right center
         </FillButton>
       </ToolTip>
     </FlexBox>
@@ -156,7 +156,7 @@ export const Disabled: Story = {
 
 export const HorizontalAlignmentsRtl: Story = {
   render: () => (
-    <FlexBox justifyContent="space-around" width="80%">
+    <FlexBox justifyContent="space-around" width="95%">
       <IconButton
         icon={SparkleIcon}
         tip="Leading (left-center)"
