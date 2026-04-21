@@ -50,11 +50,13 @@ jobs:
 
       - name: Publish alpha packages
         id: publish-alpha
-        run: npx nx run gamut-release:alpha --preid="alpha.${PR_NUMBER}" --manifest
+        run: |
+          SHORT_SHA=${GITHUB_SHA:0:6}
+          PREID="alpha.${SHORT_SHA}"
+          npx nx run gamut-release:alpha --preid="${PREID}" --manifest
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
-          PR_NUMBER: ${{ github.event.number }}
 
       - name: List alpha packages versions
         id: published
