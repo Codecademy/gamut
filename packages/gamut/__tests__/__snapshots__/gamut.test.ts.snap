@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Gamut Exported Keys 1`] = `
 [
@@ -14,12 +14,6 @@ exports[`Gamut Exported Keys 1`] = `
   "BodyPortal",
   "Box",
   "Breadcrumbs",
-  "CalendarBody",
-  "CalendarFooter",
-  "CalendarHeader",
-  "CalendarNavLastMonth",
-  "CalendarNavNextMonth",
-  "CalendarWrapper",
   "Card",
   "Checkbox",
   "Coachmark",
@@ -41,7 +35,6 @@ exports[`Gamut Exported Keys 1`] = `
   "DataTable",
   "DatePicker",
   "DatePickerCalendar",
-  "DatePickerContext",
   "DatePickerInput",
   "DatePickerProvider",
   "DelayedRenderWrapper",
@@ -80,6 +73,7 @@ exports[`Gamut Exported Keys 1`] = `
   "ListCol",
   "ListRow",
   "Markdown",
+  "matchDisabledDates",
   "Menu",
   "MenuItem",
   "MenuSeparator",
