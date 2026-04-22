@@ -159,22 +159,22 @@ export const HorizontalAlignmentsRtl: Story = {
     <FlexBox justifyContent="space-around" width="95%">
       <IconButton
         icon={SparkleIcon}
-        tip="Inline Leading/Left-center"
+        tip="Inline (Leading)"
         tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
         icon={SparkleIcon}
-        tip="Inline Trailing/Right-center"
+        tip="Inline (Trailing)"
         tipProps={{ alignment: 'right-center' }}
       />
       <IconButton
         icon={SparkleIcon}
-        tip="Floating Leading/Left-center"
+        tip="Floating (Leading)"
         tipProps={{ alignment: 'left-center', placement: 'floating' }}
       />
       <IconButton
         icon={DeleteIcon}
-        tip="Floating Trailing/Right-center"
+        tip="Floating (Trailing)"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />
     </FlexBox>
