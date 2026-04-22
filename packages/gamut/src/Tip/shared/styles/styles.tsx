@@ -61,6 +61,18 @@ export const horizontalCenterBeakRtlPopover = (side: SideCenterBeakSide) => ({
   },
 });
 
+/**
+ * Inline ToolTip / InfoTip: RTL beak rotation on the container that owns `::after`
+ * (avoids invalid `::after:dir(rtl)` when the same beak object is merged under `&::after`).
+ */
+export const horizontalCenterBeakRtlInline = (side: SideCenterBeakSide) => ({
+  '&:dir(rtl)': {
+    '&::after': {
+      transform: sideCenterMirroredTransform(side),
+    },
+  },
+});
+
 type GetBeakBackgroundType = {
   alignment: keyof typeof beakBackgroundRotation;
   color: typeof tooltipBgColor | typeof popoverPrimaryBgColor;
@@ -148,6 +160,7 @@ export const bottomStylesAfter = {
 export const rightAlignStyles = {
   paddingInlineStart: containerOffsetVertical,
   insetInlineStart: '100%',
+  ...horizontalCenterBeakRtlInline('right'),
 };
 
 export const horizontalCenterStyles = {
@@ -163,6 +176,7 @@ export const horizontalCenterStyles = {
 export const leftAlignStyles = {
   paddingInlineEnd: containerOffsetVertical,
   insetInlineEnd: '100%',
+  ...horizontalCenterBeakRtlInline('left'),
 };
 
 export const verticalCenterStyles = {
