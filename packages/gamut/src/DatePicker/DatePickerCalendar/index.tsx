@@ -51,11 +51,14 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 }) => {
   const context = useDatePicker();
   const generatedId = useId();
-  const fallbackDialogId = `datepicker-calendar-${generatedId.replace(
+  const headingLeftId = `datepicker-calendar-left-month-heading-${generatedId.replace(
     /:/g,
     ''
   )}`;
-  const headingId = dialogId ?? context?.calendarDialogId ?? fallbackDialogId;
+  const headingRightId = `datepicker-calendar-right-month-heading-${generatedId.replace(
+    /:/g,
+    ''
+  )}`;
 
   if (context === null) {
     throw new Error(
@@ -254,12 +257,12 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   ]);
 
   return (
-    <CalendarWrapper>
+    <CalendarWrapper aria-labelledby={dialogId}>
       <FlexBox p={24} pb={16} ref={calendarKeyboardSurfaceRef}>
         <Box>
           <CalendarHeader
             displayDate={displayDate}
-            headingId={headingId}
+            headingId={headingLeftId}
             hideNextNav={isTwoMonthsVisible}
             interceptTabToGrid={pauseGridRoving}
             locale={locale}
@@ -273,7 +276,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             focusGridSync={focusGridSync}
             focusedDate={focusTarget}
             hasAdjacentMonthRight={isTwoMonthsVisible}
-            labelledById={headingId}
+            labelledById={headingLeftId}
             locale={locale}
             pauseGridRoving={pauseGridRoving}
             selectedDate={selectedDate}
@@ -288,7 +291,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         <Box display={{ _: 'none', xs: 'initial' }} pl={{ _: 0, xs: 32 }}>
           <CalendarHeader
             displayDate={secondMonthDate}
-            headingId={headingId}
+            headingId={headingRightId}
             hideLastNav
             interceptTabToGrid={pauseGridRoving}
             locale={locale}
@@ -304,7 +307,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             focusGridSync={focusGridSync}
             focusedDate={focusTarget}
             hasAdjacentMonthLeft={isTwoMonthsVisible}
-            labelledById={headingId}
+            labelledById={headingRightId}
             locale={locale}
             pauseGridRoving={pauseGridRoving}
             selectedDate={selectedDate}

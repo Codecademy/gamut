@@ -82,7 +82,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       closeCalendar,
       locale: resolvedLocale,
       shouldDisableDate,
-      calendarDialogId,
       translations,
       quickActions: quickActions === null ? [] : resolvedQuickActions,
     };
@@ -118,7 +117,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     clearGridFocusRequest,
     closeCalendar,
     shouldDisableDate,
-    calendarDialogId,
     props,
     activeRangePart,
   ]);

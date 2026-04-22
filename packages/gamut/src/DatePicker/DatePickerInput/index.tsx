@@ -78,8 +78,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       const layout = getDateFormatLayout(locale);
       return { layout, fieldOrder: getDateFieldOrder(layout) };
     }, [locale]);
-    const firstField = fieldOrder[0];
-    const firstFieldId = `${inputId}-${firstField}`;
 
     const defaultLabel = !isRange
       ? translations.dateLabel
@@ -236,7 +234,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     return (
       <FormGroup
-        htmlFor={firstFieldId}
+        htmlFor={inputId}
         isSoloField
         label={label ?? defaultLabel}
         mb={0}
@@ -245,6 +243,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         width="fit-content"
       >
         <SegmentedShell
+          id={inputId}
           inputSize={size}
           ref={shellRef}
           role="group"

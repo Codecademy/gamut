@@ -155,8 +155,7 @@ export const ComposedWithContext: Story = {
 };
 
 function ComposedDatePickerLayout() {
-  const { isCalendarOpen, openCalendar, closeCalendar, calendarDialogId } =
-    useDatePicker();
+  const { isCalendarOpen, openCalendar, closeCalendar } = useDatePicker();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
@@ -179,8 +178,8 @@ function ComposedDatePickerLayout() {
         targetRef={inputRef}
         onRequestClose={closeCalendar}
       >
-        <div aria-label="Choose date" id={calendarDialogId} role="dialog">
-          <DatePickerCalendar dialogId={calendarDialogId} />
+        <div aria-label="Choose date" id="calendar-dialog" role="dialog">
+          <DatePickerCalendar dialogId="calendar-dialog" />
         </div>
       </PopoverContainer>
     </>

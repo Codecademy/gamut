@@ -25,7 +25,6 @@ interface DatePickerBaseContextValue<Mode extends 'single' | 'range'>
   /** Clears `gridFocusRequested` after focus has moved into the grid (or call when closing). */
   clearGridFocusRequest: () => void;
   closeCalendar: () => void;
-  calendarDialogId: string;
   /** UI string overrides (e.g. clear button). */
   translations: Required<DatePickerTranslations>;
   /** Calendar footer quick actions (max 3 shown). */
