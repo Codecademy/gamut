@@ -190,7 +190,7 @@ export const getMemoizedStyles = (
       borderStartEndRadius: 0,
       borderStartStartRadius: theme.borderRadii.md,
       color: theme.colors.background,
-      fontSize: `${tagLabelFontSize}px`,
+      fontSize: tagLabelFontSize,
       height: '100%',
       padding: `0 ${tagLabelPadding}px`,
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
