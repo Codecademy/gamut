@@ -17,6 +17,8 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   hideNextNav,
   onLastMonthClick,
   onNextMonthClick,
+  interceptTabToGrid,
+  onTabIntoGrid,
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
 
@@ -25,9 +27,11 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       {!hideLastNav && (
         <CalendarNavLastMonth
           displayDate={displayDate}
+          interceptTabToGrid={interceptTabToGrid}
           locale={locale}
           onDisplayDateChange={onDisplayDateChange}
           onLastMonthClick={onLastMonthClick}
+          onTabIntoGrid={onTabIntoGrid}
         />
       )}
       <FlexBox justifyContent="center" width="100%">
@@ -44,9 +48,11 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       {!hideNextNav && (
         <CalendarNavNextMonth
           displayDate={displayDate}
+          interceptTabToGrid={interceptTabToGrid}
           locale={locale}
           onDisplayDateChange={onDisplayDateChange}
           onNextMonthClick={onNextMonthClick}
+          onTabIntoGrid={onTabIntoGrid}
         />
       )}
     </FlexBox>

@@ -10,13 +10,15 @@ export const CalendarNavNextMonth: React.FC<CalendarNavProps> = ({
   displayDate,
   onDisplayDateChange,
   onNextMonthClick,
+  onTabIntoGrid,
+  interceptTabToGrid,
   locale,
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
   const { nextMonth } = getRelativeMonthLabels(resolvedLocale);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleNextMonth = () => {
+  const handleClick = (e: React.MouseEvent) => {
     const nextMonth = new Date(
       displayDate.getFullYear(),
       displayDate.getMonth() + 1,
@@ -24,18 +26,29 @@ export const CalendarNavNextMonth: React.FC<CalendarNavProps> = ({
     );
     onDisplayDateChange?.(nextMonth);
     onNextMonthClick?.();
-    buttonRef.current?.blur();
+    if (e.detail > 0) {
+      buttonRef.current?.blur();
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Tab' && !e.shiftKey && interceptTabToGrid && onTabIntoGrid) {
+      e.preventDefault();
+      onTabIntoGrid();
+    }
   };
 
   return (
     <IconButton
       alignSelf="flex-end"
       aria-label={nextMonth}
+      data-calendar-month-nav
       icon={MiniChevronRightIcon}
       ref={buttonRef}
       size="small"
       tip={nextMonth}
-      onClick={handleNextMonth}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
     />
   );
 };

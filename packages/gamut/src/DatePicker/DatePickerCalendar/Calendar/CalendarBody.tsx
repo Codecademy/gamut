@@ -32,6 +32,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   hasAdjacentMonthLeft,
   focusGridSync,
   calendarKeyboardSurfaceRef,
+  pauseGridRoving,
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
   const firstWeekday = useIsoFirstWeekday(resolvedLocale, weekStartsOn);
@@ -83,6 +84,13 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     const focusInSharedSurface =
       calendarKeyboardSurfaceRef?.current?.contains(activeEl) ?? false;
     const requested = focusGridSync.gridFocusRequested;
+    const focusOnNavChevron =
+      activeEl instanceof Element &&
+      activeEl.closest('[data-calendar-month-nav]') != null;
+
+    if (!requested && (pauseGridRoving || focusOnNavChevron)) {
+      return;
+    }
 
     // Month navigation unmounts the active cell; focus often lands on <body>, the dialog shell,
     // or another non-grid node — not inside calendarKeyboardSurfaceRef, so we must still sync.
@@ -133,6 +141,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     /** Re-run when the month grid remounts so we can re-attach roving focus after displayDate changes. */
     year,
     month,
+    pauseGridRoving,
   ]);
 
   const onKeyDown = useCallback(
@@ -210,6 +219,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
               const today = isToday(date);
               const isFocused =
                 focusTarget !== null && isSameDay(date, focusTarget);
+              const rovingTabIndex = pauseGridRoving ? -1 : isFocused ? 0 : -1;
 
               return (
                 <DateCell
@@ -229,7 +239,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   key={date.getTime()}
                   ref={(el) => setButtonRef(date, el as HTMLElement | null)}
                   role="gridcell"
-                  tabIndex={isFocused ? 0 : -1}
+                  tabIndex={rovingTabIndex}
                   onClick={() => {
                     if (!disabled) onDateSelect(date);
                   }}

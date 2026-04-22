@@ -95,7 +95,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
             ...prev,
             [field]: spinSegment({ field, segments: prev, delta: 1 }),
           };
-          applySegments(next);
+          queueMicrotask(() => {
+            applySegments(next);
+          });
           return next;
         });
         return;
@@ -108,7 +110,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
             ...prev,
             [field]: spinSegment({ field, segments: prev, delta: -1 }),
           };
-          applySegments(next);
+          queueMicrotask(() => {
+            applySegments(next);
+          });
           return next;
         });
         return;
@@ -122,7 +126,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
               ...prev,
               [field]: prev[field].slice(0, -1),
             };
-            applySegments(next);
+            queueMicrotask(() => {
+              applySegments(next);
+            });
             return next;
           }
           if (prevField) {
@@ -146,7 +152,9 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
               digit: e.key,
             }),
           };
-          applySegments(next);
+          queueMicrotask(() => {
+            applySegments(next);
+          });
           const maxLen = segmentMaxLength(field);
           if (next[field].length >= maxLen && nextField) {
             queueMicrotask(() => onSiblingFocus(nextField));

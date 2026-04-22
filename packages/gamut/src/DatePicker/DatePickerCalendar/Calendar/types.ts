@@ -19,6 +19,16 @@ export interface CalendarNavProps
   onLastMonthClick?: () => void;
   /** Called after navigating to next month */
   onNextMonthClick?: () => void;
+  /**
+   * When true, Tab (forward) on a chevron runs `onTabIntoGrid` instead of the default order.
+   * Set when the user just changed the month and the grid is still "paused" until they enter it.
+   */
+  interceptTabToGrid?: boolean;
+  /**
+   * When `interceptTabToGrid` is set: move focus into the day grid with an appropriate roving date.
+   * Omit in standalone calendar stories.
+   */
+  onTabIntoGrid?: () => void;
 }
 
 export interface CalendarHeaderProps extends CalendarNavProps {
@@ -69,6 +79,11 @@ export interface CalendarBodyProps extends CalendarBaseProps {
    * subtree, roving tabindex may move DOM focus between grids; omit so only this table counts.
    */
   calendarKeyboardSurfaceRef?: RefObject<HTMLElement | null>;
+  /**
+   * After a header month change: all day cells stay tabIndex -1 until the user moves into the grid
+   * (Tab on a chevron, etc.).
+   */
+  pauseGridRoving?: boolean;
 }
 
 export interface CalendarFooterProps {

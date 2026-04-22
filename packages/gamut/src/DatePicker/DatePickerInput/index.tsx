@@ -13,6 +13,8 @@ import {
 import { FlexBox } from '../../Box';
 import { FormGroup } from '../../Form/elements/FormGroup';
 import type { InputWrapperProps } from '../../Form/inputs/Input';
+import { isSameDay } from '../DatePickerCalendar/Calendar/utils/dateGrid';
+import { handleDateSelectRange } from '../DatePickerCalendar/utils/dateSelect';
 import { useDatePicker } from '../DatePickerContext';
 import { SegmentedShell } from './elements';
 import { DatePickerInputSegment } from './Segment';
@@ -62,6 +64,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       locale,
       isCalendarOpen,
       translations,
+      shouldDisableDate,
     } = context;
 
     const isRange = mode === 'range';
@@ -138,11 +141,17 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           context.onSelection(parsed);
         }
         if (isRange && rangePart) {
-          if (rangePart === 'start') context.onRangeSelection(parsed, endDate);
-          else context.onRangeSelection(date, parsed);
+          handleDateSelectRange({
+            date: parsed,
+            activeRangePart: rangePart,
+            startDate: date,
+            endDate,
+            onRangeSelection: context.onRangeSelection,
+            shouldDisableDate,
+          });
         }
       },
-      [isRange, rangePart, context, endDate, date]
+      [isRange, rangePart, context, endDate, date, shouldDisableDate]
     );
 
     const clearSelection = useCallback(() => {
@@ -172,17 +181,31 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           const normalized = normalizeSegmentValues(prev);
           const parsed = parseSegmentsToDate(normalized);
           if (parsed) {
-            commitParsedDate(parsed);
+            const sameAsBound = isSameDay(parsed, boundDate);
+            if (isCalendarOpen && !sameAsBound) {
+              queueMicrotask(() => {
+                commitParsedDate(parsed);
+              });
+            }
             return normalized;
           }
           if (!normalized.month && !normalized.day && !normalized.year) {
-            clearSelection();
+            queueMicrotask(() => {
+              clearSelection();
+            });
             return getDateSegmentsFromDate(null);
           }
           return segmentsFromBound;
         });
       },
-      [containerRef, segmentsFromBound, clearSelection, commitParsedDate]
+      [
+        containerRef,
+        boundDate,
+        segmentsFromBound,
+        clearSelection,
+        commitParsedDate,
+        isCalendarOpen,
+      ]
     );
 
     const setActiveRangePartForField = useCallback(() => {
