@@ -181,14 +181,15 @@ export const getMemoizedStyles = (
       cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       color: theme.colors.background,
       backgroundColor: 'transparent',
-      borderRadius: theme.borderRadii.md,
     }),
     multiValueLabel: (provided) => ({
       ...provided,
       color: theme.colors.background,
       backgroundColor: theme.colors['text-secondary'],
-      borderRadius: `${theme.borderRadii.md} 0 0 ${theme.borderRadii.md}`,
-      fontSize: `${tagLabelFontSize}px`,
+      borderStartEndRadius: 0,
+      borderEndEndRadius: 0,
+      borderStartStartRadius: theme.borderRadii.md,
+      borderEndStartRadius: theme.borderRadii.md,
       height: '100%',
       padding: `0 ${tagLabelPadding}px`,
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
@@ -200,7 +201,10 @@ export const getMemoizedStyles = (
       cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       pointerEvents: state.isDisabled ? 'none' : 'visible',
       backgroundColor: theme.colors['text-secondary'],
-      borderRadius: `0 ${theme.borderRadii.md} ${theme.borderRadii.md} 0`,
+      borderStartEndRadius: theme.borderRadii.md,
+      borderEndEndRadius: theme.borderRadii.md,
+      borderStartStartRadius: 0,
+      borderEndStartRadius: 0,
       padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
         backgroundColor: theme.colors['secondary-hover'],
