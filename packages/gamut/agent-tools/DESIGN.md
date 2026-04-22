@@ -1,3 +1,141 @@
+---
+version: alpha
+name: Gamut Design System
+description: Codecademy / Skillsoft design system — React component library, design tokens, and Figma components
+colors:
+  text: "#10162F"
+  text-accent: "#0A0D1C"
+  background: "#ffffff"
+  background-primary: "#FFF0E5"
+  background-success: "#F5FFE3"
+  background-warning: "#FFFAE5"
+  background-error: "#FBF1F0"
+  primary: "#3A10E5"
+  primary-hover: "#5533FF"
+  primary-inverse: "#FFD300"
+  secondary: "#10162F"
+  interface: "#3A10E5"
+  interface-hover: "#5533FF"
+  danger: "#E91C11"
+  danger-hover: "#BE1809"
+  feedback-error: "#BE1809"
+  feedback-success: "#008A27"
+  feedback-warning: "#FFD300"
+  beige: "#FFF0E5"
+  white: "#ffffff"
+typography:
+  base:
+    fontFamily: '"Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+    fontSize: "1rem"
+    fontWeight: "400"
+    lineHeight: "1.5"
+  accent:
+    fontFamily: '"Suisse", "Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+    fontSize: "0.875rem"
+    fontWeight: "400"
+    lineHeight: "1.5"
+  title:
+    fontFamily: '"Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+    fontSize: "2.125rem"
+    fontWeight: "700"
+    lineHeight: "1.2"
+  hankenGrotesk:
+    fontFamily: '"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+  monospace:
+    fontFamily: 'Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace'
+rounded:
+  none: "0px"
+  sm: "2px"
+  md: "4px"
+  lg: "8px"
+  xl: "16px"
+  full: "999px"
+spacing:
+  "0": "0"
+  "4": "0.25rem"
+  "8": "0.5rem"
+  "12": "0.75rem"
+  "16": "1rem"
+  "24": "1.5rem"
+  "32": "2rem"
+  "40": "2.5rem"
+  "48": "3rem"
+  "64": "4rem"
+  "96": "6rem"
+components:
+  FillButton:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.md}"
+  FillButton-hover:
+    backgroundColor: "{colors.primary-hover}"
+    textColor: "{colors.white}"
+  FillButton-danger:
+    backgroundColor: "{colors.danger}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.md}"
+  FillButton-danger-hover:
+    backgroundColor: "{colors.danger-hover}"
+    textColor: "{colors.white}"
+  StrokeButton:
+    backgroundColor: "transparent"
+    textColor: "{colors.secondary}"
+    rounded: "{rounded.md}"
+  CTAButton:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.md}"
+  CTAButton-inverse:
+    backgroundColor: "{colors.primary-inverse}"
+    textColor: "{colors.secondary}"
+    rounded: "{rounded.md}"
+  TextButton:
+    backgroundColor: "transparent"
+    textColor: "{colors.primary}"
+  TextButton-hover:
+    textColor: "{colors.primary-hover}"
+  Card:
+    backgroundColor: "{colors.background}"
+    rounded: "{rounded.none}"
+  Card-interactive:
+    rounded: "{rounded.md}"
+  Card-elevated:
+    backgroundColor: "{colors.background-primary}"
+    rounded: "{rounded.lg}"
+  Card-beige:
+    backgroundColor: "{colors.beige}"
+    rounded: "{rounded.lg}"
+  Input:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.md}"
+  Checkbox:
+    backgroundColor: "{colors.interface}"
+    rounded: "{rounded.sm}"
+  Checkbox-hover:
+    backgroundColor: "{colors.interface-hover}"
+  Headline:
+    textColor: "{colors.text-accent}"
+    typography: "{typography.title}"
+  Tag-success:
+    backgroundColor: "{colors.feedback-success}"
+    textColor: "{colors.white}"
+    rounded: "{rounded.sm}"
+  Tag-warning:
+    backgroundColor: "{colors.feedback-warning}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.sm}"
+  Alert-error:
+    backgroundColor: "{colors.background-error}"
+    textColor: "{colors.feedback-error}"
+  Alert-success:
+    backgroundColor: "{colors.background-success}"
+    textColor: "{colors.text}"
+  Alert-warning:
+    backgroundColor: "{colors.background-warning}"
+    textColor: "{colors.text}"
+---
+
 # Gamut Design System
 
 Gamut is the Codecademy / Skillsoft design system. It ships a React component library (`@codecademy/gamut`), design tokens (`@codecademy/gamut-styles`), and Figma components with live code previews via Figma Code Connect.
@@ -26,15 +164,17 @@ Gamut communicates **logic with personality** — structured and trustworthy eno
 
 Five themes are available. All extend the Core theme. Components work across all themes without modification — token aliases resolve to the right values per theme.
 
-| Theme | Use case | Dark mode |
-|---|---|---|
-| **Core** | Codecademy (default) | ✓ light + dark |
-| **Admin** | Codecademy admin tools | ✓ light + dark |
-| **Platform** | Codecademy learning environment | ✓ light + dark |
-| **LX Studio** | LX Studio application | light only |
-| **Percipio** | Skillsoft Percipio platform | light only |
+| Theme | Use case | Base font | Dark mode |
+|---|---|---|---|
+| **Core** | Codecademy (default) | Apercu | ✓ light + dark |
+| **Admin** | Codecademy admin tools | Apercu | ✓ light + dark |
+| **Platform** | Codecademy learning environment | Apercu | ✓ light + dark |
+| **LX Studio** | LX Studio application | Hanken Grotesk | light only |
+| **Percipio** | Skillsoft Percipio platform | Roboto | light only |
 
 The active theme is set at the app root via `<GamutProvider>`. When designing, know which theme your screen targets — it affects primary colors, font families, and available color weights.
+
+**Font licensing**: Apercu is licensed for codecademy.com only. Non-Codecademy products must use Hanken Grotesk (LX Studio) or their own approved typeface (Percipio uses Roboto).
 
 ---
 
@@ -142,23 +282,24 @@ All colors available as static tokens regardless of color mode. Use these only w
 
 ### Typefaces
 
-| Token | Font | Use for |
-|---|---|---|
-| `base` | Aperçu Pro (fallback: system sans-serif) | All default UI text, headlines, body copy |
-| `accent` | Suisse Int'l Mono (fallback: system sans-serif) | Code, captions, labels, lists, technical context |
-| `monospace` | Monaco / Menlo | Code editor contexts |
-| `system` | System UI fonts | Performance-critical surfaces |
+| Token | Codecademy font | Non-Codecademy default | Use for |
+|---|---|---|---|
+| `base` | Apercu Pro (CSS: `Apercu`) | Hanken Grotesk | All default UI text, headlines, body copy |
+| `accent` | Suisse Intl Mono (CSS: `Suisse`); falls back to `Apercu` | Hanken Grotesk | Code, captions, labels, lists, technical context |
+| `hankenGrotesk` | — | Hanken Grotesk | Named token for non-Codecademy base font |
+| `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Code editor contexts |
+| `system` | System UI fonts | System UI fonts | Performance-critical surfaces |
 
-**Percipio theme overrides all families to Roboto.**
-**LX Studio theme uses Hanken Grotesk for `base`.**
+**Apercu is licensed for codecademy.com only.** Non-Codecademy products use `hankenGrotesk` (`fontFamily.hankenGrotesk` in source) for both `base` and `accent`.
+**Percipio overrides all families to Roboto.**
 
 ### Rules
 
-- **Aperçu Family** can only be used for codecademy.com. Don't use for any other product.
-- **Aperçu Bold** for headlines, sub-headlines, CTAs, and buttons.
-- **Aperçu Regular** for body text, UI labels, and menu items.
-- **Aperçu Italic** to emphasize text within a Regular paragraph — not Bold.
-- **Suisse** sparingly: code snippets, enumerated items, quotations, captions. Reads 10–15% large for its point size — size down relative to Aperçu (14px Suisse ≈ 16px Aperçu visually).
+- **Apercu Family** is licensed for codecademy.com only. For all other products use Hanken Grotesk (`fontFamily.hankenGrotesk`).
+- **Apercu Bold** for headlines, sub-headlines, CTAs, and buttons.
+- **Apercu Regular** for body text, UI labels, and menu items.
+- **Apercu Italic** to emphasize text within a Regular paragraph — not Bold.
+- **Suisse** sparingly: code snippets, enumerated items, quotations, captions. Reads 10–15% large for its point size — size down relative to Apercu (14px Suisse ≈ 16px Apercu visually). Suisse is also Codecademy-only; non-Codecademy products use Hanken Grotesk for `accent` as well.
 - Text is **left-aligned** by default. Center-align only for short marketing headlines. Never right-align.
 - Do not adjust letter-spacing.
 
@@ -217,19 +358,6 @@ All spacing is multiples of 4px, placed on an 8px grid.
 
 ---
 
-## Border Radius Scale
-
-| Token | Value | Use |
-|---|---|---|
-| `none` | 0px | Square / non-interactive elements |
-| `sm` | 2px | Subtle rounding, tags |
-| `md` | 4px | Default buttons, inputs, interactive cards |
-| `lg` | 8px | Cards, panels |
-| `xl` | 16px | Large cards, modals |
-| `full` | 999px | Pills, avatars, circular elements |
-
----
-
 ## Depth & Elevation
 
 Gamut uses border-based and shadow-based depth cues rather than a rigid z-elevation tier system.
@@ -259,6 +387,19 @@ Interactive cards (`isInteractive` prop) gain a shadow on hover and `borderRadiu
 | Token | Value | Use |
 |---|---|---|
 | `headerZ` | 15 | Global page header |
+
+---
+
+## Border Radius Scale
+
+| Token | Value | Use |
+|---|---|---|
+| `none` | 0px | Square / non-interactive elements |
+| `sm` | 2px | Subtle rounding, tags |
+| `md` | 4px | Default buttons, inputs, interactive cards |
+| `lg` | 8px | Cards, panels |
+| `xl` | 16px | Large cards, modals |
+| `full` | 999px | Pills, avatars, circular elements |
 
 ---
 
@@ -366,14 +507,14 @@ Cards support:
 - **Do** use `<Background bg="...">` when setting a section background — it adjusts the inner color mode for contrast automatically.
 - **Don't** hardcode hex values for anything adaptive.
 - **Don't** use navy or white semi-transparent swatches where they may overlap unpredictably.
-- **Don't** use Aperçu Pro on non-Codecademy products.
+- **Don't** use Apercu Pro on non-Codecademy products.
 
 ### Typography
 
 - **Do** use `title` weight (700) for headlines, CTAs, and buttons.
 - **Do** keep body text at 150–175% line height for readability.
 - **Do** use Suisse sparingly — as an accent for code, captions, and lists only.
-- **Don't** use Aperçu Bold to emphasize text *within* a Regular paragraph — use Italic instead.
+- **Don't** use Apercu Bold to emphasize text *within* a Regular paragraph — use Italic instead.
 - **Don't** adjust letter-spacing.
 - **Don't** right-align text in normal circumstances.
 - **Don't** center-align body paragraphs with long line lengths.
@@ -402,7 +543,7 @@ Quick color/token reference for generating or specifying UI:
 |---|---|
 | Primary button (light) | `bg: primary (#3A10E5)`, `color: white`, `hover: primary-hover (#5533FF)` |
 | Primary button (dark) | `bg: primary (#FFD300)`, `color: navy-800`, `hover: primary-hover (#CCA900)` |
-| Body text | `color: text`, `font: base (Aperçu Pro)`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)` |
+| Body text | `color: text`, `font: base (Apercu Pro)`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)` |
 | Headline | `color: text-accent`, `font: base`, `size: 34–64px`, `weight: title (700)`, `lineHeight: title (1.2)` |
 | Caption / label | `color: text-secondary`, `font: accent (Suisse Int'l Mono)`, `size: 14px` |
 | Card default | `bg: background`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md` |
