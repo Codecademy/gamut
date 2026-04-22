@@ -140,8 +140,8 @@ export const getMemoizedStyles = (
     input: (provided) => ({
       ...provided,
       ...textColor({ theme }),
-      padding: '0',
       margin: '0',
+      padding: '0',
     }),
     menu: (provided, state: BaseSelectComponentProps) => {
       const { dropdownWidth, menuAlignment } = state.selectProps;
@@ -152,8 +152,8 @@ export const getMemoizedStyles = (
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
         ...(dropdownWidth
           ? {
-              width: dropdownWidth,
               minWidth: dropdownWidth,
+              width: dropdownWidth,
             }
           : {}),
         ...(menuAlignment === 'right'
@@ -177,19 +177,20 @@ export const getMemoizedStyles = (
     multiValue: (provided, state) => ({
       ...provided,
       ...tagBaseStyles,
-      height: '24px',
-      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-      color: theme.colors.background,
       backgroundColor: 'transparent',
+      color: theme.colors.background,
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      height: '24px',
     }),
     multiValueLabel: (provided) => ({
       ...provided,
-      color: theme.colors.background,
       backgroundColor: theme.colors['text-secondary'],
-      borderStartEndRadius: 0,
       borderEndEndRadius: 0,
-      borderStartStartRadius: theme.borderRadii.md,
       borderEndStartRadius: theme.borderRadii.md,
+      borderStartEndRadius: 0,
+      borderStartStartRadius: theme.borderRadii.md,
+      color: theme.colors.background,
+      fontSize: `${tagLabelFontSize}px`,
       height: '100%',
       padding: `0 ${tagLabelPadding}px`,
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
@@ -198,38 +199,38 @@ export const getMemoizedStyles = (
     multiValueRemove: (provided, state) => ({
       ...provided,
       ...dismissSharedStyles,
-      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-      pointerEvents: state.isDisabled ? 'none' : 'visible',
       backgroundColor: theme.colors['text-secondary'],
-      borderStartEndRadius: theme.borderRadii.md,
       borderEndEndRadius: theme.borderRadii.md,
-      borderStartStartRadius: 0,
       borderEndStartRadius: 0,
+      borderStartEndRadius: theme.borderRadii.md,
+      borderStartStartRadius: 0,
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       padding: 0, // default remove has padding left and right that we don't need
+      pointerEvents: state.isDisabled ? 'none' : 'visible',
       ':hover': {
         backgroundColor: theme.colors['secondary-hover'],
       },
     }),
     option: (provided, state: OptionState) => ({
-      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-      display: 'flex',
       alignItems: 'center',
       color: state.isDisabled ? 'text-disabled' : 'default',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      display: 'flex',
+      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
     }),
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),
-      whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     }),
     singleValue: (provided) => ({
       ...provided,
       ...textColor({ theme }),
-      display: 'flex',
       alignItems: 'center',
+      display: 'flex',
       marginLeft: 0,
     }),
     valueContainer: (provided) => ({
