@@ -1,5 +1,12 @@
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
-import { useCallback, useId, useMemo, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
@@ -61,6 +68,23 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       shell?.querySelector<HTMLElement>('[role="spinbutton"]') ?? shell;
     toFocus?.focus();
   }, []);
+
+  /**
+   * `PopoverContainer` uses `allowPageInteraction` / `noIsolation`, so `react-focus-on` does
+   * not treat the input (outside the portal) as inside the trap — Escape on month chevrons
+   * or in the field would not run `onRequestClose`. A capture listener closes from anywhere.
+   */
+  useEffect(() => {
+    if (!isCalendarOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      e.preventDefault();
+      e.stopPropagation();
+      closeCalendar();
+    };
+    document.addEventListener('keydown', onKeyDown, true);
+    return () => document.removeEventListener('keydown', onKeyDown, true);
+  }, [isCalendarOpen, closeCalendar]);
 
   const contextValue = useMemo<DatePickerContextValue>(() => {
     const translations = {

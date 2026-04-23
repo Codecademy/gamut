@@ -116,4 +116,31 @@ describe('DatePicker', () => {
     expect(view.queryByText('Date')).not.toBeInTheDocument();
     expect(view.queryByRole('dialog')).not.toBeInTheDocument();
   });
+
+  it('closes the calendar on Escape from the input when the popover is open', async () => {
+    const user = userEvent.setup();
+    const { view } = renderSingle();
+
+    await user.click(view.getByRole('group'));
+    expect(view.getByRole('dialog')).toBeVisible();
+
+    const spinbutton = view.getByRole('spinbutton', { name: 'month' });
+    spinbutton.focus();
+    await user.keyboard('{Escape}');
+
+    expect(view.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('closes the calendar on Escape from a month nav chevron (not only the day grid)', async () => {
+    const user = userEvent.setup();
+    const { view } = renderSingle();
+
+    await user.click(view.getByRole('group'));
+    expect(view.getByRole('dialog')).toBeVisible();
+
+    view.getByRole('button', { name: 'Last month' }).focus();
+    await user.keyboard('{Escape}');
+
+    expect(view.queryByRole('dialog')).not.toBeInTheDocument();
+  });
 });
