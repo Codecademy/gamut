@@ -132,13 +132,20 @@ export const getBeakVariant = ({
   beak,
   variant,
 }: Pick<PopoverProps, 'align' | 'position' | 'beak' | 'variant'>) => {
-  const beakAlignment =
-    position === 'center'
-      ? align
-      : beak === 'center'
-      ? 'center'
-      : align ?? 'left';
-  return `${position}-${beakAlignment}${variant === 'secondary' ? '-sml' : ''}`;
+  const suffix = variant === 'secondary' ? '-sml' : '';
+  let beakAlignment: 'left' | 'right' | 'center';
+
+  if (position === 'center') {
+    beakAlignment = align ?? 'left';
+  } else if (beak === 'center') {
+    beakAlignment = 'center';
+  } else if (beak === 'left' || beak === 'right') {
+    beakAlignment = beak;
+  } else {
+    beakAlignment = align === 'left' ? 'left' : 'right';
+  }
+
+  return `${position}-${beakAlignment}${suffix}`;
 };
 
 export const createBeakVariantFromAlignment = (alignment: string) => {

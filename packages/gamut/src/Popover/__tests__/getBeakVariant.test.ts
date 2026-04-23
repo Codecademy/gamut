@@ -1,7 +1,7 @@
 import { getBeakVariant } from '../styles/beak';
 
 describe('getBeakVariant', () => {
-  it('uses align for above/below when beak is not center (beak left + align right => below-right)', () => {
+  it('pins corner beak for above/below when beak is left or right (overrides align)', () => {
     expect(
       getBeakVariant({
         position: 'below',
@@ -9,10 +9,10 @@ describe('getBeakVariant', () => {
         beak: 'left',
         variant: 'primary',
       })
-    ).toBe('below-right');
+    ).toBe('below-left');
   });
 
-  it('uses align for above/below when beak is not center (beak right + align left => below-left)', () => {
+  it('pins the opposite corner when beak is right and align is left', () => {
     expect(
       getBeakVariant({
         position: 'below',
@@ -20,7 +20,17 @@ describe('getBeakVariant', () => {
         beak: 'right',
         variant: 'primary',
       })
-    ).toBe('below-left');
+    ).toBe('below-right');
+  });
+
+  it('falls back to align for above/below when beak is omitted', () => {
+    expect(
+      getBeakVariant({
+        position: 'above',
+        align: 'right',
+        variant: 'secondary',
+      })
+    ).toBe('above-right-sml');
   });
 
   it('uses center beak when beak is center regardless of align', () => {
@@ -53,6 +63,6 @@ describe('getBeakVariant', () => {
         beak: 'left',
         variant: 'secondary',
       })
-    ).toBe('below-right-sml');
+    ).toBe('below-left-sml');
   });
 });

@@ -37,9 +37,9 @@ export type PopoverYPositionType = {
    */
   position?: 'above' | 'below';
   /**
-   * Renders the beak and chooses a centered notch vs a corner notch. For `above` / `below`,
-   * corner beaks follow horizontal `align` (after RTL resolution in `Popover`), not `left` /
-   * `right` here; use `center` for a centered triangle on that edge.
+   * Renders the beak. For `above` / `below`, use `center` for a centered triangle; use
+   * `left` / `right` to pin the corner beak. When omitted, the corner follows `align`
+   * (after RTL resolution in `Popover`).
    */
   beak?: 'left' | 'right' | 'center';
   /**
