@@ -1,7 +1,7 @@
 import { getBeakVariant } from '../styles/beak';
 
 describe('getBeakVariant', () => {
-  it('pins corner beak for above/below when beak is left or right (overrides align)', () => {
+  it("uses `beak` when `position` is not `center` (i.e. `below`) to set the location of the beak relative to the popover' container", () => {
     expect(
       getBeakVariant({
         position: 'below',
@@ -12,10 +12,10 @@ describe('getBeakVariant', () => {
     ).toBe('below-left');
   });
 
-  it('pins the opposite corner when beak is right and align is left', () => {
+  it("uses `beak` when `position` is not `center` (i.e. `above`) to set the location of the beak relative to the popover' container", () => {
     expect(
       getBeakVariant({
-        position: 'below',
+        position: 'above',
         align: 'left',
         beak: 'right',
         variant: 'primary',
@@ -23,7 +23,7 @@ describe('getBeakVariant', () => {
     ).toBe('below-right');
   });
 
-  it('falls back to align for above/below when beak is omitted', () => {
+  it('uses `align` for the beak position when `position` is `above`/`below` when beak is explicitly omitted', () => {
     expect(
       getBeakVariant({
         position: 'above',

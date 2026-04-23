@@ -37,9 +37,10 @@ export type PopoverYPositionType = {
    */
   position?: 'above' | 'below';
   /**
-   * Renders the beak. For `above` / `below`, use `center` for a centered triangle; use
-   * `left` / `right` to pin the corner beak. When omitted, the corner follows `align`
-   * (after RTL resolution in `Popover`).
+   * Renders the beak. For `above` / `below`, use `center` for a centered triangle; pass
+   * `left` or `right` to pin the corner beak (or omit to derive the corner from `align`).
+   * With `GamutProvider`’s `useLogicalProperties` and an RTL target, `left` / `right` are
+   * mirrored the same way as `align` (logical start / end).
    */
   beak?: 'left' | 'right' | 'center';
   /**
