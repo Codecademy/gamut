@@ -3,13 +3,40 @@ import {
   percentageOrAbsolute as percent,
 } from '@codecademy/variance';
 
-import { PopoverPositionConfig, TargetRef } from './types';
+import { Alignments, PopoverPositionConfig, TargetRef } from './types';
 
 export interface PopoverPositionResult {
   styles: CSSObject;
   /** Applied as inline style to bypass logical property conversion when logical properties produce wrong results */
   physicalStyles?: CSSObject;
 }
+
+/**
+ * Mirrors placement on the inline axis when the target is RTL so e.g. `bottom-left`
+ * uses the same geometry as `bottom-right` in LTR.
+ */
+export const mirrorAlignment = (
+  alignment: Alignments,
+  isRtl: boolean
+): Alignments => {
+  if (!isRtl) return alignment;
+  switch (alignment) {
+    case 'top-left':
+      return 'top-right';
+    case 'top-right':
+      return 'top-left';
+    case 'bottom-left':
+      return 'bottom-right';
+    case 'bottom-right':
+      return 'bottom-left';
+    case 'left':
+      return 'right';
+    case 'right':
+      return 'left';
+    default:
+      return alignment;
+  }
+};
 
 const getWindowDimensions = () => ({
   height: window.innerHeight || document.documentElement.clientHeight,
@@ -171,19 +198,16 @@ const AXIS = {
 /**
  * Computes the absolute position styles for a popover relative to a target element.
  *
+ * When `isRtl` is true, {@link mirrorAlignment} maps the requested placement to the
+ * mirrored corner/edge on the inline axis before computing offsets (same viewport math
+ * as LTR).
+ *
  * Returns two style objects:
  * - `styles`: position edge values (left/right/top/bottom) passed as variance props so
  *   they are converted to logical properties (inset-inline-start etc.) when
- *   `useLogicalProperties` is enabled. Corner and edge alignments automatically flip
- *   sides in RTL layouts as a result.
- * - `physicalStyles`: applied as an inline `style` prop, bypassing logical conversion.
- *   Used for transforms (CSS transforms have no logical equivalent — `translate(-100%, 0)`
- *   always shifts physically left) and for centered alignments whose `left` value is a
- *   physical screen coordinate that must not flip in RTL.
- *
- * When `invertAxis` is set and `isRtl` is true, the x-transform coefficient is negated
- * so that the shift moves toward the target rather than away from it after logical
- * positions have flipped the element to the opposite physical side.
+ *   `useLogicalProperties` is enabled.
+ * - `physicalStyles`: applied as an inline `style` prop for `transform` and for centered
+ *   `top`/`bottom` horizontal anchors (`left` + `translate(-50%, 0)`).
  */
 export const getPosition = ({
   alignment,
@@ -194,11 +218,12 @@ export const getPosition = ({
   invertAxis,
   isRtl = false,
 }: PopoverPositionConfig & { isRtl?: boolean }): PopoverPositionResult => {
+  const layoutAlignment = mirrorAlignment(alignment, isRtl);
   const { top, left, bottom, right, height, width } = container;
   const xOffset = width + offset + x;
   const yOffset = height + offset + y;
 
-  const alignments = alignment.split('-') as
+  const alignments = layoutAlignment.split('-') as
     | ['top' | 'bottom' | 'left' | 'right']
     | ['top' | 'bottom', 'left' | 'right'];
 
@@ -220,8 +245,7 @@ export const getPosition = ({
   } else {
     const coef = AXIS[invertAxis ?? 'none'];
     const [yAxis, xAxis] = alignments;
-    // Negate x coefficient in RTL so invertAxis shifts toward the target.
-    const xCoef = isRtl ? -coef[xAxis] : coef[xAxis];
+    const xCoef = coef[xAxis];
     physicalStyles.transform = `translate(${percent(xCoef)}, ${percent(
       coef[yAxis]
     )})`;
@@ -237,8 +261,8 @@ export const getPosition = ({
     bottom: { position: 'top', value: top + yOffset },
   };
 
-  alignments.forEach((alignment) => {
-    const { position, value } = alignmentOffsets[alignment];
+  alignments.forEach((edge) => {
+    const { position, value } = alignmentOffsets[edge];
     styles[position] = value;
   });
 

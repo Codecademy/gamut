@@ -1,4 +1,4 @@
-import { system, useElementDir } from '@codecademy/gamut-styles';
+import { elementDir, system, useElementDir } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -57,7 +57,18 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     onRequestCloseRef.current = onRequestClose;
   }, [onRequestClose]);
 
-  const isRtl = useElementDir(targetRef) === 'rtl';
+  /** Re-renders when `dir` changes under `<html>`; same resolution as {@link elementDir} on the anchor for portal mode. */
+  const anchorWritingMode = useElementDir(targetRef);
+
+  const targetEl = targetRef?.current;
+  /** Inline: `offsetParent` defines the coordinate system; portal: the anchor. */
+  const layoutSource =
+    inline && targetEl?.offsetParent instanceof Element
+      ? targetEl.offsetParent
+      : targetEl;
+  const isRtl = inline
+    ? layoutSource instanceof Element && elementDir(layoutSource) === 'rtl'
+    : anchorWritingMode === 'rtl';
 
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
@@ -217,6 +228,24 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   if (!isOpen || !targetRef) return null;
 
+  const {
+    children,
+    style: restStyle,
+    ...delegatedRest
+  } = rest as React.HTMLAttributes<HTMLDivElement>;
+
+  /** Inline: put inset props on `style` so they stay physical (bypasses logical system props). */
+  const mergedStyle =
+    restStyle ||
+    popoverPosition.physicalStyles ||
+    (inline && Object.keys(popoverPosition.styles).length > 0)
+      ? {
+          ...(typeof restStyle === 'object' && restStyle ? restStyle : {}),
+          ...(inline ? popoverPosition.styles : {}),
+          ...popoverPosition.physicalStyles,
+        }
+      : undefined;
+
   const content = (
     <FocusTrap
       allowPageInteraction={inline || allowPageInteraction}
@@ -230,13 +259,13 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         ref={popoverRef}
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
-        {...popoverPosition.styles}
-        /* Physical inline style for centered alignments (top/bottom) where
-           inset-inline-start would incorrectly flip the center point in RTL */
+        {...(inline ? {} : popoverPosition.styles)}
         /* eslint-disable-next-line gamut/no-inline-style */
-        style={popoverPosition.physicalStyles}
-        {...rest}
-      />
+        style={mergedStyle}
+        {...delegatedRest}
+      >
+        {children}
+      </PopoverContent>
     </FocusTrap>
   );
 

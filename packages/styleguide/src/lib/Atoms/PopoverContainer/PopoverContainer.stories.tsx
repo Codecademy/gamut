@@ -6,7 +6,6 @@ import { ComponentProps, useRef } from 'react';
 const meta: Meta<typeof PopoverContainer> = {
   component: PopoverContainer,
   args: {
-    alignment: 'top-left',
     isOpen: true,
     inline: true,
     x: 0,
@@ -33,15 +32,22 @@ const MULTI_DIRECTIONS = [
   'bottom-left',
 ] as const;
 
-export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
-  args
-) => {
+export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = ({
+  alignment = 'top-left',
+  ...args
+}) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
     <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
-        <PopoverContainer {...args} inline isOpen targetRef={target}>
+        <PopoverContainer
+          {...args}
+          alignment={alignment}
+          allowPageInteraction
+          isOpen
+          targetRef={target}
+        >
           <Background
             alignItems="center"
             bg="navy"
@@ -50,7 +56,7 @@ export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
             flexDirection="column"
             justifyContent="center"
           >
-            Pop Tart
+            {alignment}
           </Background>
         </PopoverContainer>
         <FlexBox
@@ -79,11 +85,12 @@ export const Alignment: React.FC<
           return (
             <PopoverContainer
               alignment={alignment}
-              inline
+              inline={false}
               isOpen
               key={alignment}
               offset={20}
               targetRef={target}
+              allowPageInteraction
             >
               <Background
                 alignItems="center"
@@ -129,12 +136,13 @@ export const InvertAxis: React.FC<
             return (
               <PopoverContainer
                 alignment={alignment}
-                inline
+                inline={true}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
                 offset={20}
                 targetRef={target}
+                allowPageInteraction
               >
                 <Background
                   alignItems="center"

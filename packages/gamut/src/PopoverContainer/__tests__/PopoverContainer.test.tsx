@@ -219,7 +219,11 @@ describe('Popover', () => {
             alignmentTests.forEach(([alignment, expected]) => {
               render(
                 <MockGamutProvider useLogicalProperties={useLogicalProperties}>
-                  <RenderPopover {...defaultProps} alignment={alignment} />
+                  <RenderPopover
+                    {...defaultProps}
+                    alignment={alignment}
+                    inline={false}
+                  />
                 </MockGamutProvider>
               );
               expect(
@@ -231,37 +235,23 @@ describe('Popover', () => {
         );
       });
       describe('inline - parent', () => {
-        it.each([
-          {
-            useLogicalProperties: true,
-            top: 'insetBlockStart',
-            bottom: 'insetBlockEnd',
-            left: 'insetInlineStart',
-            right: 'insetInlineEnd',
-          },
-          {
-            useLogicalProperties: false,
-            top: 'top',
-            bottom: 'bottom',
-            left: 'left',
-            right: 'right',
-          },
-        ])(
+        it.each([true, false])(
           'renders correct position styles (useLogicalProperties: $useLogicalProperties)',
-          ({ useLogicalProperties, top, bottom, left, right }) => {
+          (useLogicalProperties) => {
+            /** Inline: insets are merged into `style` as physical top/left/right/bottom (see PopoverContainer), so expectations stay physical even when the tree uses logical CSS elsewhere. */
             const alignmentTests: [
               PopoverContainerProps['alignment'],
               Record<string, string>
             ][] = [
-              ['top-right', { [left]: '370px', [bottom]: '370px' }],
-              ['top-left', { [right]: '370px', [bottom]: '370px' }],
-              ['bottom-right', { [left]: '370px', [top]: '370px' }],
-              ['bottom-left', { [right]: '370px', [top]: '370px' }],
+              ['top-right', { left: '370px', bottom: '370px' }],
+              ['top-left', { right: '370px', bottom: '370px' }],
+              ['bottom-right', { left: '370px', top: '370px' }],
+              ['bottom-left', { right: '370px', top: '370px' }],
               // See comment above re: physical 'left' for centered alignments.
-              ['top', { left: '250px', [bottom]: '370px' }],
-              ['left', { [right]: '370px', [top]: '250px' }],
-              ['bottom', { left: '250px', [top]: '370px' }],
-              ['right', { [left]: '370px', [top]: '250px' }],
+              ['top', { left: '250px', bottom: '370px' }],
+              ['left', { right: '370px', top: '250px' }],
+              ['bottom', { left: '250px', top: '370px' }],
+              ['right', { left: '370px', top: '250px' }],
             ];
 
             alignmentTests.forEach(([alignment, expected]) => {
@@ -326,6 +316,56 @@ describe('Popover', () => {
         );
       });
     });
+
+    describe('RTL placement mirroring (getPosition)', () => {
+      const container = {
+        top: 150,
+        left: 150,
+        right: 200,
+        bottom: 200,
+        height: 200,
+        width: 200,
+      };
+
+      const base = { container, offset: 20, x: 0, y: 0 };
+
+      it.each([
+        ['bottom-left', 'bottom-right'],
+        ['bottom-right', 'bottom-left'],
+        ['top-left', 'top-right'],
+        ['top-right', 'top-left'],
+        ['left', 'right'],
+        ['right', 'left'],
+      ] as const)('RTL %s matches LTR %s', (rtlPlacement, ltrMirror) => {
+        expect(
+          utils.getPosition({
+            ...base,
+            alignment: rtlPlacement,
+            isRtl: true,
+          })
+        ).toEqual(
+          utils.getPosition({
+            ...base,
+            alignment: ltrMirror,
+            isRtl: false,
+          })
+        );
+      });
+
+      it('does not mirror single-axis top or bottom (horizontal center unchanged)', () => {
+        expect(
+          utils.getPosition({ ...base, alignment: 'top', isRtl: true })
+        ).toEqual(
+          utils.getPosition({ ...base, alignment: 'top', isRtl: false })
+        );
+        expect(
+          utils.getPosition({ ...base, alignment: 'bottom', isRtl: true })
+        ).toEqual(
+          utils.getPosition({ ...base, alignment: 'bottom', isRtl: false })
+        );
+      });
+    });
+
     describe('physicalStyles', () => {
       describe('centered alignments always use physical left regardless of useLogicalProperties', () => {
         it.each([
@@ -347,7 +387,7 @@ describe('Popover', () => {
         );
       });
 
-      describe('invertAxis transform flips in RTL', () => {
+      describe('invertAxis transform with RTL alignment mirroring', () => {
         const container = {
           top: 150,
           left: 150,
@@ -433,6 +473,7 @@ describe('Popover', () => {
                 <RenderPopover
                   {...defaultProps}
                   alignment="top-right"
+                  inline={false}
                   x={x}
                   y={y}
                 />
