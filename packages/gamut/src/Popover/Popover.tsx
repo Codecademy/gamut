@@ -18,7 +18,7 @@ import {
 } from './elements';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
-import { getDefaultOffset } from './utils';
+import { getDefaultOffset, resolveHorizontalSideForRtl } from './utils';
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
@@ -58,9 +58,21 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const resolvedAlign = useMemo(() => {
     if (align !== 'left' && align !== 'right') return align;
-    if (!logicalPropsEnabled) return align;
-    return isRtl ? (align === 'left' ? 'right' : 'left') : align;
+    return resolveHorizontalSideForRtl({
+      side: align,
+      isRtl,
+      useLogicalProperties: logicalPropsEnabled,
+    });
   }, [align, isRtl, logicalPropsEnabled]);
+
+  const resolvedBeak = useMemo(() => {
+    if (beak !== 'left' && beak !== 'right') return beak;
+    return resolveHorizontalSideForRtl({
+      side: beak,
+      isRtl,
+      useLogicalProperties: logicalPropsEnabled,
+    });
+  }, [beak, isRtl, logicalPropsEnabled]);
 
   const updatePopoverDimensions = useCallback(() => {
     if (popoverRef.current) {
@@ -229,7 +241,7 @@ export const Popover: React.FC<PopoverProps> = ({
               beak={getBeakVariant({
                 align: resolvedAlign,
                 position,
-                beak,
+                beak: resolvedBeak,
                 variant,
               })}
               data-testid="popover-beak"

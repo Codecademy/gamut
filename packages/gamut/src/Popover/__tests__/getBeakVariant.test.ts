@@ -1,7 +1,7 @@
 import { getBeakVariant } from '../styles/beak';
 
 describe('getBeakVariant', () => {
-  it('uses align for above/below when beak is not center (beak left + align right => below-right)', () => {
+  it("uses `beak` when `position` is not `center` (i.e. `below`) to set the location of the beak relative to the popover' container", () => {
     expect(
       getBeakVariant({
         position: 'below',
@@ -9,18 +9,28 @@ describe('getBeakVariant', () => {
         beak: 'left',
         variant: 'primary',
       })
-    ).toBe('below-right');
+    ).toBe('below-left');
   });
 
-  it('uses align for above/below when beak is not center (beak right + align left => below-left)', () => {
+  it("uses `beak` when `position` is not `center` (i.e. `above`) to set the location of the beak relative to the popover' container", () => {
     expect(
       getBeakVariant({
-        position: 'below',
+        position: 'above',
         align: 'left',
         beak: 'right',
         variant: 'primary',
       })
-    ).toBe('below-left');
+    ).toBe('above-right');
+  });
+
+  it('uses `align` for the beak position when `position` is `above`/`below` when beak is explicitly omitted', () => {
+    expect(
+      getBeakVariant({
+        position: 'above',
+        align: 'right',
+        variant: 'secondary',
+      })
+    ).toBe('above-right-sml');
   });
 
   it('uses center beak when beak is center regardless of align', () => {
@@ -53,6 +63,6 @@ describe('getBeakVariant', () => {
         beak: 'left',
         variant: 'secondary',
       })
-    ).toBe('below-right-sml');
+    ).toBe('below-left-sml');
   });
 });
