@@ -75,6 +75,10 @@ const RenderPopover = (props: PopoverContainerProps) => {
 
 const renderView = setupRtl(RenderPopover, defaultProps);
 
+/** Portal `getContainers` uses `document.body.offsetWidth` for `parent.right`; pin it to the mock offset parent width so horizontal insets match the inline fixture. */
+const mockBodyOffsetWidthForPortal = () =>
+  jest.spyOn(document.body, 'offsetWidth', 'get').mockReturnValue(500);
+
 const popoverIsRendered = () => {
   return Boolean(screen.queryByTestId('popover-content'));
 };
@@ -181,6 +185,16 @@ describe('Popover', () => {
   describe('alignments', () => {
     describe('render context', () => {
       describe('portal - viewport', () => {
+        let bodyOffsetWidthSpy: jest.SpyInstance;
+
+        beforeEach(() => {
+          bodyOffsetWidthSpy = mockBodyOffsetWidthForPortal();
+        });
+
+        afterEach(() => {
+          bodyOffsetWidthSpy.mockRestore();
+        });
+
         it.each([
           {
             useLogicalProperties: true,
@@ -203,14 +217,14 @@ describe('Popover', () => {
               PopoverContainerProps['alignment'],
               Record<string, string>
             ][] = [
-              ['top-right', { [left]: '370px', [bottom]: '370px' }],
-              ['top-left', { [right]: '370px', [bottom]: '370px' }],
+              ['top-right', { [left]: '370px', [bottom]: '-130px' }],
+              ['top-left', { [right]: '370px', [bottom]: '-130px' }],
               ['bottom-right', { [left]: '370px', [top]: '370px' }],
               ['bottom-left', { [right]: '370px', [top]: '370px' }],
               // 'top'/'bottom' center horizontally using a physical screen coordinate,
               // so the horizontal position is always physical `left` regardless of
               // useLogicalProperties — it bypasses variance via physicalStyles.
-              ['top', { left: '250px', [bottom]: '370px' }],
+              ['top', { left: '250px', [bottom]: '-130px' }],
               ['left', { [right]: '370px', [top]: '250px' }],
               ['bottom', { left: '250px', [top]: '370px' }],
               ['right', { [left]: '370px', [top]: '250px' }],
@@ -446,6 +460,16 @@ describe('Popover', () => {
     });
 
     describe('offsets', () => {
+      let bodyOffsetWidthSpy: jest.SpyInstance;
+
+      beforeEach(() => {
+        bodyOffsetWidthSpy = mockBodyOffsetWidthForPortal();
+      });
+
+      afterEach(() => {
+        bodyOffsetWidthSpy.mockRestore();
+      });
+
       it.each([
         {
           useLogicalProperties: true,
@@ -460,11 +484,12 @@ describe('Popover', () => {
       ])(
         'renders correct offset styles (useLogicalProperties: $useLogicalProperties)',
         ({ useLogicalProperties, bottom, left }) => {
+          /** Portal top-right: `left` = 370 + x, `bottom` = -130 + y (see portal - viewport). */
           const offsetTests: [number, number, Record<string, string>][] = [
-            [5, 10, { [left]: '375px', [bottom]: '380px' }],
-            [-15, 10, { [left]: '355px', [bottom]: '380px' }],
-            [605, -100, { [left]: '975px', [bottom]: '270px' }],
-            [-25, -10, { [left]: '345px', [bottom]: '360px' }],
+            [5, 10, { [left]: '375px', [bottom]: '-120px' }],
+            [-15, 10, { [left]: '355px', [bottom]: '-120px' }],
+            [605, -100, { [left]: '975px', [bottom]: '-230px' }],
+            [-25, -10, { [left]: '345px', [bottom]: '-140px' }],
           ];
 
           offsetTests.forEach(([x, y, expected]) => {
