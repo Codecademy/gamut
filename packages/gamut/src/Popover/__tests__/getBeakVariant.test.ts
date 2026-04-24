@@ -20,7 +20,7 @@ describe('getBeakVariant', () => {
         beak: 'right',
         variant: 'primary',
       })
-    ).toBe('below-right');
+    ).toBe('above-right');
   });
 
   it('uses `align` for the beak position when `position` is `above`/`below` when beak is explicitly omitted', () => {
