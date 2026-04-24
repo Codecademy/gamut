@@ -42,7 +42,7 @@ export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
   return (
     <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
-        <PopoverContainer {...args} isOpen targetRef={target}>
+        <PopoverContainer {...args} inline isOpen targetRef={target}>
           <Background
             alignItems="center"
             bg="navy"
@@ -130,7 +130,7 @@ export const InvertAxis: React.FC<
             return (
               <PopoverContainer
                 alignment={alignment}
-                inline={true}
+                inline
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
