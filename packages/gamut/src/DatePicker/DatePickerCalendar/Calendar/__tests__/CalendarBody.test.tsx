@@ -1,6 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { createRef } from 'react';
 
 import { getIsoFirstDayFromLocale } from '../../../utils/locale';
 import { CalendarBody } from '../CalendarBody';
@@ -14,6 +15,8 @@ const mockOnFocusedDateChange = jest.fn();
 const mockOnDisplayDateChange = jest.fn();
 const mockOnGridFocusRequestHandled = jest.fn();
 const mockOnEscapeKeyPress = jest.fn();
+
+const defaultCalendarContainerRef = createRef<HTMLDivElement>();
 
 const renderView = setupRtl(CalendarBody, {
   displayDate,
@@ -29,6 +32,7 @@ const renderView = setupRtl(CalendarBody, {
     gridFocusRequested: false,
     signal: false,
     onGridFocusRequestHandled: mockOnGridFocusRequestHandled,
+    calendarContainerRef: defaultCalendarContainerRef,
   },
 });
 
@@ -160,6 +164,7 @@ describe('CalendarBody', () => {
         gridFocusRequested: true,
         signal: false,
         onGridFocusRequestHandled: mockOnGridFocusRequestHandled,
+        calendarContainerRef: createRef<HTMLDivElement>(),
       },
     });
 

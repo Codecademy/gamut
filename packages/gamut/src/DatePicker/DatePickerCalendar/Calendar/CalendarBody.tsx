@@ -31,7 +31,6 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   hasAdjacentMonthRight,
   hasAdjacentMonthLeft,
   focusGridSync,
-  calendarKeyboardSurfaceRef,
   pauseGridRoving,
 }) => {
   const resolvedLocale = useResolvedLocale(locale);
@@ -79,8 +78,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
     const activeEl = document.activeElement;
     const inThisGrid = tableRef.current?.contains(activeEl) ?? false;
-    const focusInSharedSurface =
-      calendarKeyboardSurfaceRef?.current?.contains(activeEl) ?? false;
+    const containerEl = focusGridSync.calendarContainerRef.current;
+    const focusInCalendarContainer = containerEl?.contains(activeEl) ?? false;
     const requested = focusGridSync.gridFocusRequested;
     const focusOnNavChevron =
       activeEl instanceof Element &&
@@ -91,15 +90,14 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     }
 
     // Month navigation unmounts the active cell; focus often lands on <body>, the dialog shell,
-    // or another non-grid node — not inside calendarKeyboardSurfaceRef, so we must still sync.
-    const surfaceEl = calendarKeyboardSurfaceRef?.current;
+    // or another non-grid node — not inside the container, so we must still sync.
     const focusLostFromCellUnmount =
       activeEl === document.body ||
       activeEl === document.documentElement ||
       (activeEl instanceof HTMLElement &&
-        surfaceEl != null &&
-        surfaceEl.contains(activeEl) === false &&
-        activeEl.contains(surfaceEl));
+        containerEl != null &&
+        containerEl.contains(activeEl) === false &&
+        activeEl.contains(containerEl));
 
     // Sync DOM focus when: navigating inside this table; first focus from input (keyboard open);
     // focus is in the multi-month strip (cross-grid arrows); or focus was lost after the grid updated.
@@ -107,8 +105,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     const shouldSyncFocus =
       inThisGrid ||
       requested ||
-      focusInSharedSurface ||
-      (focusLostFromCellUnmount && surfaceEl != null);
+      focusInCalendarContainer ||
+      (focusLostFromCellUnmount && containerEl != null);
 
     if (!shouldSyncFocus) return;
 
@@ -131,15 +129,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         if (success) finish(true);
       });
     }
-  }, [
-    focusTarget,
-    focusButton,
-    focusGridSync,
-    calendarKeyboardSurfaceRef,
-    year,
-    month,
-    pauseGridRoving,
-  ]);
+  }, [focusTarget, focusButton, focusGridSync, year, month, pauseGridRoving]);
 
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent, date: Date) =>

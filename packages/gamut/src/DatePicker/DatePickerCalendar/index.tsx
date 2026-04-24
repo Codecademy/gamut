@@ -74,13 +74,22 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     quickActions,
   } = context;
 
+  /** Wraps both month grids so cross-grid roving and tab-from-nav still count as in-calendar. */
+  const calendarContainerRef = useRef<HTMLDivElement>(null);
+
   const focusGridSync = useMemo(
     () => ({
       gridFocusRequested,
       signal: focusGridSignal,
       onGridFocusRequestHandled: clearGridFocusRequest,
+      calendarContainerRef,
     }),
-    [gridFocusRequested, focusGridSignal, clearGridFocusRequest]
+    [
+      gridFocusRequested,
+      focusGridSignal,
+      clearGridFocusRequest,
+      calendarContainerRef,
+    ]
   );
 
   const isRange = mode === 'range';
@@ -108,8 +117,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   /** Current left-column month; read in the anchor sync effect without listing `displayDate` in deps (month nav would retrigger and snap back). */
   const startOfLeftVisibleMonthRef = useRef(displayDate);
   startOfLeftVisibleMonthRef.current = displayDate;
-  /** Wraps both month grids so keyboard focus can move between them without treating it as “outside” the calendar. */
-  const calendarKeyboardSurfaceRef = useRef<HTMLDivElement>(null);
 
   const [pauseGridRoving, setPauseGridRoving] = useState(false);
 
@@ -139,7 +146,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     setFocusedDate(getFirstOfMonth(displayDate));
     resumeGridRoving();
     requestAnimationFrame(() => {
-      calendarKeyboardSurfaceRef.current
+      calendarContainerRef.current
         ?.querySelector<HTMLElement>('[role="gridcell"][tabindex="0"]')
         ?.focus();
     });
@@ -245,7 +252,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   return (
     <CalendarWrapper aria-labelledby={dialogId}>
-      <FlexBox p={24} pb={16} ref={calendarKeyboardSurfaceRef}>
+      <FlexBox p={24} pb={16} ref={calendarContainerRef}>
         <Box>
           <CalendarHeader
             displayDate={displayDate}
@@ -257,7 +264,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onTabIntoGrid={onTabFromMonthNav}
           />
           <CalendarBody
-            calendarKeyboardSurfaceRef={calendarKeyboardSurfaceRef}
             displayDate={displayDate}
             endDate={endDate}
             focusGridSync={focusGridSync}
@@ -288,7 +294,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onTabIntoGrid={onTabFromMonthNav}
           />
           <CalendarBody
-            calendarKeyboardSurfaceRef={calendarKeyboardSurfaceRef}
             displayDate={secondMonthDate}
             endDate={endDate}
             focusGridSync={focusGridSync}

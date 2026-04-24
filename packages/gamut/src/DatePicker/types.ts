@@ -6,7 +6,7 @@ import { DatePickerTranslations } from './utils/translations';
 
 interface DatePickerBaseProps<Mode extends 'single' | 'range'>
   extends DatePickerSharedProps {
-  /** Discriminator: set to `"single"` or `"range"`; both are required on `DatePicker`. */
+  /** Discriminator: set to `"single"` or `"range"` to determine the mode of the DatePicker */
   mode: Mode;
   /** When provided, only the provider is rendered and children compose Input + Calendar. */
   children?: React.ReactNode;

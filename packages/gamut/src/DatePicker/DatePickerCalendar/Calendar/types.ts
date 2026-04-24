@@ -7,90 +7,147 @@ import type {
 import type { IsoWeekday } from '../../utils/locale';
 
 interface CalendarBaseProps extends DatePickerSharedProps {
-  /** Used for the currently displayed month and year */
+  /**
+   * Date used to display month and year in the calendar header.
+   */
   displayDate: Date;
-  /** Called when the displayed month changes. Pass the new date (e.g. setDisplayDate) so the calendar updates. */
+  /**
+   * Callback when the visible month changes. Pass the new `Date` to your `displayDate` state (or
+   * equivalent) so the calendar stays in sync.
+   */
   onDisplayDateChange: (newDate: Date) => void;
 }
 
 export interface CalendarNavProps
   extends Omit<CalendarBaseProps, 'shouldDisableDate'> {
-  /** Called after navigating to previous month. */
+  /** Callback called after the user navigates to the previous month. */
   onLastMonthClick?: () => void;
-  /** Called after navigating to next month */
+  /** Callback called after the user navigates to the next month. */
   onNextMonthClick?: () => void;
   /**
-   * When true, Tab (forward) on a chevron runs `onTabIntoGrid` instead of the default order.
-   * Set when the user just changed the month and the grid is still "paused" until they enter it.
+   * Whether to intercept focus from the month chevron buttons. Used when the day grid is temporarily "paused" after a
+   * month change until the user moves into the grid.
+   *
    */
   interceptTabToGrid?: boolean;
   /**
-   * When `interceptTabToGrid` is set: move focus into the day grid with an appropriate roving date.
-   * Omit in standalone calendar stories.
+   * Callback called when {@link interceptTabToGrid} is set to move focus into the day grid
+   * and restore roving focus.
    */
   onTabIntoGrid?: () => void;
 }
 
 export interface CalendarHeaderProps extends CalendarNavProps {
+  /** Hides the control that moves to the previous month. */
   hideLastNav?: boolean;
+  /** Hides the control that moves to the next month. */
   hideNextNav?: boolean;
-  /** Used for the currently displayed second month and year when in two-month view */
+  /**
+   * Date used to display month and year in the second month's calendar header.
+   */
   secondDisplayDate?: Date;
-  /** id for the heading (for grid aria-labelledby) */
+  /**
+   * `id` of the visible month heading, used for the grid `aria-labelledby` association.
+   */
   headingId: string;
 }
 
 export interface CalendarBodyProps extends CalendarBaseProps {
-  /** Selected start date (single or range start) */
+  /**
+   * Start of the selected range, or the single selected date. Pass `null` when nothing is
+   * selected.
+   */
   selectedDate: Date | null;
-  /** Selected end date (range only; undefined for single-date mode) */
+  /**
+   * End of the range. Omit in single-date mode, or pass `null` for no end date in range mode.
+   */
   endDate?: Date | null;
-  /** Called when a date cell is selected */
+  /**
+   * Callback when the user chooses a day cell
+   */
   onDateSelect: (date: Date) => void;
   /**
-   * Force first column to this ISO weekday (1 = Monday … 7 = Sunday). Same scale as
-   * `Intl.Locale#getWeekInfo().firstDay`. Omit to use locale (polyfill where needed).
+   * First column of the grid as an ISO weekday (`1` = Monday through `7` = Sunday), matching
+   * `Intl.Locale.prototype.getWeekInfo().firstDay`. Omit to use the active locale.
    */
   weekStartsOn?: IsoWeekday;
-  /** Id of the month/year heading (aria-labelledby on grid) */
+  /**
+   * `id` of the month heading, used for the grid `aria-labelledby` association.
+   */
   labelledById: string;
-  /** For keyboard nav: which cell has focus (roving tabindex) */
+  /**
+   * Which day should hold roving `tabindex` in the grid.
+   */
   focusedDate: Date | null;
-  /** Callback when focused date changes (e.g. arrow keys) */
+  /**
+   * Callback when the focused day changes, including from arrow keys, click, and programmatic
+   * updates to `focusedDate`.
+   */
   onFocusedDateChange: (date: Date | null) => void;
-  /** Called when the escape key is pressed */
+  /**
+   * Callback when the user presses <kbd>Escape</kbd> while a day is focused. The
+   * `DatePicker` shell uses this to close the calendar popover.
+   */
   onEscapeKeyPress?: () => void;
-  /** When true (e.g. two-month view), arrow keys move focus to adjacent month without changing visible date. */
+  /**
+   * Whether the current month has a second grid to the right.
+   */
   hasAdjacentMonthRight?: boolean;
-  /** When true (e.g. two-month view), arrow keys move focus to adjacent month without changing visible date. */
+  /**
+   * Whether the current month has a second grid to the left.
+   */
   hasAdjacentMonthLeft?: boolean;
   /**
-   * When set (DatePicker), only programmatically focuses a day when the grid already has focus
-   * or `gridFocusRequested` is true (keyboard open / ArrowDown from input).
-   * Omit for standalone calendar stories — keeps legacy behavior (always sync focus to focusedDate).
+   * Focus management contract for the `DatePicker` shell. Programmatically moves DOM
+   * focus to a day only when this grid, or a wider `calendarContainerRef` region, already has
+   * focus, or when `gridFocusRequested` is set (e.g. keyboard open or <kbd>ArrowDown</kbd> from
+   * the field).
+   *
    */
   focusGridSync?: {
+    /**
+     * Whether the shell requested a one-shot move of focus into the grid (e.g. from the
+     * input or trigger).
+     */
     gridFocusRequested: boolean;
+    /**
+     * Whether a grid-focus request is issued with an unchanged `focusedDate`, so layout
+     * effects that depend on focus can still re-run.
+     */
     signal: boolean;
+    /**
+     * Call after DOM focus was successfully moved into the grid in response to
+     * `gridFocusRequested` so the shell can clear the request.
+     */
     onGridFocusRequestHandled: () => void;
+    /**
+     * Ref to an element that wraps the calendar (e.g. the two month tables).
+     */
+    calendarContainerRef: RefObject<HTMLElement | null>;
   };
   /**
-   * Region that contains all month grids (e.g. two-month layout). When focus is inside this
-   * subtree, roving tabindex may move DOM focus between grids; omit so only this table counts.
-   */
-  calendarKeyboardSurfaceRef?: RefObject<HTMLElement | null>;
-  /**
-   * After a header month change: all day cells stay tabIndex -1 until the user moves into the grid
-   * (Tab on a chevron, etc.).
+   * Whether to pause grid roving, i.e. should all day cells use `tabIndex={-1}` until the user moves into the grid
+   * so the grid does not steal focus during month transitions.
    */
   pauseGridRoving?: boolean;
 }
 
 export interface CalendarFooterProps {
+  /**
+   * "Clear" action in the footer.
+   */
   clearButton?: {
+    /** Whether the clear button is disabled. */
     disabled?: boolean;
+    /** Callback called when the clear button is clicked. */
     onClick?: () => void;
+    /** Text to display for the clear button. `DatePickerCalendar` uses `translations.clearButtonText` */
     text?: string;
   };
+  /**
+   * Shortcut actions. See {@link CalendarQuickAction} for the
+   * object shape. The `DatePicker` shell provides defaults for single and range mode unless you
+   * override.
+   */
   quickActions?: CalendarQuickAction[];
 }
