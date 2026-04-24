@@ -69,11 +69,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     toFocus?.focus();
   }, []);
 
-  /**
-   * `PopoverContainer` uses `allowPageInteraction` / `noIsolation`, so `react-focus-on` does
-   * not treat the input (outside the portal) as inside the trap — Escape on month chevrons
-   * or in the field would not run `onRequestClose`. A capture listener closes from anywhere.
-   */
   useEffect(() => {
     if (!isCalendarOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {

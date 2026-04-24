@@ -12,7 +12,7 @@ export const getDefaultLocaleTag = () =>
 
 /**
  * Resolves `Intl.LocalesArgument` (or `undefined`) to a stable `Intl.Locale` instance for formatting
- * and locale metadata (e.g. `getWeekInfo()` in supporting environments).
+ * and locale metadata.
  *
  * - `undefined` → default runtime locale via {@link getDefaultLocaleTag}
  * - `Intl.Locale` → returned as-is (no duplicate allocation)
@@ -38,18 +38,9 @@ export const resolveLocale = (locales?: Intl.LocalesArgument) => {
   return first instanceof Intl.Locale ? first : new Intl.Locale(String(first));
 };
 
-/**
- * Memoized {@link resolveLocale} for calendar subcomponents. Pass the same `locale` prop you accept
- * from `CalendarBaseProps` (optional `Intl.LocalesArgument`).
- */
 export const useResolvedLocale = (locale?: Intl.LocalesArgument) =>
   useMemo(() => resolveLocale(locale), [locale]);
 
-/**
- * Convert an Intl.Locale to a string. This is necessary the Intl.DateTimeFormat constructor only accepts a string in some versions of TS.
- * @param locale - The Intl.Locale to convert to a string.
- * @returns The stringified locale.
- */
 export const stringifyLocale = (locale: Intl.Locale) => locale.toString();
 
 /** ISO weekday: 1 = Monday … 7 = Sunday (matches `Intl.Locale#getWeekInfo().firstDay`). */
@@ -62,8 +53,6 @@ type LocaleWithWeekInfo = Intl.Locale & {
 
 /**
  * First calendar column weekday from `locale` (via `getWeekInfo()`), or explicit override.
- * - `weekStartsOnOverride` — ISO weekday **1–7** (Monday … Sunday), same as `getWeekInfo().firstDay`
- * - omitted → `locale.getWeekInfo().firstDay` when available, else **7** (Sunday)
  */
 export const getIsoFirstDayFromLocale = (
   locale: Intl.Locale,
@@ -81,14 +70,12 @@ export const getIsoFirstDayFromLocale = (
         return firstDay as IsoWeekday;
       }
     }
-  } catch {
-    /* ignore */
-  }
+  } catch {}
   return 7;
 };
 
 /**
- * Hook: resolved first weekday for the calendar grid. Re-reads after mount so async polyfills
+ * Resolved first weekday for the calendar grid. Re-reads after mount so async polyfills
  * (e.g. Firefox) can install `getWeekInfo` before the first paint in some bundles.
  */
 export const useIsoFirstWeekday = (

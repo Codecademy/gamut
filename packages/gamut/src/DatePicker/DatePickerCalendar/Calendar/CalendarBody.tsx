@@ -70,10 +70,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   }, []);
 
   useLayoutEffect(() => {
-    // Keep the roving tabindex / focused day aligned with `focusTarget` when it makes sense for a11y.
     if (focusTarget === null) return;
 
-    // Standalone calendar (e.g. Storybook): always move DOM focus to the active day.
     if (!focusGridSync) {
       focusButton(focusTarget);
       return;
@@ -138,7 +136,6 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     focusButton,
     focusGridSync,
     calendarKeyboardSurfaceRef,
-    /** Re-run when the month grid remounts so we can re-attach roving focus after displayDate changes. */
     year,
     month,
     pauseGridRoving,

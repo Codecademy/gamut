@@ -62,23 +62,6 @@ export const getDefaultRangeQuickActions = (
   },
 ];
 
-/**
- * Computes `[startDate, endDate]` for footer quick actions when `onClick` is omitted.
- * `anchorDate` (local calendar day of `now`) is the anchor — returned as `endDate` unless the range
- * is reordered (see below).
- *
- * **Rolling** offsets (no month/year boundaries):
- * - **day**: `num` days from anchor.
- * - **week**: `num × 7` days.
- * - **month**: `num × 30` days.
- * - **year**: `num × 365` days.
- *
- * **Range mode (`isRange: true`):** if the computed day is after the anchor day, returns
- * `{ startDate: anchor, endDate: computed }` so the interval runs forward. Otherwise
- * `{ startDate: computed, endDate: anchor }` (past through “today”).
- *
- * **Single mode:** same return shape; the calendar uses `startDate` as the selected day.
- */
 export const computeQuickAction = ({
   num,
   timePeriod,

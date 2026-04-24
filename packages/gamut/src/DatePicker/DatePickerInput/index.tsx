@@ -32,10 +32,6 @@ import {
   getDateFormatLayout,
 } from './utils';
 
-/**
- * Props for DatePickerInput. When used inside DatePicker, only overrides (e.g. placeholder, label).
- * In range mode, use rangePart to bind to start or end date. When outside DatePicker, pass value, onChange, etc.
- */
 export type DatePickerInputProps = Omit<
   InputWrapperProps,
   'className' | 'type' | 'icon' | 'value' | 'onChange' | 'color'
@@ -97,7 +93,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       ? formatDateISO8601DateOnly(parsedForHidden)
       : '';
 
-    /** True only while a segment spinbutton is focused — avoids clobbering partial typing. Icon/shell-only focus must not set this or calendar picks won't sync to segments. */
     const isInputFocusedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const segmentElRefs = useRef<
@@ -215,12 +210,10 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       setActiveRangePartForField();
     }, [isInputFocusedRef, setActiveRangePartForField]);
 
-    /** Focus entered the shell (segment, icon, etc.). Range targeting only — does not mark segment editing. */
     const onShellFocus = useCallback(() => {
       setActiveRangePartForField();
     }, [setActiveRangePartForField]);
 
-    /** Pointer activation on the shell (bubbles from segments/icon). Ensures range targeting even if focus order differs from click. */
     const onShellClick = useCallback(() => {
       if (disabled) return;
       setActiveRangePartForField();
@@ -294,7 +287,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           <input
             aria-hidden
             form={form}
-            name={name}
+            name={name ?? 'datePickerInput'}
             tabIndex={-1}
             type="hidden"
             value={hiddenValue}

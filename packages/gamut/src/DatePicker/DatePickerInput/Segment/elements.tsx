@@ -34,7 +34,6 @@ export const Segment = styled.span<SegmentStyleProps>(
   segmentStyles
 );
 
-/** Locale separator (`/`, `.`, etc.) between segments. */
 export const SegmentLiteral = styled.span(
   css({
     color: 'text-secondary',

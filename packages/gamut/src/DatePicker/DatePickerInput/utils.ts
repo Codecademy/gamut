@@ -1,15 +1,11 @@
 import { stringifyLocale } from '../utils/locale';
 
-/** Single date field in locale order (from `Intl.DateTimeFormat#formatToParts`). */
 export type DatePartKind = 'month' | 'day' | 'year';
 
 export type DateFormatLayoutItem =
   | { kind: 'field'; field: DatePartKind }
   | { kind: 'literal'; text: string };
 
-/**
- * Month/day/year order and literal separators for the locale (e.g. MM/DD/YYYY vs DD/MM/YYYY).
- */
 export const getDateFormatLayout = (locale: Intl.Locale) => {
   const parts = new Intl.DateTimeFormat(stringifyLocale(locale), {
     year: 'numeric',
@@ -28,7 +24,6 @@ export const getDateFormatLayout = (locale: Intl.Locale) => {
   return items;
 };
 
-/** Focus / tab order for the three fields (locale order). */
 export const getDateFieldOrder = (layout: DateFormatLayoutItem[]) => {
   const order: DatePartKind[] = [];
   for (const item of layout) {
@@ -41,7 +36,6 @@ export const getDateFieldOrder = (layout: DateFormatLayoutItem[]) => {
     : (['month', 'day', 'year'] as DatePartKind[]);
 };
 
-/** ISO 8601 date-only string for hidden form fields. */
 export const formatDateISO8601DateOnly = (date: Date) => {
   const y = date.getFullYear();
   const m = date.getMonth() + 1;

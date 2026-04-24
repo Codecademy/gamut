@@ -1,15 +1,7 @@
-/**
- * Builds a grid of days for a calendar month using native Date and Intl.
- * Each row has 7 cells; leading/trailing cells may be null (padding from adjacent months).
- */
-
 import type { IsoWeekday } from '../../../utils/locale';
 
 const DAYS_PER_WEEK = 7;
 
-/**
- * Normalize to start of day in local time for comparison.
- */
 export const normalizeDate = (date: Date) => {
   return new Date(
     date.getFullYear(),
@@ -85,18 +77,11 @@ export const getMonthGrid = ({
   return weeks;
 };
 
-/**
- * Check if two dates are the same calendar day (ignoring time).
- */
 export const isSameDay = (a: Date | null, b: Date | null) => {
   if (a === null || b === null) return false;
   return normalizeDate(a) === normalizeDate(b);
 };
 
-/**
- * Calendar-ordered local-midnight instants for two possibly unordered `Date` values.
- * Matches the bounds used by {@link isDateInRange} (and range selection).
- */
 export const getOrderedCalendarEndpoints = ({
   startDate,
   endDate,
@@ -144,7 +129,8 @@ export const isDateInRange = ({
 };
 
 /**
- * Build a `shouldDisableDate` that disables each listed calendar day (time-of-day ignored).
+ * Returns a `shouldDisableDate` callback: for each calendar `date`, `true` if it’s the same day as
+ * any in `dates`
  *
  * @example
  * ```tsx
@@ -161,7 +147,6 @@ export const matchDisabledDates =
   (date: Date): boolean =>
     dates.some((d) => isSameDay(date, d));
 
-/** True when `shouldDisableDate` returns true for this calendar day. */
 export const isDateDisabled = ({
   date,
   shouldDisableDate,
@@ -170,10 +155,8 @@ export const isDateDisabled = ({
   shouldDisableDate?: (date: Date) => boolean;
 }) => Boolean(shouldDisableDate?.(date));
 
-/** One visible day in the month grid with its row (for Home/End and keyboard nav). */
 export type DateWithRow = { date: Date; rowIndex: number };
 
-/** Flat list of dates in grid order (row-major, non-null only) with row index for Home/End */
 export const getDatesWithRow = (weeks: (Date | null)[][]) => {
   const result: DateWithRow[] = [];
   weeks.forEach((week, rowIndex) => {
@@ -184,15 +167,9 @@ export const getDatesWithRow = (weeks: (Date | null)[][]) => {
   return result;
 };
 
-/** Add `n` months to the given date. */
 export const addMonths = ({ date, n }: { date: Date; n: number }) =>
   new Date(date.getFullYear(), date.getMonth() + n, 1);
 
-/**
- * True if `date` falls in the left visible month, or—when `showSecondMonth`—in the
- * month shown in the second column. Used to avoid shifting the visible month pair when
- * the committed date is already on screen (e.g. a click in the right-hand month).
- */
 export const isDateWithinVisibleMonths = ({
   date,
   startOfLeftVisibleMonth,

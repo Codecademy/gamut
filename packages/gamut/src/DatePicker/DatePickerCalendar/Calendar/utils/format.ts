@@ -1,9 +1,6 @@
 import type { IsoWeekday } from '../../../utils/locale';
 import { stringifyLocale } from '../../../utils/locale';
 
-/**
- * Capitalize the first character of a string using the locale; rest unchanged (e.g. "next month" → "Next month").
- */
 export const capitalizeFirst = ({
   str,
   locale,
@@ -15,9 +12,6 @@ export const capitalizeFirst = ({
     ? str
     : str[0].toLocaleUpperCase(stringifyLocale(locale)) + str.slice(1);
 
-/**
- * Format month and year for the calendar header (e.g. "February 2026").
- */
 export const formatMonthYear = ({
   date,
   locale,
@@ -60,10 +54,6 @@ export const getWeekdayNames = ({
   });
 };
 
-/**
- * Get localized "next month" and "previous month" labels for calendar nav.
- * Uses Intl.RelativeTimeFormat with numeric: "auto" (e.g. "next month", "last month").
- */
 export const getRelativeMonthLabels = (locale: Intl.Locale) => {
   const rtf = new Intl.RelativeTimeFormat(stringifyLocale(locale), {
     numeric: 'auto',
@@ -74,9 +64,6 @@ export const getRelativeMonthLabels = (locale: Intl.Locale) => {
   };
 };
 
-/**
- * Get localized "today" label (e.g. "today").
- */
 export const getRelativeTodayLabel = (locale: Intl.Locale) => {
   const rtf = new Intl.RelativeTimeFormat(stringifyLocale(locale), {
     numeric: 'auto',

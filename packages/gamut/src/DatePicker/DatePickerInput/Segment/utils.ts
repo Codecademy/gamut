@@ -15,9 +15,6 @@ export const getDateSegmentsFromDate = (date: Date | null): SegmentValues => {
   };
 };
 
-/**
- * Build a calendar date from segment strings. Requires a 4-digit year and non-empty month/day.
- */
 export const parseSegmentsToDate = (segments: SegmentValues) => {
   const { month, day, year } = segments;
   if (year.length !== 4) return null;
@@ -43,25 +40,17 @@ export const parseSegmentsToDate = (segments: SegmentValues) => {
   return parsed;
 };
 
-/** Digits-only slices used when checking for a fully typed date (2 / 2 / 4). */
 export const getStrictSegmentDigits = (segments: SegmentValues) => ({
   month: segments.month.replace(/\D/g, '').slice(0, 2),
   day: segments.day.replace(/\D/g, '').slice(0, 2),
   year: segments.year.replace(/\D/g, '').slice(0, 4),
 });
 
-/** User finished all three fields (2-digit month, 2-digit day, 4-digit year). */
 export const isStrictlyCompleteDateEntry = (strictSegments: SegmentValues) => {
   const { month, day, year } = strictSegments;
   return year.length === 4 && month.length === 2 && day.length === 2;
 };
 
-/**
- * Normalize segment strings after blur (digits only).
- * When the user has fully typed 2 / 2 / 4 digits, validates the calendar date without
- * clamping invalid days/months — if invalid, returns empty segments (caller clears selection).
- * Otherwise pads/clamps partial input as before.
- */
 export const normalizeSegmentValues = (
   segments: SegmentValues
 ): SegmentValues => {
@@ -98,14 +87,9 @@ export const normalizeSegmentValues = (
 export const getSegmentPlaceholder = (field: DatePartKind) =>
   field === 'year' ? 'YYYY' : field === 'month' ? 'MM' : 'DD';
 
-/** Digit capacity per field (typing / spinbutton editing). */
-export const segmentMaxLength = (field: DatePartKind): number =>
+export const segmentMaxLength = (field: DatePartKind) =>
   field === 'year' ? 4 : 2;
 
-/**
- * Min/max for spinbutton `aria-*` and ArrowUp/ArrowDown stepping (month/day/year).
- * Day max uses month/year when available so February etc. behave correctly.
- */
 export const getSegmentSpinBounds = ({
   field,
   segments,
@@ -133,7 +117,6 @@ export const getSegmentSpinBounds = ({
   }
 };
 
-/** Numeric value of a segment string (digits only), or null if empty. */
 export const parseSegmentNumericString = (str: string) => {
   const digits = str.replace(/\D/g, '');
   if (digits.length === 0) return null;
@@ -156,7 +139,6 @@ export const padSegmentNumber = ({
   return String(clamped).padStart(2, '0').slice(-2);
 };
 
-/** Append one digit to a segment string (max length enforced). */
 export const appendSegmentDigit = ({
   field,
   prev,
@@ -166,22 +148,16 @@ export const appendSegmentDigit = ({
   prev: string;
   digit: string;
 }) => {
-  // if the digit is not a single digit, return the previous value
   if (!/^\d$/.test(digit)) return prev;
   const maxLen = segmentMaxLength(field);
   const digitsOnly = prev.replace(/\D/g, '');
-  // When the segment is already full, another digit would only be appended then
-  // truncated back to the same string — so typing could not change the value.
-  // Treat the new digit as the start of a replacement (same as clearing then typing).
+  // If full, appending would truncate to the same value — use the new digit as a fresh start.
   if (digitsOnly.length >= maxLen) {
     return digit.slice(0, maxLen);
   }
   return (digitsOnly + digit).slice(0, maxLen);
 };
 
-/**
- * Step a segment up/down (ArrowUp / ArrowDown). Empty year steps from the current calendar year.
- */
 export const spinSegment = ({
   field,
   segments,
@@ -211,7 +187,6 @@ export const spinSegment = ({
   return padSegmentNumber({ field, numericValue: currentSegementValue });
 };
 
-/** Build the visible date string from segment state in locale layout order (includes literal separators). */
 export const buildCombinedFromSegments = ({
   segments,
   layout,
@@ -223,7 +198,6 @@ export const buildCombinedFromSegments = ({
     .map((item) => (item.kind === 'literal' ? item.text : segments[item.field]))
     .join('');
 
-/** Map a digit-only string into segment fields following locale field order (2 / 2 / 4). */
 export const digitsToSegments = ({
   digits,
   fieldOrder,

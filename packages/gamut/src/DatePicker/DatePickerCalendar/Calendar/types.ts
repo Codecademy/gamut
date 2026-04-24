@@ -92,6 +92,5 @@ export interface CalendarFooterProps {
     onClick?: () => void;
     text?: string;
   };
-  /** Max 3 quick actions (e.g. "7 days", "1 month") */
   quickActions?: CalendarQuickAction[];
 }

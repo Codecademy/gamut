@@ -36,7 +36,7 @@ interface SegmentedShellProps
     StyleProps<typeof shellFocusStyles> {}
 
 /**
- * Shell uses the same style stack as `Input`. `formFieldStyles` targets `&:focus`, but the host is a
+ * Shell uses the same styles as `Input`. `formFieldStyles` targets `&:focus`, but the host is a
  * `div` — focus is on inner spinbuttons, so we mirror `Input` focus visuals with `&:focus-within`.
  */
 export const SegmentedShell = styled(FlexBox)<SegmentedShellProps>(

@@ -20,7 +20,6 @@ type RangeContainsDisabledParams = {
   endDate: Date;
 } & Pick<DatePickerSharedProps, 'shouldDisableDate'>;
 
-/** True if any disabled day falls within [startDate, endDate] (inclusive, by calendar day). */
 export const rangeContainsDisabled = ({
   startDate,
   endDate,
@@ -54,12 +53,10 @@ export const handleDateSelectSingle = ({
   selectedDate,
   onSelection,
 }: HandleDateSelectSingleParams) => {
-  // If clicked date is the same as Start Date: Clear Start Date
   if (isSameDay(date, selectedDate)) {
     onSelection(null);
     return;
   }
-  // If clicked date is not the same as Start Date: Set Start Date to clicked date
   onSelection(date);
 };
 
@@ -77,7 +74,6 @@ export const applyRangeOrNewStart = ({
   shouldDisableDate,
   onRangeSelection,
 }: ApplyRangeOrNewStartParams) => {
-  // if range contains disabled dates, set start date to clicked date and end date to null
   if (rangeContainsDisabled({ startDate, endDate, shouldDisableDate })) {
     onRangeSelection(clickedDate, null);
     return false;
@@ -106,7 +102,7 @@ export const handleDateSelectRange = ({
   onRangeSelection,
   shouldDisableDate,
 }: HandleDateSelectRangeParams) => {
-  // Range mode: field targeting (start or end input was focused)
+  // Field targeting: start or end input was focused
   if (activeRangePart === 'start') {
     if (isSameDay(date, startDate)) {
       onRangeSelection(null, endDate);
@@ -148,9 +144,8 @@ export const handleDateSelectRange = ({
     return false;
   }
 
-  // Range selection mode (no field focused: calendar drives both)
+  // Selection mode (no field focused: calendar drives both)
   if (startDate && endDate) {
-    // if start date is end date and is clicked, clears everything
     if (isSameDay(startDate, endDate) && isSameDay(date, startDate)) {
       onRangeSelection(null, null);
       return false;

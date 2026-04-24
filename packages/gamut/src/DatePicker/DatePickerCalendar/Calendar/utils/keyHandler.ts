@@ -1,7 +1,6 @@
 import type { CalendarBodyProps } from '../types';
 import { type DateWithRow, isDateDisabled } from './dateGrid';
 
-/** Calendar grid props and callbacks used by `keyHandler`, aligned with `CalendarBodyProps`. */
 export type KeyHandlerParams = Pick<
   CalendarBodyProps,
   | 'onFocusedDateChange'
@@ -13,7 +12,6 @@ export type KeyHandlerParams = Pick<
   | 'shouldDisableDate'
 > & {
   e: React.KeyboardEvent;
-  /** The date for the day cell that received the key event */
   date: Date;
   datesWithRow: DateWithRow[];
   month: number;
