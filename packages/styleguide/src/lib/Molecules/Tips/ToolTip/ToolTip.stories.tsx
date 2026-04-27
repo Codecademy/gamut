@@ -154,29 +154,34 @@ export const Disabled: Story = {
   ),
 };
 
-export const HorizontalAlignmentsRtl: Story = {
+export const HorizontalAlignments: Story = {
   render: () => (
-    <FlexBox justifyContent="space-around" width="95%">
-      <IconButton
-        icon={SparkleIcon}
-        tip="Inline (Leading)"
-        tipProps={{ alignment: 'left-center' }}
-      />
-      <IconButton
-        icon={SparkleIcon}
-        tip="Inline (Trailing)"
-        tipProps={{ alignment: 'right-center' }}
-      />
-      <IconButton
-        icon={SparkleIcon}
-        tip="Floating (Leading)"
-        tipProps={{ alignment: 'left-center', placement: 'floating' }}
-      />
-      <IconButton
-        icon={DeleteIcon}
-        tip="Floating (Trailing)"
-        tipProps={{ alignment: 'right-center', placement: 'floating' }}
-      />
-    </FlexBox>
+    <>
+      <FlexBox center width="95%">
+        Check me out with `dir=rtl` using the toolbar!
+      </FlexBox>
+      <FlexBox justifyContent="space-around" width="95%">
+        <IconButton
+          icon={SparkleIcon}
+          tip="Inline (Leading)"
+          tipProps={{ alignment: 'left-center' }}
+        />
+        <IconButton
+          icon={SparkleIcon}
+          tip="Inline (Trailing)"
+          tipProps={{ alignment: 'right-center' }}
+        />
+        <IconButton
+          icon={SparkleIcon}
+          tip="Floating (Leading)"
+          tipProps={{ alignment: 'left-center', placement: 'floating' }}
+        />
+        <IconButton
+          icon={DeleteIcon}
+          tip="Floating (Trailing)"
+          tipProps={{ alignment: 'right-center', placement: 'floating' }}
+        />
+      </FlexBox>
+    </>
   ),
 };
