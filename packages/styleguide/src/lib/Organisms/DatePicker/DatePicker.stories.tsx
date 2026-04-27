@@ -61,12 +61,55 @@ export const Range: Story = {
     return (
       <Box>
         <DatePicker
+          disableDate={matchDisabledDates([new Date(2026, 3, 22)])}
           endDate={endDate}
           mode="range"
-          shouldDisableDate={matchDisabledDates([new Date(2026, 3, 22)])}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
+          }}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
+        />
+      </Box>
+    );
+  },
+};
+
+const calendarDate = (date: Date) =>
+  new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+/**
+ * Range mode: after a start date exists, days outside 30 calendar days before or after that
+ * start are disabled so the other bound must fall in that window (inclusive: start is day 0,
+ * ±30 days is the edge). When `startDate` is not set, nothing is disabled by this rule.
+ */
+export const Range30DayWindowFromStart: Story = {
+  render: function DatePickerStory() {
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
+
+    return (
+      <Box>
+        <DatePicker
+          disableDate={(d) => {
+            if (startDate === null) {
+              return false;
+            }
+            const start = calendarDate(startDate);
+            const min = new Date(start);
+            min.setDate(min.getDate() - 30);
+            const max = new Date(start);
+            max.setDate(max.getDate() + 30);
+            const day = calendarDate(d);
+            return day < min || day > max;
+          }}
+          endDate={endDate}
+          mode="range"
+          startDate={startDate}
+          translations={{
+            startDateLabel: 'Beginning date',
+            endDateLabel: 'End (within ±30 days of start)',
           }}
           onEndSelected={setEndDate}
           onStartSelected={setStartDate}
@@ -90,13 +133,13 @@ export const RangeWithQuickActions: Story = {
     return (
       <Box>
         <DatePicker
+          disableDate={(d) => d < startOfToday}
           endDate={endDate}
           mode="range"
           quickActions={[
             { num: -1, timePeriod: 'month', displayText: 'Last month' },
             { num: -30, timePeriod: 'day', displayText: 'Last 30 days' },
           ]}
-          shouldDisableDate={(d) => d < startOfToday}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',
@@ -116,10 +159,10 @@ export const RangeSmall: Story = {
     return (
       <Box>
         <DatePicker
+          disableDate={matchDisabledDates([new Date(2026, 3, 15)])}
           endDate={endDate}
           inputSize="small"
           mode="range"
-          shouldDisableDate={matchDisabledDates([new Date(2026, 3, 15)])}
           startDate={startDate}
           translations={{
             startDateLabel: 'Beginning date',

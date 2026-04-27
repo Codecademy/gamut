@@ -92,27 +92,27 @@ describe('matchDisabledDates', () => {
 });
 
 describe('isDateDisabled', () => {
-  it('returns true when shouldDisableDate returns true', () => {
+  it('returns true when disableDate returns true', () => {
     expect(
       isDateDisabled({
         date: new Date(2024, 4, 10),
-        shouldDisableDate: () => true,
+        disableDate: () => true,
       })
     ).toBe(true);
     expect(
       isDateDisabled({
         date: new Date(2024, 4, 10),
-        shouldDisableDate: (d) => d.getDate() === 10,
+        disableDate: (d) => d.getDate() === 10,
       })
     ).toBe(true);
   });
 
-  it('returns false when shouldDisableDate is omitted or returns false', () => {
+  it('returns false when disableDate is omitted or returns false', () => {
     expect(isDateDisabled({ date: new Date(2024, 4, 10) })).toBe(false);
     expect(
       isDateDisabled({
         date: new Date(2024, 4, 10),
-        shouldDisableDate: () => false,
+        disableDate: () => false,
       })
     ).toBe(false);
   });

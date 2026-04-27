@@ -19,7 +19,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   displayDate,
   selectedDate,
   endDate = null,
-  shouldDisableDate,
+  disableDate,
   onDateSelect,
   locale,
   weekStartsOn,
@@ -140,7 +140,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         datesWithRow,
         month,
         year,
-        shouldDisableDate,
+        disableDate,
         onDateSelect,
         onEscapeKeyPress,
         onDisplayDateChange,
@@ -152,7 +152,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       datesWithRow,
       month,
       year,
-      shouldDisableDate,
+      disableDate,
       onDateSelect,
       onEscapeKeyPress,
       onDisplayDateChange,
@@ -202,7 +202,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   startDate: selectedDate,
                   endDate,
                 });
-              const disabled = isDateDisabled({ date, shouldDisableDate });
+              const disabled = isDateDisabled({ date, disableDate });
               const today = isToday(date);
               const isFocused =
                 focusTarget !== null && isSameDay(date, focusTarget);

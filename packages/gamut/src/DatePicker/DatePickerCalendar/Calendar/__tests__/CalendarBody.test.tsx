@@ -83,7 +83,7 @@ describe('CalendarBody', () => {
 
   it('renders a DateCell with isDisabled true when the date is disabled', () => {
     const { view } = renderView({
-      shouldDisableDate: (date) =>
+      disableDate: (date) =>
         date.getFullYear() === 2024 &&
         date.getMonth() === 2 &&
         date.getDate() === 1,
@@ -95,7 +95,7 @@ describe('CalendarBody', () => {
 
   it('does not select a day when a disabled gridcell is clicked', async () => {
     const { view } = renderView({
-      shouldDisableDate: (date) =>
+      disableDate: (date) =>
         date.getFullYear() === 2024 &&
         date.getMonth() === 2 &&
         date.getDate() === 1,
@@ -109,7 +109,7 @@ describe('CalendarBody', () => {
 
   it('calls onFocusedDateChange when a disabled day cell receives focus', async () => {
     const { view } = renderView({
-      shouldDisableDate: (date) =>
+      disableDate: (date) =>
         date.getFullYear() === 2024 &&
         date.getMonth() === 2 &&
         date.getDate() === 1,
@@ -278,7 +278,7 @@ describe('CalendarBody', () => {
 
     it('does not select a disabled day on Enter', async () => {
       const { view } = renderView({
-        shouldDisableDate: (date) =>
+        disableDate: (date) =>
           date.getFullYear() === 2024 &&
           date.getMonth() === 2 &&
           date.getDate() === 1,

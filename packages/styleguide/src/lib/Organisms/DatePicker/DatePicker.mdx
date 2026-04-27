@@ -21,7 +21,7 @@ export const parameters = {
 
 ## Overview
 
-`DatePicker` is a **controlled** component: you own the selected value in React state and pass setters back in. It wraps children in `DatePickerProvider` so subcomponents can read calendar open/close, locale, optional `shouldDisableDate`, and selection via **`useDatePicker()`**.
+`DatePicker` is a **controlled** component: you own the selected value in React state and pass setters back in. It wraps children in `DatePickerProvider` so subcomponents can read calendar open/close, locale, optional `disableDate`, and selection via **`useDatePicker()`**.
 
 With **no `children`**, it renders the default layout: segmented inputs (and a range arrow in range mode), a calendar icon, and a **`PopoverContainer`**-anchored calendar dialog. Pass **`children`** to compose your own shell (for example a different popover target or layout) while still using **`DatePickerInput`**, **`DatePickerCalendar`**, and the same context.
 
@@ -43,13 +43,13 @@ Pass **`mode`** explicitly: **`"single"`** or **`"range"`**.
 
 ## Common props
 
-| Area            | Props                                                                                                                                                                                                 |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Mode**        | **`mode`**: `"single"` \| `"range"` — required.                                                                                                                                                       |
-| **Locale**      | **`locale`**: `string` or `Intl.Locale` — drives date format order in the input (e.g. MM/DD/YYYY vs DD/MM/YYYY) and calendar copy.                                                                    |
-| **Constraints** | **`shouldDisableDate`**: predicate per calendar day; use **`matchDisabledDates([...])`** from `@codecademy/gamut` to disable specific days. Range selection avoids ranges that include disabled days. |
-| **Copy**        | **`translations`**: optional overrides (e.g. clear button, dialog `aria-label`, start/end labels) merged with defaults.                                                                               |
-| **Size**        | **`inputSize`**: forwarded to the segmented inputs (`small` vs default).                                                                                                                              |
+| Area            | Props                                                                                                                                                                                           |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Mode**        | **`mode`**: `"single"` \| `"range"` — required.                                                                                                                                                 |
+| **Locale**      | **`locale`**: `string` or `Intl.Locale` — drives date format order in the input (e.g. MM/DD/YYYY vs DD/MM/YYYY) and calendar copy.                                                              |
+| **Constraints** | **`disableDate`**: predicate per calendar day; use **`matchDisabledDates([...])`** from `@codecademy/gamut` to disable specific days. Range selection avoids ranges that include disabled days. |
+| **Copy**        | **`translations`**: optional overrides (e.g. clear button, dialog `aria-label`, start/end labels) merged with defaults.                                                                         |
+| **Size**        | **`inputSize`**: forwarded to the segmented inputs (`small` vs default).                                                                                                                        |
 
 ## Subcomponents and context
 
@@ -90,7 +90,7 @@ return (
     endDate={endDate}
     onStartSelected={setStartDate}
     onEndSelected={setEndDate}
-    shouldDisableDate={matchDisabledDates([someHoliday])}
+    disableDate={matchDisabledDates([someHoliday])}
   />
 );
 ```

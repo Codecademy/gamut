@@ -60,7 +60,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       locale,
       isCalendarOpen,
       translations,
-      shouldDisableDate,
+      disableDate,
     } = context;
 
     const isRange = mode === 'range';
@@ -140,11 +140,11 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
             startDate: date,
             endDate,
             onRangeSelection: context.onRangeSelection,
-            shouldDisableDate,
+            disableDate,
           });
         }
       },
-      [isRange, rangePart, context, endDate, date, shouldDisableDate]
+      [isRange, rangePart, context, endDate, date, disableDate]
     );
 
     const clearSelection = useCallback(() => {

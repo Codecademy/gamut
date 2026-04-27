@@ -4,7 +4,7 @@ import { CalendarQuickAction, DatePickerSharedProps } from '../sharedTypes';
 import type { DatePickerTranslations } from '../utils/translations';
 
 interface DatePickerBaseContextValue<Mode extends 'single' | 'range'>
-  extends Pick<DatePickerSharedProps, 'shouldDisableDate'> {
+  extends Pick<DatePickerSharedProps, 'disableDate'> {
   /**
    * Discriminator: same meaning as the `mode` prop on `DatePicker` (`"single"` or `"range"`).
    */

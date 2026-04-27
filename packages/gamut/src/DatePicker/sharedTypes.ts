@@ -16,11 +16,11 @@ export interface DatePickerSharedProps {
    *   mode="single"
    *   selectedDate={null}
    *   onSelected={() => {}}
-   *   shouldDisableDate={(d) => d < startOfCutoff}
+   *   disableDate={(d) => d < startOfCutoff}
    * />
    * ```
    */
-  shouldDisableDate?: (date: Date) => boolean;
+  disableDate?: (date: Date) => boolean;
 
   /**
    * Locale for formatting and `Intl.Locale` APIs. Accepts `Intl.LocalesArgument` (e.g. `'en-US'`,

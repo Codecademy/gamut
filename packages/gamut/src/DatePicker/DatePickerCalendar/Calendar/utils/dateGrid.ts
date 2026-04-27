@@ -129,7 +129,7 @@ export const isDateInRange = ({
 };
 
 /**
- * Returns a `shouldDisableDate` callback: for each calendar `date`, `true` if it’s the same day as
+ * Returns a `disableDate` callback: for each calendar `date`, `true` if it’s the same day as
  * any in `dates`
  *
  * @example
@@ -138,7 +138,7 @@ export const isDateInRange = ({
  *   mode="single"
  *   selectedDate={null}
  *   onSelected={() => {}}
- *   shouldDisableDate={matchDisabledDates([new Date(2026, 3, 14)])}
+ *   disableDate={matchDisabledDates([new Date(2026, 3, 14)])}
  * />
  * ```
  */
@@ -149,11 +149,11 @@ export const matchDisabledDates =
 
 export const isDateDisabled = ({
   date,
-  shouldDisableDate,
+  disableDate,
 }: {
   date: Date;
-  shouldDisableDate?: (date: Date) => boolean;
-}) => Boolean(shouldDisableDate?.(date));
+  disableDate?: (date: Date) => boolean;
+}) => Boolean(disableDate?.(date));
 
 export type DateWithRow = { date: Date; rowIndex: number };
 

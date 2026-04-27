@@ -19,7 +19,7 @@ interface CalendarBaseProps extends DatePickerSharedProps {
 }
 
 export interface CalendarNavProps
-  extends Omit<CalendarBaseProps, 'shouldDisableDate'> {
+  extends Omit<CalendarBaseProps, 'disableDate'> {
   /** Callback called after the user navigates to the previous month. */
   onLastMonthClick?: () => void;
   /** Callback called after the user navigates to the next month. */

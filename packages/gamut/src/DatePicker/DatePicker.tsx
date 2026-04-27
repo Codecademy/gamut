@@ -28,7 +28,7 @@ import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './utils/translations';
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
     locale,
-    shouldDisableDate,
+    disableDate,
     children,
     mode,
     translations: translationsProp,
@@ -100,7 +100,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       clearGridFocusRequest,
       closeCalendar,
       locale: resolvedLocale,
-      shouldDisableDate,
+      disableDate,
       translations,
       quickActions: quickActions === null ? [] : resolvedQuickActions,
     };
@@ -135,7 +135,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     gridFocusRequested,
     clearGridFocusRequest,
     closeCalendar,
-    shouldDisableDate,
+    disableDate,
     props,
     activeRangePart,
   ]);

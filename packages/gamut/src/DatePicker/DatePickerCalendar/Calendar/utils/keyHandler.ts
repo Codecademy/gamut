@@ -9,7 +9,7 @@ export type KeyHandlerParams = Pick<
   | 'onEscapeKeyPress'
   | 'hasAdjacentMonthRight'
   | 'hasAdjacentMonthLeft'
-  | 'shouldDisableDate'
+  | 'disableDate'
 > & {
   e: React.KeyboardEvent;
   date: Date;
@@ -33,7 +33,7 @@ export const keyHandler = ({
   datesWithRow,
   month,
   year,
-  shouldDisableDate,
+  disableDate,
   onDateSelect,
   onEscapeKeyPress,
   onDisplayDateChange,
@@ -139,7 +139,7 @@ export const keyHandler = ({
     case 'Enter':
     case ' ':
       e.preventDefault();
-      if (!isDateDisabled({ date, shouldDisableDate })) onDateSelect(date);
+      if (!isDateDisabled({ date, disableDate })) onDateSelect(date);
       return;
     case 'Escape':
       e.preventDefault();

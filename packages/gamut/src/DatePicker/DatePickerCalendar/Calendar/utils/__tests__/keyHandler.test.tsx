@@ -154,7 +154,7 @@ describe('keyHandler', () => {
     keyHandler({
       ...baseParams,
       e: makeEvent('Enter'),
-      shouldDisableDate: matchDisabledDates([date]),
+      disableDate: matchDisabledDates([date]),
     });
     expect(mockOnDateSelect).not.toHaveBeenCalled();
   });
@@ -392,7 +392,7 @@ describe('keyHandler', () => {
       keyHandler({
         ...baseParams,
         e: makeEvent(' '),
-        shouldDisableDate: matchDisabledDates([date]),
+        disableDate: matchDisabledDates([date]),
       });
       expect(mockOnDateSelect).not.toHaveBeenCalled();
     });
