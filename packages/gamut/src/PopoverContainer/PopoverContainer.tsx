@@ -57,18 +57,20 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     onRequestCloseRef.current = onRequestClose;
   }, [onRequestClose]);
 
-  /** Re-renders when `dir` changes under `<html>`; same resolution as {@link elementDir} on the anchor for portal mode. */
-  const anchorWritingMode = useElementDir(targetRef);
+  const targetDir = useElementDir(targetRef);
 
   const targetEl = targetRef?.current;
-  /** Inline: `offsetParent` defines the coordinate system; portal: the anchor. */
+  /** See {@link getContainers} for more information
+   * Inline: `layoutSource` is derived from `offsetParent`.
+   * Portal: i.e. isn't inline so we can use the target itself.
+   * */
   const layoutSource =
     inline && targetEl?.offsetParent instanceof Element
       ? targetEl.offsetParent
       : targetEl;
   const isRtl = inline
     ? layoutSource instanceof Element && elementDir(layoutSource) === 'rtl'
-    : anchorWritingMode === 'rtl';
+    : targetDir === 'rtl';
 
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
@@ -234,17 +236,23 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     ...delegatedRest
   } = rest as React.HTMLAttributes<HTMLDivElement>;
 
-  /** Inline: put inset props on `style` so they stay physical (bypasses logical system props). */
-  const mergedStyle =
-    restStyle ||
-    popoverPosition.physicalStyles ||
-    (inline && Object.keys(popoverPosition.styles).length > 0)
-      ? {
-          ...(typeof restStyle === 'object' && restStyle ? restStyle : {}),
-          ...(inline ? popoverPosition.styles : {}),
-          ...popoverPosition.physicalStyles,
-        }
-      : undefined;
+  const { physicalStyles, styles: positionInsetStyles } = popoverPosition;
+  /** Inline only: `getPosition` insets on the DOM `style` prop (physical), not as system props. */
+  const inlineInsetStyles =
+    inline && Object.keys(positionInsetStyles).length > 0
+      ? positionInsetStyles
+      : null;
+
+  const hasMergedStyle = Boolean(
+    restStyle || physicalStyles || inlineInsetStyles
+  );
+  const mergedStyle = hasMergedStyle
+    ? {
+        ...(typeof restStyle === 'object' && restStyle ? restStyle : {}),
+        ...(inlineInsetStyles ?? {}),
+        ...physicalStyles,
+      }
+    : undefined;
 
   const content = (
     <FocusTrap
@@ -259,7 +267,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         ref={popoverRef}
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
-        {...(inline ? {} : popoverPosition.styles)}
+        {...(inline ? {} : positionInsetStyles)}
         /* eslint-disable-next-line gamut/no-inline-style */
         style={mergedStyle}
         {...delegatedRest}

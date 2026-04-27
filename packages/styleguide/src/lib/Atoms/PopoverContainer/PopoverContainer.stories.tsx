@@ -130,7 +130,7 @@ export const InvertAxis: React.FC<
             return (
               <PopoverContainer
                 alignment={alignment}
-                inline
+                inline={false}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
