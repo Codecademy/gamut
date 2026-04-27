@@ -53,8 +53,14 @@ export const Popover: React.FC<PopoverProps> = ({
   const { x, y } = useWindowScroll();
   const popoverRef = useRef<HTMLDivElement>(null);
 
-  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
+  const elementDirIsRtl =
+    useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
   const logicalPropsEnabled = useLogicalProperties();
+  const isRtl =
+    logicalPropsEnabled && typeof document !== 'undefined'
+      ? elementDirIsRtl ||
+        document.documentElement.getAttribute('dir') === 'rtl'
+      : elementDirIsRtl;
 
   const resolvedAlign = useMemo(() => {
     if (align !== 'left' && align !== 'right') return align;

@@ -81,8 +81,11 @@ export type PopoverProps = PopoverBaseProps &
      * Horizontal alignment of the popover relative to the target. When
      * `GamutProvider`'s `useLogicalProperties` is enabled, `left` and `right` follow the
      * inline axis (leading/trailing): under RTL they resolve to the physical side that
-     * matches inline-start and inline-end, consistent with `useElementDir` on `targetRef`.
-     * Applies for all `position` values (`above`, `below`, `center`).
+     * matches inline-start and inline-end. `Popover` also treats the page as RTL when
+     * `document.documentElement` has `dir="rtl"`, so mirroring still applies if the
+     * target resolves to LTR locally (e.g. an LTR island) but the document is RTL. A
+     * trigger that must stay unmirrored in that case may need a future prop (e.g. writing
+     * direction control). Applies for all `position` values (`above`, `below`, `center`).
      */
     align?: 'left' | 'right' | 'center';
     /**

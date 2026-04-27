@@ -27,15 +27,15 @@ const positionBelow = {
 } as const;
 
 const beakRight = {
-  right: '25px',
+  insetInlineEnd: '25px',
 };
 
 const beakLeft = {
-  left: '25px',
+  insetInlineStart: '25px',
 };
 
 const beakXCenter = {
-  left: 'calc(50% - 10px)',
+  insetInlineStart: 'calc(50% - 10px)',
 };
 
 const beakYCenter = {
@@ -53,17 +53,17 @@ const positionBelowSml = {
 } as const;
 
 const beakRightSml = {
-  right: '1.5rem',
+  insetInlineEnd: '1.5rem',
   bg: tooltipBgColor,
 };
 
 const beakLeftSml = {
-  left: '1.5rem',
+  insetInlineStart: '1.5rem',
   bg: tooltipBgColor,
 };
 
 const beakXCenterSml = {
-  left: 'calc(50% - 8px)',
+  insetInlineStart: 'calc(50% - 8px)',
 };
 
 const beakYCenterSml = {
@@ -73,25 +73,25 @@ const beakYCenterSml = {
 const beakRightCenterStylesSml = {
   ...beakRightCenterStyles,
   ...rtlBeakBoxRight,
-  left: -8,
+  insetInlineStart: -8,
 };
 export const beakRightCenterStylesLrg = {
   ...beakStylesBase,
   ...getBeakBgAndRotation({ alignment: 'right', color: popoverPrimaryBgColor }),
   ...rtlBeakBoxRight,
-  left: -10,
+  insetInlineStart: -10,
 };
 
 const beakLeftCenterStylesSml = {
   ...beakLeftCenterStyles,
   ...rtlBeakBoxLeft,
-  right: -8,
+  insetInlineEnd: -8,
 };
 const beakLeftCenterStylesLrg = {
   ...beakStylesBase,
   ...getBeakBgAndRotation({ alignment: 'left', color: popoverPrimaryBgColor }),
   ...rtlBeakBoxLeft,
-  right: -10,
+  insetInlineEnd: -10,
 };
 
 export const beakBoxX = {
@@ -99,7 +99,7 @@ export const beakBoxX = {
   height: '15px',
   width: '100%',
   justifyContent: 'center',
-  left: 0,
+  insetInlineStart: 0,
 };
 
 export const beakBoxY = {

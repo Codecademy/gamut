@@ -2,7 +2,8 @@ import { PopoverProps } from './types';
 
 /**
  * Mirrors horizontal `left` / `right` in RTL when `useLogicalProperties` is enabled
- * (Popover `align` / `beak` resolution).
+ * (Popover `align` / `beak` resolution). `Popover` passes `isRtl` from
+ * `useElementDir(targetRef)` and document `dir` (see `Popover` implementation).
  */
 export const resolveHorizontalSideForRtl = ({
   side,
