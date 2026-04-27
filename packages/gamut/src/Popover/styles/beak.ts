@@ -99,7 +99,7 @@ export const beakBoxX = {
   height: '15px',
   width: '100%',
   justifyContent: 'center',
-  insetInlineStart: 0,
+  insetInlineStart: '0',
 };
 
 export const beakBoxY = {
