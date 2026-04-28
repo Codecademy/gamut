@@ -203,35 +203,17 @@ export const globalTypes = {
       showName: true,
     },
   },
-  // direction: {
-  //   name: 'Direction',
-  //   description: 'Text direction (LTR or RTL)',
-  //   defaultValue: 'ltr',
-  //   toolbar: {
-  //     icon: 'arrowright',
-  //     items: [
-  //       { value: 'ltr', title: 'Left-to-Right (LTR)', icon: 'arrowright' },
-  //       { value: 'rtl', title: 'Right-to-Left (RTL)', icon: 'arrowleft' },
-  //     ],
-  //     showName: true,
-  //   },
-  // },
-
-  locale: {
-    name: 'Locale',
-    description:
-      'Internationalization locale (sets document text direction for RTL locales)',
-    defaultValue: 'en-US',
+  direction: {
+    name: 'Direction',
+    description: 'Text direction (LTR or RTL)',
+    defaultValue: 'ltr',
     toolbar: {
-      icon: 'globe',
+      icon: 'arrowright',
       items: [
-        { value: 'en-US', right: 'LTR', title: 'English (United States)' },
-        { value: 'es', right: 'LTR', title: 'Spanish' },
-        { value: 'ar', right: 'RTL', title: 'Arabic' },
-        { value: 'ar-OM', right: 'RTL', title: 'Arabic (Oman)' },
-        { value: 'pa-IN', right: 'LTR', title: 'Punjabi (India)' },
-        { value: 'pa-PK', right: 'RTL', title: 'Punjabi (Pakistan)' },
+        { value: 'ltr', title: 'Left-to-Right (LTR)', icon: 'arrowright' },
+        { value: 'rtl', title: 'Right-to-Left (RTL)', icon: 'arrowleft' },
       ],
+      showName: true,
     },
   },
 };

@@ -32,15 +32,12 @@ const themeMap = {
   platform: platformTheme,
 } as const;
 
-/** Locales that use `dir="rtl"` on the document (see Locale toolbar in preview). */
-const RTL_LOCALES = new Set(['ar', 'ar-OM', 'pa-PK']);
-
 type GlobalsContext = {
   globals: {
     colorMode: 'light' | 'dark';
     theme: keyof typeof themeMap;
     logicalProps: 'true' | 'false';
-    locale?: string;
+    direction: 'ltr' | 'rtl';
   };
 };
 
@@ -48,7 +45,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   const colorMode = context.globals.colorMode ?? 'light';
   const selectedTheme = context.globals.theme;
   const useLogicalProperties = context.globals.logicalProps === 'true';
-  // const direction = context.globals.direction ?? 'ltr';
+  const direction = context.globals.direction ?? 'ltr';
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
   const currentTheme = themeMap[selectedTheme];
@@ -60,13 +57,11 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
     if (storyEl) storyEl.style.backgroundColor = background;
   }, [storyRef.current, context.globals.colorMode]);
 
-  const locale = context.globals.locale ?? 'en-US';
   useLayoutEffect(() => {
-    const dir = RTL_LOCALES.has(locale) ? 'rtl' : 'ltr';
-    if (document.documentElement.getAttribute('dir') !== dir) {
-      document.documentElement.setAttribute('dir', dir);
+    if (document.documentElement.getAttribute('dir') !== direction) {
+      document.documentElement.setAttribute('dir', direction);
     }
-  }, [locale]);
+  }, [direction]);
 
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
@@ -82,7 +77,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
           bg={themeBackground[colorMode]}
           ref={storyRef}
         >
-          <div>{Story()}</div>
+          {Story()}
         </Background>
       </GamutProvider>
     );
@@ -99,7 +94,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
         bg={themeBackground[colorMode]}
         ref={storyRef}
       >
-        <div>{Story()}</div>
+        {Story()}
       </Background>
     </GamutProvider>
   );
