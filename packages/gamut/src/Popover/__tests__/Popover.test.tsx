@@ -3,7 +3,6 @@ import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { ThemeProvider } from '@emotion/react';
 import { fireEvent, waitFor } from '@testing-library/react';
-import { useLayoutEffect, useRef } from 'react';
 
 import { Popover, PopoverProps } from '..';
 
@@ -79,46 +78,6 @@ const renderView = setupRtl(PopoverTest);
 const renderViewWithLogicalProperties = setupRtl(
   PopoverTestWithLogicalProperties
 );
-
-const PopoverLtrTargetTest = (props?: Partial<PopoverProps>) => {
-  const targetRef = useRef<HTMLSpanElement>(null);
-  useLayoutEffect(() => {
-    const el = targetRef.current;
-    if (el) {
-      jest.spyOn(el, 'getBoundingClientRect').mockReturnValue({
-        bottom: 298,
-        height: 38,
-        left: 57,
-        right: 840,
-        top: 260,
-        width: 783,
-        x: 57,
-        y: 260,
-        toJSON: jest.fn(),
-      } as DOMRect);
-    }
-  });
-  return (
-    <ThemeProvider theme={popoverTestTheme(true)}>
-      <span data-testid="ltr-target" dir="ltr" ref={targetRef} />
-      <Popover
-        {...({
-          isOpen: true,
-          targetRef,
-          ...props,
-        } as PopoverProps)}
-      >
-        <div data-testid="popover-content">
-          Howdy!
-          <button aria-label="Click me!" type="button" />
-        </div>
-      </Popover>
-      <div>
-        <h1 data-testid="outside-popover">hi</h1>
-      </div>
-    </ThemeProvider>
-  );
-};
 
 /**
  * Popover tests use a mock `targetRef` (not a real Element), so `useElementDir` resolves
