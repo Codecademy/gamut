@@ -120,8 +120,6 @@ const PopoverLtrTargetTest = (props?: Partial<PopoverProps>) => {
   );
 };
 
-const renderLtrTargetView = setupRtl(PopoverLtrTargetTest);
-
 /**
  * Popover tests use a mock `targetRef` (not a real Element), so `useElementDir` resolves
  * from `document.documentElement`. Mirror tests set `dir` there to simulate LTR/RTL.
