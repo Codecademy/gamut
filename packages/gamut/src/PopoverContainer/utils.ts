@@ -6,9 +6,13 @@ import {
 import { Alignments, PopoverPositionConfig, TargetRef } from './types';
 
 export interface PopoverPositionResult {
+  /** Edge insets pinning the popover to the container (`left` / `right` / `top` / `bottom`). */
   styles: CSSObject;
-  /** Applied as inline style to bypass logical property conversion when logical properties produce wrong results */
-  physicalStyles?: CSSObject;
+  /**
+   * Direction-neutral transforms/coords—semantic mirroring happens first via
+   * {@link mirrorAlignment}; merged after `styles`.
+   */
+  dirNeutralStyles?: CSSObject;
 }
 
 /**
@@ -202,12 +206,12 @@ const AXIS = {
  * mirrored corner/edge on the inline axis before computing offsets (same viewport math
  * as LTR).
  *
- * Returns two style objects:
- * - `styles`: position edge values (left/right/top/bottom) passed as variance props so
- *   they are converted to logical properties (inset-inline-start etc.) when
- *   `useLogicalProperties` is enabled.
- * - `physicalStyles`: applied as an inline `style` prop for `transform` and for centered
- *   `top`/`bottom` horizontal anchors (`left` + `translate(-50%, 0)`).
+ * Returns two fragments that callers merge into inline `style` (they are not Gamut variance
+ * props on the host, so nothing here is swapped to logical properties via `system.positioning`).
+ *
+ * - `styles`: corner/edge inset lengths (`left` / `right` / `top` / `bottom`).
+ * - `dirNeutralStyles`: transforms/coords not further remapped for RTL/logical placement
+ *   after {@link mirrorAlignment}; merged after `styles`.
  */
 export const getPosition = ({
   alignment,
@@ -228,25 +232,25 @@ export const getPosition = ({
     | ['top' | 'bottom', 'left' | 'right'];
 
   const styles: CSSObject = {};
-  const physicalStyles: CSSObject = {};
+  const dirNeutralStyles: CSSObject = {};
 
   if (alignments.length === 1) {
     const [direction] = alignments;
     const isVertical = direction === 'top' || direction === 'bottom';
 
     if (isVertical) {
-      // Center x is a physical screen coordinate — this should not flip in RTL.
-      physicalStyles.left = left + width / 2;
-      physicalStyles.transform = 'translate(-50%, 0)';
+      // Center x uses viewport/layout coords — stays literal after mirrorAlignment under RTL.
+      dirNeutralStyles.left = left + width / 2;
+      dirNeutralStyles.transform = 'translate(-50%, 0)';
     } else {
       styles.top = top + height / 2;
-      physicalStyles.transform = 'translate(0, -50%)';
+      dirNeutralStyles.transform = 'translate(0, -50%)';
     }
   } else {
     const coef = AXIS[invertAxis ?? 'none'];
     const [yAxis, xAxis] = alignments;
     const xCoef = coef[xAxis];
-    physicalStyles.transform = `translate(${percent(xCoef)}, ${percent(
+    dirNeutralStyles.transform = `translate(${percent(xCoef)}, ${percent(
       coef[yAxis]
     )})`;
   }
@@ -268,8 +272,8 @@ export const getPosition = ({
 
   return {
     styles,
-    physicalStyles: Object.keys(physicalStyles).length
-      ? physicalStyles
+    dirNeutralStyles: Object.keys(dirNeutralStyles).length
+      ? dirNeutralStyles
       : undefined,
   };
 };

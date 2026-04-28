@@ -195,39 +195,25 @@ describe('Popover', () => {
           bodyOffsetWidthSpy.mockRestore();
         });
 
-        it.each([
-          {
-            useLogicalProperties: true,
-            top: 'insetBlockStart',
-            bottom: 'insetBlockEnd',
-            left: 'insetInlineStart',
-            right: 'insetInlineEnd',
-          },
-          {
-            useLogicalProperties: false,
-            top: 'top',
-            bottom: 'bottom',
-            left: 'left',
-            right: 'right',
-          },
-        ])(
+        it.each([true, false])(
           'renders correct position styles (useLogicalProperties: $useLogicalProperties)',
-          ({ useLogicalProperties, top, bottom, left, right }) => {
+          (useLogicalProperties) => {
+            /** Portal insets use physical `style` (same as inline); logical CSS elsewhere does not remap them. */
             const alignmentTests: [
               PopoverContainerProps['alignment'],
               Record<string, string>
             ][] = [
-              ['top-right', { [left]: '370px', [bottom]: '-130px' }],
-              ['top-left', { [right]: '370px', [bottom]: '-130px' }],
-              ['bottom-right', { [left]: '370px', [top]: '370px' }],
-              ['bottom-left', { [right]: '370px', [top]: '370px' }],
+              ['top-right', { left: '370px', bottom: '-130px' }],
+              ['top-left', { right: '370px', bottom: '-130px' }],
+              ['bottom-right', { left: '370px', top: '370px' }],
+              ['bottom-left', { right: '370px', top: '370px' }],
               // 'top'/'bottom' center horizontally using a physical screen coordinate,
               // so the horizontal position is always physical `left` regardless of
-              // useLogicalProperties — it bypasses variance via physicalStyles.
-              ['top', { left: '250px', [bottom]: '-130px' }],
-              ['left', { [right]: '370px', [top]: '250px' }],
-              ['bottom', { left: '250px', [top]: '370px' }],
-              ['right', { [left]: '370px', [top]: '250px' }],
+              // useLogicalProperties — placement stays inline style, not variance props.
+              ['top', { left: '250px', bottom: '-130px' }],
+              ['left', { right: '370px', top: '250px' }],
+              ['bottom', { left: '250px', top: '370px' }],
+              ['right', { left: '370px', top: '250px' }],
             ];
 
             alignmentTests.forEach(([alignment, expected]) => {
@@ -380,7 +366,7 @@ describe('Popover', () => {
       });
     });
 
-    describe('physicalStyles', () => {
+    describe('dirNeutralStyles', () => {
       describe('centered alignments always use physical left regardless of useLogicalProperties', () => {
         it.each([
           ['top', { left: '250px' }],
@@ -429,7 +415,7 @@ describe('Popover', () => {
               invertAxis: 'x',
               isRtl,
             });
-            expect(result.physicalStyles?.transform).toBe(expected);
+            expect(result.dirNeutralStyles?.transform).toBe(expected);
           }
         );
       });
@@ -470,26 +456,15 @@ describe('Popover', () => {
         bodyOffsetWidthSpy.mockRestore();
       });
 
-      it.each([
-        {
-          useLogicalProperties: true,
-          bottom: 'insetBlockEnd',
-          left: 'insetInlineStart',
-        },
-        {
-          useLogicalProperties: false,
-          bottom: 'bottom',
-          left: 'left',
-        },
-      ])(
+      it.each([true, false])(
         'renders correct offset styles (useLogicalProperties: $useLogicalProperties)',
-        ({ useLogicalProperties, bottom, left }) => {
+        (useLogicalProperties) => {
           /** Portal top-right: `left` = 370 + x, `bottom` = -130 + y (see portal - viewport). */
           const offsetTests: [number, number, Record<string, string>][] = [
-            [5, 10, { [left]: '375px', [bottom]: '-120px' }],
-            [-15, 10, { [left]: '355px', [bottom]: '-120px' }],
-            [605, -100, { [left]: '975px', [bottom]: '-230px' }],
-            [-25, -10, { [left]: '345px', [bottom]: '-140px' }],
+            [5, 10, { left: '375px', bottom: '-120px' }],
+            [-15, 10, { left: '355px', bottom: '-120px' }],
+            [605, -100, { left: '975px', bottom: '-230px' }],
+            [-25, -10, { left: '345px', bottom: '-140px' }],
           ];
 
           offsetTests.forEach(([x, y, expected]) => {

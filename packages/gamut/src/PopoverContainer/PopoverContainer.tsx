@@ -84,7 +84,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         y,
       });
     }
-    return { styles: {}, physicalStyles: undefined };
+    return { styles: {}, dirNeutralStyles: undefined };
   }, [parent, x, y, offset, alignment, invertAxis, isRtl]);
 
   useEffect(() => {
@@ -236,21 +236,20 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     ...restProps
   } = rest as React.HTMLAttributes<HTMLDivElement>;
 
-  const { physicalStyles, styles: positionInsetStyles } = popoverPosition;
-  /** Inline only: `getPosition` insets on the DOM `style` prop (physical), not as system props. */
-  const inlineInsetStyles =
-    inline && Object.keys(positionInsetStyles).length > 0
-      ? positionInsetStyles
-      : null;
+  const { dirNeutralStyles, styles: placementStyles } = popoverPosition;
+
+  /** Non-empty `placementStyles` merged into inline `style`; `dirNeutralStyles` layered last (see `getPosition`). */
+  const placementStylesToMerge =
+    Object.keys(placementStyles).length > 0 ? placementStyles : null;
 
   const hasMergedStyle = Boolean(
-    restStyle || physicalStyles || inlineInsetStyles
+    restStyle || dirNeutralStyles || placementStylesToMerge
   );
   const mergedStyle = hasMergedStyle
     ? {
         ...(typeof restStyle === 'object' && restStyle ? restStyle : {}),
-        ...(inlineInsetStyles ?? {}),
-        ...physicalStyles,
+        ...(placementStylesToMerge ?? {}),
+        ...dirNeutralStyles,
       }
     : undefined;
 
@@ -267,7 +266,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         ref={popoverRef}
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
-        {...(inline ? {} : positionInsetStyles)}
         /* eslint-disable-next-line gamut/no-inline-style */
         style={mergedStyle}
         {...restProps}
