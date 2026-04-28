@@ -264,10 +264,10 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         data-testid="popover-content-container"
         position="absolute"
         ref={popoverRef}
-        tabIndex={-1}
-        zIndex={inline ? 5 : 'initial'}
         /* eslint-disable-next-line gamut/no-inline-style */
         style={mergedStyle}
+        tabIndex={-1}
+        zIndex={inline ? 5 : 'initial'}
         {...restProps}
       >
         {children}
