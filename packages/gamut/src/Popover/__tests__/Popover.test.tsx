@@ -2,7 +2,7 @@ import { CheckerDense } from '@codecademy/gamut-patterns';
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { ThemeProvider } from '@emotion/react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 
 import { Popover, PopoverProps } from '..';
 
@@ -25,9 +25,40 @@ const targetRefObj = {
   },
 };
 
+const popoverTestTheme = (useLogicalProperties: boolean) => ({
+  ...theme,
+  useLogicalProperties,
+});
+
 const PopoverTest = (props?: Partial<PopoverProps>) => (
-  <ThemeProvider theme={theme}>
-    <Popover isOpen targetRef={targetRefObj} {...props}>
+  <ThemeProvider theme={popoverTestTheme(false)}>
+    <Popover
+      {...({
+        isOpen: true,
+        targetRef: targetRefObj,
+        ...props,
+      } as PopoverProps)}
+    >
+      <div data-testid="popover-content">
+        Howdy!
+        <button aria-label="Click me!" type="button" />
+      </div>
+    </Popover>
+    <div>
+      <h1 data-testid="outside-popover">hi</h1>
+    </div>
+  </ThemeProvider>
+);
+
+const PopoverTestWithLogicalProperties = (props?: Partial<PopoverProps>) => (
+  <ThemeProvider theme={popoverTestTheme(true)}>
+    <Popover
+      {...({
+        isOpen: true,
+        targetRef: targetRefObj,
+        ...props,
+      } as PopoverProps)}
+    >
       <div data-testid="popover-content">
         Howdy!
         <button aria-label="Click me!" type="button" />
@@ -44,6 +75,55 @@ const popoverIsRendered = (view: ReturnType<typeof renderView>['view']) => {
 };
 
 const renderView = setupRtl(PopoverTest);
+const renderViewWithLogicalProperties = setupRtl(
+  PopoverTestWithLogicalProperties
+);
+
+/**
+ * Popover tests use a mock `targetRef` (not a real Element), so `useElementDir` resolves
+ * from `document.documentElement`. Mirror tests set `dir` there to simulate LTR/RTL.
+ */
+function setupRtlMirrorScroll() {
+  document.documentElement.setAttribute('dir', 'ltr');
+  Object.defineProperty(window, 'scrollY', { value: 1 });
+  Object.defineProperty(window, 'scrollX', { value: 1 });
+}
+
+const sideCenterFloatingProps = {
+  position: 'center' as const,
+  beak: 'center' as const,
+  variant: 'secondary' as const,
+  skipFocusTrap: true as const,
+};
+
+async function expectMirrorHorizontalLeft(
+  ltrProps: Partial<PopoverProps>,
+  rtlProps: Partial<PopoverProps>
+) {
+  document.documentElement.setAttribute('dir', 'ltr');
+  const { view: viewLtr } = renderViewWithLogicalProperties({
+    isOpen: true,
+    ...ltrProps,
+  });
+  const ltrEl = viewLtr.getByTestId('popover-content-container');
+  await waitFor(() => {
+    expect(ltrEl.style.left).toMatch(/\d+px/);
+  });
+  const ltrLeft = ltrEl.style.left;
+  viewLtr.unmount();
+
+  document.documentElement.setAttribute('dir', 'rtl');
+  const { view: viewRtl } = renderViewWithLogicalProperties({
+    isOpen: true,
+    ...rtlProps,
+  });
+  const rtlEl = viewRtl.getByTestId('popover-content-container');
+  await waitFor(() => {
+    expect(rtlEl.style.left).toMatch(/\d+px/);
+  });
+  expect(rtlEl.style.left).toBe(ltrLeft);
+  viewRtl.unmount();
+}
 
 describe('Popover', () => {
   it('renders null when isOpen is not true', () => {
@@ -64,7 +144,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(view.getByTestId('outside-popover'));
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -84,7 +164,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.keyDown(view.container, { key: 'escape', keyCode: 27 });
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport', () => {
@@ -117,7 +197,7 @@ describe('Popover', () => {
       onRequestClose,
     });
 
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not onRequestClose callback when popover is out of viewport', () => {
@@ -147,7 +227,7 @@ describe('Popover', () => {
       onRequestClose,
     });
 
-    expect(onRequestClose).not.toBeCalled();
+    expect(onRequestClose).not.toHaveBeenCalled();
   });
 
   it('does not show a beak if the prop is not provided', () => {
@@ -280,5 +360,49 @@ describe('Popover', () => {
     });
 
     view.getByTestId('popover-pattern');
+  });
+});
+
+describe('Popover RTL (position center)', () => {
+  beforeEach(setupRtlMirrorScroll);
+
+  afterEach(() => {
+    document.documentElement.removeAttribute('dir');
+  });
+
+  it('align left in RTL uses the same horizontal offset as align right in LTR', async () => {
+    await expectMirrorHorizontalLeft(
+      { ...sideCenterFloatingProps, align: 'right' },
+      { ...sideCenterFloatingProps, align: 'left' }
+    );
+  });
+
+  it('align right in RTL uses the same horizontal offset as align left in LTR', async () => {
+    await expectMirrorHorizontalLeft(
+      { ...sideCenterFloatingProps, align: 'left' },
+      { ...sideCenterFloatingProps, align: 'right' }
+    );
+  });
+});
+
+describe('Popover RTL (position above / below)', () => {
+  beforeEach(setupRtlMirrorScroll);
+
+  afterEach(() => {
+    document.documentElement.removeAttribute('dir');
+  });
+
+  it('above: align left in RTL uses the same horizontal offset as align right in LTR', async () => {
+    await expectMirrorHorizontalLeft(
+      { position: 'above', align: 'right', skipFocusTrap: true },
+      { position: 'above', align: 'left', skipFocusTrap: true }
+    );
+  });
+
+  it('below: align right in RTL uses the same horizontal offset as align left in LTR', async () => {
+    await expectMirrorHorizontalLeft(
+      { position: 'below', align: 'left', skipFocusTrap: true },
+      { position: 'below', align: 'right', skipFocusTrap: true }
+    );
   });
 });
