@@ -53,10 +53,11 @@ export const Popover: React.FC<PopoverProps> = ({
   const { x, y } = useWindowScroll();
   const popoverRef = useRef<HTMLDivElement>(null);
 
-  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
   const logicalPropsEnabled = useLogicalProperties();
+  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
 
-  const resolvedAlign = useMemo(() => {
+  // This only needs to resolve the positioning - the beak uses logical properties so will automatically mirror in RTL.
+  const resolvedSideAlign = useMemo(() => {
     if (align !== 'left' && align !== 'right') return align;
     return resolveHorizontalSideForRtl({
       side: align,
@@ -64,15 +65,6 @@ export const Popover: React.FC<PopoverProps> = ({
       useLogicalProperties: logicalPropsEnabled,
     });
   }, [align, isRtl, logicalPropsEnabled]);
-
-  const resolvedBeak = useMemo(() => {
-    if (beak !== 'left' && beak !== 'right') return beak;
-    return resolveHorizontalSideForRtl({
-      side: beak,
-      isRtl,
-      useLogicalProperties: logicalPropsEnabled,
-    });
-  }, [beak, isRtl, logicalPropsEnabled]);
 
   const updatePopoverDimensions = useCallback(() => {
     if (popoverRef.current) {
@@ -147,14 +139,14 @@ export const Popover: React.FC<PopoverProps> = ({
     };
     return {
       top: positions[position],
-      left: alignments[resolvedAlign],
+      left: alignments[resolvedSideAlign],
     };
   }, [
     horizontalOffset,
     popoverHeight,
     popoverWidth,
     position,
-    resolvedAlign,
+    resolvedSideAlign,
     targetRect,
     verticalOffset,
   ]);
@@ -217,7 +209,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const contents = (
     <PopoverContainer
-      align={resolvedAlign}
+      align={resolvedSideAlign}
       className={className}
       data-floating="popover"
       data-testid="popover-content-container"
@@ -239,9 +231,9 @@ export const Popover: React.FC<PopoverProps> = ({
           <BeakBox variant={position}>
             <Beak
               beak={getBeakVariant({
-                align: resolvedAlign,
+                align,
                 position,
-                beak: resolvedBeak,
+                beak,
                 variant,
               })}
               data-testid="popover-beak"
@@ -253,7 +245,7 @@ export const Popover: React.FC<PopoverProps> = ({
         {children}
       </RaisedDiv>
       {Pattern && (
-        <PatternContainer variant={`${position}-${resolvedAlign}`}>
+        <PatternContainer variant={`${position}-${resolvedSideAlign}`}>
           <Pattern data-testid="popover-pattern" />
         </PatternContainer>
       )}
