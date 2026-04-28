@@ -250,7 +250,7 @@ export const Popover: React.FC<PopoverProps> = ({
               beak={getBeakVariant({
                 align: resolvedAlign,
                 position,
-                beak: resolvedBeak,
+                beak,
                 variant,
               })}
               data-testid="popover-beak"
