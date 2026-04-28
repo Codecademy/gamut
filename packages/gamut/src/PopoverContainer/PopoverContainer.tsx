@@ -233,7 +233,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const {
     children,
     style: restStyle,
-    ...delegatedRest
+    ...restProps
   } = rest as React.HTMLAttributes<HTMLDivElement>;
 
   const { physicalStyles, styles: positionInsetStyles } = popoverPosition;
@@ -270,7 +270,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         {...(inline ? {} : positionInsetStyles)}
         /* eslint-disable-next-line gamut/no-inline-style */
         style={mergedStyle}
-        {...delegatedRest}
+        {...restProps}
       >
         {children}
       </PopoverContent>
