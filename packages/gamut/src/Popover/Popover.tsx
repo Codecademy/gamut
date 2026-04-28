@@ -53,16 +53,8 @@ export const Popover: React.FC<PopoverProps> = ({
   const { x, y } = useWindowScroll();
   const popoverRef = useRef<HTMLDivElement>(null);
 
-  const elementDirIsRtl =
-    useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
   const logicalPropsEnabled = useLogicalProperties();
-  // Document `dir=rtl` mirrors `align` when the target is in an LTR subtree (useElementDir stays LTR).
-  // A deliberately LTR-scoped control on an RTL page still gets mirrored; override could be a future `writingDirection`-style prop.
-  const isRtl =
-    logicalPropsEnabled && typeof document !== 'undefined'
-      ? elementDirIsRtl ||
-        document.documentElement.getAttribute('dir') === 'rtl'
-      : elementDirIsRtl;
+  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
 
   // This only needs to resolve the positioning - the beak uses logical properties so will automatically mirror in RTL.
   const resolvedSideAlign = useMemo(() => {
