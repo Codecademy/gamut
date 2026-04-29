@@ -1,12 +1,16 @@
 import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 import * as DatePickerStories from './DatePicker.stories';
 
 export const parameters = {
   title: 'DatePicker',
-  subtitle: `Single-date or range selection with a segmented date field, calendar popover, and shared React context for custom layouts.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=127461-42132',
+  },
+  subtitle: `Single-date or range selection with a segmented date field, calendar popover, footer quick actions, and shared React context for custom layouts.`,
   status: 'current',
   source: {
     repo: 'gamut',
@@ -19,90 +23,284 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-## Overview
+## Usage
 
-`DatePicker` is a **controlled** component: you own the selected value in React state and pass setters back in. It wraps children in `DatePickerProvider` so subcomponents can read calendar open/close, locale, optional `disableDate`, and selection via **`useDatePicker()`**.
+Use `DatePicker` to allow users to select a single date or a date range via manual input or an interactive calendar.
 
-With **no `children`**, it renders the default layout: segmented inputs (and a range arrow in range mode), a calendar icon, and a **`PopoverContainer`**-anchored calendar dialog. Pass **`children`** to compose your own shell (for example a different popover target or layout) while still using **`DatePickerInput`**, **`DatePickerCalendar`**, and the same context.
+### Best practices:
 
-The lower-level **Calendar** building blocks (month grid, header, footer) are documented under <LinkTo id="Molecules/DatePicker/Calendar">DatePicker/Calendar</LinkTo>.
+- Include quick actions when users are likely to select common or recurring dates or ranges
+- Include disabled dates to prevent selection of dates that are unavailable or invalid in your context
+- Use the Today indicator when the current date is a meaningful reference point for the user
 
-## Modes
+### When NOT to use:
 
-Pass **`mode`** explicitly: **`"single"`** or **`"range"`**.
+- **Predefined options** - for choosing from a fixed set of date-related options (e.g., "This month", "Last quarter"), use the <LinkTo id="Molecules/Select">Select</LinkTo> or <LinkTo id="Molecules/SelectDropdown">SelectDropdown</LinkTo> component instead
 
-### Single date (`mode="single"`)
+## Anatomy
 
-- **`selectedDate`** / **`onSelected`**: the current value (`Date | null`) and change handler.
-- Optional **`label`** for the field (via **`DatePickerInput`** / translations).
+<ImageWrapper
+  alt="The anatomy of the DatePicker component, detailed below."
+  height="auto"
+  src="./organisms/datepicker.png"
+/>
 
-### Range (`mode="range"`)
+1. **Start date / Date**
 
-- **`startDate`**, **`endDate`**, **`onStartSelected`**, **`onEndSelected`**.
-- Optional **`startLabel`** and **`endLabel`** for the two inputs (via translations).
+- The first date in a range, or the only date when `mode="single"`
+- Label reads "Date" for single date; "Start date" for range
+- Label is fixed and non-editable
+- Inputting a date updates the calendar selection immediately
 
-## Common props
+2. **End date**
 
-| Area            | Props                                                                                                                                                                                           |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Mode**        | **`mode`**: `"single"` \| `"range"` — required.                                                                                                                                                 |
-| **Locale**      | **`locale`**: `string` or `Intl.Locale` — drives date format order in the input (e.g. MM/DD/YYYY vs DD/MM/YYYY) and calendar copy.                                                              |
-| **Constraints** | **`disableDate`**: predicate per calendar day; use **`matchDisabledDates([...])`** from `@codecademy/gamut` to disable specific days. Range selection avoids ranges that include disabled days. |
-| **Copy**        | **`translations`**: optional overrides (e.g. clear button, dialog `aria-label`, start/end labels) merged with defaults.                                                                         |
-| **Size**        | **`inputSize`**: forwarded to the segmented inputs (`small` vs default).                                                                                                                        |
+- The last date in the selected range
+- Label reads "End date"
+- Label is fixed and non-editable
+- Inputting a date updates the calendar selection immediately
+- Only shown if `mode="range"`
 
-## Subcomponents and context
+3. **Calendar**
 
-- **`DatePickerInput`**: segmented month/day/year spinbuttons; must be used inside a `DatePicker` (or `DatePickerProvider` with a matching value). In range mode, pass **`rangePart="start"`** or **`"end"`** on each input.
-- **`DatePickerCalendar`**: full calendar UI wired to context; pass a stable **`dialogId`** that matches the dialog wrapper (see default `DatePicker` implementation).
-- **`useDatePicker()`**: **`openCalendar`**, **`closeCalendar`**, **`isCalendarOpen`**, **`calendarDialogId`**, **`setSelection`**, **`locale`**, **`focusCalendarGrid`**, etc.
+- Popover triggered on focus of either date input
+- Closes automatically once the selection is complete
+- Selecting a date in the calendar updates the manual inputs immediately
+- Clicking an already-selected date clears it
+- Displays 2 months by default; collapses to 1 month at viewports below 540px
 
-For floating UI, the default implementation uses <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo> with **`allowPageInteraction`** and focus settings so users can type in the field without focus jumping into the grid on every open.
+4. **Today** _(optional)_
 
-## Code examples
+- Use when orienting the user around today's date is relevant to the context
+- Indicates the current date on the calendar
+- Indicator is primary-colored when the date is not selected; switches to the background token when selected
 
-### Single date (minimal)
+5. **Disabled dates** _(optional)_
 
-```tsx
-const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+- Use to mark specific dates as non-selectable
+- If a selected range overlaps any disabled date, the range is invalid
+- An invalid range clears the End date and treats the click as a new Start date selection
 
-return (
-  <DatePicker
-    mode="single"
-    selectedDate={selectedDate}
-    onSelected={setSelectedDate}
-  />
-);
-```
+6. **Clear**
+
+- Clears all current date selections
+- Only shown if `mode="range"`
+
+7. **Quick actions** _(optional)_
+
+- Use when you expect users to frequently select common dates or ranges
+- Include up to 3 actions
+- Use range quick actions when `mode="range"`; use single-date quick actions when `mode="single"`
+- For past date ranges, use "Last" as the label prefix (e.g., "Last 7 days")
+- Quick action ranges are inclusive of today
+- If the resulting range overlaps any disabled dates, no action is taken
+
+## Variants
+
+### Single date
+
+Use the single date variant (`mode="single"`) when users need to select a single date.
+
+`selectedDate` and `onSelected` are the controlled value and updater and are required props.
+
+<Canvas of={DatePickerStories.SingleDate} />
 
 ### Range
 
+Use the range variant (`mode="range"`) when users need to select a range of dates.
+
+`startDate`, `onStartSelected`, `endDate`, and `onEndSelected` are the controlled values and updaters and are required props.
+
+<Canvas of={DatePickerStories.Range} />
+
+### With initial date
+
+Set the initial date using the `selectedDate` (single) or `startDate` and `endDate` (range) props.
+
+<Canvas of={DatePickerStories.WithInitialDateSingle} />
+
+<Canvas of={DatePickerStories.WithInitialDateRange} />
+
+### Input size
+
+Use the **`inputSize`** prop to adjust the size of the input. The default size is `"base"`. You can also use `"small"` to reduce the padding of the input.
+
+<Canvas of={DatePickerStories.RangeSmall} />
+
+## Quick actions
+
+Quick actions are a set of predefined date ranges or single dates that allow users to quickly select a date or range of dates.
+
+### Default values
+
+There are default quick actions for both single and range modes for your convenience.
+
+#### Single date: yesterday / today / tomorrow
+
+<Canvas of={DatePickerStories.SingleDefaultQuickActions} />
+
+#### Range: last 7 / 30 / 90 days
+
+<Canvas of={DatePickerStories.RangeDefaultQuickActions} />
+
+### Disable quick actions
+
+You can disable quick actions by passing `quickActions={null}`.
+
+<Canvas of={DatePickerStories.RangeNoQuickActions} />
+
+When quick actions are disabled in single mode, the footer is not shown.
+
+<Canvas of={DatePickerStories.SingleNoQuickActions} />
+
+### Custom values
+
+You can pass your own quick actions using the **`quickActions`** prop. **`quickActions`** is an array of quick actions Each quick action is an object with the following properties:
+
+- **`num`**: the number of days to offset from today.
+- **`timePeriod`**: the time period to offset from today.
+- **`displayText`**: the text to display for the quick action.
+- **`onClick`**: the callback to call when the quick action is clicked.
+
+<Canvas of={DatePickerStories.SingleCustomQuickActions} />
+
+<Canvas of={DatePickerStories.RangeCustomQuickActions} />
+
+## Disable dates
+
+Use the **`disableDate`** callback prop to disable specific dates in the calendar. The callback should return `true` if the date should be disabled and `false` if it should be enabled. You can disable dates based on a fixed list of dates, the current date, the start date, or any other date property.
+
+### Disable a fixed list of dates
+
+You can use the **`disableDate`** prop to disable a fixed list of dates using the `matchDisabledDates` helper. Here we are disabling the date April 22, 2026.
+
 ```tsx
-import { DatePicker, matchDisabledDates } from '@codecademy/gamut';
-
-const [startDate, setStartDate] = useState<Date | null>(null);
-const [endDate, setEndDate] = useState<Date | null>(null);
-
-return (
-  <DatePicker
-    mode="range"
-    startDate={startDate}
-    endDate={endDate}
-    onStartSelected={setStartDate}
-    onEndSelected={setEndDate}
-    disableDate={matchDisabledDates([someHoliday])}
-  />
-);
+<DatePicker
+  mode="range"
+  startDate={null}
+  onStartSelected={() => {}}
+  endDate={null}
+  onEndSelected={() => {}}
+  disableDate={matchDisabledDates([new Date(2026, 3, 22)])}
+/>
 ```
 
-### Custom layout (`children`)
+<Canvas of={DatePickerStories.MatchDisabledDates} />
 
-Render **`DatePicker`** with **`mode`** (e.g. **`mode="single"`**) and **`children`** only (no default input/calendar). Inside the tree, call **`useDatePicker()`** and place **`DatePickerInput`** and **`DatePickerCalendar`** wherever you need, and wire your own **`PopoverContainer`** (or other overlay) to **`openCalendar`**, **`closeCalendar`**, and **`calendarDialogId`**. See the **Composed with context** story below.
+### Disable dates based on the current date
 
-## Accessibility notes
+You can use the **`disableDate`** prop to disable dates that are before today.
 
-- The calendar is exposed as a **`role="dialog"`** region with an id used for labeling.
-- Segments use **`role="spinbutton"`** with arrow keys to change values, **Arrow Left/Right** to move between segments, and **Alt+Arrow Down** to move focus into the calendar grid when appropriate.
+```tsx
+<DatePicker
+  mode="range"
+  startDate={null}
+  onStartSelected={() => {}}
+  endDate={null}
+  onEndSelected={() => {}}
+  disableDate={(date) => date < new Date()}
+/>
+```
+
+<Canvas of={DatePickerStories.RangeDisabledBeforeToday} />
+
+You can also use the **`disableDate`** prop to disable dates that are more than 30 days before today.
+
+```tsx
+<DatePicker
+  mode="range"
+  startDate={null}
+  onStartSelected={() => {}}
+  endDate={null}
+  onEndSelected={() => {}}
+  disableDate={(date) => {
+    const today = new Date();
+    const thirtyDaysAgo = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() - 30
+    );
+    return date < thirtyDaysAgo;
+  }}
+/>
+```
+
+<Canvas of={DatePickerStories.RangeDisabledMoreThan30DaysBeforeToday} />
+
+### Disable dates based on the start date
+
+You can use the **`disableDate`** prop to limit the range of dates that can be selected based on the start date. For example, here we disable dates that are more than 30 days before or after the start date, effectively limiting the range to 30 days.
+
+```tsx
+<DatePicker
+  mode="range"
+  startDate={null}
+  onStartSelected={() => {}}
+  endDate={null}
+  onEndSelected={() => {}}
+  disableDate={(date) => {
+    if (startDate === null) {
+      return false;
+    }
+    const start = calendarDate(startDate);
+    const min = new Date(start);
+    min.setDate(min.getDate() - 30);
+    const max = new Date(start);
+    max.setDate(max.getDate() + 30);
+    const day = calendarDate(date);
+    return day < min || day > max;
+  }}
+/>
+```
+
+<Canvas of={DatePickerStories.Range30DayWindowFromStart} />
+
+### Disable weekends
+
+You can use the **`disableDate`** prop to disable weekends.
+
+```tsx
+<DatePicker
+  mode="range"
+  startDate={null}
+  onStartSelected={() => {}}
+  endDate={null}
+  disableDate={(date) => date.getDay() === 0 || date.getDay() === 6}
+/>
+```
+
+<Canvas of={DatePickerStories.RangeDisabledWeekends} />
+
+## Locale
+
+Use the **`locale`** prop to set the locale of the DatePicker component. The default locale is the runtime default
+locale. You can also pass a locale string.
+
+DatePicker uses the `Intl` API to internationalize a lot of the component automatically:
+
+- **`Intl.Locale` + `getWeekInfo`**: which day starts the calendar.
+- **`Intl.DateTimeFormat`**: segment order and separators for the inputs; month + year in the header; short/long weekday names in the grid; formatted day cell `aria-label`.
+- **`Intl.RelativeTimeFormat`**: the default single-mode quick actions (e.g. yesterday / today / tomorrow) and the previous / next month navigation tip text.
+- **`String.prototype.toLocaleUpperCase`**: first character of some relative-time strings, using the active locale.
+
+<Canvas of={DatePickerStories.Locale} />
+
+### Translations
+
+Use the **`translations`** prop to internationalize any text that is not handled automatically by the `Intl` API. The passed translations are merged with the default translations from `DEFAULT_DATE_PICKER_TRANSLATIONS`.
+
+<Canvas of={DatePickerStories.Translations} />
+
+## Composed with context
+
+You are able to render **`DatePicker`** with **`children`** and compose the component yourself for more flexibility.
+
+The following components/hooks are exported and available to use in your composition:
+
+- **`DatePickerInput`**: month/day/year **`role="spinbutton"`** segments. In range mode use **`rangePart="start"`** or **`"end"`** on each instance.
+- **`DatePickerCalendar`**: calendar UI wired to context; pass a stable **`dialogId`** that matches the **`id`** on your **`role="dialog"`** wrapper for **`aria-labelledby`** / **`aria-controls`** wiring.
+- **`useDatePicker()`** exposes shared shell state. Always narrow on **`mode`** when you need mode-specific fields.
+
+<Canvas of={DatePickerStories.ComposedWithContext} />
 
 ## Playground
 
@@ -110,22 +308,8 @@ Render **`DatePicker`** with **`mode`** (e.g. **`mode="single"`**) and **`childr
 
 <Controls />
 
-## Examples
+## Accessibility considerations
 
-### With initial date
-
-<Canvas of={DatePickerStories.WithInitialDate} />
-
-### Range
-
-<Canvas of={DatePickerStories.Range} />
-
-### Range (small inputs)
-
-<Canvas of={DatePickerStories.RangeSmall} />
-
-### Composed with context
-
-Custom composition using **`children`**, **`useDatePicker`**, **`DatePickerInput`**, **`DatePickerCalendar`**, and **`PopoverContainer`**.
-
-<Canvas of={DatePickerStories.ComposedWithContext} />
+- The calendar lives in a **`role="dialog"`** region; pair its **`id`** with **`DatePickerCalendar`**’s **`dialogId`** and input **`aria-controls`** from the default implementation.
+- Segments use **`role="spinbutton"`**; arrow keys adjust values, **Arrow Left/Right** move between segments, and **Alt+Arrow Down** opens the calendar or moves focus into the grid when appropriate.
+- **Escape** closes the popover.

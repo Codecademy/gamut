@@ -1,5 +1,6 @@
 import { RefObject } from 'react';
 
+import { FocusTrapProps } from '../FocusTrap';
 import { WithChildrenProp } from '../utils';
 
 export type Alignments =
@@ -68,7 +69,8 @@ export interface PopoverPositionConfig extends PopoverAlignment {
 
 export interface PopoverContainerProps
   extends PopoverAlignment,
-    WithChildrenProp {
+    WithChildrenProp,
+    Pick<FocusTrapProps, 'focusOnProps'> {
   className?: string;
   /**
    * Whether the popover is rendered.
@@ -92,9 +94,4 @@ export interface PopoverContainerProps
    * Defaults to false.
    */
   closeOnViewportExit?: boolean;
-  /**
-   * Optional props passed to the internal FocusTrap (react-focus-on).
-   * Use e.g. { autoFocus: false, focusLock: false } to keep focus on the trigger when the popover opens.
-   */
-  focusOnProps?: Partial<import('../FocusTrap').FocusTrapProps['focusOnProps']>;
 }
