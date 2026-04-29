@@ -7,6 +7,7 @@ const meta: Meta<typeof PopoverContainer> = {
   component: PopoverContainer,
   args: {
     alignment: 'top-left',
+    allowPageInteraction: true,
     isOpen: true,
     inline: true,
     x: 0,
@@ -41,7 +42,7 @@ export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
   return (
     <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
-        <PopoverContainer {...args} inline isOpen targetRef={target}>
+        <PopoverContainer {...args} isOpen targetRef={target}>
           <Background
             alignItems="center"
             bg="navy"
@@ -67,9 +68,9 @@ export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
   );
 };
 
-export const Alignment: React.FC<
-  ComponentProps<typeof PopoverContainer>
-> = () => {
+export const Alignment: React.FC<ComponentProps<typeof PopoverContainer>> = (
+  args
+) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -79,7 +80,7 @@ export const Alignment: React.FC<
           return (
             <PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={alignment}
               offset={20}
@@ -116,9 +117,9 @@ export const Alignment: React.FC<
   );
 };
 
-export const InvertAxis: React.FC<
-  ComponentProps<typeof PopoverContainer>
-> = () => {
+export const InvertAxis: React.FC<ComponentProps<typeof PopoverContainer>> = (
+  args
+) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -129,7 +130,7 @@ export const InvertAxis: React.FC<
             return (
               <PopoverContainer
                 alignment={alignment}
-                inline
+                inline={args.inline}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
@@ -170,7 +171,9 @@ export const InvertAxis: React.FC<
   );
 };
 
-export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
+export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = (
+  args
+) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -180,7 +183,7 @@ export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
           return (
             <PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-20`}
               offset={20}
@@ -219,7 +222,9 @@ export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
   );
 };
 
-export const XandY: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
+export const XAndY: React.FC<ComponentProps<typeof PopoverContainer>> = (
+  args
+) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -229,7 +234,7 @@ export const XandY: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
           return (
             <PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-0-0`}
               targetRef={target}

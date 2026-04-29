@@ -57,6 +57,12 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
     if (storyEl) storyEl.style.backgroundColor = background;
   }, [storyRef.current, context.globals.colorMode]);
 
+  useLayoutEffect(() => {
+    if (document.documentElement.getAttribute('dir') !== direction) {
+      document.documentElement.setAttribute('dir', direction);
+    }
+  }, [direction]);
+
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
     return (
@@ -71,7 +77,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
           bg={themeBackground[colorMode]}
           ref={storyRef}
         >
-          <div dir={direction}>{Story()}</div>
+          {Story()}
         </Background>
       </GamutProvider>
     );
@@ -88,7 +94,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
         bg={themeBackground[colorMode]}
         ref={storyRef}
       >
-        <div dir={direction}>{Story()}</div>
+        {Story()}
       </Background>
     </GamutProvider>
   );
