@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">86/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/480 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">166 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">86/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/481 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">166 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>5.7s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.5s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -29558,6 +29558,16 @@ Popovers have a secondary, tooltip-esque variant style that have a smaller beak,
 
 &lt;Canvas of={PopoverStories.Variant} /&gt;
 
+## RTL (right-to-left)
+
+`Popover` uses `useElementDir` from `@codecademy/gamut-styles` with **`targetRef`**, so **`align` `left` and `right` are logical** (inline-start / inline-end relative to the anchor), not fixed physical screen sides.
+
+- **`position` `above`, `below`, or `center`:** horizontal placement and the popover container transform use this resolved direction.
+- **`align=&quot;center&quot;`:** not mirrored as left/right; it stays centered on the anchor for that `position`.
+- **`beak`:** for `above` / `below`, a **corner** beak follows **`align`**. Use **`beak=&quot;center&quot;`** for a triangle centered on that edge.
+
+See &lt;LinkTo id=&quot;Meta/Logical and physical CSS properties&quot;&gt;Logical and physical CSS properties&lt;/LinkTo&gt; for `useElementDir`, the imperative `elementDir` helper, and logical vs physical CSS in Gamut. Lower-level positioning without `Popover` is documented on &lt;LinkTo id=&quot;Atoms/PopoverContainer&quot;&gt;PopoverContainer&lt;/LinkTo&gt;.
+
 ## Playground
 
 &lt;Canvas sourceState=&quot;shown&quot; of={PopoverStories.Default} /&gt;
@@ -29624,6 +29634,7 @@ const meta: Meta&lt;typeof PopoverContainer&gt; = {
   component: PopoverContainer,
   args: {
     alignment: &#39;top-left&#39;,
+    allowPageInteraction: true,
     isOpen: true,
     inline: true,
     x: 0,
@@ -29658,7 +29669,7 @@ export const Default: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&
   return (
     &lt;FlexBox minHeight=&quot;480px&quot; position=&quot;relative&quot; width={1}&gt;
       &lt;FlexBox center flex={1}&gt;
-        &lt;PopoverContainer {...args} inline isOpen targetRef={target}&gt;
+        &lt;PopoverContainer {...args} isOpen targetRef={target}&gt;
           &lt;Background
             alignItems=&quot;center&quot;
             bg=&quot;navy&quot;
@@ -29684,9 +29695,9 @@ export const Default: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&
   );
 };
 
-export const Alignment: React.FC&lt;
-  ComponentProps&lt;typeof PopoverContainer&gt;
-&gt; = () =&gt; {
+export const Alignment: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -29696,7 +29707,7 @@ export const Alignment: React.FC&lt;
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={alignment}
               offset={20}
@@ -29733,9 +29744,9 @@ export const Alignment: React.FC&lt;
   );
 };
 
-export const InvertAxis: React.FC&lt;
-  ComponentProps&lt;typeof PopoverContainer&gt;
-&gt; = () =&gt; {
+export const InvertAxis: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -29746,7 +29757,7 @@ export const InvertAxis: React.FC&lt;
             return (
               &lt;PopoverContainer
                 alignment={alignment}
-                inline
+                inline={args.inline}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
@@ -29787,7 +29798,9 @@ export const InvertAxis: React.FC&lt;
   );
 };
 
-export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = () =&gt; {
+export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -29797,7 +29810,7 @@ export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&g
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-20`}
               offset={20}
@@ -29836,7 +29849,9 @@ export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&g
   );
 };
 
-export const XandY: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = () =&gt; {
+export const XAndY: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -29846,7 +29861,7 @@ export const XandY: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-0-0`}
               targetRef={target}
@@ -29926,10 +29941,11 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
             &lt;FlexBox center flex={1}&gt;
                 &lt;PopoverContainer
                     alignment=&quot;top-left&quot;
+                    allowPageInteraction
+                    inline
                     x={0}
                     y={0}
                     offset={20}
-                    inline
                     isOpen
                     targetRef={target}&gt;
                     &lt;Background
@@ -29960,7 +29976,9 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               </div>
               
               
-              <pre><code>const Alignment = () =&gt; {
+              <pre><code>const Alignment = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -29970,7 +29988,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={alignment}
               offset={20}
@@ -30014,7 +30032,9 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               </div>
               
               
-              <pre><code>const InvertAxis = () =&gt; {
+              <pre><code>const InvertAxis = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -30025,7 +30045,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
             return (
               &lt;PopoverContainer
                 alignment={alignment}
-                inline
+                inline={args.inline}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
@@ -30073,7 +30093,9 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               </div>
               
               
-              <pre><code>const Offset = () =&gt; {
+              <pre><code>const Offset = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -30083,7 +30105,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-20`}
               offset={20}
@@ -30124,12 +30146,14 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
             </div>
             <div class="note ok">
               <div class="row">
-                <span class="ex-name">Xand Y</span>
+                <span class="ex-name">X And Y</span>
                 <span class="badge ok">story ok</span>
               </div>
               
               
-              <pre><code>const XandY = () =&gt; {
+              <pre><code>const XAndY = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -30139,7 +30163,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-0-0`}
               targetRef={target}
@@ -30193,7 +30217,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               
               <div class="mdx-content"><pre><code>import { Canvas, Controls, Meta } from &#39;@storybook/addon-docs/blocks&#39;;
 
-import { ComponentHeader } from &#39;~styleguide/blocks&#39;;
+import { ComponentHeader, LinkTo } from &#39;~styleguide/blocks&#39;;
 
 import * as PopoverContainerStories from &#39;./PopoverContainer.stories&#39;;
 
@@ -30241,6 +30265,8 @@ const MyComponent = () =&gt; {
 
 ## Positioning
 
+PopoverContainer uses `useElementDir` from `@codecademy/gamut-styles` with `targetRef` (`useElementDir(targetRef) === &#39;rtl&#39;`) so alignment and placement respect right-to-left when the anchor lives in an RTL subtree. Non-React code can use the same resolution rules via the imperative `elementDir(el)` export from that package. See &lt;LinkTo id=&quot;Meta/Logical and physical CSS properties&quot;&gt;Logical and physical CSS properties&lt;/LinkTo&gt; for full documentation on `useElementDir`, `elementDir`, and logical vs physical CSS in Gamut.
+
 There are multiple props that can be used to position the popover. Progressively getting more specific:
 
 1. `alignment`: Positions the popover along the edge of the targets dimensions.
@@ -30270,7 +30296,7 @@ Addition pixel offset from center in the direction of the alignment (e.g. top-le
 
 Absolute offset values irrespective of the relative position. (e.g. x={-4} will be 4 pixels to the left in every position unlike offset).
 
-&lt;Canvas of={PopoverContainerStories.XandY} /&gt;
+&lt;Canvas of={PopoverContainerStories.XAndY} /&gt;
 
 ### `allowPageInteraction`
 
@@ -38968,7 +38994,7 @@ If you use voiceover on either of the below, you will hear the difference this m
       <div class="badges">
         <label for="c-85-molecules-tips-tooltip-err" class="badge err as-toggle">prop type error</label>
         <label for="c-85-molecules-tips-tooltip-info" class="badge info as-toggle">1 info</label>
-        <label for="c-85-molecules-tips-tooltip-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-85-molecules-tips-tooltip-stories" class="badge ok as-toggle">7 stories</label>
         <label for="c-85-molecules-tips-tooltip-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -39111,11 +39137,31 @@ export const Floating: Story = {
 
 export const InteractiveElement: Story = {
   render: () =&gt; (
-    &lt;FlexBox center m={32}&gt;
+    &lt;FlexBox center justifyContent=&quot;space-around&quot;&gt;
       &lt;ToolTip id=&quot;stroke-button-ex&quot; info=&quot;And here&#39;s a tooltip&quot;&gt;
         &lt;StrokeButton aria-describedby=&quot;stroke-button-ex&quot;&gt;
           I&amp;apos;ve got my own text
         &lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        alignment=&quot;left-center&quot;
+        id=&quot;floating-ex-lc&quot;
+        info=&quot;Tooltip for a FillButton&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;FillButton aria-describedby=&quot;floating-ex-lc&quot; icon={StudyBookIcon}&gt;
+          Left center
+        &lt;/FillButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        alignment=&quot;right-center&quot;
+        id=&quot;floating-ex-rc&quot;
+        info=&quot;Tooltip for a FillButton&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;FillButton aria-describedby=&quot;floating-ex-rc&quot; icon={StudyBookIcon}&gt;
+          Right center
+        &lt;/FillButton&gt;
       &lt;/ToolTip&gt;
     &lt;/FlexBox&gt;
   ),
@@ -39134,6 +39180,38 @@ export const Disabled: Story = {
         &lt;/FillButton&gt;
       &lt;/ToolTip&gt;
     &lt;/FlexBox&gt;
+  ),
+};
+
+export const HorizontalAlignments: Story = {
+  render: () =&gt; (
+    &lt;&gt;
+      &lt;FlexBox center width=&quot;95%&quot;&gt;
+        Check me out with `dir=rtl` using the toolbar!
+      &lt;/FlexBox&gt;
+      &lt;FlexBox justifyContent=&quot;space-around&quot; width=&quot;95%&quot;&gt;
+        &lt;IconButton
+          icon={SparkleIcon}
+          tip=&quot;Inline (Leading)&quot;
+          tipProps={{ alignment: &#39;left-center&#39; }}
+        /&gt;
+        &lt;IconButton
+          icon={SparkleIcon}
+          tip=&quot;Inline (Trailing)&quot;
+          tipProps={{ alignment: &#39;right-center&#39; }}
+        /&gt;
+        &lt;IconButton
+          icon={SparkleIcon}
+          tip=&quot;Floating (Leading)&quot;
+          tipProps={{ alignment: &#39;left-center&#39;, placement: &#39;floating&#39; }}
+        /&gt;
+        &lt;IconButton
+          icon={DeleteIcon}
+          tip=&quot;Floating (Trailing)&quot;
+          tipProps={{ alignment: &#39;right-center&#39;, placement: &#39;floating&#39; }}
+        /&gt;
+      &lt;/FlexBox&gt;
+    &lt;/&gt;
   ),
 };
 </code></pre></div>
@@ -39263,11 +39341,31 @@ export const Disabled: Story = {
               
               
               <pre><code>const InteractiveElement = () =&gt; (
-  &lt;FlexBox center m={32}&gt;
+  &lt;FlexBox center justifyContent=&quot;space-around&quot;&gt;
     &lt;ToolTip id=&quot;stroke-button-ex&quot; info=&quot;And here&#39;s a tooltip&quot;&gt;
       &lt;StrokeButton aria-describedby=&quot;stroke-button-ex&quot;&gt;
         I&amp;apos;ve got my own text
       &lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      alignment=&quot;left-center&quot;
+      id=&quot;floating-ex-lc&quot;
+      info=&quot;Tooltip for a FillButton&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;FillButton aria-describedby=&quot;floating-ex-lc&quot; icon={StudyBookIcon}&gt;
+        Left center
+      &lt;/FillButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      alignment=&quot;right-center&quot;
+      id=&quot;floating-ex-rc&quot;
+      info=&quot;Tooltip for a FillButton&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;FillButton aria-describedby=&quot;floating-ex-rc&quot; icon={StudyBookIcon}&gt;
+        Right center
+      &lt;/FillButton&gt;
     &lt;/ToolTip&gt;
   &lt;/FlexBox&gt;
 );</code></pre>
@@ -39291,6 +39389,43 @@ export const Disabled: Story = {
       &lt;/FillButton&gt;
     &lt;/ToolTip&gt;
   &lt;/FlexBox&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Horizontal Alignments</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const HorizontalAlignments = () =&gt; (
+  &lt;&gt;
+    &lt;FlexBox center width=&quot;95%&quot;&gt;
+      Check me out with `dir=rtl` using the toolbar!
+    &lt;/FlexBox&gt;
+    &lt;FlexBox justifyContent=&quot;space-around&quot; width=&quot;95%&quot;&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Inline (Leading)&quot;
+        tipProps={{ alignment: &#39;left-center&#39; }}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Inline (Trailing)&quot;
+        tipProps={{ alignment: &#39;right-center&#39; }}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Floating (Leading)&quot;
+        tipProps={{ alignment: &#39;left-center&#39;, placement: &#39;floating&#39; }}
+      /&gt;
+      &lt;IconButton
+        icon={DeleteIcon}
+        tip=&quot;Floating (Trailing)&quot;
+        tipProps={{ alignment: &#39;right-center&#39;, placement: &#39;floating&#39; }}
+      /&gt;
+    &lt;/FlexBox&gt;
+  &lt;/&gt;
 );</code></pre>
             </div>
         </div>
@@ -39344,12 +39479,6 @@ Our `ToolTip` all align to the center of the interactive component they are desc
 
 &lt;Canvas of={ToolTipStories.Alignments} /&gt;
 
-### IconButton + ToolTip
-
-When using an icon-only button, a tooltip displaying the label is required to provide context for the button&#39;s action. This is accessible directly through the &lt;LinkTo id=&quot;Atoms/Buttons/IconButton&quot;&gt;IconButton&lt;/LinkTo&gt; component&#39;s required `tip` prop. If you do not provide an `aria-label`, the value of the `tip` prop will be used as the `aria-label` for accessibility purposes. You can adjust positioning and alignment of the tooltip by using the `tipProps` prop.
-
-&lt;Canvas of={ToolTipStories.WithIconButton} /&gt;
-
 ### Floating placement
 
 ToolTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips do just this. (Notice how this section doesn&#39;t need as much padding because the ToolTips are able to escape their context!)
@@ -39357,6 +39486,18 @@ ToolTips sometimes need to be in used in a way that they need to escape the conf
 This `floating` variant should only be used when it as needed.
 
 &lt;Canvas of={ToolTipStories.Floating} /&gt;
+
+### Horizontal alignments
+
+`left-center` and `right-center` tooltips sit on the “side” of the target and use different layout rules than top/bottom center. Reference the following example and inspect the components to see the difference between floating and inline tooltips.
+
+&lt;Canvas of={ToolTipStories.HorizontalAlignments} /&gt;
+
+### IconButton + ToolTip
+
+When using an icon-only button, a tooltip displaying the label is required to provide context for the button&#39;s action. This is accessible directly through the &lt;LinkTo id=&quot;Atoms/Buttons/IconButton&quot;&gt;IconButton&lt;/LinkTo&gt; component&#39;s required `tip` prop. If you do not provide an `aria-label`, the value of the `tip` prop will be used as the `aria-label` for accessibility purposes. You can adjust positioning and alignment of the tooltip by using the `tipProps` prop.
+
+&lt;Canvas of={ToolTipStories.WithIconButton} /&gt;
 
 ### With an interactive text elements
 
@@ -68419,6 +68560,16 @@ Popovers have a secondary, tooltip-esque variant style that have a smaller beak,
 
 &lt;Canvas of={PopoverStories.Variant} /&gt;
 
+## RTL (right-to-left)
+
+`Popover` uses `useElementDir` from `@codecademy/gamut-styles` with **`targetRef`**, so **`align` `left` and `right` are logical** (inline-start / inline-end relative to the anchor), not fixed physical screen sides.
+
+- **`position` `above`, `below`, or `center`:** horizontal placement and the popover container transform use this resolved direction.
+- **`align=&quot;center&quot;`:** not mirrored as left/right; it stays centered on the anchor for that `position`.
+- **`beak`:** for `above` / `below`, a **corner** beak follows **`align`**. Use **`beak=&quot;center&quot;`** for a triangle centered on that edge.
+
+See &lt;LinkTo id=&quot;Meta/Logical and physical CSS properties&quot;&gt;Logical and physical CSS properties&lt;/LinkTo&gt; for `useElementDir`, the imperative `elementDir` helper, and logical vs physical CSS in Gamut. Lower-level positioning without `Popover` is documented on &lt;LinkTo id=&quot;Atoms/PopoverContainer&quot;&gt;PopoverContainer&lt;/LinkTo&gt;.
+
 ## Playground
 
 &lt;Canvas sourceState=&quot;shown&quot; of={PopoverStories.Default} /&gt;
@@ -68485,6 +68636,7 @@ const meta: Meta&lt;typeof PopoverContainer&gt; = {
   component: PopoverContainer,
   args: {
     alignment: &#39;top-left&#39;,
+    allowPageInteraction: true,
     isOpen: true,
     inline: true,
     x: 0,
@@ -68519,7 +68671,7 @@ export const Default: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&
   return (
     &lt;FlexBox minHeight=&quot;480px&quot; position=&quot;relative&quot; width={1}&gt;
       &lt;FlexBox center flex={1}&gt;
-        &lt;PopoverContainer {...args} inline isOpen targetRef={target}&gt;
+        &lt;PopoverContainer {...args} isOpen targetRef={target}&gt;
           &lt;Background
             alignItems=&quot;center&quot;
             bg=&quot;navy&quot;
@@ -68545,9 +68697,9 @@ export const Default: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&
   );
 };
 
-export const Alignment: React.FC&lt;
-  ComponentProps&lt;typeof PopoverContainer&gt;
-&gt; = () =&gt; {
+export const Alignment: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68557,7 +68709,7 @@ export const Alignment: React.FC&lt;
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={alignment}
               offset={20}
@@ -68594,9 +68746,9 @@ export const Alignment: React.FC&lt;
   );
 };
 
-export const InvertAxis: React.FC&lt;
-  ComponentProps&lt;typeof PopoverContainer&gt;
-&gt; = () =&gt; {
+export const InvertAxis: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68607,7 +68759,7 @@ export const InvertAxis: React.FC&lt;
             return (
               &lt;PopoverContainer
                 alignment={alignment}
-                inline
+                inline={args.inline}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
@@ -68648,7 +68800,9 @@ export const InvertAxis: React.FC&lt;
   );
 };
 
-export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = () =&gt; {
+export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68658,7 +68812,7 @@ export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&g
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-20`}
               offset={20}
@@ -68697,7 +68851,9 @@ export const Offset: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&g
   );
 };
 
-export const XandY: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = () =&gt; {
+export const XAndY: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt; = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68707,7 +68863,7 @@ export const XandY: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt;&gt
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-0-0`}
               targetRef={target}
@@ -68787,10 +68943,11 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
             &lt;FlexBox center flex={1}&gt;
                 &lt;PopoverContainer
                     alignment=&quot;top-left&quot;
+                    allowPageInteraction
+                    inline
                     x={0}
                     y={0}
                     offset={20}
-                    inline
                     isOpen
                     targetRef={target}&gt;
                     &lt;Background
@@ -68821,7 +68978,9 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               </div>
               
               
-              <pre><code>const Alignment = () =&gt; {
+              <pre><code>const Alignment = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68831,7 +68990,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={alignment}
               offset={20}
@@ -68875,7 +69034,9 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               </div>
               
               
-              <pre><code>const InvertAxis = () =&gt; {
+              <pre><code>const InvertAxis = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68886,7 +69047,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
             return (
               &lt;PopoverContainer
                 alignment={alignment}
-                inline
+                inline={args.inline}
                 invertAxis={axis}
                 isOpen
                 key={`${alignment}-${axis}`}
@@ -68934,7 +69095,9 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               </div>
               
               
-              <pre><code>const Offset = () =&gt; {
+              <pre><code>const Offset = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -68944,7 +69107,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-20`}
               offset={20}
@@ -68985,12 +69148,14 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
             </div>
             <div class="note ok">
               <div class="row">
-                <span class="ex-name">Xand Y</span>
+                <span class="ex-name">X And Y</span>
                 <span class="badge ok">story ok</span>
               </div>
               
               
-              <pre><code>const XandY = () =&gt; {
+              <pre><code>const XAndY = (
+  args
+) =&gt; {
   const target = useRef&lt;HTMLDivElement&gt;(null);
 
   return (
@@ -69000,7 +69165,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
           return (
             &lt;PopoverContainer
               alignment={alignment}
-              inline
+              inline={args.inline}
               isOpen
               key={`${alignment}-0-0`}
               targetRef={target}
@@ -69054,7 +69219,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
               
               <div class="mdx-content"><pre><code>import { Canvas, Controls, Meta } from &#39;@storybook/addon-docs/blocks&#39;;
 
-import { ComponentHeader } from &#39;~styleguide/blocks&#39;;
+import { ComponentHeader, LinkTo } from &#39;~styleguide/blocks&#39;;
 
 import * as PopoverContainerStories from &#39;./PopoverContainer.stories&#39;;
 
@@ -69102,6 +69267,8 @@ const MyComponent = () =&gt; {
 
 ## Positioning
 
+PopoverContainer uses `useElementDir` from `@codecademy/gamut-styles` with `targetRef` (`useElementDir(targetRef) === &#39;rtl&#39;`) so alignment and placement respect right-to-left when the anchor lives in an RTL subtree. Non-React code can use the same resolution rules via the imperative `elementDir(el)` export from that package. See &lt;LinkTo id=&quot;Meta/Logical and physical CSS properties&quot;&gt;Logical and physical CSS properties&lt;/LinkTo&gt; for full documentation on `useElementDir`, `elementDir`, and logical vs physical CSS in Gamut.
+
 There are multiple props that can be used to position the popover. Progressively getting more specific:
 
 1. `alignment`: Positions the popover along the edge of the targets dimensions.
@@ -69131,7 +69298,7 @@ Addition pixel offset from center in the direction of the alignment (e.g. top-le
 
 Absolute offset values irrespective of the relative position. (e.g. x={-4} will be 4 pixels to the left in every position unlike offset).
 
-&lt;Canvas of={PopoverContainerStories.XandY} /&gt;
+&lt;Canvas of={PopoverContainerStories.XAndY} /&gt;
 
 ### `allowPageInteraction`
 
@@ -77829,7 +77996,7 @@ If you use voiceover on either of the below, you will hear the difference this m
       <div class="badges">
         <label for="c-error-84-molecules-tips-tooltip-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-84-molecules-tips-tooltip-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-84-molecules-tips-tooltip-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-84-molecules-tips-tooltip-stories" class="badge ok as-toggle">7 stories</label>
         <label for="c-error-84-molecules-tips-tooltip-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -77972,11 +78139,31 @@ export const Floating: Story = {
 
 export const InteractiveElement: Story = {
   render: () =&gt; (
-    &lt;FlexBox center m={32}&gt;
+    &lt;FlexBox center justifyContent=&quot;space-around&quot;&gt;
       &lt;ToolTip id=&quot;stroke-button-ex&quot; info=&quot;And here&#39;s a tooltip&quot;&gt;
         &lt;StrokeButton aria-describedby=&quot;stroke-button-ex&quot;&gt;
           I&amp;apos;ve got my own text
         &lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        alignment=&quot;left-center&quot;
+        id=&quot;floating-ex-lc&quot;
+        info=&quot;Tooltip for a FillButton&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;FillButton aria-describedby=&quot;floating-ex-lc&quot; icon={StudyBookIcon}&gt;
+          Left center
+        &lt;/FillButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        alignment=&quot;right-center&quot;
+        id=&quot;floating-ex-rc&quot;
+        info=&quot;Tooltip for a FillButton&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;FillButton aria-describedby=&quot;floating-ex-rc&quot; icon={StudyBookIcon}&gt;
+          Right center
+        &lt;/FillButton&gt;
       &lt;/ToolTip&gt;
     &lt;/FlexBox&gt;
   ),
@@ -77995,6 +78182,38 @@ export const Disabled: Story = {
         &lt;/FillButton&gt;
       &lt;/ToolTip&gt;
     &lt;/FlexBox&gt;
+  ),
+};
+
+export const HorizontalAlignments: Story = {
+  render: () =&gt; (
+    &lt;&gt;
+      &lt;FlexBox center width=&quot;95%&quot;&gt;
+        Check me out with `dir=rtl` using the toolbar!
+      &lt;/FlexBox&gt;
+      &lt;FlexBox justifyContent=&quot;space-around&quot; width=&quot;95%&quot;&gt;
+        &lt;IconButton
+          icon={SparkleIcon}
+          tip=&quot;Inline (Leading)&quot;
+          tipProps={{ alignment: &#39;left-center&#39; }}
+        /&gt;
+        &lt;IconButton
+          icon={SparkleIcon}
+          tip=&quot;Inline (Trailing)&quot;
+          tipProps={{ alignment: &#39;right-center&#39; }}
+        /&gt;
+        &lt;IconButton
+          icon={SparkleIcon}
+          tip=&quot;Floating (Leading)&quot;
+          tipProps={{ alignment: &#39;left-center&#39;, placement: &#39;floating&#39; }}
+        /&gt;
+        &lt;IconButton
+          icon={DeleteIcon}
+          tip=&quot;Floating (Trailing)&quot;
+          tipProps={{ alignment: &#39;right-center&#39;, placement: &#39;floating&#39; }}
+        /&gt;
+      &lt;/FlexBox&gt;
+    &lt;/&gt;
   ),
 };
 </code></pre></div>
@@ -78124,11 +78343,31 @@ export const Disabled: Story = {
               
               
               <pre><code>const InteractiveElement = () =&gt; (
-  &lt;FlexBox center m={32}&gt;
+  &lt;FlexBox center justifyContent=&quot;space-around&quot;&gt;
     &lt;ToolTip id=&quot;stroke-button-ex&quot; info=&quot;And here&#39;s a tooltip&quot;&gt;
       &lt;StrokeButton aria-describedby=&quot;stroke-button-ex&quot;&gt;
         I&amp;apos;ve got my own text
       &lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      alignment=&quot;left-center&quot;
+      id=&quot;floating-ex-lc&quot;
+      info=&quot;Tooltip for a FillButton&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;FillButton aria-describedby=&quot;floating-ex-lc&quot; icon={StudyBookIcon}&gt;
+        Left center
+      &lt;/FillButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      alignment=&quot;right-center&quot;
+      id=&quot;floating-ex-rc&quot;
+      info=&quot;Tooltip for a FillButton&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;FillButton aria-describedby=&quot;floating-ex-rc&quot; icon={StudyBookIcon}&gt;
+        Right center
+      &lt;/FillButton&gt;
     &lt;/ToolTip&gt;
   &lt;/FlexBox&gt;
 );</code></pre>
@@ -78152,6 +78391,43 @@ export const Disabled: Story = {
       &lt;/FillButton&gt;
     &lt;/ToolTip&gt;
   &lt;/FlexBox&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Horizontal Alignments</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const HorizontalAlignments = () =&gt; (
+  &lt;&gt;
+    &lt;FlexBox center width=&quot;95%&quot;&gt;
+      Check me out with `dir=rtl` using the toolbar!
+    &lt;/FlexBox&gt;
+    &lt;FlexBox justifyContent=&quot;space-around&quot; width=&quot;95%&quot;&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Inline (Leading)&quot;
+        tipProps={{ alignment: &#39;left-center&#39; }}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Inline (Trailing)&quot;
+        tipProps={{ alignment: &#39;right-center&#39; }}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Floating (Leading)&quot;
+        tipProps={{ alignment: &#39;left-center&#39;, placement: &#39;floating&#39; }}
+      /&gt;
+      &lt;IconButton
+        icon={DeleteIcon}
+        tip=&quot;Floating (Trailing)&quot;
+        tipProps={{ alignment: &#39;right-center&#39;, placement: &#39;floating&#39; }}
+      /&gt;
+    &lt;/FlexBox&gt;
+  &lt;/&gt;
 );</code></pre>
             </div>
         </div>
@@ -78205,12 +78481,6 @@ Our `ToolTip` all align to the center of the interactive component they are desc
 
 &lt;Canvas of={ToolTipStories.Alignments} /&gt;
 
-### IconButton + ToolTip
-
-When using an icon-only button, a tooltip displaying the label is required to provide context for the button&#39;s action. This is accessible directly through the &lt;LinkTo id=&quot;Atoms/Buttons/IconButton&quot;&gt;IconButton&lt;/LinkTo&gt; component&#39;s required `tip` prop. If you do not provide an `aria-label`, the value of the `tip` prop will be used as the `aria-label` for accessibility purposes. You can adjust positioning and alignment of the tooltip by using the `tipProps` prop.
-
-&lt;Canvas of={ToolTipStories.WithIconButton} /&gt;
-
 ### Floating placement
 
 ToolTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips do just this. (Notice how this section doesn&#39;t need as much padding because the ToolTips are able to escape their context!)
@@ -78218,6 +78488,18 @@ ToolTips sometimes need to be in used in a way that they need to escape the conf
 This `floating` variant should only be used when it as needed.
 
 &lt;Canvas of={ToolTipStories.Floating} /&gt;
+
+### Horizontal alignments
+
+`left-center` and `right-center` tooltips sit on the “side” of the target and use different layout rules than top/bottom center. Reference the following example and inspect the components to see the difference between floating and inline tooltips.
+
+&lt;Canvas of={ToolTipStories.HorizontalAlignments} /&gt;
+
+### IconButton + ToolTip
+
+When using an icon-only button, a tooltip displaying the label is required to provide context for the button&#39;s action. This is accessible directly through the &lt;LinkTo id=&quot;Atoms/Buttons/IconButton&quot;&gt;IconButton&lt;/LinkTo&gt; component&#39;s required `tip` prop. If you do not provide an `aria-label`, the value of the `tip` prop will be used as the `aria-label` for accessibility purposes. You can adjust positioning and alignment of the tooltip by using the `tipProps` prop.
+
+&lt;Canvas of={ToolTipStories.WithIconButton} /&gt;
 
 ### With an interactive text elements
 
@@ -79886,9 +80168,9 @@ Logical properties reference the flow of content:
 - **Inline axis** (text direction): `margin-inline-start`, `margin-inline-end`
 - **Block axis** (reading direction): `margin-block-start`, `margin-block-end`
 
-## Using `useLogicalProperties` in Gamut
+## `GamutProvider` and `useLogicalProperties`
 
-Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. This allows you to choose which mode your application uses. By default, `useLogicalProperties` is set to `true`, meaning Gamut will use logical CSS properties. If you want to use physical CSS properties, you have to set `useLogicalProperties` to `false`.
+Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. By default it is `false`, so Gamut maps system props to **physical** CSS (`margin-left`, `width`, and so on). With `useLogicalProperties={true}`, Gamut maps them to **logical** CSS (`margin-inline-start`, `inline-size`, and so on).
 
 ### Affected Props
 
@@ -79982,7 +80264,33 @@ You can toggle between logical and physical properties in Storybook using the **
   height=&quot;auto&quot;
 /&gt;
 
-This allows you to preview how components render with either property mode without changing any code.
+By default, Storybook matches `GamutProvider` and uses physical properties. Turn on the **LogicalProps** control to preview logical CSS without changing application code.
+
+## `useLogicalProperties()` hook
+
+In custom components, read the same flag Emotion-styled Gamut components use via `useLogicalProperties()` from `@codecademy/gamut-styles`:
+
+```ts
+import { useLogicalProperties } from &#39;@codecademy/gamut-styles&#39;;
+```
+
+The hook returns `theme.useLogicalProperties` from `@emotion/react`’s `useTheme()`. `GamutProvider` merges the prop into the theme object, so this value stays aligned with system props.
+
+Use it when you need conditional styles or layout logic that must mirror Gamut’s physical vs logical output. If you mount `ThemeProvider` without merging `useLogicalProperties` into the theme, the hook may return `undefined`; prefer `GamutProvider` or set the field on your theme explicitly.
+
+## `useElementDir()` hook
+
+`useElementDir` resolves the effective text direction (`&#39;rtl&#39;` or `&#39;ltr&#39;`) for a DOM subtree. Import it from `@codecademy/gamut-styles`:
+
+```ts
+import { useElementDir } from &#39;@codecademy/gamut-styles&#39;;
+```
+
+Pass an optional ref to the element whose direction matters. If the ref is omitted or `current` is not an `Element`, the hook uses `document.documentElement`. Resolution follows the `elementDir` helper: the element’s `dir` attribute, then computed `direction`, then the root element’s `dir` (which helps in test environments where computed style may be empty).
+
+The return value updates when `dir` changes anywhere under the document root (`MutationObserver`) and when the ref identity changes after layout (`useLayoutEffect`) so `ref.current` is respected. During SSR or when `document` is unavailable, the hook returns `&#39;ltr&#39;`.
+
+For non-React code, the same rules apply via the imperative `elementDir(el)` export.
 </code></pre>
           </div>
         </div>
