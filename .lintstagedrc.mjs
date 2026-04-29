@@ -1,5 +1,8 @@
 import micromatch from 'micromatch';
 
+/** Shell-safe argument for paths that may contain spaces (lint-staged runs commands via a shell). */
+const shellArg = (file) => JSON.stringify(file);
+
 export default {
   // Use custom function to avoid overlaps that could cause race conditions
   [`*`]: (allChanges) => {
@@ -22,14 +25,16 @@ export default {
 
     if (eslintFiles.length) {
       commands.push(
-        `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles.join(
-          ' '
-        )}`
+        `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles
+          .map(shellArg)
+          .join(' ')}`
       );
     }
 
     // Run nx format, which will run prettier
-    commands.push(`nx format:write --files ${allChanges}`);
+    commands.push(
+      `nx format:write --files ${allChanges.map(shellArg).join(' ')}`
+    );
 
     return commands;
   },

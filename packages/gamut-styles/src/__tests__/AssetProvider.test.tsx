@@ -8,7 +8,7 @@ import { setupRtl } from './testUtils';
 
 const renderView = setupRtl(AssetProvider, {});
 
-jest.mock('../utils/fontUtils', () => ({
+jest.mock('../utilities/fontUtils', () => ({
   getFonts: jest.fn(),
 }));
 
@@ -43,7 +43,7 @@ jest.mock('../remoteAssets/fonts', () => ({
   },
 }));
 
-const mockGetFonts = require('../utils/fontUtils').getFonts;
+const mockGetFonts = require('../utilities/fontUtils').getFonts;
 
 describe('AssetProvider', () => {
   beforeEach(() => {

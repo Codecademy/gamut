@@ -1,4 +1,4 @@
-import { system } from '@codecademy/gamut-styles';
+import { elementDir, system, useElementDir } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -50,35 +50,28 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const parent = containers?.parent;
 
   // Memoize scrolling parents to avoid expensive DOM traversals
-  const scrollingParents = useScrollingParents(
-    targetRef as React.RefObject<HTMLElement | null>
-  );
+  const scrollingParents = useScrollingParents(targetRef);
 
   // Keep onRequestClose ref up to date
   useEffect(() => {
     onRequestCloseRef.current = onRequestClose;
   }, [onRequestClose]);
 
-  // Detect RTL direction from the target element and watch for attribute changes so the
-  // position recalculates when changes occur
-  const [isRtl, setIsRtl] = useState(false);
-  useEffect(() => {
-    const checkDirection = () => {
-      const target = targetRef?.current;
-      const el = target instanceof Element ? target : document.documentElement;
-      setIsRtl(getComputedStyle(el).direction === 'rtl');
-    };
+  const targetDir = useElementDir(targetRef);
 
-    checkDirection();
-
-    const observer = new MutationObserver(checkDirection);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['dir'],
-      subtree: true,
-    });
-    return () => observer.disconnect();
-  }, [targetRef]);
+  const targetEl = targetRef?.current;
+  /**
+   * See {@link getContainers} for more information
+   * Inline: `layoutSource` is derived from `offsetParent`.
+   * Portal: i.e. isn't inline so we can use the target itself.
+   */
+  const layoutSource =
+    inline && targetEl?.offsetParent instanceof Element
+      ? targetEl.offsetParent
+      : targetEl;
+  const isRtl = inline
+    ? layoutSource instanceof Element && elementDir(layoutSource) === 'rtl'
+    : targetDir === 'rtl';
 
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
@@ -92,7 +85,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         y,
       });
     }
-    return { styles: {}, physicalStyles: undefined };
+    return { styles: {}, dirNeutralStyles: undefined };
   }, [parent, x, y, offset, alignment, invertAxis, isRtl]);
 
   useEffect(() => {
@@ -160,7 +153,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
    * Without this check it would toggle closed then back open immediately.
-   *
    */
   const handleClickOutside = useCallback(
     (e: MouseEvent | TouchEvent) => {
@@ -238,6 +230,32 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   if (!isOpen || !targetRef) return null;
 
+  const {
+    children,
+    style: restStyle,
+    ...restProps
+  } = rest as React.HTMLAttributes<HTMLDivElement>;
+
+  const { dirNeutralStyles, styles: placementStyles } = popoverPosition;
+
+  /**
+   * Non-empty `placementStyles` merged into inline `style`
+   * dirNeutralStyles` layered last, see {@link getPosition}
+   */
+  const placementStylesToMerge =
+    Object.keys(placementStyles).length > 0 ? placementStyles : null;
+
+  const hasMergedStyle = Boolean(
+    restStyle || dirNeutralStyles || placementStylesToMerge
+  );
+  const mergedStyle = hasMergedStyle
+    ? {
+        ...(typeof restStyle === 'object' && restStyle ? restStyle : {}),
+        ...(placementStylesToMerge ?? {}),
+        ...dirNeutralStyles,
+      }
+    : undefined;
+
   const content = (
     <FocusTrap
       allowPageInteraction={inline || allowPageInteraction}
@@ -249,15 +267,14 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         data-testid="popover-content-container"
         position="absolute"
         ref={popoverRef}
+        /* eslint-disable-next-line gamut/no-inline-style */
+        style={mergedStyle}
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
-        {...popoverPosition.styles}
-        /* Physical inline style for centered alignments (top/bottom) where
-           inset-inline-start would incorrectly flip the center point in RTL */
-        /* eslint-disable-next-line gamut/no-inline-style */
-        style={popoverPosition.physicalStyles}
-        {...rest}
-      />
+        {...restProps}
+      >
+        {children}
+      </PopoverContent>
     </FocusTrap>
   );
 
