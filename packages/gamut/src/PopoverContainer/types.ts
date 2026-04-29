@@ -13,17 +13,17 @@ export type Alignments =
   | 'left'
   | 'right';
 
-export interface TargetRef
-  extends Pick<
-    HTMLDivElement,
-    | 'getBoundingClientRect'
-    | 'contains'
-    | 'offsetHeight'
-    | 'offsetWidth'
-    | 'offsetTop'
-    | 'offsetLeft'
-    | 'offsetParent'
-  > {}
+export type TargetRef = Pick<
+  HTMLDivElement,
+  | 'getBoundingClientRect'
+  | 'contains'
+  | 'offsetHeight'
+  | 'offsetWidth'
+  | 'offsetTop'
+  | 'offsetLeft'
+  | 'offsetParent'
+> &
+  HTMLElement;
 
 export interface PositionContext {
   width: number;
