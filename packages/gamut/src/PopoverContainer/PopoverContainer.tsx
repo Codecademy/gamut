@@ -60,10 +60,11 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const targetDir = useElementDir(targetRef);
 
   const targetEl = targetRef?.current;
-  /** See {@link getContainers} for more information
+  /**
+   * See {@link getContainers} for more information
    * Inline: `layoutSource` is derived from `offsetParent`.
    * Portal: i.e. isn't inline so we can use the target itself.
-   * */
+   */
   const layoutSource =
     inline && targetEl?.offsetParent instanceof Element
       ? targetEl.offsetParent
@@ -152,7 +153,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
    * Without this check it would toggle closed then back open immediately.
-   *
    */
   const handleClickOutside = useCallback(
     (e: MouseEvent | TouchEvent) => {
@@ -238,7 +238,10 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   const { dirNeutralStyles, styles: placementStyles } = popoverPosition;
 
-  /** Non-empty `placementStyles` merged into inline `style`; `dirNeutralStyles` layered last (see `getPosition`). */
+  /**
+   * Non-empty `placementStyles` merged into inline `style`
+   * dirNeutralStyles` layered last, see {@link getPosition}
+   */
   const placementStylesToMerge =
     Object.keys(placementStyles).length > 0 ? placementStyles : null;
 
