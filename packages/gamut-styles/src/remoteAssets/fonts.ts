@@ -1,4 +1,4 @@
-import { FontConfig } from '../utils/fontUtils';
+import { FontConfig } from '../utilities/fontUtils';
 
 export const FONT_ASSET_PATH = `https://www.codecademy.com/gamut`;
 

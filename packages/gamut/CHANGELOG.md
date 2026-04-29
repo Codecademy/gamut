@@ -1,3 +1,23 @@
+## 68.3.0 (2026-04-29)
+
+### 🚀 Features
+
+- Updates the Pagination component to have its Previous/Next buttons' icon reflect the correct dir ([#3306](https://github.com/Codecademy/gamut/pull/3306), [#3319](https://github.com/Codecademy/gamut/issues/3319), [#3316](https://github.com/Codecademy/gamut/issues/3316), [#3331](https://github.com/Codecademy/gamut/issues/3331), [#3326](https://github.com/Codecademy/gamut/issues/3326), [#3330](https://github.com/Codecademy/gamut/issues/3330), [#3332](https://github.com/Codecademy/gamut/issues/3332), [#3333](https://github.com/Codecademy/gamut/issues/3333))
+- feat: add useLogicalProperties + useElementDir hooks. fix: RTL left-center + right-center ToolTip and Pagination issues. ([#3306](https://github.com/Codecademy/gamut/pull/3306), [#3319](https://github.com/Codecademy/gamut/issues/3319), [#3316](https://github.com/Codecademy/gamut/issues/3316), [#3331](https://github.com/Codecademy/gamut/issues/3331), [#3326](https://github.com/Codecademy/gamut/issues/3326), [#3330](https://github.com/Codecademy/gamut/issues/3330), [#3332](https://github.com/Codecademy/gamut/issues/3332), [#3333](https://github.com/Codecademy/gamut/issues/3333))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.10
+- Updated gamut-patterns to 0.10.29
+- Updated gamut-styles to 17.14.0
+- Updated gamut-icons to 9.57.3
+- Updated gamut-tests to 5.3.4
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
 ## 68.2.2 (2026-03-26)
 
 ### 🩹 Fixes

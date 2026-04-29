@@ -1,4 +1,4 @@
-import { Ref } from 'react';
+import { RefObject } from 'react';
 
 import { WithChildrenProp } from '../utils';
 
@@ -12,17 +12,17 @@ export type Alignments =
   | 'left'
   | 'right';
 
-export interface TargetRef
-  extends Pick<
-    HTMLDivElement,
-    | 'getBoundingClientRect'
-    | 'contains'
-    | 'offsetHeight'
-    | 'offsetWidth'
-    | 'offsetTop'
-    | 'offsetLeft'
-    | 'offsetParent'
-  > {}
+export type TargetRef = Pick<
+  HTMLDivElement,
+  | 'getBoundingClientRect'
+  | 'contains'
+  | 'offsetHeight'
+  | 'offsetWidth'
+  | 'offsetTop'
+  | 'offsetLeft'
+  | 'offsetParent'
+> &
+  HTMLElement;
 
 export interface PositionContext {
   width: number;
@@ -83,7 +83,7 @@ export interface PopoverContainerProps
    * The target element around which the popover will be positioned.
    * Only ref objects (e.g. from useRef) are supported at runtime; RefCallback is not.
    */
-  targetRef: Ref<TargetRef | null>;
+  targetRef: RefObject<TargetRef | null>;
   /**
    * If true, it will allow outside page interaction. Popover container will still close when clicking outside of the popover or hitting the escape key.
    */

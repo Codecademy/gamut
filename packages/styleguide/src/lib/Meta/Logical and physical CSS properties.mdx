@@ -40,9 +40,9 @@ Logical properties reference the flow of content:
 - **Inline axis** (text direction): `margin-inline-start`, `margin-inline-end`
 - **Block axis** (reading direction): `margin-block-start`, `margin-block-end`
 
-## Using `useLogicalProperties` in Gamut
+## `GamutProvider` and `useLogicalProperties`
 
-Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. This allows you to choose which mode your application uses. By default, `useLogicalProperties` is set to `true`, meaning Gamut will use logical CSS properties. If you want to use physical CSS properties, you have to set `useLogicalProperties` to `false`.
+Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. By default it is `false`, so Gamut maps system props to **physical** CSS (`margin-left`, `width`, and so on). With `useLogicalProperties={true}`, Gamut maps them to **logical** CSS (`margin-inline-start`, `inline-size`, and so on).
 
 ### Affected Props
 
@@ -136,4 +136,30 @@ You can toggle between logical and physical properties in Storybook using the **
   height="auto"
 />
 
-This allows you to preview how components render with either property mode without changing any code.
+By default, Storybook matches `GamutProvider` and uses physical properties. Turn on the **LogicalProps** control to preview logical CSS without changing application code.
+
+## `useLogicalProperties()` hook
+
+In custom components, read the same flag Emotion-styled Gamut components use via `useLogicalProperties()` from `@codecademy/gamut-styles`:
+
+```ts
+import { useLogicalProperties } from '@codecademy/gamut-styles';
+```
+
+The hook returns `theme.useLogicalProperties` from `@emotion/react`’s `useTheme()`. `GamutProvider` merges the prop into the theme object, so this value stays aligned with system props.
+
+Use it when you need conditional styles or layout logic that must mirror Gamut’s physical vs logical output. If you mount `ThemeProvider` without merging `useLogicalProperties` into the theme, the hook may return `undefined`; prefer `GamutProvider` or set the field on your theme explicitly.
+
+## `useElementDir()` hook
+
+`useElementDir` resolves the effective text direction (`'rtl'` or `'ltr'`) for a DOM subtree. Import it from `@codecademy/gamut-styles`:
+
+```ts
+import { useElementDir } from '@codecademy/gamut-styles';
+```
+
+Pass an optional ref to the element whose direction matters. If the ref is omitted or `current` is not an `Element`, the hook uses `document.documentElement`. Resolution follows the `elementDir` helper: the element’s `dir` attribute, then computed `direction`, then the root element’s `dir` (which helps in test environments where computed style may be empty).
+
+The return value updates when `dir` changes anywhere under the document root (`MutationObserver`) and when the ref identity changes after layout (`useLayoutEffect`) so `ref.current` is respected. During SSR or when `document` is unavailable, the hook returns `'ltr'`.
+
+For non-React code, the same rules apply via the imperative `elementDir(el)` export.

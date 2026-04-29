@@ -37,7 +37,10 @@ export type PopoverYPositionType = {
    */
   position?: 'above' | 'below';
   /**
-   * Which side to position the beak. If not provided, beak will not be rendered. Position `center` Popovers can only be used with `center` beaks.
+   * Renders the beak. For `above` / `below`, use `center` for a centered triangle; pass
+   * `left` or `right` to pin the corner beak (or omit to derive the corner from `align`).
+   * With `GamutProvider`’s `useLogicalProperties` and an RTL target, `left` / `right` are
+   * mirrored the same way as `align` (logical start / end).
    */
   beak?: 'left' | 'right' | 'center';
   /**
@@ -75,7 +78,11 @@ export type PopoverProps = PopoverBaseProps &
     children: React.ReactElement<any>;
     className?: string;
     /**
-     * Which vertical edge of the source component to align against.
+     * Horizontal alignment of the popover relative to the target. When
+     * `GamutProvider`'s `useLogicalProperties` is enabled, `left` and `right` follow the
+     * inline axis (leading/trailing): under RTL they resolve to the physical side that
+     * matches inline-start and inline-end, consistent with `useElementDir` on `targetRef`.
+     * Applies for all `position` values (`above`, `below`, `center`).
      */
     align?: 'left' | 'right' | 'center';
     /**
