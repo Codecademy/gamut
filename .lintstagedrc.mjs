@@ -1,5 +1,6 @@
 import micromatch from 'micromatch';
 
+/** Shell-safe argument for paths that may contain spaces (lint-staged runs commands via a shell). */
 const shellArg = (file) => JSON.stringify(file);
 
 export default {
@@ -31,7 +32,9 @@ export default {
     }
 
     // Run nx format, which will run prettier
-    commands.push(`nx format:write --files ${allChanges}`);
+    commands.push(
+      `nx format:write --files ${allChanges.map(shellArg).join(' ')}`
+    );
 
     return commands;
   },
