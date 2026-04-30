@@ -95,7 +95,7 @@ Use `DatePicker` to allow users to select a single date or a date range via manu
 
 ### Single date
 
-Use the single date variant (`mode="single"`) when users need to select a single date.
+Use `mode="single"` when users need to select a single date.
 
 `selectedDate` and `onSelected` are the controlled value and updater and are required props.
 
@@ -114,7 +114,7 @@ return (
 
 ### Range
 
-Use the range variant (`mode="range"`) when users need to select a range of dates.
+Use `mode="range"` when users need to select a range of dates.
 
 `startDate`, `onStartSelected`, `endDate`, and `onEndSelected` are the controlled values and updaters and are required props.
 
@@ -144,9 +144,21 @@ Set the initial date using the `selectedDate` (single) or `startDate` and `endDa
 
 ### Input size
 
-Use the `inputSize` prop to adjust the size of the input. The default size is `"base"`. `"small"` can be used to reduce the padding of the input.
+Use the `inputSize` prop to adjust the size of the input. The default size is `"base"`. `"small"` can be used to reduce the padding of the input:
 
 <Canvas of={DatePickerStories.RangeSmall} />
+
+### Placement
+
+Use the `placement` prop to control whether the calendar popover renders inside the current DOM context (inline) or escapes with a portal (floating). The default placement is `"inline"`.
+
+### Inline
+
+<Canvas of={DatePickerStories.SingleDate} />
+
+#### Floating
+
+<Canvas of={DatePickerStories.FloatingPlacement} />
 
 ## Quick actions
 
@@ -320,7 +332,7 @@ Use the `translations` prop to internationalize any text that is not handled aut
 - `DatePickerInput`: month/day/year `role="spinbutton"` segments. In range mode use `rangePart="start"` or `"end"` on each instance.
 - `DatePickerCalendar`: calendar UI wired to context; pass a stable `dialogId` that matches the `id` on the `role="dialog"` wrapper for `aria-labelledby` / `aria-controls` wiring.
 
-Example `children` component:
+Example component to be passed as `children` to `DatePicker`:
 
 ```tsx
 export const ComposedDatePickerLayout: React.FC = () => {
