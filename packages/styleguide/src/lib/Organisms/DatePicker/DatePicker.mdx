@@ -99,6 +99,17 @@ Use the single date variant (`mode="single"`) when users need to select a single
 
 `selectedDate` and `onSelected` are the controlled value and updater and are required props.
 
+```tsx
+const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+return (
+  <DatePicker
+    mode="single"
+    selectedDate={selectedDate}
+    onSelected={setSelectedDate}
+  />
+);
+```
+
 <Canvas of={DatePickerStories.SingleDate} />
 
 ### Range
@@ -106,6 +117,20 @@ Use the single date variant (`mode="single"`) when users need to select a single
 Use the range variant (`mode="range"`) when users need to select a range of dates.
 
 `startDate`, `onStartSelected`, `endDate`, and `onEndSelected` are the controlled values and updaters and are required props.
+
+```tsx
+const [startDate, setStartDate] = useState<Date | null>(null);
+const [endDate, setEndDate] = useState<Date | null>(null);
+return (
+  <DatePicker
+    mode="range"
+    startDate={startDate}
+    onStartSelected={setStartDate}
+    endDate={endDate}
+    onEndSelected={setEndDate}
+  />
+);
+```
 
 <Canvas of={DatePickerStories.Range} />
 
@@ -295,6 +320,38 @@ Use the `translations` prop to internationalize any text that is not handled aut
 - `DatePickerInput`: month/day/year `role="spinbutton"` segments. In range mode use `rangePart="start"` or `"end"` on each instance.
 - `DatePickerCalendar`: calendar UI wired to context; pass a stable `dialogId` that matches the `id` on the `role="dialog"` wrapper for `aria-labelledby` / `aria-controls` wiring.
 
+Example `children` component:
+
+```tsx
+export const ComposedDatePickerLayout: React.FC = () => {
+  const { isCalendarOpen, closeCalendar } = useDatePicker();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  return (
+    <>
+      <Box width="fit-content">
+        <DatePickerInput ref={inputRef} />
+      </Box>
+      <PopoverContainer
+        alignment="bottom-left"
+        allowPageInteraction
+        focusOnProps={{ autoFocus: false, focusLock: false }}
+        invertAxis="x"
+        isOpen={isCalendarOpen}
+        targetRef={inputRef}
+        x={-20}
+        y={-16}
+        onRequestClose={closeCalendar}
+      >
+        <div aria-label="Choose date" id="calendar-dialog" role="dialog">
+          <DatePickerCalendar dialogId="calendar-dialog" />
+        </div>
+      </PopoverContainer>
+    </>
+  );
+};
+```
+
 <Canvas of={DatePickerStories.ComposedWithContext} />
 
 ## Playground
@@ -308,5 +365,3 @@ Use the `translations` prop to internationalize any text that is not handled aut
 - The calendar lives in a `role="dialog"` region; pair its `id` with `DatePickerCalendar`'s `dialogId` and input `aria-controls` from the default implementation.
 - Segments use `role="spinbutton"`; arrow keys adjust values, `Arrow Left/Right` move between segments, and `Alt+Arrow Down` opens the calendar or moves focus into the grid when appropriate.
 - `Escape` closes the popover.
-
-<Canvas of={DatePickerStories.InModal} />

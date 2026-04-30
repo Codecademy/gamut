@@ -536,18 +536,13 @@ export const ComposedWithContext: Story = {
   },
 };
 
-function ComposedDatePickerLayout() {
-  const { isCalendarOpen, openCalendar, closeCalendar } = useDatePicker();
+export const ComposedDatePickerLayout: React.FC = () => {
+  const { isCalendarOpen, closeCalendar } = useDatePicker();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <>
-      <Box
-        width="fit-content"
-        onClick={() => {
-          openCalendar();
-        }}
-      >
+      <Box width="fit-content">
         <DatePickerInput ref={inputRef} />
       </Box>
       <PopoverContainer
@@ -556,8 +551,9 @@ function ComposedDatePickerLayout() {
         focusOnProps={{ autoFocus: false, focusLock: false }}
         invertAxis="x"
         isOpen={isCalendarOpen}
-        offset={10}
         targetRef={inputRef}
+        x={-20}
+        y={-16}
         onRequestClose={closeCalendar}
       >
         <div aria-label="Choose date" id="calendar-dialog" role="dialog">
@@ -566,4 +562,4 @@ function ComposedDatePickerLayout() {
       </PopoverContainer>
     </>
   );
-}
+};
