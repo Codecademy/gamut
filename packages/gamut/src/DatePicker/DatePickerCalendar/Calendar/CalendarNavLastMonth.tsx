@@ -1,4 +1,8 @@
-import { MiniChevronLeftIcon } from '@codecademy/gamut-icons';
+import {
+  MiniChevronLeftIcon,
+  MiniChevronRightIcon,
+} from '@codecademy/gamut-icons';
+import { useElementDir } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { IconButton } from '../../../Button';
@@ -17,6 +21,7 @@ export const CalendarNavLastMonth: React.FC<CalendarNavProps> = ({
   const resolvedLocale = useResolvedLocale(locale);
   const { lastMonth } = getRelativeMonthLabels(resolvedLocale);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const isRtl = useElementDir(buttonRef) === 'rtl';
 
   const handleClick = (e: React.MouseEvent) => {
     const lastMonth = new Date(
@@ -43,7 +48,7 @@ export const CalendarNavLastMonth: React.FC<CalendarNavProps> = ({
       alignSelf="flex-start"
       aria-label={lastMonth}
       data-calendar-month-nav
-      icon={MiniChevronLeftIcon}
+      icon={isRtl ? MiniChevronRightIcon : MiniChevronLeftIcon}
       ref={buttonRef}
       size="small"
       tip={lastMonth}
