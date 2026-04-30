@@ -17,9 +17,9 @@ Gamut uses Emotion's theme system. All styled components have access to a typed 
 |---|---|
 | Core | Codecademy default (public-facing products) |
 | Admin | Codecademy admin tools |
+| Platform | Codecademy learning environment / shared platform surfaces |
 | LX Studio | Learning Experience Studio |
 | Percipio | Skillsoft Percipio platform |
-| Platform | Shared platform surfaces |
 
 The active theme is set at the app level via `<GamutProvider>`. Components inside receive the current theme via Emotion's context.
 

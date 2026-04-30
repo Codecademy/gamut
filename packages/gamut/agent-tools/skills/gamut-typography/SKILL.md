@@ -1,6 +1,6 @@
 ---
 name: gamut-typography
-description: Apply Gamut's typography guidelines — typefaces (Aperçu Pro, Suisse Int'l Mono), type scale, line heights, and line length rules — when creating or reviewing UI text in Gamut-based applications. Use when setting headlines, body copy, captions, code snippets, or any text-heavy UI.
+description: Apply Gamut's typography guidelines — typefaces (Apercu Pro, Suisse Intl Mono), type scale, line heights, and line length rules — when creating or reviewing UI text in Gamut-based applications. Use when setting headlines, body copy, captions, code snippets, or any text-heavy UI.
 ---
 
 # Gamut Typography
@@ -9,7 +9,7 @@ description: Apply Gamut's typography guidelines — typefaces (Aperçu Pro, Sui
 
 Gamut uses two typefaces:
 
-### Aperçu Pro (`fontFamily: "base"`)
+### Apercu Pro (`fontFamily: "base"`)
 
 The primary typeface. Geometric-ish, humanist sans-serif. Use for:
 - Headlines (Bold weight)
@@ -23,7 +23,7 @@ The primary typeface. Geometric-ish, humanist sans-serif. Use for:
 - Headlines should use **100–110%** line-height to appear intentional and grouped.
 - Text should be **left-aligned** by default.
 
-### Suisse Int'l Mono (`fontFamily: "accent"`)
+### Suisse Intl Mono (`fontFamily: "accent"`)
 
 Monospace accent typeface. Use sparingly for:
 - Code snippets and inline code
@@ -34,7 +34,7 @@ Monospace accent typeface. Use sparingly for:
 
 **Rules:**
 - Every character is the same width — avoid long paragraph-length prose in Suisse.
-- It reads large for its point size: **reduce the size by ~10–15%** relative to Aperçu text at the same visual scale (e.g. 14px Suisse ≈ 16px Aperçu visually).
+- It reads large for its point size: **reduce the size by ~10–15%** relative to Apercu text at the same visual scale (e.g. 14px Suisse ≈ 16px Apercu visually).
 - Requires extra line-height to remain readable.
 
 ## Font size scale (`fontSize`)

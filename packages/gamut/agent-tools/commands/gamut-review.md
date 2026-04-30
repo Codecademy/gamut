@@ -32,7 +32,7 @@ Search source files (`.ts`, `.tsx`, `.js`, `.jsx`) for these symbols. Skip `node
 |---|---|
 | `GamutProvider` | **Required** — must appear at least once (app root wrapper) |
 | `ColorMode` | Recommended — enables semantic light/dark theming |
-| `Background` | Recommended — semantic surface color via `@codecademy/gamut` |
+| `Background` | Recommended — semantic surface color via `@codecademy/gamut-styles` |
 
 For each found symbol report the first file path where it appears.
 
