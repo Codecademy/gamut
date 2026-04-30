@@ -35,6 +35,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     translations: translationsProp,
     inputSize,
     quickActions,
+    placement = 'inline',
   } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [focusGridSignal, setFocusGridSignal] = useState(false);
@@ -176,6 +177,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           alignment="bottom-left"
           allowPageInteraction
           focusOnProps={{ autoFocus: false, focusLock: false }}
+          inline={placement === 'inline'}
           invertAxis="x"
           isOpen={isCalendarOpen}
           targetRef={inputRef}

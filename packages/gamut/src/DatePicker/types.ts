@@ -62,6 +62,11 @@ interface DatePickerBaseProps<Mode extends 'single' | 'range'>
    * ```
    */
   quickActions?: CalendarQuickAction[] | null;
+  /**
+   * Whether the calendar popover renders inside the current DOM context (inline) or escapes with a portal (floating)
+   * @default "inline"
+   */
+  placement?: 'inline' | 'floating';
 }
 
 export interface DatePickerSingleProps extends DatePickerBaseProps<'single'> {
