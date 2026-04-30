@@ -9,34 +9,43 @@ Source: `@codecademy/gamut` — interactive components wrap `react-aria-componen
 
 ---
 
-## APG foundational principles
+## General rules
 
-### No ARIA is better than bad ARIA
+Use ARIA sparingly and only when it's the best option available.
 
-The [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/) opens with this. Incorrect ARIA is worse than no ARIA — it actively misleads AT users about the identity, function, and state of controls. When in doubt, remove the ARIA rather than guess.
+### Prefer HTML over ARIA
+
+Unnecessary ARIA can cause harm. If a native HTML element or attribute with the semantics and behavior you need already exists, use it. Reach for ARIA only when native HTML is genuinely insufficient for the pattern.
 
 ### A Role is a Promise
 
-ARIA roles modify the accessibility tree. They do not add keyboard behavior, focusability, or interactivity. `role="button"` on a `<div>`:
-
-- Makes screen readers announce it as a button
-- Does **not** make it focusable or put it in the tab sequence
-- Does **not** make Space or Enter trigger the click handler
-- Does **not** provide any of the state signaling (`aria-pressed`, `aria-disabled`) a real button gives you
-
-When you add an ARIA role you are making a promise that the element behaves exactly as that role implies. You must implement everything the native element provides for free. This is precisely why Gamut uses React Aria — it keeps the promise automatically.
+ARIA roles modify the accessibility tree and _imply_ behavior. Always ensure that the implied keyboard behavior, focusability, and interactivity exists when a role is used.
 
 ### ARIA can both cloak and enhance
 
-ARIA can augment native semantics (`aria-pressed` on a `<button>`) or override them entirely (`role="menuitem"` on an `<a>`). Both capabilities are powerful and dangerous. Override only when native HTML genuinely doesn't fit the pattern; when augmenting, verify you aren't contradicting the semantics the native element already exposes.
+ARIA can augment native semantics (`aria-pressed` on a `<button>`) or override them entirely (`role="menuitem"` on an `<a>`). Both capabilities are powerful and dangerous. Override only when native HTML genuinely doesn't fit the pattern; when augmenting, don't contradict the native semantics.
 
-### The First Rule of ARIA Use
 
-If a native HTML element or attribute with the semantics and behavior you need already exists, use it. Reach for ARIA only when native HTML is genuinely insufficient for the pattern.
+### Align accessible names with visible copy
 
-### AT support is not uniform
+Prefer wiring names through visible text and native `<label>` / control text / `alt` over using `aria-label`. Point `aria-labelledby` at the visible heading or label that should define the name if it's not possible to name elements from their content. Use bare `aria-label` when there is no suitable visible label.
 
-APG patterns represent what assistive technology *should* support per specification. Real-world support across browser/AT combinations varies and drifts. For production features, test with the combinations your users rely on. A minimal matrix: VoiceOver + Safari (iOS), VoiceOver + Chrome (macOS), NVDA + Chrome (Windows), JAWS + Chrome (Windows).
+### Treat missing visible labels as a design smell
+
+When there is no visible text for a nameable element, consider this a sign that the content design could be improved, but not a requirement that it is changed. This is not an accessibility violation.
+
+```html
+<!-- smell: this list has no conceptual name, so we have to create one using ARIA -->
+<ul aria-label="List heading">
+  <li>...</li>
+</ul>
+
+<!-- better: the list's name is visible and can be used for its accessible name -->
+<h2 id="list-name">List heading</h2>
+<ul aria-labelledby="list-name">
+  <li>...</li>
+</ul>
+```
 
 ---
 
@@ -64,7 +73,7 @@ Gamut wraps React Aria for most interactive widget primitives. Roving tabindex, 
 
 Both use `<FocusTrap>` (`react-focus-on`) internally. Focus locks to the dialog on open and returns to the trigger on close. Escape closes the dialog automatically.
 
-Always provide an accessible name via `aria-label` (non-visible title) or `aria-labelledby` (references a visible heading id).
+Always provide an accessible name. **Prefer `aria-labelledby`** when a visible heading or title defines the dialog name; use **`aria-label`** only when there is no suitable visible title string.
 
 ```tsx
 <Dialog aria-labelledby="confirm-title">
