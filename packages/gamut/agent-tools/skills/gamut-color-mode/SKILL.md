@@ -1,6 +1,6 @@
 ---
 name: gamut-color-mode
-description: Use Gamut's ColorMode system for light/dark theming, semantic color tokens, auto-contrast Background, and color mode hooks. Apply when working with themes, dark/light mode, background colors, or color accessibility in Gamut-based apps.
+description: Use this skill when implementing light/dark behavior, semantic color aliases, the Background component for contrast-safe surfaces, or color-mode hooks in Gamut — including replacing hardcoded hex, fixing mode bugs, or reviewing color usage.
 ---
 
 # Gamut ColorMode

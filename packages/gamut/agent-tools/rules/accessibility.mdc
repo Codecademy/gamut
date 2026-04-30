@@ -1,5 +1,5 @@
 ---
-description: Accessibility guardrails for Gamut-based UI. Enforces semantic HTML, accessible names, ARIA discipline, and contrast.
+description: Apply these guardrails when editing Gamut UI in TS/JS/TSX/JSX — semantic HTML, accessible names, ARIA discipline, and contrast. Loaded automatically for matched files.
 alwaysApply: true
 globs: ["*.tsx", "*.ts", "*.jsx", "*.js"]
 ---

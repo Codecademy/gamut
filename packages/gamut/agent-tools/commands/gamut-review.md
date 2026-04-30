@@ -1,5 +1,5 @@
 ---
-description: Audit an existing project's Gamut design system usage — checks dependencies, GamutProvider wiring, import patterns, hardcoded hex colors, and test setup. Reports findings with references to the relevant Gamut skill for each issue.
+description: Use this command when auditing existing code for Gamut usage — dependencies, GamutProvider, deep imports, hardcoded hex colors, and test patterns — and you need a consolidated report with pointers to the matching Gamut skills.
 argument-hint: [path]
 allowed-tools: Read Glob Grep
 ---

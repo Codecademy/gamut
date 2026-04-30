@@ -1,6 +1,6 @@
 ---
 name: gamut-testing
-description: Write unit tests for React components that use Gamut. Apply when setting up test files, wrapping components with MockGamutProvider, using setupRtl, or when tests are manually mocking Gamut components instead of using the shared test utilities.
+description: Use this skill when writing or fixing unit tests for React components that use Gamut — setupRtl, MockGamutProvider, ColorMode in tests, emotion matchers, or removing jest.mock of @codecademy/gamut / gamut-styles.
 ---
 
 # Gamut Testing

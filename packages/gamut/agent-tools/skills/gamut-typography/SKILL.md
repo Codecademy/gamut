@@ -1,6 +1,6 @@
 ---
 name: gamut-typography
-description: Apply Gamut's typography guidelines — typefaces (Apercu Pro, Suisse Intl Mono), type scale, line heights, and line length rules — when creating or reviewing UI text in Gamut-based applications. Use when setting headlines, body copy, captions, code snippets, or any text-heavy UI.
+description: Use this skill when creating or reviewing UI text in Gamut apps — headlines, body, captions, labels, code snippets, or text-heavy layouts — even if the user does not name fonts or tokens. Covers Apercu Pro, Suisse Intl Mono, scale, line heights, line length, and alignment.
 ---
 
 # Gamut Typography

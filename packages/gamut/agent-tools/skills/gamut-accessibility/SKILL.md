@@ -1,6 +1,6 @@
 ---
 name: gamut-accessibility
-description: ARIA authoring patterns and Gamut-specific accessibility guidance. Apply when implementing or reviewing interactive components, forms, focus management, live regions, or color contrast in Gamut-based apps.
+description: Use this skill when implementing or auditing accessibility in Gamut UIs — interactive widgets, forms, focus and keyboard flows, live regions, ARIA, or contrast — including fixes for screen readers, WCAG issues, or Gamut + React Aria patterns.
 ---
 
 # Gamut Accessibility

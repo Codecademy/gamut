@@ -1,6 +1,6 @@
 ---
 name: gamut-theming
-description: Work with Gamut's Emotion-based theme system — accessing design tokens, using theme-aware styled components, switching between themes (Core, Admin, LX Studio, Percipio), and creating new themes. Apply when working with design tokens, theme variables, or when a component needs to behave differently across Gamut's supported themes.
+description: Use this skill when working with GamutProvider themes, Emotion theme tokens, or behavior that differs across Core, Admin, Platform, LX Studio, and Percipio — including new themes, token access in styled components, or debugging theme-specific styles.
 ---
 
 # Gamut Theming
@@ -77,7 +77,7 @@ const MyComponent = () => {
 
 ## System props as the primary token API
 
-For most styling needs, use [system props](../gamut-system-props/SKILL.md) rather than accessing the theme directly. System props are the idiomatic way to use design tokens in Gamut components:
+For most styling needs, use **system props** (see the `gamut-system-props` skill) rather than accessing the theme directly. System props are the idiomatic way to use design tokens in Gamut components:
 
 ```tsx
 import { variance } from '@codecademy/variance';

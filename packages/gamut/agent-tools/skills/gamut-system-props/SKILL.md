@@ -1,6 +1,6 @@
 ---
 name: gamut-system-props
-description: Use Gamut's system props (layout, space, color, border, background, typography, positioning, grid, flex, shadow) from @codecademy/gamut-styles when building styled components in the Gamut design system. Apply when creating or modifying styled components that need responsive CSS properties, spacing, colors, or layout.
+description: Use this skill when building or refactoring styled Gamut components that need layout, spacing, color, border, background, typography, positioning, grid, flex, shadow, or responsive values from @codecademy/gamut-styles — including composing system prop groups with variance.
 ---
 
 # Gamut System Props
