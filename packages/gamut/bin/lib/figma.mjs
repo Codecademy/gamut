@@ -20,10 +20,10 @@ export async function findFigmaConfigDir(startDir) {
 }
 
 /**
- * Resolves the destination path for DESIGN.md.
+ * Resolves the destination directory for the guidelines/ folder.
  *
  * Priority:
- *   1. --output <path> if provided
+ *   1. --output <path> if provided (treated as the parent directory)
  *   2. Directory containing the nearest figma.config.json (walking up from cwd)
  *
  * Throws with actionable guidance if neither resolves.
@@ -38,12 +38,12 @@ export async function resolveFigmaOutput(outputArg) {
 
   const dir = await findFigmaConfigDir(process.cwd());
   if (dir) {
-    return { path: join(dir, 'DESIGN.md'), discovered: true };
+    return { path: join(dir, 'guidelines'), discovered: true };
   }
 
   throw new Error(
     `Could not find figma.config.json in ${process.cwd()} or any parent directory.\n` +
       `Provide the destination explicitly with --output:\n` +
-      `  gamut plugin install figma --output /path/to/your/project/DESIGN.md`,
+      `  gamut plugin install figma --output /path/to/your/project/guidelines`,
   );
 }

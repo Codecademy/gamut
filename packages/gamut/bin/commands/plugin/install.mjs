@@ -1,4 +1,4 @@
-import { copyFile, cp, mkdir, rm, symlink } from 'node:fs/promises';
+import { cp, mkdir, readdir, rm, symlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
 import { claudePluginSpec, marketplaceName } from '../../lib/claude.mjs';
@@ -24,7 +24,7 @@ Arguments:
 Options:
   --scope <scope>      Content to install (default: all)
                        all | skills | rules | commands | agents
-  --output <path>      [figma] Explicit destination for DESIGN.md.
+  --output <path>      [figma] Explicit destination directory for guidelines/.
                        If omitted, walks up from cwd to find figma.config.json.
   --plugin-dir <path>  Override the bundled agent-tools directory
   -h, --help           Show this help message
@@ -33,13 +33,19 @@ Examples:
   gamut plugin install
   gamut plugin install claude
   gamut plugin install figma
-  gamut plugin install figma --output /path/to/project/DESIGN.md
+  gamut plugin install figma --output /path/to/project/guidelines
   gamut plugin install cursor --scope skills
   gamut plugin install cursor --plugin-dir ./my-agent-tools
 `);
 }
 
 // ---------------------------------------------------------------------------
+
+/** Directories in the plugin source that should not be installed to Cursor. */
+const CURSOR_IGNORE = new Set([
+  '.claude-plugin', // Claude Code manifest — not a Cursor concept
+  'guidelines',     // Figma Make only
+]);
 
 /** @param {string} sourceRoot @param {string} scope */
 async function installCursor(sourceRoot, scope) {
@@ -59,7 +65,16 @@ async function installCursor(sourceRoot, scope) {
 
   await cp(`${sourceRoot}/.cursor-plugin`, `${dest}/.cursor-plugin`, { recursive: true });
 
-  const dirs = scope === 'all' ? ['skills', 'rules', 'commands', 'agents'] : [scope];
+  let dirs;
+  if (scope === 'all') {
+    const entries = await readdir(sourceRoot, { withFileTypes: true });
+    dirs = entries
+      .filter((e) => e.isDirectory() && !e.name.startsWith('.') && !CURSOR_IGNORE.has(e.name))
+      .map((e) => e.name);
+  } else {
+    dirs = [scope];
+  }
+
   for (const dir of dirs) {
     await cp(`${sourceRoot}/${dir}`, `${dest}/${dir}`, { recursive: true }).catch(() => {
       // directory may be empty/missing — not an error
@@ -69,6 +84,10 @@ async function installCursor(sourceRoot, scope) {
   const scopeLabel = scope === 'all' ? 'all content' : scope;
   console.log(`Cursor: installed (${scopeLabel}) → ${dest}`);
 }
+
+// Claude Code only loads from recognized plugin directories: skills/, commands/, agents/.
+// rules/ is Cursor-specific (.mdc format); .cursor-plugin/ and guidelines/ are also
+// present in sourceRoot but ignored by Claude Code.
 
 /** @param {string} sourceRoot */
 async function installClaude(sourceRoot) {
@@ -109,16 +128,17 @@ async function installClaude(sourceRoot) {
  * @param {string | undefined} outputArg
  */
 async function installFigma(sourceRoot, outputArg) {
-  const src = join(sourceRoot, 'DESIGN.md');
+  const src = join(sourceRoot, 'guidelines');
   const { path: dest, discovered } = await resolveFigmaOutput(outputArg);
 
   if (discovered) {
     console.log(`Figma: found figma.config.json — installing to ${dest}`);
   }
 
-  await copyFile(src, dest);
-  console.log(`Figma: installed DESIGN.md → ${dest}`);
-  console.log(`  Open this file in your design tool or share it with Figma AI for design system context.`);
+  await rm(dest, { recursive: true, force: true });
+  await cp(src, dest, { recursive: true });
+  console.log(`Figma: installed guidelines/ → ${dest}`);
+  console.log(`  In Figma Make, point your kit at this guidelines/ directory for design system context.`);
 }
 
 // ---------------------------------------------------------------------------
