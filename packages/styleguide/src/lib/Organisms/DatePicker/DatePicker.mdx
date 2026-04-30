@@ -11,7 +11,7 @@ export const parameters = {
     url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=127461-42132',
   },
   subtitle: `Single-date or range selection with a segmented date field, calendar popover, footer quick actions, and shared React context for custom layouts.`,
-  status: 'current',
+  status: 'updating',
   source: {
     repo: 'gamut',
     githubLink:
@@ -291,9 +291,9 @@ Use the `translations` prop to internationalize any text that is not handled aut
 
 `DatePicker` can be rendered with `children` and composed for more flexibility. The following components/hooks are exported and available to use for composition:
 
+- `useDatePicker()` exposes shared shell state. Always narrow on `mode` when mode-specific fields are needed.
 - `DatePickerInput`: month/day/year `role="spinbutton"` segments. In range mode use `rangePart="start"` or `"end"` on each instance.
 - `DatePickerCalendar`: calendar UI wired to context; pass a stable `dialogId` that matches the `id` on the `role="dialog"` wrapper for `aria-labelledby` / `aria-controls` wiring.
-- `useDatePicker()` exposes shared shell state. Always narrow on `mode` when mode-specific fields are needed.
 
 <Canvas of={DatePickerStories.ComposedWithContext} />
 
@@ -305,6 +305,8 @@ Use the `translations` prop to internationalize any text that is not handled aut
 
 ## Accessibility considerations
 
-- The calendar lives in a `role="dialog"` region; pair its `id` with `DatePickerCalendar`’s `dialogId` and input `aria-controls` from the default implementation.
+- The calendar lives in a `role="dialog"` region; pair its `id` with `DatePickerCalendar`'s `dialogId` and input `aria-controls` from the default implementation.
 - Segments use `role="spinbutton"`; arrow keys adjust values, `Arrow Left/Right` move between segments, and `Alt+Arrow Down` opens the calendar or moves focus into the grid when appropriate.
 - `Escape` closes the popover.
+
+<Canvas of={DatePickerStories.InModal} />

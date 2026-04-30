@@ -15,18 +15,19 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
 
   return (
     <FlexBox
-      alignItems={{ _: 'flex-start', xs: 'center' }}
+      alignItems={{ _: 'flex-start', sm: 'center' }}
       borderTop={1}
-      flexDirection={{ _: 'column', xs: 'row' }}
+      flexDirection={{ _: 'column', sm: 'row' }}
       gap={12}
       justifyContent={clearButton ? 'space-between' : 'flex-end'}
       p={12}
     >
       {clearButton && (
-        <FlexBox order={{ _: 2, xs: 1 }}>
+        <FlexBox order={{ _: 2, sm: 1 }}>
           <TextButton
-            alignSelf={{ _: 'flex-start', xs: 'center' }}
+            alignSelf={{ _: 'flex-start', sm: 'center' }}
             disabled={clearButton.disabled}
+            variant="secondary"
             onClick={() => clearButton.onClick?.()}
           >
             {clearButton.text ??
@@ -35,14 +36,14 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
         </FlexBox>
       )}
       <FlexBox
-        flexDirection={{ _: 'column', xs: 'row' }}
+        flexDirection={{ _: 'column', sm: 'row' }}
         gap={8}
-        order={{ _: 1, xs: 2 }}
+        order={{ _: 1, sm: 2 }}
         wrap
       >
         {actions.map((action, index) => (
           <TextButton
-            alignSelf={{ _: 'flex-start', xs: 'center' }}
+            alignSelf={{ _: 'flex-start', sm: 'center' }}
             // eslint-disable-next-line react/no-array-index-key -- displayText may duplicate
             key={`${action.displayText}-${index}`}
             onClick={action.onClick}

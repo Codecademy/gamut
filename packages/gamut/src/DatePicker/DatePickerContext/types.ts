@@ -23,7 +23,7 @@ interface DatePickerBaseContextValue<Mode extends 'single' | 'range'>
    * Function to open the calendar popover. Use within callbacks that should open the calendar.
    */
   openCalendar: () => void;
-  /** Function to move focus into the calendaar grid. */
+  /** Function to move focus into the calendar grid. */
   focusCalendar: () => void;
   /**
    * Whether a grid-focus request is issued with an unchanged `focusedDate`, so layout

@@ -113,7 +113,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const focusTarget = focusedDate ?? selectedDate ?? endDate ?? new Date();
   const secondMonthDate = addMonths({ date: displayDate, n: 1 });
-  const isTwoMonthsVisible = useMedia(`(min-width: ${breakpoints.xs})`);
+  const isTwoMonthsVisible = useMedia(`(min-width: ${breakpoints.sm})`);
   /** Current left-column month; read in the anchor sync effect without listing `displayDate` in deps (month nav would retrigger and snap back). */
   const startOfLeftVisibleMonthRef = useRef(displayDate);
   startOfLeftVisibleMonthRef.current = displayDate;
@@ -281,7 +281,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             onFocusedDateChange={onFocusedDateChangeFromGrid}
           />
         </Box>
-        <Box display={{ _: 'none', xs: 'initial' }} pl={{ _: 0, xs: 32 }}>
+        <Box display={{ _: 'none', sm: 'initial' }} pl={{ _: 0, xs: 32 }}>
           <CalendarHeader
             displayDate={secondMonthDate}
             headingId={headingRightId}
