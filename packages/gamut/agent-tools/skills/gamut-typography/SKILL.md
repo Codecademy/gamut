@@ -5,9 +5,11 @@ description: Use this skill when creating or reviewing UI text in Gamut apps —
 
 # Gamut Typography
 
+> **Scope**: This skill covers typography for **Codecademy products** using the Core, Admin, or Platform themes (Apercu + Suisse). Percipio uses Roboto for all type — see `DESIGN.md` for Percipio-specific guidance. LX Studio uses Hanken Grotesk in place of both Apercu and Suisse.
+
 ## Typefaces
 
-Gamut uses two typefaces:
+Codecademy products use two typefaces:
 
 ### Apercu Pro (`fontFamily: "base"`)
 

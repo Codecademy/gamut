@@ -6,7 +6,7 @@ allowed-tools: Read Glob Grep
 
 This is an audit of **existing code** at **`$ARGUMENTS`** (default: current working directory). Your job is to find violations and misuse, not to generate new code.
 
-Use `DESIGN.md` in this plugin as the authoritative reference for Gamut's design intent, token names, and component patterns. When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
+Use `DESIGN.md` at the project root as the authoritative reference for the product's design intent, token names, and component patterns. This file is distributed as `DESIGN.Codecademy.md` or `DESIGN.Percipio.md` from the `@codecademy/gamut` agent-tools package and renamed to `DESIGN.md` by the consuming project. When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
 
 Run all five checks below, then print a single consolidated report using the format at the end of this file.
 
