@@ -31,11 +31,10 @@ Use `DatePicker` to allow users to select a single date or a date range via manu
 
 - Include quick actions when users are likely to select common or recurring dates or ranges
 - Include disabled dates to prevent selection of dates that are unavailable or invalid in your context
-- Use the Today indicator when the current date is a meaningful reference point for the user
 
 ### When NOT to use:
 
-- **Predefined options** - for choosing from a fixed set of date-related options (e.g., "This month", "Last quarter"), use the <LinkTo id="Molecules/Select">Select</LinkTo> or <LinkTo id="Molecules/SelectDropdown">SelectDropdown</LinkTo> component instead
+- **Predefined options** - for choosing from a fixed set of date-related options (e.g., "This month", "Last quarter"), use the <LinkTo id="Atoms/FormInputs/Select">Select</LinkTo> or <LinkTo id="Atoms/FormInputs/SelectDropdown">SelectDropdown</LinkTo> component instead
 
 ## Anatomy
 
@@ -49,29 +48,26 @@ Use `DatePicker` to allow users to select a single date or a date range via manu
 
 - The first date in a range, or the only date when `mode="single"`
 - Label reads "Date" for single date; "Start date" for range
-- Label is fixed and non-editable
 - Inputting a date updates the calendar selection immediately
 
 2. **End date**
 
 - The last date in the selected range
 - Label reads "End date"
-- Label is fixed and non-editable
 - Inputting a date updates the calendar selection immediately
 - Only shown if `mode="range"`
 
 3. **Calendar**
 
-- Popover triggered on focus of either date input
+- Popover opens on click of either date input, or on Alt+↓ when an input is focused
 - Closes automatically once the selection is complete
 - Selecting a date in the calendar updates the manual inputs immediately
 - Clicking an already-selected date clears it
-- Displays 2 months by default; collapses to 1 month at viewports below 540px
+- Displays 2 months by default; collapses to 1 month at viewports below 768px
 
-4. **Today** _(optional)_
+4. **Today**
 
-- Use when orienting the user around today's date is relevant to the context
-- Indicates the current date on the calendar
+- Indicates the current date on the calendar to orient the user
 - Indicator is primary-colored when the date is not selected; switches to the background token when selected
 
 5. **Disabled dates** _(optional)_
@@ -88,6 +84,7 @@ Use `DatePicker` to allow users to select a single date or a date range via manu
 7. **Quick actions** _(optional)_
 
 - Use when you expect users to frequently select common dates or ranges
+- Defaults: "Last 7 days," "Last 30 days," "Last 90 days" for `mode="range"`; "Yesterday," "Today," "Tomorrow" for `mode="single"`
 - Include up to 3 actions
 - Use range quick actions when `mode="range"`; use single-date quick actions when `mode="single"`
 - For past date ranges, use "Last" as the label prefix (e.g., "Last 7 days")
@@ -122,7 +119,7 @@ Set the initial date using the `selectedDate` (single) or `startDate` and `endDa
 
 ### Input size
 
-Use the **`inputSize`** prop to adjust the size of the input. The default size is `"base"`. You can also use `"small"` to reduce the padding of the input.
+Use the `inputSize` prop to adjust the size of the input. The default size is `"base"`. `"small"` can be used to reduce the padding of the input.
 
 <Canvas of={DatePickerStories.RangeSmall} />
 
@@ -132,7 +129,7 @@ Quick actions are a set of predefined date ranges or single dates that allow use
 
 ### Default values
 
-There are default quick actions for both single and range modes for your convenience.
+There are default quick actions for both single and range modes for convenience.
 
 #### Single date: yesterday / today / tomorrow
 
@@ -144,7 +141,7 @@ There are default quick actions for both single and range modes for your conveni
 
 ### Disable quick actions
 
-You can disable quick actions by passing `quickActions={null}`.
+Disable quick actions by passing `quickActions={null}`.
 
 <Canvas of={DatePickerStories.RangeNoQuickActions} />
 
@@ -154,12 +151,12 @@ When quick actions are disabled in single mode, the footer is not shown.
 
 ### Custom values
 
-You can pass your own quick actions using the **`quickActions`** prop. **`quickActions`** is an array of quick actions Each quick action is an object with the following properties:
+Use the `quickActions` prop to pass custom quick actions. `quickActions` is an array of quick actions, each quick action is an object with the following properties:
 
-- **`num`**: the number of days to offset from today.
-- **`timePeriod`**: the time period to offset from today.
-- **`displayText`**: the text to display for the quick action.
-- **`onClick`**: the callback to call when the quick action is clicked.
+- `num`: the number of days to offset from today.
+- `timePeriod`: the time period to offset from today.
+- `displayText`: the text to display for the quick action.
+- `onClick`: the callback to call when the quick action is clicked.
 
 <Canvas of={DatePickerStories.SingleCustomQuickActions} />
 
@@ -167,11 +164,11 @@ You can pass your own quick actions using the **`quickActions`** prop. **`quickA
 
 ## Disable dates
 
-Use the **`disableDate`** callback prop to disable specific dates in the calendar. The callback should return `true` if the date should be disabled and `false` if it should be enabled. You can disable dates based on a fixed list of dates, the current date, the start date, or any other date property.
+Use the `disableDate` callback prop to disable specific dates in the calendar. The callback should return `true` if the date should be disabled and `false` if it should be enabled. Dates can be disabled based on a fixed list of dates, the current date, the start date, or any other date property. Below are some common examples that showcase how versatile `disableDate` can be:
 
 ### Disable a fixed list of dates
 
-You can use the **`disableDate`** prop to disable a fixed list of dates using the `matchDisabledDates` helper. Here we are disabling the date April 22, 2026.
+Use the `disableDate` prop to disable a fixed list of dates using the `matchDisabledDates` helper. Here we are disabling the date April 22, 2026.
 
 ```tsx
 <DatePicker
@@ -188,7 +185,7 @@ You can use the **`disableDate`** prop to disable a fixed list of dates using th
 
 ### Disable dates based on the current date
 
-You can use the **`disableDate`** prop to disable dates that are before today.
+Use the `disableDate` prop to disable dates that are before today.
 
 ```tsx
 <DatePicker
@@ -203,7 +200,7 @@ You can use the **`disableDate`** prop to disable dates that are before today.
 
 <Canvas of={DatePickerStories.RangeDisabledBeforeToday} />
 
-You can also use the **`disableDate`** prop to disable dates that are more than 30 days before today.
+Use the `disableDate` prop to disable dates that are more than 30 days before today.
 
 ```tsx
 <DatePicker
@@ -228,7 +225,7 @@ You can also use the **`disableDate`** prop to disable dates that are more than 
 
 ### Disable dates based on the start date
 
-You can use the **`disableDate`** prop to limit the range of dates that can be selected based on the start date. For example, here we disable dates that are more than 30 days before or after the start date, effectively limiting the range to 30 days.
+Use the `disableDate` prop to limit the range of dates that can be selected based on the start date. For example, here we disable dates that are more than 30 days before or after the start date, effectively limiting the range to 30 days.
 
 ```tsx
 <DatePicker
@@ -256,7 +253,7 @@ You can use the **`disableDate`** prop to limit the range of dates that can be s
 
 ### Disable weekends
 
-You can use the **`disableDate`** prop to disable weekends.
+Use the `disableDate` prop to disable weekends.
 
 ```tsx
 <DatePicker
@@ -272,33 +269,31 @@ You can use the **`disableDate`** prop to disable weekends.
 
 ## Locale
 
-Use the **`locale`** prop to set the locale of the DatePicker component. The default locale is the runtime default
-locale. You can also pass a locale string.
+Use the `locale` prop to set the locale of the DatePicker component. The default locale is the runtime default
+locale. A [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Glossary/BCP_47_language_tag)(e.g. `"en-US"`, `"fr-FR"`) or a [`Intl.Locale` object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) can also be passed.
 
 DatePicker uses the `Intl` API to internationalize a lot of the component automatically:
 
-- **`Intl.Locale` + `getWeekInfo`**: which day starts the calendar.
-- **`Intl.DateTimeFormat`**: segment order and separators for the inputs; month + year in the header; short/long weekday names in the grid; formatted day cell `aria-label`.
-- **`Intl.RelativeTimeFormat`**: the default single-mode quick actions (e.g. yesterday / today / tomorrow) and the previous / next month navigation tip text.
-- **`String.prototype.toLocaleUpperCase`**: first character of some relative-time strings, using the active locale.
+- `Intl.Locale` + `getWeekInfo`: which day starts the calendar.
+- `Intl.DateTimeFormat`: segment order and separators for the inputs; month + year in the header; short/long weekday names in the grid; formatted day cell `aria-label`.
+- `Intl.RelativeTimeFormat`: the default single-mode quick actions (e.g. yesterday / today / tomorrow) and the previous / next month navigation tip text.
+- `String.prototype.toLocaleUpperCase`: first character of some relative-time strings, using the active locale.
 
 <Canvas of={DatePickerStories.Locale} />
 
 ### Translations
 
-Use the **`translations`** prop to internationalize any text that is not handled automatically by the `Intl` API. The passed translations are merged with the default translations from `DEFAULT_DATE_PICKER_TRANSLATIONS`.
+Use the `translations` prop to internationalize any text that is not handled automatically by the `Intl` API. The passed translations are merged with the default translations from `DEFAULT_DATE_PICKER_TRANSLATIONS`.
 
 <Canvas of={DatePickerStories.Translations} />
 
 ## Composed with context
 
-You are able to render **`DatePicker`** with **`children`** and compose the component yourself for more flexibility.
+`DatePicker` can be rendered with `children` and composed for more flexibility. The following components/hooks are exported and available to use for composition:
 
-The following components/hooks are exported and available to use in your composition:
-
-- **`DatePickerInput`**: month/day/year **`role="spinbutton"`** segments. In range mode use **`rangePart="start"`** or **`"end"`** on each instance.
-- **`DatePickerCalendar`**: calendar UI wired to context; pass a stable **`dialogId`** that matches the **`id`** on your **`role="dialog"`** wrapper for **`aria-labelledby`** / **`aria-controls`** wiring.
-- **`useDatePicker()`** exposes shared shell state. Always narrow on **`mode`** when you need mode-specific fields.
+- `DatePickerInput`: month/day/year `role="spinbutton"` segments. In range mode use `rangePart="start"` or `"end"` on each instance.
+- `DatePickerCalendar`: calendar UI wired to context; pass a stable `dialogId` that matches the `id` on the `role="dialog"` wrapper for `aria-labelledby` / `aria-controls` wiring.
+- `useDatePicker()` exposes shared shell state. Always narrow on `mode` when mode-specific fields are needed.
 
 <Canvas of={DatePickerStories.ComposedWithContext} />
 
@@ -310,6 +305,6 @@ The following components/hooks are exported and available to use in your composi
 
 ## Accessibility considerations
 
-- The calendar lives in a **`role="dialog"`** region; pair its **`id`** with **`DatePickerCalendar`**’s **`dialogId`** and input **`aria-controls`** from the default implementation.
-- Segments use **`role="spinbutton"`**; arrow keys adjust values, **Arrow Left/Right** move between segments, and **Alt+Arrow Down** opens the calendar or moves focus into the grid when appropriate.
-- **Escape** closes the popover.
+- The calendar lives in a `role="dialog"` region; pair its `id` with `DatePickerCalendar`’s `dialogId` and input `aria-controls` from the default implementation.
+- Segments use `role="spinbutton"`; arrow keys adjust values, `Arrow Left/Right` move between segments, and `Alt+Arrow Down` opens the calendar or moves focus into the grid when appropriate.
+- `Escape` closes the popover.
