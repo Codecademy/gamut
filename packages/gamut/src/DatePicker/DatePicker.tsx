@@ -1,4 +1,5 @@
-import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
+import { MiniArrowLeftIcon, MiniArrowRightIcon } from '@codecademy/gamut-icons';
+import { useElementDir } from '@codecademy/gamut-styles';
 import {
   useCallback,
   useEffect,
@@ -43,6 +44,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const inputRef = useRef<HTMLDivElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
+  const isRtl = useElementDir() === 'rtl';
 
   const clearGridFocusRequest = useCallback(() => {
     setGridFocusRequested(false);
@@ -158,8 +160,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 size={inputSize}
               />
               <Box alignSelf="center" mt={32}>
-                {/* TODO: Adjust for RTL */}
-                <MiniArrowRightIcon />
+                {isRtl ? <MiniArrowLeftIcon /> : <MiniArrowRightIcon />}
               </Box>
               <DatePickerInput
                 name="datePickerInputEnd"
