@@ -99,24 +99,28 @@ export const Default: Story = {
 
     if (args.mode === 'range') {
       return (
-        <DatePicker
-          {...args}
-          endDate={endDate}
-          mode="range"
-          startDate={startDate}
-          onEndSelected={setEndDate}
-          onStartSelected={setStartDate}
-        />
+        <Box height="500px">
+          <DatePicker
+            {...args}
+            endDate={endDate}
+            mode="range"
+            startDate={startDate}
+            onEndSelected={setEndDate}
+            onStartSelected={setStartDate}
+          />
+        </Box>
       );
     }
 
     return (
-      <DatePicker
-        {...args}
-        mode="single"
-        selectedDate={selectedDate}
-        onSelected={setSelectedDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          mode="single"
+          selectedDate={selectedDate}
+          onSelected={setSelectedDate}
+        />
+      </Box>
     );
   },
 };
@@ -174,12 +178,14 @@ export const WithInitialDateSingle: Story = {
       () => new Date(2026, 1, 15)
     );
     return (
-      <DatePicker
-        {...args}
-        mode="single"
-        selectedDate={selectedDate}
-        onSelected={setSelectedDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          mode="single"
+          selectedDate={selectedDate}
+          onSelected={setSelectedDate}
+        />
+      </Box>
     );
   },
 };
@@ -194,6 +200,27 @@ export const WithInitialDateRange: Story = {
     const [endDate, setEndDate] = useState<Date | null>(
       () => new Date(2026, 1, 20)
     );
+    return (
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          endDate={endDate}
+          mode="range"
+          startDate={startDate}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
+        />
+      </Box>
+    );
+  },
+};
+
+export const FloatingPlacement: Story = {
+  ...fixedMode('range'),
+  args: { placement: 'floating' },
+  render: function DatePickerStory(args) {
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
     return (
       <DatePicker
         {...args}
@@ -226,36 +253,19 @@ export const RangeSmall: Story = {
   },
 };
 
-export const FloatingPlacement: Story = {
-  ...fixedMode('range'),
-  args: { placement: 'floating' },
-  render: function DatePickerStory(args) {
-    const [startDate, setStartDate] = useState<Date | null>(null);
-    const [endDate, setEndDate] = useState<Date | null>(null);
-    return (
-      <DatePicker
-        {...args}
-        endDate={endDate}
-        mode="range"
-        startDate={startDate}
-        onEndSelected={setEndDate}
-        onStartSelected={setStartDate}
-      />
-    );
-  },
-};
-
 export const SingleDefaultQuickActions: Story = {
   ...fixedMode('single'),
   render: function DatePickerStory(args) {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
-      <DatePicker
-        {...args}
-        mode="single"
-        selectedDate={selectedDate}
-        onSelected={setSelectedDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          mode="single"
+          selectedDate={selectedDate}
+          onSelected={setSelectedDate}
+        />
+      </Box>
     );
   },
 };
@@ -266,14 +276,16 @@ export const RangeDefaultQuickActions: Story = {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     return (
-      <DatePicker
-        {...args}
-        endDate={endDate}
-        mode="range"
-        startDate={startDate}
-        onEndSelected={setEndDate}
-        onStartSelected={setStartDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          endDate={endDate}
+          mode="range"
+          startDate={startDate}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
+        />
+      </Box>
     );
   },
 };
@@ -284,7 +296,7 @@ export const SingleNoQuickActions: Story = {
   render: function DatePickerStory(args) {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
-      <Box>
+      <Box height="500px">
         <DatePicker
           {...args}
           mode="single"
@@ -303,14 +315,16 @@ export const RangeNoQuickActions: Story = {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     return (
-      <DatePicker
-        {...args}
-        endDate={endDate}
-        mode="range"
-        startDate={startDate}
-        onEndSelected={setEndDate}
-        onStartSelected={setStartDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          endDate={endDate}
+          mode="range"
+          startDate={startDate}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
+        />
+      </Box>
     );
   },
 };
@@ -327,12 +341,14 @@ export const SingleCustomQuickActions: Story = {
   render: function DatePickerStory(args) {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
-      <DatePicker
-        {...args}
-        mode="single"
-        selectedDate={selectedDate}
-        onSelected={setSelectedDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          mode="single"
+          selectedDate={selectedDate}
+          onSelected={setSelectedDate}
+        />
+      </Box>
     );
   },
 };
@@ -350,30 +366,16 @@ export const RangeCustomQuickActions: Story = {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     return (
-      <DatePicker
-        {...args}
-        endDate={endDate}
-        mode="range"
-        startDate={startDate}
-        onEndSelected={setEndDate}
-        onStartSelected={setStartDate}
-      />
-    );
-  },
-};
-
-export const Locale: Story = {
-  ...fixedMode('single'),
-  args: { locale: 'de-DE' },
-  render: function DatePickerStory(args) {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    return (
-      <DatePicker
-        {...args}
-        mode="single"
-        selectedDate={selectedDate}
-        onSelected={setSelectedDate}
-      />
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          endDate={endDate}
+          mode="range"
+          startDate={startDate}
+          onEndSelected={setEndDate}
+          onStartSelected={setStartDate}
+        />
+      </Box>
     );
   },
 };
@@ -382,6 +384,7 @@ export const MatchDisabledDates: Story = {
   ...fixedMode('range'),
   args: {
     disableDate: matchDisabledDates([new Date(2026, 3, 22)]),
+    placement: 'floating',
   },
   render: function DatePickerStory(args) {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -404,6 +407,7 @@ const calendarDate = (date: Date) =>
 
 export const Range30DayWindowFromStart: Story = {
   ...fixedMode('range'),
+  args: { placement: 'floating' },
   render: function DatePickerStory(args) {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
@@ -445,6 +449,7 @@ export const RangeDisabledBeforeToday: Story = {
       );
       return date < startOfToday;
     },
+    placement: 'floating',
   },
   render: function DatePickerStory(args) {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -474,6 +479,7 @@ export const RangeDisabledMoreThan30DaysBeforeToday: Story = {
       );
       return date < thirtyDaysAgo;
     },
+    placement: 'floating',
   },
   render: function DatePickerStory(args) {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -495,6 +501,7 @@ export const RangeDisabledWeekends: Story = {
   ...fixedMode('range'),
   args: {
     disableDate: (date) => date.getDay() === 0 || date.getDay() === 6,
+    placement: 'floating',
   },
   render: function DatePickerStory(args) {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -512,8 +519,26 @@ export const RangeDisabledWeekends: Story = {
   },
 };
 
+export const Locale: Story = {
+  ...fixedMode('single'),
+  args: { locale: 'de-DE' },
+  render: function DatePickerStory(args) {
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    return (
+      <Box height="500px">
+        <DatePicker
+          {...args}
+          mode="single"
+          selectedDate={selectedDate}
+          onSelected={setSelectedDate}
+        />
+      </Box>
+    );
+  },
+};
+
 export const Translations: Story = {
-  name: 'Translations (Spanish)',
+  ...fixedMode('range'),
   args: {
     locale: 'es',
     translations: {
@@ -526,6 +551,7 @@ export const Translations: Story = {
       last30DaysDisplayText: 'Últimos 30 días',
       last90DaysDisplayText: 'Últimos 90 días',
     },
+    placement: 'floating',
   },
   render: function DatePickerStory(args) {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -546,6 +572,7 @@ export const Translations: Story = {
 
 export const ComposedWithContext: Story = {
   ...fixedMode('single'),
+  args: { placement: 'floating' },
   render: function DatePickerStory(args) {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
