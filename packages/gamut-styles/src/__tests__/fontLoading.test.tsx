@@ -6,7 +6,7 @@ import { getFontsMock } from './fontUtilsMock';
 
 const typedPercipioTheme = percipioTheme as any;
 
-jest.mock('../utils/fontUtils', () => ({
+jest.mock('../utilities/fontUtils', () => ({
   getFonts: require('./fontUtilsMock').getFontsMock,
 }));
 

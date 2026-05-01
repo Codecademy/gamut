@@ -1617,26 +1617,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:17.13.1":
-  version: 17.13.1
-  resolution: "@codecademy/gamut-styles@npm:17.13.1"
-  dependencies:
-    "@codecademy/variance": "npm:0.26.1"
-    "@emotion/is-prop-valid": "npm:^1.1.0"
-    framer-motion: "npm:^11.18.0"
-    get-nonce: "npm:^1.0.0"
-    polished: "npm:^4.1.2"
-  peerDependencies:
-    "@emotion/cache": ^11.4.0
-    "@emotion/react": ^11.4.0
-    "@emotion/styled": ^11.3.0
-    lodash: ^4.17.23
-    react: ^17.0.2 || ^18.3.0
-    stylis: ^4.0.7
-  checksum: 10c0/bcfcbb2f8b40fd6635d1203545822b92ae3d3e2273e9e2a79138de577d1fe3812f5acc208da53e2fe6e81d1037fef5bb38e3b61b8cc3b805da09c422ece69407
-  languageName: node
-  linkType: hard
-
 "@codecademy/gamut-styles@npm:17.14.0, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
@@ -1660,7 +1640,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.13.1"
+    "@codecademy/gamut-styles": "npm:17.14.0"
     component-test-setup: "npm:^0.3.1"
     lodash: "npm:^4.17.23"
   peerDependencies:
@@ -13193,28 +13173,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.18.0":
-  version: 11.18.2
-  resolution: "framer-motion@npm:11.18.2"
-  dependencies:
-    motion-dom: "npm:^11.18.1"
-    motion-utils: "npm:^11.18.1"
-    tslib: "npm:^2.4.0"
-  peerDependencies:
-    "@emotion/is-prop-valid": "*"
-    react: ^18.0.0 || ^19.0.0
-    react-dom: ^18.0.0 || ^19.0.0
-  peerDependenciesMeta:
-    "@emotion/is-prop-valid":
-      optional: true
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 10c0/41b1ef1b4e54ea13adaf01d61812a8783d2352f74641c91b50519775704bc6274db6b6863ff494a1f705fa6c6ed8f4df3497292327c906d53ea0129cef3ec361
-  languageName: node
-  linkType: hard
-
 "framer-motion@npm:^12.0.0":
   version: 12.37.0
   resolution: "framer-motion@npm:12.37.0"
@@ -17850,28 +17808,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion-dom@npm:^11.18.1":
-  version: 11.18.1
-  resolution: "motion-dom@npm:11.18.1"
-  dependencies:
-    motion-utils: "npm:^11.18.1"
-  checksum: 10c0/98378bdf9d77870829cdf3624c5eff02e48cfa820dfc74450364d7421884700048d60e277bfbf477df33270fbae4c1980e5914586f5b6dff28d4921fdca8ac47
-  languageName: node
-  linkType: hard
-
 "motion-dom@npm:^12.37.0":
   version: 12.37.0
   resolution: "motion-dom@npm:12.37.0"
   dependencies:
     motion-utils: "npm:^12.36.0"
   checksum: 10c0/e3b2be1e6796658d021921fed8f5ce690b833c4ce5f63d0ca11c86b5520b35a626d29ef9d97bd8551bd946333c3d4ab159d95aae9951c92ce8733039560b4c0c
-  languageName: node
-  linkType: hard
-
-"motion-utils@npm:^11.18.1":
-  version: 11.18.1
-  resolution: "motion-utils@npm:11.18.1"
-  checksum: 10c0/dac083bdeb6e433a277ac4362211b0fdce59ff09d6f7897f0f49d1e3561209c6481f676876daf99a33485054bc7e4b1d1b8d1de16f7b1e5c6f117fe76358ca00
   languageName: node
   linkType: hard
 

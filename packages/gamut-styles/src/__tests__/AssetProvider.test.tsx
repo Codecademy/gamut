@@ -9,7 +9,7 @@ import { setupRtl } from './testUtils';
 
 const renderView = setupRtl(AssetProvider, {});
 
-jest.mock('../utils/fontUtils', () => ({
+jest.mock('../utilities/fontUtils', () => ({
   getFonts: require('./fontUtilsMock').getFontsMock,
 }));
 
