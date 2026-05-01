@@ -19,6 +19,7 @@ import {
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentType } from 'react';
 import { useState } from 'react';
 
 import { listStoryRows as rows } from '../listStoryData';
@@ -26,6 +27,7 @@ import { listStoryRows as rows } from '../listStoryData';
 const meta: Meta<typeof ListRow> = {
   title: 'Organisms/Lists & Tables/List/ListRow',
   component: ListRow,
+  subcomponents: { ListCol: ListCol as ComponentType<unknown> },
   args: {},
 };
 

@@ -6,6 +6,7 @@ import {
   List,
   ListCol,
   ListRow,
+  TableHeader,
   Text,
   TextButton,
 } from '@codecademy/gamut';
@@ -28,7 +29,10 @@ import { listStoryRows as rows } from './listStoryData';
 const meta: Meta<typeof List> = {
   title: 'Organisms/Lists & Tables/List/List',
   component: List,
-  subcomponents: { ListRow: ListRow as ComponentType<unknown> },
+  subcomponents: {
+    ListRow: ListRow as ComponentType<unknown>,
+    TableHeader: TableHeader as ComponentType<unknown>,
+  },
   args: {},
 };
 

@@ -1,11 +1,13 @@
 import { List, ListCol, ListRow, TableHeader } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentType } from 'react';
 
 import { listStoryRows as rows } from '../listStoryData';
 
 const meta: Meta<typeof TableHeader> = {
   title: 'Organisms/Lists & Tables/List/TableHeader',
   component: TableHeader,
+  subcomponents: { ListCol: ListCol as ComponentType<unknown> },
   args: {},
 };
 
