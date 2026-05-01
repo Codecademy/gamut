@@ -5,6 +5,7 @@ import type { FC, FormEvent, FormEventHandler } from 'react';
 
 import { DatePicker } from '../DatePicker';
 import type { DatePickerTranslations } from '../utils/translations';
+import { actKeyboard } from './actKeyboard';
 
 jest.mock('react-use', () => {
   const actual = jest.requireActual<typeof import('react-use')>('react-use');
@@ -178,7 +179,7 @@ describe('DatePicker', () => {
 
     const spinbutton = view.getByRole('spinbutton', { name: 'month' });
     spinbutton.focus();
-    await user.keyboard('{Escape}');
+    await actKeyboard(user, '{Escape}');
 
     expect(view.queryByRole('dialog')).not.toBeInTheDocument();
   });
@@ -191,7 +192,7 @@ describe('DatePicker', () => {
     expect(view.getByRole('dialog')).toBeVisible();
 
     view.getByRole('button', { name: 'Last month' }).focus();
-    await user.keyboard('{Escape}');
+    await actKeyboard(user, '{Escape}');
 
     expect(view.queryByRole('dialog')).not.toBeInTheDocument();
   });
@@ -217,7 +218,7 @@ describe('DatePicker inside a form', () => {
 
     await user.click(view.getByRole('group'));
     view.getByRole('spinbutton', { name: 'month' }).focus();
-    await user.keyboard('{Escape}');
+    await actKeyboard(user, '{Escape}');
 
     expect(view.queryByRole('dialog')).not.toBeInTheDocument();
     expect(onFormSubmit).not.toHaveBeenCalled();
@@ -230,7 +231,7 @@ describe('DatePicker inside a form', () => {
 
     await user.click(view.getByRole('group'));
     view.getByRole('button', { name: 'Last month' }).focus();
-    await user.keyboard('{Escape}');
+    await actKeyboard(user, '{Escape}');
 
     expect(onFormSubmit).not.toHaveBeenCalled();
   });
@@ -337,7 +338,7 @@ describe('DatePicker inside a form', () => {
     expect(view.getByRole('dialog')).toBeVisible();
 
     view.getByRole('button', { name: 'Next month' }).focus();
-    await user.keyboard('{Escape}');
+    await actKeyboard(user, '{Escape}');
 
     expect(view.queryByRole('dialog')).not.toBeInTheDocument();
     expect(onFormSubmit).not.toHaveBeenCalled();

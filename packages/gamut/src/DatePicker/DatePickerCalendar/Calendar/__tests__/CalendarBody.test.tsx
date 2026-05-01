@@ -3,6 +3,7 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 
+import { actKeyboard } from '../../../__tests__/actKeyboard';
 import { getIsoFirstDayFromLocale } from '../../../utils/locale';
 import { CalendarBody } from '../CalendarBody';
 import { getMonthGrid } from '../utils/dateGrid';
@@ -230,11 +231,12 @@ describe('CalendarBody', () => {
 
   describe('keyboard navigation (integration)', () => {
     it('moves focus via ArrowLeft through keyHandler', async () => {
+      const user = userEvent.setup();
       const { view } = renderView();
 
       const day20 = view.getByRole('gridcell', { name: /March 20, 2024/i });
       day20.focus();
-      await userEvent.keyboard('{ArrowLeft}');
+      await actKeyboard(user, '{ArrowLeft}');
 
       expect(mockOnFocusedDateChange).toHaveBeenCalledWith(
         new Date(2024, 2, 19)
@@ -242,11 +244,12 @@ describe('CalendarBody', () => {
     });
 
     it('updates focus and the visible month via PageDown through keyHandler', async () => {
+      const user = userEvent.setup();
       const { view } = renderView();
 
       const day20 = view.getByRole('gridcell', { name: /March 20, 2024/i });
       day20.focus();
-      await userEvent.keyboard('{PageDown}');
+      await actKeyboard(user, '{PageDown}');
 
       expect(mockOnFocusedDateChange).toHaveBeenLastCalledWith(
         new Date(2024, 3, 20)
@@ -257,11 +260,12 @@ describe('CalendarBody', () => {
     });
 
     it('selects the focused day on Enter', async () => {
+      const user = userEvent.setup();
       const { view } = renderView();
 
       const day20 = view.getByRole('gridcell', { name: /March 20, 2024/i });
       day20.focus();
-      await userEvent.keyboard('{Enter}');
+      await actKeyboard(user, '{Enter}');
 
       expect(mockOnDateSelect).toHaveBeenCalledWith(new Date(2024, 2, 20));
     });
@@ -277,6 +281,7 @@ describe('CalendarBody', () => {
     });
 
     it('does not select a disabled day on Enter', async () => {
+      const user = userEvent.setup();
       const { view } = renderView({
         disableDate: (date) =>
           date.getFullYear() === 2024 &&
@@ -286,22 +291,24 @@ describe('CalendarBody', () => {
 
       const day1 = view.getByRole('gridcell', { name: /March 1, 2024/i });
       day1.focus();
-      await userEvent.keyboard('{Enter}');
+      await actKeyboard(user, '{Enter}');
 
       expect(mockOnDateSelect).not.toHaveBeenCalled();
     });
 
     it('calls onEscapeKeyPress on Escape', async () => {
+      const user = userEvent.setup();
       const { view } = renderView();
 
       const day20 = view.getByRole('gridcell', { name: /March 20, 2024/i });
       day20.focus();
-      await userEvent.keyboard('{Escape}');
+      await actKeyboard(user, '{Escape}');
 
       expect(mockOnEscapeKeyPress).toHaveBeenCalled();
     });
 
     it('does not move focus after an unhandled key (beyond focus sync)', async () => {
+      const user = userEvent.setup();
       const { view } = renderView();
 
       const day20 = view.getByRole('gridcell', { name: /March 20, 2024/i });
@@ -311,7 +318,7 @@ describe('CalendarBody', () => {
       );
       mockOnFocusedDateChange.mockClear();
 
-      await userEvent.keyboard('{x}');
+      await actKeyboard(user, '{x}');
 
       expect(mockOnFocusedDateChange).not.toHaveBeenCalled();
     });
