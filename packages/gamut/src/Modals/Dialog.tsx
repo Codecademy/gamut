@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { ComponentProps } from 'react';
+import { ComponentProps, useId } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
@@ -47,6 +47,8 @@ export const Dialog: React.FC<DialogProps> = ({
   size = 'small',
   ...rest
 }) => {
+  const titleId = useId();
+
   const onConfirm: DialogButtonProps['onClick'] = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -65,13 +67,8 @@ export const Dialog: React.FC<DialogProps> = ({
     <Overlay shroud onRequestClose={onCancel as () => void} {...rest}>
       <ModalContainer
         aria-hidden="false"
-        aria-label="dialog"
-        aria-labelledby={
-          !isNullish(title) &&
-          (typeof title === 'string' || typeof title === 'number')
-            ? String(title)
-            : undefined
-        }
+        aria-label={isNullish(title) ? 'dialog' : undefined}
+        aria-labelledby={!isNullish(title) ? titleId : undefined}
         aria-modal="true"
         data-autofocus
         layout="dialog"
@@ -80,7 +77,13 @@ export const Dialog: React.FC<DialogProps> = ({
         size={size}
         tabIndex={-1}
       >
-        <Text as="h2" fontSize={20} gridArea="title" lineHeight="base">
+        <Text
+          as="h2"
+          fontSize={20}
+          gridArea="title"
+          id={!isNullish(title) ? titleId : undefined}
+          lineHeight="base"
+        >
           {title}
         </Text>
         {!hideCloseButton && (

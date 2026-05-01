@@ -1,4 +1,10 @@
-import { useEffect, useMemo } from 'react';
+import {
+  type RefObject,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { isNullish } from '../utils/nullish';
 import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
@@ -12,12 +18,11 @@ export interface PopoverTargetElement {
   contains(other: Node | null): boolean;
 }
 
-/** Resolves Ref to current element; returns null for RefCallback or null ref. */
+/** Resolves ref object to current element; returns null when unset. */
 export function getRefElement(
-  ref: React.Ref<PopoverTargetElement | null>
+  ref: RefObject<PopoverTargetElement | null>
 ): PopoverTargetElement | null {
   if (isNullish(ref)) return null;
-  if (typeof ref === 'function') return null;
   return ref.current;
 }
 
@@ -28,21 +33,43 @@ export function getTargetAsElement(
   return target as HTMLElement | null;
 }
 
+/**
+ * Syncs ref.current to React state after each commit so hooks can depend on the
+ * resolved element when ref object identity is stable but .current updates.
+ */
+function useResolvedRefTarget(
+  targetRef: RefObject<PopoverTargetElement | null>
+): PopoverTargetElement | null {
+  const [resolved, setResolved] = useState<PopoverTargetElement | null>(() =>
+    getRefElement(targetRef)
+  );
+
+  // ref.current updates do not change targetRef identity; run after every commit
+  // to sync. Functional setState bails out when the resolved node is unchanged.
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional post-commit ref sync
+  useLayoutEffect(() => {
+    const el = getRefElement(targetRef);
+    setResolved((prev) => (prev === el ? prev : el));
+  });
+
+  return resolved;
+}
+
 export const useScrollingParentsEffect = (
-  targetRef: React.Ref<PopoverTargetElement | null>,
+  targetRef: RefObject<PopoverTargetElement | null>,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
+  const resolvedTarget = useResolvedRefTarget(targetRef);
+
   useEffect(() => {
-    const target = getRefElement(targetRef);
-    if (!target) return;
+    if (!resolvedTarget) return;
 
     const scrollingParents = findAllAdditionalScrollingParents(
-      getTargetAsElement(target)!
+      getTargetAsElement(resolvedTarget)!
     );
 
     const updatePosition = () => {
-      const el = getRefElement(targetRef);
-      setTargetRect(el?.getBoundingClientRect());
+      setTargetRect(resolvedTarget.getBoundingClientRect());
     };
 
     const cleanup: (() => void)[] = [];
@@ -59,27 +86,30 @@ export const useScrollingParentsEffect = (
     return () => {
       cleanup.forEach((fn) => fn());
     };
-  }, [targetRef, setTargetRect]);
+  }, [resolvedTarget, setTargetRect]);
 };
 
 export const useResizingParentEffect = (
-  targetRef: React.Ref<PopoverTargetElement | null>,
+  targetRef: RefObject<PopoverTargetElement | null>,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
-  useEffect(() => {
-    const target = getRefElement(targetRef);
-    if (!target || typeof ResizeObserver === 'undefined') return;
+  const resolvedTarget = useResolvedRefTarget(targetRef);
 
-    const resizingParent = findResizingParent(getTargetAsElement(target)!);
+  useEffect(() => {
+    if (!resolvedTarget || typeof ResizeObserver === 'undefined') return;
+
+    const resizingParent = findResizingParent(
+      getTargetAsElement(resolvedTarget)!
+    );
     if (!resizingParent?.addEventListener) return;
 
     const handler = () => {
-      setTargetRect(getRefElement(targetRef)?.getBoundingClientRect());
+      setTargetRect(resolvedTarget.getBoundingClientRect());
     };
     const ro = new ResizeObserver(handler);
     ro.observe(resizingParent);
     return () => ro.unobserve(resizingParent);
-  }, [targetRef, setTargetRect]);
+  }, [resolvedTarget, setTargetRect]);
 };
 
 /**
@@ -87,11 +117,14 @@ export const useResizingParentEffect = (
  * Returns an empty array if the target element is not available.
  */
 export const useScrollingParents = (
-  targetRef: React.Ref<PopoverTargetElement | null>
+  targetRef: RefObject<PopoverTargetElement | null>
 ): HTMLElement[] => {
+  const resolvedTarget = useResolvedRefTarget(targetRef);
+
   return useMemo(() => {
-    const target = getRefElement(targetRef);
-    if (!target) return [];
-    return findAllAdditionalScrollingParents(getTargetAsElement(target)!);
-  }, [targetRef]);
+    if (!resolvedTarget) return [];
+    return findAllAdditionalScrollingParents(
+      getTargetAsElement(resolvedTarget)!
+    );
+  }, [resolvedTarget]);
 };

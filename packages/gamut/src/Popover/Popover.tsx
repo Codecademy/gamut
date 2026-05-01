@@ -1,5 +1,4 @@
 import { useElementDir, useLogicalProperties } from '@codecademy/gamut-styles';
-import type { RefObject } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -55,7 +54,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const logicalPropsEnabled = useLogicalProperties();
-  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
+  const isRtl = useElementDir(targetRef) === 'rtl';
 
   // This only needs to resolve the positioning - the beak uses logical properties so will automatically mirror in RTL.
   const resolvedSideAlign = useMemo(() => {
@@ -201,7 +200,7 @@ export const Popover: React.FC<PopoverProps> = ({
     },
     [onRequestClose, targetRef]
   );
-  if ((!isOpen || !targetRef) && !animation) return null;
+  if ((!isOpen || !targetRef.current) && !animation) return null;
   const alignment =
     (variant === 'primary' || beak) && beak !== 'center'
       ? 'aligned'
@@ -255,7 +254,10 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   return (
-    <PopoverPortal animation={animation} isOpen={Boolean(isOpen && targetRef)}>
+    <PopoverPortal
+      animation={animation}
+      isOpen={Boolean(isOpen && targetRef.current)}
+    >
       {skipFocusTrap ? (
         <>{contents}</>
       ) : (

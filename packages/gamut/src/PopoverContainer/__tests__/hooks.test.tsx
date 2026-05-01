@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
+import { Box } from '../../Box';
 import { useScrollingParents } from '../hooks';
 
 /**
@@ -21,19 +22,17 @@ const ScrollingParentsFixture = ({ showTarget }: { showTarget: boolean }) => {
   }, [showTarget]);
 
   return (
-    <div
+    <Box
       data-testid="scrollable-root"
-      style={{
-        overflow: 'auto',
-        height: 200,
-        width: 500,
-        position: 'relative',
-      }}
+      height={200}
+      overflow="auto"
+      position="relative"
+      width={500}
     >
-      <div style={{ height: 2000, width: 500 }} />
-      {showTarget && <div ref={ref} data-testid="inner-target" />}
+      <Box height={2000} width={500} />
+      {showTarget && <div data-testid="inner-target" ref={ref} />}
       <span data-testid="parent-count">{parents.length}</span>
-    </div>
+    </Box>
   );
 };
 
