@@ -1,8 +1,5 @@
 import { GamutProvider, theme } from '@codecademy/gamut-styles';
-import {
-  setupEnzyme as setupEnzymeBase,
-  setupRtl as setupRtlBase,
-} from 'component-test-setup';
+import { setupRtl as setupRtlBase } from 'component-test-setup';
 import overArgs from 'lodash/overArgs';
 import * as React from 'react';
 
@@ -37,14 +34,6 @@ function withMockGamutProvider<Props extends JSX.IntrinsicAttributes>(
 }
 
 // overArgs isn't fully typed yet for lack of curried generics, so we have to cast it...
-
-/**
- * @deprecated Enzyme is no longer being maintained. Use RTL instead.
- */
-export const setupEnzyme = overArgs(
-  setupEnzymeBase,
-  withMockGamutProvider
-) as typeof setupEnzymeBase;
 
 export const setupRtl = overArgs(
   setupRtlBase,
