@@ -1,4 +1,15 @@
-import micromatch from 'micromatch';
+/** Staged paths use forward slashes; lint-staged may pass absolute or relative paths. */
+
+/**
+ * Returns whether any staged path is a file named `name` at the root of the path list
+ * or nested under a directory (e.g. `package.json` or `packages/foo/package.json`).
+ *
+ * @param {string[]} changes - an array of strings with file paths that have changed
+ * @param {string} name - Basename to match (e.g. `package.json`).
+ * @returns {boolean}
+ */
+const hasFilename = (changes, name) =>
+  changes.some((file) => file === name || file.endsWith(`/${name}`));
 
 /** Shell-safe argument for paths that may contain spaces (lint-staged runs commands via a shell). */
 const shellArg = (file) => JSON.stringify(file);
@@ -8,20 +19,16 @@ export default {
   [`*`]: (allChanges) => {
     const commands = [];
 
-    if (micromatch.some(allChanges, '**/package.json')) {
+    if (hasFilename(allChanges, 'package.json')) {
       commands.push(`yarn syncpack format`);
     }
 
-    if (micromatch.some(allChanges, 'yarn.lock')) {
+    if (hasFilename(allChanges, 'yarn.lock')) {
       commands.push(`yarn dedupe`);
     }
 
-    const eslintExtensions = `{mdx,ts,tsx,js,jsx,json}`;
-    const eslintFiles = micromatch(
-      allChanges,
-      [`**/*.${eslintExtensions}`, `?(.)**.${eslintExtensions}`],
-      { dot: true }
-    );
+    const ESLINT_EXT = /\.(mdx|tsx?|jsx?|json)$/;
+    const eslintFiles = allChanges.filter((file) => ESLINT_EXT.test(file));
 
     if (eslintFiles.length) {
       commands.push(
