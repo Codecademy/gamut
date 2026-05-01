@@ -1,0 +1,91 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ListColStories from './ListCol.stories';
+
+export const parameters = {
+  id: 'Organisms/Lists & Tables/List/ListCol',
+  title: 'ListCol',
+  subtitle: `Column cells for list and table rows: sizing, types, alignment, and header semantics.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/ListCol.tsx',
+  },
+};
+
+<Meta of={ListColStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`ListCol` renders a single cell. It inherits `List` context (variant, spacing, `listType`, `scrollable`) so columns stay aligned across rows.
+
+Set `type` so responsive layouts can reorder content on small screens—see **Responsive layout** below. For table header rows, use `columnHeader` (and often `TableHeader`)—see **Header columns** below.
+
+## Header columns
+
+Header cells are `ListCol` components with header semantics:
+
+- In `TableHeader`, set `columnHeader` on each `ListCol` so cells render with header styling and appropriate table tags where needed. See <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo> (`WithTableHeader`).
+- In body rows, use `type="header"` on the column that carries the primary label or identifier—especially for `scrollable` lists (sticky first column) and for **responsive** stacking (`header` / `control` / `content`).
+
+Use optional props such as `aria-sort` on `ListCol` for sortable table headers when `List` uses `as="table"`.
+
+<Canvas of={ListColStories.HeaderColumnCells} />
+
+## Sizing
+
+Column size can either be a fixed token (`xs`, `sm`, `md`, `lg`, `xl`) or `content` so width follows the cell contents.
+
+Use the size tokens when content length may vary so columns line up row to row. For static content such as icon buttons or truncated text, `content` limits extra whitespace while staying consistent.
+
+```tsx
+<ListCol size="md" />
+```
+
+<Canvas of={ListColStories.ColumnSizing} />
+
+## Filling empty space
+
+Use `fill` so a column grows into remaining horizontal space and pushes later columns toward the end of the row. Combine `fill` with any `size`.
+
+<Canvas of={ListColStories.FillingEmptySpace} />
+
+## Justification
+
+Use `justify` (for example `right`) to align content within the column.
+
+- Avoid mixing left and right alignment in arbitrary patterns; after switching to right alignment, keep additional columns right-aligned for a predictable scan line.
+- Consider `fill` on a neighboring column to add comfortable space before a right-aligned block.
+
+<Canvas of={ListColStories.Justification} />
+
+## Horizontal scrolling
+
+When `List` has `scrollable`, the column with `type="header"` stays pinned while the row scrolls horizontally so identifying information remains visible. All rows scroll together.
+
+<Canvas of={ListColStories.HorizontalScrolling} />
+
+## Responsive layout
+
+Below the list’s configured breakpoint (by default the smallest step, 480px—or the list container when using container queries), rows switch to a stacked, card-like layout. Name column `type` values so the layout knows how to reorder cells:
+
+- `header`: Primary identifying information (for ordered lists, numbering is associated with this column).
+- `control`: Actions such as icon buttons or menus. Use at most **one** `control` column to avoid overlap on small screens.
+- `content`: Remaining fields; they follow in declaration order.
+
+You can override behavior with `List`’s `breakpoint` prop. Resize the viewport or container to see the change.
+
+<Canvas of={ListColStories.ResponsiveAnatomy} />
+
+<Canvas of={ListColStories.Responsive} />
+
+## Playground
+
+<Canvas sourceState="shown" of={ListColStories.Playground} />
+
+<Controls />
