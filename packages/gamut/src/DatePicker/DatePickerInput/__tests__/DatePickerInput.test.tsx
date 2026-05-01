@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { ComponentProps, FC } from 'react';
 
+import { actKeyboard } from '../../__tests__/actKeyboard';
 import { DatePickerProvider } from '../../DatePickerContext';
 import {
   createMockRangeContext,
@@ -118,13 +119,13 @@ describe('DatePickerInput', () => {
     const year = view.getByRole('spinbutton', { name: 'year' });
 
     month.focus();
-    await user.keyboard('{ArrowRight}');
+    await actKeyboard(user, '{ArrowRight}');
     expect(document.activeElement).toBe(day);
 
-    await user.keyboard('{ArrowRight}');
+    await actKeyboard(user, '{ArrowRight}');
     expect(document.activeElement).toBe(year);
 
-    await user.keyboard('{ArrowLeft}');
+    await actKeyboard(user, '{ArrowLeft}');
     expect(document.activeElement).toBe(day);
   });
 
@@ -139,11 +140,11 @@ describe('DatePickerInput', () => {
     const year = view.getByRole('spinbutton', { name: 'year' });
 
     month.focus();
-    await user.keyboard('03');
+    await actKeyboard(user, '03');
     expect(document.activeElement).toBe(day);
-    await user.keyboard('15');
+    await actKeyboard(user, '15');
     expect(document.activeElement).toBe(year);
-    await user.keyboard('2024');
+    await actKeyboard(user, '2024');
 
     const hidden = view.container.querySelector('input[type="hidden"]')!;
     expect(hidden).toHaveValue('2024-03-15');
@@ -159,9 +160,9 @@ describe('DatePickerInput', () => {
     const year = view.getByRole('spinbutton', { name: 'year' });
 
     month.focus();
-    await user.keyboard('03');
-    await user.keyboard('15');
-    await user.keyboard('2024');
+    await actKeyboard(user, '03');
+    await actKeyboard(user, '15');
+    await actKeyboard(user, '2024');
 
     fireEvent.blur(year, { relatedTarget: document.body });
 

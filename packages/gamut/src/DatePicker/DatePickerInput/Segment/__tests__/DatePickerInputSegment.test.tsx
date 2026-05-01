@@ -2,6 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 import { type FC, useCallback, useState } from 'react';
 
+import { actKeyboard } from '../../../__tests__/actKeyboard';
 import type { DatePartKind } from '../../utils';
 import { type AssignSegmentRef, DatePickerInputSegment } from '..';
 import type { SegmentValues } from '../utils';
@@ -92,7 +93,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('5');
+    await actKeyboard(user, '5');
 
     expect(month).toHaveAttribute('aria-valuetext', 'MM');
   });
@@ -103,7 +104,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('{ArrowUp}');
+    await actKeyboard(user, '{ArrowUp}');
 
     expect(month).toHaveAttribute('aria-valuetext', '01');
   });
@@ -116,7 +117,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('{ArrowUp}');
+    await actKeyboard(user, '{ArrowUp}');
 
     expect(month).toHaveAttribute('aria-valuetext', '02');
   });
@@ -127,7 +128,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('{ArrowDown}');
+    await actKeyboard(user, '{ArrowDown}');
 
     expect(month).toHaveAttribute('aria-valuetext', '12');
   });
@@ -140,7 +141,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('{ArrowDown}');
+    await actKeyboard(user, '{ArrowDown}');
 
     expect(month).toHaveAttribute('aria-valuetext', '01');
   });
@@ -152,7 +153,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('{Alt>}{ArrowDown}{/Alt}');
+    await actKeyboard(user, '{Alt>}{ArrowDown}{/Alt}');
 
     expect(focusOrOpenCalendarGrid).toHaveBeenCalledTimes(1);
   });
@@ -163,7 +164,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('03');
+    await actKeyboard(user, '03');
 
     expect(month).toHaveAttribute('aria-valuetext', '03');
   });
@@ -176,7 +177,7 @@ describe('DatePickerInputSegment', () => {
 
     const month = view.getByRole('spinbutton', { name: 'month' });
     await user.click(month);
-    await user.keyboard('{Backspace}');
+    await actKeyboard(user, '{Backspace}');
 
     expect(month).toHaveAttribute('aria-valuetext', '0');
   });

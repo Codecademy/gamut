@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 
+import { actKeyboard } from '../../__tests__/actKeyboard';
 import { DatePickerProvider } from '../../DatePickerContext';
 import {
   createMockRangeContext,
@@ -102,6 +103,7 @@ describe('DatePickerCalendar', () => {
   });
 
   it('invokes closeCalendar when Escape is pressed on the grid', async () => {
+    const user = userEvent.setup();
     const closeCalendar = jest.fn();
     const { view } = renderCalendar({
       context: createMockSingleContext({
@@ -113,7 +115,7 @@ describe('DatePickerCalendar', () => {
 
     const march15 = view.getByRole('gridcell', { name: /March 15, 2024/i });
     march15.focus();
-    await userEvent.keyboard('{Escape}');
+    await actKeyboard(user, '{Escape}');
 
     expect(closeCalendar).toHaveBeenCalled();
   });
