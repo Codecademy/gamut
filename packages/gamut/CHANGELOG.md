@@ -1,3 +1,14 @@
+## 68.4.0 (2026-05-04)
+
+### 🚀 Features
+
+- New DatePicker component ([#3286](https://github.com/Codecademy/gamut/pull/3286), [#3335](https://github.com/Codecademy/gamut/issues/3335))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Kenny Lin @LinKCoding
+
 ## 68.3.0 (2026-04-29)
 
 ### 🚀 Features
