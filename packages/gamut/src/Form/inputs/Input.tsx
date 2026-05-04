@@ -77,7 +77,7 @@ const InputElement = styled.input<StyledInputProps>(
   inputSizeStyles,
   (props) =>
     css({
-      paddingRight: props.icon ? `2.3rem` : `initial`,
+      pr: props.icon ? (`2.3rem` as any) : `initial`,
       textIndent: 0,
     })
 );
