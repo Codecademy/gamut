@@ -1,0 +1,127 @@
+name: PR prerelease npm publish
+description: Checkout, setup, build publish targets, gamut-release, and sticky PR comment
+
+inputs:
+  node-auth-token:
+    description: NPM token value (pass secrets.NODE_AUTH_TOKEN)
+    required: true
+  gh-token:
+    description: GitHub token for release tooling (pass secrets.ACTIONS_GITHUB_TOKEN)
+    required: true
+  ignore-commit-message:
+    description: Commit message prefix to skip (chore release commits)
+    required: true
+  manifest-path:
+    description: JSON manifest path written by gamut-release
+    required: true
+  comment-path:
+    description: Markdown file path for the PR comment body
+    required: true
+  comment-title:
+    description: Title line after the emoji (e.g. Published Alpha Packages)
+    required: true
+  sticky-header:
+    description: Sticky comment header key
+    required: true
+  publish-run:
+    description: Bash to set PREID and run gamut-release:pre-release
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        filter: tree:0
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Setup and Build
+      id: setup
+      uses: ./.github/actions/yarn
+
+    - name: Set git user
+      uses: ./.github/actions/set-git-user
+
+    - name: Set npm token
+      uses: ./.github/actions/set-npm-token
+      with:
+        token-secret: ${{ inputs.node-auth-token }}
+
+    - name: Ensure workflow is associated with a pull request
+      uses: ./.github/actions/validate-pr-context
+
+    - name: Skip build from automated commit
+      uses: ./.github/actions/skip-automated-commits
+      with:
+        ignore-commit-message: ${{ inputs.ignore-commit-message }}
+
+    - run: npx nx run-many --target=publish-build --parallel=3
+      shell: bash
+
+    - name: Publish prerelease packages
+      id: publish-prerelease
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.gh-token }}
+        NODE_AUTH_TOKEN: ${{ inputs.node-auth-token }}
+      run: |
+        ${{ inputs.publish-run }}
+
+    - name: Build prerelease packages comment
+      id: build-comment
+      continue-on-error: true
+      uses: actions/github-script@v7
+      env:
+        MANIFEST_PATH: ${{ inputs.manifest-path }}
+        OUTPUT_PATH: ${{ inputs.comment-path }}
+        COMMENT_TITLE: ${{ inputs.comment-title }}
+      with:
+        script: |
+          const fs = require('fs');
+          const core = require('@actions/core');
+          const manifestPath = process.env.MANIFEST_PATH;
+          const outputPath = process.env.OUTPUT_PATH;
+          const commentTitle = process.env.COMMENT_TITLE;
+          if (!fs.existsSync(manifestPath)) {
+            fs.writeFileSync(outputPath, '');
+            core.setOutput('has_comment', 'false');
+            return;
+          }
+
+          const entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+          if (!Array.isArray(entries) || entries.length === 0) {
+            fs.writeFileSync(outputPath, '');
+            core.setOutput('has_comment', 'false');
+            return;
+          }
+
+          const tableLines = [
+            '| Package | Version | npm | Diff |',
+            '| --- | --- | --- | --- |',
+            ...entries.map((entry) => {
+              const pkgUrl = `https://www.npmjs.com/package/${entry.name}`;
+              const versionUrl = `${pkgUrl}/v/${entry.version}`;
+              const baseVersion = entry.previousVersion || null;
+              const diffUrl = baseVersion
+                ? `https://npmdiff.dev/${encodeURIComponent(
+                    entry.name
+                  )}/${baseVersion}/${entry.version}/`
+                : null;
+              const npmLink = `[npm](${versionUrl})`;
+              const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
+
+              return `| \`${entry.name}\` | \`${entry.version}\` | ${npmLink} | ${diffLink} |`;
+            }),
+          ];
+          const comment = `📬 ${commentTitle}\n\n${tableLines.join('\n')}\n`;
+          fs.writeFileSync(outputPath, comment);
+          core.setOutput('has_comment', 'true');
+
+    - name: Comment with published packages
+      uses: ./.github/actions/sticky-comment
+      if: ${{ !cancelled() && steps.build-comment.outputs.has_comment == 'true' }}
+      with:
+        github-token: ${{ inputs.gh-token }}
+        header: ${{ inputs.sticky-header }}
+        message-path: ${{ inputs.comment-path }}
