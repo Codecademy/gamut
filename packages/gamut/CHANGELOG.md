@@ -1,3 +1,13 @@
+## 68.4.1 (2026-05-04)
+
+### 🩹 Fixes
+
+- update Input padding to use logical properties ([#3338](https://github.com/Codecademy/gamut/pull/3338))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 68.4.0 (2026-05-04)
 
 ### 🚀 Features
