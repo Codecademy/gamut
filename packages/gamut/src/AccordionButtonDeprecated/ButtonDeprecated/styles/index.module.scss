@@ -11,7 +11,8 @@
   display: inline-flex;
   justify-content: center;
   font-weight: variables.$btn-font-weight;
-  @include font-smoothing;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   border: 1px solid transparent;
   border-radius: variables.$btn-border-radius;
   user-select: none;

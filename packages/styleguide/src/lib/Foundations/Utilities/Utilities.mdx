@@ -29,23 +29,13 @@ it is better to express this as a pixel value that is closer to a round number.
 
 You can do this by using our px => rem utility in both TS and SCSS.
 
-#### TS - `pxRem`
+#### `pxRem`
 
 ```tsx
 import { pxRem } from '@codecademy/gamut-styles';
 
 pxRem(16); // => 1rem;
 pxRem('30px'); // => 1.875rem;
-```
-
-#### SCSS - `px-rem`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.heading {
-  font-size: px-rem(30);
-}
 ```
 
 ## Style mixins
@@ -58,7 +48,7 @@ We have 5 depths of box shadows that we use.
 
 <ShadowExample />
 
-#### TS - `boxShadow`
+#### `boxShadow`
 
 ```tsx
 import { boxShadow } from '@codecademy/gamut-styles';
@@ -68,21 +58,11 @@ const Example = `
 `;
 ```
 
-#### SCSS - `box-shadow`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.box {
-  @include box-shadow(3);
-}
-```
-
 ### `fontSmoothing`
 
 We enable font smoothing in some places to make typography more readable.
 
-#### TS - `fontSmoothing`
+#### `fontSmoothing`
 
 ```tsx
 import { fontSmoothing } from '@codecademy/gamut-styles';
@@ -98,25 +78,11 @@ const Smooth = `
 `;
 ```
 
-#### SCSS - `font-smoothing`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.smoothed {
-  @include font-smoothing();
-}
-
-.rough {
-  @include font-smoothing(false);
-}
-```
-
 ### No selection
 
 In cases where we want to prevent the user from selecting an image or text.
 
-#### TS - `noSelect`
+#### `noSelect`
 
 ```tsx
 import { noSelect } from '@codecademy/gamut-styles';
@@ -126,23 +92,13 @@ const Unselectable = styled.div`
 `;
 ```
 
-#### SCSS - `no-select`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.unselectable {
-  @include font-smoothing();
-}
-```
-
 ### Screen readers
 
 Ensuring that your content is accessible can require you to make screen reader only text elements.
 We provide a few helpful mixins for use cases where you want the screen reader to be able to focus or
 just be aware of the content.
 
-#### TS - `screenReaderOnly` | `screenReaderOnlyFocusable`
+#### `screenReaderOnly` | `screenReaderOnlyFocusable`
 
 ```tsx
 import {
@@ -157,18 +113,4 @@ const HiddenLabel = `
 const HiddenLabelWithFocus = `
   ${screenReaderOnlyFocusable}
 `;
-```
-
-#### SCSS - `screenreader-only` | `screenreader-only-focusable`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.hiddenLabel {
-  @include screenreader-only();
-}
-
-.hiddenLabel__focusable {
-  @include screenreader-only-focusable();
-}
 ```
