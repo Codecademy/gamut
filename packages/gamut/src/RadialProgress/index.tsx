@@ -33,11 +33,6 @@ const RadialProgressWrapper = styled.figure<{ size: number | string }>(
     })
 );
 
-/**
- * @deprecated
- * This component is deprecated and is no longer supported.
- */
-
 export const RadialProgress: React.FC<RadialProgressProps> = ({
   children,
   className,
