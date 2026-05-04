@@ -167,8 +167,7 @@ export const platformPalette = {
 export const lxStudioColors = {
   lxStudioSuccess: '#06844F',
   lxStudioBgPrimary: '#FAFBFC',
-  lxStudioPurple: '#5628FE',
-  lxStudioPurpleHover: '#7955FC',
+  sapphire: '#1C50BB',
 } as const;
 
 export const lxStudioPalette = {

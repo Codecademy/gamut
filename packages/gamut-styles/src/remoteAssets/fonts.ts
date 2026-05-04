@@ -95,6 +95,11 @@ export const percipio: readonly FontConfig[] = [
   },
 ];
 
+/**
+ * LX Studio loads Hanken as fallback while font stacks prefer Skillsoft faces.
+ * When Skillsoft Sans / Skillsoft Text files are hosted under FONT_ASSET_PATH,
+ * add @font-face entries here (400, 500, 700, italics as needed) and remove Hanken.
+ */
 export const lxStudio: readonly FontConfig[] = [
   {
     filePath: `${FONT_ASSET_PATH}/hanken-grotesk-regular`,

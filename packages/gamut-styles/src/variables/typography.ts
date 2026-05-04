@@ -14,7 +14,12 @@ monospace`;
 export const fontSystem = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
 
-export const fontLxStudio = `"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+/** Skillsoft rebrand: primary face + Hanken until Skillsoft files are hosted on the CDN. */
+export const fontLxStudioAccent = `"Skillsoft Sans", "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+"Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif`;
+
+export const fontLxStudioBase = `"Skillsoft Text", "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
 "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 sans-serif`;
 

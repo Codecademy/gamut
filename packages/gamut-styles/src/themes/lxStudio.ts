@@ -1,9 +1,11 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
-  fontLxStudio,
+  fontLxStudioAccent,
+  fontLxStudioBase,
   fontMonospace,
   fontSystem,
+  fontWeight as coreFontWeight,
   lxStudioPalette,
 } from '../variables';
 import { coreTheme } from './core';
@@ -14,10 +16,17 @@ import { coreTheme } from './core';
  */
 
 const lxStudioFontFamily = {
-  accent: fontLxStudio,
-  base: fontLxStudio,
+  accent: fontLxStudioAccent,
+  base: fontLxStudioBase,
   monospace: fontMonospace,
   system: fontSystem,
+} as const;
+
+const lxStudioFontWeight = {
+  ...coreFontWeight,
+  title: 500,
+  bold: 500,
+  500: 500,
 } as const;
 
 export const lxStudioBorderRadii = {
@@ -33,6 +42,7 @@ export const lxStudioTheme = createTheme({
   ...coreTheme,
   borderRadii: lxStudioBorderRadii,
   fontFamily: lxStudioFontFamily,
+  fontWeight: lxStudioFontWeight,
 })
   .addColors(lxStudioPalette)
   .addColorModes('light', {
@@ -48,8 +58,8 @@ export const lxStudioTheme = createTheme({
         primary: 'navy-200',
       },
       primary: {
-        _: 'lxStudioPurple',
-        hover: 'lxStudioPurpleHover',
+        _: 'sapphire',
+        hover: 'navy-800',
       },
       interface: {
         _: 'hyper-500',
@@ -67,4 +77,4 @@ export const lxStudioTheme = createTheme({
 
 export type LxStudioThemeShape = typeof lxStudioTheme;
 
-export interface LxStudioTheme extends LxStudioThemeShape {}
+export type LxStudioTheme = LxStudioThemeShape;

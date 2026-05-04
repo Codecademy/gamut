@@ -317,7 +317,7 @@ export const CondensedSpacingGuide: Story = {
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ListRow key={key}>
             <ListCol size="lg" type="header">
-              <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+              <Text fontWeight="title" truncate="ellipsis" truncateLines={1}>
                 {name}
               </Text>
             </ListCol>
@@ -391,7 +391,7 @@ export const CondensedTableGuide: Story = {
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ListRow key={key}>
             <ListCol size="lg" type="header">
-              <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+              <Text fontWeight="title" truncate="ellipsis" truncateLines={1}>
                 {name}
               </Text>
             </ListCol>
