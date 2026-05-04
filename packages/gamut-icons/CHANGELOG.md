@@ -1,3 +1,9 @@
+## 9.57.4 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-tests to 6.0.0
+
 ## 9.57.3 (2026-04-29)
 
 ### 🧱 Updated Dependencies

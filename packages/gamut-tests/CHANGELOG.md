@@ -1,3 +1,13 @@
+# 6.0.0 (2026-05-04)
+
+### ⚠️  Breaking Changes
+
+- remove setupEnzyme and remove deprecated comment for RadialProgress ([#3337](https://github.com/Codecademy/gamut/pull/3337))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 5.3.4 (2026-04-29)
 
 ### 🧱 Updated Dependencies

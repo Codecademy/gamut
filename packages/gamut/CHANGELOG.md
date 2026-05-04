@@ -1,3 +1,18 @@
+## 68.5.0 (2026-05-04)
+
+### 🚀 Features
+
+- remove setupEnzyme and remove deprecated comment for RadialProgress ([#3337](https://github.com/Codecademy/gamut/pull/3337))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.4
+- Updated gamut-tests to 6.0.0
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 68.4.1 (2026-05-04)
 
 ### 🩹 Fixes

@@ -1616,7 +1616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.57.3, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.57.4, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
@@ -1648,12 +1648,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:68.4.1"
-    "@codecademy/gamut-icons": "npm:9.57.3"
+    "@codecademy/gamut": "npm:68.5.0"
+    "@codecademy/gamut-icons": "npm:9.57.4"
     "@codecademy/gamut-illustrations": "npm:0.58.10"
     "@codecademy/gamut-patterns": "npm:0.10.29"
     "@codecademy/gamut-styles": "npm:17.14.0"
-    "@codecademy/gamut-tests": "npm:5.3.4"
+    "@codecademy/gamut-tests": "npm:6.0.0"
     "@codecademy/variance": "npm:0.26.1"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
@@ -1693,7 +1693,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:5.3.4, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:6.0.0, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
@@ -1705,11 +1705,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.4.1, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.5.0, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.57.3"
+    "@codecademy/gamut-icons": "npm:9.57.4"
     "@codecademy/gamut-illustrations": "npm:0.58.10"
     "@codecademy/gamut-patterns": "npm:0.10.29"
     "@codecademy/gamut-styles": "npm:17.14.0"

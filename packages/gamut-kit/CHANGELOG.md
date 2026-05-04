@@ -1,3 +1,11 @@
+## 0.6.596 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.4
+- Updated gamut-tests to 6.0.0
+- Updated gamut to 68.5.0
+
 ## 0.6.595 (2026-05-04)
 
 ### 🧱 Updated Dependencies
