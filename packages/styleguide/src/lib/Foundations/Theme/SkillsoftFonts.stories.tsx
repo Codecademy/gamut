@@ -38,6 +38,11 @@ const SyntheticWeightLine = styled.p<{ $weight: number }>`
   font-weight: ${({ $weight }) => $weight};
 `;
 
+/** Numeric CSS weight (e.g. 550) is not on the theme `fontWeight` scale. */
+const TextWithNumericWeight = styled(Text)<{ $weight: number }>`
+  font-weight: ${({ $weight }) => $weight};
+`;
+
 const meta = {
   title: 'Foundations/Theme/Font tests/Skillsoft',
   /** LX Studio so `Typography` injects Skillsoft @font-face rules from `webFonts.lxStudio`. */
@@ -127,6 +132,36 @@ function LxStudioFontAssetUrls() {
   );
 }
 
+function SkillsoftTextMediumAt550() {
+  return (
+    <Box mb={48}>
+      <Text as="h2" fontSize={22} fontWeight="title" mb={8}>
+        Skillsoft Text · font-weight 550 (real theme family)
+      </Text>
+      <LayoutGrid gap={16} mb={8}>
+        <Column size={3}>
+          <Text as="code" fontFamily="base" fontSize={14}>
+            550 (numeric, CSS Fonts 1–1000)
+          </Text>
+        </Column>
+        <Column size={9}>
+          <TextWithNumericWeight $weight={550} fontFamily="base" fontSize={22}>
+            The quick brown fox jumps over the lazy dog. 0123456789
+          </TextWithNumericWeight>
+        </Column>
+      </LayoutGrid>
+      <Text fontFamily="base" fontSize={14}>
+        Uses <Text as="code">fontFamily.base</Text> so{' '}
+        <Text as="code">SkillsoftText-Medium</Text> is in the family (declared
+        at <Text as="code">font-weight: 500</Text>). At{' '}
+        <Text as="code">550</Text> the browser still matches this family; exact
+        glyph selection is UA-dependent (often interpolation / nearest face —
+        check DevTools computed styles).
+      </Text>
+    </Box>
+  );
+}
+
 function SkillsoftTextWeightsWithoutMediumFace() {
   return (
     <>
@@ -198,6 +233,7 @@ export const SkillsoftTypefaces: Story = {
         Theme token: <Text as="code">fontFamily.base</Text>
       </Text>
       <FontShowcase fontFamily="base" />
+      <SkillsoftTextMediumAt550 />
       <SkillsoftTextWeightsWithoutMediumFace />
       <LxStudioFontAssetUrls />
     </Box>
