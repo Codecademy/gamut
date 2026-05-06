@@ -58,6 +58,7 @@ export const Variants: Story = {
           <Column size={11}>
             <Text
               as="span"
+              fontWeight={700}
               variant={variant as keyof typeof typographyStyleVariants}
             >
               {variant}
