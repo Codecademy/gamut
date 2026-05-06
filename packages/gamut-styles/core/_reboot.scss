@@ -61,12 +61,14 @@ section {
 
 body {
   margin: 0; // 1
-  font-family: $font-family-base;
-  font-weight: $font-weight-base;
-  line-height: $line-height-base;
-  color: $color-body;
+  font-family: "Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #10162f;
   text-align: left; // 3
-  background-color: $bg-body; // 2
+  background-color: #ffffff; // 2
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -105,7 +107,7 @@ h4,
 h5,
 h6 {
   margin-top: 0;
-  margin-bottom: $margin-bottom-headings;
+  margin-bottom: 1rem;
 }
 // stylelint-enable selector-list-comma-newline-after
 
@@ -115,7 +117,7 @@ h6 {
 // bottom margin to use `rem` units instead of `em`.
 p {
   margin-top: 0;
-  margin-bottom: $margin-bottom-paragraph;
+  margin-bottom: 1rem;
 }
 
 // Abbreviations
@@ -155,7 +157,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $font-weight-dt;
+  font-weight: bold;
 }
 
 dd {
@@ -174,12 +176,12 @@ dfn {
 // stylelint-disable font-weight-notation
 b,
 strong {
-  font-weight: $font-weight-bold; // Add the correct font weight in Chrome, Edge, and Safari
+  font-weight: bold; // Add the correct font weight in Chrome, Edge, and Safari
 }
 // stylelint-enable font-weight-notation
 
 small {
-  font-size: $font-size-small; // Add the correct font size in all browsers
+  font-size: 85%; // Add the correct font size in all browsers
 }
 
 //
@@ -207,13 +209,13 @@ sup {
 //
 
 a {
-  color: $color-link;
-  text-decoration: $decoration-link;
+  color: #4b35ef;
+  text-decoration: none;
   background-color: transparent; // Remove the gray background on active links in IE 10.
   -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
 
   &:hover {
-    text-decoration: $hover-decoration-link;
+    text-decoration: underline;
   }
 }
 
@@ -295,9 +297,8 @@ table {
 }
 
 caption {
-  padding-top: $spacer;
-  padding-bottom: $spacer;
-  color: $spacer;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: left;
   caption-side: bottom;
 }
@@ -315,7 +316,7 @@ th {
 label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: $margin-bottom-label;
+  margin-bottom: 0;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.

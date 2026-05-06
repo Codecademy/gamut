@@ -8,23 +8,23 @@
   width: 100%;
 
   &.blue {
-    color: $color-blue-200;
+    color: #a5befa;
   }
 
   &.yellow {
-    background-color: $color-yellow-200;
-    border: solid $color-yellow-400;
+    background-color: #fff2b3;
+    border: solid #ffe359;
     border-width: 1px 0;
     font-weight: normal;
     transition: background-color 0.15s ease-in-out;
 
     &:focus-visible {
-      border-color: $color-yellow-800;
+      border-color: #b37620;
     }
 
     &:focus,
     &:hover {
-      background-color: $color-yellow-300;
+      background-color: #ffec8c;
     }
   }
 
