@@ -19,7 +19,7 @@ import {
 import { ThemeProvider } from 'storybook/theming';
 import { useMemo } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import theme from '../../theming/GamutTheme';
+import { createGamutDocsTheme } from '../../theming/GamutTheme';
 import { createTheme } from '@codecademy/variance';
 export const storybookTheme = createTheme(coreTheme)
   .addColors(platformPalette)
@@ -74,8 +74,17 @@ export const DocsContainer: React.FC<{
     };
   }, [storyId, globalTheme]);
 
+  const storybookDocsChromeTheme = useMemo(
+    () => createGamutDocsTheme(currentTheme.fontFamily.base),
+    [currentTheme]
+  );
+
   return (
-    <StorybookDocsContainer theme={theme} context={context} {...rest}>
+    <StorybookDocsContainer
+      theme={storybookDocsChromeTheme}
+      context={context}
+      {...rest}
+    >
       <GamutProvider
         cache={createEmotionCache({ speedy: false })}
         // This is typed to the CoreTheme in theme.d.ts
