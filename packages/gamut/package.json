@@ -9,7 +9,7 @@
     "@codecademy/gamut-patterns": "0.10.29",
     "@codecademy/gamut-styles": "17.14.0",
     "@codecademy/variance": "0.26.1",
-    "@formatjs/intl-locale": "^5.3.1",
+    "@formatjs/intl-locale": "5.3.1",
     "@react-aria/interactions": "3.25.0",
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",
