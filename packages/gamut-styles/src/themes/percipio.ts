@@ -38,7 +38,7 @@ export const percipioTheme = createTheme({
         secondary: 'navy-400',
       },
       primary: {
-        _: 'percipioActionPrimary',
+        _: 'sapphire',
         hover: 'percipioActionPrimaryHover',
         inverse: 'white',
       },
@@ -51,7 +51,7 @@ export const percipioTheme = createTheme({
         hover: 'percipioActionDangerHover',
       },
       interface: {
-        _: 'percipioActionPrimary',
+        _: 'sapphire',
         hover: 'percipioActionPrimaryHover',
       },
       border: {
