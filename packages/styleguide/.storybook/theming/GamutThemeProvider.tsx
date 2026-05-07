@@ -4,15 +4,10 @@ import {
   corePalette,
   ColorModes,
   GamutProvider,
-  coreTheme,
-  adminTheme,
-  lxStudioTheme,
-  percipioTheme,
-  platformTheme,
 } from '@codecademy/gamut-styles/src';
 import { Theme } from '@emotion/react';
 
-const STORYBOOK_CSP_NONCE = 'storybook-csp-nonce';
+import { storybookToolbarThemeMap } from './createGamutStorybookChromeTheme';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
@@ -24,13 +19,7 @@ const themeBackground: Record<ColorModes, 'white' | 'navy'> = {
   dark: 'navy',
 };
 
-const themeMap = {
-  core: coreTheme,
-  admin: adminTheme,
-  lxStudio: lxStudioTheme,
-  percipio: percipioTheme,
-  platform: platformTheme,
-} as const;
+const themeMap = storybookToolbarThemeMap;
 
 type GlobalsContext = {
   globals: {

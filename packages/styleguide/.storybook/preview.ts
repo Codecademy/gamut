@@ -36,9 +36,13 @@ const preview: Preview = {
       disable: true,
     },
     deepControls: { enabled: true },
+    /**
+     * Docs shell typography uses `theme` from GamutTheme (factory default = toolbar initial).
+     * Toolbar changes update manager UI via manager.ts; addon-docs theme here is not re-derived live.
+     */
     docs: {
       container: DocsContainer,
-      theme: theme,
+      theme,
       toc: { headingSelector: 'h1, h2, h3' },
       mdxComponents,
     },
