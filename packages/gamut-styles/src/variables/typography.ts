@@ -14,11 +14,11 @@ monospace`;
 export const fontSystem = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
 
-export const fontLxStudioAccent = `"Skillsoft Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+export const fontPercipioAccent = `"Skillsoft Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
 "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 sans-serif`;
 
-export const fontLxStudioBase = `"Skillsoft Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+export const fontPercipioBase = `"Skillsoft Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
 "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 sans-serif`;
 
@@ -54,9 +54,17 @@ export const fontWeight = {
   400: 400,
 } as const;
 
+/** Title/bold semantic tokens use 500 (Medium), matching Skillsoft + Percipio Roboto webfonts. */
+export const fontWeightMediumTitle = {
+  ...fontWeight,
+  title: 500,
+  bold: 500,
+  500: 500,
+} as const;
+
 export const percipioFontFamily = {
-  accent: '"Roboto", sans-serif',
-  base: '"Roboto", sans-serif',
+  accent: fontPercipioAccent,
+  base: fontPercipioBase,
   monospace: '"Roboto Mono", monospace',
   system: '"Roboto", sans-serif',
 } as const;

@@ -1,12 +1,11 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
-  fontLxStudioAccent,
-  fontLxStudioBase,
   fontMonospace,
   fontSystem,
-  fontWeight as coreFontWeight,
+  fontWeightMediumTitle,
   lxStudioPalette,
+  percipioFontFamily,
 } from '../variables';
 import { coreTheme } from './core';
 
@@ -16,17 +15,10 @@ import { coreTheme } from './core';
  */
 
 const lxStudioFontFamily = {
-  accent: fontLxStudioAccent,
-  base: fontLxStudioBase,
+  accent: percipioFontFamily.accent,
+  base: percipioFontFamily.base,
   monospace: fontMonospace,
   system: fontSystem,
-} as const;
-
-const lxStudioFontWeight = {
-  ...coreFontWeight,
-  title: 500,
-  bold: 500,
-  500: 500,
 } as const;
 
 export const lxStudioBorderRadii = {
@@ -42,7 +34,7 @@ export const lxStudioTheme = createTheme({
   ...coreTheme,
   borderRadii: lxStudioBorderRadii,
   fontFamily: lxStudioFontFamily,
-  fontWeight: lxStudioFontWeight,
+  fontWeight: fontWeightMediumTitle,
 })
   .addColors(lxStudioPalette)
   .addColorModes('light', {

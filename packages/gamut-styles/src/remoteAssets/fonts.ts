@@ -1,4 +1,4 @@
-import { FontConfig } from '../utilities/fontUtils';
+import type { FontConfig } from '../utilities/fontUtils';
 
 export const FONT_ASSET_PATH = `https://www.codecademy.com/gamut`;
 
@@ -43,63 +43,11 @@ export const core: readonly FontConfig[] = [
   },
 ];
 
-export const percipio: readonly FontConfig[] = [
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-regular`,
-    extensions,
-    name: 'Roboto',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-italic`,
-    extensions,
-    name: 'Roboto',
-    style: 'italic',
-  },
-  // The default weight for bold fonts is 700, Percipio uses 500 for the base bold
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-bold`,
-    extensions,
-    name: 'Roboto',
-    weight: 'bold',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-bold`,
-    extensions,
-    name: 'Roboto',
-    weight: 500,
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
-    extensions,
-    name: 'Roboto',
-    weight: 'bold',
-    style: 'italic',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
-    extensions,
-    name: 'Roboto',
-    weight: 500,
-    style: 'italic',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-mono-regular`,
-    extensions,
-    name: 'Roboto Mono',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/roboto-mono-bold`,
-    extensions,
-    name: 'Roboto Mono',
-    weight: 'bold',
-  },
-];
-
 /**
- * LX Studio: Skillsoft Sans (accent) + Skillsoft Text (base).
+ * Skillsoft Sans (accent) + Skillsoft Text (base).
  * Weights 400 / 500 / 700 + italics; 500 uses Medium files for title/bold tokens.
  */
-export const lxStudio: readonly FontConfig[] = [
+const skillsoftFamilyFonts: readonly FontConfig[] = [
   {
     filePath: `${FONT_ASSET_PATH}/SkillsoftText-Regular`,
     extensions,
@@ -176,4 +124,65 @@ export const lxStudio: readonly FontConfig[] = [
   },
 ];
 
-export const webFonts = { core, percipio, lxStudio } as const;
+/**
+ * Roboto + Roboto Mono for Percipio `system` and `monospace` theme slots.
+ * The default weight for bold fonts is 700; Percipio uses 500 for the base bold.
+ */
+const percipioRobotoFonts: readonly FontConfig[] = [
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-regular`,
+    extensions,
+    name: 'Roboto',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-italic`,
+    extensions,
+    name: 'Roboto',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold`,
+    extensions,
+    name: 'Roboto',
+    weight: 'bold',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold`,
+    extensions,
+    name: 'Roboto',
+    weight: 500,
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
+    extensions,
+    name: 'Roboto',
+    weight: 'bold',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
+    extensions,
+    name: 'Roboto',
+    weight: 500,
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-mono-regular`,
+    extensions,
+    name: 'Roboto Mono',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-mono-bold`,
+    extensions,
+    name: 'Roboto Mono',
+    weight: 'bold',
+  },
+];
+
+/** Percipio: Skillsoft (accent/base) plus Roboto system + Roboto Mono monospace. */
+export const percipio: readonly FontConfig[] = [
+  ...skillsoftFamilyFonts,
+  ...percipioRobotoFonts,
+];
+
+export const webFonts = { core, percipio, lxStudio: percipio } as const;
