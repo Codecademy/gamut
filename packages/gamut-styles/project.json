@@ -42,6 +42,34 @@
         "commands": [],
         "parallel": false
       }
+    },
+    "generate-agent-design-docs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node --require @swc-node/register ./packages/gamut-styles/scripts/generate-design-agent-snapshots.ts"
+      }
+    },
+    "verify-agent-design-docs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node --require @swc-node/register ./packages/gamut-styles/scripts/generate-design-agent-snapshots.ts --check"
+      }
+    },
+    "fetch-figma-variables": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node --require @swc-node/register ./packages/gamut-styles/scripts/fetch-figma-variables.ts"
+      }
+    },
+    "compare-figma-gamut-tokens": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}",
+        "command": "node --require @swc-node/register ./packages/gamut-styles/scripts/compare-figma-gamut-tokens.ts"
+      }
     }
   }
 }

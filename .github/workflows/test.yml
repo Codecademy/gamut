@@ -47,6 +47,8 @@ jobs:
         if: github.event_name == 'pull_request'
       - name: Build All Packages
         run: yarn build
+      - name: Verify DESIGN agent snapshots match gamut-styles themes
+        run: yarn nx run gamut-styles:verify-agent-design-docs
       - name: Run test suite
         run: |
           if [ "${{ github.ref_name }}" == "main" ]; then
