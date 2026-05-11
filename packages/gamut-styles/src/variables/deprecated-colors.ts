@@ -11,18 +11,6 @@ const { black, white } = corePalette;
  * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
-export const interactiveColors = {
-  dark: corePalette.hyper,
-  light: corePalette.yellow,
-} as const;
-
-/**
- * @deprecated
- * Using these variables directly is no longer supported.
- *
- * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
- */
-
 export const editorColors = {
   blue: '#83fff5',
   deepPurple: '#cc7bc2',
