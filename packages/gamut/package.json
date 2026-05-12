@@ -28,11 +28,8 @@
     "react-use": "^15.3.8",
     "sanitize-markdown": "^2.6.7"
   },
-  "bin": "./bin/gamut.mjs",
   "files": [
-    "dist",
-    "bin",
-    "agent-tools"
+    "dist"
   ],
   "license": "MIT",
   "main": "./dist/index.js",
@@ -54,7 +51,7 @@
     "build": "nx build @codecademy/gamut",
     "build:watch": "yarn build && onchange ./src -- yarn build",
     "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-    "verify": "tsc --noEmit && tsc --project tsconfig.bin.json"
+    "verify": "../../node_modules/.bin/tsc --noEmit"
   },
   "sideEffects": [
     "**/*.css",

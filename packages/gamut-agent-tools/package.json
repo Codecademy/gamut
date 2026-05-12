@@ -1,0 +1,39 @@
+{
+  "name": "@codecademy/gamut-agent-tools",
+  "description": "Skills, rules, and guidelines for AI-assisted development against the Gamut design system",
+  "version": "1.0.0",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "bin": "./bin/cli.mjs",
+  "files": [
+    "agents",
+    "bin",
+    "commands",
+    "guidelines",
+    "rules",
+    "skills",
+    "README.md",
+    "DESIGN.md",
+    "DESIGN.Codecademy.md",
+    "DESIGN.LXStudio.md",
+    "DESIGN.Percipio.md",
+    ".cursor-plugin",
+    ".claude-plugin"
+  ],
+  "keywords": [
+    "agent-skills",
+    "claude",
+    "codecademy",
+    "cursor",
+    "design-system",
+    "gamut"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "Codecademy/gamut.git",
+  "scripts": {
+    "verify": "nx run gamut-agent-tools:verify"
+  },
+  "type": "module"
+}
