@@ -1,12 +1,15 @@
 import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
-import { Callout, ComponentHeader } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as ListStories from './List.stories';
+import * as ListColStories from './ListCol/ListCol.stories';
+import * as ListRowStories from './ListRow/ListRow.stories';
 
 export const parameters = {
+  id: 'Organisms/Lists & Tables/List/List',
   title: 'List',
-  subtitle: `The elements, APIs, and technical operations that support List and Table designs.`,
+  subtitle: `Components and APIs for building list and table layouts from rows, columns, and shared context.`,
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=32521-43421&m=dev',
@@ -25,34 +28,43 @@ export const parameters = {
 
 ## Overview
 
+`List` is the root container and it provides context to child rows and columns.
+
+### Components
+
+- `List`: Root list or table wrapper; which sets spacing, variant, `as` (`ul` | `ol` | `table`), scrollable layout, and container-query behavior for its children.
+- `ListRow`: A single row; supports expandable content. See <LinkTo id="Organisms/Lists & Tables/List/ListRow">ListRow</LinkTo>.
+- `ListCol`: Column cell with sizing, `type`, and justification. See <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo>.
+- `TableHeader`: Sticky header row for `as="table"`. See <LinkTo id="Organisms/Lists & Tables/List/TableHeader">TableHeader</LinkTo>.
+
 ### Design principles
 
-Recommended for engaging with individual Items
+Recommended for engaging with individual items grouped under a topic
 
-- Manage and open Items inside your List
-- Expand the format of items to surface advanced layouts
-- Include rich information and controls inside of each List Item
+- Manage and display information inside your List
+- Include rich information and controls inside of each ListCol and ListRow
+- Expand individual rows to surface advanced layouts
 
-Customize Items with rich information
+Customization with rich information
 
-- Icons, graphics, complex layouts, other Atoms
+- Include icons, graphics, complex layouts, and other Atom level components
 
 Optional List-level interactions include
 
-- Basic filtering and sorting across common attributes across Items
+- Basic filtering and sorting across common attributes across rows
 
 Be careful about placement and positioning
 
-- Make sure Item controls are visible on the right
-- Place Lists inside main containers to avoid overflow
-- Use a Table if you have a design that's meant to compare information between items
+- Make sure controls are visible on each row
+- Place List components inside main containers to avoid overflow
+- Use a table if you have a design that's meant to compare information between rows
 
 ### Usage
 
-Lists are one of the main design tools for displaying information in a structured / repeated way which are visually distinct from cards and functionally distinct from tables.
+List components are one of the main design tools for displaying information in a structured, repeated way. They read differently from cards and behave differently from tables.
 
-- Lists can function like tables, but aren't exclusively for displaying table data.
-- Lists are distinct from Tables in that they have mixed column content (interactive elements / metrics) whereas tables have only metrics. If you plan on having row controls or options in your table, use a List.
+- A List component can function like a table, but isn't exclusively for displaying table data.
+- A List component is distinct from a table in that it has mixed column content (interactive elements / metrics) whereas tables have only metrics. If you plan on having row controls or options in your table, use a List.
 - When presenting repetitive content prefer using a List view over a Card view.
 
 ### Sample code
@@ -74,7 +86,7 @@ import { List, ListRow, ListCol } from '@codecademy/gamut';
 
 ## Spacing
 
-Lists come with 3 spacing variants `normal`, `condensed`, and `compact`. For example:
+List components come with 3 spacing variants `normal`, `condensed`, and `compact`. For example:
 
 ```tsx
 <List spacing="condensed" />
@@ -82,7 +94,7 @@ Lists come with 3 spacing variants `normal`, `condensed`, and `compact`. For exa
 
 ### Normal
 
-For mixed content use the normal size to ensure that there is enough space for components.
+For mixed content use `size="normal"` to ensure that there is enough space for components.
 
 <Canvas of={ListStories.NormalSpacing} />
 
@@ -92,7 +104,7 @@ Here's an example of normal spacing in practice:
 
 ### Condensed
 
-To decrease the amount of spacing between rows, use the condensed spacing.
+To decrease the amount of spacing between rows, use `spacing="condensed"`.
 
 <Canvas of={ListStories.CondensedSpacing} />
 
@@ -102,15 +114,9 @@ Here's an example of condensed spacing in practice:
 
 ### Compact
 
-To provide the least amount of spacing between rows, use the compact spacing.
+To provide the least amount of spacing between rows, use `spacing="compact"`.
 
 <Canvas of={ListStories.CompactSpacing} />
-
-### Combining with variants
-
-You can combine variants and spacing to your needs. For example, here's a condensed table variant:
-
-<Canvas of={ListStories.CondensedTableGuide} />
 
 ## Variants
 
@@ -120,7 +126,7 @@ Lists have several style variants for different use cases:
 - `default`: Bordered rows for mixed content with no vertical gutter.
 - `card`: Bordered rows with a vertical gutter.
 - `block`: Unbordered rows for mixed content with a vertical gutter.
-- `plain`: Minimal styling with no borders, backgrounds, or special styling - just the basic list structure.
+- `plain`: Minimal styling with no borders, backgrounds, or special styling—just the basic list structure.
 
 ```tsx
 <List variant="default" />
@@ -140,7 +146,7 @@ For content that doesn't need to be compared or visually adjacent to other items
 
 ### Block
 
-For making feature-forward designs (like our Dashboard), or to use as page sections + scaffolding (like our syllabus pages). The `block` variant should always be used on a colored background.
+For making feature-forward designs (like the dashboard on Codecademy), or to use as page sections + scaffolding (like our syllabus pages). The `block` variant should always be used on a colored background.
 
 <Canvas of={ListStories.Block} />
 
@@ -160,55 +166,21 @@ For minimal, clean styling with no borders, backgrounds, or special styling, use
 
 When using the `plain` variant, you can still apply custom styling to individual `ListRow` components to achieve the visual hierarchy you need:
 
-<Canvas of={ListStories.PlainStyled} />
+<Canvas of={ListRowStories.PlainStyled} />
 
-The `plain` variant is particularly useful when you want to:
+### Combining with variants
 
-- Create custom visual designs without the default list styling
-- Build complex layouts where you control the appearance of each row
-- Maintain consistency with custom design systems
-- Reduce visual noise in minimalist interfaces
+You can combine variants and spacing to your needs. For example, here's a List that is using the `condensed` spacing and `table` variant:
 
-#### Ordered List
+<Canvas of={ListStories.CondensedTableGuide} />
 
-Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows.
+## List as an ordered list (ol)
 
-Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
+By default, `List` renders a `ul` (unordered list). All of the above configurations work with ordered lists as well. Pass `ol` to the `as` prop to render an ordered list and add numbering to the rows.
+
+Ordered lists should always include one column with a `header` type row so numbering renders correctly.
 
 <Canvas of={ListStories.OrderedList} />
-
-## Columns
-
-### Sizing
-
-Column size can either be a fixed value (outline of the prop aliases `xs`, `sm`, etc.) or by the columns content width.
-It is recommended that you use the aliases for any content that may have variable length to ensure that column sizing is consistent between each row. For column children that are static between each row - like buttons or truncated text you can specify `content` to remove white space and still render consistently between rows.
-
-```tsx
-// For example:
-<ListCol size="md" />
-```
-
-Below is a List displaying the different sizes columns can be.
-
-<Canvas of={ListStories.ColumnSizing} />
-
-### Filling empty space
-
-You can specify a column to expand or collapse beyond its normal flex basis. These modifiers can be used in conjunction with any size specification:
-
-- `fill`: This fills any available space and pushes all other columns to the end of the row when specified.
-
-<Canvas of={ListStories.FillingEmptySpace} />
-
-### Justification
-
-You can align the content to the right of each column using the `justify` prop on `ListCol`.
-
-- Alternating between left and right justifications is not recommended, once you've switched to a right alignment any additional columns should also align to the right.
-- You may want to also specify `fill` on one of the border columns to give space to the transition or use a larger column size.
-
-<Canvas of={ListStories.Justification} />
 
 ## Advanced Features
 
@@ -216,35 +188,22 @@ You can align the content to the right of each column using the `justify` prop o
 
 #### Horizontal scrolling
 
-If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
+If you have a list with many columns and want to avoid collapsing column content, use the `scrollable` prop. This prop keeps the row header column pinned at the start of the table and expands every column to at least its minimum flex-basis. Rows and columns scroll together along the horizontal axis so users can compare data and take actions across columns.
 
-<Canvas of={ListStories.HorizontalScrolling} />
+Column and header behavior is documented further on the <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> page.
 
-#### Responsive
-
-List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
-
-- `header`: The column of the row with any critical identifying information goes at the top of the view. This is especially important for ordered lists as this is where the numbering will render.
-- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row. `List`s should only ever have one `control` column to prevent overlap on smaller screens.
-- `content`: All other columns in the row are treated as content and will render in order they were specified.
-
-Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
-
-Adjust the size of your window to see how the List changes at different breakpoints.
-
-<Canvas of={ListStories.ResponsiveAnatomy} />
-<Canvas of={ListStories.Responsive} />
+<Canvas of={ListColStories.HorizontalScrolling} />
 
 ## Container Query Control
 
-By default, Lists use CSS container queries to determine responsive behavior based on the List's container width, rather than the viewport width. This allows Lists to adapt appropriately when placed in narrow sidebars or constrained layouts.
+By default, `List` components use CSS container queries to determine responsive behavior based on the container width of the `List`, rather than the viewport width. This allows `List` components to adapt appropriately when placed in narrow sidebars or constrained layouts.
 
 However, there are cases where you may want to disable container queries and rely on traditional media queries instead:
 
 ### When to use `disableContainerQuery={true}`
 
-- **Lists in containers already smaller than the breakpoint**: When your List is always rendered in a narrow container (like a 300px sidebar), container queries may not behave as expected
-- **Lists with very few rows**: Short Lists with only 1-2 rows may not benefit from container query responsive behavior
+- **The `List` is in a container already smaller than the breakpoint**: When the `List` is always rendered in a narrow container (like a 300px sidebar), container queries may not behave as expected
+- **The `List` has very few rows**: Short `List` components with only 1-2 rows may not benefit from container query responsive behavior
 - **Custom responsive management**: When you're implementing your own media or container query logic and want to avoid conflicts
 - **Performance considerations**: In rare cases where container query support may impact performance
 - **Legacy browser support**: When supporting browsers that don't have full container query support
@@ -277,80 +236,9 @@ The example below demonstrates the difference between default container query be
 
 <Callout text="In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior." />
 
-## Expandable
-
-You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
-
-### Expand on button click
-
-The `ListRow` component has access to the `ExpandControl` component which can be used to toggle the expanded state of the row. The `ExpandControl` component will automatically handle the rotation of the icon based on the expanded state.
-
-```tsx
-export const ExpandableRow: React.FC<{
-  header: string;
-  content: string;
-  key: string;
-}> = ({ header, content, key }) => {
-  const [isExpanded, setExpanded] = useState(false);
-
-  return (
-    <ListRow
-      key={key}
-      expanded={isExpanded}
-      renderExpanded={() => <Text>Surprise</Text>}
-    >
-      <ListCol type="header">{header}</ListCol>
-      <ListCol type="content">{content}</ListCol>
-      <ListCol type="control">
-        <ExpandControl
-          expanded={isExpanded}
-          onExpand={() => setExpanded(!isExpanded)}
-          disabled={false}
-        />
-      </ListCol>
-    </ListRow>
-  );
-};
-```
-
-<Canvas of={ListStories.ExpandableButtonGuide} />
-
-### Expand on row click
-
-An entire row can be made interactive to expand the row content.
-
-```tsx
-export const ExpandableRow: React.FC<{
-  header: string;
-  content: string;
-  key: string;
-}> = ({ header, content, key }) => {
-  const [isExpanded, setExpanded] = useState(false);
-
-  return (
-    <ListRow
-      key={key}
-      expanded={isExpanded}
-      onClick={() => setExpanded(!isExpanded)}
-      renderExpanded={() => <Text>Surprise</Text>}
-    >
-      <ListCol type="header">{header}</ListCol>
-      <ListCol type="content">{content}</ListCol>
-      <ListCol type="control">
-        <Rotation rotated={isExpanded}>
-          <ArrowChevronDownIcon color="text-disabled" />
-        </Rotation>
-      </ListCol>
-    </ListRow>
-  );
-};
-```
-
-<Canvas of={ListStories.ExpandedRowGuide} />
-
 ## System props
 
-List has access to the [space system props](https://gamut.codecademy.com/?path=/docs/foundations-system-props--docs#space) for controlling the spacing around the List component. These props can be used to control the margin and padding of the List.
+`List` components have access to the <LinkTo id="Foundations/System/Props/Space">space system props</LinkTo> for controlling the spacing around the `List` component. These props can be used to control the margin and padding of the `List`.
 
 <Canvas of={ListStories.SpaceSystemProps} />
 

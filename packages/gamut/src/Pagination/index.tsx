@@ -2,10 +2,11 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import { useMemo, useState } from 'react';
+import { useElementDir } from '@codecademy/gamut-styles';
+import { useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
-import { HiddenText } from '..';
+import { Text } from '..';
 import { FlexBox } from '../Box';
 import {
   AnimatedFadeButton,
@@ -72,6 +73,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   );
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isRtl = useElementDir(rootRef) === 'rtl';
 
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||
@@ -145,13 +148,16 @@ export const Pagination: React.FC<PaginationProps> = ({
         _: 'initial',
         sm: `${showSkipToButtons ? getMinWidth({ chapterSize }) : 'initial'}`,
       }}
+      ref={rootRef}
     >
-      <HiddenText aria-live="polite">{liveText}</HiddenText>
+      <Text aria-live="polite" screenreader>
+        {liveText}
+      </Text>
       <AnimatedFadeButton
         aria-label={`Navigate back to page ${currentPage - 1}`}
         buttonType={variant}
         href={navigation}
-        icon={MiniChevronLeftIcon}
+        icon={isRtl ? MiniChevronRightIcon : MiniChevronLeftIcon}
         showButton={currentPage === 1 ? 'hidden' : 'shown'}
         onClick={() => changeHandler(currentPage - 1)}
       />
@@ -230,7 +236,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         aria-label={`Navigate forward to page ${currentPage + 1}`}
         buttonType={variant}
         href={navigation}
-        icon={MiniChevronRightIcon}
+        icon={isRtl ? MiniChevronLeftIcon : MiniChevronRightIcon}
         showButton={currentPage === totalPages ? 'hidden' : 'shown'}
         onClick={() => changeHandler(currentPage + 1)}
       />

@@ -2,7 +2,7 @@ import { css, Global } from '@emotion/react';
 import * as React from 'react';
 
 import { coreTheme } from '../themes';
-import { FontConfig, getFonts } from '../utils/fontUtils';
+import { FontConfig, getFonts } from '../utilities/fontUtils';
 
 /**
  * Typography component that applies global typography styles to the application.

@@ -47,7 +47,31 @@ const beakBackgroundRotation = {
   below: 'rotate(-135deg)',
   right: 'rotate(135deg)',
   left: 'rotate(-45deg)',
-};
+} as const;
+
+type SideCenterBeakSide = 'left' | 'right';
+
+const sideCenterMirroredTransform = (side: SideCenterBeakSide) =>
+  side === 'right' ? beakBackgroundRotation.left : beakBackgroundRotation.right;
+
+/** Popover beak is a real node; `:dir(rtl)` applies on that element (not under `&::after`). */
+export const horizontalCenterBeakRtlPopover = (side: SideCenterBeakSide) => ({
+  '&:dir(rtl)': {
+    transform: sideCenterMirroredTransform(side),
+  },
+});
+
+/**
+ * Inline ToolTip / InfoTip: RTL beak rotation on the container that owns `::after`
+ * (avoids invalid `::after:dir(rtl)` when the same beak object is merged under `&::after`).
+ */
+export const horizontalCenterBeakRtlInline = (side: SideCenterBeakSide) => ({
+  '&:dir(rtl)': {
+    '&::after': {
+      transform: sideCenterMirroredTransform(side),
+    },
+  },
+});
 
 type GetBeakBackgroundType = {
   alignment: keyof typeof beakBackgroundRotation;
@@ -134,9 +158,10 @@ export const bottomStylesAfter = {
 } as const;
 
 export const rightAlignStyles = {
-  pl: containerOffsetVertical,
-  left: '100%',
-} as const;
+  paddingInlineStart: containerOffsetVertical,
+  insetInlineStart: '100%',
+  ...horizontalCenterBeakRtlInline('right'),
+};
 
 export const horizontalCenterStyles = {
   ...horizontalCenterWidths,
@@ -149,9 +174,10 @@ export const horizontalCenterStyles = {
 } as const;
 
 export const leftAlignStyles = {
-  pr: containerOffsetVertical,
-  right: '100%',
-} as const;
+  paddingInlineEnd: containerOffsetVertical,
+  insetInlineEnd: '100%',
+  ...horizontalCenterBeakRtlInline('left'),
+};
 
 export const verticalCenterStyles = {
   ...verticalCenterWidths,
@@ -176,12 +202,12 @@ export const rightVertStylesAfter = {
 } as const;
 
 export const rightAlignStylesAfter = {
-  left: '4px',
+  insetInlineStart: '4px',
   ...beakRightCenterStyles,
 } as const;
 
 export const leftAlignStylesAfter = {
-  right: '4px',
+  insetInlineEnd: '4px',
   ...beakLeftCenterStyles,
 } as const;
 

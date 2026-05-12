@@ -1,0 +1,35 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as TableHeaderStories from './TableHeader.stories';
+
+export const parameters = {
+  id: 'Organisms/Lists & Tables/List/TableHeader',
+  title: 'TableHeader',
+  subtitle: `Sticky header row for lists that render as HTML tables.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/TableHeader.tsx',
+  },
+};
+
+<Meta of={TableHeaderStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`TableHeader` renders a sticky `thead` with one header row. Use it when `List` has `as="table"` so column titles sit above `ListRow` body rows.
+
+Place `ListCol` cells **directly inside** `TableHeader` (not wrapped in `ListRow`). Mark header cells with `columnHeader` (and optional `aria-sort` for sortable tables). For semantics and props, see <LinkTo id="Organisms/Lists & Tables/List/ListCol">ListCol</LinkTo> (Header columns).
+
+`TableHeader` receives `spacing`, `variant`, and `scrollable` from `List`, same as `ListRow` and `ListCol`, so the header stays visually aligned with the table body.
+
+## Playground
+
+<Canvas sourceState="shown" of={TableHeaderStories.WithTableHeader} />
+
+<Controls />
