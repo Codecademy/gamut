@@ -1,0 +1,18 @@
+---
+description: >-
+  Use Gamut components per their documented accessibility patterns: forms, overlays,
+  navigation, and content. Prefer Storybook component pages over bespoke a11y wiring.
+globs:
+  - "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+
+# Gamut accessibility
+
+**Canonical doc (read in full):** `docs/agents/gamut-accessibility.md` (repo root).
+
+- Read the component’s **Storybook** page before changing focus, ARIA, or dismiss behavior ([gamut.codecademy.com](https://gamut.codecademy.com/)).
+- **Forms:** **`GridForm`** or **`ConnectedForm`** + **`ConnectedFormGroup`** / **`useConnectedForm`**; never **`ConnectedFormInputs`** outside **`ConnectedFormGroup`**; **`FormRequiredText`** when any field is required; **`GridForm` `custom-group`** means you own labels/errors.
+- **Overlays:** Prefer **`Modal`** / **`Flyout`** / **`Drawer`**; for **`Modal`**, wire **`onRequestClose`** and **`isOpen`** (Esc / outside click); restore focus after close.
+- **Theming:** Semantic colors + **`ColorMode`** / **`Background`** per **`gamut-theming`** for contrast.
+- **Gaps:** Only if no Gamut primitive, mirror headless patterns (e.g. Radix, React ARIA) and style with **`@codecademy/gamut-styles`** semantic tokens.

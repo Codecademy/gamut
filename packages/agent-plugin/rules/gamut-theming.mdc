@@ -1,0 +1,18 @@
+---
+description: >-
+  ColorMode, Background, semantic color tokens, and provider boundaries for
+  @codecademy/gamut-styles. Use when wiring theme providers or debugging contrast.
+globs:
+  - "**/*.{tsx,jsx,ts,js}"
+alwaysApply: false
+---
+
+# Gamut theming
+
+**Canonical doc (read in full):** `docs/agents/gamut-theming.md` (repo root).
+
+- **`ColorMode`** high in the tree (`light` / `dark` / `system`); avoid deep nesting unless a subtree must diverge.
+- **`Background`** for branded sections, **`background-current`**, or surfaces that must not rely on guessed mode—see [ColorMode / Background](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page).
+- Prefer **semantic** color props; use `useColorMode`, `useCurrentMode`, or `useTheme` from `@emotion/react` when needed.
+- Do not fight the stack with hardcoded hex for theme surfaces; extend Gamut tokens in the library when semantics are missing.
+- Generic layout and component usage: **`gamut-consumer`** rules in this plugin.

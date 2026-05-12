@@ -1,0 +1,7 @@
+{
+  "name": "agent-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/agent-plugin",
+  "projectType": "library",
+  "tags": ["scope:docs"]
+}

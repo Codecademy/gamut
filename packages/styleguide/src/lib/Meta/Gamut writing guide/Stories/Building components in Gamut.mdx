@@ -6,7 +6,7 @@ export const parameters = {
   id: 'Building components in Gamut',
   title: 'Building components in Gamut',
   subtitle:
-    'Repo layout, TypeScript, React, and Storybook conventions for contributors—mirrors Cursor skill and rules for agents.',
+    'Repo layout, TypeScript, React, and Storybook conventions for contributors—aligned with AGENTS.md and docs/agents for coding assistants.',
   status: 'static',
 };
 
@@ -14,7 +14,8 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-This page summarizes how we build and document components in the Gamut monorepo. It aligns with the **gamut-library-authoring** Cursor skill and project rules **gamut-library** / **gamut-component-building** (under `.cursor/rules/` and `.cursor/skills/gamut-library-authoring/` in the repo).
+{/* Keep GitHub URLs in sync with docs/agents/canonical-urls.json (main branch). */}
+This page summarizes how we build and document components in the Gamut monorepo. It aligns with **[`AGENTS.md`](https://github.com/Codecademy/gamut/blob/main/AGENTS.md)** and **[`docs/agents/gamut-library-authoring.md`](https://github.com/Codecademy/gamut/blob/main/docs/agents/gamut-library-authoring.md)** on `main`, and with project rules under **`.cursor/rules/`** (e.g. **gamut-library**, **gamut-component-building**) plus the **gamut-library-authoring** skill in **`.cursor/skills/`** when using Cursor.
 
 ## Packages and placement
 
@@ -56,3 +57,4 @@ Match neighboring files (`React.FC` is common). Use `forwardRef` when refs matte
 - <LinkTo id="Meta/Contributing">Contributing</LinkTo> — props documentation and
   PR expectations.
 - Published Storybook: [gamut.codecademy.com](https://gamut.codecademy.com/).
+- Packaged editor plugin (consumption / a11y / themes): [`packages/agent-plugin`](https://github.com/Codecademy/gamut/tree/main/packages/agent-plugin).

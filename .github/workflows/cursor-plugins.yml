@@ -1,26 +1,30 @@
-name: Cursor plugins
+name: Agent plugins
 
 on:
   pull_request:
     paths:
       - '.cursor/**'
-      - 'gamut-cursor-plugins/**'
+      - 'packages/agent-plugin/**'
+      - 'docs/agents/**'
+      - 'AGENTS.md'
       - '.cursor-plugin/**'
       - '.github/workflows/cursor-plugins.yml'
-      - '.github/scripts/validate-cursor-plugins.mjs'
-      - '.github/scripts/validate-cursor-plugins-helpers.mjs'
-      - '.github/scripts/validate-cursor-plugins-helpers.test.mjs'
+      - '.github/scripts/validate-agent-plugins.mjs'
+      - '.github/scripts/validate-agent-plugins-helpers.mjs'
+      - '.github/scripts/validate-agent-plugins-helpers.test.mjs'
   push:
     branches:
       - main
     paths:
       - '.cursor/**'
-      - 'gamut-cursor-plugins/**'
+      - 'packages/agent-plugin/**'
+      - 'docs/agents/**'
+      - 'AGENTS.md'
       - '.cursor-plugin/**'
       - '.github/workflows/cursor-plugins.yml'
-      - '.github/scripts/validate-cursor-plugins.mjs'
-      - '.github/scripts/validate-cursor-plugins-helpers.mjs'
-      - '.github/scripts/validate-cursor-plugins-helpers.test.mjs'
+      - '.github/scripts/validate-agent-plugins.mjs'
+      - '.github/scripts/validate-agent-plugins-helpers.mjs'
+      - '.github/scripts/validate-agent-plugins-helpers.test.mjs'
   workflow_dispatch:
 
 concurrency:
@@ -41,13 +45,13 @@ jobs:
       - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
         with:
           node-version-file: '.nvmrc'
-      - name: Test Cursor plugin validator helpers
-        run: node --test .github/scripts/validate-cursor-plugins-helpers.test.mjs
-      - name: Validate Cursor config (marketplace, plugins, .cursor)
-        run: node .github/scripts/validate-cursor-plugins.mjs
+      - name: Test agent plugin validator helpers
+        run: node --test .github/scripts/validate-agent-plugins-helpers.test.mjs
+      - name: Validate agent plugins (marketplace, .cursor, dual manifests)
+        run: node .github/scripts/validate-agent-plugins.mjs
       - name: Validate plugin semver bumps vs PR base
         if: github.event_name == 'pull_request'
         env:
           CURSOR_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
           CURSOR_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: node .github/scripts/validate-cursor-plugins.mjs --pr-version-bumps
+        run: node .github/scripts/validate-agent-plugins.mjs --pr-version-bumps

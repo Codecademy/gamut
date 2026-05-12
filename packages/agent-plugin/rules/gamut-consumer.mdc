@@ -1,0 +1,17 @@
+---
+description: >-
+  Core standards for using @codecademy/gamut and @codecademy/gamut-styles in
+  application code: semantic colors, system props, no unsafe nested selectors.
+globs:
+  - "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+
+# Gamut consumer (core)
+
+**Canonical doc (read in full):** `docs/agents/gamut-consumer.md` (repo root).
+
+- Prefer `Box`, `FlexBox`, `GridBox` over raw layout divs; use **semantic** colors and `gamut-styles` (`css`, `variant`, `states`); no tag / `*` / `${Box}` nested selectors—use props and layout helpers.
+- Use responsive system props; align with `eslint-plugin-gamut` when configured.
+- Root **ColorMode** / **Background** / hooks: follow **`gamut-theming`** and [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page).
+- Dialogs, focus, ARIA, forms: follow **`gamut-accessibility`** and its doc.

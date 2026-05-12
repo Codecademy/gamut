@@ -130,6 +130,7 @@
     "deploy": "rm -rf ./dist/docs && mv ./dist/storybook/styleguide ./dist/docs && cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
+    "generate:agent-skills": "node packages/agent-plugin/scripts/generate-skills.mjs",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky",
@@ -137,7 +138,7 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "nx storybook styleguide",
     "test": "nx run-many --target=test --all",
-    "test:cursor-plugins-validator": "node --test .github/scripts/validate-cursor-plugins-helpers.test.mjs",
+    "test:agent-plugins-validator": "node --test .github/scripts/validate-agent-plugins-helpers.test.mjs",
     "test:storybook": "nx run styleguide:storybook-test",
     "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify"

@@ -1,0 +1,13 @@
+{
+  "skills": [
+    {
+      "name": "gamut-library-authoring",
+      "skillMdPath": ".cursor/skills/gamut-library-authoring/SKILL.md",
+      "canonicalDocPath": "docs/agents/gamut-library-authoring.md",
+      "agentsPath": "AGENTS.md",
+      "title": "Gamut library authoring",
+      "description": "Authors and maintains components in the Codecademy Gamut monorepo (packages/gamut,\ngamut-styles, patterns, icons, illustrations). Use when adding or changing design\nsystem components, tokens, Storybook MDX, variance/styledOptions, ColorMode-aware\nstyles, TypeScript prop modeling, React patterns, or eslint-plugin-gamut rules in\nthis repository—not when consuming Gamut from an application.",
+      "cursorRulesNote": "When this repo is open in **Cursor**, project rules also apply: `.cursor/rules/gamut-library.mdc`, `.cursor/rules/gamut-component-building.mdc`, and `.cursor/rules/gamut-figma-rules.mdc` (Figma → code). Use the markdown files above for full depth; this skill exists so assistants discover the workflow."
+    }
+  ]
+}

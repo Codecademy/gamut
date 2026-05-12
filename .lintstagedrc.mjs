@@ -14,6 +14,9 @@ const hasFilename = (changes, name) =>
 /** Shell-safe argument for paths that may contain spaces (lint-staged runs commands via a shell). */
 const shellArg = (file) => JSON.stringify(file);
 
+/** Shell-safe argument for paths that may contain spaces (lint-staged runs commands via a shell). */
+const shellArg = (file) => JSON.stringify(file);
+
 export default {
   // Use custom function to avoid overlaps that could cause race conditions
   [`*`]: (allChanges) => {
