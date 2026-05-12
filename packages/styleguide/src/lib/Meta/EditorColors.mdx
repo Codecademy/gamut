@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, Callout, LinkTo } from '~styleguide/blocks';
+
+import { EditorColorsThemeComparison } from './EditorColorsThemeComparison';
+
+export const parameters = {
+  id: 'Meta/Deprecated editorColors',
+  title: 'Deprecated editorColors',
+  subtitle:
+    'Legacy `editorColors` hex values from `@codecademy/gamut-styles` compared to the nearest solid color on the platform theme palette.',
+  status: 'static',
+};
+
+<Meta title="Meta/Deprecated editorColors" />
+
+<AboutHeader {...parameters} />
+
+The deprecated `editorColors` object in `@codecademy/gamut-styles` is still exported for backwards compatibility. Prefer semantic platform editor tokens (for example `editor-keyword`) and `theme.colors` from <LinkTo id="Foundations/Theme/PlatformTheme">Platform Theme</LinkTo> for new work.
+
+This table lists each legacy **name** and **hex**, then the **closest** matching palette key for `theme.colors` on the platform theme. Distances use the **resolved hex** map (`corePalette` plus `platformPalette`—the same values behind `platformTheme._tokens.colors`), because `platformTheme.colors` only holds `var(--color-…)` references after color modes are applied. Only opaque `#RRGGBB` values are considered (`rgba(...)` entries are skipped). Keys used only for Monaco chrome (`comment-*`, `indent-*`, `line-number-*`) are excluded so the match stays on general palette swatches.
+
+<Callout
+  text={
+    <>
+      “Closest” is a numeric convenience, not a design endorsement. Some legacy
+      hues (for example the cyan <code>blue</code>) have no near neighbor in the
+      token set.
+    </>
+  }
+/>
+
+<EditorColorsThemeComparison />

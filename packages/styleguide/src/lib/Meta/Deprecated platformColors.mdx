@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, Callout, Code, LinkTo } from '~styleguide/blocks';
+
+import { PlatformColorsThemeComparison } from './PlatformColorsThemeComparison';
+
+export const parameters = {
+  id: 'Meta/Deprecated platformColors',
+  title: 'Deprecated platformColors',
+  subtitle:
+    'Legacy nested `platformColors` scales from `@codecademy/gamut-styles` compared to the nearest solid color on the current platform theme palette.',
+  status: 'static',
+};
+
+<Meta title="Meta/Deprecated platformColors" />
+
+<AboutHeader {...parameters} />
+
+The deprecated `platformColors` object in `@codecademy/gamut-styles` is still exported for backwards compatibility. Prefer <LinkTo id="Foundations/Theme/PlatformTheme">Platform Theme</LinkTo> `theme.colors` and the active `platformPalette` in `colors.ts` for new work.
+
+The page is split into two tables: **Used in Monaco** lists only the deprecated purple stops still referenced by the editor theme (<Code>purple[500]</Code>, <Code>purple[600]</Code>, <Code>purple[800]</Code>, <Code>purple[900]</Code>). **Not used in Monaco** lists every other legacy <Code>platformColors</Code> swatch (for example the mint ramp and lighter purples) that Monaco does not consume.
+
+Each row uses the legacy swatch id (<Code>family-weight</Code>) with the closest opaque <Code>theme.colors</Code> entry by **ΔE_OK** in OK color space (same method as <LinkTo id="Meta/Deprecated editorColors">Deprecated editorColors</LinkTo>). Matching uses the resolved hex map (<Code>corePalette</Code> plus <Code>platformPalette</Code>). Only <Code>#RRGGBB</Code> values are considered; Monaco chrome keys are excluded from the candidate set.
+
+<Callout
+  text={
+    <>
+      “Closest” is a numeric convenience, not a design endorsement. Deprecated
+      purple ramps do not map one-to-one to today&apos;s smaller platform purple
+      token set.
+    </>
+  }
+/>
+
+<PlatformColorsThemeComparison />
