@@ -21,6 +21,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@codecademy/eslint-config": "8.0.0",
     "@codecademy/gamut": "workspace:*",
+    "@codecademy/gamut-agent-tools": "workspace:*",
     "@codecademy/prettier-config": "^0.2.0",
     "@codecademy/tsconfig": "^0.3.0",
     "@commander-js/extra-typings": "^14.0.0",

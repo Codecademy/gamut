@@ -1616,6 +1616,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@codecademy/gamut-agent-tools@workspace:*, @codecademy/gamut-agent-tools@workspace:packages/gamut-agent-tools":
+  version: 0.0.0-use.local
+  resolution: "@codecademy/gamut-agent-tools@workspace:packages/gamut-agent-tools"
+  bin:
+    gamut-agent-tools: ./bin/cli.mjs
+  languageName: unknown
+  linkType: soft
+
 "@codecademy/gamut-icons@npm:9.57.2, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
@@ -1737,8 +1745,6 @@ __metadata:
     "@emotion/styled": ^11.3.0
     react: ^17.0.2 || ^18.3.0
     react-dom: ^17.0.2 || ^18.3.0
-  bin:
-    gamut: ./bin/gamut.mjs
   languageName: unknown
   linkType: soft
 
@@ -13342,6 +13348,7 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.24.7"
     "@codecademy/eslint-config": "npm:8.0.0"
     "@codecademy/gamut": "workspace:*"
+    "@codecademy/gamut-agent-tools": "workspace:*"
     "@codecademy/prettier-config": "npm:^0.2.0"
     "@codecademy/tsconfig": "npm:^0.3.0"
     "@commander-js/extra-typings": "npm:^14.0.0"
