@@ -62,7 +62,7 @@ Use `<Text screenreader>` for visually hidden but announced content. `<HiddenTex
 
 ## Color and contrast
 
-Do not hardcode hex values for adaptive UI. Gamut semantic color tokens through `ColorMode` are built for WCAG AA; see the `gamut-color-mode` skill for token usage. For non-text contrast, focus order, and ARIA beyond color, see `gamut-accessibility`.
+Do not hardcode hex values for adaptive UI. Gamut semantic color tokens through `ColorMode` are built for WCAG AA; see the `gamut-color-mode` skill for token usage. Semantic colors only guarantee contrast when the subtree is under the right **ColorMode** or **`<Background>`** context — use those primitives for section surfaces, not ad hoc `background-color`. For non-text contrast, focus order, and ARIA beyond color, see `gamut-accessibility`.
 
 ## Focus visibility
 

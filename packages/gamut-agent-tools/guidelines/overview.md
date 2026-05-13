@@ -11,6 +11,8 @@ Gamut is the Codecademy / Skillsoft design system — React component library (`
 - Mobile-first, 12-column grid
 - Semantic color tokens guarantee WCAG AA contrast automatically
 
+**ColorMode in product UI:** Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
+
 ## Themes
 
 | Theme         | Product                         | Base font      | Dark mode |

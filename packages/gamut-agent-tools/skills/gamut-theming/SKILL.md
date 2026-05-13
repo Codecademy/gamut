@@ -11,6 +11,8 @@ Source: `@codecademy/gamut-styles`
 
 Gamut uses Emotion's theme system. All styled components have access to a typed theme object containing every design token. Themes are org-specific collections of tokens; components work across all themes without modification as long as they use token aliases rather than hardcoded values.
 
+**See also:** [`gamut-color-mode`](../gamut-color-mode/SKILL.md) for `<ColorMode>`, `<Background>`, `useColorModes`, and contrast-safe surfaces — read that before wiring light/dark or colored sections. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page).
+
 ## Available themes
 
 | Theme     | Used for                                                   |

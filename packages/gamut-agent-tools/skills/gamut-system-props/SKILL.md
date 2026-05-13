@@ -9,7 +9,7 @@ Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com
 
 ## Overview
 
-System props are strongly-typed, theme-connected CSS prop groups from `@codecademy/gamut-styles`. They give styled components a consistent, responsive API. All props are built on top of `@codecademy/variance`.
+System props are strongly-typed, theme-connected CSS prop groups from `@codecademy/gamut-styles`. They give styled components a consistent, responsive API. All props are built on top of `@codecademy/variance`. Semantic color props assume the subtree is under the correct **ColorMode** / **Background** context when those surfaces need to adapt — see [`gamut-color-mode`](../gamut-color-mode/SKILL.md).
 
 Each prop group has:
 
