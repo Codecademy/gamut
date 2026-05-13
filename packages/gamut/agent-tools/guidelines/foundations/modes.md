@@ -23,20 +23,22 @@ Use `<Background>` — not a raw `bg` prop — whenever setting a colored backgr
 ```tsx
 import { Background } from '@codecademy/gamut-styles';
 
-<Background bg="hyper">{children}</Background>
+<Background bg="hyper">{children}</Background>;
 ```
 
 Nesting is supported — each `<Background>` creates its own accessible color context.
 
 ## Hooks
 
-| Hook | Returns | Use |
-|---|---|---|
-| `useCurrentMode()` | `"light" \| "dark"` | Read active mode in JS |
-| `useColorMode()` | `[modeKey, modeColors, allModes]` | Access all mode data |
-| `usePrefersDarkMode()` | `boolean` | Read OS dark preference only |
+| Hook                   | Returns                                                 | Use                                               |
+| ---------------------- | ------------------------------------------------------- | ------------------------------------------------- |
+| `useCurrentMode()`     | `"light" \| "dark"`                                     | Active mode key only                              |
+| `useColorModes()`      | `[modeKey, currentModeColors, allModes, getColorValue]` | Full mode data + resolver for semantic color keys |
+| `usePrefersDarkMode()` | `boolean`                                               | OS `prefers-color-scheme: dark` only              |
 
 Import from `@codecademy/gamut-styles`.
+
+**Storybook:** [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) · [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)
 
 ## Common mistakes
 

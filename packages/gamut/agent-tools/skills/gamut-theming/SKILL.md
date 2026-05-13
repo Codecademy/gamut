@@ -11,15 +11,17 @@ Source: `@codecademy/gamut-styles`
 
 Gamut uses Emotion's theme system. All styled components have access to a typed theme object containing every design token. Themes are org-specific collections of tokens; components work across all themes without modification as long as they use token aliases rather than hardcoded values.
 
+**See also:** [`gamut-color-mode`](../gamut-color-mode/SKILL.md) for `<ColorMode>`, `<Background>`, `useColorModes`, and contrast-safe surfaces — read that before wiring light/dark or colored sections. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page).
+
 ## Available themes
 
-| Theme | Used for |
-|---|---|
-| Core | Codecademy default (public-facing products) |
-| Admin | Codecademy admin tools |
-| Platform | Codecademy learning environment / shared platform surfaces |
-| LX Studio | Learning Experience Studio |
-| Percipio | Skillsoft Percipio platform |
+| Theme     | Used for                                                   |
+| --------- | ---------------------------------------------------------- |
+| Core      | Codecademy default (public-facing products)                |
+| Admin     | Codecademy admin tools                                     |
+| Platform  | Codecademy learning environment / shared platform surfaces |
+| LX Studio | Learning Experience Studio                                 |
+| Percipio  | Skillsoft Percipio platform                                |
 
 The active theme is set at the app level via `<GamutProvider>`. Components inside receive the current theme via Emotion's context.
 
@@ -93,11 +95,11 @@ const Card = styled.div(
 
 ## Theme-aware vs. color-mode-aware
 
-| Concern | Tool |
-|---|---|
-| Tokens change per theme (colors, sizes, fonts) | Access via `theme.*` or system props |
-| Colors change per light/dark mode | Use semantic color aliases + `<ColorMode>` |
-| Background contrast | Use `<Background>` from ColorMode |
+| Concern                                        | Tool                                       |
+| ---------------------------------------------- | ------------------------------------------ |
+| Tokens change per theme (colors, sizes, fonts) | Access via `theme.*` or system props       |
+| Colors change per light/dark mode              | Use semantic color aliases + `<ColorMode>` |
+| Background contrast                            | Use `<Background>` from ColorMode          |
 
 Semantic aliases like `primary`, `secondary`, `text`, `background` serve double duty: they resolve to theme-specific values **and** switch between light/dark variants automatically.
 

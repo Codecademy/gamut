@@ -9,9 +9,10 @@ Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com
 
 ## Overview
 
-System props are strongly-typed, theme-connected CSS prop groups from `@codecademy/gamut-styles`. They give styled components a consistent, responsive API. All props are built on top of `@codecademy/variance`.
+System props are strongly-typed, theme-connected CSS prop groups from `@codecademy/gamut-styles`. They give styled components a consistent, responsive API. All props are built on top of `@codecademy/variance`. Semantic color props assume the subtree is under the correct **ColorMode** / **Background** context when those surfaces need to adapt — see [`gamut-color-mode`](../gamut-color-mode/SKILL.md).
 
 Each prop group has:
+
 - **`properties`**: The CSS properties it controls
 - **`scale`**: Token scale it's restricted to (theme colors, spacing values, etc.)
 - **`transform`**: Optional transform applied before output (e.g. `width={0.5}` → `width: 50%`)
@@ -84,7 +85,12 @@ Text styling connected to theme typography scales.
 ```tsx
 const Text = styled.p(system.typography);
 
-<Text fontSize={16} fontFamily="accent" textTransform="uppercase" lineHeight={1.5} />;
+<Text
+  fontSize={16}
+  fontFamily="accent"
+  textTransform="uppercase"
+  lineHeight={1.5}
+/>;
 ```
 
 Key props: `fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, `textAlign`, `textTransform`, `textDecoration`, `letterSpacing`, `whiteSpace`
@@ -104,7 +110,11 @@ import myBg from './myBg.png';
 
 const Box = styled.div(system.background);
 
-<Box background={`url(${myBg})`} backgroundSize="cover" backgroundPosition="center" />;
+<Box
+  background={`url(${myBg})`}
+  backgroundSize="cover"
+  backgroundPosition="center"
+/>;
 ```
 
 Key props: `background`, `backgroundImage`, `backgroundSize`, `backgroundPosition`, `backgroundRepeat`
@@ -126,9 +136,7 @@ Key props: `gridTemplateColumns`, `gridTemplateRows`, `gridTemplateAreas`, `grid
 Position and offset properties.
 
 ```tsx
-const Overlay = styled.div(
-  variance.compose(system.layout, system.positioning)
-);
+const Overlay = styled.div(variance.compose(system.layout, system.positioning));
 
 <Overlay position="absolute" top={0} left={0} width="100%" height="100%" />;
 ```
@@ -147,7 +155,7 @@ All system props accept an **array of values** for responsive breakpoints (Gamut
 
 ```tsx
 // [mobile, tablet, desktop]
-<Box width={['100%', '50%', '33%']} p={[8, 16, 24]} />;
+<Box width={['100%', '50%', '33%']} p={[8, 16, 24]} />
 ```
 
 ## Using `css()` for styled definitions
