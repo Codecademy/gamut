@@ -3,7 +3,7 @@ version: alpha
 name: Percipio Design System
 description: Design tokens for the Skillsoft Percipio platform.
 colors:
-  # palette — raw swatches; set once on :root and then always reference by token name, never use hex values directly in code
+  # palette — reference hex for docs/tools; in product UI use semantic colors via Gamut theme (Emotion) / system props or Figma tokens—never paste these literals into code
   percipioTextPrimary: '#222325'
   percipioTextAccent: '#222325'
   percipioTextSecondary: 'rgba(34, 35, 37, 0.75)'

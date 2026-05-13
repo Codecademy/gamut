@@ -1,1 +1,1 @@
-DEPRECATED. Use the appropriate DESIGN.*.md from https://github.com/Codecademy/gamut/pull/3329 instead.
+Use the appropriate DESIGN.\*.md based on your Gamut theme.

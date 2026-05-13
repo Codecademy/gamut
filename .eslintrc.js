@@ -8,7 +8,11 @@ module.exports = {
 
   plugins: ['eslint-plugin-gamut'],
 
-  ignorePatterns: ['packages/code-connect/**/*'],
+  ignorePatterns: [
+    'packages/code-connect/**/*',
+    // Prose / YAML-frontmatter — not valid TS; ESLint otherwise parses them with the TS parser
+    'packages/gamut/agent-tools/**/*.md',
+  ],
 
   rules: {
     'gamut/prefer-themed': 'error',

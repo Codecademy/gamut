@@ -3,6 +3,7 @@ version: alpha
 name: LX Studio Design System
 description: Design tokens for the Skillsoft LX Studio authoring platform.
 colors:
+  # palette — reference hex for docs/tools; in product UI use semantic colors via Gamut theme (Emotion) / system props or Figma tokens—never paste these literals into code
   # LX Studio additions — custom brand tokens
   lxStudioPurple: '#5628FE'
   lxStudioPurpleHover: '#7955FC'
