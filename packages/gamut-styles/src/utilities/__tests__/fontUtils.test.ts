@@ -1,36 +1,39 @@
 import { webFonts } from '../../remoteAssets/fonts';
 import { getFonts } from '../fontUtils';
 
-jest.mock('../../remoteAssets/fonts', () => ({
-  webFonts: {
-    core: [
-      {
-        filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
-        extensions: ['woff2', 'woff'],
-        name: 'Apercu',
-      },
-      {
-        filePath: 'https://www.codecademy.com/gamut/apercu-bold-pro',
-        extensions: ['woff2', 'woff'],
-        name: 'Apercu',
-        weight: 'bold',
-      },
-    ],
-    percipio: [
-      {
-        filePath: 'https://www.codecademy.com/gamut/roboto-regular',
-        extensions: ['woff2', 'woff'],
-        name: 'Roboto',
-      },
-      {
-        filePath: 'https://www.codecademy.com/gamut/roboto-bold',
-        extensions: ['woff2', 'woff'],
-        name: 'Roboto',
-        weight: 'bold',
-      },
-    ],
-  },
-}));
+jest.mock('../../remoteAssets/fonts', () => {
+  const percipio = [
+    {
+      filePath: 'https://www.codecademy.com/gamut/SkillsoftText-Regular',
+      extensions: ['woff2', 'woff'],
+      name: 'Skillsoft Text',
+    },
+    {
+      filePath: 'https://www.codecademy.com/gamut/roboto-regular',
+      extensions: ['woff2', 'woff'],
+      name: 'Roboto',
+    },
+  ];
+  return {
+    webFonts: {
+      core: [
+        {
+          filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+          extensions: ['woff2', 'woff'],
+          name: 'Apercu',
+        },
+        {
+          filePath: 'https://www.codecademy.com/gamut/apercu-bold-pro',
+          extensions: ['woff2', 'woff'],
+          name: 'Apercu',
+          weight: 'bold',
+        },
+      ],
+      percipio,
+      lxStudio: percipio,
+    },
+  };
+});
 
 describe('fontUtils', () => {
   describe('getFonts', () => {
@@ -52,6 +55,11 @@ describe('fontUtils', () => {
 
     it('should return percipio fonts for percipio theme', () => {
       const fonts = getFonts('percipio');
+      expect(fonts).toBe(webFonts.percipio);
+    });
+
+    it('should return percipio fonts for lxStudio theme', () => {
+      const fonts = getFonts('lxStudio');
       expect(fonts).toBe(webFonts.percipio);
     });
 
@@ -99,6 +107,7 @@ describe('fontUtils', () => {
         webFonts: {
           core: undefined,
           percipio: webFonts.percipio,
+          lxStudio: webFonts.percipio,
         },
       }));
 
