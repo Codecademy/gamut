@@ -46,12 +46,12 @@ import { css } from '@emotion/react';
 import { percipioTheme, theme } from '@codecademy/gamut-styles';
 
 const myStyles = css`
-  color: ${percipioTheme.colors.sapphire};
+  color: ${percipioTheme.colors.sapphire}; // exists on the Percipio theme
 `;
 
 const notWorkingStyles = css`
   color: ${theme.colors
-    .percipioTextPrimary}; // percipioTextPrimary is not on the default Core theme export—use percipioTheme
+    .sapphire}; // percipioTextPrimary is not on the default Core theme export—use percipioTheme
 `;
 ```
 
