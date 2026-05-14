@@ -5,7 +5,7 @@ Base SCSS for Codecademy
 ## Variables/
 
 This folder houses all shared SCSS style variables.
-It also contains a JavaScript file with color variables.
+TypeScript color tokens and palettes live in `variables/colors.ts` and are exposed on themes as `theme.colors` (see `src/themes/`). Legacy `editorColors`, `platformColors`, `swatches`, and the flat deprecated `colors` map were removed from this package—use `corePalette` / `platformPalette` and theme color modes instead.
 
 ## Core/
 
