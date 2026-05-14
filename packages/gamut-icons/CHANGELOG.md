@@ -1,3 +1,23 @@
+## 9.57.5 (2026-05-14)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 18.0.0
+- Updated gamut-tests to 6.0.1
+
+## 9.57.4 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-tests to 6.0.0
+
+## 9.57.3 (2026-04-29)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.14.0
+- Updated gamut-tests to 5.3.4
+
 ## 9.57.2 (2026-03-26)
 
 ### 🩹 Fixes

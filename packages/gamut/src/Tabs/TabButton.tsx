@@ -15,7 +15,7 @@ export interface TabButtonProps
     TabElementStyleProps {}
 
 const tabSelectedStyles = {
-  fontWeight: 700,
+  fontWeight: 'title',
   pt: 12,
   pb: 8,
   borderBottomWidth: 4,

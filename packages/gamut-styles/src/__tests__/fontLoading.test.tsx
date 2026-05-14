@@ -6,30 +6,39 @@ import { coreTheme, percipioTheme } from '../themes';
 // Type assertion to satisfy Theme interface in GamutProvider from theme.d.ts - this lib is typed to the CoreTheme interface
 const typedPercipioTheme = percipioTheme as any;
 
-jest.mock('../utils/fontUtils', () => ({
+jest.mock('../utilities/fontUtils', () => ({
   getFonts: jest.fn(),
 }));
 
-jest.mock('../remoteAssets/fonts', () => ({
-  webFonts: {
-    core: [
-      {
-        filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
-        extensions: ['woff2', 'woff'],
-        name: 'Apercu',
-      },
-    ],
-    percipio: [
-      {
-        filePath: 'https://www.codecademy.com/gamut/roboto-regular',
-        extensions: ['woff2', 'woff'],
-        name: 'Roboto',
-      },
-    ],
-  },
-}));
+jest.mock('../remoteAssets/fonts', () => {
+  const percipio = [
+    {
+      filePath: 'https://www.codecademy.com/gamut/SkillsoftText-Regular',
+      extensions: ['woff2', 'woff'],
+      name: 'Skillsoft Text',
+    },
+    {
+      filePath: 'https://www.codecademy.com/gamut/roboto-regular',
+      extensions: ['woff2', 'woff'],
+      name: 'Roboto',
+    },
+  ];
+  return {
+    webFonts: {
+      core: [
+        {
+          filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+          extensions: ['woff2', 'woff'],
+          name: 'Apercu',
+        },
+      ],
+      percipio,
+      lxStudio: percipio,
+    },
+  };
+});
 
-const mockGetFonts = require('../utils/fontUtils').getFonts;
+const mockGetFonts = require('../utilities/fontUtils').getFonts;
 
 const mockDocumentFonts = {
   load: jest.fn(),

@@ -66,7 +66,7 @@ export const FilterControl: React.FC<FilterProps> = ({
           alignment={justify === 'left' ? 'bottom-right' : 'bottom-left'}
           isOpen
           offset={0}
-          targetRef={target as any}
+          targetRef={target}
           onRequestClose={() => setMenuOpen(false)}
         >
           <Menu

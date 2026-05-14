@@ -33,9 +33,9 @@ export interface FocusTrapProps extends WithChildrenProp {
    */
   allowPageInteraction?: boolean;
   /**
-   * Passthrough for react-focus-on library props
+   * Passthrough for react-focus-on library props (partial; only override what you need).
    */
-  focusOnProps?: ReactFocusOnProps;
+  focusOnProps?: Partial<ReactFocusOnProps>;
 }
 
 export const FocusTrap: React.FC<FocusTrapProps> = ({

@@ -143,10 +143,10 @@ const activeStates = system.states({
     bg: 'background-selected',
   },
   active: {
-    fontWeight: 700,
+    fontWeight: 'title',
   },
   'active-navlink': {
-    fontWeight: 700,
+    fontWeight: 'title',
     bg: 'background-selected',
     [Selectors.BEFORE]: {
       content: "''",
