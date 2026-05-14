@@ -24,8 +24,6 @@ export function createGamutDocsTheme(
     brandImage: logo,
     brandUrl: '/',
     fontBase,
-
-    //
     colorPrimary: trueColors.hyper,
     colorSecondary: trueColors.navy,
 
