@@ -1,3 +1,14 @@
+## 0.6.598 (2026-05-14)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.11
+- Updated gamut-patterns to 0.10.30
+- Updated gamut-styles to 18.0.0
+- Updated gamut-icons to 9.57.5
+- Updated gamut-tests to 6.0.1
+- Updated gamut to 68.6.0
+
 ## 0.6.597 (2026-05-08)
 
 ### 🧱 Updated Dependencies
