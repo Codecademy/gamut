@@ -27,12 +27,12 @@ Set the theme at the app root via `<GamutProvider theme={...}>`.
 
 ## Reading order
 
-| File                                                   | What it covers                                                          |
-| ------------------------------------------------------ | ----------------------------------------------------------------------- |
-| [setup.md](setup.md)                                   | Packages, GamutProvider, theme selection                                |
-| [foundations/color.md](foundations/color.md)           | Semantic roles (all themes), where to verify hex, Core-only cheatsheets |
-| [foundations/modes.md](foundations/modes.md)           | Light/dark ColorMode, Background component                              |
-| [foundations/typography.md](foundations/typography.md) | Typefaces, font scale, rules                                            |
-| [foundations/spacing.md](foundations/spacing.md)       | Spacing, border radius, responsive grid                                 |
-| [components/overview.md](components/overview.md)       | Full component catalog                                                  |
-| [components/buttons.md](components/buttons.md)         | Button variants, props, decision tree                                   |
+| File                                                   | What it covers                                                                 |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| [setup.md](setup.md)                                   | Packages, GamutProvider, theme selection                                       |
+| [foundations/color.md](foundations/color.md)           | Semantic roles (all themes), where to verify hex, Core-only cheatsheets        |
+| [foundations/modes.md](foundations/modes.md)           | Light/dark ColorMode, Background component                                     |
+| [foundations/typography.md](foundations/typography.md) | Typefaces, font scale, rules                                                   |
+| [foundations/spacing.md](foundations/spacing.md)       | Spacing scale, radii, Layout grid; system props + responsive/container queries |
+| [components/overview.md](components/overview.md)       | Full component catalog                                                         |
+| [components/buttons.md](components/buttons.md)         | Button variants, props, decision tree                                          |
