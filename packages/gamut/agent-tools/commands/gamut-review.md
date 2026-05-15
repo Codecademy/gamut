@@ -174,13 +174,13 @@ Case-insensitive. Use to label `palette:` in the report; **do not** stop at this
 
 Grep test files (`**/__tests__/**/*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.{ts,tsx}`) for these patterns. Skip `node_modules`, `dist`.
 
-| Pattern                                               | Verdict                               | Reason                                                                                                                                                             |
-| ----------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `jest.mock\(.*@codecademy/gamut`                      | **Error**                             | Manual mocking bypasses theme context and produces false-positive tests; use `setupRtl` or `MockGamutProvider` instead                                             |
-| `jest.mock\(.*@codecademy/gamut-styles`               | **Error**                             | Same issue as above — mocking gamut-styles breaks token resolution                                                                                                 |
-| `from '@codecademy/gamut-tests'`                      | Good — report count of files using it | Correct import for `setupRtl` and `MockGamutProvider`                                                                                                              |
-| `from 'component-test-setup'` (without gamut-tests)   | **Warning**                           | Should import `setupRtl` from `@codecademy/gamut-tests`, not directly from `component-test-setup` — the gamut-tests wrapper adds `MockGamutProvider` automatically |
-| `new GamutProvider` or `<GamutProvider` in test files | **Warning**                           | Tests should use `MockGamutProvider` (sets `useCache={false}`, `useGlobals={false}`), not `GamutProvider` directly                                                 |
+| Pattern                                               | Verdict                               | Reason                                                                                                                                                                                                                                                  |
+| ----------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `jest.mock\(.*@codecademy/gamut`                      | **Error**                             | Manual mocking bypasses theme context and produces false-positive tests; prefer **`setupRtl`** from `@codecademy/gamut-tests` (or a harness + **`setupRtl`**); use raw **`MockGamutProvider`** + **`render`** only for rare one-offs or Storybook mocks |
+| `jest.mock\(.*@codecademy/gamut-styles`               | **Error**                             | Same issue as above — mocking gamut-styles breaks token resolution                                                                                                                                                                                      |
+| `from '@codecademy/gamut-tests'`                      | Good — report count of files using it | Correct import for `setupRtl` and `MockGamutProvider`                                                                                                                                                                                                   |
+| `from 'component-test-setup'` (without gamut-tests)   | **Warning**                           | Should import `setupRtl` from `@codecademy/gamut-tests`, not directly from `component-test-setup` — the gamut-tests wrapper adds `MockGamutProvider` automatically                                                                                      |
+| `new GamutProvider` or `<GamutProvider` in test files | **Warning**                           | Prefer **`setupRtl`**; use **`MockGamutProvider`** (sets `useCache={false}`, `useGlobals={false}`) in harnesses or stories, not **`GamutProvider`** directly                                                                                            |
 
 Skill reference for remediation: `gamut-testing`
 
@@ -215,7 +215,7 @@ Hardcoded colors                                                         [→ ga
 
 Test setup                                                               [→ gamut-testing]
   ✓  @codecademy/gamut-tests   used in 12 test files
-  ✗  jest.mock(@codecademy/gamut)   2 occurrences — remove and use setupRtl instead
+  ✗  jest.mock(@codecademy/gamut)   2 occurrences — remove; prefer setupRtl (or harness + setupRtl)
        src/components/Foo/__tests__/Foo.test.tsx:3
        src/components/Bar/__tests__/Bar.test.tsx:5
   ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
