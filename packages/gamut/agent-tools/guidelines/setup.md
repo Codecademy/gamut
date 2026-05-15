@@ -79,10 +79,3 @@ declare module '@emotion/react' {
 ```
 
 See Emotion’s [TypeScript / define a theme](https://emotion.sh/docs/typescript#define-a-theme) for details.
-
-## Font licensing
-
-**Apercu Pro** is licensed for codecademy.com only. Non-Codecademy products must use their theme's approved typeface:
-
-- LX Studio → Hanken Grotesk
-- Percipio → Roboto

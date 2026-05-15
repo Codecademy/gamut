@@ -1,5 +1,5 @@
 ---
-description: Apply these guardrails when editing Gamut UI in TS/JS/TSX/JSX. Mirrors the General rules in the `gamut-accessibility` skill; see `skills/gamut-accessibility/SKILL.md` in this plugin for full component patterns and checklists. Loaded automatically for matched files.
+description: Apply these guardrails when editing Gamut UI in TS/JS/TSX/JSX. Universal rules (always loaded). Form wiring depth: **`gamut-forms`** skill; other component matrix and audit detail: **`gamut-accessibility`** — those skills do not repeat this rule set.
 alwaysApply: true
 globs: ['*.tsx', '*.ts', '*.jsx', '*.js']
 ---
@@ -39,21 +39,20 @@ When there is no visible text for a nameable element, consider this a sign that 
 </ul>
 ```
 
-## Use Gamut components — don't reimplement what they already solve
+## Use Gamut primitives — do not fake buttons or dialogs
 
-- `<Button>` not `<div onClick>` or `<span role="button">`
-- `<Tabs>` / `<Tab>` / `<TabList>` / `<TabPanel>` — arrow key, Home, End navigation is automatic
-- `<Dialog>` / `<Modal>` — always provide an accessible name; **prefer `aria-labelledby`** to a visible title when one exists, otherwise `aria-label`. Focus lock and Escape are handled by the components.
+- **Actions:** use Gamut button atoms (`FillButton`, `TextButton`, `StrokeButton`, `CTAButton`, `IconButton`) — not `<div onClick>`, not `<span role="button">`, not `<a>` without `href` for actions. Variant and `tip` guidance: [`guidelines/components/buttons.md`](../guidelines/components/buttons.md).
+- **Tabs / overlays:** `Tabs`, `Dialog`, `Modal`, and related primitives implement keyboard and focus patterns in code — still supply labels, titles, and trigger semantics as documented in the skill.
 
 ## Every interactive control needs an accessible name
 
-- **`<IconButton>`** — provide `tip` (becomes the accessible name for icon-only)
-- **`<InfoTip>`** — provide `ariaLabel` or `ariaLabelledby`; there is no automatic fallback
-- Icon SVGs next to visible text — add `aria-hidden="true"` to decorative icons
+- **`IconButton`** — provide `tip` (accessible name for icon-only).
+- **`InfoTip`** — provide `ariaLabel` or `ariaLabelledby`; there is no automatic fallback.
+- Decorative icon SVGs next to visible text — `aria-hidden="true"` on the icon.
 
 ## Form label association
 
-Match `htmlFor` on `<FormGroupLabel>` with the `id` on the input. `<FormGroup>` auto-wires `aria-live` for `error` and `description` — do not add redundant live regions manually.
+Match **`htmlFor`** on **`<FormGroupLabel>`** with the **`id`** on the control. Base **`<FormGroup>`** renders live regions for **`error`** and **`description`**; **`GridForm`** and **`ConnectedForm`** add field wiring (**`aria-describedby`**, **`aria-invalid`**, first-error **`aria-live`** behavior) — do not add redundant duplicate regions. Depth: **[`skills/gamut-forms/SKILL.md`](../skills/gamut-forms/SKILL.md)**.
 
 ## Screen-reader-only text
 
@@ -61,8 +60,19 @@ Use `<Text screenreader>` for visually hidden but announced content. `<HiddenTex
 
 ## Color and contrast
 
-Do not hardcode hex values for adaptive UI. Gamut semantic color tokens through `ColorMode` are built for WCAG AA; see the `gamut-color-mode` skill for token usage. Semantic colors only guarantee contrast when the subtree is under the right **ColorMode** or **`<Background>`** context — use those primitives for section surfaces, not ad hoc `background-color`. For non-text contrast, focus order, and ARIA beyond color, see `gamut-accessibility`.
+Do not hardcode hex for adaptive UI. Prefer semantic tokens and **`ColorMode` / `<Background>`** so surfaces track theme and mode — see the **`gamut-color-mode`** skill and [`foundations/modes.md`](../guidelines/foundations/modes.md). Default pairings support accessible UI, but **tokens do not guarantee WCAG compliance** for every layout; validate non-standard combinations.
 
 ## Focus visibility
 
-Never suppress focus indicators with `outline: none` or `outline: 0` without a visible replacement. Gamut's focus styles are intentional and meet WCAG 2.4.7.
+Never suppress focus indicators with `outline: none` or `outline: 0` without a visible replacement. Gamut’s focus styles are intentional (WCAG 2.4.7).
+
+## Where to read more (minimal index)
+
+| Topic | Primary doc |
+| --- | --- |
+| Forms (`GridForm`, `ConnectedForm`, `FormGroup`, validation, live regions) | [`skills/gamut-forms/SKILL.md`](../skills/gamut-forms/SKILL.md) |
+| Component matrix (tips, overlays, composites, checklists; not form wiring) | [`skills/gamut-accessibility/SKILL.md`](../skills/gamut-accessibility/SKILL.md) |
+| Button variants, `IconButton` `tip`, `disabled` vs `aria-disabled` | [`guidelines/components/buttons.md`](../guidelines/components/buttons.md) |
+| ColorMode, `Background`, semantic color roles | **`gamut-color-mode`** skill · [`foundations/modes.md`](../guidelines/foundations/modes.md) · [`foundations/color.md`](../guidelines/foundations/color.md) |
+| Tokens, `css` / `variant` / `states` | Storybook [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) |
+| Install, `GamutProvider`, CSP | Storybook [Meta / Installation](https://gamut.codecademy.com/?path=/docs-meta-installation--page) |
