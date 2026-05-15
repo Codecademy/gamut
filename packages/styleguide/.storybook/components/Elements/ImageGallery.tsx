@@ -45,6 +45,14 @@ const StyledText = styled(Text)(
   })
 );
 
+const StyledLabel = styled.label(
+  css({
+    fontSize: 14,
+    fontWeight: 'bold',
+    textTransform: 'capitalize',
+  })
+);
+
 export const ImageGallery: React.FC<ImageGalleryProps> = ({
   images = [],
   showControls = true,
@@ -111,10 +119,9 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     <Box width="100%">
       {showControls && (
         <FlexBox center gap={12} mb={16} p={16} pb={0}>
-          <Text fontSize={14} fontWeight="bold">
-            Columns:
-          </Text>
+          <StyledLabel htmlFor="columns">Columns:</StyledLabel>
           <Input
+            id="columns"
             type="number"
             min={minColumns}
             max={maxColumns}
@@ -122,15 +129,9 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             onChange={handleColumnsChange}
             size="small"
           />
-          <Text
-            fontSize={14}
-            fontWeight="bold"
-            ml={16}
-            textTransform="capitalize"
-          >
-            {imageType} size:
-          </Text>
+          <StyledLabel htmlFor="image-size">{imageType} size:</StyledLabel>
           <Input
+            id="image-size"
             type="number"
             min={minImageSize}
             max={maxImageSize}
@@ -142,10 +143,9 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
           />
           <Box flex={1} />
           <FlexBox center row gap={12}>
-            <Text fontSize={14} fontWeight="bold">
-              Filter:
-            </Text>
+            <StyledLabel htmlFor="filter">Filter:</StyledLabel>
             <Input
+              id="filter"
               type="text"
               placeholder={`Search ${imageType}s...`}
               value={filter}

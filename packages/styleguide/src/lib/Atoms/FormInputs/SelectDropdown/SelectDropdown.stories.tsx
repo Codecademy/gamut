@@ -19,6 +19,7 @@ const meta: Meta<typeof SelectDropdown> = {
     disabled: false,
     isSearchable: false,
     value: '',
+    'aria-label': 'Select an option',
   },
   argTypes: {
     value: {

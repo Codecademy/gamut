@@ -19,28 +19,23 @@ export const Default: Story = {
   },
 };
 
-const FormGroupHtmlForExample = () => {
-  return (
+export const FormGroupHtmlFor: Story = {
+  render: () => (
     <FormGroup htmlFor="example1" label="I am a label!!">
       <Input htmlFor="example1" />
     </FormGroup>
-  );
-};
-
-export const FormGroupHtmlFor: Story = {
-  render: () => <FormGroupHtmlForExample />,
-};
-
-const FormGroupDivExample = () => {
-  return (
-    <FormGroup label="I look like a label, but I'm actually a div...">
-      <Input defaultValue="😔" />
-    </FormGroup>
-  );
+  ),
 };
 
 export const FormGroupDiv: Story = {
-  render: () => <FormGroupDivExample />,
+  render: () => (
+    <FormGroup
+      id="div-form-group"
+      label="I look like a label, but I'm actually a div..."
+    >
+      <Input aria-labelledby="div-form-group" defaultValue="😔" />
+    </FormGroup>
+  ),
 };
 
 export const DefaultState: Story = {
@@ -76,28 +71,30 @@ export const Valid: Story = {
 export const LowEmphasisInfoTip: Story = {
   args: {
     label: 'Low emphasis',
+    htmlFor: 'low-emphasis-input',
     infotip: {
       alignment: 'bottom-left',
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
-    children: <Input />,
+    children: <Input htmlFor="low-emphasis-input" />,
   },
 };
 
 export const HighEmphasisInfoTip: Story = {
   args: {
     label: 'High emphasis',
+    htmlFor: 'high-emphasis-input',
     infotip: {
       emphasis: 'high',
       alignment: 'bottom-left',
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
-    children: <Input />,
+    children: <Input htmlFor="high-emphasis-input" />,
   },
 };
 
-const InfoTipLabellingExamples = () => {
-  return (
+export const InfoTipAutoLabelling: Story = {
+  render: () => (
     <Box display="flex" flexDirection="column" gap={32}>
       <FormGroup
         htmlFor="auto-label-input"
@@ -132,9 +129,5 @@ const InfoTipLabellingExamples = () => {
         <Input htmlFor="aria-labelledby-input" type="email" />
       </FormGroup>
     </Box>
-  );
-};
-
-export const InfoTipAutoLabelling: Story = {
-  render: () => <InfoTipLabellingExamples />,
+  ),
 };

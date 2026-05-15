@@ -1,4 +1,4 @@
-import { AccordionButtonDeprecated } from '@codecademy/gamut';
+import { AccordionButtonDeprecated, Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof AccordionButtonDeprecated> = {
@@ -33,4 +33,11 @@ export const Blue: Story = {
   args: {
     theme: 'blue',
   },
+  decorators: [
+    (Story) => (
+      <Box bg="navy">
+        <Story />
+      </Box>
+    ),
+  ],
 };

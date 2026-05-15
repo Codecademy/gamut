@@ -32,7 +32,7 @@ export const Default = () => {
         inputField: '',
         radioGroupField: undefined,
         textAreaField: '',
-        nestedCheckboxesField: ['react', 'typescript', 'backend'],
+        nestedCheckboxesField: ['angular', 'typescript', 'backend'],
       },
       validationRules: {
         checkboxField: { required: 'you need to check this.' },

@@ -9,6 +9,7 @@ const meta: Meta<typeof Select> = {
     htmlFor: 'example-select',
     name: 'example-select',
     options: fruitOptions,
+    'aria-label': 'Select an option',
   },
   argTypes: {
     value: {
