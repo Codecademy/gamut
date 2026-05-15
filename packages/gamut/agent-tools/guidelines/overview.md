@@ -6,10 +6,10 @@ Gamut is the Codecademy / Skillsoft design system — React component library (`
 
 **Core principles**:
 
-- Components are color mode–aware by default — never hardcode hex values for adaptive UI
+- Components are color mode–aware by default — never hardcode hex values for adaptive, accessible UI
 - All components work across all themes without modification
-- Mobile-first, 12-column grid
-- Semantic color tokens guarantee WCAG AA contrast automatically
+- 12-column grid
+- Use **semantic theme tokens** from `@codecademy/gamut-styles` for **color roles** (ColorMode-aware), **typography**, **spacing**, **border radii**, and shared **layout** values (`elements`, …) — not raw palette hex or magic numbers. Defaults support accessible pairings, but **no token set guarantees WCAG AA** for every composition; validate non-standard combinations.
 
 **ColorMode in product UI:** Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
 
