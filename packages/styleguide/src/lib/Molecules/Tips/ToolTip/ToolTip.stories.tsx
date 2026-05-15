@@ -108,11 +108,31 @@ export const Floating: Story = {
 
 export const InteractiveElement: Story = {
   render: () => (
-    <FlexBox center m={32}>
+    <FlexBox center justifyContent="space-around">
       <ToolTip id="stroke-button-ex" info="And here's a tooltip">
         <StrokeButton aria-describedby="stroke-button-ex">
           I&apos;ve got my own text
         </StrokeButton>
+      </ToolTip>
+      <ToolTip
+        alignment="left-center"
+        id="floating-ex-lc"
+        info="Tooltip for a FillButton"
+        placement="floating"
+      >
+        <FillButton aria-describedby="floating-ex-lc" icon={StudyBookIcon}>
+          Left center
+        </FillButton>
+      </ToolTip>
+      <ToolTip
+        alignment="right-center"
+        id="floating-ex-rc"
+        info="Tooltip for a FillButton"
+        placement="floating"
+      >
+        <FillButton aria-describedby="floating-ex-rc" icon={StudyBookIcon}>
+          Right center
+        </FillButton>
       </ToolTip>
     </FlexBox>
   ),
@@ -131,5 +151,37 @@ export const Disabled: Story = {
         </FillButton>
       </ToolTip>
     </FlexBox>
+  ),
+};
+
+export const HorizontalAlignments: Story = {
+  render: () => (
+    <>
+      <FlexBox center width="95%">
+        Check me out with `dir=rtl` using the toolbar!
+      </FlexBox>
+      <FlexBox justifyContent="space-around" width="95%">
+        <IconButton
+          icon={SparkleIcon}
+          tip="Inline (Leading)"
+          tipProps={{ alignment: 'left-center' }}
+        />
+        <IconButton
+          icon={SparkleIcon}
+          tip="Inline (Trailing)"
+          tipProps={{ alignment: 'right-center' }}
+        />
+        <IconButton
+          icon={SparkleIcon}
+          tip="Floating (Leading)"
+          tipProps={{ alignment: 'left-center', placement: 'floating' }}
+        />
+        <IconButton
+          icon={DeleteIcon}
+          tip="Floating (Trailing)"
+          tipProps={{ alignment: 'right-center', placement: 'floating' }}
+        />
+      </FlexBox>
+    </>
   ),
 };

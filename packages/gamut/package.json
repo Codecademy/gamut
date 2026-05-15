@@ -1,14 +1,16 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "68.2.2",
+  "version": "68.6.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
+  "bin": "./bin/gamut.mjs",
   "dependencies": {
-    "@codecademy/gamut-icons": "9.57.2",
-    "@codecademy/gamut-illustrations": "0.58.9",
-    "@codecademy/gamut-patterns": "0.10.28",
-    "@codecademy/gamut-styles": "17.13.1",
+    "@codecademy/gamut-icons": "9.57.5",
+    "@codecademy/gamut-illustrations": "0.58.11",
+    "@codecademy/gamut-patterns": "0.10.30",
+    "@codecademy/gamut-styles": "18.0.0",
     "@codecademy/variance": "0.26.1",
+    "@formatjs/intl-locale": "5.3.1",
     "@react-aria/interactions": "3.25.0",
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",
@@ -28,7 +30,6 @@
     "react-use": "^15.3.8",
     "sanitize-markdown": "^2.6.7"
   },
-  "bin": "./bin/gamut.mjs",
   "files": [
     "dist",
     "bin",

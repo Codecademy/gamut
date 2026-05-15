@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { webFonts } from './remoteAssets/fonts';
 import { coreTheme } from './themes';
-import { FontConfig, getFonts } from './utils/fontUtils';
+import { FontConfig, getFonts } from './utilities/fontUtils';
 
 /*
  * Only preload woff2 fonts, since woff1 are only included as fallbacks.
