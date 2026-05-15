@@ -80,4 +80,5 @@ These UX rules target **Apercu + Suisse** products; do not blindly apply to Perc
 ## Related skills
 
 - [`gamut-typography`](../../skills/gamut-typography/SKILL.md) — deeper editorial patterns for agents.
-- [`gamut-theming`](../../skills/gamut-theming/SKILL.md) — accessing `theme.font*` in styled components.
+- [`gamut-style-utilities`](../../skills/gamut-style-utilities/SKILL.md) — `css()` / `variant` / `states` and tokenized typography in styled components.
+- [`gamut-theming`](../../skills/gamut-theming/SKILL.md) — which theme / `GamutProvider` / `theme.d.ts`.

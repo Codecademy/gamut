@@ -4,7 +4,7 @@ Use **semantic aliases** for UI that should respond to **color mode** (light/dar
 
 Prefer **`css` / `variant` / `states`** from `@codecademy/gamut-styles` with semantic names (see Storybook [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)).
 
-**Related:** [`setup.md`](../setup.md) (which theme to import) · [`gamut-theming` skill](../../skills/gamut-theming/SKILL.md) · [`gamut-color-mode` skill](../../skills/gamut-color-mode/SKILL.md) · [`modes.md`](modes.md) (`<ColorMode>`, `<Background>`)
+**Related:** [`setup.md`](../setup.md) (which theme to import) · [`gamut-theming` skill](../../skills/gamut-theming/SKILL.md) · [`gamut-style-utilities` skill](../../skills/gamut-style-utilities/SKILL.md) · [`gamut-color-mode` skill](../../skills/gamut-color-mode/SKILL.md) · [`modes.md`](modes.md) (`<ColorMode>`, `<Background>`)
 
 Percipio, LX Studio, Admin, and Platform override subsets of semantic mappings while keeping the shared alias API — see theme sources below before hardcoding palette names or hex.
 

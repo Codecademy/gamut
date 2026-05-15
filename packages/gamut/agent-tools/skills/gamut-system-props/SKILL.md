@@ -7,7 +7,7 @@ description: Use this skill when building or refactoring styled Gamut components
 
 Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/config.ts) (definitions) and [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`variance.create` groups). **`Box`**, **`FlexBox`**, and **`GridBox`** compose the same groups in [`packages/gamut/src/Box/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/props.ts).
 
-**See also:** [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) (semantic colors, `variant` / `states`, `StyleProps`, responsive examples) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
+**See also:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) (semantic colors, responsive examples) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
 
 ## Overview
 

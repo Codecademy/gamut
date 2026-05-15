@@ -26,6 +26,8 @@ This set is not exhaustive (e.g. `text-accent`, `background-disabled`, `danger` 
 
 **Storybook:** [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — interactive reference. [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic tokens, `css` / `variant` / `states`, and system props with ColorMode.
 
+**Agent skill:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) — `css` / `variant` / `states` with semantic colors alongside ColorMode.
+
 ## `<ColorMode />`
 
 Wraps content in a color mode context. Place `<ColorMode />` as high in the app tree as practical. For a nested or static themed area on a page, use `<Background />` instead.

@@ -13,6 +13,8 @@ Gamut is the Codecademy / Skillsoft design system — React component library (`
 
 **ColorMode in product UI:** Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
 
+**Agent skills (styling / themes):** `gamut-style-utilities` (`css`, `variant`, `states`, `StyleProps`), `gamut-theming` (which theme, `GamutProvider`, new themes), `gamut-system-props` (`system.*` / `Box`), `gamut-color-mode` (ColorMode / semantic color).
+
 ## Themes
 
 Runtime stacks come from `@codecademy/gamut-styles` (see [foundations/typography.md](foundations/typography.md)). Product `DESIGN.*.md` may differ until reconciled.
@@ -38,3 +40,5 @@ Set the theme at the app root via `<GamutProvider theme={...}>`.
 | [foundations/spacing.md](foundations/spacing.md)       | Spacing scale, radii, Layout grid; system props + responsive/container queries |
 | [components/overview.md](components/overview.md)       | Full component catalog                                                         |
 | [components/buttons.md](components/buttons.md)         | Button variants, props, decision tree                                          |
+| `agent-tools/skills/gamut-style-utilities/SKILL.md`    | `css` / `variant` / `states`, `StyleProps`, `useTheme` escape hatch            |
+| `agent-tools/skills/gamut-theming/SKILL.md`            | Theme matrix, `GamutProvider`, CreatingThemes                                  |
