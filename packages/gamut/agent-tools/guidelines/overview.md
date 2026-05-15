@@ -11,7 +11,7 @@ Gamut is the Codecademy / Skillsoft design system — React component library (`
 - Mobile-first, 12-column grid
 - Semantic color tokens guarantee WCAG AA contrast automatically
 
-\*ColorMode in product UI:\*\* Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
+**ColorMode in product UI:** Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
 
 ## Themes
 
@@ -27,12 +27,12 @@ Set the theme at the app root via `<GamutProvider theme={...}>`.
 
 ## Reading order
 
-| File                                                   | What it covers                                |
-| ------------------------------------------------------ | --------------------------------------------- |
-| [setup.md](setup.md)                                   | Packages, GamutProvider, theme selection      |
-| [foundations/color.md](foundations/color.md)           | Semantic aliases, raw palette, decision guide |
-| [foundations/modes.md](foundations/modes.md)           | Light/dark ColorMode, Background component    |
-| [foundations/typography.md](foundations/typography.md) | Typefaces, font scale, rules                  |
-| [foundations/spacing.md](foundations/spacing.md)       | Spacing, border radius, responsive grid       |
-| [components/overview.md](components/overview.md)       | Full component catalog                        |
-| [components/buttons.md](components/buttons.md)         | Button variants, props, decision tree         |
+| File                                                   | What it covers                                                          |
+| ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| [setup.md](setup.md)                                   | Packages, GamutProvider, theme selection                                |
+| [foundations/color.md](foundations/color.md)           | Semantic roles (all themes), where to verify hex, Core-only cheatsheets |
+| [foundations/modes.md](foundations/modes.md)           | Light/dark ColorMode, Background component                              |
+| [foundations/typography.md](foundations/typography.md) | Typefaces, font scale, rules                                            |
+| [foundations/spacing.md](foundations/spacing.md)       | Spacing, border radius, responsive grid                                 |
+| [components/overview.md](components/overview.md)       | Full component catalog                                                  |
+| [components/buttons.md](components/buttons.md)         | Button variants, props, decision tree                                   |
