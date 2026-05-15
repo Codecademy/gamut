@@ -1,123 +1,75 @@
 ---
 name: gamut-typography
-description: Use this skill when creating or reviewing UI text in Gamut apps — headlines, body, captions, labels, code snippets, or text-heavy layouts — even if the user does not name fonts or tokens. Covers Apercu Pro, Suisse Intl Mono, scale, line heights, line length, and alignment.
+description: Use this skill when creating or reviewing UI text in Gamut apps — headlines, body, captions, labels, code snippets, or text-heavy layouts. Covers theme-specific stacks (Core Apercu/Suisse vs Percipio/LX Skillsoft), fontSize / lineHeight tokens, semantic fontWeight title (700 vs 500), line length, and alignment for Codecademy-branded surfaces.
 ---
 
 # Gamut Typography
 
-> **Scope**: This skill covers typography for **Codecademy products** using the Core, Admin, or Platform themes (Apercu + Suisse). Percipio uses Roboto for all type — see `DESIGN.md` for Percipio-specific guidance. LX Studio uses Hanken Grotesk in place of both Apercu and Suisse.
+**Implementation source of truth:** [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes). Agent guideline: [foundations/typography.md](../../guidelines/foundations/typography.md).
 
-## Typefaces
+## Scope by theme
 
-Codecademy products use two typefaces:
+| Themes                            | Fonts                                                                                                                                    | `fontWeight.title` |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| **Core**, **Admin**, **Platform** | `base` → Apercu stack; `accent` → Suisse + Apercu stack                                                                                  | **700**            |
+| **Percipio**, **LX Studio**       | `base` → Skillsoft Text; `accent` → Skillsoft Sans; Percipio `monospace` → Roboto Mono; LX `monospace` matches Core stack per theme file | **500**            |
 
-### Apercu Pro (`fontFamily: "base"`)
-
-The primary typeface. Geometric-ish, humanist sans-serif. Use for:
-- Headlines (Bold weight)
-- Body / paragraph text (Regular weight)
-- UI labels, menu items (Regular weight)
-- Emphasis within body copy (Italic — **not** Bold)
-
-**Rules:**
-- Do not use Bold to emphasize text within a Regular-weight paragraph. Use Italic instead.
-- Set with generous line-height for body text: **150–175%** of the type size (e.g. 16px type → 24–28px line-height).
-- Headlines should use **100–110%** line-height to appear intentional and grouped.
-- Text should be **left-aligned** by default.
-
-### Suisse Intl Mono (`fontFamily: "accent"`)
-
-Monospace accent typeface. Use sparingly for:
-- Code snippets and inline code
-- Numbers, figures, and statistics
-- Captions and labels that reference technical/engineering context
-- Enumerated lists
-- Quotations in a technical voice
-
-**Rules:**
-- Every character is the same width — avoid long paragraph-length prose in Suisse.
-- It reads large for its point size: **reduce the size by ~10–15%** relative to Apercu text at the same visual scale (e.g. 14px Suisse ≈ 16px Apercu visually).
-- Requires extra line-height to remain readable.
+Use **`fontWeight="title"`** for headlines / emphasis roles — never hardcode **`700`** on Percipio/LX unless SPECIFICALLY noted in Figma designs.
 
 ## Font size scale (`fontSize`)
 
-Sizes are accessed via the theme's `fontSize` scale. Common keys:
+Theme keys: `64`, `44`, `34`, `26`, `22`, `20`, `18`, `16`, `14`.
 
 ```tsx
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-
-// Via system props
 import { system } from '@codecademy/gamut-styles';
-const Text = styled.p(system.typography);
-<Text fontSize={16} />;
 
-// Via css() utility
-const Box = styled.div(css({ fontSize: 14 }));
+const Paragraph = styled.p(system.typography);
+<Paragraph fontSize={16} lineHeight="base" />;
 
-// Via theme directly (outside styled components)
-import { theme } from '@codecademy/gamut-styles';
-const size = theme.fontSize[16];
+const Styled = styled.div(css({ fontSize: 14, fontFamily: 'base' }));
 ```
 
-## Line heights (`lineHeight`)
+## Line height (`lineHeight`)
 
-Line heights are limited to **multiples of 4px**. Type boxes are placed on an **8px placement grid**.
-
-Guidelines:
-- Body text: 150–175% of font size
-- Headlines: 100–110% of font size
+Tokens: **`base`** (1.5), **`spacedTitle`** (1.3), **`title`** (1.2). Prefer tokens over raw decimals. Only specify `lineHeight` when specified by design.
 
 ## Line length
 
-Controlling line length is essential for readability:
-
-| Context | Target |
-|---|---|
-| Single-column body text | ~66 characters (max 85) |
-| Multi-column layouts | ≤50 characters per line |
-| Minimum | 45 characters |
-
-**How to control line length**: Start with the right text style for the design, then adjust the width or column count of the text container.
-
-## Alignment
-
-- **Left-align** paragraphs by default — this is easiest to read and supports grid alignment.
-- **Center-align** only for short marketing headlines or specific interface components with brief text.
-- **Never right-align** text in normal circumstances (exceptions: numbers, equations).
-- Do not adjust letter-spacing.
+| Context            | Target                   |
+| ------------------ | ------------------------ |
+| Single-column body | ~66 characters (max ~85) |
+| Multi-column       | ≤50 characters per line  |
+| Minimum            | ~45 characters           |
 
 ## Accessing typography tokens
 
 ```tsx
-// System props (recommended for styled components)
 import { system } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 
-const Heading = styled.h2(
-  variance.compose(system.typography, system.space)
-);
+const Heading = styled.h2(variance.compose(system.typography, system.space));
 
-<Heading fontSize={24} fontFamily="base" fontWeight="bold" lineHeight={1.1} mb={8} />;
+<Heading
+  fontSize={26}
+  fontFamily="base"
+  fontWeight="title"
+  lineHeight="title"
+  mb={8}
+/>;
 
-// css() utility (recommended for static styles)
 import { css } from '@codecademy/gamut-styles';
 
 const Caption = styled.span(
-  css({ fontFamily: 'accent', fontSize: 12, color: 'secondary' })
+  css({ fontFamily: 'accent', fontSize: 14, color: 'text-secondary' })
 );
-
-// Theme object (outside styled components)
-import { theme } from '@codecademy/gamut-styles';
-import { css as emotionCss } from '@emotion/react';
-
-const myStyles = emotionCss`
-  font-size: ${theme.fontSize[14]};
-`;
 ```
 
-## Semantic vs. visual sizing
+Prefer `<Text>` from `@codecademy/gamut` with `variant` / `as` — see Storybook [Typography / Text](https://gamut.codecademy.com/?path=/docs-typography-text--docs).
 
-- The term **"Title"** distinguishes visual size from semantic HTML hierarchy (H1–H6).
-- A visually large title may use `<h2>` or `<p>` semantically — visual scale and semantic meaning are independent in Gamut.
-- Choose HTML heading levels for document structure, choose font size for visual hierarchy.
+## Semantic vs visual headings
+
+- `<Text as="h1">` … `<Text as="h6">` gets **default heading styles**: each tag maps to the same scale as `variant="title-xxl"` … `variant="title-xs"` (`h1` largest through `h6` smallest). Plain `<Text>` defaults to `as="span"` (inherits font size).
+- Use **`variant`** plus **`fontSize` / `fontWeight` / `lineHeight`** (and other system props) to override element defaults when the outline needs one heading level but the UI needs another visual weight — e.g. `<Text as="h2" variant="title-sm">`.
+- Still pick **`h1`–`h6`** for document structure and assistive tech; overrides are for intentional divergence between semantics and appearance.
