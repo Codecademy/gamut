@@ -6,8 +6,6 @@ Source of truth for scales and stacks: [`packages/gamut-styles/src/variables/typ
 
 **Storybook:** [Typography / Text](https://gamut.codecademy.com/?path=/docs-typography-text--docs) · [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (system props) · Foundations / Theme: [Core](https://gamut.codecademy.com/?path=/docs-foundations-theme-core-theme--docs), [Percipio](https://gamut.codecademy.com/?path=/docs-foundations-theme-percipio-theme--docs), [LX Studio](https://gamut.codecademy.com/?path=/docs-foundations-theme-lx-studio-theme--docs)
 
-**DESIGN.md drift:** [`DESIGN.Percipio.md`](../../DESIGN.Percipio.md) and [`DESIGN.LXStudio.md`](../../DESIGN.LXStudio.md) sometimes describe **Roboto** or **Hanken Grotesk** for those products. **Shipped `gamut-styles` themes** currently use the stacks below (Skillsoft Text / Sans). Treat DESIGN YAML as product narrative until it matches code — confirm with the design platform when they disagree.
-
 ## Themes × font families
 
 Semantic keys (`base`, `accent`, `monospace`, `system`) are stable; resolved stacks depend on `GamutProvider` theme ([`setup.md`](../setup.md)).
