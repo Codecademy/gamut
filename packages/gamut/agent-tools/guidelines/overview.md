@@ -17,15 +17,15 @@ Gamut is the Codecademy / Skillsoft design system — React component library (`
 
 ## Themes
 
-Runtime stacks come from `@codecademy/gamut-styles` (see [foundations/typography.md](foundations/typography.md)). Product `DESIGN.*.md` may differ until reconciled.
+Runtime stacks come from `@codecademy/gamut-styles` (see [foundations/typography.md](foundations/typography.md)).
 
-| Theme         | Product                         | Primary UI fonts (shipped theme)                                               | Dark mode |
-| ------------- | ------------------------------- | ------------------------------------------------------------------------------ | --------- |
-| **Core**      | Codecademy (default)            | Apercu + Suisse (`accent`)                                                     | ✓         |
-| **Admin**     | Codecademy admin tools          | Same as Core                                                                   | ✓         |
-| **Platform**  | Codecademy learning environment | Same as Core                                                                   | ✓         |
-| **LX Studio** | LX Studio application           | Skillsoft Text / Sans (`base` / `accent`); DESIGN docs may list Hanken Grotesk | —         |
-| **Percipio**  | Skillsoft Percipio              | Skillsoft Text / Sans; DESIGN docs may list Roboto                             | —         |
+| Theme         | Product                         | Primary UI fonts (shipped theme)                       | Dark mode |
+| ------------- | ------------------------------- | ------------------------------------------------------ | --------- |
+| **Core**      | Codecademy (default)            | Apercu + Suisse (`accent`)                             | ✓         |
+| **Admin**     | Codecademy admin tools          | Same as Core                                           | ✓         |
+| **Platform**  | Codecademy learning environment | Same as Core                                           | ✓         |
+| **LX Studio** | LX Studio application           | Skillsoft Text / Sans (`base` / `accent`)              | ✓         |
+| **Percipio**  | Skillsoft Percipio              | Skillsoft Text / Sans; Roboto Mono / Roboto (`system`) | ✓         |
 
 Set the theme at the app root via `<GamutProvider theme={...}>`.
 

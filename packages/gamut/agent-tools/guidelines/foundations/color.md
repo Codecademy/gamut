@@ -44,8 +44,6 @@ These tokens describe **roles**. Actual colors come from the active theme + Colo
 | `primary-inverse` | Accent on top of primary-colored surfaces |                              |
 | `secondary`       | Secondary CTA, ghost buttons              | Pairs with `secondary-hover` |
 | `secondary-hover` | Hover on secondary interactive            |                              |
-| `interface`       | Checkboxes, toggles, sliders              | Pairs with `interface-hover` |
-| `interface-hover` | Hover on interface elements               |                              |
 | `danger`          | Destructive actions, error emphasis       | Pairs with `danger-hover`    |
 | `danger-hover`    | Hover on danger interactive               |                              |
 
@@ -117,8 +115,6 @@ The tables below are **not** valid for Percipio, LX Studio, or other themes. The
 | `primary-inverse` | `#FFD300`    | `#3A10E5` |
 | `secondary`       | `#10162F`    | `#ffffff` |
 | `secondary-hover` | navy-800 86% | white 80% |
-| `interface`       | `#3A10E5`    | `#FFD300` |
-| `interface-hover` | `#5533FF`    | `#CCA900` |
 | `danger`          | `#E91C11`    | `#E85D7F` |
 | `danger-hover`    | `#BE1809`    | `#DC5879` |
 
