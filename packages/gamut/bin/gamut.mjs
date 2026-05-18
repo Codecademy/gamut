@@ -75,17 +75,19 @@ function printPluginHelp() {
 gamut plugin — Manage the Gamut plugin
 
 Subcommands:
-  install [target] [--scope <scope>]    Install the plugin into a tool
-  remove  [target]                      Remove an installed plugin
-  update  [target] [--scope <scope>]    Update an already-installed plugin
-  list                                  Show installation status for all targets
+  install [target] [--scope <scope>] [--theme <theme>]  Install the plugin (+ optional DESIGN.md)
+  remove  [target]                                      Remove an installed plugin
+  update  [target] [--scope <scope>] [--theme <theme>]  Update an installed plugin
+  list                                                  Show installation status for all targets
 
 Targets:   cursor (default)  |  claude
 Scopes:    all (default)     |  skills  |  rules  |  commands  |  agents
+Themes:    core | admin | platform | percipio | lxstudio  (--theme copies DESIGN.md to repo root)
 
 Examples:
   gamut plugin install
   gamut plugin install claude
+  gamut plugin install cursor --theme percipio
   gamut plugin install cursor --scope skills
   gamut plugin remove claude
   gamut plugin update

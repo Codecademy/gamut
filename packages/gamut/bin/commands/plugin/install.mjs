@@ -3,6 +3,11 @@ import { resolve } from 'node:path';
 
 import { claudePluginSpec, marketplaceName } from '../../lib/claude.mjs';
 import { cursorDestPath } from '../../lib/cursor.mjs';
+import {
+  installDesignMd,
+  listCanonicalThemes,
+  resolveTheme,
+} from '../../lib/design.mjs';
 import { log, warn } from '../../lib/io.mjs';
 import { getFlag, resolvePluginDir } from '../../lib/resolve-plugin-dir.mjs';
 import { runCommand } from '../../lib/run-command.mjs';
@@ -24,12 +29,18 @@ Arguments:
 Options:
   --scope <scope>      Content to install (default: all)
                        all | skills | rules | commands | agents
+  --theme <theme>      Copy DESIGN.*.md to ./DESIGN.md in the current directory
+                       core | admin | platform | percipio | lxstudio
+                       (admin/platform use Codecademy DESIGN; aliases: codecademy, cc, lx-studio)
+  --force              Overwrite existing DESIGN.md when using --theme
   --plugin-dir <path>  Override the bundled agent-tools directory
   -h, --help           Show this help message
 
 Examples:
   gamut plugin install
   gamut plugin install claude
+  gamut plugin install cursor --theme core
+  gamut plugin install cursor --theme percipio --force
   gamut plugin install cursor --scope skills
   gamut plugin install cursor --plugin-dir ./my-agent-tools
 `);
@@ -173,10 +184,30 @@ export default async function install(args) {
   }
 
   const pluginDir = await resolvePluginDir(args);
+  const theme = getFlag(args, '--theme');
+  const force = args.includes('--force');
+
+  if (theme) {
+    resolveTheme(theme);
+  }
 
   if (target === 'cursor') {
     await installCursor(pluginDir, scope);
   } else if (target === 'claude') {
     await installClaude(pluginDir);
   }
+
+  if (theme) {
+    const { dest, label } = await installDesignMd(
+      pluginDir,
+      process.cwd(),
+      theme,
+      {
+        force,
+      }
+    );
+    log(`DESIGN.md: installed (${label}) → ${dest}`);
+  }
 }
+
+export { listCanonicalThemes };

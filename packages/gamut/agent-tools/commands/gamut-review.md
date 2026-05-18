@@ -6,9 +6,20 @@ allowed-tools: Read Glob Grep
 
 This is an audit of **existing code** at **`$ARGUMENTS`** (default: current working directory). Your job is to find violations and misuse, not to generate new code.
 
-Use `DESIGN.md` at the project root as the authoritative reference for the product's design intent, token names, and component patterns. This file is distributed as `DESIGN.Codecademy.md` or `DESIGN.Percipio.md` from the `@codecademy/gamut` agent-tools package and renamed to `DESIGN.md` by the consuming project. When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
+When `DESIGN.md` is present at the audit root, use it as the authoritative reference for product design intent, token names, and component patterns. It is copied from `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` in `@codecademy/gamut` agent-tools (via `gamut plugin install --theme <name>`). When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
 
-Run all five checks below, then print a single consolidated report using the format at the end of this file.
+Run **Check 0** first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
+
+---
+
+## Check 0 — DESIGN.md present
+
+Resolve the audit root: `$ARGUMENTS` if provided, otherwise the current working directory. Look for **`DESIGN.md`** at that root (not inside `node_modules` or package subfolders unless the audit path is explicitly that folder).
+
+| Result      | Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Found**   | Report `✓ DESIGN.md present (<path>)`. Proceed with Checks 1–5 using this file for product/theme context.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Missing** | Report `✗ DESIGN.md not found` as a **blocking** finding. Include remediation: from the repo root run `gamut plugin install cursor --theme core` (or `percipio`, `lxstudio`, `admin`, `platform`; also `claude`), or manually copy the matching `DESIGN.*.md` from `@codecademy/gamut` agent-tools and rename to `DESIGN.md`. Still run Checks 1–3 and 5. For **Check 4**, list hex violations with `palette:` / `semantic:` only where Appendix A/B apply without product YAML — prefix the Hardcoded colors section with **`⚠ low confidence — no DESIGN.md`** and **do not** assume Codecademy Core semantics; do not use Appendix B shortcuts as authoritative. |
 
 ---
 
@@ -64,7 +75,7 @@ Align findings with project docs and Storybook:
 - [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic colors + `css` / `variant` / `states` from `gamut-styles`.
 - Foundations / Theme stories (Core, Admin, Platform, Percipio, LX Studio) — verify hex ↔ semantic if the product is not Codecademy Core.
 
-**Theme context:** Infer from `GamutProvider` / app config / root `DESIGN.md` (from `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md`). If unknown, **assume Codecademy Core** semantics below and add a report note to confirm against the correct theme Storybook page.
+**Theme context:** If Check 0 passed, infer product/theme from root `DESIGN.md` and `GamutProvider` / app config. If Check 0 failed, follow the low-confidence rules in Check 0 — **do not** assume Codecademy Core semantics. If `DESIGN.md` exists but theme is still unclear, add a report note to confirm against the correct theme Storybook page.
 
 **Discovery:** Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`, `.css`, `.scss`, `.less`) for inline hex literals (`#RGB` or `#RRGGBB`). Comparison is case-insensitive. Skip `node_modules`, `dist`, `.next`, `build`, `.turbo` (same spirit as other checks).
 
@@ -191,6 +202,10 @@ Skill reference for remediation: `gamut-testing`
 ```
 Gamut Review — <absolute path>
 ══════════════════════════════════════════════════
+
+DESIGN.md
+  ✓  present   <path>/DESIGN.md
+  ✗  missing   run: gamut plugin install cursor --theme <core|percipio|lxstudio|…>  [blocking for color audit]
 
 Dependencies
   ✓  @codecademy/gamut            <version>

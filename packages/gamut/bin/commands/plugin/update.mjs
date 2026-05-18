@@ -17,12 +17,15 @@ Arguments:
 Options:
   --scope <scope>      Content to update (default: all)
                        all | skills | rules | commands | agents
+  --theme <theme>      Refresh ./DESIGN.md (same themes as install)
+  --force              Overwrite existing DESIGN.md when using --theme
   --plugin-dir <path>  Override the bundled agent-tools directory
   -h, --help           Show this help message
 
 Examples:
   gamut plugin update
   gamut plugin update claude
+  gamut plugin update cursor --theme core --force
   gamut plugin update cursor --scope skills
 `);
 }

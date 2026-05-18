@@ -29,18 +29,19 @@ export const parameters = {
 Install Gamut agent tools into your editor with the `gamut` CLI from the `@codecademy/gamut` package:
 
 ```sh
-# Cursor (default) — skills, rules, commands, agents
+# Cursor (default) — skills, rules, commands, agents, guidelines
 gamut plugin install
-gamut plugin install cursor --scope skills
+gamut plugin install cursor --theme core
 
-# Claude Code
-gamut plugin install claude
+# Claude Code + product DESIGN.md at repo root
+gamut plugin install claude --theme percipio
 
 # Check status
 gamut plugin list
 
 # Refresh after gamut updates
 gamut plugin update
+gamut plugin update cursor --theme core --force
 ```
 
 **What gets installed:** Content from [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools) — `skills/`, `rules/`, `commands/`, `agents/`, and `guidelines/` (implementation reference; same markdown is also published to the Figma Make kit).
@@ -60,9 +61,18 @@ Gamut ships **YAML design-context files** in [`packages/gamut/agent-tools/`](htt
 
 ### Setup in your app repo
 
-1. Pick the file for your product (`DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md`).
-2. Copy it to the **repository root** and rename to **`DESIGN.md`** (agents and `gamut-review` expect that filename at project root).
-3. Run `gamut plugin install cursor` or `gamut plugin install claude` separately — the plugin installs **directories** (`skills`, `rules`, `commands`, `agents`, `guidelines`), not `DESIGN.md` (copy the DESIGN file to your app root as in step 2).
+Run from the **repository root**:
+
+```sh
+gamut plugin install cursor --theme core
+# or: percipio | lxstudio | admin | platform (admin/platform use Codecademy DESIGN)
+```
+
+`--theme` installs the plugin **and** copies the matching `DESIGN.*.md` to **`DESIGN.md`** at the repo root. Use `--force` to overwrite an existing `DESIGN.md`.
+
+**Manual fallback:** copy `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` from agent-tools to the repo root and rename to `DESIGN.md`.
+
+**Plugin only (no DESIGN.md):** `gamut plugin install cursor` — installs `skills`, `rules`, `commands`, `agents`, and `guidelines` only. [`gamut-review`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md) will flag a missing `DESIGN.md` and suggest `--theme`.
 
 ### How this differs from other AI context
 
