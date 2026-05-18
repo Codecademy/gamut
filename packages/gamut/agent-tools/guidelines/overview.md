@@ -29,6 +29,8 @@ Runtime stacks come from `@codecademy/gamut-styles` (see [foundations/typography
 
 Set the theme at the app root via `<GamutProvider theme={...}>`.
 
+**Figma Make, `gamut plugin`, and `DESIGN.md`:** See Storybook [Meta → AI Tooling → Creating design with AI](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-creating-design-with-ai--page). For product design context in app repos, copy the appropriate `DESIGN.*.md` from `agent-tools` to the repository root as `DESIGN.md` (documented there).
+
 ## Reading order
 
 | File                                                   | What it covers                                                                 |

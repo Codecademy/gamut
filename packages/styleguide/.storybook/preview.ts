@@ -80,7 +80,12 @@ const preview: Preview = {
                 'Component code examples',
               ],
             ],
-            'MCP',
+            [
+              'AI Tooling',
+              ['About', 'Creating design with AI'],
+              'Figma Tooling',
+              ['About', 'Code Connect', 'Figma MCP'],
+            ],
           ],
           'Foundations',
           'Layouts',

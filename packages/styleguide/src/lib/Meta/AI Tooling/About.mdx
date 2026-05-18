@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as creatingDesignWithAiParameters } from './Creating design with AI.mdx';
+
+export const parameters = {
+  id: 'Meta/AI Tooling',
+  title: 'AI Tooling',
+  subtitle:
+    'AI-assisted design and development with Gamut — Figma Make, Cursor and Claude plugins, and product design context files.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/About" />
+
+<AboutHeader {...parameters} />
+
+<TableOfContents
+  links={addParentPath(parameters.id, [creatingDesignWithAiParameters])}
+/>
