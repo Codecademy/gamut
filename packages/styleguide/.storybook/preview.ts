@@ -85,7 +85,7 @@ const preview: Preview = {
               [
                 'About',
                 'Gamut plugin',
-                ['About', 'Install', 'DESIGN.md', 'Best practices'],
+                ['About', 'Install', 'Best practices'],
                 'Figma',
                 ['About', 'Code Connect', 'Figma MCP'],
               ],

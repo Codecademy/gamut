@@ -33,15 +33,106 @@ gamut plugin install claude --theme percipio
 
 ### Options
 
-| Flag              | Purpose                                                                                                                                                                                                             |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--scope <scope>` | **Cursor only.** `all` (default): `skills/`, `rules/`, `commands/`, `guidelines/`. Or one dir: `skills`, `rules`, `commands`, or `agents` (reserved; folder is empty today). `guidelines/` is not a separate scope. |
-| `--theme <theme>` | Copy matching `DESIGN.*.md` to `./DESIGN.md` — see [DESIGN.md](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-design-md--page)                                                               |
-| `--force`         | Overwrite existing `DESIGN.md` when using `--theme`                                                                                                                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--scope &lt;scope&gt;</code>
+      </td>
+      <td>
+        <strong>Cursor only.</strong> <code>all</code> (default):{' '}
+        <code>skills/</code>, <code>rules/</code>, <code>commands/</code>,{' '}
+        <code>guidelines/</code>. Or one dir: <code>skills</code>,{' '}
+        <code>rules</code>, <code>commands</code>, or <code>agents</code>{' '}
+        (reserved; folder is empty today). <code>guidelines/</code> is not a
+        separate scope.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--theme &lt;theme&gt;</code>
+      </td>
+      <td>
+        Copy matching <code>DESIGN.*.md</code> from agent-tools to{' '}
+        <code>./DESIGN.md</code> at the repo root (product YAML for agents and{' '}
+        <code>gamut-review</code>)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--force</code>
+      </td>
+      <td>
+        Overwrite existing <code>DESIGN.md</code> when using{' '}
+        <code>--theme</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 `gamut plugin install claude` always registers the full plugin via the Claude marketplace; `--scope` does not apply.
 
-Canonical themes: `core`, `admin`, `platform`, `percipio`, `lxstudio` (aliases: `codecademy`, `cc`, `lx-studio`). `admin` and `platform` use the Codecademy `DESIGN.Codecademy.md` source.
+### DESIGN.md sources
+
+<table>
+  <thead>
+    <tr>
+      <th>--theme</th>
+      <th>Copies from</th>
+      <th>Product</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>core</code>
+      </td>
+      <td>
+        <a href="https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.Codecademy.md">
+          DESIGN.Codecademy.md
+        </a>
+      </td>
+      <td>Codecademy public (Core)</td>
+    </tr>
+    <tr>
+      <td>
+        <code>admin</code>, <code>platform</code>
+      </td>
+      <td>Same Codecademy file</td>
+      <td>Admin / learning platform</td>
+    </tr>
+    <tr>
+      <td>
+        <code>percipio</code>
+      </td>
+      <td>
+        <a href="https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.Percipio.md">
+          DESIGN.Percipio.md
+        </a>
+      </td>
+      <td>Percipio</td>
+    </tr>
+    <tr>
+      <td>
+        <code>lxstudio</code>
+      </td>
+      <td>
+        <a href="https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.LXStudio.md">
+          DESIGN.LXStudio.md
+        </a>
+      </td>
+      <td>LX Studio</td>
+    </tr>
+  </tbody>
+</table>
+
+Aliases: `codecademy`, `cc`, `lx-studio`. **Manual fallback:** copy the matching `DESIGN.*.md` to the repo root and rename to `DESIGN.md`. Plugin-only install (`gamut plugin install cursor` without `--theme`) skips `DESIGN.md`; `gamut-review` will flag it as missing.
 
 ## Update and remove
 
@@ -62,12 +153,55 @@ gamut plugin remove claude
 
 Content from [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools):
 
-| Directory     | Purpose                                                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `skills/`     | Task playbooks (theming, ColorMode, system props, forms, testing, …)                                                                       |
-| `rules/`      | Always-on guardrails (e.g. accessibility)                                                                                                  |
-| `commands/`   | Slash commands such as [`gamut-review`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md) |
-| `agents/`     | Reserved for future Cursor agent definitions; directory is empty in current releases                                                       |
-| `guidelines/` | Implementation reference (setup, foundations, components)                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>Directory</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>skills/</code>
+      </td>
+      <td>
+        Task playbooks (theming, ColorMode, system props, forms, testing, …)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>rules/</code>
+      </td>
+      <td>Always-on guardrails (e.g. accessibility)</td>
+    </tr>
+    <tr>
+      <td>
+        <code>commands/</code>
+      </td>
+      <td>
+        Slash commands such as{' '}
+        <a href="https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md">
+          gamut-review
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>agents/</code>
+      </td>
+      <td>
+        Reserved for future Cursor agent definitions; directory is empty in
+        current releases
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>guidelines/</code>
+      </td>
+      <td>Implementation reference (setup, foundations, components)</td>
+    </tr>
+  </tbody>
+</table>
 
 The same `guidelines/` markdown is published to the Figma Make kit for designers; engineers consume it via the plugin after install.

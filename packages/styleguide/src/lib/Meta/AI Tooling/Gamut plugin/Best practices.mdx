@@ -30,13 +30,65 @@ gamut plugin update cursor --theme core --force
 
 ## Which artifact to use when
 
-| Artifact                         | Where it lives                             | Used for                                                                               |
-| -------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------- |
-| `DESIGN.md` (from `DESIGN.*.md`) | App repo root                              | Coding agents + `gamut-review` — product tokens, semantic roles, patterns              |
-| `guidelines/` in agent-tools     | Cursor/Claude after `gamut plugin install` | Implementation reference (setup, foundations, components) — skills and rules link here |
-| `skills/`                        | Cursor/Claude after install                | Task playbooks — invoke when doing focused work (theming, ColorMode, forms, …)         |
-| `rules/`                         | Cursor/Claude after install                | Always-on guardrails for Gamut code (e.g. accessibility)                               |
-| `commands/`                      | Cursor/Claude after install                | Slash commands such as `/gamut-review`                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>Artifact</th>
+      <th>Where it lives</th>
+      <th>Used for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>DESIGN.md</code> (from <code>DESIGN.*.md</code>)
+      </td>
+      <td>App repo root</td>
+      <td>
+        Coding agents + <code>gamut-review</code> — product tokens, semantic
+        roles, patterns
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>guidelines/</code> in agent-tools
+      </td>
+      <td>
+        Cursor/Claude after <code>gamut plugin install</code>
+      </td>
+      <td>
+        Implementation reference (setup, foundations, components) — skills and
+        rules link here
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>skills/</code>
+      </td>
+      <td>Cursor/Claude after install</td>
+      <td>
+        Task playbooks — invoke when doing focused work (theming, ColorMode,
+        forms, …)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>rules/</code>
+      </td>
+      <td>Cursor/Claude after install</td>
+      <td>Always-on guardrails for Gamut code (e.g. accessibility)</td>
+    </tr>
+    <tr>
+      <td>
+        <code>commands/</code>
+      </td>
+      <td>Cursor/Claude after install</td>
+      <td>
+        Slash commands such as <code>/gamut-review</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Audit with gamut-review
 
@@ -59,8 +111,3 @@ Related skills under [`packages/gamut/agent-tools/skills/`](https://github.com/C
 <Callout text="MCP-generated code is experimental. Always validate and adapt before shipping — see Meta → AI Tooling → Figma → Figma MCP." />
 
 For Figma Dev Mode MCP setup and prompting, use [Figma MCP](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-figma-figma-mcp--page). Code Connect improves MCP output when designs use connected Gamut components.
-
-## Further reading
-
-- [Meta → Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic tokens, variants, and ColorMode in React
-- [`guidelines/foundations/color.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/guidelines/foundations/color.md) — palette and semantic roles
