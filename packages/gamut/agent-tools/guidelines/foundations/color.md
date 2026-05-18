@@ -1,16 +1,16 @@
 # Color
 
-Use **semantic aliases** for UI that should respond to **color mode** (light/dark) and **theme** (Core, Admin, Platform, Percipio, LX Studio). The **same semantic token names** (`text`, `primary`, `background`, …) exist across themes; **resolved palette values and hex differ** by `GamutProvider` theme and active ColorMode. Never assume Codecademy Core hex when advising another product.
+Use semantic aliases for UI that should respond to color mode (light/dark) and theme (Core, Admin, Platform, Percipio, LX Studio). The same semantic token names (`text`, `primary`, `background`, …) exist across themes; resolved palette values and hex differ by `GamutProvider` theme and active ColorMode. Never assume Codecademy Core hex when advising another product.
 
-Prefer **`css` / `variant` / `states`** from `@codecademy/gamut-styles` with semantic names (see Storybook [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)).
+Prefer `css` / `variant` / `states` from `@codecademy/gamut-styles` with semantic names (see Storybook [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)).
 
-**Related:** [`setup.md`](../setup.md) (which theme to import) · [`gamut-theming` skill](../../skills/gamut-theming/SKILL.md) · [`gamut-style-utilities` skill](../../skills/gamut-style-utilities/SKILL.md) · [`gamut-color-mode` skill](../../skills/gamut-color-mode/SKILL.md) · [`modes.md`](modes.md) (`<ColorMode>`, `<Background>`)
+Related: [`setup.md`](../setup.md) (which theme to import) · [`gamut-theming` skill](../../skills/gamut-theming/SKILL.md) · [`gamut-style-utilities` skill](../../skills/gamut-style-utilities/SKILL.md) · [`gamut-color-mode` skill](../../skills/gamut-color-mode/SKILL.md) · [`modes.md`](modes.md) (`<ColorMode>`, `<Background>`)
 
 Percipio, LX Studio, Admin, and Platform override subsets of semantic mappings while keeping the shared alias API — see theme sources below before hardcoding palette names or hex.
 
 ## Semantic aliases (theme-stable names)
 
-These tokens describe **roles**. Actual colors come from the active theme + ColorMode.
+These tokens describe roles. Actual colors come from the active theme + ColorMode.
 
 ### Text
 
@@ -70,20 +70,20 @@ These tokens describe **roles**. Actual colors come from the active theme + Colo
 
 Use these instead of memorizing hex:
 
-- **Storybook [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page)** — how aliases map per light/dark for reference layouts.
-- **Storybook Foundations → Theme** — per-product tables and guidance:
+- Storybook [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — how aliases map per light/dark for reference layouts.
+- Storybook Foundations → Theme — per-product tables and guidance:
   - [Core Theme](https://gamut.codecademy.com/?path=/docs-foundations-theme-core-theme--docs)
   - [Admin Theme](https://gamut.codecademy.com/?path=/docs-foundations-theme-admin-theme--docs)
   - [Platform Theme](https://gamut.codecademy.com/?path=/docs-foundations-theme-platform-theme--docs)
   - [Percipio Theme](https://gamut.codecademy.com/?path=/docs-foundations-theme-percipio-theme--docs)
   - [LX Studio Theme](https://gamut.codecademy.com/?path=/docs-foundations-theme-lx-studio-theme--docs)
   - [Creating Themes](https://gamut.codecademy.com/?path=/docs-foundations-theme-creating-themes--docs) — authoring new themes in `gamut-styles`
-- **Product design YAML** (root `DESIGN.md` from agent-tools): [`DESIGN.Codecademy.md`](../../DESIGN.Codecademy.md), [`DESIGN.Percipio.md`](../../DESIGN.Percipio.md), [`DESIGN.LXStudio.md`](../../DESIGN.LXStudio.md) — semantic ↔ palette for that product.
-- **Source:** theme definitions in [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes), palette scales in [`packages/gamut-styles/src/variables`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/variables).
+- Product design YAML (root `DESIGN.md` from agent-tools): [`DESIGN.Codecademy.md`](../../DESIGN.Codecademy.md), [`DESIGN.Percipio.md`](../../DESIGN.Percipio.md), [`DESIGN.LXStudio.md`](../../DESIGN.LXStudio.md) — semantic ↔ palette for that product.
+- Source: theme definitions in [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes), palette scales in [`packages/gamut-styles/src/variables`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/variables).
 
 ## Codecademy Core — illustrative light/dark hex only
 
-The tables below are **not** valid for Percipio, LX Studio, or other themes. They are a quick mental model for Codecademy **Core** defaults only.
+The tables below are not valid for Percipio, LX Studio, or other themes. They are a quick mental model for Codecademy Core defaults only.
 
 ### Text
 
@@ -141,7 +141,7 @@ The tables below are **not** valid for Percipio, LX Studio, or other themes. The
 
 ## Raw palette (Core-centric reference)
 
-Raw tokens name **fixed** swatches (surfaces, illustration, `<Background bg="…">` on Codecademy). **Palette keys and hex vary by theme** — Percipio and others add or remap scales (`percipioPalette`, etc.). Confirm allowed keys in the active theme or `DESIGN.md` before using a raw token in a non-Core app.
+Raw tokens name fixed swatches (surfaces, illustration, `<Background bg="…">` on Codecademy). Palette keys and hex vary by theme — Percipio and others add or remap scales (`percipioPalette`, etc.). Confirm allowed keys in the active theme or `DESIGN.md` before using a raw token in a non-Core app.
 
 For Codecademy Core defaults:
 

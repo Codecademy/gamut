@@ -2,34 +2,34 @@
 
 Gamut is the Codecademy / Skillsoft design system — React component library (`@codecademy/gamut`), design tokens (`@codecademy/gamut-styles`), and Figma components with live code previews via Figma Code Connect.
 
-**Design voice**: "Ruled by logic, but creative and a bit unexpected." Structured and trustworthy for a learning platform, with engaging personality. Medium density — information-rich layouts with strong typographic hierarchy. Never cramped or overly airy.
+Design voice: "Ruled by logic, but creative and a bit unexpected." Structured and trustworthy for a learning platform, with engaging personality. Medium density — information-rich layouts with strong typographic hierarchy. Never cramped or overly airy.
 
-**Core principles**:
+Core principles:
 
 - Components are color mode–aware by default — never hardcode hex values for adaptive, accessible UI
 - All components work across all themes without modification
 - 12-column grid
-- Use **semantic theme tokens** from `@codecademy/gamut-styles` for **color roles** (ColorMode-aware), **typography**, **spacing**, **border radii**, and shared **layout** values (`elements`, …) — not raw palette hex or magic numbers. Defaults support accessible pairings, but **no token set guarantees WCAG AA** for every composition; validate non-standard combinations.
+- Use semantic theme tokens from `@codecademy/gamut-styles` for color roles (ColorMode-aware), typography, spacing, border radii, and shared layout values (`elements`, …) — not raw palette hex or magic numbers. Defaults support accessible pairings, but no token set guarantees WCAG AA for every composition; validate non-standard combinations.
 
-**ColorMode in product UI:** Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
+ColorMode in product UI: Use `<ColorMode>` and `<Background>` from `@codecademy/gamut-styles` for scoped light/dark and contrast-safe surfaces — see [foundations/modes.md](foundations/modes.md) and the `gamut-color-mode` skill. Storybook: [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page), [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic tokens + `css` / `variant` / `states`).
 
-**Agent skills (styling / themes):** `gamut-style-utilities` (`css`, `variant`, `states`, `StyleProps`), `gamut-theming` (which theme, `GamutProvider`, new themes), `gamut-system-props` (`system.*` / `Box`), `gamut-color-mode` (ColorMode / semantic color).
+Agent skills (styling / themes): `gamut-style-utilities` (`css`, `variant`, `states`, `StyleProps`), `gamut-theming` (which theme, `GamutProvider`, new themes), `gamut-system-props` (`system.*` / `Box`), `gamut-color-mode` (ColorMode / semantic color).
 
 ## Themes
 
 Runtime stacks come from `@codecademy/gamut-styles` (see [foundations/typography.md](foundations/typography.md)). Product `DESIGN.*.md` may differ until reconciled.
 
-| Theme         | Product                         | Primary UI fonts (shipped theme)                                               | Dark mode |
-| ------------- | ------------------------------- | ------------------------------------------------------------------------------ | --------- |
-| **Core**      | Codecademy (default)            | Apercu + Suisse (`accent`)                                                     | ✓         |
-| **Admin**     | Codecademy admin tools          | Same as Core                                                                   | ✓         |
-| **Platform**  | Codecademy learning environment | Same as Core                                                                   | ✓         |
-| **LX Studio** | LX Studio application           | Skillsoft Text / Sans (`base` / `accent`); DESIGN docs may list Hanken Grotesk | —         |
-| **Percipio**  | Skillsoft Percipio              | Skillsoft Text / Sans; DESIGN docs may list Roboto                             | —         |
+| Theme     | Product                         | Primary UI fonts (shipped theme)                                               | Dark mode |
+| --------- | ------------------------------- | ------------------------------------------------------------------------------ | --------- |
+| Core      | Codecademy (default)            | Apercu + Suisse (`accent`)                                                     | ✓         |
+| Admin     | Codecademy admin tools          | Same as Core                                                                   | ✓         |
+| Platform  | Codecademy learning environment | Same as Core                                                                   | ✓         |
+| LX Studio | LX Studio application           | Skillsoft Text / Sans (`base` / `accent`); DESIGN docs may list Hanken Grotesk | —         |
+| Percipio  | Skillsoft Percipio              | Skillsoft Text / Sans; DESIGN docs may list Roboto                             | —         |
 
 Set the theme at the app root via `<GamutProvider theme={...}>`.
 
-**`gamut plugin` and `DESIGN.md`:** See Storybook [Meta → AI Tooling → Gamut plugin → Install](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-install--page). For app repos: `gamut plugin install cursor --theme core` (or `percipio`, `lxstudio`, …) from the repo root, or copy the appropriate `DESIGN.*.md` to `DESIGN.md` manually. Figma Make: [Meta → AI Tooling → Figma](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-figma-about--page).
+`gamut plugin` and `DESIGN.md`: See Storybook [Meta → AI Tooling → Gamut plugin → Install](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-install--page). For app repos: `gamut plugin install cursor --theme core` (or `percipio`, `lxstudio`, …) from the repo root, or copy the appropriate `DESIGN.*.md` to `DESIGN.md` manually. Figma Make: [Meta → AI Tooling → Figma](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-figma-about--page).
 
 ## Reading order
 

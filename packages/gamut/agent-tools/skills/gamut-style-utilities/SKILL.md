@@ -7,13 +7,13 @@ description: Use this skill when authoring Gamut styles with @codecademy/gamut-s
 
 Source: `@codecademy/gamut-styles` — [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`css`, `variant`, `states` built on `PROPERTIES.all`).
 
-**See also:** [`gamut-theming`](../gamut-theming/SKILL.md) (which theme, `GamutProvider`, new themes). [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.*`, responsive props, `Box`). [`gamut-color-mode`](../gamut-color-mode/SKILL.md) (semantic color, `<ColorMode>`, `<Background>`). [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) and [system compose](https://gamut.codecademy.com/?path=/docs-foundations-system-compose--page).
+See also: [`gamut-theming`](../gamut-theming/SKILL.md) (which theme, `GamutProvider`, new themes). [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.*`, responsive props, `Box`). [`gamut-color-mode`](../gamut-color-mode/SKILL.md) (semantic color, `<ColorMode>`, `<Background>`). [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) and [system compose](https://gamut.codecademy.com/?path=/docs-foundations-system-compose--page).
 
 ## Overview
 
-Use **`css()`**, **`variant()`**, and **`states()`** from `@codecademy/gamut-styles` for **typed, token-scaled** style objects (same scales as composed **`system.*`** props). Prefer **semantic** color keys so styles track **ColorMode** and theme.
+Use `css()`, `variant()`, and `states()` from `@codecademy/gamut-styles` for typed, token-scaled style objects (same scales as composed `system.*` props). Prefer semantic color keys so styles track ColorMode and theme.
 
-For **layout-heavy** styled components, prefer composing **`system.*`** via `variance.compose()` (see **`gamut-system-props`**) instead of re-stating every longhand in `css()`.
+For layout-heavy styled components, prefer composing `system.*` via `variance.compose()` (see `gamut-system-props`) instead of re-stating every longhand in `css()`.
 
 ## `css()` — static style objects
 
@@ -27,7 +27,7 @@ const Text = styled.div(css({ color: 'primary', p: 4 }));
 
 ## `variant()` and `states()` — branching and toggles
 
-- **`variant()`** — mutually exclusive modes: `base`, `defaultVariant`, and a `variants` map (semantic colors, spacing shorthands, nested selectors such as `'&:hover'`).
+- `variant()` — mutually exclusive modes: `base`, `defaultVariant`, and a `variants` map (semantic colors, spacing shorthands, nested selectors such as `'&:hover'`).
 
 ```tsx
 import { variant } from '@codecademy/gamut-styles';
@@ -51,7 +51,7 @@ const Anchor = styled.a(
 );
 ```
 
-- **`states()`** — independent boolean-style props (`base` + named keys).
+- `states()` — independent boolean-style props (`base` + named keys).
 
 ```tsx
 import { states } from '@codecademy/gamut-styles';
@@ -85,11 +85,11 @@ export const Panel: React.FC<PanelShellProps> = ({ title, ...rest }) => (
 );
 ```
 
-Prefer **`variant` / `states`** over branching on raw `theme` fields inside styled **template literals** when the output is Emotion-managed CSS.
+Prefer `variant` / `states` over branching on raw `theme` fields inside styled template literals when the output is Emotion-managed CSS.
 
 ## `useTheme()` — escape hatch
 
-Prefer **`css()`**, **`system.*`**, **`variant()`**, and **`states()`** for styling. Use **`useTheme()`** from `@emotion/react` when a token value must be read in **plain JS** (charts, canvas, third-party props), not as the default way to color DOM nodes.
+Prefer `css()`, `system.*`, `variant()`, and `states()` for styling. Use `useTheme()` from `@emotion/react` when a token value must be read in plain JS (charts, canvas, third-party props), not as the default way to color DOM nodes.
 
 ```tsx
 import { useTheme } from '@emotion/react';
@@ -102,6 +102,6 @@ const Sparkline = () => {
 
 ## Key principles
 
-- Prefer **semantic** color keys in `css` / `variant` / `states` so **ColorMode** and theme switches apply; see **`gamut-color-mode`**.
+- Prefer semantic color keys in `css` / `variant` / `states` so ColorMode and theme switches apply; see `gamut-color-mode`.
 - Never hardcode hex in component styles — use tokens / semantic aliases.
-- Prefer **`variant` / `states`** for modes and toggles instead of ad-hoc `theme` interpolation in template literals.
+- Prefer `variant` / `states` for modes and toggles instead of ad-hoc `theme` interpolation in template literals.

@@ -1,6 +1,6 @@
 # Color Modes
 
-Gamut uses **semantic color aliases** so components adapt to light/dark mode without configuration. See [color.md](color.md) for the full alias reference.
+Gamut uses semantic color aliases so components adapt to light/dark mode without configuration. See [color.md](color.md) for the full alias reference.
 
 ## `<ColorMode>`
 
@@ -14,7 +14,7 @@ import { ColorMode } from '@codecademy/gamut-styles';
 <ColorMode mode="system">{children}</ColorMode>  // follows OS preference
 ```
 
-**Props**: `mode="light" | "dark" | "system"`
+Props: `mode="light" | "dark" | "system"`
 
 ## `<Background>`
 
@@ -38,7 +38,7 @@ Nesting is supported — each `<Background>` creates its own accessible color co
 
 Import from `@codecademy/gamut-styles`.
 
-**Storybook:** [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) · [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)
+Storybook: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) · [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)
 
 ## Common mistakes
 

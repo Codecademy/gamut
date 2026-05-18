@@ -1,10 +1,10 @@
 # Buttons
 
-Agent reference: which **button component** and which **`variant`** to use. Colors are wired inside each atom — consumers do **not** pass `color`, `bg`, hex, or semantic token names on stock buttons.
+Agent reference: which button component and which `variant` to use. Colors are wired inside each atom — consumers do not pass `color`, `bg`, hex, or semantic token names on stock buttons.
 
-**Related docs:** [overview.md](../overview.md) (reading order) · [foundations/color.md](../foundations/color.md) and `gamut-color-mode` skill — semantic tokens for **custom** styled controls only, not stock button atoms · [foundations/modes.md](../foundations/modes.md) — ColorMode / `<Background>` when placing buttons on colored surfaces
+Related docs: [overview.md](../overview.md) (reading order) · [foundations/color.md](../foundations/color.md) and `gamut-color-mode` skill — semantic tokens for custom styled controls only, not stock button atoms · [foundations/modes.md](../foundations/modes.md) — ColorMode / `<Background>` when placing buttons on colored surfaces
 
-**Storybook (UX source of truth):**
+Storybook (UX source of truth):
 
 - [Atoms / Buttons / Button](https://gamut.codecademy.com/?path=/docs-atoms-buttons-button--docs) — variants, light/dark examples
 - [FillButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-fillbutton--docs) · [StrokeButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-strokebutton--docs) · [TextButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-textbutton--docs) · [IconButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-iconbutton--docs) · [CTAButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-ctabutton--docs)
@@ -61,10 +61,10 @@ Hover, active, and disabled colors are handled by the component. Do not override
 
 ## Accessibility — `disabled` vs `aria-disabled`
 
-| Situation                                                           | Use                                                    | Why                                                                                                                                                                                                                                                     |
-| ------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Button should not be activatable (default)                          | `disabled` prop                                        | Renders native `disabled` on `<button>`; removed from tab order; correct for most forms and actions                                                                                                                                                     |
-| Disabled button **with a tooltip** that must stay readable on focus | `aria-disabled` only — **do not** also pass `disabled` | Native `disabled` blocks keyboard focus, so the tooltip cannot be reached. Gamut disabled **styles** also match `[aria-disabled='true']`. See [ToolTip — With a disabled Button](https://gamut.codecademy.com/?path=/docs-molecules-tips-tooltip--docs) |
+| Situation                                                       | Use                                                | Why                                                                                                                                                                                                                                                 |
+| --------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Button should not be activatable (default)                      | `disabled` prop                                    | Renders native `disabled` on `<button>`; removed from tab order; correct for most forms and actions                                                                                                                                                 |
+| Disabled button with a tooltip that must stay readable on focus | `aria-disabled` only — do not also pass `disabled` | Native `disabled` blocks keyboard focus, so the tooltip cannot be reached. Gamut disabled styles also match `[aria-disabled='true']`. See [ToolTip — With a disabled Button](https://gamut.codecademy.com/?path=/docs-molecules-tips-tooltip--docs) |
 
 ```tsx
 // Default — not interactive
@@ -78,9 +78,9 @@ Hover, active, and disabled colors are handled by the component. Do not override
 </ToolTip>
 ```
 
-- **`href` + `disabled`:** `ButtonBase` (internal) drops `href` and renders a `<button disabled>` — link-style buttons cannot stay anchors while disabled.
-- **`IconButton`:** provide an accessible name via `tip` (used as `aria-label` when `aria-label` is omitted). See ToolTip / IconButton Storybook pages.
-- **`ButtonBase` is not exported** from `@codecademy/gamut` (only the `ButtonBaseElements` type is). Prefer stock atoms; custom button styling belongs in Gamut itself or via `css` / `variant` from `gamut-styles`, not by importing `ButtonBase`.
+- `href` + `disabled`: `ButtonBase` (internal) drops `href` and renders a `<button disabled>` — link-style buttons cannot stay anchors while disabled.
+- `IconButton`: provide an accessible name via `tip` (used as `aria-label` when `aria-label` is omitted). See ToolTip / IconButton Storybook pages.
+- `ButtonBase` is not exported from `@codecademy/gamut` (only the `ButtonBaseElements` type is). Prefer stock atoms; custom button styling belongs in Gamut itself or via `css` / `variant` from `gamut-styles`, not by importing `ButtonBase`.
 
 ## Rules
 

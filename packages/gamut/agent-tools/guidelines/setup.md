@@ -8,7 +8,7 @@ yarn add @codecademy/gamut-kit @emotion/react @emotion/styled
 
 `gamut-kit` bundles `gamut`, `gamut-icons`, `gamut-illustrations`, `gamut-patterns`, `gamut-styles`, `variance`, and `gamut-tests`.
 
-**Full guide:** [Meta / Installation](https://gamut.codecademy.com/?path=/docs-meta-installation--page) in Storybook (CSP `nonce` on `GamutProvider`, Jest, Next/Gatsby entry points). For Emotion + TypeScript, add `theme.d.ts` as in [TypeScript (`theme.d.ts`)](#typescript-themedts) below.
+Full guide: [Meta / Installation](https://gamut.codecademy.com/?path=/docs-meta-installation--page) in Storybook (CSP `nonce` on `GamutProvider`, Jest, Next/Gatsby entry points). For Emotion + TypeScript, add `theme.d.ts` as in [TypeScript (`theme.d.ts`)](#typescript-themedts) below.
 
 Optionally add a `peerDependencies` block in `package.json` listing `@codecademy/gamut`, `@codecademy/gamut-icons`, `@codecademy/gamut-illustrations`, `@codecademy/gamut-patterns`, `@codecademy/gamut-styles`, `@codecademy/gamut-tests`, and `@codecademy/variance` (e.g. `"*"`) so editors surface those packages — see Meta / Installation for the JSON snippet.
 
@@ -40,7 +40,7 @@ All themes are exported from `@codecademy/gamut-styles`.
 
 ## TypeScript (`theme.d.ts`)
 
-Augment `@emotion/react` so `props.theme` in `styled` / `css` matches the **same theme object** you pass to `<GamutProvider theme={...}>`. If the types disagree, system props and token autocomplete will not line up with runtime.
+Augment `@emotion/react` so `props.theme` in `styled` / `css` matches the same theme object you pass to `<GamutProvider theme={...}>`. If the types disagree, system props and token autocomplete will not line up with runtime.
 
 Add a root `theme.d.ts` (or merge into your existing global types):
 
@@ -55,7 +55,7 @@ declare module '@emotion/react' {
 }
 ```
 
-Use the **theme interface that matches your provider** — same row as the [theme selection](#theme-selection) table:
+Use the theme interface that matches your provider — same row as the [theme selection](#theme-selection) table:
 
 | `GamutProvider` `theme` prop | Import for `Theme extends …` |
 | ---------------------------- | ---------------------------- |
