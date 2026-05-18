@@ -6,13 +6,14 @@ import {
   TableOfContents,
 } from '~styleguide/blocks';
 
-import { parameters as creatingDesignWithAiParameters } from './Creating design with AI.mdx';
+import { parameters as figmaAboutParameters } from './Figma/About.mdx';
+import { parameters as gamutPluginAboutParameters } from './Gamut plugin/About.mdx';
 
 export const parameters = {
   id: 'Meta/AI Tooling',
   title: 'AI Tooling',
   subtitle:
-    'AI-assisted design and development with Gamut — Figma Make, Cursor and Claude plugins, and product design context files.',
+    'Gamut agent tools for Cursor and Claude Code, product DESIGN.md context, and Figma workflows for design-to-code.',
   status: 'static',
 };
 
@@ -21,5 +22,8 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={addParentPath(parameters.id, [creatingDesignWithAiParameters])}
+  links={addParentPath(parameters.id, [
+    gamutPluginAboutParameters,
+    figmaAboutParameters,
+  ])}
 />

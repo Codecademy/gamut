@@ -82,9 +82,13 @@ const preview: Preview = {
             ],
             [
               'AI Tooling',
-              ['About', 'Creating design with AI'],
-              'Figma Tooling',
-              ['About', 'Code Connect', 'Figma MCP'],
+              [
+                'About',
+                'Gamut plugin',
+                ['About', 'Install', 'DESIGN.md', 'Best practices'],
+                'Figma',
+                ['About', 'Code Connect', 'Figma MCP'],
+              ],
             ],
           ],
           'Foundations',

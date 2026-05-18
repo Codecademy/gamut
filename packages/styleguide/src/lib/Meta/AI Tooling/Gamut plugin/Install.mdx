@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, Callout } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Install',
+  title: 'Install',
+  subtitle:
+    'Install and update the Gamut plugin for Cursor or Claude Code from the gamut CLI.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/Gamut plugin/Install" />
+
+<AboutHeader {...parameters} />
+
+<Callout text="The plugin installs agent context (skills, rules, commands, guidelines). It does not add Gamut packages to your app — see agent-tools guidelines/setup.md or Meta → Installation for package.json setup." />
+
+Install Gamut agent tools with the `gamut` CLI from the `@codecademy/gamut` package. Run commands from your **app repository root** (or any directory where you want `DESIGN.md` copied).
+
+## Install
+
+```sh
+# Cursor (default) — skills, rules, commands, guidelines
+gamut plugin install
+
+# Cursor + product DESIGN.md at repo root
+gamut plugin install cursor --theme core
+
+# Claude Code + product DESIGN.md
+gamut plugin install claude --theme percipio
+```
+
+### Options
+
+| Flag              | Purpose                                                                                                                                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--scope <scope>` | **Cursor only.** `all` (default): `skills/`, `rules/`, `commands/`, `guidelines/`. Or one dir: `skills`, `rules`, `commands`, or `agents` (reserved; folder is empty today). `guidelines/` is not a separate scope. |
+| `--theme <theme>` | Copy matching `DESIGN.*.md` to `./DESIGN.md` — see [DESIGN.md](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-design-md--page)                                                               |
+| `--force`         | Overwrite existing `DESIGN.md` when using `--theme`                                                                                                                                                                 |
+
+`gamut plugin install claude` always registers the full plugin via the Claude marketplace; `--scope` does not apply.
+
+Canonical themes: `core`, `admin`, `platform`, `percipio`, `lxstudio` (aliases: `codecademy`, `cc`, `lx-studio`). `admin` and `platform` use the Codecademy `DESIGN.Codecademy.md` source.
+
+## Update and remove
+
+```sh
+# Check what is installed
+gamut plugin list
+
+# Refresh after @codecademy/gamut updates
+gamut plugin update
+gamut plugin update cursor --theme core --force
+
+# Remove plugin content from an editor
+gamut plugin remove
+gamut plugin remove claude
+```
+
+## What gets installed
+
+Content from [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools):
+
+| Directory     | Purpose                                                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `skills/`     | Task playbooks (theming, ColorMode, system props, forms, testing, …)                                                                       |
+| `rules/`      | Always-on guardrails (e.g. accessibility)                                                                                                  |
+| `commands/`   | Slash commands such as [`gamut-review`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md) |
+| `agents/`     | Reserved for future Cursor agent definitions; directory is empty in current releases                                                       |
+| `guidelines/` | Implementation reference (setup, foundations, components)                                                                                  |
+
+The same `guidelines/` markdown is published to the Figma Make kit for designers; engineers consume it via the plugin after install.

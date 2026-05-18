@@ -29,7 +29,7 @@ Runtime stacks come from `@codecademy/gamut-styles` (see [foundations/typography
 
 Set the theme at the app root via `<GamutProvider theme={...}>`.
 
-**Figma Make, `gamut plugin`, and `DESIGN.md`:** See Storybook [Meta → AI Tooling → Creating design with AI](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-creating-design-with-ai--page). For app repos: `gamut plugin install cursor --theme core` (or `percipio`, `lxstudio`, …) from the repo root, or copy the appropriate `DESIGN.*.md` to `DESIGN.md` manually.
+**`gamut plugin` and `DESIGN.md`:** See Storybook [Meta → AI Tooling → Gamut plugin → Install](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-install--page). For app repos: `gamut plugin install cursor --theme core` (or `percipio`, `lxstudio`, …) from the repo root, or copy the appropriate `DESIGN.*.md` to `DESIGN.md` manually. Figma Make: [Meta → AI Tooling → Figma](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-figma-about--page).
 
 ## Reading order
 

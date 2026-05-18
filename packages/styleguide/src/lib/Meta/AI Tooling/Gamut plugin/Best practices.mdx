@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, Callout } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Best practices',
+  title: 'Best practices',
+  subtitle:
+    'How to use Gamut agent tools, DESIGN.md, and gamut-review effectively in app repos.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/Gamut plugin/Best practices" />
+
+<AboutHeader {...parameters} />
+
+## Recommended setup
+
+From your **app repo root**, install the plugin with the product theme that matches your app:
+
+```sh
+gamut plugin install cursor --theme core
+```
+
+Use `percipio`, `lxstudio`, `admin`, or `platform` when that matches your product. Refresh after upgrading `@codecademy/gamut`:
+
+```sh
+gamut plugin update cursor --theme core --force
+```
+
+## Which artifact to use when
+
+| Artifact                         | Where it lives                             | Used for                                                                               |
+| -------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| `DESIGN.md` (from `DESIGN.*.md`) | App repo root                              | Coding agents + `gamut-review` — product tokens, semantic roles, patterns              |
+| `guidelines/` in agent-tools     | Cursor/Claude after `gamut plugin install` | Implementation reference (setup, foundations, components) — skills and rules link here |
+| `skills/`                        | Cursor/Claude after install                | Task playbooks — invoke when doing focused work (theming, ColorMode, forms, …)         |
+| `rules/`                         | Cursor/Claude after install                | Always-on guardrails for Gamut code (e.g. accessibility)                               |
+| `commands/`                      | Cursor/Claude after install                | Slash commands such as `/gamut-review`                                                 |
+
+## Audit with gamut-review
+
+Before large PRs or when onboarding an existing codebase, run **`/gamut-review`** (installed from [`gamut-review.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md)). It checks for `DESIGN.md`, Gamut dependencies, `GamutProvider`, import patterns, hardcoded hex colors, and test conventions.
+
+Without `DESIGN.md` at the repo root, color findings are lower confidence — install with `--theme` or copy the matching `DESIGN.*.md` manually.
+
+## Agent skills
+
+Related skills under [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/):
+
+- `gamut-system-props` — `system.*` / `Box`
+- `gamut-color-mode` — ColorMode and semantic color
+- `gamut-style-utilities` — `css`, `variant`, `states`
+- `gamut-theming` — theme selection and `GamutProvider`
+- `gamut-typography`, `gamut-forms`, `gamut-accessibility`, `gamut-testing`
+
+## Design-to-code (Figma MCP)
+
+<Callout text="MCP-generated code is experimental. Always validate and adapt before shipping — see Meta → AI Tooling → Figma → Figma MCP." />
+
+For Figma Dev Mode MCP setup and prompting, use [Figma MCP](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-figma-figma-mcp--page). Code Connect improves MCP output when designs use connected Gamut components.
+
+## Further reading
+
+- [Meta → Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic tokens, variants, and ColorMode in React
+- [`guidelines/foundations/color.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/guidelines/foundations/color.md) — palette and semantic roles

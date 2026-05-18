@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, Callout } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'DESIGN.md',
+  title: 'DESIGN.md',
+  subtitle:
+    'Product design context for coding agents and gamut-review — palette, semantics, and patterns per product.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/Gamut plugin/DESIGN.md" />
+
+<AboutHeader {...parameters} />
+
+Gamut ships **YAML design-context files** in [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools) (not under `guidelines/`). They encode palette hex, semantic color aliases, typography and spacing notes, and component usage patterns so agents and [`gamut-review`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md) align with the right product.
+
+## Source files
+
+| Source file in gamut                                                                                                    | Product           | Notes                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------- |
+| [`DESIGN.Codecademy.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.Codecademy.md) | Codecademy (Core) | Primary reference; YAML with `colors`, semantic aliases, patterns |
+| [`DESIGN.Percipio.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.Percipio.md)     | Percipio          | Percipio-specific tokens and semantics                            |
+| [`DESIGN.LXStudio.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.LXStudio.md)     | LX Studio         | LX Studio–specific tokens                                         |
+| [`DESIGN.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.md)                       | —                 | **Deprecated** stub — do not copy; use a `DESIGN.*.md` file above |
+
+## Setup in your app repo
+
+Run from the **repository root**:
+
+```sh
+gamut plugin install cursor --theme core
+# or: percipio | lxstudio | admin | platform
+```
+
+`--theme` installs the plugin **and** copies the matching `DESIGN.*.md` to **`DESIGN.md`** at the repo root. Use `--force` to overwrite an existing `DESIGN.md`.
+
+<Callout text="Plugin only (no DESIGN.md): gamut plugin install cursor installs skills, rules, commands, and guidelines only. gamut-review will flag a missing DESIGN.md and suggest --theme." />
+
+**Manual fallback:** copy `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` from agent-tools to the repo root and rename to `DESIGN.md`.
+
+## Theme → product mapping
+
+| `--theme`  | Copies from            | Product                      |
+| ---------- | ---------------------- | ---------------------------- |
+| `core`     | `DESIGN.Codecademy.md` | Codecademy public (Core)     |
+| `admin`    | `DESIGN.Codecademy.md` | Codecademy admin             |
+| `platform` | `DESIGN.Codecademy.md` | Codecademy learning platform |
+| `percipio` | `DESIGN.Percipio.md`   | Percipio                     |
+| `lxstudio` | `DESIGN.LXStudio.md`   | LX Studio                    |
+
+For semantic tokens in React components, see [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page). For palette verification against DESIGN YAML, see [`guidelines/foundations/color.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/guidelines/foundations/color.md).
