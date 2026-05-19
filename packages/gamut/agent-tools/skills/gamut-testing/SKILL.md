@@ -1,9 +1,13 @@
 ---
 name: gamut-testing
-description: Use this skill when writing or fixing unit tests for React components that use Gamut — prefer setupRtl from @codecademy/gamut-tests, harness patterns for useLogicalProperties and ColorMode, RTL/dir testing, emotion matchers, or removing jest.mock of @codecademy/gamut / gamut-styles.
+description: Unit tests for Gamut UI — setupRtl, MockGamutProvider, no jest.mock of @codecademy/gamut. When invoked, see commands/gamut-review.md Check 5 for test guardrails.
 ---
 
 # Gamut Testing
+
+## Read first
+
+When this skill applies, skim **[`commands/gamut-review.md`](../../commands/gamut-review.md) Check 5** (test setup) for blocking patterns before changing tests.
 
 Source: `@codecademy/gamut-tests` — [`index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-tests/src/index.tsx)
 

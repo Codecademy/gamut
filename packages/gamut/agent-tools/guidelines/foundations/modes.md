@@ -1,24 +1,43 @@
 # Color Modes
 
-Gamut uses **semantic color aliases** so components adapt to light/dark mode without configuration. See [color.md](color.md) for the full alias reference.
+Gamut uses **semantic color aliases** so components adapt to light/dark mode without configuration. See [color.md](color.md) for the full alias reference and decision guide.
+
+**Product tokens:** Semantic mappings vary by theme. Confirm aliases and palette keys against root **`DESIGN.md`** and the active theme Storybook page — do not assume Codecademy Core values in Percipio, LX Studio, or other products.
+
+**Deep reference:** [`skills/gamut-color-mode/SKILL.md`](../../skills/gamut-color-mode/SKILL.md) · Storybook [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page)
+
+## When to use the color mode system
+
+For **any dark or light region** — sidebars, footers, hero bands, callouts, panels, whole-app dark mode — use `ColorMode` or `Background` from `@codecademy/gamut-styles`. Do not handle these with custom CSS, hardcoded `rgba`, or manual color swaps.
+
+| Component    | Use when                                                                                            |
+| ------------ | --------------------------------------------------------------------------------------------------- |
+| `ColorMode`  | You **know** the mode (`light`, `dark`, or `system` for OS preference).                             |
+| `Background` | Background color is a **palette token** and Gamut should pick the best contrast mode automatically. |
+
+## Rules
+
+1. **Never override Gamut colors with custom CSS** when a `ColorMode` or `Background` wrapper achieves the same result via tokens.
+2. **Prefer `ColorMode` over `Background`** when the intended mode is known (e.g. sidebar always dark). Use `Background` when the surface color is fixed and mode should adapt.
+3. **`ColorMode` has no `as` prop** — nest semantic elements inside (`<nav>`, `<aside>`, `<footer>`).
+4. **System props work on `ColorMode`** — `p`, `m`, `width`, `position`, etc. without extra wrappers.
+5. **`mode="system"`** follows OS `prefers-color-scheme`. For in-app theme toggles, pass `mode="light"` or `mode="dark"` from your own state.
 
 ## `<ColorMode>`
-
-Wraps a subtree in an explicit color mode. Nest to create scoped mode regions.
 
 ```tsx
 import { ColorMode } from '@codecademy/gamut-styles';
 
-<ColorMode mode="light">{children}</ColorMode>   // force light
-<ColorMode mode="dark">{children}</ColorMode>    // force dark
-<ColorMode mode="system">{children}</ColorMode>  // follows OS preference
+<ColorMode mode="light">{children}</ColorMode>
+<ColorMode mode="dark">{children}</ColorMode>
+<ColorMode mode="system">{children}</ColorMode>
 ```
 
 **Props**: `mode="light" | "dark" | "system"`
 
 ## `<Background>`
 
-Use `<Background>` — not a raw `bg` prop — whenever setting a colored background on a section that contains text or interactive elements. It automatically switches the color mode inside to maintain accessible contrast.
+Use `<Background>` — not a raw `bg` on layout — for colored sections with text or interactive children. Pass a **palette token** to `bg` (e.g. `hyper`, `navy`), not a semantic alias.
 
 ```tsx
 import { Background } from '@codecademy/gamut-styles';
@@ -30,18 +49,20 @@ Nesting is supported — each `<Background>` creates its own accessible color co
 
 ## Hooks
 
-| Hook                   | Returns                           | Use                                               |
-| ---------------------- | --------------------------------- | ------------------------------------------------- |
-| `useCurrentMode()`     | `"light" \| "dark"`               | Active mode key only                              |
-| `useColorMode()`       | `[modeKey, modeColors, allModes]` | Full mode data + resolver for semantic color keys |
-| `usePrefersDarkMode()` | `boolean`                         | Read OS dark preference only                      |
+| Hook                   | Returns                               | Use                                                        |
+| ---------------------- | ------------------------------------- | ---------------------------------------------------------- |
+| `useCurrentMode()`     | `"light" \| "dark"`                   | Active mode key only                                       |
+| `useColorModes()`      | mode key, colors, all modes, resolver | Full mode data + `getColorValue`                           |
+| `usePrefersDarkMode()` | `boolean`                             | OS dark preference (prefer `mode="system"` on `ColorMode`) |
 
 Import from `@codecademy/gamut-styles`.
 
-**Storybook:** [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) · [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)
+## Example (Core theme)
+
+Core light/dark semantic mappings are documented in Storybook [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page). Other themes remap the same alias names to different palette values — verify in **`DESIGN.md`** and the product theme story before hardcoding palette fallbacks.
 
 ## Common mistakes
 
-- Do not use raw color tokens (`navy-400`, `white`) for text/backgrounds that must be accessible across modes — use semantic aliases.
-- Do not use a raw `bg` prop on colored sections containing content — use `<Background>` so contrast is guaranteed.
-- Do not manually toggle modes from `usePrefersDarkMode()` — use `<ColorMode mode="system">` instead.
+- Do not use raw palette tokens (`navy-400`, `white`) for text/backgrounds that must adapt across modes — use semantic aliases.
+- Do not use a raw `bg` prop on colored sections with content — use `<Background>`.
+- Do not wire `usePrefersDarkMode()` into `ColorMode` when `mode="system"` suffices.

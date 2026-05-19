@@ -5,6 +5,7 @@ description: Design tokens for the Skillsoft Percipio platform.
 colors:
   # palette — raw swatches; set once on :root and then always reference by token name, never use hex values directly in code
   percipioTextPrimary: '#222325'
+  percipioTextAccent: '#222325'
   percipioTextSecondary: 'rgba(34, 35, 37, 0.75)'
   percipioTextDisabled: '#AFB6C2'
   sapphire: '#1C50BB'
@@ -27,7 +28,7 @@ colors:
   white: '#ffffff'
   # semantic aliases — use these in code, not palette swatches or hex values
   text: '{colors.percipioTextPrimary}'
-  text-accent: '{colors.percipioTextPrimary}'
+  text-accent: '{colors.percipioTextAccent}'
   text-secondary: '{colors.percipioTextSecondary}'
   text-disabled: '{colors.percipioTextDisabled}'
   background: '{colors.white}'
@@ -74,6 +75,24 @@ typography:
     fontFamily: '"Roboto Mono", monospace'
   system:
     fontFamily: '"Roboto", sans-serif'
+  '14':
+    fontSize: '0.875rem'
+  '16':
+    fontSize: '1rem'
+  '18':
+    fontSize: '1.125rem'
+  '20':
+    fontSize: '1.25rem'
+  '22':
+    fontSize: '1.375rem'
+  '26':
+    fontSize: '1.625rem'
+  '34':
+    fontSize: '2.125rem'
+  '44':
+    fontSize: '2.75rem'
+  '64':
+    fontSize: '4rem'
 borderRadii:
   none: '0px'
   sm: '2px'
@@ -81,6 +100,18 @@ borderRadii:
   lg: '8px'
   xl: '16px'
   full: '999px'
+spacing:
+  '0': '0'
+  '4': '0.25rem'
+  '8': '0.5rem'
+  '12': '0.75rem'
+  '16': '1rem'
+  '24': '1.5rem'
+  '32': '2rem'
+  '40': '2.5rem'
+  '48': '3rem'
+  '64': '4rem'
+  '96': '6rem'
 components:
   FillButton:
     backgroundColor: '{colors.primary}'
@@ -100,6 +131,18 @@ components:
     backgroundColor: 'transparent'
     textColor: '{colors.secondary}'
     borderRadii: '{borderRadii.md}'
+  StrokeButton-hover:
+    textColor: '{colors.secondary-hover}'
+  TextButton:
+    backgroundColor: 'transparent'
+    textColor: '{colors.primary}'
+  TextButton-hover:
+    textColor: '{colors.primary-hover}'
+  IconButton:
+    backgroundColor: 'transparent'
+    textColor: '{colors.secondary}'
+  IconButton-hover:
+    textColor: '{colors.secondary-hover}'
   Input:
     backgroundColor: '{colors.background}'
     textColor: '{colors.text}'
@@ -110,6 +153,25 @@ components:
     borderRadii: '{borderRadii.sm}'
   Checkbox-hover:
     backgroundColor: '{colors.primary-hover}'
+  Card:
+    backgroundColor: '{colors.background}'
+    borderRadii: '{borderRadii.none}'
+  Card-interactive:
+    borderRadii: '{borderRadii.md}'
+  Card-elevated:
+    backgroundColor: '{colors.background-primary}'
+    borderRadii: '{borderRadii.lg}'
+  Headline:
+    textColor: '{colors.text-accent}'
+    typography: '{typography.title}'
+  Tag-success:
+    backgroundColor: '{colors.feedback-success}'
+    textColor: '{colors.white}'
+    borderRadii: '{borderRadii.sm}'
+  Tag-warning:
+    backgroundColor: '{colors.feedback-warning}'
+    textColor: '{colors.text}'
+    borderRadii: '{borderRadii.sm}'
   Alert-error:
     backgroundColor: '{colors.background-error}'
     textColor: '{colors.feedback-error}'
@@ -129,15 +191,13 @@ This file defines the visual design tokens for the Skillsoft Percipio platform, 
 
 ---
 
-## Visual Theme & Atmosphere
+## Overview
 
 Percipio communicates **professional clarity** — clean, trustworthy, and enterprise-ready. The design voice is more neutral and corporate than Codecademy: less playful, more functional. Primary blue drives interactive affordances; neutral grays define text and structure.
 
 **Density**: Medium. Consistent with Codecademy layouts but with softer shadows and a lighter overall feel due to the muted neutral palette.
 
----
-
-## Themes
+### Themes
 
 Percipio uses a single Gamut theme that extends Core. **Light mode** applies Percipio-specific semantic overrides (sapphire primary, percipio neutrals). **Dark mode** inherits Core dark semantics — use `<ColorMode>` and semantic tokens the same way as Codecademy.
 
@@ -145,13 +205,15 @@ Percipio uses a single Gamut theme that extends Core. **Light mode** applies Per
 | ------------ | --------------------------- | --------------------- | -------------- |
 | **Percipio** | Skillsoft Percipio platform | Skillsoft Sans / Text | ✓ light + dark |
 
-The active theme is set at the app root via `<GamutProvider theme={percipioTheme}>`.
+Set the active theme via `<GamutProvider theme={percipioTheme}>`. Install in app repos: `gamut plugin install cursor --theme percipio` (copies to `./DESIGN.md`).
 
 ---
 
-## Semantic Color Aliases
+## Colors
 
-Use these token names when specifying colors. They resolve per color mode automatically. **Never hardcode hex values** for anything that must adapt across modes.
+Use semantic token names in code and designs. They resolve per color mode automatically. **Never hardcode hex values** for adaptive UI. **Never hardcode core-theme values** like `beige` — use `background-primary` (`#FAFBFC` on Percipio).
+
+For dark/light regions, use `<ColorMode>` or `<Background>` — never swap colors manually with custom CSS.
 
 ### Text
 
@@ -217,13 +279,14 @@ Percipio shadows are softer than Codecademy's — use `shadow-primary` for stand
 
 ---
 
-## Percipio Color Palette
+### Percipio color palette
 
 Percipio introduces its own named semantic colors. These are the source values behind the aliases above. Use the semantic aliases in designs, not the raw named colors.
 
 | Named color                    | Value                       | Mapped to                  |
 | ------------------------------ | --------------------------- | -------------------------- |
-| `percipioTextPrimary`          | `#222325`                   | `text`, `text-accent`      |
+| `percipioTextPrimary`          | `#222325`                   | `text`                     |
+| `percipioTextAccent`           | `#222325`                   | `text-accent`              |
 | `percipioTextSecondary`        | `rgba(34, 35, 37, 0.75)`    | `text-secondary`           |
 | `percipioTextDisabled`         | `#AFB6C2`                   | `text-disabled`            |
 | `sapphire`                     | `#1C50BB`                   | `primary`                  |
@@ -304,7 +367,9 @@ Target 45–85 characters per line; 66 characters is ideal. Max 50 for multi-col
 
 ---
 
-## Spacing Scale
+## Layout
+
+### Spacing scale
 
 Identical to Core. All spacing is multiples of 4px on an 8px grid.
 
@@ -322,26 +387,13 @@ Identical to Core. All spacing is multiples of 4px on an 8px grid.
 | `64`  | 64px  |
 | `96`  | 96px  |
 
----
+### System props
 
-## Border Radius Scale
+**Never use inline `style` attributes.** Use system props shorthand (`m`, `mb`, `p`, `px`, etc.) and Gamut tokens for `bg`, `color`, `borderColor`, `borderRadius`.
 
-Identical to Core.
+### Responsive behavior
 
-| Token  | Value | Use                                        |
-| ------ | ----- | ------------------------------------------ |
-| `none` | 0px   | Square / non-interactive elements          |
-| `sm`   | 2px   | Subtle rounding, tags                      |
-| `md`   | 4px   | Default buttons, inputs, interactive cards |
-| `lg`   | 8px   | Cards, panels                              |
-| `xl`   | 16px  | Large cards, modals                        |
-| `full` | 999px | Pills, avatars, circular elements          |
-
----
-
-## Responsive Behavior
-
-Identical to Core. Mobile-first, apply styles from the named breakpoint up.
+Identical to Core. Mobile-first; 12-column grid. Minimum touch target **44×44px** on mobile. Begin at 1440px (XL), then adapt down.
 
 | Token    | Min-width | Max content |
 | -------- | --------- | ----------- |
@@ -352,21 +404,45 @@ Identical to Core. Mobile-first, apply styles from the named breakpoint up.
 | `lg`     | 1200px    | 1072px      |
 | `xl`     | 1440px    | 1248px      |
 
-12-column grid at all breakpoints.
+---
 
-| Usage                 | Recommended values                               |
-| --------------------- | ------------------------------------------------ |
-| Horizontal margins    | 64px (lg+), 48px (md), 32px (sm/xs), 16px (base) |
-| Column gaps (gutters) | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
-| Row gaps              | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
+## Elevation & Depth
 
-Minimum interactive touch target: **44×44px** on mobile breakpoints.
+Percipio shadows are softer than Codecademy's — use `shadow-primary` (navy-200) for standard elevated surfaces. Card outline shadows use theme-resolved border/shadow tokens.
 
 ---
 
-## Component Library
+## Shapes
+
+Identical to Core (`borderRadii` in YAML). **No custom radius values.**
+
+| Token  | Value | Use                                        |
+| ------ | ----- | ------------------------------------------ |
+| `none` | 0px   | Square / non-interactive elements          |
+| `sm`   | 2px   | Subtle rounding, tags, checkboxes          |
+| `md`   | 4px   | Default buttons, inputs, interactive cards |
+| `lg`   | 8px   | Cards, panels                              |
+| `xl`   | 16px  | Large cards, modals                        |
+| `full` | 999px | Pills, avatars, circular elements          |
+
+---
+
+## Components
 
 Same component library as Codecademy — all atoms, molecules, and organisms apply. Token values resolve differently per theme automatically.
+
+### Gamut implementation guardrails
+
+Same rules as Codecademy (`DESIGN.Codecademy.md` Components section), with Percipio-specific notes:
+
+- **Buttons:** no generic `Button`; `IconButton` requires `tip`; never set `mode` on buttons.
+- **Forms:** `GridForm` / `ConnectedForm` for submit flows; atoms only for standalone/live controls.
+- **Cards:** valid variants `default`, `white`, `yellow`, `beige`, `navy`, `hyper`; defaults `shadow="none"`, `isInteractive={false}`; set `isInteractive` only for link/interactive cards.
+- **DataTable / DataList:** `sortable` requires `query`, `onQueryChange`, and client-sorted rows.
+- **Menu:** always `variant="fixed"` + `as="nav"` or `variant="popover"`.
+- **Color mode:** `<ColorMode>` / `<Background>`; no manual rgba overrides.
+- **Accessibility:** WCAG contrast, 44×44px touch targets, `FocusTrap` in modals/drawers.
+- **Assets:** `@codecademy/gamut-icons`, `gamut-illustrations`, `gamut-patterns`.
 
 ---
 
@@ -392,6 +468,17 @@ Same component library as Codecademy — all atoms, molecules, and organisms app
 - **Do** use multiples of 8px for block-element spacing (4px only for inline / typographic relationships).
 - **Do** begin design work at 1440px (XL), then adapt down.
 - **Do** align elements to the 12-column grid.
+
+### Components
+
+- **Don't** import a generic `Button` or use Codecademy hyper/yellow directly — use semantic tokens.
+- **Don't** use bare form atoms for functional forms.
+
+### Pre-ship validation
+
+Before considering UI output final, run **`/gamut-review`** from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: **Cursor** — `gamut plugin install cursor --theme percipio`; **Claude Code** — `gamut plugin install claude --theme percipio`.
+
+The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a **manual pre-ship checklist** keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
 
 ---
 

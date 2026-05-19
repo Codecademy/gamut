@@ -79,6 +79,26 @@ typography:
     lineHeight: '1.2'
   monospace:
     fontFamily: 'Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace'
+  system:
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+  '14':
+    fontSize: '0.875rem'
+  '16':
+    fontSize: '1rem'
+  '18':
+    fontSize: '1.125rem'
+  '20':
+    fontSize: '1.25rem'
+  '22':
+    fontSize: '1.375rem'
+  '26':
+    fontSize: '1.625rem'
+  '34':
+    fontSize: '2.125rem'
+  '44':
+    fontSize: '2.75rem'
+  '64':
+    fontSize: '4rem'
 borderRadii:
   none: '0px'
   sm: '2px'
@@ -117,6 +137,13 @@ components:
     backgroundColor: 'transparent'
     textColor: '{colors.secondary}'
     borderRadii: '{borderRadii.md}'
+  StrokeButton-hover:
+    textColor: '{colors.secondary-hover}'
+  IconButton:
+    backgroundColor: 'transparent'
+    textColor: '{colors.secondary}'
+  IconButton-hover:
+    textColor: '{colors.secondary-hover}'
   CTAButton:
     backgroundColor: '{colors.primary}'
     textColor: '{colors.white}'
@@ -181,7 +208,7 @@ This file defines the visual design tokens for codecademy.com, implemented using
 
 ---
 
-## Visual Theme & Atmosphere
+## Overview
 
 Codecademy communicates **logic with personality** — structured and trustworthy enough for a learning platform, with creative moments that feel engaging and human. The design voice is: _"we are ruled by logic, but are creative and a bit unexpected as well."_
 
@@ -192,11 +219,9 @@ Codecademy communicates **logic with personality** — structured and trustworth
 - Components are color mode–aware by default — never hardcode hex values for adaptive UI
 - Every component works across all themes without modification
 - Mobile-first responsive design built on a 12-column grid
-- Accessibility is guaranteed by design: semantic color tokens meet contrast requirements per mode automatically
+- Use semantic tokens (`background-primary`, not raw `beige`) so colors adapt across themes and modes
 
----
-
-## Themes
+### Themes
 
 Codecademy products use three Gamut themes, all sharing the same core visual identity. Token aliases resolve to the right values per theme automatically — components require no modification.
 
@@ -206,15 +231,17 @@ Codecademy products use three Gamut themes, all sharing the same core visual ide
 | **Admin**    | Codecademy admin tools          | Apercu    | ✓ light + dark |
 | **Platform** | Codecademy learning environment | Apercu    | ✓ light + dark |
 
-The active theme is set at the app root via `<GamutProvider>`. When designing, know which theme your screen targets — it affects primary colors, font families, and available color weights.
+Set the active theme at the app root via `<GamutProvider theme={theme}>` (or `adminTheme` / `platformTheme`). Install this file in app repos: `gamut plugin install cursor --theme core` (copies to `./DESIGN.md`).
 
-For other Skillsoft products, install the matching design file from the same package: `DESIGN.Percipio.md` (Percipio) or `DESIGN.LXStudio.md` (LX Studio) — e.g. `gamut plugin install cursor --theme percipio` or `--theme lxstudio`.
+For other Skillsoft products: `gamut plugin install cursor --theme percipio` or `--theme lxstudio` (see `DESIGN.Percipio.md`, `DESIGN.LXStudio.md`).
 
 ---
 
-## Semantic Color Aliases
+## Colors
 
-Use these token names when specifying colors in designs. They resolve to the correct raw value for the active theme and color mode automatically. **Never hardcode hex values** for anything that needs to adapt across modes.
+Use semantic token names in code and designs. They resolve to the correct raw value for the active theme and color mode automatically. **Never hardcode hex values** for anything that needs to adapt across modes. **Never hardcode core-theme values** like `beige` — use `background-primary` and other semantic aliases.
+
+For dark/light regions, use `<ColorMode>` or `<Background>` from `@codecademy/gamut-styles` — never swap colors manually with custom CSS.
 
 ### Text
 
@@ -277,11 +304,11 @@ Use these token names when specifying colors in designs. They resolve to the cor
 
 ---
 
-## Raw Color Palette
+### Raw color palette
 
-All colors available as static tokens regardless of color mode. Use these only when a color should be **fixed** and not adapt to dark mode.
+All colors available as static tokens regardless of color mode. Use these only when a color should be **fixed** and not adapt to dark mode (e.g. `<Background bg="navy">` on Codecademy-branded surfaces).
 
-### Core Palette
+#### Core palette
 
 | Name            | Weights available            | Notes                                                                             |
 | --------------- | ---------------------------- | --------------------------------------------------------------------------------- |
@@ -302,7 +329,7 @@ All colors available as static tokens regardless of color mode. Use these only w
 **Named aliases** (shorthand for common weights):
 `beige`, `blue`, `green`, `hyper`, `lightBlue`, `lightGreen`, `navy`, `orange`, `paleBlue`, `paleGreen`, `palePink`, `paleRed`, `paleYellow`, `pink`, `red`, `yellow`, `black`, `white`
 
-### Platform-only additions
+#### Platform-only additions
 
 `lightBeige` (`#FFFBF8`), `gold` (`#8A7300`), `teal` (`#006D82`), `purple` (`#B3CCFF`)
 
@@ -363,9 +390,11 @@ Target 45–85 characters per line; 66 characters is ideal for web body text. Ma
 
 ---
 
-## Spacing Scale
+## Layout
 
-All spacing is multiples of 4px, placed on an 8px grid.
+### Spacing scale
+
+All spacing is multiples of 4px, placed on an 8px grid. Use only these values for padding, margin, gap, width, and height — snap to the nearest token if a design specifies an off-scale value.
 
 | Token | Value |
 | ----- | ----- |
@@ -381,9 +410,70 @@ All spacing is multiples of 4px, placed on an 8px grid.
 | `64`  | 64px  |
 | `96`  | 96px  |
 
+Use multiples of **8px** for block-element spacing; **4px** only for inline or typographic relationships.
+
+### System props
+
+**Never use inline `style` attributes.** Use system props from `@codecademy/gamut-styles` with shorthand names:
+
+| Long form       | Shorthand |
+| --------------- | --------- |
+| `margin`        | `m`       |
+| `marginTop`     | `mt`      |
+| `marginBottom`  | `mb`      |
+| `marginLeft`    | `ml`      |
+| `marginRight`   | `mr`      |
+| `marginX`       | `mx`      |
+| `marginY`       | `my`      |
+| `padding`       | `p`       |
+| `paddingTop`    | `pt`      |
+| `paddingBottom` | `pb`      |
+| `paddingLeft`   | `pl`      |
+| `paddingRight`  | `pr`      |
+| `paddingX`      | `px`      |
+| `paddingY`      | `py`      |
+
+Use `mb={16}`, not `marginBottom={16}`. Color and border props: `bg`, `color` / `textColor`, `borderColor`, `borderRadius` — values must be Gamut tokens, never raw hex.
+
+### Responsive behavior
+
+Mobile-first. Apply styles from the named breakpoint and up.
+
+| Token    | Min-width | Screen dimensions | Max content | Fold height |
+| -------- | --------- | ----------------- | ----------- | ----------- |
+| _(base)_ | 0         | 320×480           | 288px       | 440px       |
+| `xs`     | 480px     | 480×900           | 448px       | 440px       |
+| `sm`     | 768px     | 768×1024          | 704px       | 680px       |
+| `md`     | 1024px    | 1024×768          | 896px       | 680px       |
+| `lg`     | 1200px    | 1200×900          | 1072px      | 680px       |
+| `xl`     | 1440px    | 1440×900          | 1248px      | 680px       |
+
+Container query variants (`c_xs` through `c_xl`) mirror these values but trigger on component container size, not viewport.
+
+**Grid:** 12-column grid at all breakpoints.
+
+| Usage                 | Recommended values                               |
+| --------------------- | ------------------------------------------------ |
+| Horizontal margins    | 64px (lg+), 48px (md), 32px (sm/xs), 16px (base) |
+| Column gaps (gutters) | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
+| Row gaps              | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
+
+Minimum interactive touch target: **44×44px** on mobile breakpoints.
+
+- Begin design work at 1440px (XL), then adapt down.
+- Wider multi-column layouts collapse to fewer columns — do not stretch or squish.
+- Avoid dense or small components in the base (mobile) breakpoint.
+
+### Global layout tokens
+
+| Token          | Value                                  | Use                             |
+| -------------- | -------------------------------------- | ------------------------------- |
+| `headerHeight` | 4rem (64px) base, 5rem (80px) at `md`+ | Global page header height       |
+| `headerZ`      | 15                                     | Z-index for global page headers |
+
 ---
 
-## Depth & Elevation
+## Elevation & Depth
 
 Gamut uses border-based and shadow-based depth cues rather than a rigid z-elevation tier system.
 
@@ -415,12 +505,14 @@ Interactive cards (`isInteractive` prop) gain a shadow on hover and `borderRadiu
 
 ---
 
-## Border Radius Scale
+## Shapes
+
+Border radius tokens from `borderRadii` in `@codecademy/gamut-styles`. **No custom radius values.**
 
 | Token  | Value | Use                                        |
 | ------ | ----- | ------------------------------------------ |
 | `none` | 0px   | Square / non-interactive elements          |
-| `sm`   | 2px   | Subtle rounding, tags                      |
+| `sm`   | 2px   | Subtle rounding, tags, checkboxes          |
 | `md`   | 4px   | Default buttons, inputs, interactive cards |
 | `lg`   | 8px   | Cards, panels                              |
 | `xl`   | 16px  | Large cards, modals                        |
@@ -428,47 +520,9 @@ Interactive cards (`isInteractive` prop) gain a shadow on hover and `borderRadiu
 
 ---
 
-## Responsive Behavior
+## Components
 
-Mobile-first. Apply styles from the named breakpoint and up.
-
-### Breakpoints & screen sizes
-
-| Token    | Min-width | Screen dimensions | Max content | Fold height |
-| -------- | --------- | ----------------- | ----------- | ----------- |
-| _(base)_ | 0         | 320×480           | 288px       | 440px       |
-| `xs`     | 480px     | 480×900           | 448px       | 440px       |
-| `sm`     | 768px     | 768×1024          | 704px       | 680px       |
-| `md`     | 1024px    | 1024×768          | 896px       | 680px       |
-| `lg`     | 1200px    | 1200×900          | 1072px      | 680px       |
-| `xl`     | 1440px    | 1440×900          | 1248px      | 680px       |
-
-Container query variants (`c_xs` through `c_xl`) mirror these values but trigger on component container size, not viewport.
-
-### Grid
-
-12-column grid at all breakpoints. The designer specifies how many columns a section spans per breakpoint.
-
-| Usage                 | Recommended values                               |
-| --------------------- | ------------------------------------------------ |
-| Horizontal margins    | 64px (lg+), 48px (md), 32px (sm/xs), 16px (base) |
-| Column gaps (gutters) | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
-| Row gaps              | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
-
-### Touch targets
-
-Minimum interactive touch target: **44×44px** on mobile breakpoints.
-
-### Collapsing strategies
-
-- Begin design work at 1440px (XL), then adapt to smaller sizes.
-- Wider multi-column layouts collapse to fewer columns — do not simply stretch or squish.
-- Elements not in an explicit lockup (e.g., catalog cards) should align on one axis (usually left) rather than fill column widths.
-- Avoid dense or small components in the base (mobile) breakpoint.
-
----
-
-## Component Library
+### Component catalog
 
 Components are organized into three tiers:
 
@@ -488,6 +542,8 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 
 #### Buttons
 
+**There is no generic `Button` component.** Use the variant that matches intent:
+
 | Variant           | Component      | Use for                             |
 | ----------------- | -------------- | ----------------------------------- |
 | Primary action    | `FillButton`   | Solid fill, high-emphasis CTA       |
@@ -496,32 +552,58 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 | Tertiary / inline | `TextButton`   | Low-emphasis, inline text actions   |
 | Icon-only         | `IconButton`   | Compact actions with icon only      |
 
-All button variants support sizes: `small`, `normal` (default), `large`. They accept an `icon` prop (leading or trailing) and a `disabled` prop. Passing `href` renders the button as an `<a>` tag.
-
-**States**: default → hover (`primary-hover` / `secondary-hover`) → active → disabled (`text-disabled` + `background-disabled`).
+- **`IconButton` requires `tip`** for screen reader accessibility.
+- **Never set `mode` on buttons** — they inherit color context from parent wrappers.
+- Sizes: `small`, `normal` (default), `large`. Support `icon`, `disabled`, and `href` (renders as `<a>`).
+- **States**: default → hover (`primary-hover` / `secondary-hover`) → active → disabled (`text-disabled` + `background-disabled`).
 
 #### Cards
 
-Cards support:
-
-- **Background variants**: `default` (ColorMode-responsive), `white`, `yellow`, `beige` (light contexts), `navy`, `hyper` (dark contexts)
-- **Shadow variants**: `none` (default), `outline`, `patternLeft`, `patternRight`
-- **Interaction**: wrap in `<Anchor>` and add `isInteractive` for hover shadow + `borderRadius: md`
-- **Border radius**: defaults to `none` (non-interactive); override with the `borderRadius` prop as needed
+- **Valid `variant` values:** `default`, `white`, `yellow`, `beige`, `navy`, `hyper` — never invent compound names (invalid values crash `parseToHsl()`).
+- **Defaults:** `shadow="none"`, `isInteractive={false}`.
+- Set **`isInteractive`** only when the card is a link or has click/hover interaction (e.g. wrapped in `<Anchor>`); interactive cards get hover shadow and `borderRadius: md`.
+- **Shadow variants:** `none` (default), `outline`, `patternLeft`, `patternRight`.
 
 #### Color-aware components
 
-- **`<ColorMode mode="light|dark|system">`** — wraps a subtree in an explicit color mode.
-- **`<Background bg="<color>">`** — applies a background color and automatically switches the color mode inside to maintain accessible contrast. Prefer this over setting a raw `bg` prop on any content-bearing surface.
+- **`<ColorMode mode="light|dark|system">`** — explicit mode when you know which mode a region should use.
+- **`<Background bg="<color>">`** — dynamic background; Gamut picks contrast-safe inner mode. Prefer over raw `bg` on content-bearing surfaces.
 
----
+### Gamut implementation guardrails
 
-## Global Elements
+#### Component discovery
 
-| Token          | Value                                  | Use                             |
-| -------------- | -------------------------------------- | ------------------------------- |
-| `headerHeight` | 4rem (64px) base, 5rem (80px) at `md`+ | Global page header height       |
-| `headerZ`      | 15                                     | Z-index for global page headers |
+1. Inspect `@codecademy/gamut` exports before building custom UI for a pattern.
+2. Prefer Gamut components (`Menu`, `DataTable`, `Tabs`, `Video`, etc.) over raw HTML.
+3. Read component TypeScript definitions before using `variant` / color props.
+4. If no Gamut component exists: `{/* No Gamut component available for [pattern] — using custom markup */}`
+
+#### Forms
+
+- **Submit/save flows** (validation, bundled fields, dirty tracking): use `GridForm` or `ConnectedForm`.
+- **Live filters / standalone controls** (no submit step): use atoms (`Input`, `Select`, `Checkbox`, `Radio`, `TextArea`, `FormGroup`) directly.
+- Always provide `defaultValues`; use `validation="onChange"` when the submit button should stay disabled until valid.
+- Set `hideLabel: true` on checkbox, radio, or toggle fields without a meaningful `label`.
+
+#### DataTable / DataList
+
+- `sortable: true` on a column **requires** `query`, `onQueryChange`, and **client-sorted** `rows` — Gamut does not sort data internally.
+
+#### Menu
+
+- **Always set `variant` explicitly:** `fixed` + `as="nav"` for persistent navigation (sidebars, primary nav); `popover` for overflow/action menus.
+- Do not let flex-stretching ancestors expand `Menu` to fill vertical space — wrap in intrinsic-height containers.
+
+#### Accessibility
+
+- Meet WCAG contrast and **44×44px** minimum touch targets on mobile.
+- Use **`FocusTrap`** inside modals, dialogs, drawers, and other focus-confined regions.
+
+#### Assets
+
+- Icons: `@codecademy/gamut-icons` — verify icons exist; do not trust stale Figma layer names.
+- Illustrations: `@codecademy/gamut-illustrations`
+- Patterns: `@codecademy/gamut-patterns`
 
 ---
 
@@ -554,9 +636,17 @@ Cards support:
 ### Components
 
 - **Do** use `FillButton` for primary actions and `StrokeButton` for secondary actions.
-- **Do** add `isInteractive` to any `Card` that is wrapped in an `<Anchor>`.
+- **Do** add `isInteractive` only to `Card` components that are links or otherwise interactive.
+- **Don't** import a generic `Button` — it does not exist in Gamut.
 - **Don't** use `CTAButton` for standard UI actions — reserve it for marketing/high-visibility promotions.
 - **Don't** use `<Background>` without an actual color value — it's not a neutral wrapper.
+- **Don't** use bare form atoms for functional forms — use `GridForm` or `ConnectedForm`.
+
+### Pre-ship validation
+
+Before considering UI output final, run **`/gamut-review`** from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: **Cursor** — `gamut plugin install cursor --theme core`; **Claude Code** — `gamut plugin install claude --theme core` (use `admin` or `platform` for those Codecademy themes).
+
+The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a **manual pre-ship checklist** keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
 
 ---
 

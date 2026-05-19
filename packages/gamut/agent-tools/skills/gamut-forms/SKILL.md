@@ -1,13 +1,30 @@
 ---
 name: gamut-forms
-description: Implementing or auditing Gamut forms — FormGroup, ConnectedForm, ConnectedFormGroup, GridForm, react-hook-form wiring, labels, and accessible error/description regions. Pair with **`gamut-accessibility`** for non-form widgets and **`accessibility.mdc`** for universal HTML/ARIA rules.
+description: Implementing or auditing Gamut forms — GridForm, ConnectedForm, FormGroup, labels, validation. When invoked, read guidelines/components/forms.md first. Pair with gamut-accessibility for non-form widgets.
 ---
 
 # Gamut forms
 
+## Read first
+
+When this skill applies, read [`guidelines/components/forms.md`](../../guidelines/components/forms.md) before writing code.
+
 Canonical wiring for **`FormGroup`**, **`ConnectedForm`**, **`ConnectedFormGroup`**, **`GridForm`**, and field renderers. Source: **`packages/gamut/src/Form/`**, **`ConnectedForm/`**, **`GridForm/`**.
 
 Universal label and primitive guidance: **[`accessibility.mdc`](../../rules/accessibility.mdc)** · overlay and composite patterns: **[`gamut-accessibility`](../gamut-accessibility/SKILL.md)**.
+
+---
+
+## Mandatory: use organisms for functional forms
+
+**Functional forms** (submit/save, validation, dirty state) **must** use **`GridForm`** or **`ConnectedForm`**. Do not compose from bare `Input`, `Select`, `Checkbox`, etc.
+
+| Organism        | When                                                     |
+| --------------- | -------------------------------------------------------- |
+| `GridForm`      | Declarative `fields` + `submit` — settings, CRUD dialogs |
+| `ConnectedForm` | Custom layout with managed `react-hook-form` state       |
+
+**Rules:** Always set **`defaultValues`**. Use **`validation="onChange"`** when submit should stay disabled until valid. **`hideLabel: true`** on checkbox/radio fields with no `label`, and on toggle (`custom`) fields where `Toggle` renders its own label.
 
 ---
 

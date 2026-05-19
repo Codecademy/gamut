@@ -1,13 +1,35 @@
 ---
 name: gamut-system-props
-description: Use this skill when building or refactoring styled Gamut components that need layout, spacing, color, border, background, typography, positioning, grid, flex, shadow, list styles, or responsive values from @codecademy/gamut-styles — including composing system prop groups with variance.
+description: Layout, spacing, color, flex, grid system props from @codecademy/gamut-styles. When invoked, read guidelines/foundations/spacing.md first.
 ---
 
 # Gamut System Props
 
+## Read first
+
+When this skill applies, read [`guidelines/foundations/spacing.md`](../../guidelines/foundations/spacing.md) before writing code.
+
 Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/config.ts) (definitions) and [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`variance.create` groups). **`Box`**, **`FlexBox`**, and **`GridBox`** compose the same groups in [`packages/gamut/src/Box/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/props.ts).
 
-**See also:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) (semantic colors, responsive examples) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
+**See also:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [foundations/spacing.md](../../guidelines/foundations/spacing.md) (token scale). [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
+
+## Styling rules
+
+- **Never use inline `style` attributes.** Use system props on `Box` / `FlexBox` / `Text`, or `css` / `variant` / `states` on styled components.
+- **Use shorthand** — `mb={16}`, not `marginBottom={16}`.
+
+| Long form      | Shorthand |
+| -------------- | --------- |
+| `margin`       | `m`       |
+| `marginTop`    | `mt`      |
+| `marginBottom` | `mb`      |
+| `marginX`      | `mx`      |
+| `marginY`      | `my`      |
+| `padding`      | `p`       |
+| `paddingX`     | `px`      |
+| `paddingY`     | `py`      |
+
+Colors and borders: `bg`, `color` / `textColor`, `borderColor`, `borderRadius` — values must be Gamut tokens, never raw hex.
 
 ## Overview
 

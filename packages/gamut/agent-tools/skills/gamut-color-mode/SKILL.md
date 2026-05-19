@@ -1,9 +1,18 @@
 ---
 name: gamut-color-mode
-description: Use this skill when implementing light/dark behavior, semantic color aliases, the Background component for contrast-safe surfaces, or color-mode hooks in Gamut — including replacing hardcoded hex, fixing mode bugs, or reviewing color usage.
+description: Light/dark behavior, semantic color aliases, Background, color-mode hooks, hardcoded hex fixes. When invoked, read guidelines/foundations/modes.md and color.md first.
 ---
 
 # Gamut ColorMode
+
+## Read first
+
+When this skill applies, read before writing code:
+
+- [`guidelines/foundations/modes.md`](../../guidelines/foundations/modes.md)
+- [`guidelines/foundations/color.md`](../../guidelines/foundations/color.md)
+
+Confirm token mappings against root **`DESIGN.md`** and the active theme — do not assume Codecademy Core values.
 
 Source: `@codecademy/gamut-styles` — [`ColorMode.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/ColorMode.tsx)
 

@@ -1,11 +1,15 @@
 ---
 name: gamut-typography
-description: Use this skill when creating or reviewing UI text in Gamut apps — headlines, body, captions, labels, code snippets, or text-heavy layouts. Covers theme-specific stacks (Core Apercu/Suisse vs Percipio/LX Skillsoft), fontSize / lineHeight tokens, semantic fontWeight title (700 vs 500), line length, and alignment for Codecademy-branded surfaces.
+description: Gamut UI text — headlines, body, fontSize, lineHeight, fontWeight title. When invoked, read guidelines/foundations/typography.md and DESIGN.md for the active theme.
 ---
 
 # Gamut Typography
 
-**Implementation source of truth:** [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes). Agent guideline: [foundations/typography.md](../../guidelines/foundations/typography.md).
+## Read first
+
+When this skill applies, read [`guidelines/foundations/typography.md`](../../guidelines/foundations/typography.md) before writing code. Confirm stacks and `fontWeight.title` against root **`DESIGN.md`**.
+
+**Implementation source of truth:** [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
 
 ## Scope by theme
 

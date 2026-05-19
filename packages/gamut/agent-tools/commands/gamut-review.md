@@ -1,5 +1,5 @@
 ---
-description: Use this command when auditing existing code for Gamut usage — dependencies, GamutProvider, deep imports, hardcoded hex colors, and test patterns — and you need a consolidated report with pointers to the matching Gamut skills.
+description: Audit Gamut usage before shipping — DESIGN.md, dependencies, GamutProvider, imports, hex colors, tests, and pre-ship design guardrails — with a consolidated report and skill pointers.
 argument-hint: [path]
 allowed-tools: Read Glob Grep
 ---
@@ -8,7 +8,21 @@ This is an audit of **existing code** at **`$ARGUMENTS`** (default: current work
 
 When `DESIGN.md` is present at the audit root, use it as the authoritative reference for product design intent, token names, and component patterns. It is copied from `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` in `@codecademy/gamut` agent-tools (via `gamut plugin install --theme <name>`). When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
 
-Run **Check 0** first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
+Run **Check 0** first, then Checks 1–6, then print a single consolidated report using the format at the end of this file.
+
+**Before reporting:** Read [`guidelines/validation-checklist.md`](../guidelines/validation-checklist.md) and any [`guidelines/components/`](../guidelines/components/) guides relevant to findings (e.g. `data-table.md`, `menu.md`, `forms.md`).
+
+---
+
+## How to run
+
+| Step               | Guidance                                                                                                                                                                                                                                |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Install plugin** | **Cursor:** `gamut plugin install` (or `gamut plugin install cursor`) from `@codecademy/gamut`. **Claude Code:** `gamut plugin install claude`. Use `--theme core`, `percipio`, or `lxstudio` to copy `DESIGN.md` to the app repo root. |
+| **When**           | Before marking Gamut UI work final, before large PRs, when onboarding a codebase                                                                                                                                                        |
+| **Where**          | App repo root (directory containing `DESIGN.md`), or pass a subpath: `/gamut-review packages/web`                                                                                                                                       |
+| **In editor**      | Slash command **`/gamut-review`** (Cursor and Claude Code after plugin install; Claude may need `/reload-plugins` once)                                                                                                                 |
+| **Severity**       | **Errors** (`✗`) are blocking — fix before ship. **Warnings** (`⚠`) are recommended follow-ups.                                                                                                                                         |
 
 ---
 
@@ -18,7 +32,7 @@ Resolve the audit root: `$ARGUMENTS` if provided, otherwise the current working 
 
 | Result      | Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Found**   | Report `✓ DESIGN.md present (<path>)`. Proceed with Checks 1–5 using this file for product/theme context.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Found**   | Report `✓ DESIGN.md present (<path>)`. Proceed with Checks 1–6 using this file for product/theme context. Infer product (Codecademy, Percipio, LX Studio) from `DESIGN.md` content for Check 6 theme-specific manual items.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | **Missing** | Report `✗ DESIGN.md not found` as a **blocking** finding. Include remediation: from the repo root run `gamut plugin install cursor --theme core` (or `percipio`, `lxstudio`, `admin`, `platform`; also `claude`), or manually copy the matching `DESIGN.*.md` from `@codecademy/gamut` agent-tools and rename to `DESIGN.md`. Still run Checks 1–3 and 5. For **Check 4**, list hex violations with `palette:` / `semantic:` only where Appendix A/B apply without product YAML — prefix the Hardcoded colors section with **`⚠ low confidence — no DESIGN.md`** and **do not** assume Codecademy Core semantics; do not use Appendix B shortcuts as authoritative. |
 
 ---
@@ -193,9 +207,7 @@ Grep test files (`**/__tests__/**/*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.
 | `from 'component-test-setup'` (without gamut-tests)   | **Warning**                           | Should import `setupRtl` from `@codecademy/gamut-tests`, not directly from `component-test-setup` — the gamut-tests wrapper adds `MockGamutProvider` automatically                                                                                      |
 | `new GamutProvider` or `<GamutProvider` in test files | **Warning**                           | Prefer **`setupRtl`**; use **`MockGamutProvider`** (sets `useCache={false}`, `useGlobals={false}`) in harnesses or stories, not **`GamutProvider`** directly                                                                                            |
 
-Skill reference for remediation: `gamut-testing`
-
----
+## Skill reference for remediation: `gamut-testing`
 
 ## Output format
 
@@ -235,6 +247,7 @@ Test setup                                                               [→ ga
        src/components/Bar/__tests__/Bar.test.tsx:5
   ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
        src/components/Baz/__tests__/Baz.test.tsx:2
+
 
 ══════════════════════════════════════════════════
 <N> error(s), <N> warning(s) found.   (or "All checks passed." if none)

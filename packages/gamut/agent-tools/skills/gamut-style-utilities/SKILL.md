@@ -1,9 +1,13 @@
 ---
 name: gamut-style-utilities
-description: Use this skill when authoring Gamut styles with @codecademy/gamut-styles — css(), variant(), states(), StyleProps from variance, or the useTheme() escape hatch; choosing between these APIs and system props; semantic tokens with ColorMode.
+description: css(), variant(), states(), StyleProps, useTheme from @codecademy/gamut-styles. When invoked, read guidelines/foundations/color.md for semantic tokens.
 ---
 
 # Gamut style utilities
+
+## Read first
+
+When this skill applies, read [`guidelines/foundations/color.md`](../../guidelines/foundations/color.md) before choosing color tokens in `css` / `variant` / `states`.
 
 Source: `@codecademy/gamut-styles` — [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`css`, `variant`, `states` built on `PROPERTIES.all`).
 

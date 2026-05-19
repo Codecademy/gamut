@@ -77,6 +77,24 @@ typography:
     fontFamily: 'Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace'
   system:
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+  '14':
+    fontSize: '0.875rem'
+  '16':
+    fontSize: '1rem'
+  '18':
+    fontSize: '1.125rem'
+  '20':
+    fontSize: '1.25rem'
+  '22':
+    fontSize: '1.375rem'
+  '26':
+    fontSize: '1.625rem'
+  '34':
+    fontSize: '2.125rem'
+  '44':
+    fontSize: '2.75rem'
+  '64':
+    fontSize: '4rem'
 borderRadii:
   none: '0px'
   sm: '4px'
@@ -84,6 +102,18 @@ borderRadii:
   lg: '12px'
   xl: '16px'
   full: '999px'
+spacing:
+  '0': '0'
+  '4': '0.25rem'
+  '8': '0.5rem'
+  '12': '0.75rem'
+  '16': '1rem'
+  '24': '1.5rem'
+  '32': '2rem'
+  '40': '2.5rem'
+  '48': '3rem'
+  '64': '4rem'
+  '96': '6rem'
 components:
   FillButton:
     backgroundColor: '{colors.primary}'
@@ -103,6 +133,18 @@ components:
     backgroundColor: 'transparent'
     textColor: '{colors.secondary}'
     borderRadii: '{borderRadii.md}'
+  StrokeButton-hover:
+    textColor: '{colors.secondary-hover}'
+  TextButton:
+    backgroundColor: 'transparent'
+    textColor: '{colors.primary}'
+  TextButton-hover:
+    textColor: '{colors.primary-hover}'
+  IconButton:
+    backgroundColor: 'transparent'
+    textColor: '{colors.secondary}'
+  IconButton-hover:
+    textColor: '{colors.secondary-hover}'
   Input:
     backgroundColor: '{colors.background}'
     textColor: '{colors.text}'
@@ -113,6 +155,25 @@ components:
     borderRadii: '{borderRadii.sm}'
   Checkbox-hover:
     backgroundColor: '{colors.primary-hover}'
+  Card:
+    backgroundColor: '{colors.background}'
+    borderRadii: '{borderRadii.none}'
+  Card-interactive:
+    borderRadii: '{borderRadii.md}'
+  Card-elevated:
+    backgroundColor: '{colors.background-primary}'
+    borderRadii: '{borderRadii.lg}'
+  Headline:
+    textColor: '{colors.text-accent}'
+    typography: '{typography.title}'
+  Tag-success:
+    backgroundColor: '{colors.feedback-success}'
+    textColor: '{colors.white}'
+    borderRadii: '{borderRadii.sm}'
+  Tag-warning:
+    backgroundColor: '{colors.feedback-warning}'
+    textColor: '{colors.text}'
+    borderRadii: '{borderRadii.sm}'
   Alert-error:
     backgroundColor: '{colors.background-error}'
     textColor: '{colors.feedback-error}'
@@ -132,7 +193,7 @@ This file defines the visual design tokens for the Skillsoft LX Studio authoring
 
 ---
 
-## Visual Theme & Atmosphere
+## Overview
 
 LX Studio communicates **modern professional craft** — clean, precise, and tool-like. As an authoring environment for learning content creators, the interface must feel capable and unobtrusive. The design voice prioritizes clarity and control over personality.
 
@@ -144,10 +205,9 @@ LX Studio communicates **modern professional craft** — clean, precise, and too
 - Sapphire (`#1C50BB`) drives primary CTAs and interactive controls in light mode
 - Shadows are soft (navy-200) rather than hard (navy-800 in Core light mode)
 - Skillsoft Text and Skillsoft Sans replace Apercu and Suisse across `base` and `accent`
+- Use semantic `background-primary` (`#FAFBFC`) — not Core `beige`
 
----
-
-## Themes
+### Themes
 
 LX Studio uses a single Gamut theme that extends Core. **Light mode** applies LX-specific semantic overrides (sapphire primary, softer borders, larger radii). **Dark mode** inherits Core dark semantics — use `<ColorMode>` and semantic tokens the same way as Codecademy.
 
@@ -155,13 +215,15 @@ LX Studio uses a single Gamut theme that extends Core. **Light mode** applies LX
 | ------------- | -------------------------------------- | --------------------- | -------------- |
 | **LX Studio** | Skillsoft LX Studio authoring platform | Skillsoft Sans / Text | ✓ light + dark |
 
-The active theme is set at the app root via `<GamutProvider theme={lxStudioTheme}>`.
+Set the active theme via `<GamutProvider theme={lxStudioTheme}>`. For new LX Studio apps, default to `lxStudioTheme` unless another theme is explicitly requested. Install in app repos: `gamut plugin install cursor --theme lxstudio` (copies to `./DESIGN.md`).
 
 ---
 
-## Semantic Color Aliases
+## Colors
 
-Use these token names when specifying colors. They resolve per color mode automatically. **Never hardcode hex values** for anything that must adapt across modes.
+Use semantic token names in code and designs. They resolve per color mode automatically. **Never hardcode hex values** for adaptive UI. **Never hardcode `beige`** — LX maps `background-primary` to `lxStudioBgPrimary` (`#FAFBFC`).
+
+For dark/light regions, use `<ColorMode>` or `<Background>` — never swap colors manually with custom CSS.
 
 ### Text
 
@@ -228,7 +290,7 @@ LX Studio shadows are soft — use `shadow-primary` for standard elevated surfac
 
 ---
 
-## LX Studio Color Palette
+### LX Studio color palette
 
 LX Studio adds named colors to the core palette. Use semantic aliases in code, not these raw names.
 
@@ -304,7 +366,9 @@ Target 45–85 characters per line; 66 characters is ideal. Max 50 for multi-col
 
 ---
 
-## Spacing Scale
+## Layout
+
+### Spacing scale
 
 Identical to Core. All spacing is multiples of 4px on an 8px grid.
 
@@ -322,11 +386,25 @@ Identical to Core. All spacing is multiples of 4px on an 8px grid.
 | `64`  | 64px  |
 | `96`  | 96px  |
 
+### System props
+
+**Never use inline `style` attributes.** Use system props shorthand (`m`, `mb`, `p`, etc.) and Gamut tokens for colors and borders.
+
+### Responsive behavior
+
+Identical to Core. Mobile-first; 12-column grid; **44×44px** minimum touch targets on mobile.
+
 ---
 
-## Border Radius Scale
+## Elevation & Depth
 
-LX Studio uses larger border radii than Core — everything is one step softer.
+LX Studio shadows are soft — use `shadow-primary` (navy-200) for elevated surfaces, not Core's hard navy-800 shadow in light mode.
+
+---
+
+## Shapes
+
+LX Studio uses **larger border radii than Core** — defined in `lxStudioBorderRadii`. **No custom radius values.**
 
 | Token  | LX Studio | Core  | Use                                        |
 | ------ | --------- | ----- | ------------------------------------------ |
@@ -339,42 +417,30 @@ LX Studio uses larger border radii than Core — everything is one step softer.
 
 ---
 
-## Responsive Behavior
-
-Identical to Core. Mobile-first, apply styles from the named breakpoint up.
-
-| Token    | Min-width | Max content |
-| -------- | --------- | ----------- |
-| _(base)_ | 0         | 288px       |
-| `xs`     | 480px     | 448px       |
-| `sm`     | 768px     | 704px       |
-| `md`     | 1024px    | 896px       |
-| `lg`     | 1200px    | 1072px      |
-| `xl`     | 1440px    | 1248px      |
-
-12-column grid at all breakpoints.
-
-| Usage                 | Recommended values                               |
-| --------------------- | ------------------------------------------------ |
-| Horizontal margins    | 64px (lg+), 48px (md), 32px (sm/xs), 16px (base) |
-| Column gaps (gutters) | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
-| Row gaps              | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
-
-Minimum interactive touch target: **44×44px** on mobile breakpoints.
-
----
-
-## Component Library
+## Components
 
 Same component library as Codecademy — all atoms, molecules, and organisms apply. Token values resolve differently per theme automatically.
 
-Key LX Studio-specific visual differences:
+### LX Studio visual differences
 
 - `FillButton` uses sapphire `#1C50BB` in light mode instead of hyper-500
-- `FillButton` hover shifts to navy-800 `#10162F` in light mode — darker on hover
-- All interactive elements have `borderRadius: md` (8px) instead of Core's 4px
+- `FillButton` hover shifts to navy-800 `#10162F` in light mode
+- Interactive elements use `borderRadius: md` (**8px**, not Core's 4px)
 - `Card` shadows use navy-200 (soft) rather than navy-800 (hard)
-- No `Card-beige` variant — LX Studio `background-primary` is off-white, not beige
+- Prefer `background-primary` over beige for elevated surfaces
+
+### Gamut implementation guardrails
+
+Same rules as Codecademy (`DESIGN.Codecademy.md` Components section), with LX-specific notes:
+
+- **Buttons:** no generic `Button`; `IconButton` requires `tip`; never set `mode` on buttons; use `borderRadii.md` (8px) on buttons/inputs.
+- **Forms:** `GridForm` / `ConnectedForm` for submit flows.
+- **Cards:** valid variants `default`, `white`, `yellow`, `beige`, `navy`, `hyper`; defaults `shadow="none"`, `isInteractive={false}`.
+- **DataTable / DataList:** `sortable` requires `query`, `onQueryChange`, and client-sorted rows.
+- **Menu:** always explicit `variant` (`fixed` + `as="nav"` or `popover`).
+- **Color mode:** `<ColorMode>` / `<Background>` only.
+- **Accessibility:** WCAG, `FocusTrap` in modals/drawers.
+- **Assets:** `@codecademy/gamut-icons`, `gamut-illustrations`, `gamut-patterns`.
 
 ---
 
@@ -400,6 +466,17 @@ Key LX Studio-specific visual differences:
 - **Do** begin design work at 1440px (XL), then adapt down.
 - **Do** align elements to the 12-column grid.
 - **Do** apply the larger `md` border radius (8px) to buttons and inputs — it defines the LX Studio feel.
+
+### Components
+
+- **Don't** import a generic `Button` or use Apercu / Suisse.
+- **Don't** use bare form atoms for functional forms.
+
+### Pre-ship validation
+
+Before considering UI output final, run **`/gamut-review`** from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: **Cursor** — `gamut plugin install cursor --theme lxstudio`; **Claude Code** — `gamut plugin install claude --theme lxstudio`.
+
+The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a **manual pre-ship checklist** keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
 
 ---
 

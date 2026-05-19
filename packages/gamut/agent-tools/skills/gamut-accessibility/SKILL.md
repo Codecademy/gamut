@@ -1,13 +1,29 @@
 ---
 name: gamut-accessibility
-description: Deep Gamut accessibility reference (component matrix, overlays, tips, live regions, checklists). Form wiring and validation UX live in **`gamut-forms`**. Universal HTML/ARIA/focus/color rules: always-loaded **`accessibility.mdc`** — read that first; this skill does not duplicate them.
+description: Gamut a11y matrix, overlays, FocusTrap, tips, live regions. When invoked, read guidelines/components/buttons.md, menu.md, tooltips.md as needed. Forms: gamut-forms. Cursor: accessibility.mdc.
 ---
 
 # Gamut Accessibility
 
+## Read first
+
+When this skill applies, read the linked component guides for widgets you are auditing (not all at once):
+
+- [`guidelines/components/buttons.md`](../../guidelines/components/buttons.md)
+- [`guidelines/components/menu.md`](../../guidelines/components/menu.md)
+- [`guidelines/components/tooltips.md`](../../guidelines/components/tooltips.md)
+
+Universal rules: **[`accessibility.mdc`](../../rules/accessibility.mdc)** (Cursor, always-on). Form wiring: **`gamut-forms`**.
+
 Source: `@codecademy/gamut` — **`react-aria-components`** is used only in **[`packages/gamut/src/Tabs/`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tabs/)** (`Tabs.tsx`, `TabList.tsx`, `Tab.tsx`, `TabPanel.tsx`). **`react-focus-on`** powers **`FocusTrap`** ([`packages/gamut/src/FocusTrap/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FocusTrap/index.tsx)), used by overlays such as **`Overlay`** ([`packages/gamut/src/Overlay/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Overlay/index.tsx)) and **`Popover`**. Other widgets (e.g. **`Menu`**, **`DatePicker`**) implement keyboard and ARIA in Gamut code — verify behavior in Storybook and source, do not assume React Aria.
 
-**Product-oriented button variants and props:** [`guidelines/components/buttons.md`](../../guidelines/components/buttons.md)
+**Product-oriented button variants and props:** [`guidelines/components/buttons.md`](../../guidelines/components/buttons.md) · **Menus:** [`guidelines/components/menu.md`](../../guidelines/components/menu.md) · **Tooltips:** [`guidelines/components/tooltips.md`](../../guidelines/components/tooltips.md)
+
+---
+
+## Focus trapping (required)
+
+**Trap focus inside modals, dialogs, drawers, flyouts, and any focus-confined region** using **`FocusTrap`** from `@codecademy/gamut`. Without focus trapping, keyboard users can tab into background content — a WCAG failure. `Dialog`, `Modal`, `Overlay`, and `Popover` compose `FocusTrap` internally; custom overlays must use it explicitly.
 
 ---
 

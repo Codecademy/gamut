@@ -10,6 +10,8 @@ yarn add @codecademy/gamut-kit @emotion/react @emotion/styled
 
 **Full guide:** [Meta / Installation](https://gamut.codecademy.com/?path=/docs-meta-installation--page) in Storybook (CSP `nonce` on `GamutProvider`, Jest, Next/Gatsby entry points). For Emotion + TypeScript, add `theme.d.ts` as in [TypeScript (`theme.d.ts`)](#typescript-themedts) below.
 
+**Product design intent:** After install, use root **`DESIGN.md`** (from `gamut plugin install --theme <name>`) with [`skills/gamut-theming/SKILL.md`](../skills/gamut-theming/SKILL.md) for semantic tokens, fonts, and component patterns for that product. Do not modify or alias `@codecademy/*` packages away from published APIs.
+
 Optionally add a `peerDependencies` block in `package.json` listing `@codecademy/gamut`, `@codecademy/gamut-icons`, `@codecademy/gamut-illustrations`, `@codecademy/gamut-patterns`, `@codecademy/gamut-styles`, `@codecademy/gamut-tests`, and `@codecademy/variance` (e.g. `"*"`) so editors surface those packages — see Meta / Installation for the JSON snippet.
 
 ## Required wrapper
