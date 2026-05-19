@@ -109,9 +109,10 @@ System props are a core part of our new approach to dynamic and customized styli
 
 ```tsx
 import { Box } from '@codecademy/gamut';
+import { pxRem } from '@codecademy/gamut-styles';
 
 const MyContainer = ({ children }) => (
-  <Box paddingX={[16, 32, 64, , 96]}>{children}</Box>
+  <Box px={[16, 32, 64, , 96]}>{children}</Box>
 );
 
 const MyOtherContainer = ({ children }) => (
@@ -212,18 +213,18 @@ const SomeCoolLayout = ({ children }) => (
 **Design Token Access** - Responsively accessing tokens by key.
 
 ```tsx
+import { Box } from '@codecademy/gamut';
+
 const CardLikeThing = ({ children }) => (
   <Box
-    backgroundColor={{ _: 'background', md: 'text' }}
+    bg={{ _: 'background', md: 'text' }}
     textColor={{ _: 'text', md: 'background' }}
   >
     {children}
   </Box>
 );
 
-const Content = ({ children }) => (
-  <Box padding={{ _: 16, md: 32 }}>{children}</Box>
-);
+const Content = ({ children }) => <Box p={{ _: 16, md: 32 }}>{children}</Box>;
 ```
 
 # ❌ Nested selectors

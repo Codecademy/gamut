@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
+import { error, log } from './lib/io.mjs';
+
 /**
  * Gamut CLI
  *
  * Usage:
- *   gamut plugin install [cursor|claude|figma] [--scope all|skills|rules|commands|agents]
- *   gamut plugin remove  [cursor|claude|figma]
- *   gamut plugin update  [cursor|claude|figma] [--scope all|skills|rules|commands|agents]
+ *   gamut plugin install [cursor|claude] [--scope all|skills|rules|commands|agents]
+ *   gamut plugin remove  [cursor|claude]
+ *   gamut plugin update  [cursor|claude] [--scope all|skills|rules|commands|agents]
  *   gamut plugin list
  */
 
@@ -19,7 +21,7 @@ if (!noun || noun === '--help' || noun === '-h') {
 }
 
 if (noun !== 'plugin') {
-  console.error(`Unknown command: "${noun}"`);
+  error(`Unknown command: "${noun}"`);
   printHelp();
   process.exit(1);
 }
@@ -33,7 +35,7 @@ let cmd;
 try {
   cmd = await import(`./commands/plugin/${verb}.mjs`);
 } catch {
-  console.error(`Unknown plugin subcommand: "${verb}"`);
+  error(`Unknown plugin subcommand: "${verb}"`);
   printPluginHelp();
   process.exit(1);
 }
@@ -46,7 +48,7 @@ if (rest.includes('--help') || rest.includes('-h')) {
 try {
   await cmd.default(rest);
 } catch (/** @type {any} */ err) {
-  console.error(`Error: ${err.message}`);
+  error(`Error: ${err.message}`);
   process.exit(1);
 }
 
@@ -55,7 +57,7 @@ try {
 // ---------------------------------------------------------------------------
 
 function printHelp() {
-  console.log(`
+  log(`
 gamut — Gamut design system CLI
 
 Usage:
@@ -69,21 +71,23 @@ Run "gamut plugin --help" for plugin subcommands.
 }
 
 function printPluginHelp() {
-  console.log(`
+  log(`
 gamut plugin — Manage the Gamut plugin
 
 Subcommands:
-  install [target] [--scope <scope>]    Install the plugin into a tool
-  remove  [target]                      Remove an installed plugin
-  update  [target] [--scope <scope>]    Update an already-installed plugin
-  list                                  Show installation status for all targets
+  install [target] [--scope <scope>] [--theme <theme>]  Install the plugin (+ optional DESIGN.md)
+  remove  [target]                                      Remove an installed plugin
+  update  [target] [--scope <scope>] [--theme <theme>]  Update an installed plugin
+  list                                                  Show installation status for all targets
 
-Targets:   cursor (default)  |  claude  |  figma
+Targets:   cursor (default)  |  claude
 Scopes:    all (default)     |  skills  |  rules  |  commands  |  agents
+Themes:    core | admin | platform | percipio | lxstudio  (--theme copies DESIGN.md to repo root)
 
 Examples:
   gamut plugin install
   gamut plugin install claude
+  gamut plugin install cursor --theme percipio
   gamut plugin install cursor --scope skills
   gamut plugin remove claude
   gamut plugin update

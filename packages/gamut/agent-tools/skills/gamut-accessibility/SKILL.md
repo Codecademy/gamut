@@ -1,65 +1,57 @@
 ---
 name: gamut-accessibility
-description: Use this skill when implementing or auditing accessibility in Gamut UIs — interactive widgets, forms, focus and keyboard flows, live regions, ARIA, or contrast — including fixes for screen readers, WCAG issues, or Gamut + React Aria patterns.
+description: Deep Gamut accessibility reference (component matrix, overlays, tips, live regions, checklists). Form wiring and validation UX live in `gamut-forms`. Universal HTML/ARIA/focus/color rules: always-loaded `accessibility.mdc` — read that first; this skill does not duplicate them.
 ---
 
 # Gamut Accessibility
 
-Source: `@codecademy/gamut` — interactive components wrap `react-aria-components`, `@react-aria/interactions`, and `react-focus-on`.
+Source: `@codecademy/gamut` — `react-aria-components` is used only in [`packages/gamut/src/Tabs/`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tabs/) (`Tabs.tsx`, `TabList.tsx`, `Tab.tsx`, `TabPanel.tsx`). `react-focus-on` powers `FocusTrap` ([`packages/gamut/src/FocusTrap/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FocusTrap/index.tsx)), used by overlays such as `Overlay` ([`packages/gamut/src/Overlay/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Overlay/index.tsx)) and `Popover`. Other widgets (e.g. `Menu`, `DatePicker`) implement keyboard and ARIA in Gamut code — verify behavior in Storybook and source, do not assume React Aria.
+
+Product-oriented button variants and props: [`guidelines/components/buttons.md`](../../guidelines/components/buttons.md)
 
 ---
 
-## General rules
+## Universal rules
 
-Use ARIA sparingly and only when it's the best option available.
-
-### Prefer HTML over ARIA
-
-Unnecessary ARIA can cause harm. If a native HTML element or attribute with the semantics and behavior you need already exists, use it. Reach for ARIA only when native HTML is genuinely insufficient for the pattern.
-
-### A Role is a Promise
-
-ARIA roles modify the accessibility tree and _imply_ behavior. Always ensure that the implied keyboard behavior, focusability, and interactivity exists when a role is used.
-
-### ARIA can both cloak and enhance
-
-ARIA can augment native semantics (`aria-pressed` on a `<button>`) or override them entirely (`role="menuitem"` on an `<a>`). Both capabilities are powerful and dangerous. Override only when native HTML genuinely doesn't fit the pattern; when augmenting, don't contradict the native semantics.
-
-
-### Align accessible names with visible copy
-
-Prefer wiring names through visible text and native `<label>` / control text / `alt` over using `aria-label`. Point `aria-labelledby` at the visible heading or label that should define the name if it's not possible to name elements from their content. Use bare `aria-label` when there is no suitable visible label.
-
-### Treat missing visible labels as a design smell
-
-When there is no visible text for a nameable element, consider this a sign that the content design could be improved, but not a requirement that it is changed. This is not an accessibility violation.
-
-```html
-<!-- smell: this list has no conceptual name, so we have to create one using ARIA -->
-<ul aria-label="List heading">
-  <li>...</li>
-</ul>
-
-<!-- better: the list's name is visible and can be used for its accessible name -->
-<h2 id="list-name">List heading</h2>
-<ul aria-labelledby="list-name">
-  <li>...</li>
-</ul>
-```
+Prefer native HTML, minimal ARIA, correct roles, visible names, focus visibility, semantic color / `ColorMode`, and Gamut primitives — see the always-loaded Gamut Accessibility Rules: [`accessibility.mdc`](../../rules/accessibility.mdc). This skill adds Gamut component behavior and audit detail below.
 
 ---
 
 ## How Gamut handles accessibility
 
-Gamut wraps React Aria for most interactive widget primitives. Roving tabindex, keyboard event handling, and ARIA attribute management are implemented for you in `<Tabs>`, `<Dialog>`, `<Modal>`, and form components. The developer's responsibilities are: supply accessible names, wire labels to inputs, and avoid overriding what the library already provides.
+Tabs use `react-aria-components` (see `packages/gamut/src/Tabs/*.tsx`) for roving tabindex and keyboard navigation. Overlays (e.g. `Overlay`, `Popover`) use `FocusTrap` → `react-focus-on` for focus containment and Escape/outside close. Other interactive components (`Menu`, `DatePicker`, `Modal`, `Dialog`, etc.) rely on in-repo implementations — supply accessible names, wire labels to controls, and avoid duplicating what a component already sets (`aria-live`, `aria-describedby`, tabindex, etc.); confirm in source when auditing.
 
 ---
 
-## Component reference
+## Component reference (index)
 
-### Button / IconButton
+There is no exported `<Button>` — use `FillButton`, `TextButton`, `StrokeButton`, `CTAButton`, and `IconButton` (shared `ButtonProps` type). Prefer these over `<div onClick>` or `<span role="button">`.
 
-`<Button>` renders a semantic `<button>` — no `role` needed. For icon-only buttons use `<IconButton>` with a `tip` prop; `tip` becomes the button's `aria-label`. Do not use `<div onClick>` or `<a>` without `href` for actions.
+Forms — `FormGroup`, `ConnectedForm` / `ConnectedFormGroup`, `GridForm`, field atoms (`Select`, `Checkbox`, `Radio`), validation, `aria-live` / `aria-describedby`: canonical reference is [`gamut-forms`](../gamut-forms/SKILL.md).
+
+| Component(s)                                            | Handled in library                                                                                                       | App / author responsibilities                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `FillButton`, `TextButton`, `StrokeButton`, `CTAButton` | Render `<button>` (or `<a>` when `href` is set); native click + keyboard activation                                      | Visible text or `href` purpose; follow [`buttons.md`](../../guidelines/components/buttons.md) for variants and `disabled` vs `aria-disabled`.                                                                                                                                              |
+| `IconButton`                                            | `tip` feeds the accessible name for icon-only controls                                                                   | Always pass `tip` when the button has no visible text.                                                                                                                                                                                                                                     |
+| `Dialog`                                                | `Overlay` (shroud, Escape, focus), `role="dialog"`, `aria-modal`, close control with configurable `closeButtonProps.tip` | Provide a clear `title` (and meaningful body copy). Confirm naming with [Molecules / Modals / Dialog](https://gamut.codecademy.com/?path=/docs-molecules-modals-dialog--docs).                                                                                                             |
+| `Modal`                                                 | Same overlay/focus stack; optional `aria-label`; multi-`views` support                                                   | `title` / view titles; pass `aria-label` when there is no visible title string. [Molecules / Modals / Modal](https://gamut.codecademy.com/?path=/docs-molecules-modals-modal--docs).                                                                                                       |
+| `Alert`                                                 | Default `aria-live="polite"`, `role="status"`                                                                            | Use `aria-live="assertive"` only for urgent interruptions; do not nest inside another live region.                                                                                                                                                                                         |
+| `Tabs`, `Tab`, `TabList`, `TabPanel`                    | `react-aria-components` in `packages/gamut/src/Tabs/` — roving tabindex, arrows, Home/End                                | Name each tab; Tab moves into the active panel per APG.                                                                                                                                                                                                                                    |
+| Forms                                                   | See Forms above                                                                                                          | [`gamut-forms`](../gamut-forms/SKILL.md)                                                                                                                                                                                                                                                   |
+| `DatePicker` + `DatePickerInput`                        | Segmented input + calendar behavior inside `FormGroup`                                                                   | Provide `label` / `name` / `form` as for any input; keep `DatePickerInput` inside `DatePicker`. When embedded in `FormGroup` / `GridForm`, follow [`gamut-forms`](../gamut-forms/SKILL.md). [Organisms / DatePicker](https://gamut.codecademy.com/?path=/docs-organisms-datepicker--docs). |
+| `Menu`, `MenuItem`, `MenuSeparator`                     | List + `MenuProvider` (keyboard / roles depend on variant)                                                               | Label `Menu` / menubar per pattern; follow Storybook [Molecules / Menu](https://gamut.codecademy.com/?path=/docs-molecules-menu--docs).                                                                                                                                                    |
+| `Popover`                                               | `FocusTrap` when open (unless `skipFocusTrap`), positioning                                                              | `onRequestClose`, meaningful `role` when needed; do not trap focus unnecessarily when `skipFocusTrap`.                                                                                                                                                                                     |
+| `Flyout`                                                | `Overlay`, `Drawer`, visible `title`, close `IconButton` with `tip={closeLabel}`                                         | Pass `title` and `closeLabel`; name panel content.                                                                                                                                                                                                                                         |
+| `Drawer`                                                | Focuses container when `expanded`, `tabIndex={-1}` on shell                                                              | Drawer is a surface, not a full dialog — supply headings/labels inside for screen readers.                                                                                                                                                                                                 |
+| `Disclosure`                                            | `DisclosureButton` drives expand/collapse                                                                                | Provide `heading` / structure so the control’s purpose is clear.                                                                                                                                                                                                                           |
+| `Toggle`                                                | `ToggleLabel` + `htmlFor` wired to control `id`                                                                          | With no visible `label`, pass `ariaLabel` (or use `as="button"` pattern per props).                                                                                                                                                                                                        |
+| `ToolTip`                                               | Floating mode renders a screen-reader `role="tooltip"` branch with `id`                                                  | Pass the same `id` to the trigger’s `aria-describedby` when you rely on the tooltip as supplementary description (see component `id` JSDoc).                                                                                                                                               |
+| `InfoTip`                                               | —                                                                                                                        | `ariaLabel` or `ariaLabelledby` (camelCase) — no automatic fallback.                                                                                                                                                                                                                       |
+| `PreviewTip`                                            | `Anchor`-based preview, focus-driven content                                                                             | `linkDescription` and visible anchor text; do not use the preview as the sole name for an unrelated control.                                                                                                                                                                               |
+| `SkipToContent`                                         | Skip link behavior                                                                                                       | Place early in the tab order; `href` target `id` must exist on main content.                                                                                                                                                                                                               |
+| `Toast` + `Toaster`                                     | `Toaster` wraps the stack in `aria-live="polite"`                                                                        | Keep messages concise; avoid stacking many simultaneous assertive announcements.                                                                                                                                                                                                           |
+| `Pagination`                                            | Page / control buttons                                                                                                   | Ensure current page and actions are perceivable (labels / `aria-current` patterns per Storybook). [Molecules / Pagination](https://gamut.codecademy.com/?path=/docs-molecules-pagination--docs).                                                                                           |
+| `FocusTrap`                                             | Escape, outside click, `allowPageInteraction`                                                                            | Return focus to trigger on close for custom overlays.                                                                                                                                                                                                                                      |
 
 ```tsx
 // correct
@@ -69,98 +61,81 @@ Gamut wraps React Aria for most interactive widget primitives. Roving tabindex, 
 <div onClick={handleDelete}><DeleteIcon /></div>
 ```
 
-### Dialog / Modal
+### Dialog / Modal (detail)
 
-Both use `<FocusTrap>` (`react-focus-on`) internally. Focus locks to the dialog on open and returns to the trigger on close. Escape closes the dialog automatically.
+Both use `Overlay` and `FocusTrap` (`react-focus-on`) patterns: focus moves into the surface, Escape closes (when enabled), focus should return to the trigger on close.
 
-Always provide an accessible name. **Prefer `aria-labelledby`** when a visible heading or title defines the dialog name; use **`aria-label`** only when there is no suitable visible title string.
+Prefer a visible title so the dialog has a clear name; on `Modal`, pass `aria-label` when there is no suitable visible title string. Close control: `IconButton` with `closeButtonProps.tip` (defaults documented in source).
 
 ```tsx
-<Dialog aria-labelledby="confirm-title">
-  <h2 id="confirm-title">Confirm deletion</h2>
-</Dialog>
+<Dialog
+  title="Confirm deletion"
+  confirmCta={{ children: 'Delete', onClick: handleDelete }}
+  onRequestClose={handleClose}
+  isOpen={open}
+/>
 ```
 
-### Alert
+### Alert (detail)
 
 Renders with `aria-live="polite"` and `role="status"` by default. Override with `aria-live="assertive"` only for time-sensitive errors requiring immediate interruption. Do not nest `<Alert>` inside another live region.
 
-### Tabs
+### Tabs (detail)
 
 Built on `react-aria-components`. Follows the [ARIA Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/): arrow keys navigate tabs, Tab moves focus into the active panel, Home/End jump to first/last tab. The tablist is a composite — only the active tab is in the tab sequence (roving tabindex). No manual `aria-selected` or keyboard handling needed.
 
-### Forms
+### InfoTip (example)
 
-`<FormGroup>` + `<FormGroupLabel>` + input element is the complete accessible pattern:
-
-```tsx
-<FormGroup htmlFor="email-input" description="Used for login" error={errors.email}>
-  <FormGroupLabel htmlFor="email-input">Email</FormGroupLabel>
-  <Input id="email-input" type="email" />
-</FormGroup>
-```
-
-- `htmlFor` on `<FormGroupLabel>` and `id` on the input must match
-- `error` prop on `<FormGroup>` renders into an `aria-live="assertive"` region automatically
-- `description` prop renders into an `aria-live="polite"` region automatically
-- Do not add `aria-describedby` or `aria-errormessage` manually — `<FormGroup>` manages these
-
-**Checkbox / Radio**: `htmlFor` is required; the input is visually hidden via `screenReaderOnly` from `@codecademy/gamut-styles` but remains in the accessibility tree.
-
-### InfoTip
-
-Unlike `<IconButton>`, `<InfoTip>` has no automatic label fallback. Always provide `ariaLabel` or `ariaLabelledby` (camelCase props).
+`<InfoTip>` needs `ariaLabel` or `ariaLabelledby` — see also the always-loaded rules.
 
 ```tsx
 <InfoTip ariaLabel="More information about billing" />
 ```
 
-### SkipToContent
+### ToolTip (detail)
 
-Include `<SkipToContent>` as the first focusable element in the page shell. The main content region must have a matching `id` for the skip link to target.
+When `placement="floating"`, the component renders a screen-reader-only branch with `role="tooltip"` and an optional `id`. Pass the same `id` to the described element’s `aria-describedby` so assistive tech associates the tooltip copy with the trigger. Inline placement uses the wrapper differently — see [Molecules / Tips / ToolTip](https://gamut.codecademy.com/?path=/docs-molecules-tips-tooltip--docs).
 
-### Text (screen-reader-only)
+### SkipToContent (detail)
 
-`<Text screenreader>` is the supported pattern for visually hidden but announced content. `<HiddenText>` is deprecated.
-
-```tsx
-<Text screenreader>Loading results…</Text>
-```
+Include `<SkipToContent>` as the first focusable element in the page shell. The main content region must expose a matching `id` for the skip target.
 
 ---
 
 ## Focus management
 
-`<FocusTrap>` is available for custom overlay patterns not covered by `<Dialog>` or `<Modal>`.
+`<FocusTrap>` is for custom overlay patterns not covered by `Dialog` / `Modal`.
 
 Key props:
+
 - `active` — enable/disable the trap dynamically
 - `onEscapeKey` — close handler
 - `onClickOutside` — dismiss on outside click
 - `allowPageInteraction` — permit scrolling outside the trap without closing
 
-Always return focus to the trigger on close. React Aria components do this automatically; custom implementations must store a ref to the trigger and call `.focus()` on unmount.
+Always return focus to the trigger on close. `react-focus-on` (via `FocusTrap`) and overlay flows handle much of this for dialogs/popovers; `Tabs` inherit focus behavior from `react-aria-components`. Custom surfaces must store a ref to the trigger and call `.focus()` on close when the library does not.
 
 ---
 
 ## Composite widgets and managed focus
 
-ARIA composite roles (`listbox`, `menu`, `tree`, `grid`, `tablist`) use **managed focus**: only one element in the composite is in the tab sequence at a time. Tab moves focus to the next element outside the composite; arrow keys move focus within it.
+ARIA composite roles (`listbox`, `menu`, `tree`, `grid`, `tablist`) use managed focus: only one element in the composite is in the tab sequence at a time. Tab moves focus to the next element outside the composite; arrow keys move focus within it.
 
 Implementation pattern — roving tabindex:
+
 - Set `tabIndex={0}` on the currently active item
 - Set `tabIndex={-1}` on all other items
 - On arrow key, update which item holds `tabIndex={0}` and call `.focus()` on it
 
-Gamut's `<Tabs>` implements this via React Aria. If you build a custom composite widget, you must implement roving tabindex manually. A flat `tabIndex={0}` on every item is wrong — it puts every item in the sequential tab order, which is not the composite pattern.
+`Tabs` (`react-aria-components`) implement roving tabindex for the tablist pattern. `Menu` and other composites implement focus in Gamut — if you build a custom composite, implement roving tabindex yourself. A flat `tabIndex={0}` on every item is wrong — it puts every item in the sequential tab order.
 
 ---
 
 ## Device-independent events
 
-Use `click` for activation, not `mousedown`. `click` fires for both pointer and keyboard (Space/Enter on native buttons and links). `mousedown` is pointer-only and silently breaks keyboard access.
+Use `click` for activation, not `mousedown`. `click` follows pointer activation; native `<button>` (and similar controls) also fire `click` from keyboard (Space and Enter). A focused `<a href>` is usually activated with Enter, which fires `click` — Space often scrolls the page instead of activating the link. `mousedown` does not represent keyboard activation, so relying on it alone breaks keyboard-only use.
 
-For custom elements with `role="button"`, `click` alone is not sufficient — it only fires on keyboard when the element is a native `<button>` or `<a href>`. You must also handle `keydown` for Space and Enter explicitly:
+For custom elements with `role="button"`, do not assume the browser will synthesize `click` from the keyboard the way it does for native interactive elements (`<button>`, `<a href>`, and other built-ins). Handle `keydown` for Space and Enter explicitly:
 
 ```tsx
 const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -171,40 +146,40 @@ const handleKeyDown = (e: React.KeyboardEvent) => {
 };
 ```
 
-This is another reason to use `<Button>` — it handles this correctly and you don't.
+Prefer Gamut `*Button` components (or `Anchor` with a real `href`) so you do not reimplement this.
 
 ---
 
 ## Live regions
 
-| Scenario | Pattern |
-|---|---|
-| Status updates, non-critical notifications | `aria-live="polite"` |
-| Form validation errors on submit | `aria-live="assertive"` |
-| Frequently updating counts or progress | `aria-live="polite"` + `aria-atomic="true"` |
+| Scenario                                   | Pattern                                     |
+| ------------------------------------------ | ------------------------------------------- |
+| Status updates, non-critical notifications | `aria-live="polite"`                        |
+| Urgent global interruptions                | `aria-live="assertive"` (use sparingly)     |
+| Frequently updating counts or progress     | `aria-live="polite"` + `aria-atomic="true"` |
+
+Form-bound `aria-live` and `FormError` patterns: see Forms above (do not assume assertive on every field error).
 
 Inject live regions into the DOM before they need to announce. A region added simultaneously with its first announcement may be ignored by some assistive technologies.
 
-`<FormGroup>` already uses `aria-live="assertive"` for the `error` prop. Don't elevate unrelated inline errors to assertive — reserve it for interruptions the user didn't directly trigger.
+Do not elevate unrelated inline errors to `assertive` — reserve assertive for urgent interruptions the user did not directly trigger.
 
 ---
 
 ## ARIA authoring rules
 
-- **No redundant roles**: don't set `role="button"` on `<button>` or `role="heading"` on `<h2>`
-- **aria-hidden cascades**: placing `aria-hidden="true"` on a parent removes the entire subtree from the accessibility tree, including focusable descendants — never put it on an ancestor of a focusable element
-- **role="presentation" and aria-hidden on focusable elements**: both are prohibited on elements that can receive focus — they remove semantics while leaving the element keyboard-reachable, producing an operable but unnamed control
-- **Labelling vs describing**: `aria-label` / `aria-labelledby` name the control. `aria-describedby` provides supplementary context. Both can coexist on the same element
-- **Required fields**: use `aria-required="true"` or the HTML `required` attribute. Visual asterisks must have an explanatory text string visible on the page; the asterisk glyph itself should carry `aria-hidden="true"` — `<FormGroupLabel>` already handles this
-- **display:none vs aria-hidden**: elements with `display:none` are already removed from the accessibility tree; adding `aria-hidden` is redundant. Use `aria-hidden="true"` only when an element is visually present but should be hidden from assistive technology
+- No redundant roles: don't set `role="button"` on `<button>` or `role="heading"` on `<h2>`
+- `aria-hidden` cascades: placing `aria-hidden="true"` on a parent removes the entire subtree from the accessibility tree, including focusable descendants — never put it on an ancestor of a focusable element
+- `role="presentation"` and `aria-hidden` on focusable elements: both are prohibited on elements that can receive focus — they remove semantics while leaving the element keyboard-reachable, producing an operable but unnamed control
+- Labelling vs describing: `aria-label` / `aria-labelledby` name the control. `aria-describedby` provides supplementary context. Both can coexist on the same element
+- Required fields: use `aria-required="true"` or the HTML `required` attribute. Visual asterisks must have an explanatory text string visible on the page; the asterisk glyph itself should carry `aria-hidden="true"` — `<FormGroupLabel>` already handles this
+- `display:none` vs `aria-hidden`: elements with `display:none` are already removed from the accessibility tree; adding `aria-hidden` is redundant. Use `aria-hidden="true"` only when an element is visually present but should be hidden from assistive technology
 
 ---
 
-## Color and contrast
+## Color and contrast (non-text)
 
-Gamut's `ColorMode` and semantic color tokens are designed to meet WCAG AA (4.5:1 for normal text, 3:1 for large text and non-text UI components). Hardcoding hex values bypasses this guarantee and breaks in dark mode. See the `gamut-color-mode` skill for semantic token usage.
-
-Non-text contrast (focus indicators, input borders, icon-only controls) requires a minimum 3:1 ratio against adjacent colors per WCAG 1.4.11.
+Semantic tokens, `ColorMode`, and `<Background>` are covered in the always-loaded `accessibility.mdc` rule and the `gamut-color-mode` skill. Here: non-text contrast (focus rings, input borders, icon affordances) should meet ~3:1 vs adjacent colors where WCAG 1.4.11 applies — validate in your layout.
 
 ---
 
@@ -215,7 +190,7 @@ Non-text contrast (focus indicators, input borders, icon-only controls) requires
 - [ ] Dialogs trap focus correctly; Escape closes; focus returns to the trigger
 - [ ] Composite widgets (tabs, menus, listboxes) use arrow keys internally, not Tab
 - [ ] All form inputs have programmatically associated labels (not placeholder-only)
-- [ ] Form errors are announced via live region
+- [ ] Form errors surface through the library’s `FormError` / live-region patterns (Forms above)
 - [ ] Icon-only controls have accessible names
 - [ ] No content relies solely on color to convey meaning
 - [ ] Screen reader matrix: VoiceOver + Safari (iOS), VoiceOver + Chrome (macOS), NVDA + Chrome (Windows)
@@ -225,15 +200,15 @@ Non-text contrast (focus indicators, input borders, icon-only controls) requires
 
 ## Common anti-patterns
 
-| Anti-pattern | Fix |
-|---|---|
-| `<div onClick={…}>` for actions | `<Button>` |
-| `placeholder` as the only label | `<FormGroupLabel>` with matching `htmlFor`/`id` |
-| `aria-label` on a `<div>` with no role | Add a meaningful `role` or use a semantic element |
-| `role="button"` without Space/Enter handlers | Use `<Button>`, or add `keydown` handler |
-| `tabIndex={0}` on every item in a composite | Roving tabindex: `0` on active item, `-1` on rest |
-| Tooltip as the only accessible name for a control | Set `aria-label` directly on the control as well |
-| `aria-hidden="true"` on a focusable element | Also remove from tab order (`tabIndex={-1}`) or restructure |
-| `mousedown` for activation | Use `click` |
-| `outline: none` without a replacement | Use Gamut's built-in focus styles |
-| Multiple `aria-live` regions for the same content stream | One region per logical stream; reuse it across updates |
+| Anti-pattern                                             | Fix                                                                                   |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `<div onClick={…}>` for actions                          | `FillButton`, `TextButton`, `StrokeButton`, `CTAButton`, or `IconButton` (with `tip`) |
+| `placeholder` as the only label                          | `FormGroupLabel` with matching `htmlFor` / `id`                                       |
+| `aria-label` on a `<div>` with no role                   | Add a meaningful `role` or use a semantic element                                     |
+| `role="button"` without Space/Enter handlers             | Use a Gamut `*Button`, `Anchor` with `href`, or add `keydown`                         |
+| `tabIndex={0}` on every item in a composite              | Roving tabindex: `0` on active item, `-1` on rest                                     |
+| Tooltip as the only accessible name for a control        | Set `aria-label` (or visible text) on the control as well                             |
+| `aria-hidden="true"` on a focusable element              | Also remove from tab order (`tabIndex={-1}`) or restructure                           |
+| `mousedown` for activation                               | Use `click`                                                                           |
+| `outline: none` without a replacement                    | Use Gamut’s built-in focus styles                                                     |
+| Multiple `aria-live` regions for the same content stream | One region per logical stream; reuse it across updates                                |
