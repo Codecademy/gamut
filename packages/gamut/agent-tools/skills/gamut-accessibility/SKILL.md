@@ -21,12 +21,6 @@ Product-oriented button variants and props: [`guidelines/components/buttons.md`]
 
 ---
 
-## Focus trapping (required)
-
-Trap focus inside modals, dialogs, drawers, flyouts, and any focus-confined region using `FocusTrap` from `@codecademy/gamut`. Without focus trapping, keyboard users can tab into background content — a WCAG failure. `Dialog`, `Modal`, `Overlay`, and `Popover` compose `FocusTrap` internally; custom overlays must use it explicitly.
-
----
-
 ## Universal rules
 
 Prefer native HTML, minimal ARIA, correct roles, visible names, focus visibility, semantic color / `ColorMode`, and Gamut primitives — see the always-loaded Gamut Accessibility Rules: [`accessibility.mdc`](../../rules/accessibility.mdc). This skill adds Gamut component behavior and audit detail below.
