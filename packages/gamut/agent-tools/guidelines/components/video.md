@@ -1,8 +1,8 @@
 # Video
 
-**Never build custom media players.** Gamut exports `Video` (built on `@vidstack/react`) with controls, poster support, text tracks, and accessibility.
+Never build custom media players. Gamut exports `Video` (built on `@vidstack/react`) with controls, poster support, text tracks, and accessibility.
 
-**Storybook:** [Molecules / Video](https://gamut.codecademy.com/?path=/docs-molecules-video--docs)
+Storybook: [Molecules / Video](https://gamut.codecademy.com/?path=/docs-molecules-video--docs)
 
 ## Rule
 

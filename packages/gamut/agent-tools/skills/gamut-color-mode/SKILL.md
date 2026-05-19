@@ -12,7 +12,7 @@ When this skill applies, read before writing code:
 - [`guidelines/foundations/modes.md`](../../guidelines/foundations/modes.md)
 - [`guidelines/foundations/color.md`](../../guidelines/foundations/color.md)
 
-Confirm token mappings against root **`DESIGN.md`** and the active theme — do not assume Codecademy Core values.
+Confirm token mappings against root `DESIGN.md` and the active theme — do not assume Codecademy Core values.
 
 Source: `@codecademy/gamut-styles` — [`ColorMode.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/ColorMode.tsx)
 

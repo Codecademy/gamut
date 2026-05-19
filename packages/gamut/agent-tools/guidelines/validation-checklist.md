@@ -1,13 +1,13 @@
 # Validation checklist
 
-Run before considering Gamut UI output final. Automated checks: **`/gamut-review`** (see [`commands/gamut-review.md`](../commands/gamut-review.md)).
+Run before considering Gamut UI output final. Automated checks: `/gamut-review` (see [`commands/gamut-review.md`](../commands/gamut-review.md)).
 
 ## Tokens and styling
 
 - [ ] Every color uses Gamut semantic or palette tokens — no raw hex in adaptive UI.
 - [ ] Spacing and sizing use the spacing scale from [`foundations/spacing.md`](foundations/spacing.md).
 - [ ] Border radius uses defined radius tokens.
-- [ ] Typography uses theme font families, sizes, weights, and line heights from [`foundations/typography.md`](foundations/typography.md) and root **`DESIGN.md`**.
+- [ ] Typography uses theme font families, sizes, weights, and line heights from [`foundations/typography.md`](foundations/typography.md) and root `DESIGN.md`.
 - [ ] No inline `style` attributes — system props or `css` / `variant` / `states` from `@codecademy/gamut-styles`.
 - [ ] System props use shorthand (`mb`, `p`, `bg`) not long-form (`marginBottom`).
 
@@ -22,7 +22,7 @@ Run before considering Gamut UI output final. Automated checks: **`/gamut-review
 ## Color modes and theme
 
 - [ ] Dark/light regions use `ColorMode` or `Background` from `@codecademy/gamut-styles` — no custom CSS overrides for mode switching ([`foundations/modes.md`](foundations/modes.md)).
-- [ ] Semantic tokens and fonts match the active theme in root **`DESIGN.md`** and `<GamutProvider>` (see [`skills/gamut-theming/SKILL.md`](../skills/gamut-theming/SKILL.md)).
+- [ ] Semantic tokens and fonts match the active theme in root `DESIGN.md` and `<GamutProvider>` (see [`skills/gamut-theming/SKILL.md`](../skills/gamut-theming/SKILL.md)).
 
 ## Component guardrails
 

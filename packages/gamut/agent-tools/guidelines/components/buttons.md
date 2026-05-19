@@ -1,8 +1,8 @@
 # Buttons
 
-**There is no generic `Button` export from `@codecademy/gamut`.** Never import `Button` — use the specific variant that matches the design.
+There is no generic `Button` export from `@codecademy/gamut`. Never import `Button` — use the specific variant that matches the design.
 
-Agent reference: which **button component** and which **`variant`** to use. Colors are wired inside each atom — consumers do **not** pass `color`, `bg`, hex, or semantic token names on stock buttons.
+Agent reference: which button component and which `variant` to use. Colors are wired inside each atom — consumers do not pass `color`, `bg`, hex, or semantic token names on stock buttons.
 
 Related docs: [overview.md](../overview.md) (reading order) · [foundations/color.md](../foundations/color.md) and `gamut-color-mode` skill — semantic tokens for custom styled controls only, not stock button atoms · [foundations/modes.md](../foundations/modes.md) — ColorMode / `<Background>` when placing buttons on colored surfaces
 
@@ -86,7 +86,7 @@ Hover, active, and disabled colors are handled by the component. Do not override
 
 ## Rules
 
-- **Never set the `mode` prop on buttons** — they inherit color context from parent `ColorMode` / `<Background>` wrappers.
+- Never set the `mode` prop on buttons — they inherit color context from parent `ColorMode` / `<Background>` wrappers.
 - Match variant to design intent: filled → `FillButton`, outlined → `StrokeButton`, text-only → `TextButton`, icon-only → `IconButton` (with `tip`).
 - Use `FillButton` for primary actions and `StrokeButton` for secondary — do not use both at equal weight on the same screen.
 - Reserve `CTAButton` for marketing / high-visibility promotions; do not use it for standard UI actions.

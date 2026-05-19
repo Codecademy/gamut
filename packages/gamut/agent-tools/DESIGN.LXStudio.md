@@ -189,17 +189,17 @@ components:
 
 This file defines the visual design tokens for the Skillsoft LX Studio authoring platform, implemented using the Gamut design system (`@codecademy/gamut`, `@codecademy/gamut-styles`). LX Studio uses a dedicated Gamut theme that extends Core with its own brand colors, typography, and border radii — all Gamut components work without modification.
 
-**Storybook**: https://gamut.codecademy.com
+Storybook: https://gamut.codecademy.com
 
 ---
 
 ## Overview
 
-LX Studio communicates **modern professional craft** — clean, precise, and tool-like. As an authoring environment for learning content creators, the interface must feel capable and unobtrusive. The design voice prioritizes clarity and control over personality.
+LX Studio communicates modern professional craft — clean, precise, and tool-like. As an authoring environment for learning content creators, the interface must feel capable and unobtrusive. The design voice prioritizes clarity and control over personality.
 
-**Density**: Medium. Layouts are information-dense but well-spaced; generous border radii and soft shadows reduce visual weight.
+Density: Medium. Layouts are information-dense but well-spaced; generous border radii and soft shadows reduce visual weight.
 
-**Design philosophy**:
+Design philosophy:
 
 - Larger border radii than Core give the UI a softer, more modern feel
 - Sapphire (`#1C50BB`) drives primary CTAs and interactive controls in light mode
@@ -209,11 +209,11 @@ LX Studio communicates **modern professional craft** — clean, precise, and too
 
 ### Themes
 
-LX Studio uses a single Gamut theme that extends Core. **Light mode** applies LX-specific semantic overrides (sapphire primary, softer borders, larger radii). **Dark mode** inherits Core dark semantics — use `<ColorMode>` and semantic tokens the same way as Codecademy.
+LX Studio uses a single Gamut theme that extends Core. Light mode applies LX-specific semantic overrides (sapphire primary, softer borders, larger radii). Dark mode inherits Core dark semantics — use `<ColorMode>` and semantic tokens the same way as Codecademy.
 
-| Theme         | Use case                               | Base font             | Dark mode      |
-| ------------- | -------------------------------------- | --------------------- | -------------- |
-| **LX Studio** | Skillsoft LX Studio authoring platform | Skillsoft Sans / Text | ✓ light + dark |
+| Theme     | Use case                               | Base font             | Dark mode      |
+| --------- | -------------------------------------- | --------------------- | -------------- |
+| LX Studio | Skillsoft LX Studio authoring platform | Skillsoft Sans / Text | ✓ light + dark |
 
 Set the active theme via `<GamutProvider theme={lxStudioTheme}>`. For new LX Studio apps, default to `lxStudioTheme` unless another theme is explicitly requested. Install in app repos: `gamut plugin install cursor --theme lxstudio` (copies to `./DESIGN.md`).
 
@@ -221,7 +221,7 @@ Set the active theme via `<GamutProvider theme={lxStudioTheme}>`. For new LX Stu
 
 ## Colors
 
-Use semantic token names in code and designs. They resolve per color mode automatically. **Never hardcode hex values** for adaptive UI. **Never hardcode `beige`** — LX maps `background-primary` to `lxStudioBgPrimary` (`#FAFBFC`).
+Use semantic token names in code and designs. They resolve per color mode automatically. Never hardcode hex values for adaptive UI. Never hardcode `beige` — LX maps `background-primary` to `lxStudioBgPrimary` (`#FAFBFC`).
 
 For dark/light regions, use `<ColorMode>` or `<Background>` — never swap colors manually with custom CSS.
 
@@ -308,7 +308,7 @@ The full core swatch palette (navy, hyper, blue, green, yellow, red, etc.) is al
 
 ### Typefaces
 
-LX Studio uses **Skillsoft Text** for `base` and **Skillsoft Sans** for `accent`. There is no Apercu and no Suisse.
+LX Studio uses Skillsoft Text for `base` and Skillsoft Sans for `accent`. There is no Apercu and no Suisse.
 
 | Token       | Font                                                  | Use for                                   |
 | ----------- | ----------------------------------------------------- | ----------------------------------------- |
@@ -321,18 +321,18 @@ Skillsoft fonts are loaded via `GamutProvider` asset configuration (see `@codeca
 
 ### Rules
 
-- **Skillsoft Medium (500)** for headlines, sub-headlines, CTAs, and buttons — not Bold (700).
-- **Skillsoft Regular (400)** for body text, UI labels, and menu items.
-- Text is **left-aligned** by default. Center-align only for short marketing headlines. Never right-align.
+- Skillsoft Medium (500) for headlines, sub-headlines, CTAs, and buttons — not Bold (700).
+- Skillsoft Regular (400) for body text, UI labels, and menu items.
+- Text is left-aligned by default. Center-align only for short marketing headlines. Never right-align.
 - Do not adjust letter-spacing.
 - `accent` uses Skillsoft Sans; `base` uses Skillsoft Text — they are intentionally different families.
 
 ### Font weight scale
 
-| Token   | Value   | Use                                                           |
-| ------- | ------- | ------------------------------------------------------------- |
-| `base`  | 400     | Body text, UI labels                                          |
-| `title` | **500** | Headlines, CTAs, buttons _(matches Percipio, not Core's 700)_ |
+| Token   | Value | Use                                                           |
+| ------- | ----- | ------------------------------------------------------------- |
+| `base`  | 400   | Body text, UI labels                                          |
+| `title` | 500   | Headlines, CTAs, buttons _(matches Percipio, not Core's 700)_ |
 
 ### Font size scale
 
@@ -388,11 +388,11 @@ Identical to Core. All spacing is multiples of 4px on an 8px grid.
 
 ### System props
 
-**Never use inline `style` attributes.** Use system props shorthand (`m`, `mb`, `p`, etc.) and Gamut tokens for colors and borders.
+Never use inline `style` attributes. Use system props shorthand (`m`, `mb`, `p`, etc.) and Gamut tokens for colors and borders.
 
 ### Responsive behavior
 
-Identical to Core. Mobile-first; 12-column grid; **44×44px** minimum touch targets on mobile.
+Identical to Core. Mobile-first; 12-column grid; 44×44px minimum touch targets on mobile.
 
 ---
 
@@ -404,14 +404,14 @@ LX Studio shadows are soft — use `shadow-primary` (navy-200) for elevated surf
 
 ## Shapes
 
-LX Studio uses **larger border radii than Core** — defined in `lxStudioBorderRadii`. **No custom radius values.**
+LX Studio uses larger border radii than Core — defined in `lxStudioBorderRadii`. No custom radius values.
 
 | Token  | LX Studio | Core  | Use                                        |
 | ------ | --------- | ----- | ------------------------------------------ |
 | `none` | 0px       | 0px   | Square / non-interactive elements          |
-| `sm`   | **4px**   | 2px   | Subtle rounding, tags, checkboxes          |
-| `md`   | **8px**   | 4px   | Default buttons, inputs, interactive cards |
-| `lg`   | **12px**  | 8px   | Cards, panels                              |
+| `sm`   | 4px       | 2px   | Subtle rounding, tags, checkboxes          |
+| `md`   | 8px       | 4px   | Default buttons, inputs, interactive cards |
+| `lg`   | 12px      | 8px   | Cards, panels                              |
 | `xl`   | 16px      | 16px  | Large cards, modals                        |
 | `full` | 999px     | 999px | Pills, avatars, circular elements          |
 
@@ -425,7 +425,7 @@ Same component library as Codecademy — all atoms, molecules, and organisms app
 
 - `FillButton` uses sapphire `#1C50BB` in light mode instead of hyper-500
 - `FillButton` hover shifts to navy-800 `#10162F` in light mode
-- Interactive elements use `borderRadius: md` (**8px**, not Core's 4px)
+- Interactive elements use `borderRadius: md` (8px, not Core's 4px)
 - `Card` shadows use navy-200 (soft) rather than navy-800 (hard)
 - Prefer `background-primary` over beige for elevated surfaces
 
@@ -433,14 +433,14 @@ Same component library as Codecademy — all atoms, molecules, and organisms app
 
 Same rules as Codecademy (`DESIGN.Codecademy.md` Components section), with LX-specific notes:
 
-- **Buttons:** no generic `Button`; `IconButton` requires `tip`; never set `mode` on buttons; use `borderRadii.md` (8px) on buttons/inputs.
-- **Forms:** `GridForm` / `ConnectedForm` for submit flows.
-- **Cards:** valid variants `default`, `white`, `yellow`, `beige`, `navy`, `hyper`; defaults `shadow="none"`, `isInteractive={false}`.
-- **DataTable / DataList:** `sortable` requires `query`, `onQueryChange`, and client-sorted rows.
-- **Menu:** always explicit `variant` (`fixed` + `as="nav"` or `popover`).
-- **Color mode:** `<ColorMode>` / `<Background>` only.
-- **Accessibility:** WCAG, `FocusTrap` in modals/drawers.
-- **Assets:** `@codecademy/gamut-icons`, `gamut-illustrations`, `gamut-patterns`.
+- Buttons: no generic `Button`; `IconButton` requires `tip`; never set `mode` on buttons; use `borderRadii.md` (8px) on buttons/inputs.
+- Forms: `GridForm` / `ConnectedForm` for submit flows.
+- Cards: valid variants `default`, `white`, `yellow`, `beige`, `navy`, `hyper`; defaults `shadow="none"`, `isInteractive={false}`.
+- DataTable / DataList: `sortable` requires `query`, `onQueryChange`, and client-sorted rows.
+- Menu: always explicit `variant` (`fixed` + `as="nav"` or `popover`).
+- Color mode: `<ColorMode>` / `<Background>` only.
+- Accessibility: WCAG, `FocusTrap` in modals/drawers.
+- Assets: `@codecademy/gamut-icons`, `gamut-illustrations`, `gamut-patterns`.
 
 ---
 
@@ -448,35 +448,35 @@ Same rules as Codecademy (`DESIGN.Codecademy.md` Components section), with LX-sp
 
 ### Colors
 
-- **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
-- **Do** use `<ColorMode>` and `<Background>` for scoped light/dark — dark mode inherits from Core.
-- **Don't** use the Percipio or Codecademy palette swatches directly; go through semantic aliases.
+- Do use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
+- Do use `<ColorMode>` and `<Background>` for scoped light/dark — dark mode inherits from Core.
+- Don't use the Percipio or Codecademy palette swatches directly; go through semantic aliases.
 
 ### Typography
 
-- **Do** use title weight (500) for headlines, CTAs, and buttons — not 700.
-- **Do** keep body text at 150–175% line height for readability.
-- **Don't** use Apercu or Suisse — LX Studio uses Skillsoft Text and Skillsoft Sans.
-- **Don't** right-align or center-align body paragraphs.
-- **Don't** adjust letter-spacing.
+- Do use title weight (500) for headlines, CTAs, and buttons — not 700.
+- Do keep body text at 150–175% line height for readability.
+- Don't use Apercu or Suisse — LX Studio uses Skillsoft Text and Skillsoft Sans.
+- Don't right-align or center-align body paragraphs.
+- Don't adjust letter-spacing.
 
 ### Layout & Spacing
 
-- **Do** use multiples of 8px for block-element spacing (4px only for inline / typographic relationships).
-- **Do** begin design work at 1440px (XL), then adapt down.
-- **Do** align elements to the 12-column grid.
-- **Do** apply the larger `md` border radius (8px) to buttons and inputs — it defines the LX Studio feel.
+- Do use multiples of 8px for block-element spacing (4px only for inline / typographic relationships).
+- Do begin design work at 1440px (XL), then adapt down.
+- Do align elements to the 12-column grid.
+- Do apply the larger `md` border radius (8px) to buttons and inputs — it defines the LX Studio feel.
 
 ### Components
 
-- **Don't** import a generic `Button` or use Apercu / Suisse.
-- **Don't** use bare form atoms for functional forms.
+- Don't import a generic `Button` or use Apercu / Suisse.
+- Don't use bare form atoms for functional forms.
 
 ### Pre-ship validation
 
-Before considering UI output final, run **`/gamut-review`** from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: **Cursor** — `gamut plugin install cursor --theme lxstudio`; **Claude Code** — `gamut plugin install claude --theme lxstudio`.
+Before considering UI output final, run `/gamut-review` from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: Cursor — `gamut plugin install cursor --theme lxstudio`; Claude Code — `gamut plugin install claude --theme lxstudio`.
 
-The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a **manual pre-ship checklist** keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
+The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a manual pre-ship checklist keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
 
 ---
 

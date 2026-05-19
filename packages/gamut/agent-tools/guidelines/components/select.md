@@ -1,8 +1,8 @@
 # Select vs. SelectDropdown
 
-`Select` is a native select suitable for most dropdown needs. **Prefer `Select` over `SelectDropdown` for simple lists.**
+`Select` is a native select suitable for most dropdown needs. Prefer `Select` over `SelectDropdown` for simple lists.
 
-**Storybook:** [Atoms / Select](https://gamut.codecademy.com/?path=/docs-atoms-select--docs) · [Organisms / SelectDropdown](https://gamut.codecademy.com/?path=/docs-organisms-selectdropdown--docs)
+Storybook: [Atoms / Select](https://gamut.codecademy.com/?path=/docs-atoms-select--docs) · [Organisms / SelectDropdown](https://gamut.codecademy.com/?path=/docs-organisms-selectdropdown--docs)
 
 ## When to use `SelectDropdown`
 

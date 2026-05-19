@@ -10,7 +10,7 @@ description: Gamut themes, GamutProvider, theme.d.ts, CreatingThemes. When invok
 When this skill applies, read before writing code:
 
 - [`guidelines/setup.md`](../../guidelines/setup.md)
-- Root **`DESIGN.md`** in the app repo (product tokens and patterns)
+- Root `DESIGN.md` in the app repo (product tokens and patterns)
 
 Source: `@codecademy/gamut-styles`
 
@@ -26,7 +26,7 @@ For authoring component styles (`css`, `variant`, `states`, system props, ColorM
 
 Do not hardcode a product theme in generic guidance. In an app repo:
 
-1. Read root **`DESIGN.md`** (installed via `gamut plugin install --theme <name>`) for semantic tokens, fonts, and product patterns.
+1. Read root `DESIGN.md` (installed via `gamut plugin install --theme <name>`) for semantic tokens, fonts, and product patterns.
 2. Confirm `<GamutProvider theme={...}>` matches that product (`coreTheme`, `percipioTheme`, `lxStudioTheme`, etc.).
 3. Use Storybook Foundations / Theme stories for the active product when verifying hex ↔ semantic mappings.
 
@@ -57,7 +57,7 @@ See `CreatingThemes.mdx` in the styleguide (`packages/styleguide/src/lib/Foundat
 
 ## Key principles
 
-- Pick the **correct theme export** for the product (`coreTheme`, `adminTheme`, `platformTheme`, `lxStudioTheme`, `percipioTheme`, etc.) so tokens and fonts match **`DESIGN.md`** and design intent.
-- Align **`theme.d.ts`** / `Theme extends …` with the same theme interface you pass to `GamutProvider` (see [setup.md](../../guidelines/setup.md)).
-- Components stay portable across themes when they use **token and semantic aliases** rather than one-off hex; authoring rules live in **`gamut-style-utilities`** and **`gamut-color-mode`**.
-- **`GamutProvider`** wires theme, color mode, and logical-properties settings at the root; individual components should not hard-code which org theme is active.
+- Pick the correct theme export for the product (`coreTheme`, `adminTheme`, `platformTheme`, `lxStudioTheme`, `percipioTheme`, etc.) so tokens and fonts match `DESIGN.md` and design intent.
+- Align `theme.d.ts` / `Theme extends …` with the same theme interface you pass to `GamutProvider` (see [setup.md](../../guidelines/setup.md)).
+- Components stay portable across themes when they use token and semantic aliases rather than one-off hex; authoring rules live in `gamut-style-utilities` and `gamut-color-mode`.
+- `GamutProvider` wires theme, color mode, and logical-properties settings at the root; individual components should not hard-code which org theme is active.

@@ -9,7 +9,7 @@ description: Implementing or auditing Gamut forms — GridForm, ConnectedForm, F
 
 When this skill applies, read [`guidelines/components/forms.md`](../../guidelines/components/forms.md) before writing code.
 
-Canonical wiring for **`FormGroup`**, **`ConnectedForm`**, **`ConnectedFormGroup`**, **`GridForm`**, and field renderers. Source: **`packages/gamut/src/Form/`**, **`ConnectedForm/`**, **`GridForm/`**.
+Canonical wiring for `FormGroup`, `ConnectedForm`, `ConnectedFormGroup`, `GridForm`, and field renderers. Source: `packages/gamut/src/Form/`, `ConnectedForm/`, `GridForm/`.
 
 Universal label and primitive guidance: [`accessibility.mdc`](../../rules/accessibility.mdc) · overlay and composite patterns: [`gamut-accessibility`](../gamut-accessibility/SKILL.md).
 
@@ -17,14 +17,14 @@ Universal label and primitive guidance: [`accessibility.mdc`](../../rules/access
 
 ## Mandatory: use organisms for functional forms
 
-**Functional forms** (submit/save, validation, dirty state) **must** use **`GridForm`** or **`ConnectedForm`**. Do not compose from bare `Input`, `Select`, `Checkbox`, etc.
+Functional forms (submit/save, validation, dirty state) must use `GridForm` or `ConnectedForm`. Do not compose from bare `Input`, `Select`, `Checkbox`, etc.
 
 | Organism        | When                                                     |
 | --------------- | -------------------------------------------------------- |
 | `GridForm`      | Declarative `fields` + `submit` — settings, CRUD dialogs |
 | `ConnectedForm` | Custom layout with managed `react-hook-form` state       |
 
-**Rules:** Always set **`defaultValues`**. Use **`validation="onChange"`** when submit should stay disabled until valid. **`hideLabel: true`** on checkbox/radio fields with no `label`, and on toggle (`custom`) fields where `Toggle` renders its own label.
+Rules: Always set `defaultValues`. Use `validation="onChange"` when submit should stay disabled until valid. `hideLabel: true` on checkbox/radio fields with no `label`, and on toggle (`custom`) fields where `Toggle` renders its own label.
 
 ---
 

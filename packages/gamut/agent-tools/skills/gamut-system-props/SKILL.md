@@ -9,14 +9,14 @@ description: Layout, spacing, color, flex, grid system props from @codecademy/ga
 
 When this skill applies, read [`guidelines/foundations/spacing.md`](../../guidelines/foundations/spacing.md) before writing code.
 
-Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/config.ts) (definitions) and [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`variance.create` groups). **`Box`**, **`FlexBox`**, and **`GridBox`** compose the same groups in [`packages/gamut/src/Box/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/props.ts).
+Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/config.ts) (definitions) and [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`variance.create` groups). `Box`, `FlexBox`, and `GridBox` compose the same groups in [`packages/gamut/src/Box/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/props.ts).
 
-**See also:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [foundations/spacing.md](../../guidelines/foundations/spacing.md) (token scale). [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
+See also: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [foundations/spacing.md](../../guidelines/foundations/spacing.md) (token scale). [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
 
 ## Styling rules
 
-- **Never use inline `style` attributes.** Use system props on `Box` / `FlexBox` / `Text`, or `css` / `variant` / `states` on styled components.
-- **Use shorthand** — `mb={16}`, not `marginBottom={16}`.
+- Never use inline `style` attributes. Use system props on `Box` / `FlexBox` / `Text`, or `css` / `variant` / `states` on styled components.
+- Use shorthand — `mb={16}`, not `marginBottom={16}`.
 
 | Long form      | Shorthand |
 | -------------- | --------- |

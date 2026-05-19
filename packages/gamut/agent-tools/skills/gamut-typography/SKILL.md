@@ -7,9 +7,9 @@ description: Gamut UI text — headlines, body, fontSize, lineHeight, fontWeight
 
 ## Read first
 
-When this skill applies, read [`guidelines/foundations/typography.md`](../../guidelines/foundations/typography.md) before writing code. Confirm stacks and `fontWeight.title` against root **`DESIGN.md`**.
+When this skill applies, read [`guidelines/foundations/typography.md`](../../guidelines/foundations/typography.md) before writing code. Confirm stacks and `fontWeight.title` against root `DESIGN.md`.
 
-**Implementation source of truth:** [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
+Implementation source of truth: [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
 
 ## Scope by theme
 

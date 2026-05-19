@@ -1,6 +1,6 @@
 # RadialProgress
 
-**Storybook:** [Molecules / RadialProgress](https://gamut.codecademy.com/?path=/docs-molecules-radialprogress--docs)
+Storybook: [Molecules / RadialProgress](https://gamut.codecademy.com/?path=/docs-molecules-radialprogress--docs)
 
 ## Labels as `children` by default
 

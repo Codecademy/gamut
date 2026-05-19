@@ -203,18 +203,18 @@ components:
 
 This file defines the visual design tokens for codecademy.com, implemented using the Gamut design system (`@codecademy/gamut`, `@codecademy/gamut-styles`). Gamut ships 52 components with Figma ↔ code mappings via Figma Code Connect.
 
-**Figma file**: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/📐-Gamut
-**Storybook**: https://gamut.codecademy.com
+Figma file: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/📐-Gamut
+Storybook: https://gamut.codecademy.com
 
 ---
 
 ## Overview
 
-Codecademy communicates **logic with personality** — structured and trustworthy enough for a learning platform, with creative moments that feel engaging and human. The design voice is: _"we are ruled by logic, but are creative and a bit unexpected as well."_
+Codecademy communicates logic with personality — structured and trustworthy enough for a learning platform, with creative moments that feel engaging and human. The design voice is: _"we are ruled by logic, but are creative and a bit unexpected as well."_
 
-**Density**: Medium. Information-dense layouts use careful whitespace and strong typographic hierarchy to stay readable. Avoid cramped or overly airy layouts.
+Density: Medium. Information-dense layouts use careful whitespace and strong typographic hierarchy to stay readable. Avoid cramped or overly airy layouts.
 
-**Design philosophy**:
+Design philosophy:
 
 - Components are color mode–aware by default — never hardcode hex values for adaptive UI
 - Every component works across all themes without modification
@@ -225,11 +225,11 @@ Codecademy communicates **logic with personality** — structured and trustworth
 
 Codecademy products use three Gamut themes, all sharing the same core visual identity. Token aliases resolve to the right values per theme automatically — components require no modification.
 
-| Theme        | Use case                        | Base font | Dark mode      |
-| ------------ | ------------------------------- | --------- | -------------- |
-| **Core**     | Codecademy (default)            | Apercu    | ✓ light + dark |
-| **Admin**    | Codecademy admin tools          | Apercu    | ✓ light + dark |
-| **Platform** | Codecademy learning environment | Apercu    | ✓ light + dark |
+| Theme    | Use case                        | Base font | Dark mode      |
+| -------- | ------------------------------- | --------- | -------------- |
+| Core     | Codecademy (default)            | Apercu    | ✓ light + dark |
+| Admin    | Codecademy admin tools          | Apercu    | ✓ light + dark |
+| Platform | Codecademy learning environment | Apercu    | ✓ light + dark |
 
 Set the active theme at the app root via `<GamutProvider theme={theme}>` (or `adminTheme` / `platformTheme`). Install this file in app repos: `gamut plugin install cursor --theme core` (copies to `./DESIGN.md`).
 
@@ -239,7 +239,7 @@ For other Skillsoft products: `gamut plugin install cursor --theme percipio` or 
 
 ## Colors
 
-Use semantic token names in code and designs. They resolve to the correct raw value for the active theme and color mode automatically. **Never hardcode hex values** for anything that needs to adapt across modes. **Never hardcode core-theme values** like `beige` — use `background-primary` and other semantic aliases.
+Use semantic token names in code and designs. They resolve to the correct raw value for the active theme and color mode automatically. Never hardcode hex values for anything that needs to adapt across modes. Never hardcode core-theme values like `beige` — use `background-primary` and other semantic aliases.
 
 For dark/light regions, use `<ColorMode>` or `<Background>` from `@codecademy/gamut-styles` — never swap colors manually with custom CSS.
 
@@ -306,7 +306,7 @@ For dark/light regions, use `<ColorMode>` or `<Background>` from `@codecademy/ga
 
 ### Raw color palette
 
-All colors available as static tokens regardless of color mode. Use these only when a color should be **fixed** and not adapt to dark mode (e.g. `<Background bg="navy">` on Codecademy-branded surfaces).
+All colors available as static tokens regardless of color mode. Use these only when a color should be fixed and not adapt to dark mode (e.g. `<Background bg="navy">` on Codecademy-branded surfaces).
 
 #### Core palette
 
@@ -326,7 +326,7 @@ All colors available as static tokens regardless of color mode. Use these only w
 | `black`         | —                            | `#000000`                                                                         |
 | `white` (solid) | —                            | `#ffffff`                                                                         |
 
-**Named aliases** (shorthand for common weights):
+Named aliases (shorthand for common weights):
 `beige`, `blue`, `green`, `hyper`, `lightBlue`, `lightGreen`, `navy`, `orange`, `paleBlue`, `paleGreen`, `palePink`, `paleRed`, `paleYellow`, `pink`, `red`, `yellow`, `black`, `white`
 
 #### Platform-only additions
@@ -348,11 +348,11 @@ All colors available as static tokens regardless of color mode. Use these only w
 
 ### Rules
 
-- **Apercu Bold** for headlines, sub-headlines, CTAs, and buttons.
-- **Apercu Regular** for body text, UI labels, and menu items.
-- **Apercu Italic** to emphasize text within a Regular paragraph — not Bold.
-- **Suisse** sparingly: code snippets, enumerated items, quotations, captions. Reads 10–15% large for its point size — size down relative to Apercu (14px Suisse ≈ 16px Apercu visually).
-- Text is **left-aligned** by default. Center-align only for short marketing headlines. Never right-align.
+- Apercu Bold for headlines, sub-headlines, CTAs, and buttons.
+- Apercu Regular for body text, UI labels, and menu items.
+- Apercu Italic to emphasize text within a Regular paragraph — not Bold.
+- Suisse sparingly: code snippets, enumerated items, quotations, captions. Reads 10–15% large for its point size — size down relative to Apercu (14px Suisse ≈ 16px Apercu visually).
+- Text is left-aligned by default. Center-align only for short marketing headlines. Never right-align.
 - Do not adjust letter-spacing.
 
 ### Font size scale
@@ -410,11 +410,11 @@ All spacing is multiples of 4px, placed on an 8px grid. Use only these values fo
 | `64`  | 64px  |
 | `96`  | 96px  |
 
-Use multiples of **8px** for block-element spacing; **4px** only for inline or typographic relationships.
+Use multiples of 8px for block-element spacing; 4px only for inline or typographic relationships.
 
 ### System props
 
-**Never use inline `style` attributes.** Use system props from `@codecademy/gamut-styles` with shorthand names:
+Never use inline `style` attributes. Use system props from `@codecademy/gamut-styles` with shorthand names:
 
 | Long form       | Shorthand |
 | --------------- | --------- |
@@ -450,7 +450,7 @@ Mobile-first. Apply styles from the named breakpoint and up.
 
 Container query variants (`c_xs` through `c_xl`) mirror these values but trigger on component container size, not viewport.
 
-**Grid:** 12-column grid at all breakpoints.
+Grid: 12-column grid at all breakpoints.
 
 | Usage                 | Recommended values                               |
 | --------------------- | ------------------------------------------------ |
@@ -458,7 +458,7 @@ Container query variants (`c_xs` through `c_xl`) mirror these values but trigger
 | Column gaps (gutters) | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
 | Row gaps              | 32px (lg+), 24px (md), 16px (sm/xs), 8px (base)  |
 
-Minimum interactive touch target: **44×44px** on mobile breakpoints.
+Minimum interactive touch target: 44×44px on mobile breakpoints.
 
 - Begin design work at 1440px (XL), then adapt down.
 - Wider multi-column layouts collapse to fewer columns — do not stretch or squish.
@@ -507,7 +507,7 @@ Interactive cards (`isInteractive` prop) gain a shadow on hover and `borderRadiu
 
 ## Shapes
 
-Border radius tokens from `borderRadii` in `@codecademy/gamut-styles`. **No custom radius values.**
+Border radius tokens from `borderRadii` in `@codecademy/gamut-styles`. No custom radius values.
 
 | Token  | Value | Use                                        |
 | ------ | ----- | ------------------------------------------ |
@@ -542,7 +542,7 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 
 #### Buttons
 
-**There is no generic `Button` component.** Use the variant that matches intent:
+There is no generic `Button` component. Use the variant that matches intent:
 
 | Variant           | Component      | Use for                             |
 | ----------------- | -------------- | ----------------------------------- |
@@ -552,22 +552,22 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 | Tertiary / inline | `TextButton`   | Low-emphasis, inline text actions   |
 | Icon-only         | `IconButton`   | Compact actions with icon only      |
 
-- **`IconButton` requires `tip`** for screen reader accessibility.
-- **Never set `mode` on buttons** — they inherit color context from parent wrappers.
+- `IconButton` requires `tip` for screen reader accessibility.
+- Never set `mode` on buttons — they inherit color context from parent wrappers.
 - Sizes: `small`, `normal` (default), `large`. Support `icon`, `disabled`, and `href` (renders as `<a>`).
-- **States**: default → hover (`primary-hover` / `secondary-hover`) → active → disabled (`text-disabled` + `background-disabled`).
+- States: default → hover (`primary-hover` / `secondary-hover`) → active → disabled (`text-disabled` + `background-disabled`).
 
 #### Cards
 
-- **Valid `variant` values:** `default`, `white`, `yellow`, `beige`, `navy`, `hyper` — never invent compound names (invalid values crash `parseToHsl()`).
-- **Defaults:** `shadow="none"`, `isInteractive={false}`.
-- Set **`isInteractive`** only when the card is a link or has click/hover interaction (e.g. wrapped in `<Anchor>`); interactive cards get hover shadow and `borderRadius: md`.
-- **Shadow variants:** `none` (default), `outline`, `patternLeft`, `patternRight`.
+- Valid `variant` values: `default`, `white`, `yellow`, `beige`, `navy`, `hyper` — never invent compound names (invalid values crash `parseToHsl()`).
+- Defaults: `shadow="none"`, `isInteractive={false}`.
+- Set `isInteractive` only when the card is a link or has click/hover interaction (e.g. wrapped in `<Anchor>`); interactive cards get hover shadow and `borderRadius: md`.
+- Shadow variants: `none` (default), `outline`, `patternLeft`, `patternRight`.
 
 #### Color-aware components
 
-- **`<ColorMode mode="light|dark|system">`** — explicit mode when you know which mode a region should use.
-- **`<Background bg="<color>">`** — dynamic background; Gamut picks contrast-safe inner mode. Prefer over raw `bg` on content-bearing surfaces.
+- `<ColorMode mode="light|dark|system">` — explicit mode when you know which mode a region should use.
+- `<Background bg="<color>">` — dynamic background; Gamut picks contrast-safe inner mode. Prefer over raw `bg` on content-bearing surfaces.
 
 ### Gamut implementation guardrails
 
@@ -580,24 +580,24 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 
 #### Forms
 
-- **Submit/save flows** (validation, bundled fields, dirty tracking): use `GridForm` or `ConnectedForm`.
-- **Live filters / standalone controls** (no submit step): use atoms (`Input`, `Select`, `Checkbox`, `Radio`, `TextArea`, `FormGroup`) directly.
+- Submit/save flows (validation, bundled fields, dirty tracking): use `GridForm` or `ConnectedForm`.
+- Live filters / standalone controls (no submit step): use atoms (`Input`, `Select`, `Checkbox`, `Radio`, `TextArea`, `FormGroup`) directly.
 - Always provide `defaultValues`; use `validation="onChange"` when the submit button should stay disabled until valid.
 - Set `hideLabel: true` on checkbox, radio, or toggle fields without a meaningful `label`.
 
 #### DataTable / DataList
 
-- `sortable: true` on a column **requires** `query`, `onQueryChange`, and **client-sorted** `rows` — Gamut does not sort data internally.
+- `sortable: true` on a column requires `query`, `onQueryChange`, and client-sorted `rows` — Gamut does not sort data internally.
 
 #### Menu
 
-- **Always set `variant` explicitly:** `fixed` + `as="nav"` for persistent navigation (sidebars, primary nav); `popover` for overflow/action menus.
+- Always set `variant` explicitly: `fixed` + `as="nav"` for persistent navigation (sidebars, primary nav); `popover` for overflow/action menus.
 - Do not let flex-stretching ancestors expand `Menu` to fill vertical space — wrap in intrinsic-height containers.
 
 #### Accessibility
 
-- Meet WCAG contrast and **44×44px** minimum touch targets on mobile.
-- Use **`FocusTrap`** inside modals, dialogs, drawers, and other focus-confined regions.
+- Meet WCAG contrast and 44×44px minimum touch targets on mobile.
+- Use `FocusTrap` inside modals, dialogs, drawers, and other focus-confined regions.
 
 #### Assets
 
@@ -611,42 +611,42 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 
 ### Colors
 
-- **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) for any UI that must adapt to color mode or theme.
-- **Do** use `<Background bg="...">` when setting a section background — it adjusts the inner color mode for contrast automatically.
-- **Don't** hardcode hex values for anything adaptive.
-- **Don't** use navy or white semi-transparent swatches where they may overlap unpredictably.
+- Do use semantic color aliases (`primary`, `text`, `background`, etc.) for any UI that must adapt to color mode or theme.
+- Do use `<Background bg="...">` when setting a section background — it adjusts the inner color mode for contrast automatically.
+- Don't hardcode hex values for anything adaptive.
+- Don't use navy or white semi-transparent swatches where they may overlap unpredictably.
 
 ### Typography
 
-- **Do** use `title` weight (700) for headlines, CTAs, and buttons.
-- **Do** keep body text at 150–175% line height for readability.
-- **Do** use Suisse sparingly — as an accent for code, captions, and lists only.
-- **Don't** use Apercu Bold to emphasize text _within_ a paragraph — use Italic instead.
-- **Don't** adjust letter-spacing.
-- **Don't** right-align text in normal circumstances.
-- **Don't** center-align body paragraphs with long line lengths.
+- Do use `title` weight (700) for headlines, CTAs, and buttons.
+- Do keep body text at 150–175% line height for readability.
+- Do use Suisse sparingly — as an accent for code, captions, and lists only.
+- Don't use Apercu Bold to emphasize text _within_ a paragraph — use Italic instead.
+- Don't adjust letter-spacing.
+- Don't right-align text in normal circumstances.
+- Don't center-align body paragraphs with long line lengths.
 
 ### Layout & Spacing
 
-- **Do** use multiples of 8px for block-element spacing (4px only for inline / typographic relationships).
-- **Do** begin design work at 1440px (XL), then adapt down to each breakpoint.
-- **Do** align elements to the 12-column grid.
-- **Don't** stretch elements to fill wider space — maintain proper line lengths and component widths.
+- Do use multiples of 8px for block-element spacing (4px only for inline / typographic relationships).
+- Do begin design work at 1440px (XL), then adapt down to each breakpoint.
+- Do align elements to the 12-column grid.
+- Don't stretch elements to fill wider space — maintain proper line lengths and component widths.
 
 ### Components
 
-- **Do** use `FillButton` for primary actions and `StrokeButton` for secondary actions.
-- **Do** add `isInteractive` only to `Card` components that are links or otherwise interactive.
-- **Don't** import a generic `Button` — it does not exist in Gamut.
-- **Don't** use `CTAButton` for standard UI actions — reserve it for marketing/high-visibility promotions.
-- **Don't** use `<Background>` without an actual color value — it's not a neutral wrapper.
-- **Don't** use bare form atoms for functional forms — use `GridForm` or `ConnectedForm`.
+- Do use `FillButton` for primary actions and `StrokeButton` for secondary actions.
+- Do add `isInteractive` only to `Card` components that are links or otherwise interactive.
+- Don't import a generic `Button` — it does not exist in Gamut.
+- Don't use `CTAButton` for standard UI actions — reserve it for marketing/high-visibility promotions.
+- Don't use `<Background>` without an actual color value — it's not a neutral wrapper.
+- Don't use bare form atoms for functional forms — use `GridForm` or `ConnectedForm`.
 
 ### Pre-ship validation
 
-Before considering UI output final, run **`/gamut-review`** from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: **Cursor** — `gamut plugin install cursor --theme core`; **Claude Code** — `gamut plugin install claude --theme core` (use `admin` or `platform` for those Codecademy themes).
+Before considering UI output final, run `/gamut-review` from the app repository root (the directory that contains `DESIGN.md`). Install the plugin first if needed: Cursor — `gamut plugin install cursor --theme core`; Claude Code — `gamut plugin install claude --theme core` (use `admin` or `platform` for those Codecademy themes).
 
-The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a **manual pre-ship checklist** keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
+The command performs automated checks (dependencies, `GamutProvider`, imports, hex colors, tests, component guardrails) and prints a manual pre-ship checklist keyed to this product's theme. Fix all errors before shipping. Full procedure: [`commands/gamut-review.md`](commands/gamut-review.md) in `@codecademy/gamut` agent-tools (installed as a slash command with the Gamut plugin).
 
 ---
 

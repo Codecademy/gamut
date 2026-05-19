@@ -1,8 +1,8 @@
 # ToolTip and InfoTip
 
-**Related:** [`skills/gamut-accessibility/SKILL.md`](../../skills/gamut-accessibility/SKILL.md) (`aria-describedby`, `InfoTip` labeling)
+Related: [`skills/gamut-accessibility/SKILL.md`](../../skills/gamut-accessibility/SKILL.md) (`aria-describedby`, `InfoTip` labeling)
 
-**Storybook:** [Molecules / ToolTip](https://gamut.codecademy.com/?path=/docs-molecules-tips-tooltip--docs) · [InfoTip](https://gamut.codecademy.com/?path=/docs-molecules-tips-infotip--docs)
+Storybook: [Molecules / ToolTip](https://gamut.codecademy.com/?path=/docs-molecules-tips-tooltip--docs) · [InfoTip](https://gamut.codecademy.com/?path=/docs-molecules-tips-infotip--docs)
 
 ## Use `placement: 'floating'` inside overflow containers
 

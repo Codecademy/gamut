@@ -4,27 +4,27 @@
 
 ## Core rules
 
-- **Always use existing Gamut components** from `packages/gamut/src` rather than one-off equivalents. See the quick reference table below.
-- **Apply exact sizing, variant, and props from the source.** Never rely on defaults when the design or prompt specifies a value (e.g. `size="small"` on `Input`, `sizeVariant="small"` on `Select`).
-- **When unsure**, reference `Badge`, `Tag`, or button atoms in `packages/gamut/src`.
+- Always use existing Gamut components from `packages/gamut/src` rather than one-off equivalents. See the quick reference table below.
+- Apply exact sizing, variant, and props from the source. Never rely on defaults when the design or prompt specifies a value (e.g. `size="small"` on `Input`, `sizeVariant="small"` on `Select`).
+- When unsure, reference `Badge`, `Tag`, or button atoms in `packages/gamut/src`.
 
 ## Forms vs. standalone inputs
 
-**Functional forms** — submit/save bundling multiple fields, validation, errors, or dirty tracking — **must** use `GridForm` or `ConnectedForm`. Read [forms.md](forms.md) before building any functional form.
+Functional forms — submit/save bundling multiple fields, validation, errors, or dirty tracking — must use `GridForm` or `ConnectedForm`. Read [forms.md](forms.md) before building any functional form.
 
-**Standalone inputs** — live search, real-time filters, single controls that update state immediately — use bare atoms (`Input`, `Select`, `Checkbox`, `Radio`, `TextArea`, `FormGroup`). No organism when there is no submit step.
+Standalone inputs — live search, real-time filters, single controls that update state immediately — use bare atoms (`Input`, `Select`, `Checkbox`, `Radio`, `TextArea`, `FormGroup`). No organism when there is no submit step.
 
-**The test:** submit/save bundled values → organism. Real-time state with no submit → atom.
+The test: submit/save bundled values → organism. Real-time state with no submit → atom.
 
 ## Component discovery
 
 Before custom markup for any UI pattern:
 
-1. **Enumerate exports** — check `@codecademy/gamut` public API or `index.d.ts`.
-2. **Prefer Gamut over raw HTML** — e.g. `Menu` for nav, `DataTable` for tables, `Tabs` for tabs. Do not rebuild from `<ul>` / `<motion.div>` when a primitive exists.
-3. **Read type definitions** for props before custom wrappers.
-4. **Never build custom media players** — use `Video` ([video.md](video.md)).
-5. **When no Gamut component exists**, comment: `{/* No Gamut component for [pattern] — custom markup */}`
+1. Enumerate exports — check `@codecademy/gamut` public API or `index.d.ts`.
+2. Prefer Gamut over raw HTML — e.g. `Menu` for nav, `DataTable` for tables, `Tabs` for tabs. Do not rebuild from `<ul>` / `<motion.div>` when a primitive exists.
+3. Read type definitions for props before custom wrappers.
+4. Never build custom media players — use `Video` ([video.md](video.md)).
+5. When no Gamut component exists, comment: `{/* No Gamut component for [pattern] — custom markup */}`
 
 ### Quick reference
 
@@ -96,7 +96,7 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 
 ### Cards
 
-See [card.md](card.md). Variants include `default`, `white`, `yellow`, `hyper`, `navy`. Confirm against **`DESIGN.md`** for theme-specific surfaces.
+See [card.md](card.md). Variants include `default`, `white`, `yellow`, `hyper`, `navy`. Confirm against `DESIGN.md` for theme-specific surfaces.
 `FormGroup`, `GridForm`, `ConnectedForm`, tips, dialogs, composite widgets: [`skills/gamut-forms/SKILL.md`](../../skills/gamut-forms/SKILL.md) (forms) · [`skills/gamut-accessibility/SKILL.md`](../../skills/gamut-accessibility/SKILL.md) (overlays, composites, checklists) · Storybook [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page).
 
 - Background variants: `default` (ColorMode-responsive), `white`, `yellow`, `beige`, `navy`, `hyper`

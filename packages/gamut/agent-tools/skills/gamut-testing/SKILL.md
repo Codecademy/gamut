@@ -7,7 +7,7 @@ description: Unit tests for Gamut UI — setupRtl, MockGamutProvider, no jest.mo
 
 ## Read first
 
-When this skill applies, skim **[`commands/gamut-review.md`](../../commands/gamut-review.md) Check 5** (test setup) for blocking patterns before changing tests.
+When this skill applies, skim [`commands/gamut-review.md`](../../commands/gamut-review.md) Check 5 (test setup) for blocking patterns before changing tests.
 
 Source: `@codecademy/gamut-tests` — [`index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-tests/src/index.tsx)
 

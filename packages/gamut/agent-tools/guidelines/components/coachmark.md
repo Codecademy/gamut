@@ -1,6 +1,6 @@
 # Coachmark
 
-**Storybook:** [Molecules / Coachmark](https://gamut.codecademy.com/?path=/docs-molecules-coachmark--docs)
+Storybook: [Molecules / Coachmark](https://gamut.codecademy.com/?path=/docs-molecules-coachmark--docs)
 
 ## Popovers: `outline` and `CheckerDense` by default
 
