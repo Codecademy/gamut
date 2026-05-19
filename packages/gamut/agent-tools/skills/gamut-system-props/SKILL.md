@@ -37,9 +37,9 @@ System props are strongly-typed, theme-connected CSS prop groups from `@codecade
 
 Each prop group has:
 
-- **`properties`**: The CSS properties it controls
-- **`scale`**: Token scale it's restricted to (theme colors, spacing values, etc.)
-- **`transform`**: Optional transform applied before output (e.g. `width={0.5}` → `width: 50%`)
+- `properties`: The CSS properties it controls
+- `scale`: Token scale it's restricted to (theme colors, spacing values, etc.)
+- `transform`: Optional transform applied before output (e.g. `width={0.5}` → `width: 50%`)
 
 ## Basic usage
 
@@ -64,7 +64,7 @@ const FlexBox = styled.div(
 
 ### `system.layout`
 
-Controls dimensions, display, overflow, and container behavior. This group also carries **flex/grid item** props used when laying out children: `flexGrow`, `flexShrink`, `flexBasis`, `order`, `gridColumn`, `gridRow`, `gridColumnStart`, `gridRowStart`, `gridColumnEnd`, `gridRowEnd`, `alignSelf`, `justifySelf`, `gridArea`.
+Controls dimensions, display, overflow, and container behavior. This group also carries flex/grid item props used when laying out children: `flexGrow`, `flexShrink`, `flexBasis`, `order`, `gridColumn`, `gridRow`, `gridColumnStart`, `gridRowStart`, `gridColumnEnd`, `gridRowEnd`, `alignSelf`, `justifySelf`, `gridArea`.
 
 ```tsx
 const Box = styled.div(system.layout);
@@ -118,11 +118,11 @@ const Text = styled.p(system.typography);
 />;
 ```
 
-Key props: `fontFamily`, `fontSize`, `fontWeight`, `fontStyle`, `lineHeight`, `textAlign`, `textTransform`, `textDecoration`, `letterSpacing`, `whiteSpace` — prefer **`lineHeight`** scale keys (`base`, `title`, `spacedTitle`) from the theme over raw numbers when possible.
+Key props: `fontFamily`, `fontSize`, `fontWeight`, `fontStyle`, `lineHeight`, `textAlign`, `textTransform`, `textDecoration`, `letterSpacing`, `whiteSpace` — prefer `lineHeight` scale keys (`base`, `title`, `spacedTitle`) from the theme over raw numbers when possible.
 
 ### `system.border`
 
-Border width, style, radius, and color. Many **logical shorthands** exist (`borderX`, `borderColorY`, `borderRadiusTop`, …); see `config.ts` for the full map.
+Border width, style, radius, and color. Many logical shorthands exist (`borderX`, `borderColorY`, `borderRadiusTop`, …); see `config.ts` for the full map.
 
 Key props (non-exhaustive): `border`, `borderTop`, `borderRight`, `borderBottom`, `borderLeft`, `borderRadius`, `borderWidth`, `borderStyle`
 
@@ -158,7 +158,7 @@ Key props (non-exhaustive): `gridTemplateColumns`, `gridTemplateRows`, `gridTemp
 
 ### `system.positioning`
 
-Position and offset properties. Inset shorthands use **`transformSize`**; physical vs logical edges follow **`useLogicalProperties`**.
+Position and offset properties. Inset shorthands use `transformSize`; physical vs logical edges follow `useLogicalProperties`.
 
 ```tsx
 const Overlay = styled.div(variance.compose(system.layout, system.positioning));
@@ -176,15 +176,15 @@ Key props: `boxShadow`, `textShadow`
 
 ### `system.list`
 
-List marker styling (`listStyle`, `listStyleType`, `listStylePosition`, `listStyleImage`). Included on **`Box`** alongside the other composed groups.
+List marker styling (`listStyle`, `listStyleType`, `listStylePosition`, `listStyleImage`). Included on `Box` alongside the other composed groups.
 
 ## Responsive values
 
-All system props accept responsive values **mobile-first** (min-width queries). Two shapes are supported:
+All system props accept responsive values mobile-first (min-width queries). Two shapes are supported:
 
 ### Object syntax
 
-Keys are breakpoints; **`_`** is the base (no breakpoint). Includes `xs`, `sm`, `md`, `lg`, `xl`, and container keys `c_xs` … `c_xl`.
+Keys are breakpoints; `_` is the base (no breakpoint). Includes `xs`, `sm`, `md`, `lg`, `xl`, and container keys `c_xs` … `c_xl`.
 
 ```tsx
 <Box width={{ _: '100%', sm: '50%', md: '33%' }} px={{ _: 8, md: 16 }} />
@@ -192,7 +192,7 @@ Keys are breakpoints; **`_`** is the base (no breakpoint). Includes `xs`, `sm`, 
 
 ### Array syntax
 
-Slots map in order to: base, `xs`, `sm`, `md`, `lg`, `xl`, then `c_xs` … `c_xl`. Leave a slot **empty** (or use `undefined`) to skip a breakpoint.
+Slots map in order to: base, `xs`, `sm`, `md`, `lg`, `xl`, then `c_xs` … `c_xl`. Leave a slot empty (or use `undefined`) to skip a breakpoint.
 
 ```tsx
 <Box width={['100%', , '50%']} p={[8, 16, , 24]} />
@@ -202,7 +202,7 @@ Full typings and behavior: [Responsive properties (Storybook)](https://gamut.cod
 
 ## Using `css()` for styled definitions
 
-For static styles in styled components, use **`css()`** from `@codecademy/gamut-styles` (same implementation as **`system.css`** on the `system` namespace).
+For static styles in styled components, use `css()` from `@codecademy/gamut-styles` (same implementation as `system.css` on the `system` namespace).
 
 ```tsx
 import { css } from '@codecademy/gamut-styles';
@@ -218,8 +218,8 @@ const Text = styled.div(css({ color: 'primary', p: 4 }));
 ## Key principles
 
 - Compose `system.*` groups via `variance.compose()` — don't apply multiple groups by chaining `styled.div(system.a)(system.b)`.
-- Prefer **semantic color names** on `system.color` (e.g. `bg="background"`, `textColor="text"`) so values track **ColorMode**; use raw palette keys only when the design should stay fixed across modes.
-- Use **`bg`** with semantic tokens for most mode-aware surfaces; use **`<Background>`** from `@codecademy/gamut-styles` when you need its **contrast- and mode-aware** behavior, not for every tinted panel.
-- Use `system.space` values on the **spacing scale** rather than arbitrary pixel strings to keep rhythm consistent.
-- For background images/patterns use `system.background`; for solid fills use `system.color` / semantic **`bg`** (or **`Background`** when that component’s behavior is required).
-- For reusable **variants** or **boolean states** on styled primitives, use **`variant`** / **`states`** from `@codecademy/gamut-styles` and expose props with **`StyleProps<typeof …>`** from `@codecademy/variance` — see [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx).
+- Prefer semantic color names on `system.color` (e.g. `bg="background"`, `textColor="text"`) so values track ColorMode; use raw palette keys only when the design should stay fixed across modes.
+- Use `bg` with semantic tokens for most mode-aware surfaces; use `<Background>` from `@codecademy/gamut-styles` when you need its contrast- and mode-aware behavior, not for every tinted panel.
+- Use `system.space` values on the spacing scale rather than arbitrary pixel strings to keep rhythm consistent.
+- For background images/patterns use `system.background`; for solid fills use `system.color` / semantic `bg` (or `Background` when that component’s behavior is required).
+- For reusable variants or boolean states on styled primitives, use `variant` / `states` from `@codecademy/gamut-styles` and expose props with `StyleProps<typeof …>` from `@codecademy/variance` — see [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx).

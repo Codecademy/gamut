@@ -13,12 +13,12 @@ When this skill applies, read [`guidelines/foundations/typography.md`](../../gui
 
 ## Scope by theme
 
-| Themes                            | Fonts                                                                                                                                    | `fontWeight.title` |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| **Core**, **Admin**, **Platform** | `base` → Apercu stack; `accent` → Suisse + Apercu stack                                                                                  | **700**            |
-| **Percipio**, **LX Studio**       | `base` → Skillsoft Text; `accent` → Skillsoft Sans; Percipio `monospace` → Roboto Mono; LX `monospace` matches Core stack per theme file | **500**            |
+| Themes                | Fonts                                                                                                                                    | `fontWeight.title` |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Core, Admin, Platform | `base` → Apercu stack; `accent` → Suisse + Apercu stack                                                                                  | 700                |
+| Percipio, LX Studio   | `base` → Skillsoft Text; `accent` → Skillsoft Sans; Percipio `monospace` → Roboto Mono; LX `monospace` matches Core stack per theme file | 500                |
 
-Use **`fontWeight="title"`** for headlines / emphasis roles — never hardcode **`700`** on Percipio/LX unless SPECIFICALLY noted in Figma designs.
+Use `fontWeight="title"` for headlines / emphasis roles — never hardcode `700` on Percipio/LX unless SPECIFICALLY noted in Figma designs.
 
 ## Font size scale (`fontSize`)
 
@@ -37,7 +37,7 @@ const Styled = styled.div(css({ fontSize: 14, fontFamily: 'base' }));
 
 ## Line height (`lineHeight`)
 
-Tokens: **`base`** (1.5), **`spacedTitle`** (1.3), **`title`** (1.2). Prefer tokens over raw decimals. Only specify `lineHeight` when specified by design.
+Tokens: `base` (1.5), `spacedTitle` (1.3), `title` (1.2). Prefer tokens over raw decimals. Only specify `lineHeight` when specified by design.
 
 ## Line length
 
@@ -74,6 +74,6 @@ Prefer `<Text>` from `@codecademy/gamut` with `variant` / `as` — see Storybook
 
 ## Semantic vs visual headings
 
-- `<Text as="h1">` … `<Text as="h6">` gets **default heading styles**: each tag maps to the same scale as `variant="title-xxl"` … `variant="title-xs"` (`h1` largest through `h6` smallest). Plain `<Text>` defaults to `as="span"` (inherits font size).
-- Use **`variant`** plus **`fontSize` / `fontWeight` / `lineHeight`** (and other system props) to override element defaults when the outline needs one heading level but the UI needs another visual weight — e.g. `<Text as="h2" variant="title-sm">`.
-- Still pick **`h1`–`h6`** for document structure and assistive tech; overrides are for intentional divergence between semantics and appearance.
+- `<Text as="h1">` … `<Text as="h6">` gets default heading styles: each tag maps to the same scale as `variant="title-xxl"` … `variant="title-xs"` (`h1` largest through `h6` smallest). Plain `<Text>` defaults to `as="span"` (inherits font size).
+- Use `variant` plus `fontSize` / `fontWeight` / `lineHeight` (and other system props) to override element defaults when the outline needs one heading level but the UI needs another visual weight — e.g. `<Text as="h2" variant="title-sm">`.
+- Still pick `h1`–`h6` for document structure and assistive tech; overrides are for intentional divergence between semantics and appearance.

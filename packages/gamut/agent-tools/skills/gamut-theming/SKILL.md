@@ -14,13 +14,13 @@ When this skill applies, read before writing code:
 
 Source: `@codecademy/gamut-styles`
 
-**See also:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`, `useTheme` escape hatch). [`gamut-color-mode`](../gamut-color-mode/SKILL.md) (semantic color, `<ColorMode>`, `<Background>`). [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.*`, responsive `Box` props).
+See also: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`, `useTheme` escape hatch). [`gamut-color-mode`](../gamut-color-mode/SKILL.md) (semantic color, `<ColorMode>`, `<Background>`). [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.*`, responsive `Box` props).
 
 ## Overview
 
-Gamut uses Emotion's theme system. **Themes** are org-specific token bundles (colors, typography, spacing, etc.). The active theme is set at the app root with **`<GamutProvider theme={...}>`**; child styled components read tokens through Emotion context.
+Gamut uses Emotion's theme system. Themes are org-specific token bundles (colors, typography, spacing, etc.). The active theme is set at the app root with `<GamutProvider theme={...}>`; child styled components read tokens through Emotion context.
 
-For **authoring component styles** (`css`, `variant`, `states`, system props, ColorMode), use the skills linked above and the styleguide [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx).
+For authoring component styles (`css`, `variant`, `states`, system props, ColorMode), use the skills linked above and the styleguide [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx).
 
 ## Infer theme from the repo
 
@@ -47,9 +47,9 @@ Product-level import names and `theme.d.ts` patterns live in [setup.md](../../gu
 | Concern                                                 | Where to read                                      |
 | ------------------------------------------------------- | -------------------------------------------------- |
 | Which `theme` object to pass to `GamutProvider`         | This skill + [setup.md](../../guidelines/setup.md) |
-| Light / dark semantic colors, `ColorMode`, `Background` | **`gamut-color-mode`**                             |
-| `css` / `variant` / `states`, `useTheme` for non-CSS JS | **`gamut-style-utilities`**                        |
-| Composed `system.*` props on styled primitives / `Box`  | **`gamut-system-props`**                           |
+| Light / dark semantic colors, `ColorMode`, `Background` | `gamut-color-mode`                                 |
+| `css` / `variant` / `states`, `useTheme` for non-CSS JS | `gamut-style-utilities`                            |
+| Composed `system.*` props on styled primitives / `Box`  | `gamut-system-props`                               |
 
 ## Creating a new theme
 

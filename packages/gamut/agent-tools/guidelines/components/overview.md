@@ -97,6 +97,12 @@ ContentContainer, GridContainer, Layout, LayoutGrid
 ### Cards
 
 See [card.md](card.md). Variants include `default`, `white`, `yellow`, `hyper`, `navy`. Confirm against **`DESIGN.md`** for theme-specific surfaces.
+`FormGroup`, `GridForm`, `ConnectedForm`, tips, dialogs, composite widgets: [`skills/gamut-forms/SKILL.md`](../../skills/gamut-forms/SKILL.md) (forms) · [`skills/gamut-accessibility/SKILL.md`](../../skills/gamut-accessibility/SKILL.md) (overlays, composites, checklists) · Storybook [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page).
+
+- Background variants: `default` (ColorMode-responsive), `white`, `yellow`, `beige`, `navy`, `hyper`
+- Shadow variants: `none` (default), `outline`, `patternLeft`, `patternRight`
+- Add `isInteractive` when wrapping in `<Anchor>` — enables hover shadow + `borderRadius: md`
+- Default `borderRadius` is `none`; override with `borderRadius` prop
 
 ### Color-aware regions
 

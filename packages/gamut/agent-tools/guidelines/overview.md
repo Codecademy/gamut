@@ -10,7 +10,7 @@ Gamut is the Codecademy / Skillsoft design system — React component library (`
 
 **Design voice**: "Ruled by logic, but creative and a bit unexpected." Structured and trustworthy for a learning platform, with engaging personality. Medium density — information-rich layouts with strong typographic hierarchy.
 
-**Core principles**:
+Core principles:
 
 - Components are color mode–aware by default — never hardcode hex values for adaptive, accessible UI
 - All components work across all themes without modification

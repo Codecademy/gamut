@@ -33,7 +33,7 @@ import { ColorMode } from '@codecademy/gamut-styles';
 <ColorMode mode="system">{children}</ColorMode>
 ```
 
-**Props**: `mode="light" | "dark" | "system"`
+Props: `mode="light" | "dark" | "system"`
 
 ## `<Background>`
 
@@ -60,6 +60,7 @@ Import from `@codecademy/gamut-styles`.
 ## Example (Core theme)
 
 Core light/dark semantic mappings are documented in Storybook [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page). Other themes remap the same alias names to different palette values — verify in **`DESIGN.md`** and the product theme story before hardcoding palette fallbacks.
+Storybook: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) · [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page)
 
 ## Common mistakes
 

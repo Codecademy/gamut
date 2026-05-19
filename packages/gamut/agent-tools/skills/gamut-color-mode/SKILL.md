@@ -18,7 +18,7 @@ Source: `@codecademy/gamut-styles` — [`ColorMode.tsx`](https://github.com/Code
 
 ## Overview
 
-Gamut's color system uses **semantic aliases** instead of raw color tokens. This means components automatically adapt across light and dark modes without configuration.
+Gamut's color system uses semantic aliases instead of raw color tokens. This means components automatically adapt across light and dark modes without configuration.
 
 ### Semantic color aliases
 
@@ -31,11 +31,11 @@ Gamut's color system uses **semantic aliases** instead of raw color tokens. This
 
 This set is not exhaustive (e.g. `text-accent`, `background-disabled`, `danger` — see the light/dark tables in Storybook).
 
-**Key principle**: Always use these aliases in component styles — never hardcode specific color tokens like `navy-400` for anything that needs to change per mode.
+Key principle: Always use these aliases in component styles — never hardcode specific color tokens like `navy-400` for anything that needs to change per mode.
 
-**Storybook:** [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — interactive reference. [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic tokens, `css` / `variant` / `states`, and system props with ColorMode.
+Storybook: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — interactive reference. [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic tokens, `css` / `variant` / `states`, and system props with ColorMode.
 
-**Agent skill:** [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) — `css` / `variant` / `states` with semantic colors alongside ColorMode.
+Agent skill: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) — `css` / `variant` / `states` with semantic colors alongside ColorMode.
 
 ## `<ColorMode />`
 
@@ -51,26 +51,26 @@ import { ColorMode } from '@codecademy/gamut-styles';
 <ColorMode mode="system">{children}</ColorMode>
 ```
 
-**Props**: `mode="light" | "dark" | "system"`
+Props: `mode="light" | "dark" | "system"`
 
 ### `mode="system"` (OS preference)
 
-`system` is **not** a third color theme. It always resolves to `"light"` or `"dark"` based on the user's OS setting.
+`system` is not a third color theme. It always resolves to `"light"` or `"dark"` based on the user's OS setting.
 
-**How it works**
+How it works
 
 1. `ColorMode` calls `usePrefersDarkMode()`, which reads `window.matchMedia('(prefers-color-scheme: dark)')`.
 2. If the query matches → active mode is `"dark"`; otherwise `"light"`.
 3. Descendants receive that mode's semantic color variables (`text`, `background`, `primary`, etc.) — same as passing `mode="light"` or `mode="dark"` directly.
 
-**When the OS changes** (e.g. user toggles system appearance), the media query fires a `change` event, `ColorMode` re-renders, and semantic colors update for everything inside the wrapper.
+When the OS changes (e.g. user toggles system appearance), the media query fires a `change` event, `ColorMode` re-renders, and semantic colors update for everything inside the wrapper.
 
-**What it does not do**
+What it does not do
 
 - Read in-app preferences (account settings, a theme toggle in localStorage). For those, pass `mode="light"` or `mode="dark"` yourself from your own state.
 - Replace `<Background>`. A colored band still needs `<Background bg="hyper">` if you want contrast-based mode selection for that surface.
 
-**Prefer `mode="system"` over wiring the hook yourself**
+Prefer `mode="system"` over wiring the hook yourself
 
 ```tsx
 // Prefer — ColorMode owns light/dark resolution
@@ -81,15 +81,15 @@ const prefersDark = usePrefersDarkMode();
 <ColorMode mode={prefersDark ? 'dark' : 'light'}>{children}</ColorMode>;
 ```
 
-Use `usePrefersDarkMode()` only when you need the OS preference for something **other** than setting `ColorMode`'s mode (e.g. picking a decorative palette `bg` in a demo).
+Use `usePrefersDarkMode()` only when you need the OS preference for something other than setting `ColorMode`'s mode (e.g. picking a decorative palette `bg` in a demo).
 
 Place `<ColorMode mode="system">` high in the tree (often inside `GamutProvider`) so the whole app follows system appearance unless a subtree overrides with `mode="light"`, `mode="dark"`, or `<Background>`.
 
 ## `<Background />`
 
-Use `<Background>` instead of putting `bg` on a layout component when a section needs a **fixed palette color** (card, hero, landing band, etc.) — independent of the parent color mode. Pass a **palette token** to `bg` (e.g. `hyper`, `navy`, `paleGreen`), not a semantic alias (`text`, `background`, `primary`).
+Use `<Background>` instead of putting `bg` on a layout component when a section needs a fixed palette color (card, hero, landing band, etc.) — independent of the parent color mode. Pass a palette token to `bg` (e.g. `hyper`, `navy`, `paleGreen`), not a semantic alias (`text`, `background`, `primary`).
 
-`<Background>` switches light/dark to whichever mode gives the **highest contrast** between that surface and body `text`. Nested Gamut components inherit readable colors without extra setup.
+`<Background>` switches light/dark to whichever mode gives the highest contrast between that surface and body `text`. Nested Gamut components inherit readable colors without extra setup.
 
 ```tsx
 import { Background } from '@codecademy/gamut-styles';
