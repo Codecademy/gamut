@@ -18,7 +18,8 @@ import {
   readJsonFile,
   workspaceRoot,
 } from '@nx/devkit';
-import { writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { releasePublish, releaseVersion } from 'nx/release/index.js';
 
@@ -54,6 +55,79 @@ function resolveManifestPath(
   }
 
   return null;
+}
+
+/**
+ * Reads version plan files from `.nx/version-plans/` and returns the set of
+ * project names that have explicit version plans for this release.
+ */
+async function readPlannedProjects(): Promise<Set<string>> {
+  const versionPlansDir = join(workspaceRoot, '.nx', 'version-plans');
+  const plannedProjects = new Set<string>();
+
+  try {
+    const files = (await readdir(versionPlansDir)).filter((f) =>
+      f.endsWith('.md')
+    );
+    const contents = await Promise.all(
+      files.map((f) => readFile(join(versionPlansDir, f), 'utf-8'))
+    );
+    for (const content of contents) {
+      // Version plan files have YAML frontmatter: ---\nprojectName: bumpType\n---
+      const match = content.match(/^---\n([\s\S]*?)\n---/);
+      if (match) {
+        for (const line of match[1].split('\n')) {
+          const projectName = line.split(':')[0].trim();
+          if (projectName) {
+            plannedProjects.add(projectName);
+          }
+        }
+      }
+    }
+  } catch {
+    // Version plans directory may not exist; return empty set
+  }
+
+  return plannedProjects;
+}
+
+/**
+ * Given a set of planned projects, returns those projects plus all projects
+ * that transitively depend on them. Only includes publishable packages
+ * (projects that have a `package.json` in the `packages/` directory).
+ *
+ * This ensures we only version and publish packages that are actually
+ * affected by the version plan, preventing unrelated packages from being
+ * bumped by the global `specifier` and failing to publish.
+ */
+async function getAffectedProjects(
+  plannedProjects: Set<string>
+): Promise<string[]> {
+  if (plannedProjects.size === 0) return [];
+
+  const projectGraph = await createProjectGraphAsync({ exitOnError: true });
+  const affected = new Set<string>(plannedProjects);
+  const queue = [...plannedProjects];
+
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    // Find all projects that list `current` as a non-implicit dependency
+    for (const [projectName, deps] of Object.entries(
+      projectGraph.dependencies
+    )) {
+      if (
+        deps.some((dep) => dep.target === current && dep.type !== 'implicit') &&
+        !affected.has(projectName) &&
+        // Only include publishable package projects
+        existsSync(join(workspaceRoot, 'packages', projectName, 'package.json'))
+      ) {
+        affected.add(projectName);
+        queue.push(projectName);
+      }
+    }
+  }
+
+  return Array.from(affected);
 }
 
 /**
@@ -136,7 +210,16 @@ async function releaseAlpha(): Promise<never> {
   }
 
   try {
-    // Step 1: Version all packages as prerelease
+    // Determine which projects are actually affected by the version plan.
+    // Restricting to these projects prevents unrelated packages (e.g. those
+    // not in any version plan and not dependents of planned packages) from
+    // being bumped by the global `specifier` and subsequently failing to publish.
+    const plannedProjects = await readPlannedProjects();
+    const affectedProjects = await getAffectedProjects(plannedProjects);
+    const projectsFilter =
+      affectedProjects.length > 0 ? affectedProjects : undefined;
+
+    // Step 1: Version only affected packages as prerelease
     console.log('\n🔢 Running versioning step...');
     const { workspaceVersion, projectsVersionData } = await releaseVersion({
       specifier: 'prerelease',
@@ -146,6 +229,8 @@ async function releaseAlpha(): Promise<never> {
       gitTag: false,
       dryRun,
       verbose,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ...(projectsFilter && { projects: projectsFilter as any }),
     });
 
     console.log('\n📝 Versioning complete:');
@@ -168,6 +253,8 @@ async function releaseAlpha(): Promise<never> {
       tag: preidArg,
       dryRun,
       verbose,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ...(projectsFilter && { projects: projectsFilter as any }),
     });
 
     // Check publish results
