@@ -138,3 +138,120 @@ const prefersDark = usePrefersDarkMode();
 - Do not use raw color tokens (e.g. `color: 'navy-400'`) for text, backgrounds, or borders that need to be accessible across modes — use semantic aliases instead.
 - Do not use a raw `bg` prop for colored section backgrounds that need static, ColorMode-agnostic, background colors — use `<Background>` so mode selection is handled for you.
 - Do not manually set `ColorMode`'s `mode` from `usePrefersDarkMode()` when `mode="system"` is enough. The hook is still useful for non-mode concerns (e.g. choosing a decorative `bg` in Storybook demos).
+
+## Semantic aliases (theme-stable names)
+
+These tokens describe roles. Actual colors come from the active theme + ColorMode. Never assume Codecademy Core hex when advising another product.
+
+### Text
+
+| Token            | Use for                     |
+| ---------------- | --------------------------- |
+| `text`           | Default body and UI text    |
+| `text-accent`    | Stronger emphasis text      |
+| `text-secondary` | Supporting / secondary copy |
+| `text-disabled`  | Disabled state labels       |
+
+### Background
+
+| Token                 | Use for                           |
+| --------------------- | --------------------------------- |
+| `background`          | Default page/component background |
+| `background-primary`  | Slightly elevated surfaces        |
+| `background-contrast` | Maximum contrast surface          |
+| `background-selected` | Selected row / item               |
+| `background-hover`    | Hover state overlay               |
+| `background-disabled` | Disabled surface                  |
+| `background-success`  | Success state container           |
+| `background-warning`  | Warning state container           |
+| `background-error`    | Error state container             |
+
+### Interactive
+
+| Token             | Use for                                   |
+| ----------------- | ----------------------------------------- |
+| `primary`         | Primary CTA, links, focus accents         |
+| `primary-hover`   | Hover on primary interactive              |
+| `primary-inverse` | Accent on top of primary-colored surfaces |
+| `secondary`       | Secondary CTA, ghost buttons              |
+| `secondary-hover` | Hover on secondary interactive            |
+| `danger`          | Destructive actions, error emphasis       |
+| `danger-hover`    | Hover on danger interactive               |
+
+### Border
+
+| Token              | Use for                    |
+| ------------------ | -------------------------- |
+| `border-primary`   | Strong borders, dividers   |
+| `border-secondary` | Medium-weight borders      |
+| `border-tertiary`  | Subtle borders, separators |
+| `border-disabled`  | Disabled input borders     |
+
+### Feedback
+
+| Token              | Use for                    |
+| ------------------ | -------------------------- |
+| `feedback-error`   | Error messages, validation |
+| `feedback-success` | Success messages           |
+| `feedback-warning` | Warning messages           |
+
+## Where resolved colors are documented
+
+- Storybook [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page)
+- [Core](https://gamut.codecademy.com/?path=/docs-foundations-theme-core-theme--docs) · [Admin](https://gamut.codecademy.com/?path=/docs-foundations-theme-admin-theme--docs) · [Platform](https://gamut.codecademy.com/?path=/docs-foundations-theme-platform-theme--docs) · [Percipio](https://gamut.codecademy.com/?path=/docs-foundations-theme-percipio-theme--docs) · [LX Studio](https://gamut.codecademy.com/?path=/docs-foundations-theme-lx-studio-theme--docs) theme pages
+- Root `DESIGN.md` from agent-tools (`DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, `DESIGN.LXStudio.md`)
+- Source: [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes)
+
+## Codecademy Core — illustrative light/dark hex only
+
+Not valid for Percipio, LX Studio, or other themes. Quick mental model for Core defaults only.
+
+| Token            | Light     | Dark      |
+| ---------------- | --------- | --------- |
+| `text`           | `#10162F` | `#ffffff` |
+| `text-accent`    | `#0A0D1C` | `#FFF0E5` |
+| `background`     | `#ffffff` | `#10162F` |
+| `primary`        | `#3A10E5` | `#FFD300` |
+| `primary-hover`  | `#5533FF` | `#CCA900` |
+| `secondary`      | `#10162F` | `#ffffff` |
+| `danger`         | `#E91C11` | `#E85D7F` |
+| `feedback-error` | `#BE1809` | `#E85D7F` |
+
+Full tables: Storybook theme pages or audit with [`gamut-review`](../gamut-review/SKILL.md) Appendix A/B for hex triage.
+
+## Raw palette (Core-centric reference)
+
+Raw tokens name fixed swatches for `<Background bg="…">`, illustration, and surfaces. Confirm allowed keys in the active theme or `DESIGN.md` before using in non-Core apps.
+
+Named shorthand aliases on Core: `beige`, `blue`, `green`, `hyper`, `navy`, `orange`, `pink`, `red`, `yellow`, `black`, `white`
+
+## Color decision guide
+
+```
+Which product theme is GamutProvider using?
+  └─ Unknown → check DESIGN.md / gamut-theming / Storybook theme page
+
+Coloring UI text or backgrounds?
+  └─ Must adapt to light/dark OR theme? → semantic alias (text, background, primary, …)
+  └─ Must stay fixed regardless of mode?  → raw palette token (confirm key in that theme)
+  └─ Section background with content?     → <Background bg="…">
+```
+
+## Card and alert patterns
+
+### Cards
+
+- Background variants: `default` (ColorMode-responsive), `white`, `yellow`, `beige`, `navy`, `hyper`
+- Shadow variants: `none` (default), `outline`, `patternLeft`, `patternRight`
+- Add `isInteractive` when wrapping in `<Anchor>` — enables hover shadow + `borderRadius: md`
+- Default `borderRadius` is `none`; override with `borderRadius` prop
+
+### Alerts
+
+| Variant | Tokens                                    |
+| ------- | ----------------------------------------- |
+| Error   | `feedback-error` + `background-error`     |
+| Success | `feedback-success` + `background-success` |
+| Warning | `feedback-warning` + `background-warning` |
+
+52 components have Figma ↔ code mappings via Code Connect (`packages/code-connect/`).

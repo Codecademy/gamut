@@ -1,20 +1,23 @@
 ---
-description: Use this command when auditing existing code for Gamut usage — dependencies, GamutProvider, deep imports, hardcoded hex colors, and test patterns — and you need a consolidated report with pointers to the matching Gamut skills.
-argument-hint: [path]
-allowed-tools: Read Glob Grep
+name: gamut-review
+description: Use this skill when auditing existing code for Gamut usage — dependencies, GamutProvider, deep imports, hardcoded hex colors, and test patterns — and you need a consolidated report with pointers to matching Gamut skills.
 ---
 
-This is an audit of existing code at `$ARGUMENTS` (default: current working directory). Your job is to find violations and misuse, not to generate new code.
+# Gamut Review
+
+Audit existing code at the path the user provides (default: current working directory). Find violations and misuse; do not generate new code.
 
 When `DESIGN.md` is present at the audit root, use it as the authoritative reference for product design intent, token names, and component patterns. It is copied from `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` in `@codecademy/gamut` agent-tools (via `gamut plugin install --theme <name>`). When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
 
 Run Check 0 first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
 
+Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
+
 ---
 
 ## Check 0 — DESIGN.md present
 
-Resolve the audit root: `$ARGUMENTS` if provided, otherwise the current working directory. Look for `DESIGN.md` at that root (not inside `node_modules` or package subfolders unless the audit path is explicitly that folder).
+Resolve the audit root from the user's path if provided, otherwise the current working directory. Look for `DESIGN.md` at that root (not inside `node_modules` or package subfolders unless the audit path is explicitly that folder).
 
 | Result  | Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,7 +28,7 @@ Resolve the audit root: `$ARGUMENTS` if provided, otherwise the current working 
 
 ## Check 1 — Dependencies
 
-Read `package.json` (and `package.json` in `$ARGUMENTS` if a path was given). Inspect `dependencies`, `devDependencies`, and `peerDependencies` combined.
+Read `package.json` at the audit root. Inspect `dependencies`, `devDependencies`, and `peerDependencies` combined.
 
 | Package                    | Expectation                                             |
 | -------------------------- | ------------------------------------------------------- |
@@ -70,7 +73,7 @@ Rule: Inline hex literals in application UI code are violations. Remediation is 
 
 Align findings with project docs and Storybook:
 
-- [@codecademy/gamut agent-tools `guidelines/foundations/color.md`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/guidelines/foundations/color.md) — decision guide and semantic tables.
+- [`gamut-color-mode`](../gamut-color-mode/SKILL.md) skill — semantic alias tables and decision guide.
 - [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — aliases per mode; `<Background>` behavior.
 - [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — semantic colors + `css` / `variant` / `states` from `gamut-styles`.
 - Foundations / Theme stories (Core, Admin, Platform, Percipio, LX Studio) — verify hex ↔ semantic if the product is not Codecademy Core.
@@ -83,17 +86,17 @@ Discovery: Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`, `.css`, `.scss`, `.l
 
 1. Context — Inspect the surrounding line(s): CSS property (`color`, `background`, `border-color`, …), JSX prop (`color`, `bg`, `borderColor`, SVG fill), or asset. Note whether the subtree is a section with content (candidate for `<Background>` + palette `bg`) vs component chrome (prefer semantics).
 2. Identify palette — Normalize hex (case-insensitive); map to a Gamut palette name using Appendix A below. If missing from the appendix, match against `DESIGN.md` / `packages/gamut-styles` palette definitions.
-3. Recommend semantic first — Use Appendix B (Core light literals from `color.md`) plus role:
+3. Recommend semantic first — Use Appendix B (Core light literals) plus role:
    - Body / UI foreground → `text`; strong emphasis → `text-accent`.
    - Page or card fill → `background` / `background-primary` / state surfaces (`background-success`, `background-warning`, `background-error`).
-   - CTAs, links, hyper accents → `primary` (+ `primary-hover` on hover); toggles / checkboxes → `interface`.
+   - CTAs, links, hyper accents → `primary` (+ `primary-hover` on hover).
    - Ghost / secondary buttons → `secondary`.
    - Destructive → `danger` / `danger-hover`.
    - Dividers / outlines → `border-primary` / `border-secondary` / `border-tertiary`.
    - Inline feedback copy → `feedback-error` / `feedback-success` / `feedback-warning`.
    - Disambiguation: `#FFD300` — warning copy → `feedback-warning`; yellow accent on top of primary-colored surfaces → `primary-inverse`.
    - Same hex can map to multiple semantics (e.g. `#10162F` → `text` vs `border-primary` vs `secondary`): pick from property + component role.
-4. When palette-only is OK — `bg` prop on `<Background>` (`<Background bg="hyper">`, etc.) is the primary place for fixed surface palette colors on sections (see `color.md` decision guide + ColorMode docs). After replacing hex there, use a named palette token, not hex. Exceptions (flag with rationale): charts/data viz, third-party widgets, exported static illustrations — still prefer tokens over hex when feasible.
+4. When palette-only is OK — `bg` prop on `<Background>` (`<Background bg="hyper">`, etc.) is the primary place for fixed surface palette colors on sections. After replacing hex there, use a named palette token, not hex. Exceptions (flag with rationale): charts/data viz, third-party widgets, exported static illustrations — still prefer tokens over hex when feasible.
 
 Severity: Hex on adaptive UI (random wrappers, `styled-components`, inline `style`) → error. Hex inside documented exceptions → warning with note.
 
@@ -107,7 +110,7 @@ Ignore hex inside design token definition files (e.g. `variables/colors.ts`, `_c
 
 ### Appendix B — Core light: hex → suggested semantic (shortcut)
 
-Use with step 3; verify for non-Core themes. Opacity variants in `color.md` are not listed here — keep using the named semantic token.
+Use with step 3; verify for non-Core themes.
 
 | Hex (normalized) | Typical semantic direction                                                                                               |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -118,8 +121,8 @@ Use with step 3; verify for non-Core themes. Opacity variants in `color.md` are 
 | `#f5ffe3`        | `background-success`                                                                                                     |
 | `#fffae5`        | `background-warning`                                                                                                     |
 | `#fbf1f0`        | `background-error`                                                                                                       |
-| `#3a10e5`        | `primary`, `interface` (controls vs marketing CTA — prefer `primary` for links/buttons)                                  |
-| `#5533ff`        | `primary-hover`, `interface-hover`                                                                                       |
+| `#3a10e5`        | `primary`                                                                                                                |
+| `#5533ff`        | `primary-hover`                                                                                                          |
 | `#ffd300`        | `feedback-warning` or `primary-inverse` (see disambiguation above)                                                       |
 | `#cca900`        | Often pairs with hover in dark mode; in light UI as literal hex → check palette appendix (`yellow-400`) then assign role |
 | `#e91c11`        | `danger`                                                                                                                 |
@@ -183,7 +186,7 @@ Case-insensitive. Use to label `palette:` in the report; do not stop at this ste
 
 ## Check 5 — Test setup
 
-Grep test files (`/__tests__//*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.{ts,tsx}`) for these patterns. Skip `node_modules`, `dist`.
+Grep test files (`**/__tests__/**/*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.{ts,tsx}`) for these patterns. Skip `node_modules`, `dist`.
 
 | Pattern                                               | Verdict                               | Reason                                                                                                                                                                                                                                  |
 | ----------------------------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -193,7 +196,7 @@ Grep test files (`/__tests__//*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.{ts,
 | `from 'component-test-setup'` (without gamut-tests)   | Warning                               | Should import `setupRtl` from `@codecademy/gamut-tests`, not directly from `component-test-setup` — the gamut-tests wrapper adds `MockGamutProvider` automatically                                                                      |
 | `new GamutProvider` or `<GamutProvider` in test files | Warning                               | Prefer `setupRtl`; use `MockGamutProvider` (sets `useCache={false}`, `useGlobals={false}`) in harnesses or stories, not `GamutProvider` directly                                                                                        |
 
-Skill reference for remediation: `gamut-testing`
+Skill reference for remediation: [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ---
 

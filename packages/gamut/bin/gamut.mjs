@@ -6,9 +6,9 @@ import { error, log } from './lib/io.mjs';
  * Gamut CLI
  *
  * Usage:
- *   gamut plugin install [cursor|claude] [--scope all|skills|rules|commands|agents]
+ *   gamut plugin install [cursor|claude] [--scope all|skills|rules|agents]
  *   gamut plugin remove  [cursor|claude]
- *   gamut plugin update  [cursor|claude] [--scope all|skills|rules|commands|agents]
+ *   gamut plugin update  [cursor|claude] [--scope all|skills|rules|agents]
  *   gamut plugin list
  */
 
@@ -81,7 +81,7 @@ Subcommands:
   list                                                  Show installation status for all targets
 
 Targets:   cursor (default)  |  claude
-Scopes:    all (default)     |  skills  |  rules  |  commands  |  agents
+Scopes:    all (default)     |  skills  |  rules  |  agents
 Themes:    core | admin | platform | percipio | lxstudio  (--theme copies DESIGN.md to repo root)
 
 Examples:

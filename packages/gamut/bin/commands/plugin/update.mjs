@@ -16,7 +16,7 @@ Arguments:
 
 Options:
   --scope <scope>      Content to update (default: all)
-                       all | skills | rules | commands | agents
+                       all | skills | rules | agents
   --theme <theme>      Refresh ./DESIGN.md (same themes as install)
   --force              Overwrite existing DESIGN.md when using --theme
   --plugin-dir <path>  Override the bundled agent-tools directory
@@ -31,7 +31,7 @@ Examples:
 }
 
 /**
- * gamut plugin update [cursor|claude] [--scope all|skills|rules|commands|agents]
+ * gamut plugin update [cursor|claude] [--scope all|skills|rules|agents]
  *                                           [--plugin-dir <path>]
  *
  * Re-runs install with the same arguments. For Cursor this does an in-place
