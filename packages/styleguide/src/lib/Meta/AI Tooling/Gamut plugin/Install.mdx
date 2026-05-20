@@ -14,14 +14,14 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-<Callout text="The plugin installs agent context (skills, rules, commands, guidelines). It does not add Gamut packages to your app — see agent-tools guidelines/setup.md or Meta → Installation for package.json setup." />
+<Callout text="The plugin installs agent context (skills and rules). It does not add Gamut packages to your app — see Meta → Installation for package.json setup and the gamut-theming skill for GamutProvider setup." />
 
 Install Gamut agent tools with the `gamut` CLI from the `@codecademy/gamut` package. Run commands from your **app repository root** (or any directory where you want `DESIGN.md` copied).
 
 ## Install
 
 ```sh
-# Cursor (default) — skills, rules, commands, guidelines
+# Cursor (default) — skills and rules
 gamut plugin install
 
 # Cursor + product DESIGN.md at repo root
@@ -47,11 +47,9 @@ gamut plugin install claude --theme percipio
       </td>
       <td>
         <strong>Cursor only.</strong> <code>all</code> (default):{' '}
-        <code>skills/</code>, <code>rules/</code>, <code>commands/</code>,{' '}
-        <code>guidelines/</code>. Or one dir: <code>skills</code>,{' '}
-        <code>rules</code>, <code>commands</code>, or <code>agents</code>{' '}
-        (reserved; folder is empty today). <code>guidelines/</code> is not a
-        separate scope.
+        <code>skills/</code> and <code>rules/</code>. Or one dir:{' '}
+        <code>skills</code>, <code>rules</code>, or <code>agents</code>{' '}
+        (reserved; folder is empty today).
       </td>
     </tr>
     <tr>
@@ -60,8 +58,8 @@ gamut plugin install claude --theme percipio
       </td>
       <td>
         Copy matching <code>DESIGN.*.md</code> from agent-tools to{' '}
-        <code>./DESIGN.md</code> at the repo root (product YAML for agents and{' '}
-        <code>gamut-review</code>)
+        <code>./DESIGN.md</code> at the repo root (product YAML for agents and
+        the <code>gamut-review</code> skill)
       </td>
     </tr>
     <tr>
@@ -132,7 +130,7 @@ gamut plugin install claude --theme percipio
   </tbody>
 </table>
 
-Aliases: `codecademy`, `cc`, `lx-studio`. **Manual fallback:** copy the matching `DESIGN.*.md` to the repo root and rename to `DESIGN.md`. Plugin-only install (`gamut plugin install cursor` without `--theme`) skips `DESIGN.md`; `gamut-review` will flag it as missing.
+Aliases: `codecademy`, `cc`, `lx-studio`. **Manual fallback:** copy the matching `DESIGN.*.md` to the repo root and rename to `DESIGN.md`. Plugin-only install (`gamut plugin install cursor` without `--theme`) skips `DESIGN.md`; the `gamut-review` skill will flag it as missing when auditing.
 
 ## Update and remove
 
@@ -177,17 +175,6 @@ Content from [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut
     </tr>
     <tr>
       <td>
-        <code>commands/</code>
-      </td>
-      <td>
-        Slash commands such as{' '}
-        <a href="https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/commands/gamut-review.md">
-          gamut-review
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>
         <code>agents/</code>
       </td>
       <td>
@@ -195,13 +182,5 @@ Content from [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut
         current releases
       </td>
     </tr>
-    <tr>
-      <td>
-        <code>guidelines/</code>
-      </td>
-      <td>Implementation reference (setup, foundations, components)</td>
-    </tr>
   </tbody>
 </table>
-
-The same `guidelines/` markdown is published to the Figma Make kit for designers; engineers consume it via the plugin after install.

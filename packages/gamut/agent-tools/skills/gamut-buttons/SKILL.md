@@ -1,10 +1,15 @@
-# Buttons
+---
+name: gamut-buttons
+description: Use this skill when choosing Gamut button atoms (FillButton, StrokeButton, TextButton, IconButton, CTAButton), variant and size props, or disabled vs aria-disabled patterns — not for custom styled controls (see gamut-color-mode and gamut-style-utilities).
+---
 
-Agent reference: which button component and which `variant` to use. Colors are wired inside each atom — consumers do not pass `color`, `bg`, hex, or semantic token names on stock buttons.
+# Gamut Buttons
 
-Related docs: [overview.md](../overview.md) (reading order) · [foundations/color.md](../foundations/color.md) and `gamut-color-mode` skill — semantic tokens for custom styled controls only, not stock button atoms · [foundations/modes.md](../foundations/modes.md) — ColorMode / `<Background>` when placing buttons on colored surfaces
+Which button component and which `variant` to use. Colors are wired inside each atom — consumers do not pass `color`, `bg`, hex, or semantic token names on stock buttons.
 
-Storybook (UX source of truth):
+See also: [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — semantic tokens for custom styled controls only, not stock button atoms; ColorMode / `<Background>` when placing buttons on colored surfaces. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — universal action and naming rules.
+
+Storybook:
 
 - [Atoms / Buttons / Button](https://gamut.codecademy.com/?path=/docs-atoms-buttons-button--docs) — variants, light/dark examples
 - [FillButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-fillbutton--docs) · [StrokeButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-strokebutton--docs) · [TextButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-textbutton--docs) · [IconButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-iconbutton--docs) · [CTAButton](https://gamut.codecademy.com/?path=/docs-atoms-buttons-ctabutton--docs)
@@ -86,6 +91,6 @@ Hover, active, and disabled colors are handled by the component. Do not override
 
 - Use `FillButton` for primary actions and `StrokeButton` for secondary — do not use both at equal weight on the same screen.
 - Reserve `CTAButton` for marketing / high-visibility promotions; do not use it for standard UI actions.
-- Avoid placing buttons in the wrong color-mode context (e.g. light-mode buttons on a navy band without `<Background>`). See [modes.md](../foundations/modes.md).
+- Avoid placing buttons in the wrong color-mode context (e.g. light-mode buttons on a navy band without `<Background>`). See [`gamut-color-mode`](../gamut-color-mode/SKILL.md).
 - Every interactive `Card` wrapped in `<Anchor>` should have `isInteractive` — not a button inside.
-- Do not set `color`, `bg`, or hex on stock button components. For custom styled controls, follow [color.md](../foundations/color.md) and `gamut-styles` utilities — do not import internal `ButtonBase`.
+- Do not set `color`, `bg`, or hex on stock button components. For custom styled controls, follow [`gamut-color-mode`](../gamut-color-mode/SKILL.md) and `gamut-styles` utilities — do not import internal `ButtonBase`.

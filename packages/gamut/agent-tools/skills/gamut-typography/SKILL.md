@@ -5,16 +5,30 @@ description: Use this skill when creating or reviewing UI text in Gamut apps —
 
 # Gamut Typography
 
-Implementation source of truth: [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes). Agent guideline: [foundations/typography.md](../../guidelines/foundations/typography.md).
+Implementation source of truth: [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
 
 ## Scope by theme
 
-| Themes                | Fonts                                                                                                                                    | `fontWeight.title` |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| Core, Admin, Platform | `base` → Apercu stack; `accent` → Suisse + Apercu stack                                                                                  | 700                |
-| Percipio, LX Studio   | `base` → Skillsoft Text; `accent` → Skillsoft Sans; Percipio `monospace` → Roboto Mono; LX `monospace` matches Core stack per theme file | 500                |
+| Themes                | `fontFamily.base`                        | `fontFamily.accent`                       | `fontWeight.title` |
+| --------------------- | ---------------------------------------- | ----------------------------------------- | ------------------ |
+| Core, Admin, Platform | Apercu stack                             | Suisse + Apercu stack                     | 700                |
+| Percipio              | Skillsoft Text                           | Skillsoft Sans; `monospace` → Roboto Mono | 500                |
+| LX Studio             | Skillsoft Text / Sans (same as Percipio) | Same                                      | 500                |
+
+Admin and Platform extend Core for colors / modes only — typography matches Core.
+
+Licensing: Apercu is licensed for Codecademy surfaces only; Skillsoft products use Percipio/LX stacks.
 
 Use `fontWeight="title"` for headlines / emphasis roles — never hardcode `700` on Percipio/LX unless SPECIFICALLY noted in Figma designs.
+
+## Font weight (semantic)
+
+| Token   | Core / Admin / Platform | Percipio / LX Studio |
+| ------- | ----------------------- | -------------------- |
+| `base`  | 400                     | 400                  |
+| `title` | 700                     | 500                  |
+
+Headlines, CTAs, and buttons should use `fontWeight="title"` so Percipio/LX get 500, Core gets 700. Literal `700` breaks Skillsoft branding on those themes.
 
 ## Font size scale (`fontSize`)
 
@@ -67,6 +81,15 @@ const Caption = styled.span(
 ```
 
 Prefer `<Text>` from `@codecademy/gamut` with `variant` / `as` — see Storybook [Typography / Text](https://gamut.codecademy.com/?path=/docs-typography-text--docs).
+
+## Codecademy (Core / Admin / Platform) — voice and layout
+
+Do not blindly apply to Percipio/LX without brand guidance.
+
+- `fontFamily="base"` (Apercu): default UI and marketing type. Emphasis inside body copy: Italic, not Bold for intra-paragraph stress.
+- `fontFamily="accent"` (Suisse stack): technical accent — code snippets, captions, labels. Use sparingly; glyph box reads larger — step down ~10–15% vs equivalent `base` size.
+- Alignment: left-align by default; center only short marketing headlines; avoid right-align except tabs / numerics.
+- Letter-spacing: do not tweak tracking unless design specifies.
 
 ## Semantic vs visual headings
 

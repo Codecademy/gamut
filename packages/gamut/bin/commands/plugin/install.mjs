@@ -13,7 +13,7 @@ import { getFlag, resolvePluginDir } from '../../lib/resolve-plugin-dir.mjs';
 import { runCommand } from '../../lib/run-command.mjs';
 
 export const TARGETS = ['cursor', 'claude'];
-export const SCOPES = ['all', 'skills', 'rules', 'commands', 'agents'];
+export const SCOPES = ['all', 'skills', 'rules', 'agents'];
 
 export function help() {
   log(`
@@ -28,7 +28,7 @@ Arguments:
 
 Options:
   --scope <scope>      Content to install (default: all)
-                       all | skills | rules | commands | agents
+                       all | skills | rules | agents
   --theme <theme>      Copy DESIGN.*.md to ./DESIGN.md in the current directory
                        core | admin | platform | percipio | lxstudio
                        (admin/platform use Codecademy DESIGN; aliases: codecademy, cc, lx-studio)
@@ -102,9 +102,8 @@ async function installCursor(sourceRoot, scope) {
   log(`Cursor: installed (${scopeLabel}) → ${dest}`);
 }
 
-// Claude Code only loads from recognized plugin directories: skills/, commands/, agents/.
-// rules/ is Cursor-specific (.mdc format). guidelines/ is installed to Cursor and is
-// also source for the Figma Make kit; Claude marketplace registers the full sourceRoot.
+// Claude Code loads skills/, agents/ from the plugin source. rules/ is Cursor-specific
+// (.mdc format). Claude marketplace registers the full sourceRoot.
 
 /** @param {string} sourceRoot */
 async function installClaude(sourceRoot) {
@@ -163,7 +162,7 @@ async function installClaude(sourceRoot) {
 // ---------------------------------------------------------------------------
 
 /**
- * gamut plugin install [cursor|claude] [--scope all|skills|rules|commands|agents]
+ * gamut plugin install [cursor|claude] [--scope all|skills|rules|agents]
  *                                            [--plugin-dir <path>]
  *
  * @param {string[]} args

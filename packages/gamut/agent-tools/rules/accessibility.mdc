@@ -41,7 +41,7 @@ When there is no visible text for a nameable element, consider this a sign that 
 
 ## Use Gamut primitives — do not fake buttons or dialogs
 
-- Actions: use Gamut button atoms (`FillButton`, `TextButton`, `StrokeButton`, `CTAButton`, `IconButton`) — not `<div onClick>`, not `<span role="button">`, not `<a>` without `href` for actions. Variant and `tip` guidance: [`guidelines/components/buttons.md`](../guidelines/components/buttons.md).
+- Actions: use Gamut button atoms (`FillButton`, `TextButton`, `StrokeButton`, `CTAButton`, `IconButton`) — not `<div onClick>`, not `<span role="button">`, not `<a>` without `href` for actions. Variant and `tip` guidance: [`skills/gamut-buttons/SKILL.md`](../skills/gamut-buttons/SKILL.md).
 - Tabs / overlays: `Tabs`, `Dialog`, `Modal`, and related primitives implement keyboard and focus patterns in code — still supply labels, titles, and trigger semantics as documented in the skill.
 
 ## Every interactive control needs an accessible name
@@ -60,7 +60,7 @@ Use `<Text screenreader>` for visually hidden but announced content. `<HiddenTex
 
 ## Color and contrast
 
-Do not hardcode hex for adaptive UI. Prefer semantic tokens and `ColorMode` / `<Background>` so surfaces track theme and mode — see the `gamut-color-mode` skill and [`foundations/modes.md`](../guidelines/foundations/modes.md). Default pairings support accessible UI, but tokens do not guarantee WCAG compliance for every layout; validate non-standard combinations.
+Do not hardcode hex for adaptive UI. Prefer semantic tokens and `ColorMode` / `<Background>` so surfaces track theme and mode — see the [`gamut-color-mode`](../skills/gamut-color-mode/SKILL.md) skill. Default pairings support accessible UI, but tokens do not guarantee WCAG compliance for every layout; validate non-standard combinations.
 
 ## Focus visibility
 
@@ -72,7 +72,7 @@ Never suppress focus indicators with `outline: none` or `outline: 0` without a v
 | --- | --- |
 | Forms (`GridForm`, `ConnectedForm`, `FormGroup`, validation, live regions) | [`skills/gamut-forms/SKILL.md`](../skills/gamut-forms/SKILL.md) |
 | Component matrix (tips, overlays, composites, checklists; not form wiring) | [`skills/gamut-accessibility/SKILL.md`](../skills/gamut-accessibility/SKILL.md) |
-| Button variants, `IconButton` `tip`, `disabled` vs `aria-disabled` | [`guidelines/components/buttons.md`](../guidelines/components/buttons.md) |
-| ColorMode, `Background`, semantic color roles | `gamut-color-mode` skill · [`foundations/modes.md`](../guidelines/foundations/modes.md) · [`foundations/color.md`](../guidelines/foundations/color.md) |
+| Button variants, `IconButton` `tip`, `disabled` vs `aria-disabled` | [`skills/gamut-buttons/SKILL.md`](../skills/gamut-buttons/SKILL.md) |
+| ColorMode, `Background`, semantic color roles | [`skills/gamut-color-mode/SKILL.md`](../skills/gamut-color-mode/SKILL.md) |
 | Tokens, `css` / `variant` / `states` | Storybook [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) |
 | Install, `GamutProvider`, CSP | Storybook [Meta / Installation](https://gamut.codecademy.com/?path=/docs-meta-installation--page) |
