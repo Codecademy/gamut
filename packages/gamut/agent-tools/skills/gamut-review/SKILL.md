@@ -40,13 +40,16 @@ Read `package.json` at the audit root. Inspect `dependencies`, `devDependencies`
 
 ## Check 2 — Setup
 
+First detect whether the project uses TypeScript by checking for `tsconfig.json` at the audit root or `typescript` in `package.json` `dependencies`/`devDependencies`. Use this to set severity for the Theme augmentation row below.
+
 Search source files (`.ts`, `.tsx`, `.js`, `.jsx`) for these symbols. Skip `node_modules`, `dist`, `.next`, `build`, `.turbo`.
 
-| Symbol          | Expectation                                                         |
-| --------------- | ------------------------------------------------------------------- |
-| `GamutProvider` | Required — must appear at least once (app root wrapper)             |
-| `ColorMode`     | Recommended — enables semantic light/dark theming                   |
-| `Background`    | Recommended — semantic surface color via `@codecademy/gamut-styles` |
+| Symbol                            | Expectation                                                                                                                                                                                                                                                                                                                             |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GamutProvider`                   | Required — must appear at least once (app root wrapper)                                                                                                                                                                                                                                                                                 |
+| `ColorMode`                       | Recommended — enables semantic light/dark theming                                                                                                                                                                                                                                                                                       |
+| `Background`                      | Recommended — semantic surface color via `@codecademy/gamut-styles`                                                                                                                                                                                                                                                                     |
+| `declare module '@emotion/react'` | **Required if TypeScript** — `Theme` must be augmented with the active theme type (e.g. `CoreTheme`) so scale props type-check correctly; grep `.d.ts` and `.ts`/`.tsx` source files for this string. **Recommended if not TypeScript** — note that adopting TypeScript is recommended and that `theme.d.ts` will be needed when it is. |
 
 For each found symbol report the first file path where it appears.
 
@@ -219,6 +222,8 @@ Setup
   ✓  GamutProvider   found (src/App.tsx)
   ⚠  ColorMode       not found — use ColorMode for light/dark theming  [→ gamut-color-mode]
   ⚠  Background      not found — use <Background> for semantic surfaces  [→ gamut-color-mode]
+  ✗  Theme augmentation   not found — create src/theme.d.ts extending CoreTheme  [→ gamut-theming]
+  (⚠ if TypeScript not detected: TypeScript not detected — recommended to adopt TypeScript; add src/theme.d.ts extending CoreTheme when you do  [→ gamut-theming])
 
 Import patterns
   ✓  Deep dist imports         none found
