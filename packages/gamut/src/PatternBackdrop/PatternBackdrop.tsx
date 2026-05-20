@@ -42,5 +42,3 @@ export const PatternBackdrop = forwardRef<HTMLDivElement, PatternBackdropProps>(
     </Box>
   )
 );
-
-PatternBackdrop.displayName = 'PatternBackdrop';
