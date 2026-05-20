@@ -1,6 +1,6 @@
 # 18.0.0 (2026-05-14)
 
-### ⚠️ Breaking Changes
+### ⚠️  Breaking Changes
 
 - Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
 
