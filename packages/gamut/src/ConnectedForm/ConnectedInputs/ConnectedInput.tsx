@@ -19,6 +19,7 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
       aria-required={isRequired}
       disabled={isDisabled}
       error={Boolean(error)}
+      htmlFor={name}
       {...ref}
       {...rest}
     />
