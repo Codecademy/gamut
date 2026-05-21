@@ -1,3 +1,13 @@
+# 18.0.0 (2026-05-14)
+
+### ⚠️ Breaking Changes
+
+- Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 17.14.0 (2026-04-29)
 
 ### 🚀 Features

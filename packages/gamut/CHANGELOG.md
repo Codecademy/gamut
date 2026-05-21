@@ -1,3 +1,67 @@
+## 68.6.0 (2026-05-14)
+
+### 🚀 Features
+
+- Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.11
+- Updated gamut-patterns to 0.10.30
+- Updated gamut-styles to 18.0.0
+- Updated gamut-icons to 9.57.5
+- Updated gamut-tests to 6.0.1
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
+## 68.5.1 (2026-05-08)
+
+### 🩹 Fixes
+
+- pin formatjs/intl-locale version ([#3343](https://github.com/Codecademy/gamut/pull/3343))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.5.0 (2026-05-04)
+
+### 🚀 Features
+
+- remove setupEnzyme and remove deprecated comment for RadialProgress ([#3337](https://github.com/Codecademy/gamut/pull/3337))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.4
+- Updated gamut-tests to 6.0.0
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.4.1 (2026-05-04)
+
+### 🩹 Fixes
+
+- update Input padding to use logical properties ([#3338](https://github.com/Codecademy/gamut/pull/3338))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.4.0 (2026-05-04)
+
+### 🚀 Features
+
+- New DatePicker component ([#3286](https://github.com/Codecademy/gamut/pull/3286), [#3335](https://github.com/Codecademy/gamut/issues/3335))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Kenny Lin @LinKCoding
+
 ## 68.3.0 (2026-04-29)
 
 ### 🚀 Features

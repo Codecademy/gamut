@@ -1,23 +1,19 @@
 # Gamut Styles
 
-Base SCSS for Codecademy
+Design tokens, Emotion themes, and system props for the Gamut design system.
 
-## Variables/
+`@codecademy/gamut-styles` is the styling layer behind Gamut components. Wrap your app in `GamutProvider` to supply a theme; import tokens, system props, and helpers from the package entry (`src/index.ts`).
 
-This folder houses all shared SCSS style variables.
-It also contains a JavaScript file with color variables.
+**`variables/`** — Raw tokens (colors, spacing, typography, breakpoints, etc.) used to build themes.
 
-## Core/
+**`themes/`** — Composed Emotion themes. `coreTheme` (exported as `theme`) is the default; `platform`, `admin`, `lxStudio`, and `percipio` extend it for other contexts.
 
-This folder contains a base stylesheet for the app.
-This should be imported **once** in your application.
+**`variance/`** — System props and CSS-in-JS helpers for styled components.
 
-## Utils/
+Also exports color-mode utilities (`ColorMode`, `Background`), global styles, Emotion cache setup, and assorted styling helpers under `globals/`, `cache/`, `styles/`, and `utilities/`.
 
-This folder contains Sass functions (pure utilities with no stylesheet output values) and mixins (outputs CSS)
-to be used as needed both in Gamut and across the Codecademy app.
+```tsx
+import { GamutProvider, theme } from '@codecademy/gamut-styles';
 
-The `utils.scss` and `core.scss` just import the index files from their respective folders, to make the syntax to import them from elsewhere easier, e.g.:
-
-`@use "~@codecademy/gamut-styles/utils";`
-`@use "~@codecademy/gamut-styles/core";`
+<GamutProvider theme={theme}>{/* app */}</GamutProvider>;
+```

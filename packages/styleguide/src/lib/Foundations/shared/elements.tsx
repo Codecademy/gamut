@@ -12,6 +12,7 @@ import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
+import { useMemo } from 'react';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
@@ -269,6 +270,43 @@ export const fontFamily = {
       size: 'fill',
     },
   ],
+};
+
+export const FontFamilyTable = () => {
+  const currentTheme = useTheme() as typeof theme;
+
+  const { rows, columns } = useMemo(
+    () => ({
+      rows: Object.entries(currentTheme.fontFamily).map(([id, value]) => ({
+        id,
+        value: value as string,
+      })),
+      columns: [
+        PROP_COLUMN,
+        {
+          ...PATH_COLUMN,
+          size: 'xl',
+          render: ({ id }) => <Code>theme.fontFamily.{id}</Code>,
+        },
+        {
+          ...VALUE_COLUMN,
+          render: ({ value }) => (
+            <Box maxWidth="24rem">
+              <Code>{value.split(',')[0]}</Code>
+            </Box>
+          ),
+          size: 'lg',
+        },
+        {
+          ...createExampleColumn({ text: 'Example Text', prop: 'fontFamily' }),
+          size: 'fill',
+        },
+      ],
+    }),
+    [currentTheme]
+  );
+
+  return <TokenTable columns={columns} rows={rows} />;
 };
 
 export const fontWeight = {
