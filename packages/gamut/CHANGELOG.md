@@ -1,3 +1,14 @@
+## 68.6.1 (2026-05-20)
+
+### 🩹 Fixes
+
+- Update InternalFloatingCard, renamed to PatternBackdrop and pared down to needed functionality for Toast + ModalContainer needs ([#3353](https://github.com/Codecademy/gamut/pull/3353))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+- LinKCoding @LinKCoding
+
 ## 68.6.0 (2026-05-14)
 
 ### 🚀 Features
