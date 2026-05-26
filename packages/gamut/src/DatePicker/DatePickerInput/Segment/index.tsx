@@ -50,7 +50,7 @@ export const DatePickerInputSegment: React.FC<DatePickerInputSegmentProps> = ({
   const { min, max } = getSegmentSpinBounds({ field, segments });
   const numericValue = parseSegmentNumericString(segments[field]);
   const ariaValue =
-    segments[field].length > 0 && numericValue != null
+    segments[field].length > 0 && numericValue !== null
       ? numericValue
       : undefined;
   const display =

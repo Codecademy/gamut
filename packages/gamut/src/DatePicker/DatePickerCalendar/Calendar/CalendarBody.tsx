@@ -83,7 +83,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
     const requested = focusGridSync.gridFocusRequested;
     const focusOnNavChevron =
       activeEl instanceof Element &&
-      activeEl.closest('[data-calendar-month-nav]') != null;
+      activeEl.closest('[data-calendar-month-nav]') !== null;
 
     if (!requested && (pauseGridRoving || focusOnNavChevron)) {
       return;
@@ -95,8 +95,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       activeEl === document.body ||
       activeEl === document.documentElement ||
       (activeEl instanceof HTMLElement &&
-        containerEl != null &&
-        containerEl.contains(activeEl) === false &&
+        containerEl?.contains(activeEl) === false &&
         activeEl.contains(containerEl));
 
     // Sync DOM focus when: navigating inside this table; first focus from input (keyboard open);
@@ -106,7 +105,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       inThisGrid ||
       requested ||
       focusInCalendarContainer ||
-      (focusLostFromCellUnmount && containerEl != null);
+      (focusLostFromCellUnmount && containerEl !== null);
 
     if (!shouldSyncFocus) return;
 
