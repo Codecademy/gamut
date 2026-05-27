@@ -156,7 +156,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           {mode === 'range' ? (
             <>
               <DatePickerInput
-                name="datePickerInputStart"
+                description={props.startDateDescription}
+                name="datePickerInput"
                 rangePart="start"
                 size={inputSize}
               />
@@ -164,13 +165,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 {isRtl ? <MiniArrowLeftIcon /> : <MiniArrowRightIcon />}
               </Box>
               <DatePickerInput
-                name="datePickerInputEnd"
+                description={props.endDateDescription}
+                name="datePickerInput"
                 rangePart="end"
                 size={inputSize}
               />
             </>
           ) : (
-            <DatePickerInput size={inputSize} />
+            <DatePickerInput description={props.description} size={inputSize} />
           )}
         </FlexBox>
         <PopoverContainer

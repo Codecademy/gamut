@@ -96,6 +96,8 @@ export interface DatePickerSingleProps extends DatePickerBaseProps<'single'> {
    * ```
    */
   onSelected: (date: Date | null) => void;
+  /** Description to display between the label and the input. */
+  description?: string;
 }
 
 export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
@@ -164,6 +166,10 @@ export interface DatePickerRangeProps extends DatePickerBaseProps<'range'> {
    * ```
    */
   onEndSelected: (date: Date | null) => void;
+  /** Description to display between the label and the start date input. */
+  startDateDescription?: string;
+  /** Description to display between the label and the end date input. */
+  endDateDescription?: string;
 }
 
 export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
