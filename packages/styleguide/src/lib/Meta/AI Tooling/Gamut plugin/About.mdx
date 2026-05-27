@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as bestPracticesParameters } from './Best practices.mdx';
+import { parameters as installParameters } from './Install.mdx';
+
+export const parameters = {
+  id: 'Meta/AI Tooling/Gamut plugin',
+  title: 'Gamut plugin',
+  subtitle:
+    'Install Gamut agent tools in Cursor or Claude Code and add product design context for AI-assisted development.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/Gamut plugin/About" />
+
+<AboutHeader {...parameters} />
+
+Use the `gamut` CLI from `@codecademy/gamut` to install skills and rules into your editor, and optionally copy a product-specific `DESIGN.md` to your app repo root.
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    installParameters,
+    bestPracticesParameters,
+  ])}
+/>
