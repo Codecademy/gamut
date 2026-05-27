@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">90/90 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">90/90 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/496 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">170 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">90/90 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">90/90 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/496 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">174 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>5.6s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.8s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -84823,6 +84823,7 @@ import {
   TableOfContents,
 } from &#39;~styleguide/blocks&#39;;
 
+import { parameters as aiToolingAboutParameters } from &#39;./AI Tooling/About.mdx&#39;;
 import { parameters as bestPracticesParameters } from &#39;./Best practices.mdx&#39;;
 import { parameters as brandParameters } from &#39;./Brand.mdx&#39;;
 import { parameters as contributingParameters } from &#39;./Contributing.mdx&#39;;
@@ -84832,7 +84833,6 @@ import { parameters as faqsParameters } from &#39;./FAQs.mdx&#39;;
 import { parameters as gamutWritingGuideParameters } from &#39;./Gamut writing guide/About.mdx&#39;;
 import { parameters as installationParameters } from &#39;./Installation.mdx&#39;;
 import { parameters as logicalPhysicalParameters } from &#39;./Logical and physical CSS properties.mdx&#39;;
-import { parameters as mcpAboutParameters } from &#39;./MCP/About.mdx&#39;;
 import { parameters as usageGuideParameters } from &#39;./Usage guide.mdx&#39;;
 
 export const parameters = {
@@ -84858,7 +84858,7 @@ export const parameters = {
     logicalPhysicalParameters,
     brandParameters,
     usageGuideParameters,
-    mcpAboutParameters,
+    aiToolingAboutParameters,
   ])}
 /&gt;
 </code></pre>
@@ -85048,9 +85048,10 @@ System props are a core part of our new approach to dynamic and customized styli
 
 ```tsx
 import { Box } from &#39;@codecademy/gamut&#39;;
+import { pxRem } from &#39;@codecademy/gamut-styles&#39;;
 
 const MyContainer = ({ children }) =&gt; (
-  &lt;Box paddingX={[16, 32, 64, , 96]}&gt;{children}&lt;/Box&gt;
+  &lt;Box px={[16, 32, 64, , 96]}&gt;{children}&lt;/Box&gt;
 );
 
 const MyOtherContainer = ({ children }) =&gt; (
@@ -85151,18 +85152,18 @@ const SomeCoolLayout = ({ children }) =&gt; (
 **Design Token Access** - Responsively accessing tokens by key.
 
 ```tsx
+import { Box } from &#39;@codecademy/gamut&#39;;
+
 const CardLikeThing = ({ children }) =&gt; (
   &lt;Box
-    backgroundColor={{ _: &#39;background&#39;, md: &#39;text&#39; }}
+    bg={{ _: &#39;background&#39;, md: &#39;text&#39; }}
     textColor={{ _: &#39;text&#39;, md: &#39;background&#39; }}
   &gt;
     {children}
   &lt;/Box&gt;
 );
 
-const Content = ({ children }) =&gt; (
-  &lt;Box padding={{ _: 16, md: 32 }}&gt;{children}&lt;/Box&gt;
-);
+const Content = ({ children }) =&gt; &lt;Box p={{ _: 16, md: 32 }}&gt;{children}&lt;/Box&gt;;
 ```
 
 # ❌ Nested selectors
@@ -87712,19 +87713,78 @@ export const Default: Story = {
   aria-label="Docs">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-ok"></span> Meta/MCP/About</h2>
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/About</h2>
       <div class="badges">
         
-        <label for="doc-22-meta-mcp-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-22-meta-ai-tooling-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
-    <div class="meta" title="./packages/styleguide/src/lib/Meta/MCP/About.mdx">meta-mcp-about--docs · ./packages/styleguide/src/lib/Meta/MCP/About.mdx</div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/About.mdx">meta-ai-tooling-about--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/About.mdx</div>
     
   </div>
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-22-meta-mcp-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-22-meta-ai-tooling-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from &#39;~styleguide/blocks&#39;;
+
+import { parameters as figmaAboutParameters } from &#39;./Figma/About.mdx&#39;;
+import { parameters as gamutPluginAboutParameters } from &#39;./Gamut plugin/About.mdx&#39;;
+
+export const parameters = {
+  id: &#39;Meta/AI Tooling&#39;,
+  title: &#39;AI Tooling&#39;,
+  subtitle:
+    &#39;Gamut agent tools for Cursor and Claude Code, product DESIGN.md context, and Figma workflows for design-to-code.&#39;,
+  status: &#39;static&#39;,
+};
+
+&lt;Meta title=&quot;Meta/AI Tooling/About&quot; /&gt;
+
+&lt;AboutHeader {...parameters} /&gt;
+
+&lt;TableOfContents
+  links={addParentPath(parameters.id, [
+    gamutPluginAboutParameters,
+    figmaAboutParameters,
+  ])}
+/&gt;
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/Figma/About</h2>
+      <div class="badges">
+        
+        <label for="doc-23-meta-ai-tooling-figma-about-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/Figma/About.mdx">meta-ai-tooling-figma-about--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/Figma/About.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-23-meta-ai-tooling-figma-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -87743,16 +87803,28 @@ import { parameters as codeConnectParameters } from &#39;./Code Connect.mdx&#39;
 import { parameters as figmaMcpParameters } from &#39;./Figma MCP.mdx&#39;;
 
 export const parameters = {
-  id: &#39;Meta/MCP&#39;,
-  title: &#39;MCP&#39;,
+  id: &#39;Meta/AI Tooling/Figma&#39;,
+  title: &#39;Figma&#39;,
   subtitle:
-    &#39;Documentation related to the Figma Model Context Protocol exclusive to Codecademy + Skillsoft employees.&#39;,
+    &#39;Figma Make kit, Code Connect, and Dev Mode MCP for Codecademy + Skillsoft employees.&#39;,
   status: &#39;static&#39;,
 };
 
-&lt;Meta title=&quot;Meta/MCP/About&quot; /&gt;
+&lt;Meta title=&quot;Meta/AI Tooling/Figma/About&quot; /&gt;
 
 &lt;AboutHeader {...parameters} /&gt;
+
+## Figma Make
+
+**Designers:** Use the **published Gamut Make kit** in Figma when building in Make — add it to your Make file from the org kit picker. Kits are configured entirely in the Figma app, not via a local CLI.
+
+**How kits work:** [Get started with Make kits](https://help.figma.com/hc/en-us/articles/39241689698839) (Figma Help).
+
+**Maintainers:** Update the published kit in Figma (upload or edit guidelines in the Make file’s code explorer). See [Add guidelines to Figma Make](https://help.figma.com/hc/en-us/articles/33665861260823). Engineers use Storybook and the Gamut plugin skills/rules for implementation reference.
+
+## Design-to-code
+
+For engineers generating code from Figma designs, use Code Connect and the Figma Dev Mode MCP:
 
 &lt;TableOfContents
   links={addParentPath(parameters.id, [
@@ -87771,19 +87843,19 @@ export const parameters = {
   aria-label="Docs">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-ok"></span> Meta/MCP/Code Connect</h2>
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/Figma/Code Connect</h2>
       <div class="badges">
         
-        <label for="doc-23-meta-mcp-code-connect-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-24-meta-ai-tooling-figma-code-connect-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
-    <div class="meta" title="./packages/styleguide/src/lib/Meta/MCP/Code Connect.mdx">meta-mcp-code-connect--docs · ./packages/styleguide/src/lib/Meta/MCP/Code Connect.mdx</div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/Figma/Code Connect.mdx">meta-ai-tooling-figma-code-connect--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/Figma/Code Connect.mdx</div>
     
   </div>
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-23-meta-mcp-code-connect-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-24-meta-ai-tooling-figma-code-connect-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -87801,7 +87873,7 @@ export const parameters = {
   status: &#39;static&#39;,
 };
 
-&lt;Meta title=&quot;Meta/MCP/Code Connect&quot; /&gt;
+&lt;Meta title=&quot;Meta/AI Tooling/Figma/Code Connect&quot; /&gt;
 
 &lt;AboutHeader {...parameters} /&gt;
 
@@ -87839,19 +87911,19 @@ For components with Code Connect, you can also click on the &quot;Explore behavi
   aria-label="Docs">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-ok"></span> Meta/MCP/Figma MCP</h2>
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/Figma/Figma MCP</h2>
       <div class="badges">
         
-        <label for="doc-24-meta-mcp-figma-mcp-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-25-meta-ai-tooling-figma-figma-mcp-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
-    <div class="meta" title="./packages/styleguide/src/lib/Meta/MCP/Figma MCP.mdx">meta-mcp-figma-mcp--docs · ./packages/styleguide/src/lib/Meta/MCP/Figma MCP.mdx</div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/Figma/Figma MCP.mdx">meta-ai-tooling-figma-figma-mcp--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/Figma/Figma MCP.mdx</div>
     
   </div>
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-24-meta-mcp-figma-mcp-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-25-meta-ai-tooling-figma-figma-mcp-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -87870,7 +87942,7 @@ export const parameters = {
   status: &#39;static&#39;,
 };
 
-&lt;Meta title=&quot;Meta/MCP/Figma MCP&quot; /&gt;
+&lt;Meta title=&quot;Meta/AI Tooling/Figma/Figma MCP&quot; /&gt;
 
 &lt;AboutHeader {...parameters} /&gt;
 
@@ -88003,10 +88075,414 @@ If you have any other feedback or suggestions, feel free to share those as well!
   aria-label="Docs">
   <div class="head">
     <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/Gamut plugin/About</h2>
+      <div class="badges">
+        
+        <label for="doc-26-meta-ai-tooling-gamut-plugin-about-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/Gamut plugin/About.mdx">meta-ai-tooling-gamut-plugin-about--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/Gamut plugin/About.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-26-meta-ai-tooling-gamut-plugin-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from &#39;~styleguide/blocks&#39;;
+
+import { parameters as bestPracticesParameters } from &#39;./Best practices.mdx&#39;;
+import { parameters as installParameters } from &#39;./Install.mdx&#39;;
+
+export const parameters = {
+  id: &#39;Meta/AI Tooling/Gamut plugin&#39;,
+  title: &#39;Gamut plugin&#39;,
+  subtitle:
+    &#39;Install Gamut agent tools in Cursor or Claude Code and add product design context for AI-assisted development.&#39;,
+  status: &#39;static&#39;,
+};
+
+&lt;Meta title=&quot;Meta/AI Tooling/Gamut plugin/About&quot; /&gt;
+
+&lt;AboutHeader {...parameters} /&gt;
+
+Use the `gamut` CLI from `@codecademy/gamut` to install skills and rules into your editor, and optionally copy a product-specific `DESIGN.md` to your app repo root.
+
+&lt;TableOfContents
+  links={addParentPath(parameters.id, [
+    installParameters,
+    bestPracticesParameters,
+  ])}
+/&gt;
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/Gamut plugin/Best practices</h2>
+      <div class="badges">
+        
+        <label for="doc-27-meta-ai-tooling-gamut-plugin-best-practices-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/Gamut plugin/Best practices.mdx">meta-ai-tooling-gamut-plugin-best-practices--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/Gamut plugin/Best practices.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-27-meta-ai-tooling-gamut-plugin-best-practices-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+import { AboutHeader, Callout } from &#39;~styleguide/blocks&#39;;
+
+export const parameters = {
+  id: &#39;Best practices&#39;,
+  title: &#39;Best practices&#39;,
+  subtitle:
+    &#39;How to use Gamut agent tools, DESIGN.md, and the gamut-review skill effectively in app repos.&#39;,
+  status: &#39;static&#39;,
+};
+
+&lt;Meta title=&quot;Meta/AI Tooling/Gamut plugin/Best practices&quot; /&gt;
+
+&lt;AboutHeader {...parameters} /&gt;
+
+## Recommended setup
+
+From your **app repo root**, install the plugin with the product theme that matches your app:
+
+```sh
+gamut plugin install cursor --theme core
+```
+
+Use `percipio`, `lxstudio`, `admin`, or `platform` when that matches your product. Refresh after upgrading `@codecademy/gamut`:
+
+```sh
+gamut plugin update cursor --theme core --force
+```
+
+## Which artifact to use when
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Artifact&lt;/th&gt;
+      &lt;th&gt;Where it lives&lt;/th&gt;
+      &lt;th&gt;Used for&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;DESIGN.md&lt;/code&gt; (from &lt;code&gt;DESIGN.*.md&lt;/code&gt;)
+      &lt;/td&gt;
+      &lt;td&gt;App repo root&lt;/td&gt;
+      &lt;td&gt;
+        Coding agents and &lt;code&gt;gamut-review&lt;/code&gt; — product tokens, semantic
+        roles, patterns
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;skills/&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Cursor/Claude after &lt;code&gt;gamut plugin install&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Task playbooks — invoke when doing focused work (theming, ColorMode,
+        buttons, layout, forms, auditing, …)
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;rules/&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;Cursor/Claude after install&lt;/td&gt;
+      &lt;td&gt;Always-on guardrails for Gamut code (e.g. accessibility)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+## Audit with gamut-review
+
+Before large PRs or when onboarding an existing codebase, use the **`gamut-review`** skill. It checks for `DESIGN.md`, Gamut dependencies, `GamutProvider`, import patterns, hardcoded hex colors, and test conventions.
+
+Without `DESIGN.md` at the repo root, color findings are lower confidence — install with `--theme` or copy the matching `DESIGN.*.md` manually.
+
+## Agent skills
+
+Related skills under [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/):
+
+- `gamut-review` — codebase audit playbook
+- `gamut-theming` — theme selection, `GamutProvider`, `theme.d.ts`
+- `gamut-color-mode` — ColorMode and semantic color
+- `gamut-buttons` — button atoms, variants, disabled patterns
+- `gamut-layout` — spacing scale, breakpoints, page grid
+- `gamut-system-props` — `system.*` / `Box`
+- `gamut-style-utilities` — `css`, `variant`, `states`
+- `gamut-typography`, `gamut-forms`, `gamut-accessibility`, `gamut-testing`
+
+## Design-to-code (Figma MCP)
+
+&lt;Callout text=&quot;MCP-generated code is experimental. Always validate and adapt before shipping — see Meta → AI Tooling → Figma → Figma MCP.&quot; /&gt;
+
+For Figma Dev Mode MCP setup and prompting, use [Figma MCP](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-figma-figma-mcp--page). Code Connect improves MCP output when designs use connected Gamut components.
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Meta/AI Tooling/Gamut plugin/Install</h2>
+      <div class="badges">
+        
+        <label for="doc-28-meta-ai-tooling-gamut-plugin-install-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./packages/styleguide/src/lib/Meta/AI Tooling/Gamut plugin/Install.mdx">meta-ai-tooling-gamut-plugin-install--docs · ./packages/styleguide/src/lib/Meta/AI Tooling/Gamut plugin/Install.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-28-meta-ai-tooling-gamut-plugin-install-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+import { AboutHeader, Callout } from &#39;~styleguide/blocks&#39;;
+
+export const parameters = {
+  id: &#39;Install&#39;,
+  title: &#39;Install&#39;,
+  subtitle:
+    &#39;Install and update the Gamut plugin for Cursor or Claude Code from the gamut CLI.&#39;,
+  status: &#39;static&#39;,
+};
+
+&lt;Meta title=&quot;Meta/AI Tooling/Gamut plugin/Install&quot; /&gt;
+
+&lt;AboutHeader {...parameters} /&gt;
+
+&lt;Callout text=&quot;The plugin installs agent context (skills and rules). It does not add Gamut packages to your app — see Meta → Installation for package.json setup and the gamut-theming skill for GamutProvider setup.&quot; /&gt;
+
+Install Gamut agent tools with the `gamut` CLI from the `@codecademy/gamut` package. Run commands from your **app repository root** (or any directory where you want `DESIGN.md` copied).
+
+## Install
+
+```sh
+# Cursor (default) — skills and rules
+gamut plugin install
+
+# Cursor + product DESIGN.md at repo root
+gamut plugin install cursor --theme core
+
+# Claude Code + product DESIGN.md
+gamut plugin install claude --theme percipio
+```
+
+### Options
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Flag&lt;/th&gt;
+      &lt;th&gt;Purpose&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;--scope &amp;lt;scope&amp;gt;&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;strong&gt;Cursor only.&lt;/strong&gt; &lt;code&gt;all&lt;/code&gt; (default):{&#39; &#39;}
+        &lt;code&gt;skills/&lt;/code&gt; and &lt;code&gt;rules/&lt;/code&gt;. Or one dir:{&#39; &#39;}
+        &lt;code&gt;skills&lt;/code&gt;, &lt;code&gt;rules&lt;/code&gt;, or &lt;code&gt;agents&lt;/code&gt;{&#39; &#39;}
+        (reserved; folder is empty today).
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;--theme &amp;lt;theme&amp;gt;&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Copy matching &lt;code&gt;DESIGN.*.md&lt;/code&gt; from agent-tools to{&#39; &#39;}
+        &lt;code&gt;./DESIGN.md&lt;/code&gt; at the repo root (product YAML for agents and
+        the &lt;code&gt;gamut-review&lt;/code&gt; skill)
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;--force&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Overwrite existing &lt;code&gt;DESIGN.md&lt;/code&gt; when using{&#39; &#39;}
+        &lt;code&gt;--theme&lt;/code&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+`gamut plugin install claude` always registers the full plugin via the Claude marketplace; `--scope` does not apply.
+
+### DESIGN.md sources
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;--theme&lt;/th&gt;
+      &lt;th&gt;Copies from&lt;/th&gt;
+      &lt;th&gt;Product&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;core&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.Codecademy.md&quot;&gt;
+          DESIGN.Codecademy.md
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;Codecademy public (Core)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;admin&lt;/code&gt;, &lt;code&gt;platform&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;Same Codecademy file&lt;/td&gt;
+      &lt;td&gt;Admin / learning platform&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;percipio&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.Percipio.md&quot;&gt;
+          DESIGN.Percipio.md
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;Percipio&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;lxstudio&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;https://github.com/Codecademy/gamut/blob/main/packages/gamut/agent-tools/DESIGN.LXStudio.md&quot;&gt;
+          DESIGN.LXStudio.md
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;LX Studio&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+Aliases: `codecademy`, `cc`, `lx-studio`. **Manual fallback:** copy the matching `DESIGN.*.md` to the repo root and rename to `DESIGN.md`. Plugin-only install (`gamut plugin install cursor` without `--theme`) skips `DESIGN.md`; the `gamut-review` skill will flag it as missing when auditing.
+
+## Update and remove
+
+```sh
+# Check what is installed
+gamut plugin list
+
+# Refresh after @codecademy/gamut updates
+gamut plugin update
+gamut plugin update cursor --theme core --force
+
+# Remove plugin content from an editor
+gamut plugin remove
+gamut plugin remove claude
+```
+
+## What gets installed
+
+Content from [`packages/gamut/agent-tools/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools):
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Directory&lt;/th&gt;
+      &lt;th&gt;Purpose&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;skills/&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Task playbooks (theming, ColorMode, system props, forms, testing, …)
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;rules/&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;Always-on guardrails (e.g. accessibility)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;code&gt;agents/&lt;/code&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        Reserved for future Cursor agent definitions; directory is empty in
+        current releases
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
       <h2><span class="status-dot dot-ok"></span> Foundations/About</h2>
       <div class="badges">
         
-        <label for="doc-25-foundations-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-29-foundations-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/About.mdx">foundations-about--docs · ./packages/styleguide/src/lib/Foundations/About.mdx</div>
@@ -88015,7 +88491,7 @@ If you have any other feedback or suggestions, feel free to share those as well!
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-25-foundations-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-29-foundations-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88075,7 +88551,7 @@ Sometimes referred to elsewhere as &quot;tokens&quot;, they are the abstract uni
       <h2><span class="status-dot dot-ok"></span> Foundations/ColorMode</h2>
       <div class="badges">
         
-        <label for="doc-26-foundations-colormode-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-30-foundations-colormode-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/ColorMode/ColorMode.mdx">foundations-colormode--docs · ./packages/styleguide/src/lib/Foundations/ColorMode/ColorMode.mdx</div>
@@ -88084,7 +88560,7 @@ Sometimes referred to elsewhere as &quot;tokens&quot;, they are the abstract uni
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-26-foundations-colormode-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-30-foundations-colormode-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88194,17 +88670,17 @@ const Page = ({ children }) =&gt; (
 );
 ```
 
-## `useCurrentMode` | `useColorMode`
+## `useCurrentMode` | `useColorModes`
 
-For situations where you need to access the current mode in JS, the value of always present on the emotion theme context. If you need the full theme you may use the built in `useTheme` hook from `@emotion/react`. However for cases that are specific to modes only we expose 2 hooks to help.
+For situations where you need to access the current mode in JS, the value is always present on the emotion theme context. If you need the full theme you may use the built in `useTheme` hook from `@emotion/react`. However for cases that are specific to modes only we expose 2 hooks to help.
 
-- `useColorMode()`: If you need access to all modes and their variables this hook will return a tuple of `[mode, modeColors, modes]`.
-- `useCurrentMode()`: For simpler usages where you want to get the default mode, this hook returns the key of the active mode.
+- `useColorModes()`: If you need access to all modes and their variables this hook returns a tuple of `[mode, modeColors, modes, getColorValue]`.
+- `useCurrentMode(mode?)`: For simpler usages where you want the active mode key, or to override with a specific mode.
 
 ```tsx
-import { useColorMode, useCurrentMode } from &#39;@codecademy/gamut-styles&#39;;
+import { useColorModes, useCurrentMode } from &#39;@codecademy/gamut-styles&#39;;
 
-const [current, currentColors, modes] = useColorMode();
+const [current, currentColors, modes, getColorValue] = useColorModes();
 
 const current = useCurrentMode();
 ```
@@ -88250,7 +88726,7 @@ If you want to check which color mode the user prefers, you can use `usePrefersD
       <h2><span class="status-dot dot-ok"></span> Foundations/Layout</h2>
       <div class="badges">
         
-        <label for="doc-27-foundations-layout-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-31-foundations-layout-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Layout.mdx">foundations-layout--docs · ./packages/styleguide/src/lib/Foundations/Layout.mdx</div>
@@ -88259,7 +88735,7 @@ If you want to check which color mode the user prefers, you can use `usePrefersD
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-27-foundations-layout-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-31-foundations-layout-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88460,7 +88936,7 @@ For spacing between components and sections use these as a guide. Each of these 
       <h2><span class="status-dot dot-ok"></span> Foundations/System/About</h2>
       <div class="badges">
         
-        <label for="doc-28-foundations-system-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-32-foundations-system-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/About.mdx">foundations-system-about--docs · ./packages/styleguide/src/lib/Foundations/System/About.mdx</div>
@@ -88469,7 +88945,7 @@ For spacing between components and sections use these as a guide. Each of these 
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-28-foundations-system-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-32-foundations-system-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88526,7 +89002,7 @@ These functions are built with [`@codecademy/variance`](https://github.com/Codec
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Compose</h2>
       <div class="badges">
         
-        <label for="doc-29-foundations-system-compose-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-33-foundations-system-compose-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Compose.mdx">foundations-system-compose--docs · ./packages/styleguide/src/lib/Foundations/System/Compose.mdx</div>
@@ -88535,7 +89011,7 @@ These functions are built with [`@codecademy/variance`](https://github.com/Codec
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-29-foundations-system-compose-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-33-foundations-system-compose-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88688,7 +89164,7 @@ const Grid = styled.div(variance.compose(system.layout, system.grid));
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/About</h2>
       <div class="badges">
         
-        <label for="doc-30-foundations-system-props-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-34-foundations-system-props-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/About.mdx">foundations-system-props-about--docs · ./packages/styleguide/src/lib/Foundations/System/Props/About.mdx</div>
@@ -88697,7 +89173,7 @@ const Grid = styled.div(variance.compose(system.layout, system.grid));
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-30-foundations-system-props-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-34-foundations-system-props-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88799,7 +89275,7 @@ Each system prop has 3 important features:
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/Background</h2>
       <div class="badges">
         
-        <label for="doc-31-foundations-system-props-background-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-35-foundations-system-props-background-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/Background.mdx">foundations-system-props-background--docs · ./packages/styleguide/src/lib/Foundations/System/Props/Background.mdx</div>
@@ -88808,7 +89284,7 @@ Each system prop has 3 important features:
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-31-foundations-system-props-background-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-35-foundations-system-props-background-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88859,7 +89335,7 @@ const BackgroundExample = styled.div(system.background);
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/Flex</h2>
       <div class="badges">
         
-        <label for="doc-32-foundations-system-props-flex-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-36-foundations-system-props-flex-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/Flex.mdx">foundations-system-props-flex--docs · ./packages/styleguide/src/lib/Foundations/System/Props/Flex.mdx</div>
@@ -88868,7 +89344,7 @@ const BackgroundExample = styled.div(system.background);
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-32-foundations-system-props-flex-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-36-foundations-system-props-flex-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88917,7 +89393,7 @@ const FlexExample = styled.div(system.flex);
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/Grid</h2>
       <div class="badges">
         
-        <label for="doc-33-foundations-system-props-grid-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-37-foundations-system-props-grid-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/Grid.mdx">foundations-system-props-grid--docs · ./packages/styleguide/src/lib/Foundations/System/Props/Grid.mdx</div>
@@ -88926,7 +89402,7 @@ const FlexExample = styled.div(system.flex);
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-33-foundations-system-props-grid-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-37-foundations-system-props-grid-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -88978,7 +89454,7 @@ const GridExample = styled.div(system.grid);
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/List</h2>
       <div class="badges">
         
-        <label for="doc-34-foundations-system-props-list-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-38-foundations-system-props-list-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/List.mdx">foundations-system-props-list--docs · ./packages/styleguide/src/lib/Foundations/System/Props/List.mdx</div>
@@ -88987,7 +89463,7 @@ const GridExample = styled.div(system.grid);
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-34-foundations-system-props-list-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-38-foundations-system-props-list-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89046,7 +89522,7 @@ const ListExample = styled.div(system.list);
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/Shadow</h2>
       <div class="badges">
         
-        <label for="doc-35-foundations-system-props-shadow-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-39-foundations-system-props-shadow-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/Shadow.mdx">foundations-system-props-shadow--docs · ./packages/styleguide/src/lib/Foundations/System/Props/Shadow.mdx</div>
@@ -89055,7 +89531,7 @@ const ListExample = styled.div(system.list);
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-35-foundations-system-props-shadow-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-39-foundations-system-props-shadow-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89107,7 +89583,7 @@ const ShadowExample = styled.div(system.shadow);
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Props/Typography</h2>
       <div class="badges">
         
-        <label for="doc-36-foundations-system-props-typography-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-40-foundations-system-props-typography-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Props/Typography.mdx">foundations-system-props-typography--docs · ./packages/styleguide/src/lib/Foundations/System/Props/Typography.mdx</div>
@@ -89116,7 +89592,7 @@ const ShadowExample = styled.div(system.shadow);
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-36-foundations-system-props-typography-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-40-foundations-system-props-typography-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89165,7 +89641,7 @@ const TextExample = styled.p(system.typography);
       <h2><span class="status-dot dot-ok"></span> Foundations/System/Variants</h2>
       <div class="badges">
         
-        <label for="doc-37-foundations-system-variants-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-41-foundations-system-variants-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/System/Variants.mdx">foundations-system-variants--docs · ./packages/styleguide/src/lib/Foundations/System/Variants.mdx</div>
@@ -89174,7 +89650,7 @@ const TextExample = styled.p(system.typography);
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-37-foundations-system-variants-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-41-foundations-system-variants-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89396,7 +89872,7 @@ const Anchor = styled.a(
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/About</h2>
       <div class="badges">
         
-        <label for="doc-38-foundations-theme-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-42-foundations-theme-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/About.mdx">foundations-theme-about--docs · ./packages/styleguide/src/lib/Foundations/Theme/About.mdx</div>
@@ -89405,7 +89881,7 @@ const Anchor = styled.a(
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-38-foundations-theme-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-42-foundations-theme-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89515,7 +89991,7 @@ const myStyles = css`
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/Admin Theme</h2>
       <div class="badges">
         
-        <label for="doc-39-foundations-theme-admin-theme-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-43-foundations-theme-admin-theme-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/AdminTheme.mdx">foundations-theme-admin-theme--docs · ./packages/styleguide/src/lib/Foundations/Theme/AdminTheme.mdx</div>
@@ -89524,7 +90000,7 @@ const myStyles = css`
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-39-foundations-theme-admin-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-43-foundations-theme-admin-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89583,7 +90059,7 @@ Each color mode consists of a set of aliased color tokens that have a semantic m
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/Core Theme</h2>
       <div class="badges">
         
-        <label for="doc-40-foundations-theme-core-theme-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-44-foundations-theme-core-theme-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/CoreTheme.mdx">foundations-theme-core-theme--docs · ./packages/styleguide/src/lib/Foundations/Theme/CoreTheme.mdx</div>
@@ -89592,7 +90068,7 @@ Each color mode consists of a set of aliased color tokens that have a semantic m
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-40-foundations-theme-core-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-44-foundations-theme-core-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -89726,7 +90202,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/Creating Themes</h2>
       <div class="badges">
         
-        <label for="doc-41-foundations-theme-creating-themes-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-45-foundations-theme-creating-themes-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/CreatingThemes.mdx">foundations-theme-creating-themes--docs · ./packages/styleguide/src/lib/Foundations/Theme/CreatingThemes.mdx</div>
@@ -89735,7 +90211,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-41-foundations-theme-creating-themes-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-45-foundations-theme-creating-themes-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -90341,7 +90817,7 @@ This means you can create a completely custom look and feel while maintaining fu
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/LX Studio Theme</h2>
       <div class="badges">
         
-        <label for="doc-42-foundations-theme-lx-studio-theme-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-46-foundations-theme-lx-studio-theme-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/LXStudioTheme.mdx">foundations-theme-lx-studio-theme--docs · ./packages/styleguide/src/lib/Foundations/Theme/LXStudioTheme.mdx</div>
@@ -90350,7 +90826,7 @@ This means you can create a completely custom look and feel while maintaining fu
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-42-foundations-theme-lx-studio-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-46-foundations-theme-lx-studio-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -90473,7 +90949,7 @@ LX Studio currently only supports `light` mode.
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/Percipio Theme</h2>
       <div class="badges">
         
-        <label for="doc-43-foundations-theme-percipio-theme-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-47-foundations-theme-percipio-theme-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/PercipioTheme.mdx">foundations-theme-percipio-theme--docs · ./packages/styleguide/src/lib/Foundations/Theme/PercipioTheme.mdx</div>
@@ -90482,7 +90958,7 @@ LX Studio currently only supports `light` mode.
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-43-foundations-theme-percipio-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-47-foundations-theme-percipio-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -90601,7 +91077,7 @@ The Percipio theme uses Skillsoft Sans for accent text and Skillsoft Text for bo
       <h2><span class="status-dot dot-ok"></span> Foundations/Theme/Platform Theme</h2>
       <div class="badges">
         
-        <label for="doc-44-foundations-theme-platform-theme-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-48-foundations-theme-platform-theme-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Theme/PlatformTheme.mdx">foundations-theme-platform-theme--docs · ./packages/styleguide/src/lib/Foundations/Theme/PlatformTheme.mdx</div>
@@ -90610,7 +91086,7 @@ The Percipio theme uses Skillsoft Sans for accent text and Skillsoft Text for bo
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-44-foundations-theme-platform-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-48-foundations-theme-platform-theme-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -90745,7 +91221,7 @@ Each color mode consists of a set of aliased color tokens that have a semantic m
       <h2><span class="status-dot dot-ok"></span> Foundations/Typography</h2>
       <div class="badges">
         
-        <label for="doc-45-foundations-typography-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-49-foundations-typography-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Typography.mdx">foundations-typography--docs · ./packages/styleguide/src/lib/Foundations/Typography.mdx</div>
@@ -90754,7 +91230,7 @@ Each color mode consists of a set of aliased color tokens that have a semantic m
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-45-foundations-typography-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-49-foundations-typography-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -90827,7 +91303,7 @@ Do not adjust letterspacing.
       <h2><span class="status-dot dot-ok"></span> Foundations/Utilities</h2>
       <div class="badges">
         
-        <label for="doc-46-foundations-utilities-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-50-foundations-utilities-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Foundations/Utilities/Utilities.mdx">foundations-utilities--docs · ./packages/styleguide/src/lib/Foundations/Utilities/Utilities.mdx</div>
@@ -90836,7 +91312,7 @@ Do not adjust letterspacing.
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-46-foundations-utilities-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-50-foundations-utilities-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91031,7 +91507,7 @@ const HiddenLabelWithFocus = `
       <h2><span class="status-dot dot-ok"></span> Layouts/About</h2>
       <div class="badges">
         
-        <label for="doc-47-layouts-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-51-layouts-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Layouts/About.mdx">layouts-about--docs · ./packages/styleguide/src/lib/Layouts/About.mdx</div>
@@ -91040,7 +91516,7 @@ const HiddenLabelWithFocus = `
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-47-layouts-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-51-layouts-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91093,7 +91569,7 @@ Pure sizing and padding containers. These position our elements on pages in stan
       <h2><span class="status-dot dot-ok"></span> Typography/About</h2>
       <div class="badges">
         
-        <label for="doc-48-typography-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-52-typography-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Typography/About.mdx">typography-about--docs · ./packages/styleguide/src/lib/Typography/About.mdx</div>
@@ -91102,7 +91578,7 @@ Pure sizing and padding containers. These position our elements on pages in stan
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-48-typography-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-52-typography-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91156,7 +91632,7 @@ Sometimes referred to elsewhere as &quot;tokens&quot;, they are the abstract uni
       <h2><span class="status-dot dot-ok"></span> Atoms/About</h2>
       <div class="badges">
         
-        <label for="doc-49-atoms-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-53-atoms-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/About.mdx">atoms-about--docs · ./packages/styleguide/src/lib/Atoms/About.mdx</div>
@@ -91165,7 +91641,7 @@ Sometimes referred to elsewhere as &quot;tokens&quot;, they are the abstract uni
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-49-atoms-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-53-atoms-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91208,7 +91684,7 @@ export const parameters = {
       <h2><span class="status-dot dot-ok"></span> Atoms/Animations/About</h2>
       <div class="badges">
         
-        <label for="doc-50-atoms-animations-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-54-atoms-animations-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/Animations/About.mdx">atoms-animations-about--docs · ./packages/styleguide/src/lib/Atoms/Animations/About.mdx</div>
@@ -91217,7 +91693,7 @@ export const parameters = {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-50-atoms-animations-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-54-atoms-animations-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91267,7 +91743,7 @@ Animations should not be the click target of actions, but rather the container f
       <h2><span class="status-dot dot-ok"></span> Atoms/Buttons/About</h2>
       <div class="badges">
         
-        <label for="doc-51-atoms-buttons-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-55-atoms-buttons-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/Buttons/About.mdx">atoms-buttons-about--docs · ./packages/styleguide/src/lib/Atoms/Buttons/About.mdx</div>
@@ -91276,7 +91752,7 @@ Animations should not be the click target of actions, but rather the container f
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-51-atoms-buttons-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-55-atoms-buttons-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91332,7 +91808,7 @@ export const parameters = {
       <h2><span class="status-dot dot-ok"></span> Atoms/FormElements/About</h2>
       <div class="badges">
         
-        <label for="doc-52-atoms-formelements-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-56-atoms-formelements-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/FormElements/About.mdx">atoms-formelements-about--docs · ./packages/styleguide/src/lib/Atoms/FormElements/About.mdx</div>
@@ -91341,7 +91817,7 @@ export const parameters = {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-52-atoms-formelements-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-56-atoms-formelements-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91408,7 +91884,7 @@ For everything else, we recommend &lt;LinkTo id=&#39;Organisms/ConnectedForm&#39
       <h2><span class="status-dot dot-ok"></span> Atoms/FormInputs/About</h2>
       <div class="badges">
         
-        <label for="doc-53-atoms-forminputs-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-57-atoms-forminputs-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/FormInputs/About.mdx">atoms-forminputs-about--docs · ./packages/styleguide/src/lib/Atoms/FormInputs/About.mdx</div>
@@ -91417,7 +91893,7 @@ For everything else, we recommend &lt;LinkTo id=&#39;Organisms/ConnectedForm&#39
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-53-atoms-forminputs-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-57-atoms-forminputs-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91482,7 +91958,7 @@ In most cases you should not need to use these directly and you should use the c
       <h2><span class="status-dot dot-ok"></span> Atoms/Icons/About</h2>
       <div class="badges">
         
-        <label for="doc-54-atoms-icons-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-58-atoms-icons-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/Icons/About.mdx">atoms-icons-about--docs · ./packages/styleguide/src/lib/Atoms/Icons/About.mdx</div>
@@ -91491,7 +91967,7 @@ In most cases you should not need to use these directly and you should use the c
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-54-atoms-icons-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-58-atoms-icons-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91599,7 +92075,7 @@ Our icons all are transformed with a [custom Babel plugin](https://github.com/Co
       <h2><span class="status-dot dot-ok"></span> Atoms/Loaders/About</h2>
       <div class="badges">
         
-        <label for="doc-55-atoms-loaders-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-59-atoms-loaders-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/Loaders/About.mdx">atoms-loaders-about--docs · ./packages/styleguide/src/lib/Atoms/Loaders/About.mdx</div>
@@ -91608,7 +92084,7 @@ Our icons all are transformed with a [custom Babel plugin](https://github.com/Co
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-55-atoms-loaders-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-59-atoms-loaders-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91653,7 +92129,7 @@ export const parameters = {
       <h2><span class="status-dot dot-ok"></span> Atoms/UtilityComponents/About</h2>
       <div class="badges">
         
-        <label for="doc-56-atoms-utilitycomponents-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-60-atoms-utilitycomponents-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Atoms/UtilityComponents/About.mdx">atoms-utilitycomponents-about--docs · ./packages/styleguide/src/lib/Atoms/UtilityComponents/About.mdx</div>
@@ -91662,7 +92138,7 @@ export const parameters = {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-56-atoms-utilitycomponents-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-60-atoms-utilitycomponents-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91712,7 +92188,7 @@ export const parameters = {
       <h2><span class="status-dot dot-ok"></span> Molecules/About</h2>
       <div class="badges">
         
-        <label for="doc-57-molecules-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-61-molecules-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Molecules/About.mdx">molecules-about--docs · ./packages/styleguide/src/lib/Molecules/About.mdx</div>
@@ -91721,7 +92197,7 @@ export const parameters = {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-57-molecules-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-61-molecules-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91766,7 +92242,7 @@ export const parameters = {
       <h2><span class="status-dot dot-ok"></span> Molecules/Modals/About</h2>
       <div class="badges">
         
-        <label for="doc-58-molecules-modals-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-62-molecules-modals-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Molecules/Modals/About.mdx">molecules-modals-about--docs · ./packages/styleguide/src/lib/Molecules/Modals/About.mdx</div>
@@ -91775,7 +92251,7 @@ export const parameters = {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-58-molecules-modals-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-62-molecules-modals-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91828,7 +92304,7 @@ Use a modal to focus a user’s attention on an important piece of information o
       <h2><span class="status-dot dot-ok"></span> Molecules/Tips/About</h2>
       <div class="badges">
         
-        <label for="doc-59-molecules-tips-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-63-molecules-tips-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Molecules/Tips/About.mdx">molecules-tips-about--docs · ./packages/styleguide/src/lib/Molecules/Tips/About.mdx</div>
@@ -91837,7 +92313,7 @@ Use a modal to focus a user’s attention on an important piece of information o
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-59-molecules-tips-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-63-molecules-tips-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91893,7 +92369,7 @@ Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip). T
       <h2><span class="status-dot dot-ok"></span> Molecules/Toasts/About</h2>
       <div class="badges">
         
-        <label for="doc-60-molecules-toasts-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-64-molecules-toasts-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Molecules/Toasts/About.mdx">molecules-toasts-about--docs · ./packages/styleguide/src/lib/Molecules/Toasts/About.mdx</div>
@@ -91902,7 +92378,7 @@ Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip). T
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-60-molecules-toasts-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-64-molecules-toasts-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -91949,7 +92425,7 @@ A Toast and Toaster component for lower priority, decorative and celebratory use
       <h2><span class="status-dot dot-ok"></span> Organisms/About</h2>
       <div class="badges">
         
-        <label for="doc-61-organisms-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-65-organisms-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/About.mdx">organisms-about--docs · ./packages/styleguide/src/lib/Organisms/About.mdx</div>
@@ -91958,7 +92434,7 @@ A Toast and Toaster component for lower priority, decorative and celebratory use
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-61-organisms-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-65-organisms-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92015,7 +92491,7 @@ export const parameters = {
       <h2><span class="status-dot dot-ok"></span> Organisms/ConnectedForm/About</h2>
       <div class="badges">
         
-        <label for="doc-62-organisms-connectedform-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-66-organisms-connectedform-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/ConnectedForm/About.mdx">organisms-connectedform-about--docs · ./packages/styleguide/src/lib/Organisms/ConnectedForm/About.mdx</div>
@@ -92024,7 +92500,7 @@ export const parameters = {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-62-organisms-connectedform-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-66-organisms-connectedform-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92078,7 +92554,7 @@ Our Connected- and GridForm organisms provide a easy way to implement forms. Whi
       <h2><span class="status-dot dot-ok"></span> Organisms/GridForm/About</h2>
       <div class="badges">
         
-        <label for="doc-63-organisms-gridform-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-67-organisms-gridform-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/GridForm/About.mdx">organisms-gridform-about--docs · ./packages/styleguide/src/lib/Organisms/GridForm/About.mdx</div>
@@ -92087,7 +92563,7 @@ Our Connected- and GridForm organisms provide a easy way to implement forms. Whi
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-63-organisms-gridform-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-67-organisms-gridform-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92150,7 +92626,7 @@ All other pages below provide guidance on specific parts of `GridForm`.
       <h2><span class="status-dot dot-ok"></span> Organisms/GridForm/Buttons</h2>
       <div class="badges">
         
-        <label for="doc-64-organisms-gridform-buttons-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-68-organisms-gridform-buttons-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/GridForm/Buttons.mdx">organisms-gridform-buttons--docs · ./packages/styleguide/src/lib/Organisms/GridForm/Buttons.mdx</div>
@@ -92159,7 +92635,7 @@ All other pages below provide guidance on specific parts of `GridForm`.
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-64-organisms-gridform-buttons-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-68-organisms-gridform-buttons-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92249,7 +92725,7 @@ You can also set `disabled` to `true` to disable submission.
       <h2><span class="status-dot dot-ok"></span> Organisms/GridForm/Fields</h2>
       <div class="badges">
         
-        <label for="doc-65-organisms-gridform-fields-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-69-organisms-gridform-fields-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/GridForm/Fields.mdx">organisms-gridform-fields--docs · ./packages/styleguide/src/lib/Organisms/GridForm/Fields.mdx</div>
@@ -92258,7 +92734,7 @@ You can also set `disabled` to `true` to disable submission.
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-65-organisms-gridform-fields-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-69-organisms-gridform-fields-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92395,7 +92871,7 @@ For ReactNode labels, the InfoTip is automatically labelled by the field label. 
       <h2><span class="status-dot dot-ok"></span> Organisms/GridForm/Layout</h2>
       <div class="badges">
         
-        <label for="doc-66-organisms-gridform-layout-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-70-organisms-gridform-layout-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/GridForm/Layout.mdx">organisms-gridform-layout--docs · ./packages/styleguide/src/lib/Organisms/GridForm/Layout.mdx</div>
@@ -92404,7 +92880,7 @@ For ReactNode labels, the InfoTip is automatically labelled by the field label. 
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-66-organisms-gridform-layout-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-70-organisms-gridform-layout-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92478,7 +92954,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
       <h2><span class="status-dot dot-ok"></span> Organisms/GridForm/States</h2>
       <div class="badges">
         
-        <label for="doc-67-organisms-gridform-states-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-71-organisms-gridform-states-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/GridForm/States.mdx">organisms-gridform-states--docs · ./packages/styleguide/src/lib/Organisms/GridForm/States.mdx</div>
@@ -92487,7 +92963,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-67-organisms-gridform-states-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-71-organisms-gridform-states-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92567,7 +93043,7 @@ GridForm renders errors through our &lt;LinkTo id=&quot;atoms-markdown--basics&q
       <h2><span class="status-dot dot-ok"></span> Organisms/GridForm/Validation</h2>
       <div class="badges">
         
-        <label for="doc-68-organisms-gridform-validation-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-72-organisms-gridform-validation-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/GridForm/Validation.mdx">organisms-gridform-validation--docs · ./packages/styleguide/src/lib/Organisms/GridForm/Validation.mdx</div>
@@ -92576,7 +93052,7 @@ GridForm renders errors through our &lt;LinkTo id=&quot;atoms-markdown--basics&q
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-68-organisms-gridform-validation-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-72-organisms-gridform-validation-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92707,7 +93183,7 @@ validation: {
       <h2><span class="status-dot dot-ok"></span> Organisms/Lists&amp;Tables/About</h2>
       <div class="badges">
         
-        <label for="doc-69-organisms-lists-tables-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-73-organisms-lists-tables-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/Lists &amp; Tables/About.mdx">organisms-lists-tables-about--docs · ./packages/styleguide/src/lib/Organisms/Lists &amp; Tables/About.mdx</div>
@@ -92716,7 +93192,7 @@ validation: {
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-69-organisms-lists-tables-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-73-organisms-lists-tables-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92769,7 +93245,7 @@ Both `List` and `Table` are commonly used to showcase objects, data, and informa
       <h2><span class="status-dot dot-ok"></span> Organisms/Lists &amp; Tables/List/About</h2>
       <div class="badges">
         
-        <label for="doc-70-organisms-lists-tables-list-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-74-organisms-lists-tables-list-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Organisms/Lists &amp; Tables/List/About.mdx">organisms-lists-tables-list-about--docs · ./packages/styleguide/src/lib/Organisms/Lists &amp; Tables/List/About.mdx</div>
@@ -92778,7 +93254,7 @@ Both `List` and `Table` are commonly used to showcase objects, data, and informa
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-70-organisms-lists-tables-list-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-74-organisms-lists-tables-list-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92839,7 +93315,7 @@ Check out the documentation below to see how to use `List`, `ListRow`, `ListCol`
       <h2><span class="status-dot dot-ok"></span> UX Writing/About</h2>
       <div class="badges">
         
-        <label for="doc-71-ux-writing-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-75-ux-writing-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/About.mdx">ux-writing-about--docs · ./packages/styleguide/src/lib/UX Writing/About.mdx</div>
@@ -92848,7 +93324,7 @@ Check out the documentation below to see how to use `List`, `ListRow`, `ListCol`
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-71-ux-writing-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-75-ux-writing-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -92919,7 +93395,7 @@ In the following pages, you’ll find a collection of tips and tools for writing
       <h2><span class="status-dot dot-ok"></span> UX Writing/DIY UX writing in 8 steps</h2>
       <div class="badges">
         
-        <label for="doc-72-ux-writing-diy-ux-writing-in-8-steps-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-76-ux-writing-diy-ux-writing-in-8-steps-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/DIY UX writing in 8 steps.mdx">ux-writing-diy-ux-writing-in-8-steps--docs · ./packages/styleguide/src/lib/UX Writing/DIY UX writing in 8 steps.mdx</div>
@@ -92928,7 +93404,7 @@ In the following pages, you’ll find a collection of tips and tools for writing
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-72-ux-writing-diy-ux-writing-in-8-steps-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-76-ux-writing-diy-ux-writing-in-8-steps-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93026,7 +93502,7 @@ Need help along the way? Reach out to Emily Lee in #ux-writing on Slack for quic
       <h2><span class="status-dot dot-ok"></span> UX Writing/Accessibility guidelines</h2>
       <div class="badges">
         
-        <label for="doc-73-ux-writing-accessibility-guidelines-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-77-ux-writing-accessibility-guidelines-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Accessibility guidelines.mdx">ux-writing-accessibility-guidelines--docs · ./packages/styleguide/src/lib/UX Writing/Accessibility guidelines.mdx</div>
@@ -93035,7 +93511,7 @@ Need help along the way? Reach out to Emily Lee in #ux-writing on Slack for quic
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-73-ux-writing-accessibility-guidelines-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-77-ux-writing-accessibility-guidelines-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93173,7 +93649,7 @@ Meaningful alt text describes what&#39;s important about an image a user can&#39
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/About</h2>
       <div class="badges">
         
-        <label for="doc-74-ux-writing-component-guidelines-about-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-78-ux-writing-component-guidelines-about-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/About.mdx">ux-writing-component-guidelines-about--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/About.mdx</div>
@@ -93182,7 +93658,7 @@ Meaningful alt text describes what&#39;s important about an image a user can&#39
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-74-ux-writing-component-guidelines-about-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-78-ux-writing-component-guidelines-about-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93246,7 +93722,7 @@ Writing on your own? Use the &lt;LinkTo id=&quot;UX Writing/DIY UX writing in 8 
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Alerts</h2>
       <div class="badges">
         
-        <label for="doc-75-ux-writing-component-guidelines-alerts-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-79-ux-writing-component-guidelines-alerts-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Alerts.mdx">ux-writing-component-guidelines-alerts--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Alerts.mdx</div>
@@ -93255,7 +93731,7 @@ Writing on your own? Use the &lt;LinkTo id=&quot;UX Writing/DIY UX writing in 8 
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-75-ux-writing-component-guidelines-alerts-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-79-ux-writing-component-guidelines-alerts-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93359,7 +93835,7 @@ Alerts should make clear **what the issue or information is** and **how to proce
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Alternative text</h2>
       <div class="badges">
         
-        <label for="doc-76-ux-writing-component-guidelines-alternative-text-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-80-ux-writing-component-guidelines-alternative-text-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Alternative text.mdx">ux-writing-component-guidelines-alternative-text--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Alternative text.mdx</div>
@@ -93368,7 +93844,7 @@ Alerts should make clear **what the issue or information is** and **how to proce
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-76-ux-writing-component-guidelines-alternative-text-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-80-ux-writing-component-guidelines-alternative-text-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93419,7 +93895,7 @@ Writing alt text is pretty straightforward, but here are some best practices to 
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Buttons</h2>
       <div class="badges">
         
-        <label for="doc-77-ux-writing-component-guidelines-buttons-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-81-ux-writing-component-guidelines-buttons-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Buttons.mdx">ux-writing-component-guidelines-buttons--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Buttons.mdx</div>
@@ -93428,7 +93904,7 @@ Writing alt text is pretty straightforward, but here are some best practices to 
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-77-ux-writing-component-guidelines-buttons-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-81-ux-writing-component-guidelines-buttons-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93493,7 +93969,7 @@ When approaching writing buttons — whether they&#39;re text buttons, fill butt
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Confirmation dialogs</h2>
       <div class="badges">
         
-        <label for="doc-78-ux-writing-component-guidelines-confirmation-dialogs-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-82-ux-writing-component-guidelines-confirmation-dialogs-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Confirmation dialogs.mdx">ux-writing-component-guidelines-confirmation-dialogs--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Confirmation dialogs.mdx</div>
@@ -93502,7 +93978,7 @@ When approaching writing buttons — whether they&#39;re text buttons, fill butt
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-78-ux-writing-component-guidelines-confirmation-dialogs-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-82-ux-writing-component-guidelines-confirmation-dialogs-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93596,7 +94072,7 @@ Adding friction for these purposes helps improve trust and avoid unintentional a
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Error messages</h2>
       <div class="badges">
         
-        <label for="doc-79-ux-writing-component-guidelines-error-messages-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-83-ux-writing-component-guidelines-error-messages-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Error messages.mdx">ux-writing-component-guidelines-error-messages--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Error messages.mdx</div>
@@ -93605,7 +94081,7 @@ Adding friction for these purposes helps improve trust and avoid unintentional a
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-79-ux-writing-component-guidelines-error-messages-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-83-ux-writing-component-guidelines-error-messages-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93668,7 +94144,7 @@ Here at Codecademy, we primarily use two components for error messages. &lt;Link
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Notifications</h2>
       <div class="badges">
         
-        <label for="doc-80-ux-writing-component-guidelines-notifications-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-84-ux-writing-component-guidelines-notifications-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Notifications.mdx">ux-writing-component-guidelines-notifications--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Notifications.mdx</div>
@@ -93677,7 +94153,7 @@ Here at Codecademy, we primarily use two components for error messages. &lt;Link
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-80-ux-writing-component-guidelines-notifications-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-84-ux-writing-component-guidelines-notifications-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93727,7 +94203,7 @@ Bell notifications let us share CTAs relevant to a learner’s personal experien
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Toasts</h2>
       <div class="badges">
         
-        <label for="doc-81-ux-writing-component-guidelines-toasts-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-85-ux-writing-component-guidelines-toasts-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Toasts.mdx">ux-writing-component-guidelines-toasts--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Toasts.mdx</div>
@@ -93736,7 +94212,7 @@ Bell notifications let us share CTAs relevant to a learner’s personal experien
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-81-ux-writing-component-guidelines-toasts-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-85-ux-writing-component-guidelines-toasts-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93805,7 +94281,7 @@ Toasts may contain any or all of the following: a title, a description, and/or a
       <h2><span class="status-dot dot-ok"></span> UX Writing/Component guidelines/Tooltips</h2>
       <div class="badges">
         
-        <label for="doc-82-ux-writing-component-guidelines-tooltips-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-86-ux-writing-component-guidelines-tooltips-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/UX Writing/Component guidelines/Tooltips.mdx">ux-writing-component-guidelines-tooltips--docs · ./packages/styleguide/src/lib/UX Writing/Component guidelines/Tooltips.mdx</div>
@@ -93814,7 +94290,7 @@ Toasts may contain any or all of the following: a title, a description, and/or a
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-82-ux-writing-component-guidelines-tooltips-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-86-ux-writing-component-guidelines-tooltips-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -93875,7 +94351,7 @@ Tooltips are short, helpful messages that appear when learners hover over inform
       <h2><span class="status-dot dot-ok"></span> Layouts/Boxes/About</h2>
       <div class="badges">
         
-        <label for="doc-83-layouts-boxes-about-layouts-boxes-about-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-87-layouts-boxes-about-layouts-boxes-about-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./packages/styleguide/src/lib/Layouts/Boxes/About.mdx">layouts-boxes-about--layouts-boxes-about · ./packages/styleguide/src/lib/Layouts/Boxes/About.mdx</div>
@@ -93884,7 +94360,7 @@ Tooltips are short, helpful messages that appear when learners hover over inform
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-83-layouts-boxes-about-layouts-boxes-about-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-87-layouts-boxes-about-layouts-boxes-about-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
