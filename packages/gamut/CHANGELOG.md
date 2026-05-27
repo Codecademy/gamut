@@ -1,3 +1,13 @@
+## 68.6.2 (2026-05-26)
+
+### 🩹 Fixes
+
+- fix DatePicker lint for React 19 ([#3357](https://github.com/Codecademy/gamut/pull/3357))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 68.6.1 (2026-05-20)
 
 ### 🩹 Fixes
