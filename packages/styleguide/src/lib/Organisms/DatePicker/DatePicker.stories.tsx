@@ -84,6 +84,15 @@ const meta: Meta<typeof DatePicker> = {
       if: { arg: 'mode', eq: 'range' },
       control: false,
     },
+    description: {
+      if: { arg: 'mode', eq: 'single' },
+    },
+    startDateDescription: {
+      if: { arg: 'mode', eq: 'range' },
+    },
+    endDateDescription: {
+      if: { arg: 'mode', eq: 'range' },
+    },
   },
 };
 
@@ -100,6 +109,8 @@ export const Default: Story = {
     ),
   ],
   render: function DatePickerStory(args) {
+    const description =
+      'Select a date from the calendar. Insert any rules or instructions here.';
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
@@ -111,6 +122,7 @@ export const Default: Story = {
           endDate={endDate}
           mode="range"
           startDate={startDate}
+          startDateDescription={description}
           onEndSelected={setEndDate}
           onStartSelected={setStartDate}
         />
@@ -120,6 +132,7 @@ export const Default: Story = {
     return (
       <DatePicker
         {...args}
+        description={description}
         mode="single"
         selectedDate={selectedDate}
         onSelected={setSelectedDate}
