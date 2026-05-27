@@ -1705,7 +1705,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.6.2, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.6.2, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
