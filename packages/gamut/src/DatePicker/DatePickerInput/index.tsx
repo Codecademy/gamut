@@ -11,6 +11,7 @@ import {
 } from 'react';
 
 import { FlexBox } from '../../Box';
+import { IconButton } from '../../Button';
 import { FormGroup } from '../../Form/elements/FormGroup';
 import type { InputWrapperProps } from '../../Form/inputs/Input';
 import { isSameDay } from '../DatePickerCalendar/Calendar/utils/dateGrid';
@@ -38,11 +39,23 @@ export type DatePickerInputProps = Omit<
 > & {
   /** In range mode: which part of the range this input edits. Omit for single-date or combined display. */
   rangePart?: 'start' | 'end';
+  /** Description to display between the label and the input. */
+  description?: string;
 };
 
 export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
   (
-    { disabled, error, form, label, name, rangePart, size = 'base', ...rest },
+    {
+      disabled,
+      error,
+      form,
+      label,
+      name,
+      rangePart,
+      size = 'base',
+      description,
+      ...rest
+    },
     ref
   ) => {
     const context = useDatePicker();
@@ -227,7 +240,8 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     return (
       <FormGroup
-        htmlFor={inputId}
+        description={description}
+        id={inputId}
         isSoloField
         label={label ?? defaultLabel}
         mb={0}
@@ -236,7 +250,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         width="fit-content"
       >
         <SegmentedShell
-          id={inputId}
+          aria-labelledby={inputId}
           inputSize={size}
           ref={shellRef}
           role="group"
@@ -292,15 +306,11 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
             type="hidden"
             value={hiddenValue}
           />
-          <FlexBox
-            alignItems="center"
-            justifyContent="center"
-            pl={16}
-            pr={8}
-            role="presentation"
-          >
-            <MiniCalendarIcon aria-hidden size={16} />
-          </FlexBox>
+          <IconButton
+            icon={MiniCalendarIcon}
+            size="small"
+            tip="Open calendar"
+          />
         </SegmentedShell>
       </FormGroup>
     );
