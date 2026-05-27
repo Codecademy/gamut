@@ -1,3 +1,16 @@
+## 68.7.0 (2026-05-27)
+
+### 🚀 Features
+
+- feat: AI Tools for Claude and Cursor ([#3329](https://github.com/Codecademy/gamut/pull/3329), [#3351](https://github.com/Codecademy/gamut/issues/3351), [#3355](https://github.com/Codecademy/gamut/issues/3355))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Claude Sonnet 4.6
+- dreamwasp
+- Evan Yamanishi @sh0ji
+
 ## 68.6.2 (2026-05-26)
 
 ### 🩹 Fixes
