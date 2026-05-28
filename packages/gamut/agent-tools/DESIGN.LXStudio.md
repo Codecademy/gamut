@@ -329,8 +329,8 @@ All spacing is multiples of 4px on an 8px grid.
 | Token  | Value | Use                      |
 | ------ | ----- | ------------------------ |
 | `none` | 0px   | Non-interactive elements |
-| `sm`   | 4px   | Interactive elements     |
-| `md`   | 8px   | Overlays                 |
+| `sm`   | 4px   | Overlays                 |
+| `md`   | 8px   | Interactive elements     |
 | `lg`   | 12px  | Non-interactive elements |
 | `xl`   | 16px  | Non-interactive elements |
 | `full` | 999px | Toggles, badges          |
