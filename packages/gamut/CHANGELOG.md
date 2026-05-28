@@ -1,3 +1,13 @@
+## 68.7.1 (2026-05-28)
+
+### 🩹 Fixes
+
+- Update DESIGN.md for theme changes ([#3359](https://github.com/Codecademy/gamut/pull/3359))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 68.7.0 (2026-05-27)
 
 ### 🚀 Features
