@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
-import { InternalFloatingCard } from '../InternalFloatingCard/InternalFloatingCard';
+import { PatternBackdrop } from '../PatternBackdrop/PatternBackdrop';
 import { Text } from '../Typography';
 import { WithChildrenProp } from '../utils';
 
@@ -30,7 +30,7 @@ const layoutVariants = system.variant({
   },
 });
 
-const ToastContainer = styled(InternalFloatingCard)<
+const ToastContainer = styled(PatternBackdrop)<
   StyleProps<typeof layoutVariants>
 >(
   system.css({

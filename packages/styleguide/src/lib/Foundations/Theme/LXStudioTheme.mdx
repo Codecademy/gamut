@@ -30,12 +30,12 @@ If you are using the LX Studio Theme via the Gamut theme provider in your app (i
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-const Box = styled.div(css({ bg: 'lxStudioPurple', p: 4 })); // our system props inherently use the current theme
+const Box = styled.div(css({ bg: 'sapphire', p: 4 })); // our system props inherently use the current theme
 
 const styles = styled.div`
   blue: ${({ theme }) =>
     theme.colors
-      .lxStudioPurple}; // theme here refers to the current theme, which is the LX Studio theme
+      .sapphire}; // theme here refers to the current theme, which is the LX Studio theme
 `;
 ```
 
@@ -46,12 +46,12 @@ import { css } from '@emotion/react';
 import { lxStudioTheme, theme } from '@codecademy/gamut-styles';
 
 const myStyles = css`
-  color: ${lxStudioTheme.colors.lxStudioPurple};
+  color: ${lxStudioTheme.colors.sapphire};
 `;
 
 const notWorkingStyles = css`
   color: ${theme.colors
-    .lxStudioPurple}; // teal does not exist in the Core Theme colors so this does not work
+    .sapphire}; // sapphire does not exist on the Core Theme colors so this does not work
 `;
 ```
 

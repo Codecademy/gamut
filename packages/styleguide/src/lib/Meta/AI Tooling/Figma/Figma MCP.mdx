@@ -1,0 +1,134 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { AboutHeader, Callout, KeyboardKey } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Figma MCP',
+  title: 'Figma MCP',
+  subtitle:
+    'Set up the Figma MCP to enable design to code generation, exclusive to Codecademy + Skillsoft employees.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/Figma/Figma MCP" />
+
+<AboutHeader {...parameters} />
+
+<Callout text="Any MCP generated code is EXPERIMENTAL! You should always validate the code generated and adapt it to your own needs — do NOT simply use the MCP to generate code and push it to production! Additionally, you must have a Dev or Full account to be able to be able to use the Figma MCP." />
+
+The official guidance and documentation comes from Figma. Please reference [Figma Dev Mode MCP documentation](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server) and the [remote server installation guide](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) for the most up to date information. This documentation below has been adapted to fit the context of the Gamut repository.
+
+## Remote server (recommended)
+
+The remote server is the recommended approach — it connects directly to Figma’s hosted MCP server at `https://mcp.figma.com/mcp` and does not require installing or running the Figma desktop app. Authentication is handled via Figma OAuth.
+
+### Cursor
+
+1. Open Cursor Settings (<KeyboardKey>Cmd</KeyboardKey> + <KeyboardKey>Shift</KeyboardKey> + <KeyboardKey>J</KeyboardKey>)
+2. In the left sidebar, select **Plugins**
+3. Search for "Figma" and click **Add to Cursor**
+4. When prompted, select **Add for myself** and go through the authentication process
+
+<Callout
+  text={
+    <>
+      Cursor uses <code>git</code> to install plugins — you may be prompted to
+      install it if it's not already on your machine.
+    </>
+  }
+/>
+
+### Claude Code
+
+Run the following command in your terminal to add the Figma MCP server:
+
+```bash
+claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp
+```
+
+Then, inside a Claude Code session, run `/mcp` to select the Figma MCP to authenticate. Use the `/mcp` command again to list out available MCP servers and confirm that the Figma MCP server is connected.
+
+## Prompt your MCP client
+
+You can prompt the MCP in two main ways:
+
+1. Provide a link to the node of the design you'd like to generate code for, e.g.:
+
+   > Generate the code for this node: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=79202-13690&m=dev
+
+2. Selecting the node in the Figma interface, e.g.:
+   > Generate the code for the current selection
+
+In the chat, you may be prompted to allow the Figma commands like `get_code()` to run. You can also add these commands to an allow list in your code editor's settings.
+
+## Local server (alternative)
+
+If you prefer to run the MCP server locally via the Figma desktop client, follow the steps below. Note that this requires the Figma desktop app to be running in the background and is more limited in what the agent can do.
+
+Go to [Figma’s download page](https://www.figma.com/downloads/) to download the appropriate version of the Figma desktop client for your OS.
+
+### Start up local Figma MCP server
+
+1. In the Figma desktop client, check that you have dev mode enabled.
+2. The right-hand sidebar should have a "MCP server" section.
+3. Click on the "Open settings modal" button.
+4. In the modal, toggle the status to "On" — the toggle should turn green.
+   OR
+5. Click on the Figma icon in the top left-hand corner and select "Actions".
+6. Type "Enable desktop MCP server".
+7. Click on the checkbox, if it’s not already checked, to enable the MCP server.
+
+### Configure your editor for the local server
+
+#### Cursor
+
+1. Open **Cursor** → **Settings** → **Cursor Settings**.
+2. Go to the **MCP** tab from the left-hand sidebar.
+3. Under **MCP Tools**, click **+ Add MCP server**.
+4. Enter the following configuration and save:
+
+```json
+{
+  "mcpServers": {
+    "Figma": {
+      "url": "http://127.0.0.1:3845/mcp"
+    }
+  }
+}
+```
+
+#### Claude Code
+
+```bash
+claude mcp add --scope user --transport http figma http://127.0.0.1:3845/mcp
+```
+
+### Verify the local server is running
+
+Visit `http://127.0.0.1:3845/mcp` in your browser. You should see a response like:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "error": { "code": -32001, "message": "Invalid sessionId" },
+  "id": null
+}
+```
+
+This confirms the server is running. If you see "This site can’t be reached", the server is not yet started.
+
+You can also test with:
+
+```bash
+curl http://127.0.0.1:3845/mcp
+```
+
+## Feedback for the Gamut team
+
+Please let the Gamut team of any feedback you have, things like:
+
+- If you find that a new rule that you'd like implemented in this repo, please let the Gamut team know.
+- Support for another text editor/IDE.
+- Incorrect code generation
+
+If you have any other feedback or suggestions, feel free to share those as well!

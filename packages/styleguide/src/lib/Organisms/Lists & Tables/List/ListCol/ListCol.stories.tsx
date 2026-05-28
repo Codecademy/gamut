@@ -110,7 +110,7 @@ export const HorizontalScrolling: ListCompositionStory = {
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ListRow key={key}>
             <ListCol size="lg" type="header">
-              <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+              <Text fontWeight="title" truncate="ellipsis" truncateLines={1}>
                 {name}
               </Text>
             </ListCol>
@@ -223,7 +223,7 @@ export const Responsive: ListCompositionStory = {
       <List {...args}>
         <ListRow>
           <ListCol size="lg" type="header">
-            <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+            <Text fontWeight="title" truncate="ellipsis" truncateLines={1}>
               Ordered List Header
             </Text>
           </ListCol>

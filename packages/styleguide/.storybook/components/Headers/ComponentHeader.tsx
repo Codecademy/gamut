@@ -94,7 +94,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
           <SourceWrapper>
             <GridBox
               gap={16}
-              fontWeight={700}
+              fontWeight="title"
               gridAutoFlow={['row', , 'column']}
               gridAutoColumns={'max-content'}
             >

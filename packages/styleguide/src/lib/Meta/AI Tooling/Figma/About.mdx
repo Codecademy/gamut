@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as codeConnectParameters } from './Code Connect.mdx';
+import { parameters as figmaMcpParameters } from './Figma MCP.mdx';
+
+export const parameters = {
+  id: 'Meta/AI Tooling/Figma',
+  title: 'Figma',
+  subtitle:
+    'Figma Make kit, Code Connect, and Dev Mode MCP for Codecademy + Skillsoft employees.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/Figma/About" />
+
+<AboutHeader {...parameters} />
+
+## Figma Make
+
+**Designers:** Use the **published Gamut Make kit** in Figma when building in Make — add it to your Make file from the org kit picker. Kits are configured entirely in the Figma app, not via a local CLI.
+
+**How kits work:** [Get started with Make kits](https://help.figma.com/hc/en-us/articles/39241689698839) (Figma Help).
+
+**Maintainers:** Update the published kit in Figma (upload or edit guidelines in the Make file’s code explorer). See [Add guidelines to Figma Make](https://help.figma.com/hc/en-us/articles/33665861260823). Engineers use Storybook and the Gamut plugin skills/rules for implementation reference.
+
+## Design-to-code
+
+For engineers generating code from Figma designs, use Code Connect and the Figma Dev Mode MCP:
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    codeConnectParameters,
+    figmaMcpParameters,
+  ])}
+/>
