@@ -8,12 +8,13 @@ colors:
   hyper-400: '#5533FF'
   navy-900: '#0A0D1C'
   navy-800: '#10162F'
-  navy-700: '#31374C'
-  navy-600: '#4C5063'
-  navy-500: '#686C7C'
-  navy-300: '#BCBEC5'
-  navy-200: '#E2E3E6'
-  navy-100: '#F5F6F7'
+  navy-700: 'rgba(16, 22, 47, 0.86)'
+  navy-600: 'rgba(16, 22, 47, 0.75)'
+  navy-500: 'rgba(16, 22, 47, 0.63)'
+  navy-400: 'rgba(16, 22, 47, 0.47)'
+  navy-300: 'rgba(16, 22, 47, 0.28)'
+  navy-200: 'rgba(16, 22, 47, 0.12)'
+  navy-100: 'rgba(16, 22, 47, 0.04)'
   yellow-500: '#FFD300'
   yellow-400: '#CCA900'
   yellow-0: '#FFFAE5'
@@ -77,8 +78,6 @@ typography:
     fontSize: '2.125rem'
     fontWeight: '700'
     lineHeight: '1.2'
-  hankenGrotesk:
-    fontFamily: '"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
   monospace:
     fontFamily: 'Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace'
 rounded:
@@ -202,24 +201,24 @@ Codecademy communicates **logic with personality** — structured and trustworth
 
 Codecademy products use one of four Gamut themes, all sharing the same core visual identity. Token aliases resolve to the right values per theme automatically — components require no modification.
 
-| Theme         | Use case                        | Base font      | Dark mode      |
-| ------------- | ------------------------------- | -------------- | -------------- |
-| **Core**      | Codecademy (default)            | Apercu         | ✓ light + dark |
-| **Admin**     | Codecademy admin tools          | Apercu         | ✓ light + dark |
-| **Platform**  | Codecademy learning environment | Apercu         | ✓ light + dark |
-| **LX Studio** | LX Studio application           | Hanken Grotesk | light only     |
+| Theme         | Use case                        | Base font             | Dark mode      |
+| ------------- | ------------------------------- | --------------------- | -------------- |
+| **Core**      | Codecademy (default)            | Apercu                | ✓ light + dark |
+| **Admin**     | Codecademy admin tools          | Apercu                | ✓ light + dark |
+| **Platform**  | Codecademy learning environment | Apercu                | ✓ light + dark |
+| **LX Studio** | LX Studio application           | Skillsoft Text / Sans | light only     |
 
 The active theme is set at the app root via `<GamutProvider>`. When designing, know which theme your screen targets — it affects primary colors, font families, and available color weights.
 
-**Font licensing**: Apercu is licensed for codecademy.com only. LX Studio uses Hanken Grotesk.
+**Font licensing**: Apercu is licensed for codecademy.com only. LX Studio and Percipio use Skillsoft Text and Skillsoft Sans.
 
-For Percipio projects, use `DESIGN.Percipio.md` from the same package instead.
+For Percipio projects, use `DESIGN.Percipio.md` from the same package instead. For LX Studio, use `DESIGN.LXStudio.md`.
 
 ### LX Studio theme overrides
 
 LX Studio extends Core with these differences:
 
-**Font**: All families → `"Hanken Grotesk"` (no Apercu, no Suisse).
+**Font**: `base` → Skillsoft Text; `accent` → Skillsoft Sans (no Apercu, no Suisse). Title weight is **500**, not Core's 700.
 
 **Border radii** (all values shift up one step):
 
@@ -231,15 +230,15 @@ LX Studio extends Core with these differences:
 
 **Semantic color overrides (light mode)**:
 
-| Token                | Core value          | LX Studio value                 |
-| -------------------- | ------------------- | ------------------------------- |
-| `primary`            | hyper-500 `#3A10E5` | `#5628FE` (lxStudioPurple)      |
-| `primary-hover`      | hyper-400 `#5533FF` | `#7955FC` (lxStudioPurpleHover) |
-| `feedback-success`   | green-700 `#008A27` | `#06844F` (lxStudioSuccess)     |
-| `background-primary` | beige `#FFF0E5`     | `#FAFBFC` (lxStudioBgPrimary)   |
-| `shadow-primary`     | navy-800            | navy-200                        |
-| `border-primary`     | navy-800            | navy-400                        |
-| `border-disabled`    | navy-500            | navy-300                        |
+| Token                | Core value          | LX Studio value               |
+| -------------------- | ------------------- | ----------------------------- |
+| `primary`            | hyper-500 `#3A10E5` | sapphire `#1C50BB`            |
+| `primary-hover`      | hyper-400 `#5533FF` | navy-800 `#10162F`            |
+| `feedback-success`   | green-700 `#008A27` | `#06844F` (lxStudioSuccess)   |
+| `background-primary` | beige `#FFF0E5`     | `#FAFBFC` (lxStudioBgPrimary) |
+| `shadow-primary`     | navy-800            | navy-200                      |
+| `border-primary`     | navy-800            | navy-400                      |
+| `border-disabled`    | navy-500            | navy-300                      |
 
 ---
 
@@ -339,7 +338,7 @@ All colors available as static tokens regardless of color mode. Use these only w
 
 ### LX Studio additions
 
-`lxStudioPurple` (`#5628FE`), `lxStudioPurpleHover` (`#7955FC`), `lxStudioSuccess` (`#06844F`)
+`sapphire` (`#1C50BB`), `lxStudioSuccess` (`#06844F`), `lxStudioBgPrimary` (`#FAFBFC`)
 
 ---
 
@@ -349,12 +348,12 @@ All colors available as static tokens regardless of color mode. Use these only w
 
 | Token       | Core / Admin / Platform                                  | LX Studio                                             | Use for                                          |
 | ----------- | -------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------ |
-| `base`      | Apercu Pro (CSS: `Apercu`)                               | Hanken Grotesk                                        | All default UI text, headlines, body copy        |
-| `accent`    | Suisse Intl Mono (CSS: `Suisse`); falls back to `Apercu` | Hanken Grotesk                                        | Code, captions, labels, lists, technical context |
+| `base`      | Apercu Pro (CSS: `Apercu`)                               | Skillsoft Text                                        | All default UI text, headlines, body copy        |
+| `accent`    | Suisse Intl Mono (CSS: `Suisse`); falls back to `Apercu` | Skillsoft Sans                                        | Code, captions, labels, lists, technical context |
 | `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas    | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Code editor contexts                             |
 | `system`    | System UI fonts                                          | System UI fonts                                       | Performance-critical surfaces                    |
 
-**Apercu is licensed for codecademy.com only.** LX Studio uses Hanken Grotesk for both `base` and `accent`.
+**Apercu is licensed for codecademy.com only.** LX Studio uses Skillsoft Text (`base`) and Skillsoft Sans (`accent`) with title weight 500.
 
 ### Rules
 

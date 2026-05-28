@@ -5,12 +5,12 @@ description: Design tokens for the Skillsoft Percipio platform.
 colors:
   # palette — raw swatches; set once on :root and then always reference by token name, never use hex values directly in code
   percipioTextPrimary: '#222325'
-  percipioTextSecondary: '#595A5C'
+  percipioTextSecondary: 'rgba(34, 35, 37, 0.75)'
   percipioTextDisabled: '#AFB6C2'
-  percipioActionPrimary: '#0073C4'
+  sapphire: '#1C50BB'
   percipioActionPrimaryHover: '#141C36'
   percipioActionSecondary: '#6A6E75'
-  percipioActionSecondaryHover: '#7F8288'
+  percipioActionSecondaryHover: 'rgba(106, 110, 117, 0.86)'
   percipioActionDangerHover: '#A52020'
   percipioDanger: '#B83C3C'
   percipioFeedbackSuccess: '#1B8057'
@@ -20,10 +20,10 @@ colors:
   percipioBgWarning: '#FFF7E0'
   percipioBgError: '#FFF1F5'
   navy-800: '#10162F'
-  navy-400: '#8F919D'
-  navy-300: '#BCBEC5'
-  navy-200: '#E2E3E6'
-  navy-100: '#F5F6F7'
+  navy-400: 'rgba(16, 22, 47, 0.47)'
+  navy-300: 'rgba(16, 22, 47, 0.28)'
+  navy-200: 'rgba(16, 22, 47, 0.12)'
+  navy-100: 'rgba(16, 22, 47, 0.04)'
   white: '#ffffff'
   # semantic aliases — use these in code, not palette swatches or hex values
   text: '{colors.percipioTextPrimary}'
@@ -38,7 +38,7 @@ colors:
   background-success: '{colors.percipioBgSuccess}'
   background-warning: '{colors.percipioBgWarning}'
   background-error: '{colors.percipioBgError}'
-  primary: '{colors.percipioActionPrimary}'
+  primary: '{colors.sapphire}'
   primary-hover: '{colors.percipioActionPrimaryHover}'
   primary-inverse: '{colors.white}'
   secondary: '{colors.percipioActionSecondary}'
@@ -56,17 +56,17 @@ colors:
   shadow-secondary: '{colors.navy-400}'
 typography:
   base:
-    fontFamily: '"Roboto", sans-serif'
+    fontFamily: '"Skillsoft Text", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
     fontSize: '1rem'
     fontWeight: '400'
     lineHeight: '1.5'
   accent:
-    fontFamily: '"Roboto", sans-serif'
+    fontFamily: '"Skillsoft Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
     fontSize: '0.875rem'
     fontWeight: '400'
     lineHeight: '1.5'
   title:
-    fontFamily: '"Roboto", sans-serif'
+    fontFamily: '"Skillsoft Text", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
     fontSize: '2.125rem'
     fontWeight: '500'
     lineHeight: '1.2'
@@ -129,7 +129,7 @@ Percipio communicates **professional clarity** — clean, trustworthy, and enter
 **Design philosophy**:
 
 - Light mode only — no dark mode support
-- Primary blue (`percipioActionPrimary`) replaces Codecademy's `hyper-500` for all interactive elements
+- Brand blue (`sapphire` / `primary`) replaces Codecademy's `hyper-500` for buttons, links, and focus rings
 - Text is near-black dark gray rather than navy
 - Shadows are soft and minimal (navy at low opacity) rather than hard borders
 - Title font weight is 500 (medium) rather than 700 (bold) — Percipio headlines are less heavy
@@ -140,9 +140,9 @@ Percipio communicates **professional clarity** — clean, trustworthy, and enter
 
 Percipio uses a single Gamut theme — light mode only.
 
-| Theme        | Use case                    | Base font | Dark mode  |
-| ------------ | --------------------------- | --------- | ---------- |
-| **Percipio** | Skillsoft Percipio platform | Roboto    | light only |
+| Theme        | Use case                    | Base font             | Dark mode  |
+| ------------ | --------------------------- | --------------------- | ---------- |
+| **Percipio** | Skillsoft Percipio platform | Skillsoft Text / Sans | light only |
 
 The active theme is set at the app root via `<GamutProvider theme={percipioTheme}>`.
 
@@ -154,48 +154,48 @@ Use these token names when specifying colors. Percipio is light mode only — th
 
 ### Text
 
-| Token            | Value     | Use for                                          |
-| ---------------- | --------- | ------------------------------------------------ |
-| `text`           | `#222325` | Default body and UI text                         |
-| `text-accent`    | `#222325` | Emphasis text (same value as `text` in Percipio) |
-| `text-secondary` | `#595A5C` | Supporting / secondary copy                      |
-| `text-disabled`  | `#AFB6C2` | Disabled state labels                            |
+| Token            | Value                    | Use for                                          |
+| ---------------- | ------------------------ | ------------------------------------------------ |
+| `text`           | `#222325`                | Default body and UI text                         |
+| `text-accent`    | `#222325`                | Emphasis text (same value as `text` in Percipio) |
+| `text-secondary` | `rgba(34, 35, 37, 0.75)` | Supporting / secondary copy                      |
+| `text-disabled`  | `#AFB6C2`                | Disabled state labels                            |
 
 ### Background
 
-| Token                 | Value                | Use for                           |
-| --------------------- | -------------------- | --------------------------------- |
-| `background`          | `#ffffff`            | Default page/component background |
-| `background-primary`  | `#FAFBFC`            | Slightly elevated surfaces        |
-| `background-selected` | `#F5F6F7` (navy-100) | Selected row / item               |
-| `background-hover`    | `#E2E3E6` (navy-200) | Hover state overlay               |
-| `background-disabled` | `#E2E3E6` (navy-200) | Disabled surface                  |
-| `background-success`  | `#EEF7F3`            | Success state container           |
-| `background-warning`  | `#FFF7E0`            | Warning state container           |
-| `background-error`    | `#FFF1F5`            | Error state container             |
+| Token                 | Value                             | Use for                           |
+| --------------------- | --------------------------------- | --------------------------------- |
+| `background`          | `#ffffff`                         | Default page/component background |
+| `background-primary`  | `#FAFBFC`                         | Slightly elevated surfaces        |
+| `background-selected` | navy-100 `rgba(16, 22, 47, 0.04)` | Selected row / item               |
+| `background-hover`    | navy-200 `rgba(16, 22, 47, 0.12)` | Hover state overlay               |
+| `background-disabled` | navy-200 `rgba(16, 22, 47, 0.12)` | Disabled surface                  |
+| `background-success`  | `#EEF7F3`                         | Success state container           |
+| `background-warning`  | `#FFF7E0`                         | Warning state container           |
+| `background-error`    | `#FFF1F5`                         | Error state container             |
 
 ### Interactive
 
-| Token             | Value     | Use for                              |
-| ----------------- | --------- | ------------------------------------ |
-| `primary`         | `#0073C4` | Primary CTA, links, focus rings      |
-| `primary-hover`   | `#141C36` | Hover state of primary interactive   |
-| `primary-inverse` | `#ffffff` | Primary on a colored background      |
-| `secondary`       | `#6A6E75` | Secondary CTA, ghost buttons         |
-| `secondary-hover` | `#7F8288` | Hover state of secondary interactive |
-| `danger`          | `#B83C3C` | Destructive actions, error states    |
-| `danger-hover`    | `#A52020` | Hover on danger interactive          |
+| Token             | Value                       | Use for                              |
+| ----------------- | --------------------------- | ------------------------------------ |
+| `primary`         | `#1C50BB` (sapphire)        | Primary CTA, links, focus rings      |
+| `primary-hover`   | `#141C36`                   | Hover state of primary interactive   |
+| `primary-inverse` | `#ffffff`                   | Primary on a colored background      |
+| `secondary`       | `#6A6E75`                   | Secondary CTA, ghost buttons         |
+| `secondary-hover` | `rgba(106, 110, 117, 0.86)` | Hover state of secondary interactive |
+| `danger`          | `#B83C3C`                   | Destructive actions, error states    |
+| `danger-hover`    | `#A52020`                   | Hover on danger interactive          |
 
 ### Border
 
 Percipio's border weights use a non-standard order: `primary` is mid-weight, `secondary` is very light, `tertiary` is the strongest (solid navy). Use them for their semantic intent, not their numeric rank.
 
-| Token              | Value                | Use for                             |
-| ------------------ | -------------------- | ----------------------------------- |
-| `border-primary`   | `#8F919D` (navy-400) | Standard input and card borders     |
-| `border-secondary` | `#E2E3E6` (navy-200) | Subtle dividers, section separators |
-| `border-tertiary`  | `#10162F` (navy-800) | Strong structural borders           |
-| `border-disabled`  | `#BCBEC5` (navy-300) | Disabled input borders              |
+| Token              | Value                             | Use for                             |
+| ------------------ | --------------------------------- | ----------------------------------- |
+| `border-primary`   | navy-400 `rgba(16, 22, 47, 0.47)` | Standard input and card borders     |
+| `border-secondary` | navy-200 `rgba(16, 22, 47, 0.12)` | Subtle dividers, section separators |
+| `border-tertiary`  | `#10162F` (navy-800)              | Strong structural borders           |
+| `border-disabled`  | navy-300 `rgba(16, 22, 47, 0.28)` | Disabled input borders              |
 
 ### Feedback
 
@@ -207,10 +207,10 @@ Percipio's border weights use a non-standard order: `primary` is mid-weight, `se
 
 ### Shadow
 
-| Token              | Value                |
-| ------------------ | -------------------- |
-| `shadow-primary`   | `#E2E3E6` (navy-200) |
-| `shadow-secondary` | `#8F919D` (navy-400) |
+| Token              | Value                             |
+| ------------------ | --------------------------------- |
+| `shadow-primary`   | navy-200 `rgba(16, 22, 47, 0.12)` |
+| `shadow-secondary` | navy-400 `rgba(16, 22, 47, 0.47)` |
 
 Percipio shadows are softer than Codecademy's — use `shadow-primary` for standard elevated surfaces.
 
@@ -220,23 +220,23 @@ Percipio shadows are softer than Codecademy's — use `shadow-primary` for stand
 
 Percipio introduces its own named semantic colors. These are the source values behind the aliases above. Use the semantic aliases in designs, not the raw named colors.
 
-| Named color                    | Value     | Mapped to                  |
-| ------------------------------ | --------- | -------------------------- |
-| `percipioTextPrimary`          | `#222325` | `text`, `text-accent`      |
-| `percipioTextSecondary`        | `#595A5C` | `text-secondary`           |
-| `percipioTextDisabled`         | `#AFB6C2` | `text-disabled`            |
-| `percipioActionPrimary`        | `#0073C4` | `primary`                  |
-| `percipioActionPrimaryHover`   | `#141C36` | `primary-hover`            |
-| `percipioActionSecondary`      | `#6A6E75` | `secondary`                |
-| `percipioActionSecondaryHover` | `#7F8288` | `secondary-hover`          |
-| `percipioActionDangerHover`    | `#A52020` | `danger-hover`             |
-| `percipioDanger`               | `#B83C3C` | `danger`, `feedback-error` |
-| `percipioFeedbackSuccess`      | `#1B8057` | `feedback-success`         |
-| `percipioFeedbackWarning`      | `#EF5B0D` | `feedback-warning`         |
-| `percipioBgPrimary`            | `#FAFBFC` | `background-primary`       |
-| `percipioBgSuccess`            | `#EEF7F3` | `background-success`       |
-| `percipioBgWarning`            | `#FFF7E0` | `background-warning`       |
-| `percipioBgError`              | `#FFF1F5` | `background-error`         |
+| Named color                    | Value                       | Mapped to                  |
+| ------------------------------ | --------------------------- | -------------------------- |
+| `percipioTextPrimary`          | `#222325`                   | `text`, `text-accent`      |
+| `percipioTextSecondary`        | `rgba(34, 35, 37, 0.75)`    | `text-secondary`           |
+| `percipioTextDisabled`         | `#AFB6C2`                   | `text-disabled`            |
+| `sapphire`                     | `#1C50BB`                   | `primary`                  |
+| `percipioActionPrimaryHover`   | `#141C36`                   | `primary-hover`            |
+| `percipioActionSecondary`      | `#6A6E75`                   | `secondary`                |
+| `percipioActionSecondaryHover` | `rgba(106, 110, 117, 0.86)` | `secondary-hover`          |
+| `percipioActionDangerHover`    | `#A52020`                   | `danger-hover`             |
+| `percipioDanger`               | `#B83C3C`                   | `danger`, `feedback-error` |
+| `percipioFeedbackSuccess`      | `#1B8057`                   | `feedback-success`         |
+| `percipioFeedbackWarning`      | `#EF5B0D`                   | `feedback-warning`         |
+| `percipioBgPrimary`            | `#FAFBFC`                   | `background-primary`       |
+| `percipioBgSuccess`            | `#EEF7F3`                   | `background-success`       |
+| `percipioBgWarning`            | `#FFF7E0`                   | `background-warning`       |
+| `percipioBgError`              | `#FFF1F5`                   | `background-error`         |
 
 The full core swatch palette (navy, blue, green, yellow, red, etc.) is also available, but the semantic aliases above are how Percipio maps them. Raw swatches should only be used for fixed colors that must not adapt (illustrations, data viz, etc.).
 
@@ -246,19 +246,19 @@ The full core swatch palette (navy, blue, green, yellow, red, etc.) is also avai
 
 ### Typefaces
 
-All font families in Percipio use **Roboto**. There is no separate accent or display typeface.
+Percipio uses **Skillsoft Text** for body and headlines and **Skillsoft Sans** for accent UI. Roboto Mono is used for code; the `system` slot still uses Roboto.
 
-| Token       | Font                       | Use for                                     |
-| ----------- | -------------------------- | ------------------------------------------- |
-| `base`      | `"Roboto", sans-serif`     | All default UI text, headlines, body copy   |
-| `accent`    | `"Roboto", sans-serif`     | Labels, captions (same as base in Percipio) |
-| `monospace` | `"Roboto Mono", monospace` | Code editor contexts                        |
-| `system`    | `"Roboto", sans-serif`     | Performance-critical surfaces               |
+| Token       | Font                           | Use for                                   |
+| ----------- | ------------------------------ | ----------------------------------------- |
+| `base`      | `"Skillsoft Text", sans-serif` | All default UI text, headlines, body copy |
+| `accent`    | `"Skillsoft Sans", sans-serif` | Labels, captions, accent UI               |
+| `monospace` | `"Roboto Mono", monospace`     | Code editor contexts                      |
+| `system`    | `"Roboto", sans-serif`         | Performance-critical surfaces             |
 
 ### Rules
 
-- **Roboto Medium (500)** for headlines, sub-headlines, CTAs, and buttons — not Bold (700).
-- **Roboto Regular (400)** for body text, UI labels, and menu items.
+- **Skillsoft Text Medium (500)** for headlines, sub-headlines, CTAs, and buttons — use `fontWeight="title"`, not literal `700`.
+- **Skillsoft Text Regular (400)** for body text, UI labels, and menu items.
 - Text is **left-aligned** by default. Center-align only for short marketing headlines. Never right-align.
 - Do not adjust letter-spacing.
 
@@ -369,9 +369,9 @@ Same component library as Codecademy — all atoms, molecules, and organisms app
 
 Key Percipio-specific visual differences:
 
-- `FillButton` uses `#0073C4` (blue) instead of hyper-purple
-- `FillButton` hover shifts to near-black `#141C36` rather than a lighter purple
-- `Checkbox` / `Toggle` use the same blue `#0073C4`
+- `FillButton` uses sapphire `#1C50BB` instead of hyper-purple
+- `FillButton` hover shifts to near-black `#141C36` rather than a lighter blue
+- `Checkbox` / `Toggle` use sapphire `#1C50BB` via `primary`
 - `Card` has softer shadows (navy-200 vs navy-800 in Codecademy light mode)
 - Card shadow patterns (`patternLeft`, `patternRight`) are available but rarely used in Percipio UIs
 
@@ -382,7 +382,7 @@ Key Percipio-specific visual differences:
 ### Colors
 
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
-- **Do** use `#0073C4` blue as the only primary interactive color.
+- **Do** use `primary` / `sapphire` (`#1C50BB`) as the brand interactive color.
 - **Don't** use Codecademy's hyper-purple or yellow in Percipio contexts.
 - **Don't** attempt dark mode — Percipio is light only.
 
@@ -390,7 +390,7 @@ Key Percipio-specific visual differences:
 
 - **Do** use title weight (500) for headlines, CTAs, and buttons — not 700.
 - **Do** keep body text at 150–175% line height for readability.
-- **Don't** use a separate accent typeface — Roboto is used uniformly for base and accent.
+- **Don't** use Apercu or Suisse — Percipio uses Skillsoft Text and Skillsoft Sans.
 - **Don't** right-align or center-align body paragraphs.
 - **Don't** adjust letter-spacing.
 
@@ -406,27 +406,27 @@ Key Percipio-specific visual differences:
 
 Quick color/token reference for generating or specifying Percipio UI:
 
-| Scenario         | Tokens                                                                                                       |
-| ---------------- | ------------------------------------------------------------------------------------------------------------ |
-| Primary button   | `bg: primary (#0073C4)`, `color: white`, `hover: primary-hover (#141C36)`                                    |
-| Body text        | `color: text (#222325)`, `font: Roboto`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)`               |
-| Headline         | `color: text (#222325)`, `font: Roboto`, `size: 34–64px`, `weight: title (500)`, `lineHeight: title (1.2)`   |
-| Secondary text   | `color: text-secondary (#595A5C)`                                                                            |
-| Disabled text    | `color: text-disabled (#AFB6C2)`                                                                             |
-| Elevated surface | `bg: background-primary (#FAFBFC)`                                                                           |
-| Card default     | `bg: background (#ffffff)`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md` |
-| Error state      | `color: feedback-error (#B83C3C)`, `bg: background-error (#FFF1F5)`, `border: danger`                        |
-| Success state    | `color: feedback-success (#1B8057)`, `bg: background-success (#EEF7F3)`                                      |
-| Warning state    | `color: feedback-warning (#EF5B0D)`, `bg: background-warning (#FFF7E0)`                                      |
-| Disabled state   | `color: text-disabled (#AFB6C2)`, `bg: background-disabled (#E2E3E6, navy-200)`, `border: border-disabled`   |
+| Scenario         | Tokens                                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Primary button   | `bg: primary (#1C50BB)`, `color: white`, `hover: primary-hover (#141C36)`                                          |
+| Body text        | `color: text (#222325)`, `font: Skillsoft Text`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)`             |
+| Headline         | `color: text (#222325)`, `font: Skillsoft Text`, `size: 34–64px`, `weight: title (500)`, `lineHeight: title (1.2)` |
+| Secondary text   | `color: text-secondary (rgba(34, 35, 37, 0.75))`                                                                   |
+| Disabled text    | `color: text-disabled (#AFB6C2)`                                                                                   |
+| Elevated surface | `bg: background-primary (#FAFBFC)`                                                                                 |
+| Card default     | `bg: background (#ffffff)`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md`       |
+| Error state      | `color: feedback-error (#B83C3C)`, `bg: background-error (#FFF1F5)`, `border: danger`                              |
+| Success state    | `color: feedback-success (#1B8057)`, `bg: background-success (#EEF7F3)`                                            |
+| Warning state    | `color: feedback-warning (#EF5B0D)`, `bg: background-warning (#FFF7E0)`                                            |
+| Disabled state   | `color: text-disabled (#AFB6C2)`, `bg: background-disabled (navy-200)`, `border: border-disabled`                  |
 
 ### Component token cheatsheet
 
 ```
-FillButton      → bg: primary (#0073C4),  color: white,    hover: primary-hover (#141C36)
+FillButton      → bg: primary (#1C50BB),  color: white,    hover: primary-hover (#141C36)
 StrokeButton    → bg: transparent,         border: secondary (#6A6E75)
-Checkbox/Toggle → primary (#0073C4),       hover: primary-hover (#141C36)
-Card            → bg: background,  shadow: shadow-primary (#E2E3E6, navy-200, soft)
+Checkbox/Toggle → primary (#1C50BB),     hover: primary-hover (#141C36)
+Card            → bg: background,  shadow: shadow-primary (navy-200, soft)
 Alert (error)   → uses feedback-error + background-error
 Alert (success) → uses feedback-success + background-success
 Alert (warning) → uses feedback-warning + background-warning

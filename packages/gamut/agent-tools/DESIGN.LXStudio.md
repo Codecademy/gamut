@@ -4,8 +4,7 @@ name: LX Studio Design System
 description: Design tokens for the Skillsoft LX Studio authoring platform.
 colors:
   # LX Studio additions — custom brand tokens
-  lxStudioPurple: '#5628FE'
-  lxStudioPurpleHover: '#7955FC'
+  sapphire: '#1C50BB'
   lxStudioSuccess: '#06844F'
   lxStudioBgPrimary: '#FAFBFC'
   # core palette — referenced by semantic aliases below
@@ -13,13 +12,13 @@ colors:
   hyper-400: '#5533FF'
   navy-900: '#0A0D1C'
   navy-800: '#10162F'
-  navy-700: '#31374C'
-  navy-600: '#4C5063'
-  navy-500: '#686C7C'
-  navy-400: '#8F919D'
-  navy-300: '#BCBEC5'
-  navy-200: '#E2E3E6'
-  navy-100: '#F5F6F7'
+  navy-700: 'rgba(16, 22, 47, 0.86)'
+  navy-600: 'rgba(16, 22, 47, 0.75)'
+  navy-500: 'rgba(16, 22, 47, 0.63)'
+  navy-400: 'rgba(16, 22, 47, 0.47)'
+  navy-300: 'rgba(16, 22, 47, 0.28)'
+  navy-200: 'rgba(16, 22, 47, 0.12)'
+  navy-100: 'rgba(16, 22, 47, 0.04)'
   yellow-500: '#FFD300'
   yellow-0: '#FFFAE5'
   green-700: '#008A27'
@@ -42,8 +41,8 @@ colors:
   background-success: '{colors.green-0}'
   background-warning: '{colors.yellow-0}'
   background-error: '{colors.red-0}'
-  primary: '{colors.lxStudioPurple}'
-  primary-hover: '{colors.lxStudioPurpleHover}'
+  primary: '{colors.sapphire}'
+  primary-hover: '{colors.navy-800}'
   primary-inverse: '{colors.yellow-500}'
   secondary: '{colors.navy-800}'
   secondary-hover: '{colors.navy-700}'
@@ -60,19 +59,19 @@ colors:
   shadow-secondary: '{colors.navy-600}'
 typography:
   base:
-    fontFamily: '"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+    fontFamily: '"Skillsoft Text", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
     fontSize: '1rem'
     fontWeight: '400'
     lineHeight: '1.5'
   accent:
-    fontFamily: '"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+    fontFamily: '"Skillsoft Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
     fontSize: '0.875rem'
     fontWeight: '400'
     lineHeight: '1.5'
   title:
-    fontFamily: '"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+    fontFamily: '"Skillsoft Text", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
     fontSize: '2.125rem'
-    fontWeight: '700'
+    fontWeight: '500'
     lineHeight: '1.2'
   monospace:
     fontFamily: 'Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace'
@@ -141,9 +140,9 @@ LX Studio communicates **modern professional craft** — clean, precise, and too
 
 - Light mode only — no dark mode support
 - Larger border radii than Core give the UI a softer, more modern feel
-- Brand purple (`lxStudioPurple`) via `primary` drives CTAs, buttons, links, checkboxes, and toggles
+- Brand blue (`sapphire` / `primary`) drives CTAs, buttons, and links
 - Shadows are soft (navy-200) rather than hard (navy-800 in Core light mode)
-- Hanken Grotesk replaces Apercu and Suisse across all font roles
+- Skillsoft Text and Skillsoft Sans replace Apercu and Suisse across all font roles
 
 ---
 
@@ -151,9 +150,9 @@ LX Studio communicates **modern professional craft** — clean, precise, and too
 
 LX Studio uses a single Gamut theme — light mode only.
 
-| Theme         | Use case                               | Base font      | Dark mode  |
-| ------------- | -------------------------------------- | -------------- | ---------- |
-| **LX Studio** | Skillsoft LX Studio authoring platform | Hanken Grotesk | light only |
+| Theme         | Use case                               | Base font             | Dark mode  |
+| ------------- | -------------------------------------- | --------------------- | ---------- |
+| **LX Studio** | Skillsoft LX Studio authoring platform | Skillsoft Text / Sans | light only |
 
 The active theme is set at the app root via `<GamutProvider theme={lxStudioTheme}>`.
 
@@ -165,47 +164,47 @@ Use these token names when specifying colors. LX Studio is light mode only — t
 
 ### Text
 
-| Token            | Value                | Use for                     |
-| ---------------- | -------------------- | --------------------------- |
-| `text`           | `#10162F` (navy-800) | Default body and UI text    |
-| `text-accent`    | `#0A0D1C` (navy-900) | Stronger emphasis text      |
-| `text-secondary` | `#4C5063` (navy-600) | Supporting / secondary copy |
-| `text-disabled`  | `#686C7C` (navy-500) | Disabled state labels       |
+| Token            | Value                             | Use for                     |
+| ---------------- | --------------------------------- | --------------------------- |
+| `text`           | `#10162F` (navy-800)              | Default body and UI text    |
+| `text-accent`    | `#0A0D1C` (navy-900)              | Stronger emphasis text      |
+| `text-secondary` | navy-600 `rgba(16, 22, 47, 0.75)` | Supporting / secondary copy |
+| `text-disabled`  | navy-500 `rgba(16, 22, 47, 0.63)` | Disabled state labels       |
 
 ### Background
 
-| Token                 | Value                         | Use for                           |
-| --------------------- | ----------------------------- | --------------------------------- |
-| `background`          | `#ffffff`                     | Default page/component background |
-| `background-primary`  | `#FAFBFC` (lxStudioBgPrimary) | Slightly elevated surfaces        |
-| `background-contrast` | `#ffffff`                     | Maximum contrast surface          |
-| `background-selected` | `#F5F6F7` (navy-100)          | Selected row / item               |
-| `background-hover`    | `#E2E3E6` (navy-200)          | Hover state overlay               |
-| `background-disabled` | `#E2E3E6` (navy-200)          | Disabled surface                  |
-| `background-success`  | `#F5FFE3` (green-0)           | Success state container           |
-| `background-warning`  | `#FFFAE5` (yellow-0)          | Warning state container           |
-| `background-error`    | `#FBF1F0` (red-0)             | Error state container             |
+| Token                 | Value                             | Use for                           |
+| --------------------- | --------------------------------- | --------------------------------- |
+| `background`          | `#ffffff`                         | Default page/component background |
+| `background-primary`  | `#FAFBFC` (lxStudioBgPrimary)     | Slightly elevated surfaces        |
+| `background-contrast` | `#ffffff`                         | Maximum contrast surface          |
+| `background-selected` | navy-100 `rgba(16, 22, 47, 0.04)` | Selected row / item               |
+| `background-hover`    | navy-200 `rgba(16, 22, 47, 0.12)` | Hover state overlay               |
+| `background-disabled` | navy-200 `rgba(16, 22, 47, 0.12)` | Disabled surface                  |
+| `background-success`  | `#F5FFE3` (green-0)               | Success state container           |
+| `background-warning`  | `#FFFAE5` (yellow-0)              | Warning state container           |
+| `background-error`    | `#FBF1F0` (red-0)                 | Error state container             |
 
 ### Interactive
 
-| Token             | Value                           | Use for                              |
-| ----------------- | ------------------------------- | ------------------------------------ |
-| `primary`         | `#5628FE` (lxStudioPurple)      | Primary CTA, links, focus rings      |
-| `primary-hover`   | `#7955FC` (lxStudioPurpleHover) | Hover state of primary interactive   |
-| `primary-inverse` | `#FFD300` (yellow-500)          | Primary on a colored background      |
-| `secondary`       | `#10162F` (navy-800)            | Secondary CTA, ghost buttons         |
-| `secondary-hover` | `#31374C` (navy-700)            | Hover state of secondary interactive |
-| `danger`          | `#E91C11` (red-500)             | Destructive actions, error states    |
-| `danger-hover`    | `#BE1809` (red-600)             | Hover on danger interactive          |
+| Token             | Value                             | Use for                              |
+| ----------------- | --------------------------------- | ------------------------------------ |
+| `primary`         | `#1C50BB` (sapphire)              | Primary CTA, links, focus rings      |
+| `primary-hover`   | `#10162F` (navy-800)              | Hover state of primary interactive   |
+| `primary-inverse` | `#FFD300` (yellow-500)            | Primary on a colored background      |
+| `secondary`       | `#10162F` (navy-800)              | Secondary CTA, ghost buttons         |
+| `secondary-hover` | navy-700 `rgba(16, 22, 47, 0.86)` | Hover state of secondary interactive |
+| `danger`          | `#E91C11` (red-500)               | Destructive actions, error states    |
+| `danger-hover`    | `#BE1809` (red-600)               | Hover on danger interactive          |
 
 ### Border
 
-| Token              | Value                | Use for                         |
-| ------------------ | -------------------- | ------------------------------- |
-| `border-primary`   | `#8F919D` (navy-400) | Standard input and card borders |
-| `border-secondary` | `#4C5063` (navy-600) | Medium-weight borders           |
-| `border-tertiary`  | `#10162F` (navy-800) | Strong structural borders       |
-| `border-disabled`  | `#BCBEC5` (navy-300) | Disabled input borders          |
+| Token              | Value                             | Use for                         |
+| ------------------ | --------------------------------- | ------------------------------- |
+| `border-primary`   | navy-400 `rgba(16, 22, 47, 0.47)` | Standard input and card borders |
+| `border-secondary` | navy-600 `rgba(16, 22, 47, 0.75)` | Medium-weight borders           |
+| `border-tertiary`  | `#10162F` (navy-800)              | Strong structural borders       |
+| `border-disabled`  | navy-300 `rgba(16, 22, 47, 0.28)` | Disabled input borders          |
 
 LX Studio's `border-primary` is mid-gray (navy-400) rather than Core's near-black navy-800 — borders are softer and less prominent.
 
@@ -219,10 +218,10 @@ LX Studio's `border-primary` is mid-gray (navy-400) rather than Core's near-blac
 
 ### Shadow
 
-| Token              | Value                |
-| ------------------ | -------------------- |
-| `shadow-primary`   | `#E2E3E6` (navy-200) |
-| `shadow-secondary` | `#4C5063` (navy-600) |
+| Token              | Value                             |
+| ------------------ | --------------------------------- |
+| `shadow-primary`   | navy-200 `rgba(16, 22, 47, 0.12)` |
+| `shadow-secondary` | navy-600 `rgba(16, 22, 47, 0.75)` |
 
 LX Studio shadows are soft — use `shadow-primary` for standard elevated surfaces. This matches Percipio's shadow weight, not Core's hard navy-800 shadow.
 
@@ -230,14 +229,13 @@ LX Studio shadows are soft — use `shadow-primary` for standard elevated surfac
 
 ## LX Studio Color Palette
 
-LX Studio adds four named colors to the core palette. Use semantic aliases in code, not these raw names.
+LX Studio adds named colors to the core palette. Use semantic aliases in code, not these raw names.
 
-| Named color           | Value     | Mapped to            |
-| --------------------- | --------- | -------------------- |
-| `lxStudioPurple`      | `#5628FE` | `primary`            |
-| `lxStudioPurpleHover` | `#7955FC` | `primary-hover`      |
-| `lxStudioSuccess`     | `#06844F` | `feedback-success`   |
-| `lxStudioBgPrimary`   | `#FAFBFC` | `background-primary` |
+| Named color         | Value     | Mapped to            |
+| ------------------- | --------- | -------------------- |
+| `sapphire`          | `#1C50BB` | `primary`            |
+| `lxStudioSuccess`   | `#06844F` | `feedback-success`   |
+| `lxStudioBgPrimary` | `#FAFBFC` | `background-primary` |
 
 The full core swatch palette (navy, hyper, blue, green, yellow, red, etc.) is also available. Raw swatches should only be used for fixed colors that must not adapt (illustrations, data viz, etc.).
 
@@ -247,31 +245,31 @@ The full core swatch palette (navy, hyper, blue, green, yellow, red, etc.) is al
 
 ### Typefaces
 
-LX Studio uses **Hanken Grotesk** for all font roles. There is no Apercu and no Suisse.
+LX Studio uses **Skillsoft Text** for body and headlines and **Skillsoft Sans** for accent UI. There is no Apercu and no Suisse.
 
-| Token       | Font                                                  | Use for                                                         |
-| ----------- | ----------------------------------------------------- | --------------------------------------------------------------- |
-| `base`      | `"Hanken Grotesk"`, sans-serif fallback               | All default UI text, headlines, body copy                       |
-| `accent`    | `"Hanken Grotesk"`, sans-serif fallback               | Labels, captions, technical context (same as base in LX Studio) |
-| `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Code editor contexts                                            |
-| `system`    | System UI fonts                                       | Performance-critical surfaces                                   |
+| Token       | Font                                                  | Use for                                   |
+| ----------- | ----------------------------------------------------- | ----------------------------------------- |
+| `base`      | `"Skillsoft Text"`, sans-serif fallback               | All default UI text, headlines, body copy |
+| `accent`    | `"Skillsoft Sans"`, sans-serif fallback               | Labels, captions, accent UI               |
+| `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Code editor contexts                      |
+| `system`    | System UI fonts                                       | Performance-critical surfaces             |
 
-Hanken Grotesk is served from `https://www.codecademy.com/gamut/` in four variants: regular, italic, bold, bold-italic.
+Skillsoft fonts are loaded via Gamut's asset provider (same stack as Percipio).
 
 ### Rules
 
-- **Hanken Grotesk Bold (700)** for headlines, sub-headlines, CTAs, and buttons.
-- **Hanken Grotesk Regular (400)** for body text, UI labels, and menu items.
+- **Skillsoft Text Medium (500)** for headlines, sub-headlines, CTAs, and buttons — use `fontWeight="title"`, not literal `700`.
+- **Skillsoft Text Regular (400)** for body text, UI labels, and menu items.
 - Text is **left-aligned** by default. Center-align only for short marketing headlines. Never right-align.
 - Do not adjust letter-spacing.
-- No separate accent typeface — Hanken Grotesk is used uniformly for `base` and `accent`.
+- Skillsoft Sans is the accent face; Skillsoft Text is used for `base` and title styles.
 
 ### Font weight scale
 
-| Token   | Value | Use                      |
-| ------- | ----- | ------------------------ |
-| `base`  | 400   | Body text, UI labels     |
-| `title` | 700   | Headlines, CTAs, buttons |
+| Token   | Value   | Use                                                  |
+| ------- | ------- | ---------------------------------------------------- |
+| `base`  | 400     | Body text, UI labels                                 |
+| `title` | **500** | Headlines, CTAs, buttons _(differs from Core's 700)_ |
 
 ### Font size scale
 
@@ -371,9 +369,9 @@ Same component library as Codecademy — all atoms, molecules, and organisms app
 
 Key LX Studio-specific visual differences:
 
-- `FillButton` uses `#5628FE` (lxStudioPurple) instead of hyper-500
-- `FillButton` hover shifts to `#7955FC` (lxStudioPurpleHover) — lighter, not darker, on hover
-- `Checkbox` / `Toggle` use `hyper-500` (`#3A10E5`) — not the brand purple
+- `FillButton` uses sapphire `#1C50BB` instead of hyper-500
+- `FillButton` hover shifts to navy-800 `#10162F` — darker on hover
+- `Checkbox` / `Toggle` use hyper-500 `#3A10E5`
 - All interactive elements have `borderRadius: md` (8px) instead of Core's 4px
 - `Card` shadows use navy-200 (soft) rather than navy-800 (hard)
 - No `Card-beige` variant — LX Studio `background-primary` is off-white, not beige
@@ -385,15 +383,15 @@ Key LX Studio-specific visual differences:
 ### Colors
 
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
-- **Do** use `lxStudioPurple` (`#5628FE`) via `primary` for buttons and links.
+- **Do** use `primary` / `sapphire` (`#1C50BB`) for buttons and links.
 - **Don't** attempt dark mode — LX Studio is light only.
 - **Don't** use the Percipio or Codecademy primary blue/hyper colors directly; go through semantic aliases.
 
 ### Typography
 
-- **Do** use Hanken Grotesk Bold (700) for headlines, CTAs, and buttons.
+- **Do** use `fontWeight="title"` (500) for headlines, CTAs, and buttons.
 - **Do** keep body text at 150–175% line height for readability.
-- **Don't** use Apercu or Suisse — those fonts are not available in LX Studio.
+- **Don't** use Apercu, Suisse, or Hanken Grotesk — LX Studio uses Skillsoft Text and Skillsoft Sans.
 - **Don't** right-align or center-align body paragraphs.
 - **Don't** adjust letter-spacing.
 
@@ -410,27 +408,27 @@ Key LX Studio-specific visual differences:
 
 Quick color/token reference for generating or specifying LX Studio UI:
 
-| Scenario         | Tokens                                                                                                             |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Primary button   | `bg: primary (#5628FE)`, `color: white`, `hover: primary-hover (#7955FC)`, `borderRadius: md (8px)`                |
-| Body text        | `color: text (#10162F)`, `font: Hanken Grotesk`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)`             |
-| Headline         | `color: text-accent (#0A0D1C)`, `font: Hanken Grotesk`, `size: 34–64px`, `weight: 700`, `lineHeight: title (1.2)`  |
-| Secondary text   | `color: text-secondary (#4C5063)`                                                                                  |
-| Disabled text    | `color: text-disabled (#686C7C)`                                                                                   |
-| Elevated surface | `bg: background-primary (#FAFBFC)`                                                                                 |
-| Card default     | `bg: background (#ffffff)`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md (8px)` |
-| Error state      | `color: feedback-error (#BE1809)`, `bg: background-error (#FBF1F0)`, `border: danger`                              |
-| Success state    | `color: feedback-success (#06844F)`, `bg: background-success (#F5FFE3)`                                            |
-| Warning state    | `color: feedback-warning (#FFD300)`, `bg: background-warning (#FFFAE5)`                                            |
-| Disabled state   | `color: text-disabled (#686C7C)`, `bg: background-disabled (#E2E3E6, navy-200)`, `border: border-disabled`         |
+| Scenario         | Tokens                                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Primary button   | `bg: primary (#1C50BB)`, `color: white`, `hover: primary-hover (#10162F)`, `borderRadius: md (8px)`                       |
+| Body text        | `color: text (#10162F)`, `font: Skillsoft Text`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)`                    |
+| Headline         | `color: text-accent (#0A0D1C)`, `font: Skillsoft Text`, `size: 34–64px`, `weight: title (500)`, `lineHeight: title (1.2)` |
+| Secondary text   | `color: text-secondary (navy-600)`                                                                                        |
+| Disabled text    | `color: text-disabled (navy-500)`                                                                                         |
+| Elevated surface | `bg: background-primary (#FAFBFC)`                                                                                        |
+| Card default     | `bg: background (#ffffff)`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md (8px)`        |
+| Error state      | `color: feedback-error (#BE1809)`, `bg: background-error (#FBF1F0)`, `border: danger`                                     |
+| Success state    | `color: feedback-success (#06844F)`, `bg: background-success (#F5FFE3)`                                                   |
+| Warning state    | `color: feedback-warning (#FFD300)`, `bg: background-warning (#FFFAE5)`                                                   |
+| Disabled state   | `color: text-disabled (navy-500)`, `bg: background-disabled (navy-200)`, `border: border-disabled`                        |
 
 ### Component token cheatsheet
 
 ```
-FillButton      → bg: primary (#5628FE),     color: white,    hover: primary-hover (#7955FC), radius: 8px
+FillButton      → bg: primary (#1C50BB),     color: white,    hover: primary-hover (#10162F), radius: 8px
 StrokeButton    → bg: transparent,            border: secondary (#10162F)
-Checkbox/Toggle → primary (#5628FE),          hover: primary-hover (#7955FC),                radius: 4px
-Card            → bg: background,  shadow: shadow-primary (#E2E3E6, navy-200, soft),         radius: none
+Checkbox/Toggle → hyper-500 (#3A10E5),        hover: hyper-400 (#5533FF),                    radius: 4px
+Card            → bg: background,  shadow: shadow-primary (navy-200, soft),                  radius: none
 Alert (error)   → uses feedback-error + background-error
 Alert (success) → uses feedback-success + background-success
 Alert (warning) → uses feedback-warning + background-warning
