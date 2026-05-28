@@ -108,3 +108,26 @@ If your app uses a strict Content-Security-Policy (e.g. `style-src` without `'un
 ```
 
 Your nonce should be the same value you use in your CSP header (e.g. `style-src 'self' 'nonce-{value}'`).
+
+## Testing with Jest (and Babel)
+
+Gamut depends on packages that ship modern JavaScript from `node_modules`. Jest often skips transpiling `node_modules`, so importing Gamut in tests can surface parse or syntax errors unless your repo opts those dependencies into your test transform.
+
+If tests only fail after upgrading Gamut or a transitive dependency, compare your Jest and Babel setup with Gamut's and adjust `transformIgnorePatterns` and plugins accordingly.
+
+### `transformIgnorePatterns`
+
+Allow your test transformer (for example `babel-jest`) to run on specific packages. Gamut's own Jest setup uses a negative lookahead so `@vidstack/react` and `@formatjs` are not ignored:
+
+```js
+// jest.config.js (or equivalent)
+transformIgnorePatterns: ['node_modules/(?!(@vidstack/react|@formatjs)/)'],
+```
+
+Add more package scopes inside the non-capturing group if your tree pulls in other untranspiled ESM (for example `|@your-scope`).
+
+### Babel and newer syntax
+
+Even when those packages are transformed, older Babel configs may not handle every language feature.
+
+To fix that, the necessary plugins need to be added to the Babel config Jest uses, or upgrade **`@babel/preset-env`** / Babel so that feature is covered.

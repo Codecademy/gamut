@@ -1,7 +1,6 @@
 @use "sass:color";
 @use "variables";
 @use "mixins";
-@use "~@codecademy/gamut-styles/utils" as *;
 //
 // Base styles
 //
@@ -11,7 +10,8 @@
   display: inline-flex;
   justify-content: center;
   font-weight: variables.$btn-font-weight;
-  @include font-smoothing;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   border: 1px solid transparent;
   border-radius: variables.$btn-border-radius;
   user-select: none;
@@ -33,11 +33,11 @@ fieldset[disabled] a.btn {
 
 @each $name, $color in variables.$btn-swatches {
   @if $name == "brand-yellow" {
-    @include mixins.button-variants($name, $color-black, $color);
+    @include mixins.button-variants($name, variables.$color-black, $color);
   } @else if color.channel(color.to-space($color, hsl), "lightness") > 68 {
-    @include mixins.button-variants($name, $color-black, $color);
+    @include mixins.button-variants($name, variables.$color-black, $color);
   } @else {
-    @include mixins.button-variants($name, $color-white, $color);
+    @include mixins.button-variants($name, variables.$color-white, $color);
   }
 }
 
