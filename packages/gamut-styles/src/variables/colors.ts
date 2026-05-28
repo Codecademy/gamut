@@ -164,11 +164,13 @@ export const platformPalette = {
  * LX Studio Colors
  */
 
+/** Primary brand blue; used by LX Studio and Percipio theme `primary` tokens */
+export const sapphire = '#1C50BB';
+
 export const lxStudioColors = {
   lxStudioSuccess: '#06844F',
   lxStudioBgPrimary: '#FAFBFC',
-  lxStudioPurple: '#5628FE',
-  lxStudioPurpleHover: '#7955FC',
+  sapphire,
 } as const;
 
 export const lxStudioPalette = {
@@ -194,7 +196,7 @@ export const percipioColors = {
   percipioBgError: '#FFF1F5',
 
   // Action colors
-  percipioActionPrimary: '#0073C4',
+  sapphire,
   percipioActionPrimaryHover: '#141C36',
   percipioActionSecondary: '#6A6E75',
   percipioActionSecondaryHover: 'rgba(106, 110, 117, 0.86)',
@@ -206,6 +208,8 @@ export const percipioColors = {
 
   // Multiuse colors
   percipioDanger: '#B83C3C',
+
+  /** Shared with LX Studio; `primary` color mode resolves here */
 } as const;
 
 export const percipioPalette = {

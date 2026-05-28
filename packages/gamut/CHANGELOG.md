@@ -1,3 +1,55 @@
+## 68.7.0 (2026-05-27)
+
+### 🚀 Features
+
+- feat: AI Tools for Claude and Cursor ([#3329](https://github.com/Codecademy/gamut/pull/3329), [#3351](https://github.com/Codecademy/gamut/issues/3351), [#3355](https://github.com/Codecademy/gamut/issues/3355))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Claude Sonnet 4.6
+- dreamwasp
+- Evan Yamanishi @sh0ji
+
+## 68.6.2 (2026-05-26)
+
+### 🩹 Fixes
+
+- fix DatePicker lint for React 19 ([#3357](https://github.com/Codecademy/gamut/pull/3357))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.6.1 (2026-05-20)
+
+### 🩹 Fixes
+
+- Update InternalFloatingCard, renamed to PatternBackdrop and pared down to needed functionality for Toast + ModalContainer needs ([#3353](https://github.com/Codecademy/gamut/pull/3353))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+- LinKCoding @LinKCoding
+
+## 68.6.0 (2026-05-14)
+
+### 🚀 Features
+
+- Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.11
+- Updated gamut-patterns to 0.10.30
+- Updated gamut-styles to 18.0.0
+- Updated gamut-icons to 9.57.5
+- Updated gamut-tests to 6.0.1
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 68.5.1 (2026-05-08)
 
 ### 🩹 Fixes

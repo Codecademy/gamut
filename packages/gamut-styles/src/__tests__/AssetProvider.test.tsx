@@ -13,36 +13,45 @@ jest.mock('../utilities/fontUtils', () => ({
   getFonts: require('./fontUtilsMock').getFontsMock,
 }));
 
-jest.mock('../remoteAssets/fonts', () => ({
-  webFonts: {
-    core: [
-      {
-        filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
-        extensions: ['woff2', 'woff'],
-        name: 'Apercu',
-      },
-      {
-        filePath: 'https://www.codecademy.com/gamut/apercu-bold-pro',
-        extensions: ['woff2', 'woff'],
-        name: 'Apercu',
-        weight: 'bold',
-      },
-    ],
-    percipio: [
-      {
-        filePath: 'https://www.codecademy.com/gamut/roboto-regular',
-        extensions: ['woff2', 'woff'],
-        name: 'Roboto',
-      },
-      {
-        filePath: 'https://www.codecademy.com/gamut/roboto-bold',
-        extensions: ['woff2', 'woff'],
-        name: 'Roboto',
-        weight: 'bold',
-      },
-    ],
-  },
-}));
+jest.mock('../remoteAssets/fonts', () => {
+  const percipio = [
+    {
+      filePath: 'https://www.codecademy.com/gamut/SkillsoftText-Regular',
+      extensions: ['woff2', 'woff'],
+      name: 'Skillsoft Text',
+    },
+    {
+      filePath: 'https://www.codecademy.com/gamut/roboto-regular',
+      extensions: ['woff2', 'woff'],
+      name: 'Roboto',
+    },
+    {
+      filePath: 'https://www.codecademy.com/gamut/roboto-bold',
+      extensions: ['woff2', 'woff'],
+      name: 'Roboto',
+      weight: 'bold',
+    },
+  ];
+  return {
+    webFonts: {
+      core: [
+        {
+          filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+          extensions: ['woff2', 'woff'],
+          name: 'Apercu',
+        },
+        {
+          filePath: 'https://www.codecademy.com/gamut/apercu-bold-pro',
+          extensions: ['woff2', 'woff'],
+          name: 'Apercu',
+          weight: 'bold',
+        },
+      ],
+      percipio,
+      lxStudio: percipio,
+    },
+  };
+});
 
 const mockGetFonts = getFontsMock;
 

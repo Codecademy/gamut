@@ -117,7 +117,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       (el: HTMLDivElement | null) => {
         containerRef.current = el;
         if (typeof ref === 'function') ref(el);
-        else if (ref != null) ref.current = el;
+        else if (ref !== null) ref.current = el;
       },
       [ref]
     );
