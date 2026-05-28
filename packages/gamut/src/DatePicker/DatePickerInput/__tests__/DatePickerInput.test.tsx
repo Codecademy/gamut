@@ -71,6 +71,14 @@ describe('DatePickerInput', () => {
     expect(openCalendar).toHaveBeenCalledTimes(1);
   });
 
+  it('renders description between the label and the input', () => {
+    const { view } = renderInput({
+      description: 'Use MM/DD/YYYY format.',
+    });
+
+    view.getByText('Use MM/DD/YYYY format.');
+  });
+
   it('renders default Date label in single date mode', () => {
     const { view } = renderInput();
 

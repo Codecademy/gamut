@@ -36,6 +36,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     inputSize,
     quickActions,
     placement = 'inline',
+    description,
   } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [focusGridSignal, setFocusGridSignal] = useState(false);
@@ -156,7 +157,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           {mode === 'range' ? (
             <>
               <DatePickerInput
-                description={props.startDateDescription}
+                description={description}
                 name="datePickerInput"
                 rangePart="start"
                 size={inputSize}
@@ -165,14 +166,13 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 {isRtl ? <MiniArrowLeftIcon /> : <MiniArrowRightIcon />}
               </Box>
               <DatePickerInput
-                description={props.endDateDescription}
                 name="datePickerInput"
                 rangePart="end"
                 size={inputSize}
               />
             </>
           ) : (
-            <DatePickerInput description={props.description} size={inputSize} />
+            <DatePickerInput description={description} size={inputSize} />
           )}
         </FlexBox>
         <PopoverContainer

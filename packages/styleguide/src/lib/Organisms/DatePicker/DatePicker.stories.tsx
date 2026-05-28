@@ -84,15 +84,6 @@ const meta: Meta<typeof DatePicker> = {
       if: { arg: 'mode', eq: 'range' },
       control: false,
     },
-    description: {
-      if: { arg: 'mode', eq: 'single' },
-    },
-    startDateDescription: {
-      if: { arg: 'mode', eq: 'range' },
-    },
-    endDateDescription: {
-      if: { arg: 'mode', eq: 'range' },
-    },
   },
 };
 
@@ -119,10 +110,10 @@ export const Default: Story = {
       return (
         <DatePicker
           {...args}
+          description={description}
           endDate={endDate}
           mode="range"
           startDate={startDate}
-          startDateDescription={description}
           onEndSelected={setEndDate}
           onStartSelected={setStartDate}
         />
