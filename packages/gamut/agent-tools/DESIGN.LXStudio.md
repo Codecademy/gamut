@@ -164,64 +164,64 @@ Use these token names when specifying colors. LX Studio is light mode only — t
 
 ### Text
 
-| Token            | Value                             | Use for                     |
-| ---------------- | --------------------------------- | --------------------------- |
-| `text`           | `#10162F` (navy-800)              | Default body and UI text    |
-| `text-accent`    | `#0A0D1C` (navy-900)              | Stronger emphasis text      |
-| `text-secondary` | navy-600 `rgba(16, 22, 47, 0.75)` | Supporting / secondary copy |
-| `text-disabled`  | navy-500 `rgba(16, 22, 47, 0.63)` | Disabled state labels       |
+| Token            | Resolves to | Use for                     |
+| ---------------- | ----------- | --------------------------- |
+| `text`           | `navy-800`  | Default body and UI text    |
+| `text-accent`    | `navy-900`  | Stronger emphasis text      |
+| `text-secondary` | `navy-600`  | Supporting / secondary copy |
+| `text-disabled`  | `navy-500`  | Disabled state labels       |
 
 ### Background
 
-| Token                 | Value                             | Use for                           |
-| --------------------- | --------------------------------- | --------------------------------- |
-| `background`          | `#ffffff`                         | Default page/component background |
-| `background-primary`  | `#FAFBFC` (lxStudioBgPrimary)     | Slightly elevated surfaces        |
-| `background-contrast` | `#ffffff`                         | Maximum contrast surface          |
-| `background-selected` | navy-100 `rgba(16, 22, 47, 0.04)` | Selected row / item               |
-| `background-hover`    | navy-200 `rgba(16, 22, 47, 0.12)` | Hover state overlay               |
-| `background-disabled` | navy-200 `rgba(16, 22, 47, 0.12)` | Disabled surface                  |
-| `background-success`  | `#F5FFE3` (green-0)               | Success state container           |
-| `background-warning`  | `#FFFAE5` (yellow-0)              | Warning state container           |
-| `background-error`    | `#FBF1F0` (red-0)                 | Error state container             |
+| Token                 | Resolves to         | Use for                           |
+| --------------------- | ------------------- | --------------------------------- |
+| `background`          | `white`             | Default page/component background |
+| `background-primary`  | `lxStudioBgPrimary` | Slightly elevated surfaces        |
+| `background-contrast` | `white`             | Maximum contrast surface          |
+| `background-selected` | `navy-100`          | Selected row / item               |
+| `background-hover`    | `navy-200`          | Hover state overlay               |
+| `background-disabled` | `navy-200`          | Disabled surface                  |
+| `background-success`  | `green-0`           | Success state container           |
+| `background-warning`  | `yellow-0`          | Warning state container           |
+| `background-error`    | `red-0`             | Error state container             |
 
 ### Interactive
 
-| Token             | Value                             | Use for                              |
-| ----------------- | --------------------------------- | ------------------------------------ |
-| `primary`         | `#1C50BB` (sapphire)              | Primary CTA, links, focus rings      |
-| `primary-hover`   | `#10162F` (navy-800)              | Hover state of primary interactive   |
-| `primary-inverse` | `#FFD300` (yellow-500)            | Primary on a colored background      |
-| `secondary`       | `#10162F` (navy-800)              | Secondary CTA, ghost buttons         |
-| `secondary-hover` | navy-700 `rgba(16, 22, 47, 0.86)` | Hover state of secondary interactive |
-| `danger`          | `#E91C11` (red-500)               | Destructive actions, error states    |
-| `danger-hover`    | `#BE1809` (red-600)               | Hover on danger interactive          |
+| Token             | Resolves to  | Use for                              |
+| ----------------- | ------------ | ------------------------------------ |
+| `primary`         | `sapphire`   | Primary CTA, links, focus rings      |
+| `primary-hover`   | `navy-800`   | Hover state of primary interactive   |
+| `primary-inverse` | `yellow-500` | Primary on a colored background      |
+| `secondary`       | `navy-800`   | Secondary CTA, ghost buttons         |
+| `secondary-hover` | `navy-700`   | Hover state of secondary interactive |
+| `danger`          | `red-500`    | Destructive actions, error states    |
+| `danger-hover`    | `red-600`    | Hover on danger interactive          |
 
 ### Border
 
-| Token              | Value                             | Use for                         |
-| ------------------ | --------------------------------- | ------------------------------- |
-| `border-primary`   | navy-400 `rgba(16, 22, 47, 0.47)` | Standard input and card borders |
-| `border-secondary` | navy-600 `rgba(16, 22, 47, 0.75)` | Medium-weight borders           |
-| `border-tertiary`  | `#10162F` (navy-800)              | Strong structural borders       |
-| `border-disabled`  | navy-300 `rgba(16, 22, 47, 0.28)` | Disabled input borders          |
+| Token              | Resolves to | Use for                         |
+| ------------------ | ----------- | ------------------------------- |
+| `border-primary`   | `navy-400`  | Standard input and card borders |
+| `border-secondary` | `navy-600`  | Medium-weight borders           |
+| `border-tertiary`  | `navy-800`  | Strong structural borders       |
+| `border-disabled`  | `navy-300`  | Disabled input borders          |
 
 LX Studio's `border-primary` is mid-gray (navy-400) rather than Core's near-black navy-800 — borders are softer and less prominent.
 
 ### Feedback
 
-| Token              | Value                       | Use for                          |
-| ------------------ | --------------------------- | -------------------------------- |
-| `feedback-error`   | `#BE1809` (red-600)         | Error messages, validation       |
-| `feedback-success` | `#06844F` (lxStudioSuccess) | Success messages, confirmations  |
-| `feedback-warning` | `#FFD300` (yellow-500)      | Warning messages, caution states |
+| Token              | Resolves to       | Use for                          |
+| ------------------ | ----------------- | -------------------------------- |
+| `feedback-error`   | `red-600`         | Error messages, validation       |
+| `feedback-success` | `lxStudioSuccess` | Success messages, confirmations  |
+| `feedback-warning` | `yellow-500`      | Warning messages, caution states |
 
 ### Shadow
 
-| Token              | Value                             |
-| ------------------ | --------------------------------- |
-| `shadow-primary`   | navy-200 `rgba(16, 22, 47, 0.12)` |
-| `shadow-secondary` | navy-600 `rgba(16, 22, 47, 0.75)` |
+| Token              | Resolves to |
+| ------------------ | ----------- |
+| `shadow-primary`   | `navy-200`  |
+| `shadow-secondary` | `navy-600`  |
 
 LX Studio shadows are soft — use `shadow-primary` for standard elevated surfaces. This matches Percipio's shadow weight, not Core's hard navy-800 shadow.
 
@@ -231,11 +231,11 @@ LX Studio shadows are soft — use `shadow-primary` for standard elevated surfac
 
 LX Studio adds named colors to the core palette. Use semantic aliases in code, not these raw names.
 
-| Named color         | Value     | Mapped to            |
-| ------------------- | --------- | -------------------- |
-| `sapphire`          | `#1C50BB` | `primary`            |
-| `lxStudioSuccess`   | `#06844F` | `feedback-success`   |
-| `lxStudioBgPrimary` | `#FAFBFC` | `background-primary` |
+| Palette token       | Semantic alias(es)   |
+| ------------------- | -------------------- |
+| `sapphire`          | `primary`            |
+| `lxStudioSuccess`   | `feedback-success`   |
+| `lxStudioBgPrimary` | `background-primary` |
 
 The full core swatch palette (navy, hyper, blue, green, yellow, red, etc.) is also available. Raw swatches should only be used for fixed colors that must not adapt (illustrations, data viz, etc.).
 
@@ -369,9 +369,9 @@ Same component library as Codecademy — all atoms, molecules, and organisms app
 
 Key LX Studio-specific visual differences:
 
-- `FillButton` uses sapphire `#1C50BB` instead of hyper-500
-- `FillButton` hover shifts to navy-800 `#10162F` — darker on hover
-- `Checkbox` / `Toggle` use hyper-500 `#3A10E5`
+- `FillButton` uses `primary` (`sapphire`) instead of Core `hyper-500`
+- `FillButton` hover uses `primary-hover` (`navy-800`) — darker on hover
+- `Checkbox` / `Toggle` use palette `hyper-500` (not `primary`)
 - All interactive elements have `borderRadius: md` (8px) instead of Core's 4px
 - `Card` shadows use navy-200 (soft) rather than navy-800 (hard)
 - No `Card-beige` variant — LX Studio `background-primary` is off-white, not beige
@@ -383,7 +383,7 @@ Key LX Studio-specific visual differences:
 ### Colors
 
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
-- **Do** use `primary` / `sapphire` (`#1C50BB`) for buttons and links.
+- **Do** use `primary` (resolves to palette `sapphire`) for buttons and links.
 - **Don't** attempt dark mode — LX Studio is light only.
 - **Don't** use the Percipio or Codecademy primary blue/hyper colors directly; go through semantic aliases.
 
@@ -408,26 +408,26 @@ Key LX Studio-specific visual differences:
 
 Quick color/token reference for generating or specifying LX Studio UI:
 
-| Scenario         | Tokens                                                                                                                    |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Primary button   | `bg: primary (#1C50BB)`, `color: white`, `hover: primary-hover (#10162F)`, `borderRadius: md (8px)`                       |
-| Body text        | `color: text (#10162F)`, `font: Skillsoft Text`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)`                    |
-| Headline         | `color: text-accent (#0A0D1C)`, `font: Skillsoft Text`, `size: 34–64px`, `weight: title (500)`, `lineHeight: title (1.2)` |
-| Secondary text   | `color: text-secondary (navy-600)`                                                                                        |
-| Disabled text    | `color: text-disabled (navy-500)`                                                                                         |
-| Elevated surface | `bg: background-primary (#FAFBFC)`                                                                                        |
-| Card default     | `bg: background (#ffffff)`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md (8px)`        |
-| Error state      | `color: feedback-error (#BE1809)`, `bg: background-error (#FBF1F0)`, `border: danger`                                     |
-| Success state    | `color: feedback-success (#06844F)`, `bg: background-success (#F5FFE3)`                                                   |
-| Warning state    | `color: feedback-warning (#FFD300)`, `bg: background-warning (#FFFAE5)`                                                   |
-| Disabled state   | `color: text-disabled (navy-500)`, `bg: background-disabled (navy-200)`, `border: border-disabled`                        |
+| Scenario         | Tokens                                                                                             |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| Primary button   | `bg: primary`, `color: white`, `hover: primary-hover`, `borderRadius: md`                          |
+| Body text        | `color: text`, `font: base`, `size: 16`, `weight: 400`, `lineHeight: base`                         |
+| Headline         | `color: text-accent`, `font: base`, `size: 34–64`, `weight: title`, `lineHeight: title`            |
+| Secondary text   | `color: text-secondary`                                                                            |
+| Disabled text    | `color: text-disabled`                                                                             |
+| Elevated surface | `bg: background-primary`                                                                           |
+| Card default     | `bg: background`, `borderRadius: none` — add `isInteractive` for hover shadow + `borderRadius: md` |
+| Error state      | `color: feedback-error`, `bg: background-error`, `borderColor: danger`                             |
+| Success state    | `color: feedback-success`, `bg: background-success`                                                |
+| Warning state    | `color: feedback-warning`, `bg: background-warning`                                                |
+| Disabled state   | `color: text-disabled`, `bg: background-disabled`, `borderColor: border-disabled`                  |
 
 ### Component token cheatsheet
 
 ```
-FillButton      → bg: primary (#1C50BB),     color: white,    hover: primary-hover (#10162F), radius: 8px
-StrokeButton    → bg: transparent,            border: secondary (#10162F)
-Checkbox/Toggle → hyper-500 (#3A10E5),        hover: hyper-400 (#5533FF),                    radius: 4px
+FillButton      → bg: primary,     color: white,    hover: primary-hover, borderRadius: md
+StrokeButton    → bg: transparent, borderColor: secondary
+Checkbox/Toggle → palette hyper-500, hover hyper-400, borderRadius: sm
 Card            → bg: background,  shadow: shadow-primary (navy-200, soft),                  radius: none
 Alert (error)   → uses feedback-error + background-error
 Alert (success) → uses feedback-success + background-success

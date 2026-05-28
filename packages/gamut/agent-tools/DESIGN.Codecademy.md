@@ -230,15 +230,15 @@ LX Studio extends Core with these differences:
 
 **Semantic color overrides (light mode)**:
 
-| Token                | Core value          | LX Studio value               |
-| -------------------- | ------------------- | ----------------------------- |
-| `primary`            | hyper-500 `#3A10E5` | sapphire `#1C50BB`            |
-| `primary-hover`      | hyper-400 `#5533FF` | navy-800 `#10162F`            |
-| `feedback-success`   | green-700 `#008A27` | `#06844F` (lxStudioSuccess)   |
-| `background-primary` | beige `#FFF0E5`     | `#FAFBFC` (lxStudioBgPrimary) |
-| `shadow-primary`     | navy-800            | navy-200                      |
-| `border-primary`     | navy-800            | navy-400                      |
-| `border-disabled`    | navy-500            | navy-300                      |
+| Token                | Core value  | LX Studio value     |
+| -------------------- | ----------- | ------------------- |
+| `primary`            | `hyper-500` | `sapphire`          |
+| `primary-hover`      | `hyper-400` | `navy-800`          |
+| `feedback-success`   | `green-700` | `lxStudioSuccess`   |
+| `background-primary` | `beige`     | `lxStudioBgPrimary` |
+| `shadow-primary`     | navy-800    | navy-200            |
+| `border-primary`     | navy-800    | navy-400            |
+| `border-disabled`    | navy-500    | navy-300            |
 
 ---
 
@@ -248,55 +248,55 @@ Use these token names when specifying colors in designs. They resolve to the cor
 
 ### Text
 
-| Token            | Light                      | Dark            | Use for                     |
-| ---------------- | -------------------------- | --------------- | --------------------------- |
-| `text`           | navy-800 `#10162F` at 100% | white `#ffffff` | Default body and UI text    |
-| `text-accent`    | navy-900 `#0A0D1C`         | beige `#FFF0E5` | Stronger emphasis text      |
-| `text-secondary` | navy-800 at 75%            | white at 65%    | Supporting / secondary copy |
-| `text-disabled`  | navy-800 at 63%            | white at 50%    | Disabled state labels       |
+| Token            | Light           | Dark         | Use for                     |
+| ---------------- | --------------- | ------------ | --------------------------- |
+| `text`           | `navy-800`      | `white`      | Default body and UI text    |
+| `text-accent`    | `navy-900`      | `beige`      | Stronger emphasis text      |
+| `text-secondary` | navy-800 at 75% | white at 65% | Supporting / secondary copy |
+| `text-disabled`  | navy-800 at 63% | white at 50% | Disabled state labels       |
 
 ### Background
 
-| Token                 | Light              | Dark                 | Use for                           |
-| --------------------- | ------------------ | -------------------- | --------------------------------- |
-| `background`          | white `#ffffff`    | navy-800 `#10162F`   | Default page/component background |
-| `background-primary`  | beige `#FFF0E5`    | navy-900 `#0A0D1C`   | Slightly elevated surfaces        |
-| `background-contrast` | white              | black `#000000`      | Maximum contrast surface          |
-| `background-selected` | navy-800 at 4%     | white at 4%          | Selected row / item               |
-| `background-hover`    | navy-800 at 12%    | white at 9%          | Hover state overlay               |
-| `background-disabled` | navy-800 at 12%    | white at 9%          | Disabled surface                  |
-| `background-success`  | green-0 `#F5FFE3`  | green-900 `#151C07`  | Success state container           |
-| `background-warning`  | yellow-0 `#FFFAE5` | yellow-900 `#211B00` | Warning state container           |
-| `background-error`    | red-0 `#FBF1F0`    | red-900 `#280503`    | Error state container             |
+| Token                 | Light           | Dark         | Use for                           |
+| --------------------- | --------------- | ------------ | --------------------------------- |
+| `background`          | `white`         | `navy-800`   | Default page/component background |
+| `background-primary`  | `beige`         | `navy-900`   | Slightly elevated surfaces        |
+| `background-contrast` | `white`         | `black`      | Maximum contrast surface          |
+| `background-selected` | navy-800 at 4%  | white at 4%  | Selected row / item               |
+| `background-hover`    | navy-800 at 12% | white at 9%  | Hover state overlay               |
+| `background-disabled` | navy-800 at 12% | white at 9%  | Disabled surface                  |
+| `background-success`  | `green-0`       | `green-900`  | Success state container           |
+| `background-warning`  | `yellow-0`      | `yellow-900` | Warning state container           |
+| `background-error`    | `red-0`         | `red-900`    | Error state container             |
 
 ### Interactive
 
-| Token             | Light                | Dark                 | Use for                              |
-| ----------------- | -------------------- | -------------------- | ------------------------------------ |
-| `primary`         | hyper-500 `#3A10E5`  | yellow-500 `#FFD300` | Primary CTA, links, focus rings      |
-| `primary-hover`   | hyper-400 `#5533FF`  | yellow-400 `#CCA900` | Hover state of primary interactive   |
-| `primary-inverse` | yellow-500 `#FFD300` | hyper-500 `#3A10E5`  | Primary on a colored background      |
-| `secondary`       | navy-800 `#10162F`   | white `#ffffff`      | Secondary CTA, ghost buttons         |
-| `secondary-hover` | navy-800 at 86%      | white at 80%         | Hover state of secondary interactive |
-| `danger`          | red-500 `#E91C11`    | red-300 `#E85D7F`    | Destructive actions, error states    |
-| `danger-hover`    | red-600 `#BE1809`    | red-400 `#DC5879`    | Hover on danger interactive          |
+| Token             | Light           | Dark         | Use for                              |
+| ----------------- | --------------- | ------------ | ------------------------------------ |
+| `primary`         | `hyper-500`     | `yellow-500` | Primary CTA, links, focus rings      |
+| `primary-hover`   | `hyper-400`     | `yellow-400` | Hover state of primary interactive   |
+| `primary-inverse` | `yellow-500`    | `hyper-500`  | Primary on a colored background      |
+| `secondary`       | `navy-800`      | `white`      | Secondary CTA, ghost buttons         |
+| `secondary-hover` | navy-800 at 86% | white at 80% | Hover state of secondary interactive |
+| `danger`          | `red-500`       | `red-300`    | Destructive actions, error states    |
+| `danger-hover`    | `red-600`       | `red-400`    | Hover on danger interactive          |
 
 ### Border
 
-| Token              | Light              | Dark            | Use for                    |
-| ------------------ | ------------------ | --------------- | -------------------------- |
-| `border-primary`   | navy-800 `#10162F` | white `#ffffff` | Strong borders, dividers   |
-| `border-secondary` | navy-800 at 75%    | white at 65%    | Medium-weight borders      |
-| `border-tertiary`  | navy-800 at 28%    | white at 20%    | Subtle borders, separators |
-| `border-disabled`  | navy-800 at 63%    | white at 50%    | Disabled input borders     |
+| Token              | Light           | Dark         | Use for                    |
+| ------------------ | --------------- | ------------ | -------------------------- |
+| `border-primary`   | `navy-800`      | `white`      | Strong borders, dividers   |
+| `border-secondary` | navy-800 at 75% | white at 65% | Medium-weight borders      |
+| `border-tertiary`  | navy-800 at 28% | white at 20% | Subtle borders, separators |
+| `border-disabled`  | navy-800 at 63% | white at 50% | Disabled input borders     |
 
 ### Feedback
 
-| Token              | Light               | Dark                | Use for                          |
-| ------------------ | ------------------- | ------------------- | -------------------------------- |
-| `feedback-error`   | red-600 `#BE1809`   | red-300 `#E85D7F`   | Error messages, validation       |
-| `feedback-success` | green-700 `#008A27` | green-400 `#AEE938` | Success messages, confirmations  |
-| `feedback-warning` | yellow `#FFD300`    | yellow-0 `#FFFAE5`  | Warning messages, caution states |
+| Token              | Light       | Dark        | Use for                          |
+| ------------------ | ----------- | ----------- | -------------------------------- |
+| `feedback-error`   | `red-600`   | `red-300`   | Error messages, validation       |
+| `feedback-success` | `green-700` | `green-400` | Success messages, confirmations  |
+| `feedback-warning` | `yellow`    | `yellow-0`  | Warning messages, caution states |
 
 ### Shadow
 
@@ -313,32 +313,32 @@ All colors available as static tokens regardless of color mode. Use these only w
 
 ### Core Palette
 
-| Name            | Weights available            | Notes                                                                             |
-| --------------- | ---------------------------- | --------------------------------------------------------------------------------- |
-| `navy`          | 100–900                      | 100–700 are rgba transparencies of `#10162F`; 800 = `#10162F`; 900 = `#0A0D1C`    |
-| `white`         | 100–700                      | rgba transparencies of `#ffffff` (no solid white weight — use `white` for `#fff`) |
-| `blue`          | 0, 100, 300, 400, 500, 800   | 500 = `#1557FF`                                                                   |
-| `hyper`         | 400, 500                     | 500 = `#3A10E5` (purple-blue), 400 = `#5533FF`                                    |
-| `green`         | 0, 100, 400, 700, 900        | 700 = `#008A27`                                                                   |
-| `yellow`        | 0, 400, 500, 900             | 500 = `#FFD300`                                                                   |
-| `red`           | 0, 300, 400, 500, 600, 900   | 500 = `#E91C11`                                                                   |
-| `gray`          | 100, 200, 300, 600, 800, 900 |                                                                                   |
-| `pink`          | 0, 400                       | 400 = `#F966FF`                                                                   |
-| `orange`        | 100, 500                     | 500 = `#FF8C00`                                                                   |
-| `beige`         | 100 (alias: `beige`)         | `#FFF0E5`                                                                         |
-| `black`         | —                            | `#000000`                                                                         |
-| `white` (solid) | —                            | `#ffffff`                                                                         |
+| Name            | Weights available            | Notes                                                                      |
+| --------------- | ---------------------------- | -------------------------------------------------------------------------- |
+| `navy`          | 100–900                      | 100–700 are rgba transparencies of `navy-800`; 800 and 900 are solid       |
+| `white`         | 100–700                      | rgba transparencies of `white` (no solid white weight — use `white` token) |
+| `blue`          | 0, 100, 300, 400, 500, 800   | named alias `blue` maps to `blue-500`                                      |
+| `hyper`         | 400, 500                     | named alias `hyper` maps to `hyper-500`                                    |
+| `green`         | 0, 100, 400, 700, 900        | named alias `green` maps to `green-700`                                    |
+| `yellow`        | 0, 400, 500, 900             | named alias `yellow` maps to `yellow-500`                                  |
+| `red`           | 0, 300, 400, 500, 600, 900   | named alias `red` maps to `red-500`                                        |
+| `gray`          | 100, 200, 300, 600, 800, 900 |                                                                            |
+| `pink`          | 0, 400                       | named alias `pink` maps to `pink-400`                                      |
+| `orange`        | 100, 500                     | named alias `orange` maps to `orange-500`                                  |
+| `beige`         | 100 (alias: `beige`)         | solid `beige` token                                                        |
+| `black`         | —                            | `black` token                                                              |
+| `white` (solid) | —                            | `white` token                                                              |
 
 **Named aliases** (shorthand for common weights):
 `beige`, `blue`, `green`, `hyper`, `lightBlue`, `lightGreen`, `navy`, `orange`, `paleBlue`, `paleGreen`, `palePink`, `paleRed`, `paleYellow`, `pink`, `red`, `yellow`, `black`, `white`
 
 ### Platform-only additions
 
-`lightBeige` (`#FFFBF8`), `gold` (`#8A7300`), `teal` (`#006D82`), `purple` (`#B3CCFF`)
+`lightBeige`, `gold`, `teal`, `purple` (Platform theme palette)
 
 ### LX Studio additions
 
-`sapphire` (`#1C50BB`), `lxStudioSuccess` (`#06844F`), `lxStudioBgPrimary` (`#FAFBFC`)
+`sapphire`, `lxStudioSuccess`, `lxStudioBgPrimary` (LX Studio theme palette)
 
 ---
 
@@ -602,8 +602,8 @@ Quick color/token reference for generating or specifying UI:
 
 | Scenario               | Tokens                                                                                                |
 | ---------------------- | ----------------------------------------------------------------------------------------------------- |
-| Primary button (light) | `bg: primary (#3A10E5)`, `color: white`, `hover: primary-hover (#5533FF)`                             |
-| Primary button (dark)  | `bg: primary (#FFD300)`, `color: navy-800`, `hover: primary-hover (#CCA900)`                          |
+| Primary button (light) | `bg: primary`, `color: white`, `hover: primary-hover`                                                 |
+| Primary button (dark)  | `bg: primary`, `color: text`, `hover: primary-hover`                                                  |
 | Body text              | `color: text`, `font: base (Apercu Pro)`, `size: 16px`, `weight: 400`, `lineHeight: base (1.5)`       |
 | Headline               | `color: text-accent`, `font: base`, `size: 34–64px`, `weight: title (700)`, `lineHeight: title (1.2)` |
 | Caption / label        | `color: text-secondary`, `font: accent (Suisse Int'l Mono)`, `size: 14px`                             |
