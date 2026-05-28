@@ -325,14 +325,14 @@ All spacing is multiples of 4px on an 8px grid.
 
 ## Border Radius Scale
 
-| Token  | Value | Use                                        |
-| ------ | ----- | ------------------------------------------ |
-| `none` | 0px   | Square / non-interactive elements          |
-| `sm`   | 2px   | Subtle rounding, tags                      |
-| `md`   | 4px   | Default buttons, inputs, interactive cards |
-| `lg`   | 8px   | Cards, panels                              |
-| `xl`   | 16px  | Large cards, modals                        |
-| `full` | 999px | Pills, avatars, circular elements          |
+| Token  | Value | Use                      |
+| ------ | ----- | ------------------------ |
+| `none` | 0px   | Non-interactive elements |
+| `sm`   | 2px   | Interactive elements     |
+| `md`   | 4px   | Overlays                 |
+| `lg`   | 8px   | Non-interactive elements |
+| `xl`   | 16px  | Non-interactive elements |
+| `full` | 999px | Toggles, badges          |
 
 ---
 
