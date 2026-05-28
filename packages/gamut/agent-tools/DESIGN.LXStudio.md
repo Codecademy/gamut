@@ -124,9 +124,11 @@ components:
 
 # LX Studio
 
-This file defines the visual design tokens for the Skillsoft LX Studio authoring platform, implemented using the Gamut design system (`@codecademy/gamut`, `@codecademy/gamut-styles`). LX Studio uses a dedicated Gamut theme that extends Core with its own brand colors, typography, and border radii — all Gamut components work without modification.
+This file defines the visual design tokens for the Skillsoft LX Studio authoring platform, implemented using the Gamut design system (`@codecademy/gamut`, `@codecademy/gamut-styles`). LX Studio uses a dedicated Gamut theme with its own brand colors, typography, and border radii — all Gamut components work without modification.
 
 **Storybook**: https://gamut.codecademy.com
+
+> **Other Gamut themes:** This document covers **LX Studio** only. For Codecademy (Core/Admin/Platform) or Percipio, install that product's `DESIGN.md` instead: `gamut plugin install cursor --theme core` or `--theme percipio`.
 
 ---
 
@@ -138,11 +140,10 @@ LX Studio communicates **modern professional craft** — clean, precise, and too
 
 **Design philosophy**:
 
-- Light mode only — no dark mode support
-- Larger border radii than Core give the UI a softer, more modern feel
+- Larger border radii (`sm`–`lg`) for a softer, more modern feel
 - Brand blue (`sapphire` / `primary`) drives CTAs, buttons, and links
-- Shadows are soft (navy-200) rather than hard (navy-800 in Core light mode)
-- Skillsoft Text and Skillsoft Sans replace Apercu and Suisse across all font roles
+- Soft shadows (`shadow-primary` → `navy-200`)
+- Skillsoft Text (`base`) and Skillsoft Sans (`accent`) for all UI typography
 
 ---
 
@@ -206,7 +207,7 @@ Use these token names when specifying colors. LX Studio is light mode only — t
 | `border-tertiary`  | `navy-800`  | Strong structural borders       |
 | `border-disabled`  | `navy-300`  | Disabled input borders          |
 
-LX Studio's `border-primary` is mid-gray (navy-400) rather than Core's near-black navy-800 — borders are softer and less prominent.
+`border-primary` resolves to `navy-400` — mid-weight borders for inputs and cards.
 
 ### Feedback
 
@@ -223,7 +224,7 @@ LX Studio's `border-primary` is mid-gray (navy-400) rather than Core's near-blac
 | `shadow-primary`   | `navy-200`  |
 | `shadow-secondary` | `navy-600`  |
 
-LX Studio shadows are soft — use `shadow-primary` for standard elevated surfaces. This matches Percipio's shadow weight, not Core's hard navy-800 shadow.
+Use `shadow-primary` for standard elevated surfaces.
 
 ---
 
@@ -245,7 +246,7 @@ The full core swatch palette (navy, hyper, blue, green, yellow, red, etc.) is al
 
 ### Typefaces
 
-LX Studio uses **Skillsoft Text** for body and headlines and **Skillsoft Sans** for accent UI. There is no Apercu and no Suisse.
+LX Studio uses **Skillsoft Text** for body and headlines and **Skillsoft Sans** for accent UI.
 
 | Token       | Font                                                  | Use for                                   |
 | ----------- | ----------------------------------------------------- | ----------------------------------------- |
@@ -254,7 +255,7 @@ LX Studio uses **Skillsoft Text** for body and headlines and **Skillsoft Sans** 
 | `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Code editor contexts                      |
 | `system`    | System UI fonts                                       | Performance-critical surfaces             |
 
-Skillsoft fonts are loaded via Gamut's asset provider (same stack as Percipio).
+Skillsoft fonts are loaded via Gamut's asset provider.
 
 ### Rules
 
@@ -266,14 +267,14 @@ Skillsoft fonts are loaded via Gamut's asset provider (same stack as Percipio).
 
 ### Font weight scale
 
-| Token   | Value   | Use                                                  |
-| ------- | ------- | ---------------------------------------------------- |
-| `base`  | 400     | Body text, UI labels                                 |
-| `title` | **500** | Headlines, CTAs, buttons _(differs from Core's 700)_ |
+| Token   | Value   | Use                      |
+| ------- | ------- | ------------------------ |
+| `base`  | 400     | Body text, UI labels     |
+| `title` | **500** | Headlines, CTAs, buttons |
 
 ### Font size scale
 
-Shared with Core — all sizes are identical.
+Standard Gamut font size scale:
 
 | Token key | Size | Common use                   |
 | --------- | ---- | ---------------------------- |
@@ -289,7 +290,7 @@ Shared with Core — all sizes are identical.
 
 ### Line height scale
 
-Shared with Core.
+Standard Gamut line height scale:
 
 | Token         | Value | Use                             |
 | ------------- | ----- | ------------------------------- |
@@ -305,7 +306,7 @@ Target 45–85 characters per line; 66 characters is ideal. Max 50 for multi-col
 
 ## Spacing Scale
 
-Identical to Core. All spacing is multiples of 4px on an 8px grid.
+All spacing is multiples of 4px on an 8px grid.
 
 | Token | Value |
 | ----- | ----- |
@@ -325,22 +326,20 @@ Identical to Core. All spacing is multiples of 4px on an 8px grid.
 
 ## Border Radius Scale
 
-LX Studio uses larger border radii than Core — everything is one step softer.
-
-| Token  | LX Studio | Core  | Use                                        |
-| ------ | --------- | ----- | ------------------------------------------ |
-| `none` | 0px       | 0px   | Square / non-interactive elements          |
-| `sm`   | **4px**   | 2px   | Subtle rounding, tags, checkboxes          |
-| `md`   | **8px**   | 4px   | Default buttons, inputs, interactive cards |
-| `lg`   | **12px**  | 8px   | Cards, panels                              |
-| `xl`   | 16px      | 16px  | Large cards, modals                        |
-| `full` | 999px     | 999px | Pills, avatars, circular elements          |
+| Token  | Value | Use                                        |
+| ------ | ----- | ------------------------------------------ |
+| `none` | 0px   | Square / non-interactive elements          |
+| `sm`   | 4px   | Subtle rounding, tags, checkboxes          |
+| `md`   | 8px   | Default buttons, inputs, interactive cards |
+| `lg`   | 12px  | Cards, panels                              |
+| `xl`   | 16px  | Large cards, modals                        |
+| `full` | 999px | Pills, avatars, circular elements          |
 
 ---
 
 ## Responsive Behavior
 
-Identical to Core. Mobile-first, apply styles from the named breakpoint up.
+Mobile-first; apply styles from the named breakpoint up.
 
 | Token    | Min-width | Max content |
 | -------- | --------- | ----------- |
@@ -365,16 +364,14 @@ Minimum interactive touch target: **44×44px** on mobile breakpoints.
 
 ## Component Library
 
-Same component library as Codecademy — all atoms, molecules, and organisms apply. Token values resolve differently per theme automatically.
+Gamut atoms, molecules, and organisms all apply. Use semantic tokens below for LX Studio styling.
 
-Key LX Studio-specific visual differences:
+Key patterns:
 
-- `FillButton` uses `primary` (`sapphire`) instead of Core `hyper-500`
-- `FillButton` hover uses `primary-hover` (`navy-800`) — darker on hover
-- `Checkbox` / `Toggle` use palette `hyper-500` (not `primary`)
-- All interactive elements have `borderRadius: md` (8px) instead of Core's 4px
-- `Card` shadows use navy-200 (soft) rather than navy-800 (hard)
-- No `Card-beige` variant — LX Studio `background-primary` is off-white, not beige
+- `FillButton` — `bg: primary` (`sapphire`), `hover: primary-hover` (`navy-800`)
+- `Checkbox` / `Toggle` — `primary`, `hover: primary-hover` (same as `FillButton`)
+- Buttons and inputs — `borderRadius: md` (8px)
+- `Card` — `shadow-primary` (`navy-200`); elevated surfaces use `background-primary` (`lxStudioBgPrimary`), not beige
 
 ---
 
@@ -385,13 +382,13 @@ Key LX Studio-specific visual differences:
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
 - **Do** use `primary` (resolves to palette `sapphire`) for buttons and links.
 - **Don't** attempt dark mode — LX Studio is light only.
-- **Don't** use the Percipio or Codecademy primary blue/hyper colors directly; go through semantic aliases.
+- **Don't** use raw palette swatches for adaptive UI — use semantic aliases.
 
 ### Typography
 
 - **Do** use `fontWeight="title"` (500) for headlines, CTAs, and buttons.
 - **Do** keep body text at 150–175% line height for readability.
-- **Don't** use Apercu, Suisse, or Hanken Grotesk — LX Studio uses Skillsoft Text and Skillsoft Sans.
+- **Don't** use fonts outside the LX Studio theme stack (Skillsoft Text, Skillsoft Sans).
 - **Don't** right-align or center-align body paragraphs.
 - **Don't** adjust letter-spacing.
 
@@ -427,7 +424,7 @@ Quick color/token reference for generating or specifying LX Studio UI:
 ```
 FillButton      → bg: primary,     color: white,    hover: primary-hover, borderRadius: md
 StrokeButton    → bg: transparent, borderColor: secondary
-Checkbox/Toggle → palette hyper-500, hover hyper-400, borderRadius: sm
+Checkbox/Toggle → bg: primary, hover: primary-hover, borderRadius: sm
 Card            → bg: background,  shadow: shadow-primary (navy-200, soft),                  radius: none
 Alert (error)   → uses feedback-error + background-error
 Alert (success) → uses feedback-success + background-success

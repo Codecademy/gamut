@@ -1,7 +1,12 @@
-Product-specific design context lives in this directory:
+Product-specific design context lives in this directory. **Use one `DESIGN.md` per app — matched to the Gamut theme that app uses.**
 
-- `DESIGN.Codecademy.md` — Core, Admin, and Platform themes
-- `DESIGN.Percipio.md` — Percipio theme
-- `DESIGN.LXStudio.md` — LX Studio theme
+| Source file            | Install with `--theme`                                    |
+| ---------------------- | --------------------------------------------------------- |
+| `DESIGN.Codecademy.md` | `core`, `admin`, `platform` (aliases: `codecademy`, `cc`) |
+| `DESIGN.Percipio.md`   | `percipio`                                                |
+| `DESIGN.LXStudio.md`   | `lxstudio` (alias: `lx-studio`)                           |
 
-Install into your app repo with `gamut plugin install cursor --theme <core|percipio|lxstudio|admin|platform>` (or `claude`) to copy the matching file to the repo root as `DESIGN.md`.
+```sh
+gamut plugin install cursor --theme <name>
+# refresh: gamut plugin update cursor --theme <name> --force
+```

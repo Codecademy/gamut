@@ -180,6 +180,8 @@ This file defines the visual design tokens for codecademy.com, implemented using
 **Figma file**: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/📐-Gamut
 **Storybook**: https://gamut.codecademy.com
 
+> **Other Gamut themes:** This document covers **Codecademy** (Core, Admin, Platform) only. For Percipio or LX Studio, install that product's `DESIGN.md` instead: `gamut plugin install cursor --theme percipio` or `--theme lxstudio` (see `DESIGN.Percipio.md` / `DESIGN.LXStudio.md` in agent-tools).
+
 ---
 
 ## Visual Theme & Atmosphere
@@ -191,7 +193,7 @@ Codecademy communicates **logic with personality** — structured and trustworth
 **Design philosophy**:
 
 - Components are color mode–aware by default — never hardcode hex values for adaptive UI
-- Every component works across all themes without modification
+- Every component works across Core, Admin, and Platform without modification
 - Mobile-first responsive design built on a 12-column grid
 - Accessibility is guaranteed by design: semantic color tokens meet contrast requirements per mode automatically
 
@@ -199,46 +201,17 @@ Codecademy communicates **logic with personality** — structured and trustworth
 
 ## Themes
 
-Codecademy products use one of four Gamut themes, all sharing the same core visual identity. Token aliases resolve to the right values per theme automatically — components require no modification.
+Codecademy products use **Core**, **Admin**, or **Platform** — the same visual identity with theme-specific palette additions on Platform. Token aliases resolve per theme automatically; components require no modification.
 
-| Theme         | Use case                        | Base font             | Dark mode      |
-| ------------- | ------------------------------- | --------------------- | -------------- |
-| **Core**      | Codecademy (default)            | Apercu                | ✓ light + dark |
-| **Admin**     | Codecademy admin tools          | Apercu                | ✓ light + dark |
-| **Platform**  | Codecademy learning environment | Apercu                | ✓ light + dark |
-| **LX Studio** | LX Studio application           | Skillsoft Text / Sans | light only     |
+| Theme        | Use case                        | Base font | Dark mode      |
+| ------------ | ------------------------------- | --------- | -------------- |
+| **Core**     | Codecademy (default)            | Apercu    | ✓ light + dark |
+| **Admin**    | Codecademy admin tools          | Apercu    | ✓ light + dark |
+| **Platform** | Codecademy learning environment | Apercu    | ✓ light + dark |
 
-The active theme is set at the app root via `<GamutProvider>`. When designing, know which theme your screen targets — it affects primary colors, font families, and available color weights.
+Set the active theme at the app root via `<GamutProvider theme={coreTheme | adminTheme | platformTheme}>`.
 
-**Font licensing**: Apercu is licensed for codecademy.com only. LX Studio and Percipio use Skillsoft Text and Skillsoft Sans.
-
-For Percipio projects, use `DESIGN.Percipio.md` from the same package instead. For LX Studio, use `DESIGN.LXStudio.md`.
-
-### LX Studio theme overrides
-
-LX Studio extends Core with these differences:
-
-**Font**: `base` → Skillsoft Text; `accent` → Skillsoft Sans (no Apercu, no Suisse). Title weight is **500**, not Core's 700.
-
-**Border radii** (all values shift up one step):
-
-| Token | Core | LX Studio |
-| ----- | ---- | --------- |
-| `sm`  | 2px  | 4px       |
-| `md`  | 4px  | 8px       |
-| `lg`  | 8px  | 12px      |
-
-**Semantic color overrides (light mode)**:
-
-| Token                | Core value  | LX Studio value     |
-| -------------------- | ----------- | ------------------- |
-| `primary`            | `hyper-500` | `sapphire`          |
-| `primary-hover`      | `hyper-400` | `navy-800`          |
-| `feedback-success`   | `green-700` | `lxStudioSuccess`   |
-| `background-primary` | `beige`     | `lxStudioBgPrimary` |
-| `shadow-primary`     | navy-800    | navy-200            |
-| `border-primary`     | navy-800    | navy-400            |
-| `border-disabled`    | navy-500    | navy-300            |
+**Font licensing:** Apercu is licensed for codecademy.com only.
 
 ---
 
@@ -336,24 +309,20 @@ All colors available as static tokens regardless of color mode. Use these only w
 
 `lightBeige`, `gold`, `teal`, `purple` (Platform theme palette)
 
-### LX Studio additions
-
-`sapphire`, `lxStudioSuccess`, `lxStudioBgPrimary` (LX Studio theme palette)
-
 ---
 
 ## Typography
 
 ### Typefaces
 
-| Token       | Core / Admin / Platform                                  | LX Studio                                             | Use for                                          |
-| ----------- | -------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------ |
-| `base`      | Apercu Pro (CSS: `Apercu`)                               | Skillsoft Text                                        | All default UI text, headlines, body copy        |
-| `accent`    | Suisse Intl Mono (CSS: `Suisse`); falls back to `Apercu` | Skillsoft Sans                                        | Code, captions, labels, lists, technical context |
-| `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas    | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas | Code editor contexts                             |
-| `system`    | System UI fonts                                          | System UI fonts                                       | Performance-critical surfaces                    |
+| Token       | Font stack                                               | Use for                                          |
+| ----------- | -------------------------------------------------------- | ------------------------------------------------ |
+| `base`      | Apercu Pro (CSS: `Apercu`)                               | All default UI text, headlines, body copy        |
+| `accent`    | Suisse Intl Mono (CSS: `Suisse`); falls back to `Apercu` | Code, captions, labels, lists, technical context |
+| `monospace` | Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas    | Code editor contexts                             |
+| `system`    | System UI fonts                                          | Performance-critical surfaces                    |
 
-**Apercu is licensed for codecademy.com only.** LX Studio uses Skillsoft Text (`base`) and Skillsoft Sans (`accent`) with title weight 500.
+**Apercu is licensed for codecademy.com only.**
 
 ### Rules
 

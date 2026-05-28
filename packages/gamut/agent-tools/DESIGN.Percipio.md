@@ -118,21 +118,23 @@ This file defines the visual design tokens for the Skillsoft Percipio platform, 
 
 **Storybook**: https://gamut.codecademy.com
 
+> **Other Gamut themes:** This document covers **Percipio** only. For Codecademy (Core/Admin/Platform) or LX Studio, install that product's `DESIGN.md` instead: `gamut plugin install cursor --theme core` or `--theme lxstudio`.
+
 ---
 
 ## Visual Theme & Atmosphere
 
-Percipio communicates **professional clarity** — clean, trustworthy, and enterprise-ready. The design voice is more neutral and corporate than Codecademy: less playful, more functional. Primary blue drives interactive affordances; neutral grays define text and structure.
+Percipio communicates **professional clarity** — clean, trustworthy, and enterprise-ready. The design voice is neutral and corporate: functional, with clear hierarchy. Brand blue drives interactive affordances; neutral grays define text and structure.
 
-**Density**: Medium. Consistent with Codecademy layouts but with softer shadows and a lighter overall feel due to the muted neutral palette.
+**Density**: Medium. Information-dense layouts with softer shadows and a muted neutral palette.
 
 **Design philosophy**:
 
 - Light mode only — no dark mode support
-- Brand blue (`sapphire` / `primary`) replaces Codecademy's `hyper-500` for buttons, links, and focus rings
-- Text is near-black dark gray rather than navy
-- Shadows are soft and minimal (navy at low opacity) rather than hard borders
-- Title font weight is 500 (medium) rather than 700 (bold) — Percipio headlines are less heavy
+- Brand blue (`sapphire` / `primary`) for buttons, links, and focus rings
+- Text uses dedicated Percipio palette tokens (`percipioTextPrimary`, etc.)
+- Shadows are soft and minimal (`shadow-primary` → `navy-200`)
+- Title font weight is **500** via `fontWeight="title"` — use semantic weight, not literal `700`
 
 ---
 
@@ -212,7 +214,7 @@ Percipio's border weights use a non-standard order: `primary` is mid-weight, `se
 | `shadow-primary`   | `navy-200`  |
 | `shadow-secondary` | `navy-400`  |
 
-Percipio shadows are softer than Codecademy's — use `shadow-primary` for standard elevated surfaces.
+Use `shadow-primary` for standard elevated surfaces.
 
 ---
 
@@ -264,16 +266,14 @@ Percipio uses **Skillsoft Text** for body and headlines and **Skillsoft Sans** f
 
 ### Font weight scale
 
-Percipio overrides the title weight from Core's 700 to 500 (medium). This gives Percipio a lighter, less heavy headline style.
-
-| Token   | Value   | Use                                                        |
-| ------- | ------- | ---------------------------------------------------------- |
-| `base`  | 400     | Body text, UI labels                                       |
-| `title` | **500** | Headlines, CTAs, buttons _(differs from Codecademy's 700)_ |
+| Token   | Value   | Use                      |
+| ------- | ------- | ------------------------ |
+| `base`  | 400     | Body text, UI labels     |
+| `title` | **500** | Headlines, CTAs, buttons |
 
 ### Font size scale
 
-Shared with Core — all sizes are identical.
+Standard Gamut font size scale:
 
 | Token key | Size | Common use                   |
 | --------- | ---- | ---------------------------- |
@@ -289,7 +289,7 @@ Shared with Core — all sizes are identical.
 
 ### Line height scale
 
-Shared with Core.
+Standard Gamut line height scale:
 
 | Token         | Value | Use                             |
 | ------------- | ----- | ------------------------------- |
@@ -305,7 +305,7 @@ Target 45–85 characters per line; 66 characters is ideal. Max 50 for multi-col
 
 ## Spacing Scale
 
-Identical to Core. All spacing is multiples of 4px on an 8px grid.
+All spacing is multiples of 4px on an 8px grid.
 
 | Token | Value |
 | ----- | ----- |
@@ -325,8 +325,6 @@ Identical to Core. All spacing is multiples of 4px on an 8px grid.
 
 ## Border Radius Scale
 
-Identical to Core.
-
 | Token  | Value | Use                                        |
 | ------ | ----- | ------------------------------------------ |
 | `none` | 0px   | Square / non-interactive elements          |
@@ -340,7 +338,7 @@ Identical to Core.
 
 ## Responsive Behavior
 
-Identical to Core. Mobile-first, apply styles from the named breakpoint up.
+Mobile-first; apply styles from the named breakpoint up.
 
 | Token    | Min-width | Max content |
 | -------- | --------- | ----------- |
@@ -365,15 +363,13 @@ Minimum interactive touch target: **44×44px** on mobile breakpoints.
 
 ## Component Library
 
-Same component library as Codecademy — all atoms, molecules, and organisms apply. Token values resolve differently per theme automatically.
+Gamut atoms, molecules, and organisms all apply. Use semantic tokens below for Percipio-specific styling.
 
-Key Percipio-specific visual differences:
+Key patterns:
 
-- `FillButton` uses `primary` (`sapphire`) instead of Core `hyper-500`
-- `FillButton` hover uses `primary-hover` (`percipioActionPrimaryHover`) rather than a lighter blue
-- `Checkbox` / `Toggle` use `primary` (`sapphire`)
-- `Card` has softer `shadow-primary` (`navy-200` vs `navy-800` in Codecademy light mode)
-- Card shadow patterns (`patternLeft`, `patternRight`) are available but rarely used in Percipio UIs
+- `FillButton` — `bg: primary`, `hover: primary-hover`
+- `Checkbox` / `Toggle` — `primary`, `hover: primary-hover`
+- `Card` — `shadow-primary` (`navy-200`); `patternLeft` / `patternRight` are available but rarely used
 
 ---
 
@@ -383,14 +379,13 @@ Key Percipio-specific visual differences:
 
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
 - **Do** use `primary` (resolves to palette `sapphire`) as the brand interactive color.
-- **Don't** use Codecademy's hyper-purple or yellow in Percipio contexts.
 - **Don't** attempt dark mode — Percipio is light only.
 
 ### Typography
 
 - **Do** use title weight (500) for headlines, CTAs, and buttons — not 700.
 - **Do** keep body text at 150–175% line height for readability.
-- **Don't** use Apercu or Suisse — Percipio uses Skillsoft Text and Skillsoft Sans.
+- **Don't** use fonts outside the Percipio theme stack (Skillsoft Text, Skillsoft Sans, Roboto Mono for code).
 - **Don't** right-align or center-align body paragraphs.
 - **Don't** adjust letter-spacing.
 
