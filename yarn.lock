@@ -1559,11 +1559,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.57.3, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.57.5, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.14.0"
+    "@codecademy/gamut-styles": "npm:18.0.0"
     "@codecademy/variance": "npm:0.26.1"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1573,11 +1573,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-illustrations@npm:0.58.10, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
+"@codecademy/gamut-illustrations@npm:0.58.11, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-illustrations@workspace:packages/gamut-illustrations"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.14.0"
+    "@codecademy/gamut-styles": "npm:18.0.0"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1591,22 +1591,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:68.3.0"
-    "@codecademy/gamut-icons": "npm:9.57.3"
-    "@codecademy/gamut-illustrations": "npm:0.58.10"
-    "@codecademy/gamut-patterns": "npm:0.10.29"
-    "@codecademy/gamut-styles": "npm:17.14.0"
-    "@codecademy/gamut-tests": "npm:5.3.4"
+    "@codecademy/gamut": "npm:68.7.0"
+    "@codecademy/gamut-icons": "npm:9.57.5"
+    "@codecademy/gamut-illustrations": "npm:0.58.11"
+    "@codecademy/gamut-patterns": "npm:0.10.30"
+    "@codecademy/gamut-styles": "npm:18.0.0"
+    "@codecademy/gamut-tests": "npm:6.0.1"
     "@codecademy/variance": "npm:0.26.1"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-patterns@npm:0.10.29, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
+"@codecademy/gamut-patterns@npm:0.10.30, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-patterns@workspace:packages/gamut-patterns"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.14.0"
+    "@codecademy/gamut-styles": "npm:18.0.0"
     "@codecademy/variance": "npm:0.26.1"
     classnames: "npm:^2.2.5"
   peerDependencies:
@@ -1617,7 +1617,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:17.14.0, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:18.0.0, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
@@ -1636,11 +1636,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:5.3.4, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:6.0.1, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.14.0"
+    "@codecademy/gamut-styles": "npm:18.0.0"
     component-test-setup: "npm:^0.3.1"
     lodash: "npm:^4.17.23"
   peerDependencies:
@@ -1648,15 +1648,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.3.0, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.7.0, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.57.3"
-    "@codecademy/gamut-illustrations": "npm:0.58.10"
-    "@codecademy/gamut-patterns": "npm:0.10.29"
-    "@codecademy/gamut-styles": "npm:17.14.0"
+    "@codecademy/gamut-icons": "npm:9.57.5"
+    "@codecademy/gamut-illustrations": "npm:0.58.11"
+    "@codecademy/gamut-patterns": "npm:0.10.30"
+    "@codecademy/gamut-styles": "npm:18.0.0"
     "@codecademy/variance": "npm:0.26.1"
+    "@formatjs/intl-locale": "npm:5.3.1"
     "@react-aria/interactions": "npm:3.25.0"
     "@types/marked": "npm:^4.0.8"
     "@vidstack/react": "npm:^1.12.12"
@@ -1680,6 +1681,8 @@ __metadata:
     "@emotion/styled": ^11.3.0
     react: ^17.0.2 || ^18.3.0 || ^19.0.0
     react-dom: ^17.0.2 || ^18.3.0 || ^19.0.0
+  bin:
+    gamut: ./bin/gamut.mjs
   languageName: unknown
   linkType: soft
 
@@ -2261,6 +2264,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/bigdecimal@npm:0.2.0":
+  version: 0.2.0
+  resolution: "@formatjs/bigdecimal@npm:0.2.0"
+  checksum: 10c0/dec607e3d9d4b8c5d0474862e867726cbf322a24d543d5b2cbc3cab6fea187ac787a8e1a0e3df5ceef85a1ab9d58112a08bb7af40b1b3a3b00670431b0603510
+  languageName: node
+  linkType: hard
+
 "@formatjs/ecma402-abstract@npm:2.3.4":
   version: 2.3.4
   resolution: "@formatjs/ecma402-abstract@npm:2.3.4"
@@ -2273,12 +2283,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/ecma402-abstract@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@formatjs/ecma402-abstract@npm:3.2.0"
+  dependencies:
+    "@formatjs/bigdecimal": "npm:0.2.0"
+    "@formatjs/fast-memoize": "npm:3.1.1"
+    "@formatjs/intl-localematcher": "npm:0.8.2"
+  checksum: 10c0/b3c8ac881c3d7533fb4127ca3d771d2a32cb89e6efbbcc72d80b1dcc6a798494ace9ca5ee822b25eb08ebdc7ee2885a9e33496a436b40271ffc915ece605a3ce
+  languageName: node
+  linkType: hard
+
 "@formatjs/fast-memoize@npm:2.2.7":
   version: 2.2.7
   resolution: "@formatjs/fast-memoize@npm:2.2.7"
   dependencies:
     tslib: "npm:^2.8.0"
   checksum: 10c0/f5eabb0e4ab7162297df8252b4cfde194b23248120d9df267592eae2be2d2f7c4f670b5a70523d91b4ecdc35d40e65823bb8eeba8dd79fbf8601a972bf3b8866
+  languageName: node
+  linkType: hard
+
+"@formatjs/fast-memoize@npm:3.1.1":
+  version: 3.1.1
+  resolution: "@formatjs/fast-memoize@npm:3.1.1"
+  checksum: 10c0/79b24dc1389a49b2b2fb9e90a2ba922a4057d4b74e7bc33a3811f0dc94a5a868d28e8e37917b68c2f831070d11dfd0889de686f269bf5214085a44efc1c25a8c
   languageName: node
   linkType: hard
 
@@ -2303,12 +2331,49 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@formatjs/intl-getcanonicallocales@npm:3.2.2":
+  version: 3.2.2
+  resolution: "@formatjs/intl-getcanonicallocales@npm:3.2.2"
+  checksum: 10c0/3b0235c0752a1db8d92502211d048822711d9141217f679f54a0914426e2516685b468f2711f0d27a18f3db3d1908c7e2655746af3fb34e660b1126450c3f42a
+  languageName: node
+  linkType: hard
+
+"@formatjs/intl-locale@npm:5.3.1":
+  version: 5.3.1
+  resolution: "@formatjs/intl-locale@npm:5.3.1"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:3.2.0"
+    "@formatjs/intl-getcanonicallocales": "npm:3.2.2"
+    "@formatjs/intl-supportedvaluesof": "npm:2.3.0"
+  checksum: 10c0/19e00dde293d2cfda7357420957062e319a041bc3aaa8bd9b834463074e6e7bf2ae2374818a01c24d659c4373b1954a671460299258568775d30875aabbeaf90
+  languageName: node
+  linkType: hard
+
 "@formatjs/intl-localematcher@npm:0.6.1":
   version: 0.6.1
   resolution: "@formatjs/intl-localematcher@npm:0.6.1"
   dependencies:
     tslib: "npm:^2.8.0"
   checksum: 10c0/bacbedd508519c1bb5ca2620e89dc38f12101be59439aa14aa472b222915b462cb7d679726640f6dcf52a05dd218b5aa27ccd60f2e5010bb96f1d4929848cde0
+  languageName: node
+  linkType: hard
+
+"@formatjs/intl-localematcher@npm:0.8.2":
+  version: 0.8.2
+  resolution: "@formatjs/intl-localematcher@npm:0.8.2"
+  dependencies:
+    "@formatjs/fast-memoize": "npm:3.1.1"
+  checksum: 10c0/3bf838a018184837b167964849dafdcdeac95531a24f4df7d868638d4ad716854a250e9bccac9ab4568264c0db7470e70b99363da1db308fdc882b87f3eca651
+  languageName: node
+  linkType: hard
+
+"@formatjs/intl-supportedvaluesof@npm:2.3.0":
+  version: 2.3.0
+  resolution: "@formatjs/intl-supportedvaluesof@npm:2.3.0"
+  dependencies:
+    "@formatjs/ecma402-abstract": "npm:3.2.0"
+    "@formatjs/fast-memoize": "npm:3.1.1"
+  checksum: 10c0/132a44cf6922f8eaa58fef47f74179d75614a9c68343defc07f6d42080e29205b2a8663db599e404da4dd657790aca0b2312733abfeec56d3524593d6e8a4f6e
   languageName: node
   linkType: hard
 
@@ -13410,6 +13475,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.24.7"
     "@babel/preset-typescript": "npm:^7.24.7"
     "@codecademy/eslint-config": "npm:8.2.0"
+    "@codecademy/gamut": "workspace:*"
     "@codecademy/prettier-config": "npm:^0.2.0"
     "@codecademy/tsconfig": "npm:^0.3.0"
     "@commander-js/extra-typings": "npm:^14.0.0"
