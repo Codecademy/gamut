@@ -50,7 +50,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
         {isLoading && (
           <FlexBox center inset={0} position="absolute">
             <Spinner size={16} />
-            <Text screenreader aria-live="polite">
+            <Text aria-live="polite" screenreader>
               Loading
             </Text>
           </FlexBox>
