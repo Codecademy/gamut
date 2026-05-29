@@ -4,8 +4,8 @@ import { FieldValues, FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
-import { HiddenText } from '../HiddenText';
 import { Spinner } from '../Loading/Spinner';
+import { Text } from '../Typography';
 import { useSubmitState } from './utils';
 
 export interface SubmitContextProps {
@@ -50,7 +50,9 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
         {isLoading && (
           <FlexBox center inset={0} position="absolute">
             <Spinner size={16} />
-            <HiddenText aria-live="polite">Loading</HiddenText>
+            <Text screenreader aria-live="polite">
+              Loading
+            </Text>
           </FlexBox>
         )}
       </Button>
