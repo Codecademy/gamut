@@ -3509,7 +3509,7 @@ iframe.vds-youtube[data-no-controls]{height:120%}
 
 .vds-controls button{border-radius:var(--media-button-border-radius)}
 
-:where(.vds-video-layout[data-sm]) :where(.vds-button){padding:0px .25rem !important}
+:where(.vds-video-layout[data-sm]) :where(.vds-button){padding:0px 4px !important}
 
 :where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track){background-color:var(--color-gray-600)}
 
