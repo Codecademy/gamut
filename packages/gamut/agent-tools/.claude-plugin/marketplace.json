@@ -1,0 +1,16 @@
+{
+  "name": "gamut-design-system",
+  "owner": {
+    "name": "Codecademy"
+  },
+  "metadata": {
+    "description": "Local marketplace for @codecademy/gamut agent tools."
+  },
+  "plugins": [
+    {
+      "name": "gamut-design-system",
+      "source": "./",
+      "description": "Gamut design system agent tools: skills and rules for AI-assisted development."
+    }
+  ]
+}

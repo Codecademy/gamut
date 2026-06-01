@@ -9,7 +9,6 @@ import { parameters as formElementsParameters } from './FormElements/About.mdx';
 import { parameters as formInputsParameters } from './FormInputs/About.mdx';
 import { parameters as iconsParameters } from './Icons/About.mdx';
 import { parameters as illustrationsParameters } from './Illustrations/Illustrations.mdx';
-import { parameters as internalFloatingCardParameters } from './InternalFloatingCard/InternalFloatingCard.mdx';
 import { parameters as loadersParameters } from './Loaders/About.mdx';
 import { parameters as patternsParameters } from './Patterns/Patterns.mdx';
 import { parameters as popoverContainerParameters } from './PopoverContainer/PopoverContainer.mdx';
@@ -32,7 +31,6 @@ export const AtomAboutToC = () => (
       formInputsParameters,
       iconsParameters,
       illustrationsParameters,
-      internalFloatingCardParameters,
       loadersParameters,
       patternsParameters,
       popoverContainerParameters,

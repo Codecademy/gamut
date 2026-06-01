@@ -1,18 +1,16 @@
 import { createTheme } from '@codecademy/variance';
 
-import { percipioFontFamily, percipioPalette } from '../variables';
+import {
+  fontWeightMediumTitle,
+  percipioFontFamily,
+  percipioPalette,
+} from '../variables';
 import { coreTheme } from './core';
 
 export const percipioTheme = createTheme({
   ...coreTheme,
   fontFamily: percipioFontFamily,
-  fontWeight: {
-    base: 400,
-    title: 500,
-    bold: 500,
-    700: 700,
-    400: 400,
-  },
+  fontWeight: fontWeightMediumTitle,
 })
   .addColors(percipioPalette)
   .addColorModes('light', {
@@ -40,7 +38,7 @@ export const percipioTheme = createTheme({
         secondary: 'navy-400',
       },
       primary: {
-        _: 'percipioActionPrimary',
+        _: 'sapphire',
         hover: 'percipioActionPrimaryHover',
         inverse: 'white',
       },
@@ -53,7 +51,7 @@ export const percipioTheme = createTheme({
         hover: 'percipioActionDangerHover',
       },
       interface: {
-        _: 'percipioActionPrimary',
+        _: 'sapphire',
         hover: 'percipioActionPrimaryHover',
       },
       border: {

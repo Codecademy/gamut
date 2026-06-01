@@ -333,7 +333,7 @@ describe('DatePicker inside a form', () => {
 
     const groups = view.getAllByRole('group');
     expect(groups).toHaveLength(2);
-    await user.click(groups[0]!);
+    await user.click(groups[0]);
     expect(view.getByRole('dialog')).toBeVisible();
 
     view.getByRole('button', { name: 'Next month' }).focus();
