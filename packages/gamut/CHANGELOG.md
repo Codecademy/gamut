@@ -1,3 +1,31 @@
+# 69.0.0 (2026-06-01)
+
+### ⚠️ Breaking Changes
+
+- removes deprecated scss mixins and variables ([#3340](https://github.com/Codecademy/gamut/pull/3340))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.12
+- Updated gamut-patterns to 0.10.31
+- Updated gamut-styles to 19.0.0
+- Updated gamut-icons to 9.57.6
+- Updated gamut-tests to 6.0.2
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.7.1 (2026-05-28)
+
+### 🩹 Fixes
+
+- Update DESIGN.md for theme changes ([#3359](https://github.com/Codecademy/gamut/pull/3359))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 68.7.0 (2026-05-27)
 
 ### 🚀 Features
