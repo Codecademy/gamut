@@ -1,6 +1,6 @@
 # Gamut Styles
 
-Base SCSS for Codecademy
+Design tokens, Emotion themes, and system props for the Gamut design system.
 
 ## Core/
 
