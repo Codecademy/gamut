@@ -1,3 +1,9 @@
+## 6.0.2 (2026-06-01)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 19.0.0
+
 ## 6.0.1 (2026-05-14)
 
 ### 🧱 Updated Dependencies
@@ -6,7 +12,7 @@
 
 # 6.0.0 (2026-05-04)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - remove setupEnzyme and remove deprecated comment for RadialProgress ([#3337](https://github.com/Codecademy/gamut/pull/3337))
 
