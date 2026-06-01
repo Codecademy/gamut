@@ -1,6 +1,6 @@
 # 69.0.0 (2026-06-01)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - removes deprecated scss mixins and variables ([#3340](https://github.com/Codecademy/gamut/pull/3340))
 
