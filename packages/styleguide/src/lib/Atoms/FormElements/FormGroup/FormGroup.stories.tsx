@@ -22,7 +22,7 @@ export const Default: Story = {
 export const FormGroupHtmlFor: Story = {
   render: () => (
     <FormGroup htmlFor="example1" label="I am a label!!">
-      <Input htmlFor="example1" />
+      <Input id="example1" />
     </FormGroup>
   ),
 };
@@ -44,7 +44,7 @@ export const DefaultState: Story = {
     required: true,
     description: 'You can tell by the asterisk.',
     htmlFor: 'required1',
-    children: <Input htmlFor="required1" />,
+    children: <Input id="required1" />,
   },
 };
 
@@ -55,7 +55,7 @@ export const Error: Story = {
     description: 'You can tell by the asterisk.',
     error: 'You messed up dude.',
     htmlFor: 'required-error',
-    children: <Input defaultValue=">_>" error htmlFor="required-error" />,
+    children: <Input defaultValue=">_>" error id="required-error" />,
   },
 };
 
@@ -64,7 +64,7 @@ export const Valid: Story = {
     required: true,
     label: 'I am also required!!',
     htmlFor: 'required-valid',
-    children: <Input defaultValue="Good job!" htmlFor="required-valid" valid />,
+    children: <Input defaultValue="Good job!" id="required-valid" valid />,
   },
 };
 
@@ -76,7 +76,7 @@ export const LowEmphasisInfoTip: Story = {
       alignment: 'bottom-left',
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
-    children: <Input htmlFor="low-emphasis-input" />,
+    children: <Input id="low-emphasis-input" />,
   },
 };
 
@@ -89,7 +89,7 @@ export const HighEmphasisInfoTip: Story = {
       alignment: 'bottom-left',
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
-    children: <Input htmlFor="high-emphasis-input" />,
+    children: <Input id="high-emphasis-input" />,
   },
 };
 
@@ -103,7 +103,7 @@ export const InfoTipAutoLabelling: Story = {
         }}
         label="Auto-labelling (default)"
       >
-        <Input htmlFor="auto-label-input" type="email" />
+        <Input id="auto-label-input" type="email" />
       </FormGroup>
 
       <FormGroup
@@ -114,7 +114,7 @@ export const InfoTipAutoLabelling: Story = {
         }}
         label="With ariaLabel"
       >
-        <Input htmlFor="aria-label-input" type="email" />
+        <Input id="aria-label-input" type="email" />
       </FormGroup>
 
       <FormGroup
@@ -126,7 +126,7 @@ export const InfoTipAutoLabelling: Story = {
         label="With ariaLabelledBy"
       >
         <span id="custom-label-id">Custom label for InfoTip button</span>
-        <Input htmlFor="aria-labelledby-input" type="email" />
+        <Input id="aria-labelledby-input" type="email" />
       </FormGroup>
     </Box>
   ),

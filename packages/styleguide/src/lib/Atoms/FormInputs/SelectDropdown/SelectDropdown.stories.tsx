@@ -14,7 +14,8 @@ const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
   args: {
-    htmlFor: 'example-select',
+    id: 'example-select',
+    name: 'example-select',
     options: fruitOptions,
     disabled: false,
     isSearchable: false,
@@ -148,6 +149,7 @@ export const ShownOptionsDefault: Story = {
       'asdfsadf',
     ],
     name: 'shownOptionsLimit01',
+    id: 'shownOptionsLimit01',
     placeholder: 'six is the magic number',
   },
   render: (args) => (
@@ -178,6 +180,7 @@ export const ShownOptionsThree: Story = {
       'hi',
       'asdfsadf',
     ],
+    id: 'shownOptionsLimit02',
     name: 'shownOptionsLimit02',
     placeholder: 'three is the magic number',
     shownOptionsLimit: 3,
@@ -197,6 +200,7 @@ export const ShownOptionsThree: Story = {
 
 export const DisabledOptions: Story = {
   args: {
+    id: 'disabled-dropdown',
     name: 'disabled-dropdown',
     options: [
       {
@@ -230,6 +234,7 @@ export const DisabledOptions: Story = {
 
 export const Subtitles: Story = {
   args: {
+    id: 'subtitles-dropdown',
     name: 'subtitles-dropdown',
     options: [
       {
@@ -265,6 +270,7 @@ export const Subtitles: Story = {
 
 export const RightLabels: Story = {
   args: {
+    id: 'right-labels-dropdown',
     name: 'right-labels-dropdown',
     options: [
       {
@@ -300,6 +306,7 @@ export const RightLabels: Story = {
 
 export const GroupDividers: Story = {
   args: {
+    id: 'dividers-dropdown',
     name: 'dividers-dropdown',
     options: [
       {
@@ -358,8 +365,9 @@ export const GroupDividers: Story = {
 
 export const GroupLabels: Story = {
   args: {
-    name: 'group-labels-dropdown',
+    id: 'group-labels-dropdown',
     multiple: true,
+    name: 'group-labels-dropdown',
     options: [
       {
         label: 'Group 1',
@@ -418,6 +426,7 @@ export const GroupLabels: Story = {
 
 export const Icons: Story = {
   args: {
+    id: 'pizzaz-dropdown',
     name: 'pizzaz-dropdown',
     options: [
       {
@@ -456,6 +465,7 @@ export const CustomInputProps: Story = {
         'data-cy': 'custom-dropdown',
       },
     },
+    id: 'what',
     name: 'what',
   },
   render: (args) => (
@@ -469,6 +479,7 @@ export const CustomInputProps: Story = {
 
 export const MultipleSelect: Story = {
   args: {
+    id: 'multi-dropdown',
     name: 'multi-dropdown',
     multiple: true,
     options: [
@@ -503,6 +514,7 @@ export const FormGroupSelectDropdown: Story = {
   args: {
     options: ['hello', 'hi', 'howdy'],
     value: 'oh no',
+    id: 'big-label',
     name: 'big-label',
   },
   render: (args) => (
@@ -522,6 +534,7 @@ export const FormGroupSelectDropdown: Story = {
 export const FormGroupError: Story = {
   args: {
     options: ['Error', 'oh no', ':('],
+    id: 'error-example-unique',
     name: 'error-example-unique',
     placeholder: 'cry cry cry',
   },
@@ -541,6 +554,7 @@ export const FormGroupError: Story = {
 
 export const AbbreviatedInput: Story = {
   args: {
+    id: 'abbreviated-dropdown',
     name: 'abbreviated-dropdown',
     options: [
       {
@@ -589,6 +603,7 @@ export const AbbreviatedInput: Story = {
 
 export const IndependentWidths: Story = {
   args: {
+    id: 'width-dropdown',
     name: 'width-dropdown',
     options: [
       {
@@ -639,6 +654,7 @@ export const IndependentWidths: Story = {
 
 export const SmallWithAbbreviations: Story = {
   args: {
+    id: 'small-abbreviated-dropdown',
     name: 'small-abbreviated-dropdown',
     options: [
       {
@@ -691,6 +707,7 @@ export const SmallWithAbbreviations: Story = {
 
 export const ComplexAbbreviatedOptions: Story = {
   args: {
+    id: 'complex-abbreviated-dropdown',
     name: 'complex-abbreviated-dropdown',
     options: [
       {
@@ -744,6 +761,7 @@ export const ComplexAbbreviatedOptions: Story = {
 
 export const AbbreviatedWithSubtitleAndRightLabel: Story = {
   args: {
+    id: 'abbreviated-detailed',
     name: 'abbreviated-detailed',
     options: [
       {
@@ -784,6 +802,7 @@ export const AbbreviatedWithSubtitleAndRightLabel: Story = {
 
 export const AbbreviatedSmallSize: Story = {
   args: {
+    id: 'abbreviated-small',
     name: 'abbreviated-small',
     options: [
       {
@@ -825,6 +844,7 @@ export const AbbreviatedSmallSize: Story = {
 };
 export const MenuAlignmentRight: Story = {
   args: {
+    id: 'menu-alignment-right',
     name: 'menu-alignment-right',
     options: [
       {
@@ -877,6 +897,7 @@ export const MenuAlignmentRight: Story = {
 
 export const DisabledMultiValue: Story = {
   args: {
+    id: 'disabled-small-multi',
     name: 'disabled-small-multi',
     options: [
       {
@@ -911,7 +932,7 @@ export const DisabledMultiValue: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        htmlFor="abbreviated-small"
+        htmlFor="disabled-small-multi"
         isSoloField
         label="Small Size with Abbreviations"
       >
@@ -923,6 +944,7 @@ export const DisabledMultiValue: Story = {
 
 export const LongPlaceholder: Story = {
   args: {
+    id: 'long-placeholder',
     name: 'long-placeholder',
     options: [
       {
@@ -967,6 +989,7 @@ export const LongPlaceholder: Story = {
 };
 export const LongPlaceholderAgain: Story = {
   args: {
+    id: 'long-placeholder-again',
     name: 'long-placeholder-again',
     options: [
       {
@@ -1021,6 +1044,7 @@ export const zIndexOnMenu: Story = {
           label="This menu is rendered behind the header"
         >
           <SelectDropdown
+            id="usesDefaultZIndex"
             name="usesDefaultZIndex"
             options={args.options}
             placeholder="Uses the default zIndex of 2"
@@ -1032,6 +1056,7 @@ export const zIndexOnMenu: Story = {
           label="This menu floats above the table's header"
         >
           <SelectDropdown
+            id="hasSetZIndex"
             name="hasSetZIndex"
             options={args.options}
             placeholder="Has a zIndex of 5"

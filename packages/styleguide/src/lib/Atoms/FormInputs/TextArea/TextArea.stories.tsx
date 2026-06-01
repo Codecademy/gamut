@@ -5,7 +5,6 @@ const meta: Meta<typeof TextArea> = {
   component: TextArea,
   args: {
     id: 'example-input',
-    name: 'example-input',
     defaultValue: 'Some text',
     rows: 4,
   },

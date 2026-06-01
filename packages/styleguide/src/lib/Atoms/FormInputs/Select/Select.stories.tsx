@@ -6,8 +6,7 @@ const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 const meta: Meta<typeof Select> = {
   component: Select,
   args: {
-    htmlFor: 'example-select',
-    name: 'example-select',
+    id: 'example-select',
     options: fruitOptions,
     'aria-label': 'Select an option',
   },
@@ -62,7 +61,7 @@ export const FormGroupBase: Story = {
   args: {
     options: ['Error', 'oh no', ':('],
     defaultValue: 'oh no',
-    name: 'form-group-base',
+    id: 'form-group-base',
   },
   render: (args) => (
     <FormGroup
@@ -82,7 +81,7 @@ export const FormGroupSmall: Story = {
     options: ['Small', 'Quite little'],
     value: 'Small',
     sizeVariant: 'small',
-    name: 'form-group-small',
+    id: 'form-group-small',
   },
   render: (args) => (
     <FormGroup
