@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
 import * as React from 'react';
 
 import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
@@ -65,6 +65,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     disabled,
   });
   const { component: Component, ...rest } = field;
+  const uniqueIdSuffix = useId();
+  const htmlForId = `${name}-${uniqueIdSuffix}`;
 
   useEffect(() => {
     if (customError) {
@@ -78,7 +80,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
-      htmlFor={id || name}
+      htmlFor={id || htmlForId}
       infotip={infotip}
       isSoloField={isSoloField}
       required={!!validation?.required}
@@ -101,6 +103,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
         aria-invalid={showError}
         disabled={disabled}
         name={name}
+        htmlFor={htmlForId}
       />
       {children}
       {showError && (
