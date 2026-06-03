@@ -102,8 +102,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
         aria-describedby={errorId}
         aria-invalid={showError}
         disabled={disabled}
-        name={name}
         htmlFor={htmlForId}
+        name={name}
       />
       {children}
       {showError && (
