@@ -80,7 +80,16 @@ const preview: Preview = {
                 'Component code examples',
               ],
             ],
-            'MCP',
+            [
+              'AI Tooling',
+              [
+                'About',
+                'Gamut plugin',
+                ['About', 'Install', 'Best practices'],
+                'Figma',
+                ['About', 'Code Connect', 'Figma MCP'],
+              ],
+            ],
           ],
           'Foundations',
           'Layouts',

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as figmaAboutParameters } from './Figma/About.mdx';
+import { parameters as gamutPluginAboutParameters } from './Gamut plugin/About.mdx';
+
+export const parameters = {
+  id: 'Meta/AI Tooling',
+  title: 'AI Tooling',
+  subtitle:
+    'Gamut agent tools for Cursor and Claude Code, product DESIGN.md context, and Figma workflows for design-to-code.',
+  status: 'static',
+};
+
+<Meta title="Meta/AI Tooling/About" />
+
+<AboutHeader {...parameters} />
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    gamutPluginAboutParameters,
+    figmaAboutParameters,
+  ])}
+/>

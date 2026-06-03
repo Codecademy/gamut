@@ -1,3 +1,33 @@
+# 20.0.0 (2026-06-01)
+
+### ⚠️  Breaking Changes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 19.0.0 (2026-06-01)
+
+### ⚠️ Breaking Changes
+
+- removes deprecated scss mixins and variables ([#3340](https://github.com/Codecademy/gamut/pull/3340))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+# 18.0.0 (2026-05-14)
+
+### ⚠️ Breaking Changes
+
+- Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 17.14.0 (2026-04-29)
 
 ### 🚀 Features

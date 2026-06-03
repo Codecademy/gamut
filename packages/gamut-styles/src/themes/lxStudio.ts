@@ -1,10 +1,11 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
-  fontLxStudio,
   fontMonospace,
   fontSystem,
+  fontWeightMediumTitle,
   lxStudioPalette,
+  percipioFontFamily,
 } from '../variables';
 import { coreTheme } from './core';
 
@@ -14,8 +15,8 @@ import { coreTheme } from './core';
  */
 
 const lxStudioFontFamily = {
-  accent: fontLxStudio,
-  base: fontLxStudio,
+  accent: percipioFontFamily.accent,
+  base: percipioFontFamily.base,
   monospace: fontMonospace,
   system: fontSystem,
 } as const;
@@ -33,6 +34,7 @@ export const lxStudioTheme = createTheme({
   ...coreTheme,
   borderRadii: lxStudioBorderRadii,
   fontFamily: lxStudioFontFamily,
+  fontWeight: fontWeightMediumTitle,
 })
   .addColors(lxStudioPalette)
   .addColorModes('light', {
@@ -48,8 +50,8 @@ export const lxStudioTheme = createTheme({
         primary: 'navy-200',
       },
       primary: {
-        _: 'lxStudioPurple',
-        hover: 'lxStudioPurpleHover',
+        _: 'sapphire',
+        hover: 'navy-800',
       },
       interface: {
         _: 'hyper-500',
@@ -67,4 +69,4 @@ export const lxStudioTheme = createTheme({
 
 export type LxStudioThemeShape = typeof lxStudioTheme;
 
-export interface LxStudioTheme extends LxStudioThemeShape {}
+export type LxStudioTheme = LxStudioThemeShape;
