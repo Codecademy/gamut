@@ -1,0 +1,54 @@
+.accordionButton {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.375rem 1rem;
+  width: 100%;
+
+  &.blue {
+    color: #a5befa;
+  }
+
+  &.yellow {
+    background-color: #fff2b3;
+    border: solid #ffe359;
+    border-width: 1px 0;
+    font-weight: normal;
+    transition: background-color 0.15s ease-in-out;
+
+    &:focus-visible {
+      border-color: #b37620;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: #ffec8c;
+    }
+  }
+
+  &.large {
+    border-radius: 2px;
+    font-size: 1.5rem;
+
+    .children {
+      padding-top: 0.2rem;
+    }
+
+    .expansionIcon {
+      margin-left: 1rem;
+    }
+
+    @media only screen and (min-width: 64rem) {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+.expansionIcon {
+  margin-left: 0.75rem;
+  transition: transform 0.35s ease-out;
+}
+
+.expansionIconExpanded {
+  transform: rotate(-180deg);
+}

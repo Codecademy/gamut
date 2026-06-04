@@ -1,0 +1,78 @@
+---
+description: Apply these guardrails when editing Gamut UI in TS/JS/TSX/JSX. Universal rules (always loaded). Form wiring depth: `gamut-forms` skill; other component matrix and audit detail: `gamut-accessibility` — those skills do not repeat this rule set.
+alwaysApply: true
+globs: ['*.tsx', '*.ts', '*.jsx', '*.js']
+---
+
+# Gamut Accessibility Rules
+
+## Prefer HTML over ARIA
+
+Unnecessary ARIA can cause harm. If a native HTML element or attribute with the semantics and behavior you need already exists, use it. Reach for ARIA only when native HTML is genuinely insufficient for the pattern.
+
+## A Role is a Promise
+
+ARIA roles modify the accessibility tree and _imply_ behavior. Always ensure that the implied keyboard behavior, focusability, and interactivity exists when a role is used.
+
+## ARIA can both cloak and enhance
+
+ARIA can augment native semantics (`aria-pressed` on a `<button>`) or override them entirely (`role="menuitem"` on an `<a>`). Both capabilities are powerful and dangerous. Override only when native HTML genuinely doesn't fit the pattern; when augmenting, don't contradict the native semantics.
+
+## Align accessible names with visible copy
+
+Prefer wiring names through visible text and native `<label>` / control text / `alt` over using `aria-label`. Point `aria-labelledby` at the visible heading or label that should define the name if it's not possible to name elements from their content. Use bare `aria-label` when there is no suitable visible label.
+
+## Treat missing visible labels as a design smell
+
+When there is no visible text for a nameable element, consider this a sign that the content design could be improved, but not a requirement that it is changed. This is not an accessibility violation.
+
+```html
+<!-- smell: this list has no conceptual name, so we have to create one using ARIA -->
+<ul aria-label="List heading">
+  <li>...</li>
+</ul>
+
+<!-- better: the list's name is visible and can be used for its accessible name -->
+<h2 id="list-name">List heading</h2>
+<ul aria-labelledby="list-name">
+  <li>...</li>
+</ul>
+```
+
+## Use Gamut primitives — do not fake buttons or dialogs
+
+- Actions: use Gamut button atoms (`FillButton`, `TextButton`, `StrokeButton`, `CTAButton`, `IconButton`) — not `<div onClick>`, not `<span role="button">`, not `<a>` without `href` for actions. Variant and `tip` guidance: [`skills/gamut-buttons/SKILL.md`](../skills/gamut-buttons/SKILL.md).
+- Tabs / overlays: `Tabs`, `Dialog`, `Modal`, and related primitives implement keyboard and focus patterns in code — still supply labels, titles, and trigger semantics as documented in the skill.
+
+## Every interactive control needs an accessible name
+
+- `IconButton` — provide `tip` (accessible name for icon-only).
+- `InfoTip` — provide `ariaLabel` or `ariaLabelledby`; there is no automatic fallback.
+- Decorative icon SVGs next to visible text — `aria-hidden="true"` on the icon.
+
+## Form label association
+
+Match `htmlFor` on `<FormGroupLabel>` with the `id` on the control. Base `<FormGroup>` renders live regions for `error` and `description`; `GridForm` and `ConnectedForm` add field wiring (`aria-describedby`, `aria-invalid`, first-error `aria-live` behavior) — do not add redundant duplicate regions. Depth: [`skills/gamut-forms/SKILL.md`](../skills/gamut-forms/SKILL.md).
+
+## Screen-reader-only text
+
+Use `<Text screenreader>` for visually hidden but announced content.
+
+## Color and contrast
+
+Do not hardcode hex for adaptive UI. Prefer semantic tokens and `ColorMode` / `<Background>` so surfaces track theme and mode — see the [`gamut-color-mode`](../skills/gamut-color-mode/SKILL.md) skill. Default pairings support accessible UI, but tokens do not guarantee WCAG compliance for every layout; validate non-standard combinations.
+
+## Focus visibility
+
+Never suppress focus indicators with `outline: none` or `outline: 0` without a visible replacement. Gamut’s focus styles are intentional (WCAG 2.4.7).
+
+## Where to read more (minimal index)
+
+| Topic | Primary doc |
+| --- | --- |
+| Forms (`GridForm`, `ConnectedForm`, `FormGroup`, validation, live regions) | [`skills/gamut-forms/SKILL.md`](../skills/gamut-forms/SKILL.md) |
+| Component matrix (tips, overlays, composites, checklists; not form wiring) | [`skills/gamut-accessibility/SKILL.md`](../skills/gamut-accessibility/SKILL.md) |
+| Button variants, `IconButton` `tip`, `disabled` vs `aria-disabled` | [`skills/gamut-buttons/SKILL.md`](../skills/gamut-buttons/SKILL.md) |
+| ColorMode, `Background`, semantic color roles | [`skills/gamut-color-mode/SKILL.md`](../skills/gamut-color-mode/SKILL.md) |
+| Tokens, `css` / `variant` / `states` | Storybook [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) |
+| Install, `GamutProvider`, CSP | Storybook [Meta / Installation](https://gamut.codecademy.com/?path=/docs-meta-installation--page) |

@@ -6,7 +6,7 @@ import { ShadowExample } from './boxShadow';
 
 export const parameters = {
   title: 'Utilities',
-  subtitle: 'Style utilities for both SCSS and Emotion',
+  subtitle: "Gamut's helper functions for style utilities",
   status: 'static',
   source: {
     repo: 'gamut-styles',
@@ -27,9 +27,7 @@ To keep consistent sizing we like to use `rem` units for most things (within rea
 Many times when a specific REM value is not expressive like `1.875rem` (in this case, `30px`)
 it is better to express this as a pixel value that is closer to a round number.
 
-You can do this by using our px => rem utility in both TS and SCSS.
-
-#### TS - `pxRem`
+Do this by using the px => rem utility.
 
 ```tsx
 import { pxRem } from '@codecademy/gamut-styles';
@@ -38,27 +36,15 @@ pxRem(16); // => 1rem;
 pxRem('30px'); // => 1.875rem;
 ```
 
-#### SCSS - `px-rem`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.heading {
-  font-size: px-rem(30);
-}
-```
-
-## Style mixins
+## Style helpers
 
 We also support various style partials to help you consistently achieve affects, like box shadows and screen reader content.
 
 ### Box shadow
 
-We have 5 depths of box shadows that we use.
+There are 5 depths of box shadows available to use.
 
 <ShadowExample />
-
-#### TS - `boxShadow`
 
 ```tsx
 import { boxShadow } from '@codecademy/gamut-styles';
@@ -68,21 +54,9 @@ const Example = `
 `;
 ```
 
-#### SCSS - `box-shadow`
+### Font smoothing
 
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.box {
-  @include box-shadow(3);
-}
-```
-
-### `fontSmoothing`
-
-We enable font smoothing in some places to make typography more readable.
-
-#### TS - `fontSmoothing`
+Enable font smoothing to make typography more readable.
 
 ```tsx
 import { fontSmoothing } from '@codecademy/gamut-styles';
@@ -98,25 +72,9 @@ const Smooth = `
 `;
 ```
 
-#### SCSS - `font-smoothing`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.smoothed {
-  @include font-smoothing();
-}
-
-.rough {
-  @include font-smoothing(false);
-}
-```
-
 ### No selection
 
-In cases where we want to prevent the user from selecting an image or text.
-
-#### TS - `noSelect`
+Prevent the user from selecting an image or text.
 
 ```tsx
 import { noSelect } from '@codecademy/gamut-styles';
@@ -126,23 +84,11 @@ const Unselectable = styled.div`
 `;
 ```
 
-#### SCSS - `no-select`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.unselectable {
-  @include font-smoothing();
-}
-```
-
 ### Screen readers
 
-Ensuring that your content is accessible can require you to make screen reader only text elements.
-We provide a few helpful mixins for use cases where you want the screen reader to be able to focus or
+Ensuring that content is accessible can require having screen reader only text elements.
+We provide helpers for use cases where you want the screen reader to be able to focus or
 just be aware of the content.
-
-#### TS - `screenReaderOnly` | `screenReaderOnlyFocusable`
 
 ```tsx
 import {
@@ -157,18 +103,4 @@ const HiddenLabel = `
 const HiddenLabelWithFocus = `
   ${screenReaderOnlyFocusable}
 `;
-```
-
-#### SCSS - `screenreader-only` | `screenreader-only-focusable`
-
-```scss
-@use '@codecademy/gamut-styles/utils';
-
-.hiddenLabel {
-  @include screenreader-only();
-}
-
-.hiddenLabel__focusable {
-  @include screenreader-only-focusable();
-}
 ```

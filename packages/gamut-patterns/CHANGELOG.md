@@ -1,3 +1,23 @@
+## 0.10.32 (2026-06-01)
+
+### 🩹 Fixes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 20.0.0
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 0.10.31 (2026-06-01)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 19.0.0
+
 ## 0.10.30 (2026-05-14)
 
 ### 🧱 Updated Dependencies
