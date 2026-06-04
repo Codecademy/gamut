@@ -56,7 +56,7 @@ Match `htmlFor` on `<FormGroupLabel>` with the `id` on the control. Base `<FormG
 
 ## Screen-reader-only text
 
-Use `<Text screenreader>` for visually hidden but announced content. `<HiddenText>` is deprecated.
+Use `<Text screenreader>` for visually hidden but announced content.
 
 ## Color and contrast
 
