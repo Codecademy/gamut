@@ -92,6 +92,8 @@ export const SubmitButtonInline: Story = {
         name: 'simple-text',
         type: 'text',
         size: 6,
+        // WILL REMOVE BEFORE MERGING
+        hideLabel: true,
       },
     ],
     submit: {

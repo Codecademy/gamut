@@ -62,7 +62,6 @@ exports[`Gamut Exported Keys 1`] = `
   "GridBox",
   "GridForm",
   "GridFormContent",
-  "HiddenText",
   "IconButton",
   "iFrameWrapper",
   "InfoTip",

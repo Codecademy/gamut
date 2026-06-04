@@ -31,7 +31,6 @@ export type {
   SelectDropdownGroup,
 } from './Form/SelectDropdown';
 export * from './GridForm';
-export * from './HiddenText';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './List';
