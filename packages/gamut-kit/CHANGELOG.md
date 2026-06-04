@@ -1,6 +1,6 @@
 # 2.0.0 (2026-06-04)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - Remove deprecated `HiddenText` component ([#3361](https://github.com/Codecademy/gamut/pull/3361))
   **BREAKING:** `HiddenText` is no longer exported from `@codecademy/gamut`- Migrate to `<Text screenreader>` for visually hidden, screen-reader-accessible text- Removed Storybook docs for `HiddenText`; use the `Text` screenreader utility docs instead
