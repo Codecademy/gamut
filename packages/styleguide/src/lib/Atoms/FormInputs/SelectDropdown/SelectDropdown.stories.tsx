@@ -8,6 +8,7 @@ import {
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 
@@ -464,6 +465,96 @@ export const CustomInputProps: Story = {
       </FormGroup>
     </Box>
   ),
+};
+
+export const Creatable: Story = {
+  args: {
+    name: 'creatable-dropdown',
+    isCreatable: true,
+    placeholder: 'Select or type to add…',
+  },
+  render: (args) => {
+    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    return (
+      <Box height="15rem">
+        <FormGroup
+          htmlFor="creatable-dropdown"
+          isSoloField
+          label="Type a new fruit and press Enter"
+        >
+          <SelectDropdown
+            {...args}
+            options={options}
+            onCreateOption={(inputValue) =>
+              setOptions((prev) => [...prev, inputValue])
+            }
+          />
+        </FormGroup>
+      </Box>
+    );
+  },
+};
+
+export const CreatableMulti: Story = {
+  render: () => {
+    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    return (
+      <Box height="18rem">
+        <FormGroup
+          htmlFor="creatable-multi-dropdown"
+          isSoloField
+          label="Pick fruits or add your own"
+        >
+          <SelectDropdown
+            isCreatable
+            multiple
+            name="creatable-multi-dropdown"
+            options={options}
+            placeholder="Select or type to add…"
+            onCreateOption={(inputValue) =>
+              setOptions((prev) => [...prev, inputValue])
+            }
+          />
+        </FormGroup>
+      </Box>
+    );
+  },
+};
+
+export const CreatableWithValidation: Story = {
+  render: () => {
+    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    return (
+      <Box height="15rem">
+        <FormGroup
+          htmlFor="creatable-validated-dropdown"
+          isSoloField
+          label="Min 3 characters — no duplicates (case-insensitive)"
+        >
+          <SelectDropdown
+            isCreatable
+            name="creatable-validated-dropdown"
+            options={options}
+            placeholder="Type at least 3 characters to add…"
+            isValidNewOption={(
+              inputValue: string,
+              _value,
+              currentOptions: { label: string }[]
+            ) => {
+              if (inputValue.trim().length < 3) return false;
+              return !currentOptions.some(
+                (opt) =>
+                  opt.label.toLowerCase() === inputValue.trim().toLowerCase()
+              );
+            }}
+            onCreateOption={(inputValue) =>
+              setOptions((prev) => [...prev, inputValue.trim()])
+            }
+          />
+        </FormGroup>
+      </Box>
+    );
+  },
 };
 
 export const MultipleSelect: Story = {

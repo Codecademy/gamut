@@ -4,6 +4,7 @@ import ReactSelect, {
   GroupBase,
   Props,
 } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 
 import {
   CustomSelectComponentProps,
@@ -120,7 +121,9 @@ export const CustomInput = ({
 
 /**
  * Typed wrapper around react-select component.
- * Provides type safety for the underlying react-select implementation.
+ * Renders CreatableSelect when isCreatable is true, ReactSelect otherwise.
+ * Creatable-only props (formatCreateLabel, onCreateOption, isValidNewOption)
+ * are stripped from the non-creatable path so they don't reach ReactSelect.
  */
 export function TypedReactSelect<
   OptionType,
@@ -128,7 +131,22 @@ export function TypedReactSelect<
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
 >({
   selectRef,
+  isCreatable,
+  formatCreateLabel,
+  isValidNewOption,
+  onCreateOption,
   ...props
 }: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
+  if (isCreatable) {
+    return (
+      <CreatableSelect
+        {...(props as any)}
+        formatCreateLabel={formatCreateLabel}
+        isValidNewOption={isValidNewOption}
+        onCreateOption={onCreateOption}
+        ref={selectRef}
+      />
+    );
+  }
   return <ReactSelect {...props} ref={selectRef} />;
 }

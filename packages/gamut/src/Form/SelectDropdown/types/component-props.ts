@@ -1,5 +1,5 @@
 import { Ref, SelectHTMLAttributes } from 'react';
-import { Props as NamedProps } from 'react-select';
+import { Options as OptionsType, Props as NamedProps } from 'react-select';
 
 import { SelectComponentProps } from '../../inputs/Select';
 import {
@@ -58,6 +58,7 @@ export interface SelectDropdownCoreProps
       | 'theme'
       | 'onChange'
       | 'multiple'
+      | 'isSearchable'
     >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
@@ -73,6 +74,33 @@ export interface SelectDropdownCoreProps
   placeholder?: string;
   /** Array of options or option groups to display in the dropdown */
   options?: SelectDropdownOptions | SelectDropdownGroup[];
+  /**
+   * Allows users to create new options by typing a value not in the options list.
+   * When true, isSearchable is automatically set to true.
+   * Pair with onCreateOption to persist new options.
+   */
+  isCreatable?: boolean;
+  /**
+   * Called when the user confirms a new option via the "Add" row.
+   * The consumer is responsible for appending the new option to the options array.
+   */
+  onCreateOption?: (inputValue: string) => void;
+  /**
+   * Customises the label shown in the "Add" row.
+   * Defaults to: (inputValue) => `Add "${inputValue}"`.
+   */
+  formatCreateLabel?: (inputValue: string) => React.ReactNode;
+  /**
+   * Controls when the "Add" row is visible.
+   * Receives the current input, selected values, and all options.
+   * Defaults to react-select's built-in logic (hidden when input matches an existing option label).
+   * Use cases: minimum-length gating, pattern validation, case-insensitive dedup, max-items cap.
+   */
+  isValidNewOption?: (
+    inputValue: string,
+    value: OptionsType<OptionStrict>,
+    options: OptionsType<OptionStrict>
+  ) => boolean;
 }
 
 /**
@@ -98,12 +126,23 @@ export interface MultiSelectDropdownProps extends SelectDropdownCoreProps {
 }
 
 /**
- * Union type for all SelectDropdown prop variants.
- * Supports both single and multi-select modes through discriminated union.
+ * Enforces that isSearchable cannot be false when isCreatable is true.
+ * Creatable mode requires the search input so users can type new option values.
  */
-export type SelectDropdownProps =
+type CreatableConstraint =
+  | { isCreatable?: false | undefined; isSearchable?: boolean }
+  | { isCreatable: true; isSearchable?: true };
+
+/**
+ * Union type for all SelectDropdown prop variants.
+ * Supports both single and multi-select modes through discriminated union,
+ * intersected with CreatableConstraint to enforce isSearchable compatibility.
+ */
+export type SelectDropdownProps = (
   | SingleSelectDropdownProps
-  | MultiSelectDropdownProps;
+  | MultiSelectDropdownProps
+) &
+  CreatableConstraint;
 
 /**
  * Base interface for onChange-related props.
@@ -120,9 +159,21 @@ export interface BaseOnChangeProps {
 
 /**
  * Props for the typed React Select component wrapper.
- * Extends ReactSelectAdditionalProps with an optional ref.
+ * Extends ReactSelectAdditionalProps with an optional ref and creatable flag.
  */
 export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
   /** Optional ref to the underlying react-select component */
   selectRef?: Ref<any>;
+  /** When true, renders CreatableSelect instead of ReactSelect */
+  isCreatable?: boolean;
+  /** Forwarded to CreatableSelect; customises the "Add" row label */
+  formatCreateLabel?: (inputValue: string) => React.ReactNode;
+  /** Forwarded to CreatableSelect; called on new option confirmation */
+  onCreateOption?: (inputValue: string) => void;
+  /** Forwarded to CreatableSelect; controls visibility of the "Add" row */
+  isValidNewOption?: (
+    inputValue: string,
+    value: OptionsType<OptionStrict>,
+    options: OptionsType<OptionStrict>
+  ) => boolean;
 }

@@ -206,6 +206,23 @@ In the example below, the z-index menu is configured to the default value (`auto
 
 <Canvas of={SelectDropdownStories.zIndexOnMenu} />
 
+## Creatable
+
+Use the `isCreatable` prop to allow users to add options that aren't in the list. When the user types a value that doesn't match any existing option, an **Add "value"** row appears at the bottom of the dropdown. Selecting it fires `onCreateOption` with the typed string — the consumer is responsible for appending the new option to the `options` array.
+
+`isSearchable` is automatically set to `true` when `isCreatable` is `true` (passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error).
+
+<Canvas of={SelectDropdownStories.Creatable} />
+
+### Props
+
+| Prop                | Type                                      | Default              | Description                                                                                               |
+| ------------------- | ----------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `isCreatable`       | `boolean`                                 | `false`              | Enables option creation. Automatically forces `isSearchable` to `true`.                                   |
+| `onCreateOption`    | `(inputValue: string) => void`            | —                    | Called when the user confirms a new option. Append the value to `options` to persist it.                  |
+| `formatCreateLabel` | `(inputValue: string) => ReactNode`       | `Add "inputValue"`   | Customises the label shown in the "Add" row.                                                              |
+| `isValidNewOption`  | `(inputValue, value, options) => boolean` | react-select default | Controls when the "Add" row is visible. Use for min-length gating, pattern validation, or max-items caps. |
+
 ## Multiple select
 
 <Canvas of={SelectDropdownStories.MultipleSelect} />

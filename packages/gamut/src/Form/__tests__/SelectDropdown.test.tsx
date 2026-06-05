@@ -405,4 +405,67 @@ describe('SelectDropdown', () => {
       expect(comboboxInput).toHaveAttribute('data-zero', '0');
     });
   });
+
+  describe('isCreatable', () => {
+    it('shows the "Add" row when input does not match any existing option', async () => {
+      const { view } = renderView({ isCreatable: true });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      expect(view.getByText('Add "purple"')).toBeInTheDocument();
+    });
+
+    it('does not show the "Add" row when input matches an existing option', async () => {
+      const { view } = renderView({ isCreatable: true });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'red');
+      });
+
+      expect(view.queryByText('Add "red"')).not.toBeInTheDocument();
+    });
+
+    it('fires onCreateOption with the typed value when the "Add" row is selected', async () => {
+      const onCreateOption = jest.fn();
+      const { view } = renderView({ isCreatable: true, onCreateOption });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      await act(async () => {
+        await userEvent.click(view.getByText('Add "purple"'));
+      });
+
+      expect(onCreateOption).toHaveBeenCalledWith('purple');
+    });
+
+    it('respects a custom formatCreateLabel', async () => {
+      const { view } = renderView({
+        isCreatable: true,
+        formatCreateLabel: (v: string) => `Create tag: "${v}"`,
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      expect(view.getByText('Create tag: "purple"')).toBeInTheDocument();
+    });
+
+    it('hides the "Add" row when isValidNewOption returns false', async () => {
+      const { view } = renderView({
+        isCreatable: true,
+        isValidNewOption: () => false,
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'anything');
+      });
+
+      expect(view.queryByText('Add "anything"')).not.toBeInTheDocument();
+    });
+  });
 });

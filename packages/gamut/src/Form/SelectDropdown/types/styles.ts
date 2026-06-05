@@ -83,4 +83,6 @@ export type OptionState = BaseSelectComponentProps &
   InteractionStates & {
     /** Whether the option is selected */
     isSelected: boolean;
+    /** Option data — includes __isNew__ for react-select/creatable's "Add" row */
+    data?: { __isNew__?: boolean };
   };

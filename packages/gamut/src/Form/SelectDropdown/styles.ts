@@ -211,14 +211,32 @@ export const getMemoizedStyles = (
         backgroundColor: theme.colors['secondary-hover'],
       },
     }),
-    option: (provided, state: OptionState) => ({
-      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-      alignItems: 'center',
-      color: state.isDisabled ? 'text-disabled' : 'default',
-      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-      display: 'flex',
-      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-    }),
+    option: (provided, state: OptionState) => {
+      const isNew = state.data?.__isNew__;
+      const isSmall = state.selectProps.size === 'small';
+      return {
+        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+        alignItems: 'center',
+        color: isNew
+          ? state.isDisabled
+            ? theme.colors['text-disabled']
+            : theme.colors.primary
+          : state.isDisabled
+          ? 'text-disabled'
+          : 'default',
+        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+        display: 'flex',
+        padding: isSmall ? '3px 14px' : '11px 14px',
+        ...(isNew && {
+          // Gradient creates the 1px divider line centred in the 16px spacer above the option text
+          backgroundImage: `linear-gradient(${theme.colors['text-disabled']} 1px, transparent 1px)`,
+          backgroundPosition: '0 8px',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 1px',
+          paddingTop: isSmall ? '19px' : '27px',
+        }),
+      };
+    },
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),

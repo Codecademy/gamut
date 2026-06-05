@@ -109,14 +109,18 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   dropdownWidth,
   error,
+  formatCreateLabel = (inputValue: string) => `Add "${inputValue}"`,
   id,
   inputProps,
   inputWidth,
-  isSearchable = false,
+  isCreatable = false,
+  isSearchable: isSearchableProp = false,
+  isValidNewOption,
   menuAlignment = 'left',
   multiple,
   name,
   onChange,
+  onCreateOption,
   options,
   placeholder = 'Select an option',
   shownOptionsLimit = 6,
@@ -125,6 +129,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   zIndex,
   ...rest
 }) => {
+  // isSearchable is forced true when isCreatable is true (CreatableSelect requires a text input)
+  const isSearchable = isCreatable || isSearchableProp;
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
 
@@ -265,16 +271,19 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         }}
         dropdownWidth={dropdownWidth}
         error={Boolean(error)}
+        formatCreateLabel={formatCreateLabel}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
         inputId={inputId}
         inputProps={{ ...inputProps }}
         inputWidth={inputWidth}
+        isCreatable={isCreatable}
         isDisabled={disabled}
         isMulti={multiple}
         isOptionDisabled={(option) => option.disabled}
         isSearchable={isSearchable}
+        isValidNewOption={isValidNewOption}
         menuAlignment={menuAlignment}
         name={name}
         options={selectOptions}
@@ -285,6 +294,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
+        onCreateOption={onCreateOption}
         onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
         {...rest}
       />
