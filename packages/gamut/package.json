@@ -55,6 +55,7 @@
     "build": "nx build @codecademy/gamut",
     "build:watch": "yarn build && onchange ./src -- yarn build",
     "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+    "test:bin": "node --test bin/__tests__/design.test.mjs",
     "verify": "tsc --noEmit && tsc --project tsconfig.bin.json"
   },
   "sideEffects": [

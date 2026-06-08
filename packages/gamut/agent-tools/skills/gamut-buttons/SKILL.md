@@ -87,6 +87,60 @@ Hover, active, and disabled colors are handled by the component. Do not override
 - `IconButton`: provide an accessible name via `tip` (used as `aria-label` when `aria-label` is omitted). See ToolTip / IconButton Storybook pages.
 - `ButtonBase` is not exported from `@codecademy/gamut` (only the `ButtonBaseElements` type is). Prefer stock atoms; custom button styling belongs in Gamut itself or via `css` / `variant` from `gamut-styles`, not by importing `ButtonBase`.
 
+## Focus management — buttons with ToolTip
+
+`ToolTip` opens on **hover or focus** and closes when neither is active. The two rendering paths behave differently:
+
+- **Inline (default):** CSS-only via `:hover` and `:focus-within` on the wrapper. No JS involved; tooltip visibility tracks pointer and focus state automatically.
+- **Floating (`placement="floating"`):** JS-driven. Tracks hover (`mouseenter`/`mouseleave`) and focus (`focus`/`blur`) separately with a small delay on each. Escape key always closes the tooltip by calling `.blur()` on the trigger automatically.
+
+**When the tooltip lingers after a click:** This only occurs with `FloatingTip` when the button was **keyboard-focused before the click**. `FloatingTip` keeps an `isFocused` flag; while that flag is true, `mouseleave` does not close the tooltip. If the click action does not naturally move DOM focus elsewhere, the button stays focused and the tooltip stays open.
+
+Mouse-initiated clicks do not have this problem: `TargetContainer` has `onMouseDown={(e) => e.preventDefault()}` which prevents the button from gaining focus via mouse, so `isFocused` stays `false` and the tooltip closes when the pointer moves away.
+
+**Pattern — explicit blur when focus won't move naturally:**
+
+```tsx
+const handleClick = () => {
+  (document.activeElement as HTMLElement)?.blur();
+  openPanel();
+};
+
+<IconButton icon={SettingsIcon} tip="Settings" onClick={handleClick} />;
+```
+
+Or with a ref:
+
+```tsx
+const ref = useRef<HTMLButtonElement>(null);
+
+<IconButton
+  ref={ref}
+  icon={SettingsIcon}
+  tip="Settings"
+  onClick={() => {
+    ref.current?.blur();
+    openPanel();
+  }}
+/>;
+```
+
+**When to apply (floating placement, keyboard-triggered clicks only):**
+
+- Click opens a modal, drawer, or panel that does NOT auto-focus an element inside it
+- Click triggers an in-place state toggle (e.g. show/hide inline editor)
+- Click dispatches a mutation with no focus side-effect
+
+**When NOT needed:**
+
+- Click opens a modal with a proper focus trap — the trap moves focus automatically, blurring the button
+- Click navigates to a new route — component unmounts
+- Click reveals a `Popover` or `FloatingTip`-managed dropdown — focus is moved by that system
+- Tooltip uses the default inline (non-floating) placement — CSS handles visibility, no lingering issue
+- User pressed Escape — built-in `escapeKeyPressHandler` already calls `.blur()`
+
+Call `.blur()` synchronously before the action; this keeps tooltip dismissal atomic with the user interaction.
+
 ## Rules
 
 - Use `FillButton` for primary actions and `StrokeButton` for secondary — do not use both at equal weight on the same screen.
