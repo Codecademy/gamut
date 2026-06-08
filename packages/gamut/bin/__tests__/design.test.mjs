@@ -10,7 +10,11 @@ import { installDesignMd } from '../lib/design.mjs';
 // Helpers
 // ---------------------------------------------------------------------------
 
-/** Create a minimal agent-tools directory with one DESIGN source file. */
+/**
+ * Create a minimal agent-tools directory with one DESIGN source file.
+ * @param {string} dir
+ * @param {string | null} [pkgVersion]
+ */
 async function makeSourceRoot(dir, pkgVersion = '71.0.0') {
   const sourceRoot = join(dir, 'agent-tools');
   await mkdir(sourceRoot);
@@ -39,6 +43,7 @@ async function makeSourceRoot(dir, pkgVersion = '71.0.0') {
 // ---------------------------------------------------------------------------
 
 describe('installDesignMd', () => {
+  /** @type {string} */
   let tmp;
 
   before(async () => {
