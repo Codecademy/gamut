@@ -145,19 +145,31 @@ Exemptions (downgrade to `ℹ note`, not warning):
 
 **Step 2 — Gamut component selectors**
 
-Grep source files for a Gamut component name appearing as a CSS selector (i.e., followed by a rule block) inside a template literal:
+Rather than enumerating every Gamut component by name (brittle, misses new additions), scope to files that already import from `@codecademy/gamut`, then grep those files for any PascalCase identifier used as a CSS selector:
 
-```
-\$\{(Box|FlexBox|GridBox|Column|LayoutGrid|Card|Text|Anchor|FillButton|StrokeButton|TextButton|CTAButton|IconButton|Toggle|List|ListRow|ListCol|Background|Disclosure)\}[^{]*\{
-```
+1. Find files that contain `from '@codecademy/gamut'`.
+2. In those files, grep for:
+   ```
+   \$\{[A-Z][A-Za-z]+\}[^{]*\{
+   ```
+   This matches any `${PascalCaseName}` followed by a rule block — i.e., a component used as a CSS child selector.
 
-Each match means the component is being targeted as a child CSS selector from a parent styled wrapper rather than styled directly. Report as `file:line  ${ComponentName} { ... }`.
+Each match means a component is being targeted from a parent styled wrapper rather than styled directly. Report as `file:line  ${ComponentName} { ... }`.
 
 Severity note: `&:pseudo ${ComponentName}` (pseudo-class combinator preceding the interpolation) is lower risk — downgrade those to ⚠ warning with a note to verify scope. Bare `${ComponentName} { }` selector blocks are the primary target.
 
 **Severity:** ⚠ warning for all matches (per Best Practices: "you may still do so, but at your own risk").
 
-**Remediation:** For tag-selector violations, replace the nested wrapper with a Gamut layout component (`FlexBox`, `GridBox`) and move styles to system props on each child. For Gamut component selector violations, pass system props directly to the component (`alignSelf`, `mt`, etc.) rather than targeting it from a parent wrapper. Where dynamic behavior spans multiple children, prefer `css()` with `variant()` or `states()` keyed to data attributes or boolean props on the parent.
+**Remediation:**
+
+_Tag selectors_ — plain HTML elements do not need to become Gamut components. Two valid paths:
+
+- Use `Box`, `FlexBox`, or `GridBox` with the `as` prop to render as the intended element — no extra DOM node needed: `<Box as="section" p={16} color="text">`, `<FlexBox as="nav" gap={8}>`.
+- Style in place with `styled.div(css({ color: 'text', p: 16 }))` using semantic ColorMode tokens from `@codecademy/gamut-styles` — keeps the element but brings it into the design system token graph.
+
+Replace the parent's nested selector rule with one of the above and remove the selector block.
+
+_Gamut component selectors_ — pass system props directly to the component (`alignSelf`, `mt`, etc.) rather than targeting it from a parent wrapper. Where dynamic behavior spans multiple children, prefer `css()` with `variant()` or `states()` from `@codecademy/gamut-styles` keyed to data attributes or boolean props on the parent.
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
 
