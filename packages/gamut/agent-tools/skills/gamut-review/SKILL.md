@@ -112,7 +112,7 @@ Each match is an error. Report as `file:line  <ComponentName className={...}>`.
 
 Severity note: `className` is not always forbidden — some Gamut components accept it for integration with third-party tools (e.g. passing a class to an external drag-and-drop library). Downgrade to ⚠ warning only when the usage is clearly an integration seam, not styling.
 
-Remediation: replace SCSS module rules with system props directly on the Gamut component (`padding`, `margin`, `color`, `bg`, `borderColor`, `fontSize`, `fontWeight`, etc.); use `css()` or `variant()` from `@codecademy/gamut-styles` for anything not covered by system props; delete the SCSS file when all rules are migrated.
+Remediation: replace SCSS module rules with system props directly on the Gamut component — use semantic ColorMode tokens as values (`color="text"`, `bg="background"`, `borderColor="border-primary"`, etc.) rather than hardcoded hex or palette names; use `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` (with `styled` from `@emotion/styled`) for styles not expressible as system props; delete the SCSS file when all rules are migrated.
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md)
 
