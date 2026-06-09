@@ -1,6 +1,6 @@
 ---
 name: gamut-layout
-description: Use this skill when applying Gamut spacing scale, border radii, viewport or container breakpoints, or page layout grid (LayoutGrid vs GridBox) — complements gamut-system-props for system.space and responsive props.
+description: Use this skill when applying Gamut spacing scale, border radii, viewport or container breakpoints, screen sizes, responsive layouts, media queries, or page layout grid (LayoutGrid vs GridBox) — including migrating breakpoint or screen-size logic, responsive prop patterns, useWindowSize / useBreakpoint hooks, and mobile-first design. Complements gamut-system-props for system.space and responsive props.
 ---
 
 # Gamut Layout
