@@ -101,6 +101,15 @@ export interface SelectDropdownCoreProps
     value: OptionsType<OptionStrict>,
     options: OptionsType<OptionStrict>
   ) => boolean;
+  /**
+   * Customizes the message shown inside the dropdown menu when no option matches
+   * the current input (react-select's "No options" state). Useful for surfacing
+   * validation/error text directly in the dropdown. Accepts a node, or a function
+   * receiving the current input value.
+   */
+  validationMessage?:
+    | React.ReactNode
+    | ((obj: { inputValue: string }) => React.ReactNode);
 }
 
 /**

@@ -212,16 +212,25 @@ Use the `isCreatable` prop to allow users to add options that aren't in the list
 
 `isSearchable` is automatically set to `true` when `isCreatable` is `true` (passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error).
 
+In creatable mode the typed text is retained when the input blurs or the menu closes, so a user who clicks away mid-entry can return to it. The text only clears once an option is selected or created.
+
 <Canvas of={SelectDropdownStories.Creatable} />
 
 ### Props
 
-| Prop                | Type                                      | Default              | Description                                                                                               |
-| ------------------- | ----------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------- |
-| `isCreatable`       | `boolean`                                 | `false`              | Enables option creation. Automatically forces `isSearchable` to `true`.                                   |
-| `onCreateOption`    | `(inputValue: string) => void`            | —                    | Called when the user confirms a new option. Append the value to `options` to persist it.                  |
-| `formatCreateLabel` | `(inputValue: string) => ReactNode`       | `Add "inputValue"`   | Customises the label shown in the "Add" row.                                                              |
-| `isValidNewOption`  | `(inputValue, value, options) => boolean` | react-select default | Controls when the "Add" row is visible. Use for min-length gating, pattern validation, or max-items caps. |
+| Prop                | Type                                           | Default              | Description                                                                                                          |
+| ------------------- | ---------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `isCreatable`       | `boolean`                                      | `false`              | Enables option creation. Automatically forces `isSearchable` to `true`.                                              |
+| `onCreateOption`    | `(inputValue: string) => void`                 | —                    | Called when the user confirms a new option. Append the value to `options` to persist it.                             |
+| `formatCreateLabel` | `(inputValue: string) => ReactNode`            | `Add "inputValue"`   | Customises the label shown in the "Add" row.                                                                         |
+| `isValidNewOption`  | `(inputValue, value, options) => boolean`      | react-select default | Controls when the "Add" row is visible. Use for min-length gating, pattern validation, or max-items caps.            |
+| `validationMessage` | `ReactNode \| (({ inputValue }) => ReactNode)` | `"No options"`       | Replaces the in-menu "No options" text. Useful for surfacing validation/error messages directly inside the dropdown. |
+
+### Surfacing validation in the dropdown
+
+`validationMessage` customises the text shown inside the menu when no option matches the current input. Pair it with `isValidNewOption` (to gate the "Add" row) and a `FormGroup` `error` to communicate the same issue both inside the dropdown and below the field.
+
+<Canvas of={SelectDropdownStories.CreatableWithValidation} />
 
 ## Multiple select
 

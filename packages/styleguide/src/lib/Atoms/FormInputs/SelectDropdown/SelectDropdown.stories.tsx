@@ -506,6 +506,7 @@ export const CreatableMulti: Story = {
           label="Pick fruits or add your own"
         >
           <SelectDropdown
+            disabled
             isCreatable
             multiple
             name="creatable-multi-dropdown"
@@ -524,31 +525,40 @@ export const CreatableMulti: Story = {
 export const CreatableWithValidation: Story = {
   render: () => {
     const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    const [error, setError] = useState<string | undefined>();
+
+    const validate = (inputValue: string) => {
+      const trimmed = inputValue.trim();
+      if (trimmed.length < 3) return 'Enter at least 3 characters.';
+      return undefined;
+    };
+
     return (
       <Box height="15rem">
         <FormGroup
+          error={error}
           htmlFor="creatable-validated-dropdown"
           isSoloField
-          label="Min 3 characters — no duplicates (case-insensitive)"
+          label="Pick a fruit that is at least 3 characters long"
         >
           <SelectDropdown
+            error={Boolean(error)}
             isCreatable
+            isValidNewOption={(inputValue: string) =>
+              !validate(inputValue) && inputValue.trim().length > 0
+            }
             name="creatable-validated-dropdown"
             options={options}
             placeholder="Type at least 3 characters to add…"
-            isValidNewOption={(
-              inputValue: string,
-              _value,
-              currentOptions: { label: string }[]
-            ) => {
-              if (inputValue.trim().length < 3) return false;
-              return !currentOptions.some(
-                (opt) =>
-                  opt.label.toLowerCase() === inputValue.trim().toLowerCase()
-              );
+            validationMessage={({ inputValue }) =>
+              validate(inputValue) ?? 'No matching fruit'
+            }
+            onCreateOption={(inputValue) => {
+              setOptions((prev) => [...prev, inputValue.trim()]);
+              setError(undefined);
             }}
-            onCreateOption={(inputValue) =>
-              setOptions((prev) => [...prev, inputValue.trim()])
+            onInputChange={(inputValue: string) =>
+              setError(validate(inputValue))
             }
           />
         </FormGroup>

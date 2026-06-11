@@ -9,7 +9,11 @@ import {
   useState,
 } from 'react';
 import * as React from 'react';
-import { Options as OptionsType, StylesConfig } from 'react-select';
+import {
+  InputActionMeta,
+  Options as OptionsType,
+  StylesConfig,
+} from 'react-select';
 
 import { parseOptions, SelectOptionBase } from '../utils';
 import {
@@ -121,10 +125,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   name,
   onChange,
   onCreateOption,
+  onInputChange,
   options,
   placeholder = 'Select an option',
   shownOptionsLimit = 6,
   size,
+  validationMessage,
   value,
   zIndex,
   ...rest
@@ -136,6 +142,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const [activated, setActivated] = useState(false);
   const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
+  // Controlled input value for creatable mode so typed text persists across
+  // blur / menu-close (react-select clears it by default).
+  const [inputValue, setInputValue] = useState('');
 
   // these are used to programatically manage the focus state of our multi-select options + 'Remove all' button
   const removeAllButtonRef = useRef<HTMLDivElement>(null);
@@ -195,7 +204,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     );
     if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
 
-    //
     // We only update this when our passed in options or value changes, not multiValues.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options, value]);
@@ -248,6 +256,34 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     }
   };
 
+  const handleInputChange = useCallback(
+    (newValue: string, actionMeta: InputActionMeta) => {
+      if (isCreatable) {
+        /* Keep typed text instead of letting react-select clear it on blur /
+           menu-close. Since the value didn't actually change, we also skip
+           forwarding these to the consumer so derived state (e.g. validation
+           errors) isn't reset against an empty value. 'set-value' (after
+           selecting/creating) still clears and forwards as normal. */
+        if (
+          actionMeta.action === 'input-blur' ||
+          actionMeta.action === 'menu-close'
+        ) {
+          return;
+        }
+        setInputValue(newValue);
+      }
+      onInputChange?.(newValue, actionMeta);
+    },
+    [isCreatable, onInputChange]
+  );
+
+  const noOptionsMessage =
+    validationMessage === undefined
+      ? undefined // fall back to react-select default ("No options")
+      : typeof validationMessage === 'function'
+      ? (validationMessage as (obj: { inputValue: string }) => React.ReactNode)
+      : () => validationMessage;
+
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
     return getMemoizedStyles(theme, zIndex);
@@ -277,6 +313,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         id={id || rest.htmlFor || rawInputId}
         inputId={inputId}
         inputProps={{ ...inputProps }}
+        inputValue={isCreatable ? inputValue : undefined}
         inputWidth={inputWidth}
         isCreatable={isCreatable}
         isDisabled={disabled}
@@ -286,6 +323,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isValidNewOption={isValidNewOption}
         menuAlignment={menuAlignment}
         name={name}
+        noOptionsMessage={noOptionsMessage}
         options={selectOptions}
         placeholder={placeholder}
         selectRef={selectInputRef}
@@ -295,6 +333,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
         onCreateOption={onCreateOption}
+        onInputChange={handleInputChange}
         onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
         {...rest}
       />

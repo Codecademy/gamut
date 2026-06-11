@@ -37,11 +37,10 @@ export const onFocus: AriaOnFocus<ExtendedOption> = ({
  * The icon type depends on whether the select is searchable or not.
  */
 export const DropdownButton = (props: SizedIndicatorProps) => {
-  const { size, isSearchable } = props.selectProps;
+  const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
   const iconSize = size ?? 'medium';
-  const iconType = isSearchable ? 'Searchable' : 'Chevron';
-  const { ...iconProps } = indicatorIcons[`${iconSize}${iconType}`];
+  const { ...iconProps } = indicatorIcons[`${iconSize}Chevron`];
   const { icon: IndicatorIcon } = iconProps;
 
   return (

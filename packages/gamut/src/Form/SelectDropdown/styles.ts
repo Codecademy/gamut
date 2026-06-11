@@ -150,6 +150,8 @@ export const getMemoizedStyles = (
         ...provided,
         ...dropdownBorderStyles(zIndex)({ theme }),
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+        // Drop react-select's default menu drop shadow; the border above defines the edge.
+        boxShadow: 'none',
         ...(dropdownWidth
           ? {
               minWidth: dropdownWidth,
@@ -210,6 +212,10 @@ export const getMemoizedStyles = (
       ':hover': {
         backgroundColor: theme.colors['secondary-hover'],
       },
+    }),
+    noOptionsMessage: (provided) => ({
+      ...provided,
+      color: theme.colors['text-secondary'],
     }),
     option: (provided, state: OptionState) => {
       const isNew = state.data?.__isNew__;
