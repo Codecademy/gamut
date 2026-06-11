@@ -1,5 +1,3 @@
-import { MiniArrowLeftIcon, MiniArrowRightIcon } from '@codecademy/gamut-icons';
-import { useElementDir } from '@codecademy/gamut-styles';
 import {
   useCallback,
   useEffect,
@@ -9,7 +7,6 @@ import {
   useState,
 } from 'react';
 
-import { Box, FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
 import {
@@ -22,6 +19,7 @@ import type {
   DatePickerRangeContextValue,
 } from './DatePickerContext/types';
 import { DatePickerInput } from './DatePickerInput';
+import { DatePickerRangeInputWrapper } from './DatePickerInput/DatePickerRangeInputWrapper';
 import type { DatePickerProps } from './types';
 import { useResolvedLocale } from './utils/locale';
 import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './utils/translations';
@@ -46,7 +44,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const inputRef = useRef<HTMLDivElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
-  const isRtl = useElementDir() === 'rtl';
 
   const clearGridFocusRequest = useCallback(() => {
     setGridFocusRequested(false);
@@ -149,32 +146,19 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       children
     ) : (
       <>
-        <FlexBox
-          gap={inputSize === 'small' ? 4 : 8}
-          ref={inputRef}
-          width="fit-content"
-        >
-          {mode === 'range' ? (
-            <>
-              <DatePickerInput
-                description={description}
-                name="datePickerInput"
-                rangePart="start"
-                size={inputSize}
-              />
-              <Box alignSelf="center" mt={32}>
-                {isRtl ? <MiniArrowLeftIcon /> : <MiniArrowRightIcon />}
-              </Box>
-              <DatePickerInput
-                name="datePickerInput"
-                rangePart="end"
-                size={inputSize}
-              />
-            </>
-          ) : (
-            <DatePickerInput description={description} size={inputSize} />
-          )}
-        </FlexBox>
+        {mode === 'range' ? (
+          <DatePickerRangeInputWrapper
+            description={description}
+            ref={inputRef}
+            size={inputSize}
+          />
+        ) : (
+          <DatePickerInput
+            description={description}
+            ref={inputRef}
+            size={inputSize}
+          />
+        )}
         <PopoverContainer
           alignment="bottom-left"
           allowPageInteraction

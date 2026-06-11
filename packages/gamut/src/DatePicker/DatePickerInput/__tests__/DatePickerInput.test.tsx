@@ -9,6 +9,7 @@ import {
   createMockSingleContext,
 } from '../../DatePickerContext/__tests__/mockContexts';
 import type { DatePickerContextValue } from '../../DatePickerContext/types';
+import { DatePickerRangeInputWrapper } from '../DatePickerRangeInputWrapper';
 import { DatePickerInput } from '../index';
 
 type HarnessProps = { context: DatePickerContextValue } & ComponentProps<
@@ -48,6 +49,14 @@ const RangeLabelsHarness: FC<RangeLabelsHarnessProps> = ({
 
 const renderRange = setupRtl(RangeLabelsHarness, {});
 
+const RangeWrapperHarness: FC = () => (
+  <DatePickerProvider value={createMockRangeContext()}>
+    <DatePickerRangeInputWrapper />
+  </DatePickerProvider>
+);
+
+const renderRangeWrapper = setupRtl(RangeWrapperHarness, {});
+
 describe('DatePickerInput', () => {
   it('throws when rendered without DatePickerProvider', () => {
     expect(() =>
@@ -86,7 +95,7 @@ describe('DatePickerInput', () => {
   });
 
   it('renders default Start date and End date labels in range mode', () => {
-    const { view } = renderRange();
+    const { view } = renderRangeWrapper();
 
     view.getByText('Start date');
     view.getByText('End date');

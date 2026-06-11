@@ -1,4 +1,7 @@
-import type { DateFormatLayoutItem, DatePartKind } from '../utils';
+import type {
+  DateFormatLayoutItem,
+  DatePartKind,
+} from '../DatePickerInputShell/utils';
 
 export type SegmentValues = {
   month: string;
