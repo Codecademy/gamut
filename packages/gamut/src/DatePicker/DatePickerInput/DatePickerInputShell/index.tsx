@@ -67,11 +67,14 @@ export const DatePickerInputShell = forwardRef<
       locale,
       isCalendarOpen,
       disableDate,
+      translations,
     } = context;
 
     const isRange = mode === 'range';
     const endDate = isRange ? context.endDate : null;
     const date = isRange ? context.startDate : context.selectedDate;
+
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     const { layout, fieldOrder } = useMemo(() => {
       const layout = getDateFormatLayout(locale);
@@ -276,7 +279,14 @@ export const DatePickerInputShell = forwardRef<
           type="hidden"
           value={hiddenValue}
         />
-        <IconButton icon={MiniCalendarIcon} size="small" tip="Open calendar" />
+        <IconButton
+          mx={4}
+          icon={MiniCalendarIcon}
+          size="small"
+          tip={translations.openCalendarLabel}
+          ref={buttonRef}
+          onClick={() => buttonRef.current?.blur()}
+        />
       </SegmentedShell>
     );
   }
