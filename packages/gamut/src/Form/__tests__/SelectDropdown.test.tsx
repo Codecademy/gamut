@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react';
+import { act, useState } from 'react';
 
 import {
   openDropdown,
@@ -11,6 +11,59 @@ import {
   selectOptionsObject,
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
+
+const CreatableMultiHarness = () => {
+  const [options, setOptions] = useState(['Apple', 'Banana']);
+
+  return (
+    <SelectDropdown
+      isCreatable
+      multiple
+      name="creatable-multi"
+      options={options}
+      onCreateOption={(inputValue) =>
+        setOptions((prev) => [...prev, inputValue])
+      }
+    />
+  );
+};
+
+const ControlledCreatableMultiHarness = ({
+  onChange,
+  onCreateOption,
+}: {
+  onChange?: jest.Mock;
+  onCreateOption?: jest.Mock;
+}) => {
+  const [options, setOptions] = useState(['Apple', 'Banana']);
+  const [value, setValue] = useState<string[]>(['Apple']);
+
+  return (
+    <SelectDropdown
+      isCreatable
+      multiple
+      name="controlled-creatable-multi"
+      options={options}
+      value={value}
+      onChange={(selected, meta) => {
+        setValue(selected.map((option) => option.value));
+
+        if (meta.action === 'create-option' && meta.option) {
+          setOptions((prev) => [...prev, meta.option.value]);
+        }
+
+        onChange?.(selected, meta);
+      }}
+      onCreateOption={onCreateOption}
+    />
+  );
+};
+
+const renderCreatableMulti = setupRtl(CreatableMultiHarness, {});
+const renderControlledCreatableMulti = setupRtl(
+  ControlledCreatableMultiHarness,
+  {}
+);
 
 /** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
  *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
@@ -464,6 +517,41 @@ describe('SelectDropdown', () => {
       expect(onCreateOption).toHaveBeenCalledWith('purple');
     });
 
+    it('fires onChange with create-option when the "Add" row is selected in multi mode', async () => {
+      const onChange = jest.fn();
+      const { view } = renderView({
+        isCreatable: true,
+        multiple: true,
+        onChange,
+      });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('red'));
+      });
+
+      const combobox = view.getByRole('combobox');
+
+      await act(async () => {
+        await userEvent.type(combobox, 'purple');
+      });
+
+      await act(async () => {
+        await userEvent.click(view.getByText('Add "purple"'));
+      });
+
+      expect(onChange).toHaveBeenLastCalledWith(
+        [
+          { label: 'red', value: 'red' },
+          { label: 'purple', value: 'purple', __isNew__: true },
+        ],
+        expect.objectContaining({
+          action: 'create-option',
+          option: expect.objectContaining({ value: 'purple' }),
+        })
+      );
+    });
+
     it('respects a custom formatCreateLabel', async () => {
       const { view } = renderView({
         isCreatable: true,
@@ -490,7 +578,7 @@ describe('SelectDropdown', () => {
       expect(view.queryByText('Add "anything"')).not.toBeInTheDocument();
     });
 
-    it('keeps the typed text after the input blurs', async () => {
+    it('clears the typed text when the input blurs', async () => {
       const { view } = renderView({ isCreatable: true });
 
       const combobox = view.getByRole('combobox');
@@ -503,10 +591,10 @@ describe('SelectDropdown', () => {
         fireEvent.blur(combobox);
       });
 
-      expect(combobox).toHaveValue('pur');
+      expect(combobox).toHaveValue('');
     });
 
-    it('does not forward onInputChange to the consumer when the input blurs', async () => {
+    it('forwards onInputChange to the consumer when the input blurs', async () => {
       const onInputChange = jest.fn();
       const { view } = renderView({ isCreatable: true, onInputChange });
 
@@ -522,8 +610,10 @@ describe('SelectDropdown', () => {
         fireEvent.blur(combobox);
       });
 
-      // Text persists, so consumers should not be told the value went empty.
-      expect(onInputChange).not.toHaveBeenCalled();
+      expect(onInputChange).toHaveBeenCalledWith('', {
+        action: 'input-blur',
+        prevInputValue: 'pur',
+      });
     });
 
     it('clears the typed text after an option is created', async () => {
@@ -540,6 +630,67 @@ describe('SelectDropdown', () => {
       });
 
       expect(combobox).toHaveValue('');
+    });
+
+    it('keeps existing multi selections when a new option is created', async () => {
+      const { view } = renderCreatableMulti();
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('Apple'));
+      });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('Banana'));
+      });
+
+      const combobox = view.getByRole('combobox');
+
+      await act(async () => {
+        await userEvent.type(combobox, 'Cherry');
+      });
+
+      await act(async () => {
+        await userEvent.click(view.getByText('Add "Cherry"'));
+      });
+
+      expect(view.getByText('Apple')).toBeInTheDocument();
+      expect(view.getByText('Banana')).toBeInTheDocument();
+      expect(view.getByText('Cherry')).toBeInTheDocument();
+    });
+
+    it('keeps controlled multi selections when a new option is created', async () => {
+      const onChange = jest.fn();
+      const { view } = renderControlledCreatableMulti({ onChange });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('Banana'));
+      });
+
+      const combobox = view.getByRole('combobox');
+
+      await act(async () => {
+        await userEvent.type(combobox, 'Cherry');
+      });
+
+      await act(async () => {
+        await userEvent.click(view.getByText('Add "Cherry"'));
+      });
+
+      expect(view.getByText('Apple')).toBeInTheDocument();
+      expect(view.getByText('Banana')).toBeInTheDocument();
+      expect(view.getByText('Cherry')).toBeInTheDocument();
+
+      expect(onChange).toHaveBeenLastCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({ value: 'Apple' }),
+          expect.objectContaining({ value: 'Banana' }),
+          expect.objectContaining({ value: 'Cherry' }),
+        ]),
+        expect.objectContaining({ action: 'create-option' })
+      );
     });
 
     describe('validationMessage', () => {

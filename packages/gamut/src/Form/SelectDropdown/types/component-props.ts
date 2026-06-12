@@ -82,7 +82,8 @@ export interface SelectDropdownCoreProps
   isCreatable?: boolean;
   /**
    * Called when the user confirms a new option via the "Add" row.
-   * The consumer is responsible for appending the new option to the options array.
+   * Convenience callback for persisting the new value to your `options` list.
+   * Selection updates are delivered through `onChange` with `action: 'create-option'`.
    */
   onCreateOption?: (inputValue: string) => void;
   /**
@@ -175,11 +176,9 @@ export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
   selectRef?: Ref<any>;
   /** When true, renders CreatableSelect instead of ReactSelect */
   isCreatable?: boolean;
-  /** Forwarded to CreatableSelect; customises the "Add" row label */
+  /** Customises the "Add" row label */
   formatCreateLabel?: (inputValue: string) => React.ReactNode;
-  /** Forwarded to CreatableSelect; called on new option confirmation */
-  onCreateOption?: (inputValue: string) => void;
-  /** Forwarded to CreatableSelect; controls visibility of the "Add" row */
+  /** Controls visibility of the "Add" row */
   isValidNewOption?: (
     inputValue: string,
     value: OptionsType<OptionStrict>,

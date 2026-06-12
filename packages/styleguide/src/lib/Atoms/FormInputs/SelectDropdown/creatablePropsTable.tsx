@@ -48,8 +48,9 @@ const creatableProps = [
     defaultValue: null,
     description: (
       <>
-        Called when the user confirms a new option. Append the value to{' '}
-        <Code>options</Code> to persist it.
+        Called when the user confirms a new option. Convenience hook for
+        appending to <Code>options</Code>; selection updates arrive via{' '}
+        <Code>onChange</Code> with <Code>action: 'create-option'</Code>.
       </>
     ),
   },

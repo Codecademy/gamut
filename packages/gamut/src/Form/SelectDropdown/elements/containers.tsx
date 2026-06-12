@@ -122,8 +122,10 @@ export const CustomInput = ({
 /**
  * Typed wrapper around react-select component.
  * Renders CreatableSelect when isCreatable is true, ReactSelect otherwise.
- * Creatable-only props (formatCreateLabel, onCreateOption, isValidNewOption)
- * are stripped from the non-creatable path so they don't reach ReactSelect.
+ * Creatable-only props (formatCreateLabel, isValidNewOption) are stripped from
+ * the non-creatable path so they don't reach ReactSelect. `onCreateOption` is
+ * handled in SelectDropdown's changeHandler — do not pass it to CreatableSelect
+ * or react-select will skip onChange on create.
  */
 export function TypedReactSelect<
   OptionType,
@@ -134,7 +136,6 @@ export function TypedReactSelect<
   isCreatable,
   formatCreateLabel,
   isValidNewOption,
-  onCreateOption,
   ...props
 }: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
   if (isCreatable) {
@@ -143,7 +144,6 @@ export function TypedReactSelect<
         {...(props as any)}
         formatCreateLabel={formatCreateLabel}
         isValidNewOption={isValidNewOption}
-        onCreateOption={onCreateOption}
         ref={selectRef}
       />
     );

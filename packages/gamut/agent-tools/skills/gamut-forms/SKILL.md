@@ -26,6 +26,12 @@ For typical product forms, prefer `GridForm` (declarative `fields`, `LayoutGrid`
 
 ---
 
+## SelectDropdown
+
+For `SelectDropdown` — single vs multi value, controlled vs uncontrolled patterns, creatable options, and react-select action metadata — use [`gamut-select-dropdown`](../gamut-select-dropdown/SKILL.md). Generic `FormGroup` wiring (labels, errors, live regions) still applies as documented below; SelectDropdown-specific state contracts live in that skill.
+
+---
+
 ## `FormGroup` (baseline)
 
 [`FormGroup.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormGroup.tsx)

@@ -2,6 +2,7 @@ import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
 import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
+import { ControlledModeTable } from './controlledModeTable';
 import { CreatablePropsTable } from './creatablePropsTable';
 import * as SelectDropdownStories from './SelectDropdown.stories';
 
@@ -16,7 +17,7 @@ export const parameters = {
   source: {
     repo: 'gamut',
     githubLink:
-      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/SelectDropdown.tsx',
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/SelectDropdown/SelectDropdown.tsx',
   },
 };
 
@@ -31,44 +32,7 @@ Use SelectDropdown to pick from exclusive options within a styled dropdown.
 
 If you are using this in a standard form, `SelectDropdown` must be provided an `aria-label` and a `name`. The `aria-label` must match the `htmlFor` of the FormGroupLabel or `<label>` of the SelectDropdown.
 
-## Events and controlled components
-
-Instead of a standard HTML Select event return, SelectDropdown returns the selected option. This is formatted as `{label: 'labelText', value: 'valueText' }`. Your event functions should be formatted as `(event) => changeHandler(event.value)` instead of `(event) => changeHandler(event.target.value)`.
-
-SelectDropdown does not take a defaultValue prop. If you wish to define a default value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components), like so:
-
-```tsx
-import { Box, SelectDropdown } from '@codecademy/gamut';
-import React, { useState } from 'react';
-
-export const CustomDropdown: React.FC = ({
-  errorMessage,
-  disabled,
-  defaultValue,
-  options,
-}) => {
-  const [currentValue, setCurrentValue] = useState(defaultValue);
-
-  const changeHandler = (newValue) => {
-    setCurrentValue(newValue);
-  };
-
-  return (
-    <FormGroup error={errorMessage} disabled={disabled}>
-      <SelectDropdown
-        options={options}
-        onChange={(e) => changeHandler(e.value)}
-        placeholder="Placeholder"
-        error={!!errorMessage}
-        disabled={disabled}
-        value={currentValue}
-      />
-    </FormGroup>
-  );
-};
-```
-
-## SelectDropdown states
+## States
 
 ### Base
 
@@ -130,22 +94,18 @@ To add some pizzazz to your dropdown, you can add any of our <LinkTo id='Atoms/I
 
 <Canvas of={SelectDropdownStories.Icons} />
 
-## Accessibility
+## Multiple selection
 
-### FormGroup + SelectDropdown
+Set `multiple` to let users choose more than one option. Selected options render as removable tags in the input, and `onChange` receives the full array of selected options (each as `{ label, value }`) rather than a single value. See [Controlled vs. Uncontrolled](#controlled-vs-uncontrolled) for when to pass `value` as a `string[]`.
+
+## FormGroup integration
 
 `SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
 
 <Canvas of={SelectDropdownStories.FormGroupSelectDropdown} />
 <Canvas of={SelectDropdownStories.FormGroupError} />
 
-## Multiple select
-
-Set `multiple` to let users choose more than one option. Selected options render as removable tags in the input, and `onChange` receives the full array of selected options (each as `{ label, value }`) rather than a single value. Manage that array as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
-
-<Canvas of={SelectDropdownStories.MultipleSelect} />
-
-### Custom input props
+## Custom input props
 
 Some of our forms require special props be passed directly onto the input components. We can do that by passing an object with `hidden` and `combobox` properties into our inputProps prop.
 
@@ -159,11 +119,11 @@ Some of our forms require special props be passed directly onto the input compon
 
 <Canvas of={SelectDropdownStories.CustomInputProps} />
 
-### Abbreviated options
+## Abbreviated options
 
 For space-constrained layouts or when you need to display long option names in a compact way, you can use the abbreviated feature. This allows you to show a short abbreviation in the input field while displaying the full label in the dropdown.
 
-#### How it works
+### How it works
 
 - **Input Display**: Shows the abbreviated text (e.g., "USA")
 - **Dropdown Display**: Shows the full label (e.g., "United States of America")
@@ -171,41 +131,41 @@ For space-constrained layouts or when you need to display long option names in a
 
 <Canvas of={SelectDropdownStories.AbbreviatedInput} />
 
-#### Small size with abbreviations
+### Small size with abbreviations
 
 The abbreviated feature works particularly well with the small size variant, providing space-efficient layouts for compact interfaces.
 
 <Canvas of={SelectDropdownStories.AbbreviatedSmallSize} />
 
-#### Advanced options
+### Advanced options
 
 You can combine abbreviations with other option features like subtitles, right labels, and icons for rich, informative dropdowns.
 
 <Canvas of={SelectDropdownStories.AbbreviatedWithSubtitleAndRightLabel} />
 <Canvas of={SelectDropdownStories.ComplexAbbreviatedOptions} />
 
-### Independent width control
+## Independent width control
 
 You can control the width of the input field and dropdown independently using the `inputWidth` and `dropdownWidth` props. This is particularly useful when you need a compact input but want to show more detailed information in the dropdown.
 
-#### How it works
+### How it works
 
 - **`inputWidth`**: Controls the width of the input field (can be a string like "150px" or a number)
 - **`dropdownWidth`**: Controls the width of the dropdown menu (can be a string like "350px" or a number)
 
 <Canvas of={SelectDropdownStories.IndependentWidths} />
 
-#### Small size with independent widths
+### Small size with independent widths
 
 The independent width feature works particularly well with the small size variant, allowing for very compact inputs while maintaining readable dropdown content.
 
 <Canvas of={SelectDropdownStories.SmallWithAbbreviations} />
 
-### Menu alignment
+## Menu alignment
 
 When using different widths for the input and dropdown, you can control how the dropdown aligns relative to the input using the `menuAlignment` prop.
 
-#### How it works
+### How it works
 
 - **`menuAlignment`**: Controls the horizontal alignment of the dropdown menu relative to the input
   - **`'left'`** (default): Aligns the dropdown to the left edge of the input
@@ -214,7 +174,7 @@ When using different widths for the input and dropdown, you can control how the 
 
 <Canvas of={SelectDropdownStories.MenuAlignmentRight} />
 
-### Selectdropdown options menu z-index
+## Dropdown z-index
 
 You can control the z-index of the dropdown menu using the `zIndex` prop. This is useful when you have other elements on the page that might overlap with the dropdown.
 
@@ -226,10 +186,7 @@ In the example below, the z-index menu is configured to the default value (`auto
 
 Set `isCreatable` to let users add options that aren't already in the list. When the typed value doesn't match an existing option, an **Add "value"** row appears at the bottom of the menu; selecting it fires `onCreateOption` with the typed string. The consumer owns persistence — append the new value to your `options` array (and, for multi-select, it is added to the current selection).
 
-Two behaviors come along automatically in creatable mode:
-
-- **Searchable by default** — `isSearchable` is forced to `true`, since creation needs a text input. Passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error.
-- **Typed text persists on blur** — if the user clicks away or the menu closes mid-entry, their text is kept so they can pick up where they left off. It clears only once an option is selected or created.
+Creatable mode is **searchable by default** — `isSearchable` is forced to `true`, since creation needs a text input. Passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error.
 
 ### Basic usage
 
@@ -237,9 +194,15 @@ A single-select creatable dropdown. Type a value that isn't listed, choose the *
 
 <Canvas of={SelectDropdownStories.Creatable} />
 
-### Multiple selection
+### Multiple selection (uncontrolled)
 
-Combine `isCreatable` with `multiple` to let users select several existing options and add their own. Each created value is appended to the options list and included in the current selection.
+Combine `isCreatable` with `multiple` and omit `value`. Use `onCreateOption` to persist new options; selection is managed internally. See [Controlled vs. Uncontrolled](#controlled-vs-uncontrolled) for the full pattern.
+
+<Canvas of={SelectDropdownStories.CreatableMultiUncontrolled} />
+
+### Multiple selection (controlled)
+
+Pass `value` as `string[]` and update it in `onChange` on every change, including `create-option`. See [Controlled vs. Uncontrolled](#controlled-vs-uncontrolled) for the full pattern.
 
 <Canvas of={SelectDropdownStories.CreatableMulti} />
 
@@ -247,11 +210,74 @@ Combine `isCreatable` with `multiple` to let users select several existing optio
 
 Gate which inputs can be added with `isValidNewOption` — return `false` to hide the **Add** row (e.g. minimum length, pattern matching, or de-duplication). Use `validationMessage` to replace the menu's default "No options" text with contextual feedback, and mirror the same message in a `FormGroup` `error` so it's also surfaced below the field.
 
+When persisting a `FormGroup` error after blur, handle `onInputChange` in the consumer — react-select clears the input on blur by default. Update validation on `input-change`, and on `input-blur` re-validate from the last typed value so the error isn't lost when the input clears.
+
 <Canvas of={SelectDropdownStories.CreatableWithValidation} />
 
 ### Props
 
 <CreatablePropsTable />
+
+## Controlled vs. Uncontrolled
+
+SelectDropdown does not accept a `defaultValue` prop. How you manage selection depends on single vs. multi mode:
+
+<ControlledModeTable />
+
+`onChange` receives the selected option as `{ label, value }` (or an array of those objects in multi mode), not `event.target.value`. The second argument is react-select action metadata — for creatable creates, `meta.action === 'create-option'`.
+
+### Single select (controlled)
+
+```tsx
+import { FormGroup, SelectDropdown } from '@codecademy/gamut';
+import { useState } from 'react';
+
+export const SingleSelectExample = ({ options, defaultValue }) => {
+  const [value, setValue] = useState(defaultValue);
+
+  return (
+    <FormGroup htmlFor="country" isSoloField label="Country">
+      <SelectDropdown
+        name="country"
+        options={options}
+        value={value}
+        onChange={(option) => setValue(option.value)}
+      />
+    </FormGroup>
+  );
+};
+```
+
+### Multi select (uncontrolled)
+
+Omit `value` and the component keeps selection in internal state. Pass `onChange` only if you need to react to changes.
+
+```tsx
+<SelectDropdown
+  multiple
+  name="tags"
+  options={['Apple', 'Banana', 'Cherry']}
+  onChange={(selected) => console.log(selected.map((o) => o.value))}
+/>
+```
+
+<Canvas of={SelectDropdownStories.MultipleSelect} />
+
+### Multi select (controlled)
+
+```tsx
+const [value, setValue] = useState<string[]>(['Apple']);
+
+<SelectDropdown
+  multiple
+  name="tags"
+  options={options}
+  value={value}
+  onChange={(selected) => setValue(selected.map((option) => option.value))}
+/>;
+```
+
+Creatable modes follow the same single/multi rules above — see the [Creatable](#creatable) section for runnable examples.
 
 ## Playground
 
