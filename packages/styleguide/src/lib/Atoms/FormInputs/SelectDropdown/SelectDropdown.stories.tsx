@@ -32,15 +32,6 @@ const meta: Meta<typeof SelectDropdown> = {
 export default meta;
 type Story = StoryObj<typeof SelectDropdown>;
 
-export const Default: Story = {
-  args: {},
-  render: (args) => (
-    <Box height="18rem">
-      <SelectDropdown {...args} />
-    </Box>
-  ),
-};
-
 export const Base: Story = {
   args: {
     name: 'base-dropdown',
@@ -446,127 +437,6 @@ export const Icons: Story = {
   ),
 };
 
-export const CustomInputProps: Story = {
-  args: {
-    options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
-    inputProps: {
-      hidden: { 'data-form-field': 'what' },
-      combobox: {
-        'data-testid': 'custom-select',
-        'data-cy': 'custom-dropdown',
-      },
-    },
-    name: 'what',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup htmlFor="what" isSoloField label="i am ~styled">
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const Creatable: Story = {
-  args: {
-    name: 'creatable-dropdown',
-    isCreatable: true,
-    placeholder: 'Select or type to add…',
-  },
-  render: (args) => {
-    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-    return (
-      <Box height="15rem">
-        <FormGroup
-          htmlFor="creatable-dropdown"
-          isSoloField
-          label="Type a new fruit and press Enter"
-        >
-          <SelectDropdown
-            {...args}
-            options={options}
-            onCreateOption={(inputValue) =>
-              setOptions((prev) => [...prev, inputValue])
-            }
-          />
-        </FormGroup>
-      </Box>
-    );
-  },
-};
-
-export const CreatableMulti: Story = {
-  render: () => {
-    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-    return (
-      <Box height="18rem">
-        <FormGroup
-          htmlFor="creatable-multi-dropdown"
-          isSoloField
-          label="Pick fruits or add your own"
-        >
-          <SelectDropdown
-            disabled
-            isCreatable
-            multiple
-            name="creatable-multi-dropdown"
-            options={options}
-            placeholder="Select or type to add…"
-            onCreateOption={(inputValue) =>
-              setOptions((prev) => [...prev, inputValue])
-            }
-          />
-        </FormGroup>
-      </Box>
-    );
-  },
-};
-
-export const CreatableWithValidation: Story = {
-  render: () => {
-    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-    const [error, setError] = useState<string | undefined>();
-
-    const validate = (inputValue: string) => {
-      const trimmed = inputValue.trim();
-      if (trimmed.length < 3) return 'Enter at least 3 characters.';
-      return undefined;
-    };
-
-    return (
-      <Box height="15rem">
-        <FormGroup
-          error={error}
-          htmlFor="creatable-validated-dropdown"
-          isSoloField
-          label="Pick a fruit that is at least 3 characters long"
-        >
-          <SelectDropdown
-            error={Boolean(error)}
-            isCreatable
-            isValidNewOption={(inputValue: string) =>
-              !validate(inputValue) && inputValue.trim().length > 0
-            }
-            name="creatable-validated-dropdown"
-            options={options}
-            placeholder="Type at least 3 characters to add…"
-            validationMessage={({ inputValue }) =>
-              validate(inputValue) ?? 'No matching fruit'
-            }
-            onCreateOption={(inputValue) => {
-              setOptions((prev) => [...prev, inputValue.trim()]);
-              setError(undefined);
-            }}
-            onInputChange={(inputValue: string) =>
-              setError(validate(inputValue))
-            }
-          />
-        </FormGroup>
-      </Box>
-    );
-  },
-};
-
 export const MultipleSelect: Story = {
   args: {
     name: 'multi-dropdown',
@@ -599,41 +469,22 @@ export const MultipleSelect: Story = {
   ),
 };
 
-export const FormGroupSelectDropdown: Story = {
+export const CustomInputProps: Story = {
   args: {
-    options: ['hello', 'hi', 'howdy'],
-    value: 'oh no',
-    name: 'big-label',
+    options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
+    inputProps: {
+      hidden: { 'data-form-field': 'what' },
+      combobox: {
+        'data-testid': 'custom-select',
+        'data-cy': 'custom-dropdown',
+      },
+    },
+    name: 'what',
   },
   render: (args) => (
     <Box height="15rem">
-      <FormGroup
-        htmlFor="big-label"
-        isSoloField
-        label="i am big label"
-        labelSize="large"
-      >
+      <FormGroup htmlFor="what" isSoloField label="i am ~styled">
         <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const FormGroupError: Story = {
-  args: {
-    options: ['Error', 'oh no', ':('],
-    name: 'error-example-unique',
-    placeholder: 'cry cry cry',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        error="error message!! no :'("
-        htmlFor="error-example-unique"
-        isSoloField
-        label="i am ~styled... but something is wrong"
-      >
-        <SelectDropdown error {...args} />
       </FormGroup>
     </Box>
   ),
@@ -682,6 +533,141 @@ export const AbbreviatedInput: Story = {
       <Box color="text-secondary" mt={4}>
         Input shows &quot;USA&quot; but dropdown shows &quot;United States of
         America&quot;
+      </Box>
+    </Box>
+  ),
+};
+
+export const AbbreviatedSmallSize: Story = {
+  args: {
+    name: 'abbreviated-small',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="abbreviated-small"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const AbbreviatedWithSubtitleAndRightLabel: Story = {
+  args: {
+    name: 'abbreviated-detailed',
+    options: [
+      {
+        label: 'Senior Software Engineer',
+        abbreviation: 'Sr SWE',
+        value: 'senior-swe',
+        subtitle: '5+ years experience',
+        rightLabel: 'Senior',
+      },
+      {
+        label: 'Principal Software Engineer',
+        abbreviation: 'Principal SWE',
+        value: 'principal-swe',
+        subtitle: '10+ years experience',
+        rightLabel: 'Principal',
+      },
+      {
+        label: 'Staff Software Engineer',
+        abbreviation: 'Staff SWE',
+        value: 'staff-swe',
+        subtitle: '8+ years experience',
+        rightLabel: 'Staff',
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="abbreviated-detailed"
+        isSoloField
+        label="Abbreviated with Additional Details"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const ComplexAbbreviatedOptions: Story = {
+  args: {
+    name: 'complex-abbreviated-dropdown',
+    options: [
+      {
+        label: 'Senior Software Engineer',
+        abbreviation: 'Sr SWE',
+        value: 'senior-swe',
+        subtitle: '5+ years experience',
+        rightLabel: 'Senior',
+      },
+      {
+        label: 'Principal Software Engineer',
+        abbreviation: 'Principal SWE',
+        value: 'principal-swe',
+        subtitle: '10+ years experience',
+        rightLabel: 'Principal',
+      },
+      {
+        label: 'Staff Software Engineer',
+        abbreviation: 'Staff SWE',
+        value: 'staff-swe',
+        subtitle: '8+ years experience',
+        rightLabel: 'Staff',
+      },
+      {
+        label: 'Distinguished Engineer',
+        abbreviation: 'Distinguished Eng',
+        value: 'distinguished-eng',
+        subtitle: '15+ years experience',
+        rightLabel: 'Distinguished',
+      },
+    ],
+    inputWidth: '80px',
+    dropdownWidth: '400px',
+    placeholder: 'Select seniority level',
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="complex-abbreviated-dropdown"
+        isSoloField
+        label="Complex Options with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Shows abbreviated text in input, full details in dropdown
       </Box>
     </Box>
   ),
@@ -789,140 +775,6 @@ export const SmallWithAbbreviations: Story = {
   ),
 };
 
-export const ComplexAbbreviatedOptions: Story = {
-  args: {
-    name: 'complex-abbreviated-dropdown',
-    options: [
-      {
-        label: 'Senior Software Engineer',
-        abbreviation: 'Sr SWE',
-        value: 'senior-swe',
-        subtitle: '5+ years experience',
-        rightLabel: 'Senior',
-      },
-      {
-        label: 'Principal Software Engineer',
-        abbreviation: 'Principal SWE',
-        value: 'principal-swe',
-        subtitle: '10+ years experience',
-        rightLabel: 'Principal',
-      },
-      {
-        label: 'Staff Software Engineer',
-        abbreviation: 'Staff SWE',
-        value: 'staff-swe',
-        subtitle: '8+ years experience',
-        rightLabel: 'Staff',
-      },
-      {
-        label: 'Distinguished Engineer',
-        abbreviation: 'Distinguished Eng',
-        value: 'distinguished-eng',
-        subtitle: '15+ years experience',
-        rightLabel: 'Distinguished',
-      },
-    ],
-    inputWidth: '80px',
-    dropdownWidth: '400px',
-    placeholder: 'Select seniority level',
-  },
-  render: (args) => (
-    <Box height="22rem">
-      <FormGroup
-        htmlFor="complex-abbreviated-dropdown"
-        isSoloField
-        label="Complex Options with Abbreviations"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-      <Box color="text-secondary" mt={4}>
-        Shows abbreviated text in input, full details in dropdown
-      </Box>
-    </Box>
-  ),
-};
-
-export const AbbreviatedWithSubtitleAndRightLabel: Story = {
-  args: {
-    name: 'abbreviated-detailed',
-    options: [
-      {
-        label: 'Senior Software Engineer',
-        abbreviation: 'Sr SWE',
-        value: 'senior-swe',
-        subtitle: '5+ years experience',
-        rightLabel: 'Senior',
-      },
-      {
-        label: 'Principal Software Engineer',
-        abbreviation: 'Principal SWE',
-        value: 'principal-swe',
-        subtitle: '10+ years experience',
-        rightLabel: 'Principal',
-      },
-      {
-        label: 'Staff Software Engineer',
-        abbreviation: 'Staff SWE',
-        value: 'staff-swe',
-        subtitle: '8+ years experience',
-        rightLabel: 'Staff',
-      },
-    ],
-  },
-  render: (args) => (
-    <Box height="22rem">
-      <FormGroup
-        htmlFor="abbreviated-detailed"
-        isSoloField
-        label="Abbreviated with Additional Details"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const AbbreviatedSmallSize: Story = {
-  args: {
-    name: 'abbreviated-small',
-    options: [
-      {
-        label: 'JavaScript',
-        abbreviation: 'JS',
-        value: 'javascript',
-      },
-      {
-        label: 'TypeScript',
-        abbreviation: 'TS',
-        value: 'typescript',
-      },
-      {
-        label: 'Python',
-        abbreviation: 'PY',
-        value: 'python',
-      },
-      {
-        label: 'Java',
-        abbreviation: 'Java',
-        value: 'java',
-      },
-    ],
-    size: 'small',
-    inputWidth: '80px',
-    dropdownWidth: '200px',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="abbreviated-small"
-        isSoloField
-        label="Small Size with Abbreviations"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
 export const MenuAlignmentRight: Story = {
   args: {
     name: 'menu-alignment-right',
@@ -974,141 +826,6 @@ export const MenuAlignmentRight: Story = {
 };
 
 // These are for testing, I will delete before shipping
-
-export const DisabledMultiValue: Story = {
-  args: {
-    name: 'disabled-small-multi',
-    options: [
-      {
-        label: 'JavaScript',
-        abbreviation: 'JS',
-        value: 'javascript',
-      },
-      {
-        label: 'TypeScript',
-        abbreviation: 'TS',
-        value: 'typescript',
-      },
-      {
-        label: 'Python',
-        abbreviation: 'PY',
-        value: 'python',
-      },
-      {
-        label: 'Java',
-        abbreviation: 'Java',
-        value: 'java',
-      },
-    ],
-    placeholder: 'Long truncated placeholder',
-    size: 'small',
-    inputWidth: '100px',
-    dropdownWidth: '200px',
-    multiple: true,
-    value: ['python', 'java'],
-    disabled: true,
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="abbreviated-small"
-        isSoloField
-        label="Small Size with Abbreviations"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const LongPlaceholder: Story = {
-  args: {
-    name: 'long-placeholder',
-    options: [
-      {
-        label: 'JavaScript',
-        abbreviation: 'JS',
-        value: 'javascript',
-      },
-      {
-        label: 'TypeScript',
-        abbreviation: 'TS',
-        value: 'typescript',
-      },
-      {
-        label: 'Python',
-        abbreviation: 'PY',
-        value: 'python',
-      },
-      {
-        label: 'Java',
-        abbreviation: 'Java',
-        value: 'java',
-      },
-    ],
-    placeholder: 'Long truncated placeholder',
-    size: 'small',
-    inputWidth: '300px',
-    dropdownWidth: '400px',
-    multiple: true,
-    menuAlignment: 'right',
-  },
-  render: (args) => (
-    <Box height="15rem" ml={8}>
-      <FormGroup
-        htmlFor="long-placeholder"
-        isSoloField
-        label="Small Size with Abbreviations"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-export const LongPlaceholderAgain: Story = {
-  args: {
-    name: 'long-placeholder-again',
-    options: [
-      {
-        label: 'JavaScript',
-        abbreviation: 'JS',
-        value: 'javascript',
-      },
-      {
-        label: 'TypeScript',
-        abbreviation: 'TS',
-        value: 'typescript',
-      },
-      {
-        label: 'Python',
-        abbreviation: 'PY',
-        value: 'python',
-      },
-      {
-        label: 'Java',
-        abbreviation: 'Java',
-        value: 'java',
-      },
-    ],
-    placeholder: 'Long truncated placeholder',
-    size: 'small',
-    inputWidth: '400px',
-    dropdownWidth: '200px',
-    multiple: true,
-    menuAlignment: 'right',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="long-placeholder-again"
-        isSoloField
-        label="Small Size with Abbreviations"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
 
 export const zIndexOnMenu: Story = {
   render: (args) => (
@@ -1168,5 +885,153 @@ export const zIndexOnMenu: Story = {
         ]}
       />
     </FlexBox>
+  ),
+};
+
+export const Creatable: Story = {
+  args: {
+    name: 'creatable-dropdown',
+    isCreatable: true,
+    placeholder: 'Select or type to add…',
+  },
+  render: (args) => {
+    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    return (
+      <Box height="15rem">
+        <FormGroup
+          htmlFor="creatable-dropdown"
+          isSoloField
+          label="Type a new fruit and press Enter"
+        >
+          <SelectDropdown
+            {...args}
+            options={options}
+            onCreateOption={(inputValue) =>
+              setOptions((prev) => [...prev, inputValue])
+            }
+          />
+        </FormGroup>
+      </Box>
+    );
+  },
+};
+
+export const CreatableMulti: Story = {
+  render: () => {
+    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    return (
+      <Box height="18rem">
+        <FormGroup
+          htmlFor="creatable-multi-dropdown"
+          isSoloField
+          label="Pick fruits or add your own"
+        >
+          <SelectDropdown
+            isCreatable
+            multiple
+            name="creatable-multi-dropdown"
+            options={options}
+            placeholder="Select or type to add…"
+            onCreateOption={(inputValue) =>
+              setOptions((prev) => [...prev, inputValue])
+            }
+          />
+        </FormGroup>
+      </Box>
+    );
+  },
+};
+
+export const CreatableWithValidation: Story = {
+  render: () => {
+    const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+    const [error, setError] = useState<string | undefined>();
+
+    const validate = (inputValue: string) => {
+      const trimmed = inputValue.trim();
+      if (trimmed.length < 3) return 'Enter at least 3 characters.';
+      return undefined;
+    };
+
+    return (
+      <Box height="15rem">
+        <FormGroup
+          error={error}
+          htmlFor="creatable-validated-dropdown"
+          isSoloField
+          label="Pick a fruit that is at least 3 characters long"
+        >
+          <SelectDropdown
+            error={Boolean(error)}
+            isCreatable
+            isValidNewOption={(inputValue: string) =>
+              !validate(inputValue) && inputValue.trim().length > 0
+            }
+            name="creatable-validated-dropdown"
+            options={options}
+            placeholder="Type at least 3 characters to add…"
+            validationMessage={({ inputValue }) =>
+              validate(inputValue) ?? 'No matching fruit'
+            }
+            onCreateOption={(inputValue) => {
+              setOptions((prev) => [...prev, inputValue.trim()]);
+              setError(undefined);
+            }}
+            onInputChange={(inputValue: string) =>
+              setError(validate(inputValue))
+            }
+          />
+        </FormGroup>
+      </Box>
+    );
+  },
+};
+
+export const FormGroupSelectDropdown: Story = {
+  args: {
+    options: ['hello', 'hi', 'howdy'],
+    value: 'oh no',
+    name: 'big-label',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="big-label"
+        isSoloField
+        label="i am big label"
+        labelSize="large"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const FormGroupError: Story = {
+  args: {
+    options: ['Error', 'oh no', ':('],
+    name: 'error-example-unique',
+    placeholder: 'cry cry cry',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        error="error message!! no :'("
+        htmlFor="error-example-unique"
+        isSoloField
+        label="i am ~styled... but something is wrong"
+      >
+        <SelectDropdown error {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const Default: Story = {
+  args: {},
+  render: (args) => (
+    <Box height="18rem">
+      <SelectDropdown {...args} />
+    </Box>
   ),
 };

@@ -2,6 +2,7 @@ import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
 import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
+import { CreatablePropsTable } from './creatablePropsTable';
 import * as SelectDropdownStories from './SelectDropdown.stories';
 
 export const parameters = {
@@ -129,6 +130,21 @@ To add some pizzazz to your dropdown, you can add any of our <LinkTo id='Atoms/I
 
 <Canvas of={SelectDropdownStories.Icons} />
 
+## Accessibility
+
+### FormGroup + SelectDropdown
+
+`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
+
+<Canvas of={SelectDropdownStories.FormGroupSelectDropdown} />
+<Canvas of={SelectDropdownStories.FormGroupError} />
+
+## Multiple select
+
+Set `multiple` to let users choose more than one option. Selected options render as removable tags in the input, and `onChange` receives the full array of selected options (each as `{ label, value }`) rather than a single value. Manage that array as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+
+<Canvas of={SelectDropdownStories.MultipleSelect} />
+
 ### Custom input props
 
 Some of our forms require special props be passed directly onto the input components. We can do that by passing an object with `hidden` and `combobox` properties into our inputProps prop.
@@ -208,42 +224,34 @@ In the example below, the z-index menu is configured to the default value (`auto
 
 ## Creatable
 
-Use the `isCreatable` prop to allow users to add options that aren't in the list. When the user types a value that doesn't match any existing option, an **Add "value"** row appears at the bottom of the dropdown. Selecting it fires `onCreateOption` with the typed string — the consumer is responsible for appending the new option to the `options` array.
+Set `isCreatable` to let users add options that aren't already in the list. When the typed value doesn't match an existing option, an **Add "value"** row appears at the bottom of the menu; selecting it fires `onCreateOption` with the typed string. The consumer owns persistence — append the new value to your `options` array (and, for multi-select, it is added to the current selection).
 
-`isSearchable` is automatically set to `true` when `isCreatable` is `true` (passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error).
+Two behaviors come along automatically in creatable mode:
 
-In creatable mode the typed text is retained when the input blurs or the menu closes, so a user who clicks away mid-entry can return to it. The text only clears once an option is selected or created.
+- **Searchable by default** — `isSearchable` is forced to `true`, since creation needs a text input. Passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error.
+- **Typed text persists on blur** — if the user clicks away or the menu closes mid-entry, their text is kept so they can pick up where they left off. It clears only once an option is selected or created.
+
+### Basic usage
+
+A single-select creatable dropdown. Type a value that isn't listed, choose the **Add** row, and `onCreateOption` appends it to the options.
 
 <Canvas of={SelectDropdownStories.Creatable} />
 
-### Props
+### Multiple selection
 
-| Prop                | Type                                           | Default              | Description                                                                                                          |
-| ------------------- | ---------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `isCreatable`       | `boolean`                                      | `false`              | Enables option creation. Automatically forces `isSearchable` to `true`.                                              |
-| `onCreateOption`    | `(inputValue: string) => void`                 | —                    | Called when the user confirms a new option. Append the value to `options` to persist it.                             |
-| `formatCreateLabel` | `(inputValue: string) => ReactNode`            | `Add "inputValue"`   | Customises the label shown in the "Add" row.                                                                         |
-| `isValidNewOption`  | `(inputValue, value, options) => boolean`      | react-select default | Controls when the "Add" row is visible. Use for min-length gating, pattern validation, or max-items caps.            |
-| `validationMessage` | `ReactNode \| (({ inputValue }) => ReactNode)` | `"No options"`       | Replaces the in-menu "No options" text. Useful for surfacing validation/error messages directly inside the dropdown. |
+Combine `isCreatable` with `multiple` to let users select several existing options and add their own. Each created value is appended to the options list and included in the current selection.
 
-### Surfacing validation in the dropdown
+<Canvas of={SelectDropdownStories.CreatableMulti} />
 
-`validationMessage` customises the text shown inside the menu when no option matches the current input. Pair it with `isValidNewOption` (to gate the "Add" row) and a `FormGroup` `error` to communicate the same issue both inside the dropdown and below the field.
+### Validation and inline messages
+
+Gate which inputs can be added with `isValidNewOption` — return `false` to hide the **Add** row (e.g. minimum length, pattern matching, or de-duplication). Use `validationMessage` to replace the menu's default "No options" text with contextual feedback, and mirror the same message in a `FormGroup` `error` so it's also surfaced below the field.
 
 <Canvas of={SelectDropdownStories.CreatableWithValidation} />
 
-## Multiple select
+### Props
 
-<Canvas of={SelectDropdownStories.MultipleSelect} />
-
-## Accessibility
-
-### FormGroup + SelectDropdown
-
-`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
-
-<Canvas of={SelectDropdownStories.FormGroupSelectDropdown} />
-<Canvas of={SelectDropdownStories.FormGroupError} />
+<CreatablePropsTable />
 
 ## Playground
 
