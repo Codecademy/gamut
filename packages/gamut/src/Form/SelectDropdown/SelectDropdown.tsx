@@ -36,6 +36,7 @@ import {
 } from './types';
 import {
   filterValueFromOptions,
+  getCreatedOptionValue,
   isMultipleSelectProps,
   isOptionsGrouped,
   isSingleSelectProps,
@@ -212,7 +213,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       setActivated(true);
 
       if (actionMeta.action === 'create-option') {
-        onCreateOption?.(actionMeta.option?.value ?? '');
+        const createdValue = getCreatedOptionValue(
+          optionEvent,
+          actionMeta,
+          multiple
+        );
+
+        if (createdValue) {
+          onCreateOption?.(createdValue);
+        }
       }
 
       const onChangeProps = { onChange, multiple };

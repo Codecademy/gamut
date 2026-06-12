@@ -50,7 +50,8 @@ const creatableProps = [
       <>
         Called when the user confirms a new option. Convenience hook for
         appending to <Code>options</Code>; selection updates arrive via{' '}
-        <Code>onChange</Code> with <Code>action: 'create-option'</Code>.
+        <Code>onChange</Code> with{' '}
+        <Code>action: &apos;create-option&apos;</Code>.
       </>
     ),
   },

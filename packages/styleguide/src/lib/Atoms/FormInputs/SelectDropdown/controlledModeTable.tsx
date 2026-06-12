@@ -42,7 +42,7 @@ const controlledModes = [
     uncontrolled: (
       <>
         Omit <Code>value</Code>, or pass a non-array (<Code>undefined</Code>,{' '}
-        <Code>''</Code>).
+        <Code>{`''`}</Code>).
       </>
     ),
     controlled: (
@@ -76,7 +76,7 @@ const controlledModes = [
       <>
         Pass <Code>value</Code> as <Code>string[]</Code>; update it in{' '}
         <Code>onChange</Code> on every change, including{' '}
-        <Code>meta.action === 'create-option'</Code>.
+        <Code>meta.action === &apos;create-option&apos;</Code>.
       </>
     ),
   },

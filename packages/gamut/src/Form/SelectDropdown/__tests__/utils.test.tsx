@@ -2,12 +2,71 @@ import { SelectOptionBase } from '../../utils';
 import { ExtendedOption, SelectDropdownGroup } from '../types';
 import {
   filterValueFromOptions,
+  getCreatedOptionValue,
   isOptionGroup,
   isOptionsGrouped,
   removeValueFromSelectedOptions,
 } from '../utils';
 
 describe('SelectDropdown Utils', () => {
+  describe('getCreatedOptionValue', () => {
+    it('returns actionMeta.option.value when present', () => {
+      expect(
+        getCreatedOptionValue(
+          { label: 'Purple', value: 'purple' },
+          {
+            action: 'create-option',
+            option: { label: 'Purple', value: 'purple' },
+          },
+          false
+        )
+      ).toBe('purple');
+    });
+
+    it('falls back to single-select optionEvent value when actionMeta.option is missing', () => {
+      expect(
+        getCreatedOptionValue(
+          { label: 'Purple', value: 'purple' },
+          { action: 'create-option' },
+          false
+        )
+      ).toBe('purple');
+    });
+
+    it('falls back to multi-select __isNew__ option when actionMeta.option is missing', () => {
+      expect(
+        getCreatedOptionValue(
+          [
+            { label: 'Red', value: 'red' },
+            { label: 'Purple', value: 'purple', __isNew__: true },
+          ],
+          { action: 'create-option' },
+          true
+        )
+      ).toBe('purple');
+    });
+
+    it('returns undefined when no created value can be resolved', () => {
+      expect(
+        getCreatedOptionValue(
+          [{ label: 'Red', value: 'red' }],
+          { action: 'create-option' },
+          true
+        )
+      ).toBeUndefined();
+    });
+
+    it('returns undefined for an empty actionMeta.option.value', () => {
+      expect(
+        getCreatedOptionValue(
+          { label: '', value: '' },
+          { action: 'create-option', option: { label: '', value: '' } },
+          false
+        )
+      ).toBeUndefined();
+    });
+  });
+
   describe('isOptionGroup', () => {
     it('returns true for valid group objects', () => {
       const groupOption: SelectDropdownGroup = {
