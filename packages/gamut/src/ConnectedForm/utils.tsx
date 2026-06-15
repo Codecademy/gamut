@@ -355,7 +355,7 @@ type DebouncedFieldProps<T extends InputTypes> = Omit<
   GetInitialFormValueProps,
   'setLocalValue' | 'defaultValue'
 > &
-  Pick<useFieldProps, 'loading' | 'disabled' | 'name'> & {
+  Pick<useFieldProps, 'loading' | 'disabled' | 'name' | 'customValidations'> & {
     type: T;
     shouldDirtyOnChange?: boolean;
   };
@@ -367,8 +367,9 @@ export function useDebouncedField<T extends InputTypes>({
   loading,
   type,
   shouldDirtyOnChange,
+  customValidations,
 }: DebouncedFieldProps<T>) {
-  const useFieldPayload = useField({ name, disabled, loading });
+  const useFieldPayload = useField({ name, disabled, loading, customValidations });
 
   const defaultValue = type === 'checkbox' ? false : '';
 

@@ -12,6 +12,9 @@ const mockDefaultValue = '';
 const customErrorMessage = 'Please enter a valid email address';
 const customRequiredMessage = 'Email is required';
 
+// ─── Custom field-level validations (no form-level rules) ────────────────────
+// All validation rules come exclusively from customValidations on the field.
+
 const TestFormWithCustomValidations: React.FC = () => {
   return (
     <>
@@ -34,6 +37,51 @@ const TestFormWithCustomValidations: React.FC = () => {
   );
 };
 
+const renderView = setupRtl(ConnectedForm, {
+  defaultValues: {
+    [mockInputKey]: mockDefaultValue,
+  },
+  onSubmit: () => null,
+  children: <TestFormWithCustomValidations />,
+});
+
+// ─── customValidations overriding form-level rules (same key) ────────────────
+// Both the form and the field define the same rule key; the field-level value wins.
+
+const TestFormWithOverrideValidations: React.FC = () => {
+  return (
+    <>
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedInput,
+          customValidations: {
+            required: customRequiredMessage,
+          },
+        }}
+        label="Email"
+        name={mockInputKey}
+      />
+      <button type="submit">Submit</button>
+    </>
+  );
+};
+
+const renderViewWithOverrideValidations = setupRtl(ConnectedForm, {
+  defaultValues: {
+    [mockInputKey]: mockDefaultValue,
+  },
+  validationRules: {
+    [mockInputKey]: {
+      required: 'This field is required from form level',
+    },
+  },
+  onSubmit: () => null,
+  children: <TestFormWithOverrideValidations />,
+});
+
+// ─── Merging form-level and customValidations (different keys) ────────────────
+// Form provides `required`; the field adds `minLength`. Both rules are enforced.
+
 const TestFormWithBothValidations: React.FC = () => {
   return (
     <>
@@ -55,14 +103,6 @@ const TestFormWithBothValidations: React.FC = () => {
   );
 };
 
-const renderView = setupRtl(ConnectedForm, {
-  defaultValues: {
-    [mockInputKey]: mockDefaultValue,
-  },
-  onSubmit: () => null,
-  children: <TestFormWithCustomValidations />,
-});
-
 const renderViewWithBothValidations = setupRtl(ConnectedForm, {
   defaultValues: {
     [mockInputKey]: mockDefaultValue,
@@ -77,128 +117,149 @@ const renderViewWithBothValidations = setupRtl(ConnectedForm, {
 });
 
 describe('ConnectedForm - useField', () => {
-  it('should apply custom validation pattern rules', async () => {
-    const api = createPromise<{}>();
-    const onSubmit = async (values: {}) => api.resolve(values);
+  describe('custom field-level validations (no form-level rules)', () => {
+    it('should apply custom validation pattern rules', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
 
-    const { view } = renderView({ onSubmit });
+      const { view } = renderView({ onSubmit });
 
-    const input = view.getByRole('textbox') as HTMLInputElement;
+      const input = view.getByRole('textbox') as HTMLInputElement;
 
-    // Try to submit with invalid email
-    await act(async () => {
-      fireEvent.change(input, { target: { value: 'invalid-email' } });
-      fireEvent.blur(input);
+      // Try to submit with invalid email
+      await act(async () => {
+        fireEvent.change(input, { target: { value: 'invalid-email' } });
+        fireEvent.blur(input);
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      // Should show the custom pattern validation error
+      await waitFor(() => {
+        expect(view.getByText(customErrorMessage)).toBeInTheDocument();
+      });
     });
 
-    await act(async () => {
-      fireEvent.submit(view.getByRole('button'));
+    it('should validate required fields with custom validation', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({ onSubmit });
+
+      // Try to submit with empty field
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      // Should show the custom required validation error
+      await waitFor(() => {
+        expect(view.getByText(customRequiredMessage)).toBeInTheDocument();
+      });
     });
 
-    // Should show the custom pattern validation error
-    await waitFor(() => {
-      expect(view.getByText(customErrorMessage)).toBeInTheDocument();
+    it('should pass validation with valid input', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({ onSubmit });
+
+      const input = view.getByRole('textbox') as HTMLInputElement;
+
+      // Submit with valid email
+      await act(async () => {
+        fireEvent.change(input, { target: { value: 'test@example.com' } });
+        fireEvent.blur(input);
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+        await api.innerPromise;
+      });
+
+      const result = await api.innerPromise;
+
+      // Should successfully submit with the correct value
+      expect(result).toEqual({ [mockInputKey]: 'test@example.com' });
+    });
+
+    it('should set isRequired to true when custom validation includes required', () => {
+      const { view } = renderView();
+
+      const input = view.getByRole('textbox') as HTMLInputElement;
+      expect(input).toHaveAttribute('aria-required', 'true');
     });
   });
 
-  it('should validate required fields with custom validation', async () => {
-    const api = createPromise<{}>();
-    const onSubmit = async (values: {}) => api.resolve(values);
+  describe('customValidations overriding form-level rules (same key)', () => {
+    it('should give customValidations priority over form-level for the same key', async () => {
+      const { view } = renderViewWithOverrideValidations();
 
-    const { view } = renderView({ onSubmit });
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
 
-    // Try to submit with empty field
-    await act(async () => {
-      fireEvent.submit(view.getByRole('button'));
-    });
-
-    // Should show the custom required validation error
-    await waitFor(() => {
-      expect(view.getByText(customRequiredMessage)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(view.getByText(customRequiredMessage)).toBeInTheDocument();
+        expect(
+          view.queryByText('This field is required from form level')
+        ).not.toBeInTheDocument();
+      });
     });
   });
 
-  it('should pass validation with valid input', async () => {
-    const api = createPromise<{}>();
-    const onSubmit = async (values: {}) => api.resolve(values);
+  describe('merging form-level and customValidations (different keys)', () => {
+    it('should merge form-level and custom validations', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
 
-    const { view } = renderView({ onSubmit });
+      const { view } = renderViewWithBothValidations({ onSubmit });
 
-    const input = view.getByRole('textbox') as HTMLInputElement;
+      const input = view.getByRole('textbox') as HTMLInputElement;
 
-    // Submit with valid email
-    await act(async () => {
-      fireEvent.change(input, { target: { value: 'test@example.com' } });
-      fireEvent.blur(input);
+      // Try to submit with empty field - should trigger form-level required validation
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      await waitFor(() => {
+        expect(
+          view.getByText('This field is required from form level')
+        ).toBeInTheDocument();
+      });
+
+      // Now test with value that fails custom minLength validation
+      await act(async () => {
+        fireEvent.change(input, { target: { value: 'abc' } });
+        fireEvent.blur(input);
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      await waitFor(() => {
+        expect(
+          view.getByText('Email must be at least 5 characters')
+        ).toBeInTheDocument();
+      });
+
+      // Finally test with valid value that passes both validations
+      await act(async () => {
+        fireEvent.change(input, { target: { value: 'abcdef' } });
+        fireEvent.blur(input);
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+        await api.innerPromise;
+      });
+
+      const result = await api.innerPromise;
+
+      // Should successfully submit
+      expect(result).toEqual({ [mockInputKey]: 'abcdef' });
     });
-
-    await act(async () => {
-      fireEvent.submit(view.getByRole('button'));
-      await api.innerPromise;
-    });
-
-    const result = await api.innerPromise;
-
-    // Should successfully submit with the correct value
-    expect(result).toEqual({ [mockInputKey]: 'test@example.com' });
-  });
-
-  it('should merge form-level and custom validations', async () => {
-    const api = createPromise<{}>();
-    const onSubmit = async (values: {}) => api.resolve(values);
-
-    const { view } = renderViewWithBothValidations({ onSubmit });
-
-    const input = view.getByRole('textbox') as HTMLInputElement;
-
-    // Try to submit with empty field - should trigger form-level required validation
-    await act(async () => {
-      fireEvent.submit(view.getByRole('button'));
-    });
-
-    await waitFor(() => {
-      expect(
-        view.getByText('This field is required from form level')
-      ).toBeInTheDocument();
-    });
-
-    // Now test with value that fails custom minLength validation
-    await act(async () => {
-      fireEvent.change(input, { target: { value: 'abc' } });
-      fireEvent.blur(input);
-    });
-
-    await act(async () => {
-      fireEvent.submit(view.getByRole('button'));
-    });
-
-    await waitFor(() => {
-      expect(
-        view.getByText('Email must be at least 5 characters')
-      ).toBeInTheDocument();
-    });
-
-    // Finally test with valid value that passes both validations
-    await act(async () => {
-      fireEvent.change(input, { target: { value: 'abcdef' } });
-      fireEvent.blur(input);
-    });
-
-    await act(async () => {
-      fireEvent.submit(view.getByRole('button'));
-      await api.innerPromise;
-    });
-
-    const result = await api.innerPromise;
-
-    // Should successfully submit
-    expect(result).toEqual({ [mockInputKey]: 'abcdef' });
-  });
-
-  it('should set isRequired to true when custom validation includes required', () => {
-    const { view } = renderView();
-
-    const input = view.getByRole('textbox') as HTMLInputElement;
-    expect(input).toHaveAttribute('aria-required', 'true');
   });
 });

@@ -38,6 +38,5 @@
   },
   "storyExplorer.storiesGlobs": "packages/styleguide/stories/**/*.stories.mdx",
   "jest.jestCommandLine": "node_modules/.bin/jest",
-  "nxConsole.generateAiAgentRules": true,
-  "snyk.advanced.autoSelectOrganization": true
+  "nxConsole.generateAiAgentRules": true
 }

@@ -76,7 +76,10 @@ export type NestedConnectedCheckboxOption = Omit<
   };
 
 export interface ConnectedNestedCheckboxesProps
-  extends Pick<BaseConnectedCheckboxProps, 'name' | 'disabled' | 'spacing'> {
+  extends Pick<
+    BaseConnectedCheckboxProps,
+    'name' | 'disabled' | 'spacing' | 'customValidations'
+  > {
   options: NestedConnectedCheckboxOption[];
   onUpdate?: (values: string[]) => void;
 }

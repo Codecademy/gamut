@@ -80,16 +80,13 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     }
   }, [customError, name, setError]);
 
-  const required =
-    Boolean(validation?.required) || Boolean(customValidations?.required);
-
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
       htmlFor={id || name}
       infotip={infotip}
       isSoloField={isSoloField}
-      required={required}
+      required={Boolean(validation?.required)}
       size={labelSize}
     >
       {label}
