@@ -1,3 +1,10 @@
+## 9.57.8 (2026-06-15)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 20.0.1
+- Updated gamut-tests to 6.0.4
+
 ## 9.57.7 (2026-06-01)
 
 ### 🩹 Fixes

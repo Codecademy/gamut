@@ -1,6 +1,3 @@
-export * from './AccordionDeprecated';
-export * from './AccordionAreaDeprecated';
-export * from './AccordionButtonDeprecated';
 export * from './Alert';
 export * from './Anchor';
 export * from './Animation';
