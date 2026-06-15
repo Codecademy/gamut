@@ -120,6 +120,14 @@ Watched fields aren't usually great for performance, so only use these fields wh
 
 <Canvas of={ConnectedFormStories.WatchedFields} />
 
+### `customValidations`
+
+When validation rules need to depend on runtime values — such as one field's selection determining what's valid in another — each connected input accepts a `customValidations` prop. Unlike `validationRules` (which is memoized on mount), `customValidations` re-evaluates on every render, making it the right tool for rules that need to change based on component state.
+
+See <LinkTo id="Organisms/ConnectedForm/ConnectedFormInputs">ConnectedFormInputs</LinkTo> for full usage details.
+
+<Canvas of={ConnectedFormStories.CustomFieldValidations} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={ConnectedFormStories.Default} />
