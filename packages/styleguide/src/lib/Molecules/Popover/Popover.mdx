@@ -1,5 +1,5 @@
 import { Column, LayoutGrid } from '@codecademy/gamut';
-import { Canvas, Controls, Meta } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
 import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
@@ -137,6 +137,16 @@ Adds a 'fade' animation to Popovers - should only be usef when specified within 
 Popovers have a secondary, tooltip-esque variant style that have a smaller beak, padding, + base font size, and different background colors. Check it out in light mode and dark mode!
 
 <Canvas of={PopoverStories.Variant} />
+
+## RTL (right-to-left)
+
+`Popover` uses `useElementDir` from `@codecademy/gamut-styles` with **`targetRef`**, so **`align` `left` and `right` are logical** (inline-start / inline-end relative to the anchor), not fixed physical screen sides.
+
+- **`position` `above`, `below`, or `center`:** horizontal placement and the popover container transform use this resolved direction.
+- **`align="center"`:** not mirrored as left/right; it stays centered on the anchor for that `position`.
+- **`beak`:** for `above` / `below`, a **corner** beak follows **`align`**. Use **`beak="center"`** for a triangle centered on that edge.
+
+See <LinkTo id="Meta/Logical and physical CSS properties">Logical and physical CSS properties</LinkTo> for `useElementDir`, the imperative `elementDir` helper, and logical vs physical CSS in Gamut. Lower-level positioning without `Popover` is documented on <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>.
 
 ## Playground
 

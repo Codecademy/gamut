@@ -1,0 +1,30 @@
+name: Release Plan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+env:
+  NX_CLOUD: false
+
+permissions:
+  contents: read
+
+jobs:
+  plan-check:
+    name: Check Release Plan
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Setup and Build
+        uses: ./.github/actions/yarn
+      - uses: nrwl/nx-set-shas@v4
+      - name: Verify release plan
+        if: github.event_name == 'pull_request'
+        run: npx nx release plan:check

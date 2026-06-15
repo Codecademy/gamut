@@ -75,6 +75,10 @@ const RenderPopover = (props: PopoverContainerProps) => {
 
 const renderView = setupRtl(RenderPopover, defaultProps);
 
+/** Portal `getContainers` uses `document.body.offsetWidth` for `parent.right`; pin it to the mock offset parent width so horizontal insets match the inline fixture. */
+const mockBodyOffsetWidthForPortal = () =>
+  jest.spyOn(document.body, 'offsetWidth', 'get').mockReturnValue(500);
+
 const popoverIsRendered = () => {
   return Boolean(screen.queryByTestId('popover-content'));
 };
@@ -181,45 +185,45 @@ describe('Popover', () => {
   describe('alignments', () => {
     describe('render context', () => {
       describe('portal - viewport', () => {
-        it.each([
-          {
-            useLogicalProperties: true,
-            top: 'insetBlockStart',
-            bottom: 'insetBlockEnd',
-            left: 'insetInlineStart',
-            right: 'insetInlineEnd',
-          },
-          {
-            useLogicalProperties: false,
-            top: 'top',
-            bottom: 'bottom',
-            left: 'left',
-            right: 'right',
-          },
-        ])(
+        let bodyOffsetWidthSpy: jest.SpyInstance;
+
+        beforeEach(() => {
+          bodyOffsetWidthSpy = mockBodyOffsetWidthForPortal();
+        });
+
+        afterEach(() => {
+          bodyOffsetWidthSpy.mockRestore();
+        });
+
+        it.each([true, false])(
           'renders correct position styles (useLogicalProperties: $useLogicalProperties)',
-          ({ useLogicalProperties, top, bottom, left, right }) => {
+          (useLogicalProperties) => {
+            /** Portal insets use physical `style` (same as inline); logical CSS elsewhere does not remap them. */
             const alignmentTests: [
               PopoverContainerProps['alignment'],
               Record<string, string>
             ][] = [
-              ['top-right', { [left]: '370px', [bottom]: '370px' }],
-              ['top-left', { [right]: '370px', [bottom]: '370px' }],
-              ['bottom-right', { [left]: '370px', [top]: '370px' }],
-              ['bottom-left', { [right]: '370px', [top]: '370px' }],
+              ['top-right', { left: '370px', bottom: '-130px' }],
+              ['top-left', { right: '370px', bottom: '-130px' }],
+              ['bottom-right', { left: '370px', top: '370px' }],
+              ['bottom-left', { right: '370px', top: '370px' }],
               // 'top'/'bottom' center horizontally using a physical screen coordinate,
               // so the horizontal position is always physical `left` regardless of
-              // useLogicalProperties — it bypasses variance via physicalStyles.
-              ['top', { left: '250px', [bottom]: '370px' }],
-              ['left', { [right]: '370px', [top]: '250px' }],
-              ['bottom', { left: '250px', [top]: '370px' }],
-              ['right', { [left]: '370px', [top]: '250px' }],
+              // useLogicalProperties — placement stays inline style, not variance props.
+              ['top', { left: '250px', bottom: '-130px' }],
+              ['left', { right: '370px', top: '250px' }],
+              ['bottom', { left: '250px', top: '370px' }],
+              ['right', { left: '370px', top: '250px' }],
             ];
 
             alignmentTests.forEach(([alignment, expected]) => {
               render(
                 <MockGamutProvider useLogicalProperties={useLogicalProperties}>
-                  <RenderPopover {...defaultProps} alignment={alignment} />
+                  <RenderPopover
+                    {...defaultProps}
+                    alignment={alignment}
+                    inline={false}
+                  />
                 </MockGamutProvider>
               );
               expect(
@@ -231,37 +235,23 @@ describe('Popover', () => {
         );
       });
       describe('inline - parent', () => {
-        it.each([
-          {
-            useLogicalProperties: true,
-            top: 'insetBlockStart',
-            bottom: 'insetBlockEnd',
-            left: 'insetInlineStart',
-            right: 'insetInlineEnd',
-          },
-          {
-            useLogicalProperties: false,
-            top: 'top',
-            bottom: 'bottom',
-            left: 'left',
-            right: 'right',
-          },
-        ])(
+        it.each([true, false])(
           'renders correct position styles (useLogicalProperties: $useLogicalProperties)',
-          ({ useLogicalProperties, top, bottom, left, right }) => {
+          (useLogicalProperties) => {
+            /** Inline: insets are merged into `style` as physical top/left/right/bottom (see PopoverContainer), so expectations stay physical even when the tree uses logical CSS elsewhere. */
             const alignmentTests: [
               PopoverContainerProps['alignment'],
               Record<string, string>
             ][] = [
-              ['top-right', { [left]: '370px', [bottom]: '370px' }],
-              ['top-left', { [right]: '370px', [bottom]: '370px' }],
-              ['bottom-right', { [left]: '370px', [top]: '370px' }],
-              ['bottom-left', { [right]: '370px', [top]: '370px' }],
+              ['top-right', { left: '370px', bottom: '370px' }],
+              ['top-left', { right: '370px', bottom: '370px' }],
+              ['bottom-right', { left: '370px', top: '370px' }],
+              ['bottom-left', { right: '370px', top: '370px' }],
               // See comment above re: physical 'left' for centered alignments.
-              ['top', { left: '250px', [bottom]: '370px' }],
-              ['left', { [right]: '370px', [top]: '250px' }],
-              ['bottom', { left: '250px', [top]: '370px' }],
-              ['right', { [left]: '370px', [top]: '250px' }],
+              ['top', { left: '250px', bottom: '370px' }],
+              ['left', { right: '370px', top: '250px' }],
+              ['bottom', { left: '250px', top: '370px' }],
+              ['right', { left: '370px', top: '250px' }],
             ];
 
             alignmentTests.forEach(([alignment, expected]) => {
@@ -326,7 +316,57 @@ describe('Popover', () => {
         );
       });
     });
-    describe('physicalStyles', () => {
+
+    describe('RTL placement mirroring (getPosition)', () => {
+      const container = {
+        top: 150,
+        left: 150,
+        right: 200,
+        bottom: 200,
+        height: 200,
+        width: 200,
+      };
+
+      const base = { container, offset: 20, x: 0, y: 0 };
+
+      it.each([
+        ['bottom-left', 'bottom-right'],
+        ['bottom-right', 'bottom-left'],
+        ['top-left', 'top-right'],
+        ['top-right', 'top-left'],
+        ['left', 'right'],
+        ['right', 'left'],
+      ] as const)('RTL %s matches LTR %s', (rtlPlacement, ltrMirror) => {
+        expect(
+          utils.getPosition({
+            ...base,
+            alignment: rtlPlacement,
+            isRtl: true,
+          })
+        ).toEqual(
+          utils.getPosition({
+            ...base,
+            alignment: ltrMirror,
+            isRtl: false,
+          })
+        );
+      });
+
+      it('does not mirror single-axis top or bottom (horizontal center unchanged)', () => {
+        expect(
+          utils.getPosition({ ...base, alignment: 'top', isRtl: true })
+        ).toEqual(
+          utils.getPosition({ ...base, alignment: 'top', isRtl: false })
+        );
+        expect(
+          utils.getPosition({ ...base, alignment: 'bottom', isRtl: true })
+        ).toEqual(
+          utils.getPosition({ ...base, alignment: 'bottom', isRtl: false })
+        );
+      });
+    });
+
+    describe('dirNeutralStyles', () => {
       describe('centered alignments always use physical left regardless of useLogicalProperties', () => {
         it.each([
           ['top', { left: '250px' }],
@@ -347,7 +387,7 @@ describe('Popover', () => {
         );
       });
 
-      describe('invertAxis transform flips in RTL', () => {
+      describe('invertAxis transform with RTL alignment mirroring', () => {
         const container = {
           top: 150,
           left: 150,
@@ -375,7 +415,7 @@ describe('Popover', () => {
               invertAxis: 'x',
               isRtl,
             });
-            expect(result.physicalStyles?.transform).toBe(expected);
+            expect(result.dirNeutralStyles?.transform).toBe(expected);
           }
         );
       });
@@ -406,25 +446,25 @@ describe('Popover', () => {
     });
 
     describe('offsets', () => {
-      it.each([
-        {
-          useLogicalProperties: true,
-          bottom: 'insetBlockEnd',
-          left: 'insetInlineStart',
-        },
-        {
-          useLogicalProperties: false,
-          bottom: 'bottom',
-          left: 'left',
-        },
-      ])(
+      let bodyOffsetWidthSpy: jest.SpyInstance;
+
+      beforeEach(() => {
+        bodyOffsetWidthSpy = mockBodyOffsetWidthForPortal();
+      });
+
+      afterEach(() => {
+        bodyOffsetWidthSpy.mockRestore();
+      });
+
+      it.each([true, false])(
         'renders correct offset styles (useLogicalProperties: $useLogicalProperties)',
-        ({ useLogicalProperties, bottom, left }) => {
+        (useLogicalProperties) => {
+          /** Portal top-right: `left` = 370 + x, `bottom` = -130 + y (see portal - viewport). */
           const offsetTests: [number, number, Record<string, string>][] = [
-            [5, 10, { [left]: '375px', [bottom]: '380px' }],
-            [-15, 10, { [left]: '355px', [bottom]: '380px' }],
-            [605, -100, { [left]: '975px', [bottom]: '270px' }],
-            [-25, -10, { [left]: '345px', [bottom]: '360px' }],
+            [5, 10, { left: '375px', bottom: '-120px' }],
+            [-15, 10, { left: '355px', bottom: '-120px' }],
+            [605, -100, { left: '975px', bottom: '-230px' }],
+            [-25, -10, { left: '345px', bottom: '-140px' }],
           ];
 
           offsetTests.forEach(([x, y, expected]) => {
@@ -433,6 +473,7 @@ describe('Popover', () => {
                 <RenderPopover
                   {...defaultProps}
                   alignment="top-right"
+                  inline={false}
                   x={x}
                   y={y}
                 />

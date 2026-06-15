@@ -1,7 +1,61 @@
-# Change Log
+## 9.57.7 (2026-06-01)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 20.0.0
+- Updated gamut-tests to 6.0.3
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 9.57.6 (2026-06-01)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 19.0.0
+- Updated gamut-tests to 6.0.2
+
+## 9.57.5 (2026-05-14)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 18.0.0
+- Updated gamut-tests to 6.0.1
+
+## 9.57.4 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-tests to 6.0.0
+
+## 9.57.3 (2026-04-29)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.14.0
+- Updated gamut-tests to 5.3.4
+
+## 9.57.2 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+- Updated gamut-tests to 5.3.3
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
 
 ### [9.57.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.57.0...@codecademy/gamut-icons@9.57.1) (2026-03-25)
 

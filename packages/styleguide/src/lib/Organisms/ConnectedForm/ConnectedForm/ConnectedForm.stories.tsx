@@ -12,9 +12,9 @@ import {
   useConnectedForm,
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
-import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import { useState } from 'react';
+import { action } from 'storybook/actions';
 
 const meta: Meta<typeof ConnectedForm> = {
   component: ConnectedForm,

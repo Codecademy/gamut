@@ -1,7 +1,203 @@
-# Change Log
+# 71.0.0 (2026-06-04)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### ⚠️  Breaking Changes
+
+- Remove deprecated `HiddenText` component ([#3361](https://github.com/Codecademy/gamut/pull/3361))
+  **BREAKING:** `HiddenText` is no longer exported from `@codecademy/gamut`- Migrate to `<Text screenreader>` for visually hidden, screen-reader-accessible text- Removed Storybook docs for `HiddenText`; use the `Text` screenreader utility docs instead
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 70.0.0 (2026-06-01)
+
+### ⚠️  Breaking Changes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.13
+- Updated gamut-patterns to 0.10.32
+- Updated gamut-styles to 20.0.0
+- Updated gamut-icons to 9.57.7
+- Updated gamut-tests to 6.0.3
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 69.0.0 (2026-06-01)
+
+### ⚠️ Breaking Changes
+
+- removes deprecated scss mixins and variables ([#3340](https://github.com/Codecademy/gamut/pull/3340))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.12
+- Updated gamut-patterns to 0.10.31
+- Updated gamut-styles to 19.0.0
+- Updated gamut-icons to 9.57.6
+- Updated gamut-tests to 6.0.2
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.7.1 (2026-05-28)
+
+### 🩹 Fixes
+
+- Update DESIGN.md for theme changes ([#3359](https://github.com/Codecademy/gamut/pull/3359))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
+## 68.7.0 (2026-05-27)
+
+### 🚀 Features
+
+- feat: AI Tools for Claude and Cursor ([#3329](https://github.com/Codecademy/gamut/pull/3329), [#3351](https://github.com/Codecademy/gamut/issues/3351), [#3355](https://github.com/Codecademy/gamut/issues/3355))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Claude Sonnet 4.6
+- dreamwasp
+- Evan Yamanishi @sh0ji
+
+## 68.6.2 (2026-05-26)
+
+### 🩹 Fixes
+
+- fix DatePicker lint for React 19 ([#3357](https://github.com/Codecademy/gamut/pull/3357))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.6.1 (2026-05-20)
+
+### 🩹 Fixes
+
+- Update InternalFloatingCard, renamed to PatternBackdrop and pared down to needed functionality for Toast + ModalContainer needs ([#3353](https://github.com/Codecademy/gamut/pull/3353))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+- LinKCoding @LinKCoding
+
+## 68.6.0 (2026-05-14)
+
+### 🚀 Features
+
+- Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.11
+- Updated gamut-patterns to 0.10.30
+- Updated gamut-styles to 18.0.0
+- Updated gamut-icons to 9.57.5
+- Updated gamut-tests to 6.0.1
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
+## 68.5.1 (2026-05-08)
+
+### 🩹 Fixes
+
+- pin formatjs/intl-locale version ([#3343](https://github.com/Codecademy/gamut/pull/3343))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.5.0 (2026-05-04)
+
+### 🚀 Features
+
+- remove setupEnzyme and remove deprecated comment for RadialProgress ([#3337](https://github.com/Codecademy/gamut/pull/3337))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.4
+- Updated gamut-tests to 6.0.0
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.4.1 (2026-05-04)
+
+### 🩹 Fixes
+
+- update Input padding to use logical properties ([#3338](https://github.com/Codecademy/gamut/pull/3338))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 68.4.0 (2026-05-04)
+
+### 🚀 Features
+
+- New DatePicker component ([#3286](https://github.com/Codecademy/gamut/pull/3286), [#3335](https://github.com/Codecademy/gamut/issues/3335))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Kenny Lin @LinKCoding
+
+## 68.3.0 (2026-04-29)
+
+### 🚀 Features
+
+- Updates the Pagination component to have its Previous/Next buttons' icon reflect the correct dir ([#3306](https://github.com/Codecademy/gamut/pull/3306), [#3319](https://github.com/Codecademy/gamut/issues/3319), [#3316](https://github.com/Codecademy/gamut/issues/3316), [#3331](https://github.com/Codecademy/gamut/issues/3331), [#3326](https://github.com/Codecademy/gamut/issues/3326), [#3330](https://github.com/Codecademy/gamut/issues/3330), [#3332](https://github.com/Codecademy/gamut/issues/3332), [#3333](https://github.com/Codecademy/gamut/issues/3333))
+- feat: add useLogicalProperties + useElementDir hooks. fix: RTL left-center + right-center ToolTip and Pagination issues. ([#3306](https://github.com/Codecademy/gamut/pull/3306), [#3319](https://github.com/Codecademy/gamut/issues/3319), [#3316](https://github.com/Codecademy/gamut/issues/3316), [#3331](https://github.com/Codecademy/gamut/issues/3331), [#3326](https://github.com/Codecademy/gamut/issues/3326), [#3330](https://github.com/Codecademy/gamut/issues/3330), [#3332](https://github.com/Codecademy/gamut/issues/3332), [#3333](https://github.com/Codecademy/gamut/issues/3333))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.10
+- Updated gamut-patterns to 0.10.29
+- Updated gamut-styles to 17.14.0
+- Updated gamut-icons to 9.57.3
+- Updated gamut-tests to 5.3.4
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
+## 68.2.2 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.9
+- Updated gamut-patterns to 0.10.28
+- Updated gamut-styles to 17.13.1
+- Updated gamut-icons to 9.57.2
+- Updated gamut-tests to 5.3.3
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
+### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.2.0...@codecademy/gamut@68.2.1) (2026-03-25)
+
+### Bug Fixes
+
+- **DataList:** Go back to first-of-type approach for padding ([f0dd919](https://github.com/Codecademy/gamut/commit/f0dd9194f8c2c347b7566e77466e719c85901786))
 
 ## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.1.4...@codecademy/gamut@68.2.0) (2026-03-25)
 

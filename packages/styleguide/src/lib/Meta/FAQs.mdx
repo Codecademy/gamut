@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 import { AboutHeader } from '~styleguide/blocks';
 
@@ -56,3 +56,6 @@ As general rules of thumb:
 ## What's going on with accessibility?
 
 Codecademy is committed to becoming [WCAG 2.2 accessible](https://www.w3.org/WAI/standards-guidelines/wcag), and technical accessibility is a must-have in our design system. Components added here are expected to be fully AA compliant.
+
+To help with this, all our components are tested for accessibility using [Storybook's accessibility testing](https://storybook.js.org/docs/writing-tests/accessibility-testing).
+This can be seen under the Accessibility tab in stories, as well as the Storybook tests that run in CI.

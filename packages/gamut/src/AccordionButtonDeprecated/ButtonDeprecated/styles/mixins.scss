@@ -1,5 +1,4 @@
 @use "sass:color";
-@use "~@codecademy/gamut-styles/utils" as *;
 @use "variables";
 
 // Button variants
@@ -8,7 +7,7 @@
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border: transparent) {
-  $active-background: color.mix($color-black, $background);
+  $active-background: color.mix(variables.$color-black, $background);
 
   @if $border == transparent {
     $active-border: transparent;
@@ -24,7 +23,7 @@
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
+    box-shadow: 0 0 0 2px variables.$color-white, 0 0 0 4px $background;
   }
 
   &:focus-visible,
@@ -60,7 +59,7 @@
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
+    box-shadow: 0 0 0 2px variables.$color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
@@ -98,7 +97,8 @@
   }
   .link-#{$name} {
     font-weight: bold;
-    @include font-smoothing;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: $background;
     text-decoration: underline;
 

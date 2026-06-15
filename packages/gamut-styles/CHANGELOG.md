@@ -1,7 +1,59 @@
-# Change Log
+# 20.0.0 (2026-06-01)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### ⚠️  Breaking Changes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 19.0.0 (2026-06-01)
+
+### ⚠️ Breaking Changes
+
+- removes deprecated scss mixins and variables ([#3340](https://github.com/Codecademy/gamut/pull/3340))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+# 18.0.0 (2026-05-14)
+
+### ⚠️ Breaking Changes
+
+- Updates LXStudio theme to new guidelines ([#3341](https://github.com/Codecademy/gamut/pull/3341))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
+## 17.14.0 (2026-04-29)
+
+### 🚀 Features
+
+- Updates the Pagination component to have its Previous/Next buttons' icon reflect the correct dir ([#3306](https://github.com/Codecademy/gamut/pull/3306), [#3319](https://github.com/Codecademy/gamut/issues/3319), [#3316](https://github.com/Codecademy/gamut/issues/3316), [#3331](https://github.com/Codecademy/gamut/issues/3331), [#3326](https://github.com/Codecademy/gamut/issues/3326), [#3330](https://github.com/Codecademy/gamut/issues/3330), [#3332](https://github.com/Codecademy/gamut/issues/3332), [#3333](https://github.com/Codecademy/gamut/issues/3333))
+- feat: add useLogicalProperties + useElementDir hooks. fix: RTL left-center + right-center ToolTip and Pagination issues. ([#3306](https://github.com/Codecademy/gamut/pull/3306), [#3319](https://github.com/Codecademy/gamut/issues/3319), [#3316](https://github.com/Codecademy/gamut/issues/3316), [#3331](https://github.com/Codecademy/gamut/issues/3331), [#3326](https://github.com/Codecademy/gamut/issues/3326), [#3330](https://github.com/Codecademy/gamut/issues/3330), [#3332](https://github.com/Codecademy/gamut/issues/3332), [#3333](https://github.com/Codecademy/gamut/issues/3333))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
+## 17.13.1 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated variance to 0.26.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
 
 ## [17.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.12.1...@codecademy/gamut-styles@17.13.0) (2026-03-25)
 

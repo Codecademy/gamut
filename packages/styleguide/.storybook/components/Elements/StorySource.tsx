@@ -1,5 +1,5 @@
-import { Source } from '@storybook/blocks';
-import { SourceType } from '@storybook/docs-tools';
+import { Source } from '@storybook/addon-docs/blocks';
+import { SourceType } from 'storybook/internal/docs-tools';
 import { ComponentProps } from 'react';
 
 export const StorySource = ({

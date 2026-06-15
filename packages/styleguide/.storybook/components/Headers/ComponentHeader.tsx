@@ -6,7 +6,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Figma } from '@storybook/addon-designs/blocks';
-import { Title } from '@storybook/blocks';
+import { Title } from '@storybook/addon-docs/blocks';
 import * as React from 'react';
 
 import { StatusIndicator } from '../Elements/StatusIndicator';
@@ -94,7 +94,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
           <SourceWrapper>
             <GridBox
               gap={16}
-              fontWeight={700}
+              fontWeight="title"
               gridAutoFlow={['row', , 'column']}
               gridAutoColumns={'max-content'}
             >

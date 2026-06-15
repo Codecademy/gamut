@@ -54,7 +54,9 @@ dist/docs
 # NX
 dist/out-tsc
 *.tsbuildinfo
-/.nx
+/.nx/cache
+/.nx/workspace-data
+# Keep .nx/version-plans tracked for NX release
 
 packages/gamut-styles/demo-styles
 
@@ -80,3 +82,7 @@ report*.json
 
 .claude/worktrees
 .claude/settings.local.json
+
+# Alpha Publish Artifacts
+alpha-publish-manifest.json
+alpha-publish-comment.md

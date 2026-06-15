@@ -38,6 +38,7 @@ module.exports = {
       // being applied to subsequent plugin imports/extensions. Wild.
       files: ['*.tsx', '*.ts'],
       rules: {
+        'no-void': ['error', { allowAsStatement: true }],
         // These rules could be useful, but we haven't gotten around to enabling them here
         // See WEB-2 for general tracking.
         '@typescript-eslint/no-explicit-any': 'off',

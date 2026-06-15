@@ -1,4 +1,4 @@
-import { FontConfig } from '../utils/fontUtils';
+import type { FontConfig } from '../utilities/fontUtils';
 
 export const FONT_ASSET_PATH = `https://www.codecademy.com/gamut`;
 
@@ -43,7 +43,92 @@ export const core: readonly FontConfig[] = [
   },
 ];
 
-export const percipio: readonly FontConfig[] = [
+/**
+ * Skillsoft Sans (accent) + Skillsoft Text (base).
+ * Weights 400 / 500 / 700 + italics; 500 uses Medium files for title/bold tokens.
+ */
+const skillsoftFamilyFonts: readonly FontConfig[] = [
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftText-Regular`,
+    extensions,
+    name: 'Skillsoft Text',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftText-RegularItalic`,
+    extensions,
+    name: 'Skillsoft Text',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftText-Medium`,
+    extensions,
+    name: 'Skillsoft Text',
+    weight: 500,
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftText-MediumItalic`,
+    extensions,
+    name: 'Skillsoft Text',
+    weight: 500,
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftText-Bold`,
+    extensions,
+    name: 'Skillsoft Text',
+    weight: 700,
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftText-BoldItalic`,
+    extensions,
+    name: 'Skillsoft Text',
+    weight: 700,
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftSans-Regular`,
+    extensions,
+    name: 'Skillsoft Sans',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftSans-RegularItalic`,
+    extensions,
+    name: 'Skillsoft Sans',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftSans-Medium`,
+    extensions,
+    name: 'Skillsoft Sans',
+    weight: 500,
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftSans-MediumItalic`,
+    extensions,
+    name: 'Skillsoft Sans',
+    weight: 500,
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftSans-Bold`,
+    extensions,
+    name: 'Skillsoft Sans',
+    weight: 700,
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SkillsoftSans-BoldItalic`,
+    extensions,
+    name: 'Skillsoft Sans',
+    weight: 700,
+    style: 'italic',
+  },
+];
+
+/**
+ * Roboto + Roboto Mono for Percipio `system` and `monospace` theme slots.
+ * The default weight for bold fonts is 700; Percipio uses 500 for the base bold.
+ */
+const percipioRobotoFonts: readonly FontConfig[] = [
   {
     filePath: `${FONT_ASSET_PATH}/roboto-regular`,
     extensions,
@@ -55,7 +140,6 @@ export const percipio: readonly FontConfig[] = [
     name: 'Roboto',
     style: 'italic',
   },
-  // The default weight for bold fonts is 700, Percipio uses 500 for the base bold
   {
     filePath: `${FONT_ASSET_PATH}/roboto-bold`,
     extensions,
@@ -95,31 +179,10 @@ export const percipio: readonly FontConfig[] = [
   },
 ];
 
-export const lxStudio: readonly FontConfig[] = [
-  {
-    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-regular`,
-    extensions,
-    name: 'Hanken Grotesk',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-italic`,
-    extensions,
-    name: 'Hanken Grotesk',
-    style: 'italic',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-bold`,
-    extensions,
-    name: 'Hanken Grotesk',
-    weight: 'bold',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-bold-italic`,
-    extensions,
-    name: 'Hanken Grotesk',
-    weight: 'bold',
-    style: 'italic',
-  },
+/** Percipio: Skillsoft (accent/base) plus Roboto system + Roboto Mono monospace. */
+export const percipio: readonly FontConfig[] = [
+  ...skillsoftFamilyFonts,
+  ...percipioRobotoFonts,
 ];
 
-export const webFonts = { core, percipio, lxStudio } as const;
+export const webFonts = { core, percipio, lxStudio: percipio } as const;

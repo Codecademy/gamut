@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as listParameters } from './List.mdx';
+import { parameters as listColParameters } from './ListCol/ListCol.mdx';
+import { parameters as listRowParameters } from './ListRow/ListRow.mdx';
+import { parameters as tableHeaderParameters } from './TableHeader/TableHeader.mdx';
+
+export const parameters = {
+  id: 'Organisms/Lists & Tables/List',
+  title: 'List',
+  subtitle:
+    'List rows, columns, and table-style layouts for repeated, structured content.',
+};
+
+<Meta title="Organisms/Lists & Tables/List/About" />
+
+<AboutHeader {...parameters} />
+
+`List`, the component you need to build a list or table. It provides context to its children rows, columns, and the header to share spacing, variant, and responsive layout information.
+
+Use `ListRow` to compose a row of `ListCol` cells.
+
+When building a table, use `TableHeader` for the header row. It's the `thead` row, stays sticky when the list scrolls, and uses the same settings as the rows so the header matches the rows.
+
+Check out the documentation below to see how to use `List`, `ListRow`, `ListCol`, and `TableHeader` to build a list or table.
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    listParameters,
+    listRowParameters,
+    listColParameters,
+    tableHeaderParameters,
+  ])}
+/>

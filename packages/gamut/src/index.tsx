@@ -16,6 +16,7 @@ export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
+export * from './DatePicker';
 export * from './DelayedRenderWrapper';
 export * from './Disclosure';
 export * from './DataList';
@@ -30,7 +31,6 @@ export type {
   SelectDropdownGroup,
 } from './Form/SelectDropdown';
 export * from './GridForm';
-export * from './HiddenText';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './List';

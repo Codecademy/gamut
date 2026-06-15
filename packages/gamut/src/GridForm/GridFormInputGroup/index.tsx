@@ -5,9 +5,9 @@ import { UseFormReturn } from 'react-hook-form';
 
 import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
-import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import { Markdown } from '../../Markdown';
+import { Text } from '../../Typography';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -169,7 +169,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   return (
     <Column rowspan={field?.rowspan ?? 1} size={field?.size}>
       <FormGroup spacing={isTightCheckbox ? 'tight' : 'padded'}>
-        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+        {field.hideLabel ? <Text screenreader>{label}</Text> : label}
         {getInput()}
         {errorMessage && (
           <FormError

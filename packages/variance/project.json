@@ -25,6 +25,14 @@
         "jestConfig": "packages/variance/jest.config.ts"
       }
     },
+    "verify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["tsc --project tsconfig.lib.json --noEmit"],
+        "parallel": false
+      }
+    },
     "clean": {
       "executor": "nx:run-commands",
       "options": {

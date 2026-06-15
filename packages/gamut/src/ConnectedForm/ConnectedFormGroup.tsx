@@ -6,9 +6,9 @@ import { RegisterOptions } from 'react-hook-form';
 
 import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';
-import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
 import { InfoTipSubComponentProps } from '../Tip/InfoTip/type-utils';
+import { Text } from '../Typography';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
@@ -102,7 +102,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
 
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
-      {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
+      {hideLabel ? <Text screenreader>{renderedLabel}</Text> : renderedLabel}
       <Component
         {...(rest as any)}
         aria-describedby={errorId}

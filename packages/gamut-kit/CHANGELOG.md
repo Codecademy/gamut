@@ -1,7 +1,144 @@
-# Change Log
+# 2.0.0 (2026-06-04)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### ⚠️  Breaking Changes
+
+- Remove deprecated `HiddenText` component ([#3361](https://github.com/Codecademy/gamut/pull/3361))
+  **BREAKING:** `HiddenText` is no longer exported from `@codecademy/gamut`- Migrate to `<Text screenreader>` for visually hidden, screen-reader-accessible text- Removed Storybook docs for `HiddenText`; use the `Text` screenreader utility docs instead
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 71.0.0
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 1.0.0 (2026-06-01)
+
+### ⚠️  Breaking Changes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.13
+- Updated gamut-patterns to 0.10.32
+- Updated gamut-styles to 20.0.0
+- Updated gamut-icons to 9.57.7
+- Updated gamut-tests to 6.0.3
+- Updated gamut to 70.0.0
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 0.6.603 (2026-06-01)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.12
+- Updated gamut-patterns to 0.10.31
+- Updated gamut-styles to 19.0.0
+- Updated gamut-icons to 9.57.6
+- Updated gamut-tests to 6.0.2
+- Updated gamut to 69.0.0
+
+## 0.6.602 (2026-05-28)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.7.1
+
+## 0.6.601 (2026-05-27)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.7.0
+
+## 0.6.600 (2026-05-26)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.6.2
+
+## 0.6.599 (2026-05-20)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.6.1
+
+## 0.6.598 (2026-05-14)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.11
+- Updated gamut-patterns to 0.10.30
+- Updated gamut-styles to 18.0.0
+- Updated gamut-icons to 9.57.5
+- Updated gamut-tests to 6.0.1
+- Updated gamut to 68.6.0
+
+## 0.6.597 (2026-05-08)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.5.1
+
+## 0.6.596 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.4
+- Updated gamut-tests to 6.0.0
+- Updated gamut to 68.5.0
+
+## 0.6.595 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.4.1
+
+## 0.6.594 (2026-05-04)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 68.4.0
+
+## 0.6.593 (2026-04-29)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.10
+- Updated gamut-patterns to 0.10.29
+- Updated gamut-styles to 17.14.0
+- Updated gamut-icons to 9.57.3
+- Updated gamut-tests to 5.3.4
+- Updated gamut to 68.3.0
+
+## 0.6.592 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.9
+- Updated gamut-patterns to 0.10.28
+- Updated gamut-styles to 17.13.1
+- Updated gamut-icons to 9.57.2
+- Updated gamut-tests to 5.3.3
+- Updated variance to 0.26.1
+- Updated gamut to 68.2.2
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
+
+### [0.6.591](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.590...@codecademy/gamut-kit@0.6.591) (2026-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
 
 ### [0.6.590](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.589...@codecademy/gamut-kit@0.6.590) (2026-03-25)
 

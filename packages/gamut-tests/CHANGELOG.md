@@ -1,7 +1,59 @@
-# Change Log
+## 6.0.3 (2026-06-01)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### 🩹 Fixes
+
+- Remove deprecated colors from gamut-styles ([#3349](https://github.com/Codecademy/gamut/pull/3349))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 20.0.0
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 6.0.2 (2026-06-01)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 19.0.0
+
+## 6.0.1 (2026-05-14)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 18.0.0
+
+# 6.0.0 (2026-05-04)
+
+### ⚠️ Breaking Changes
+
+- remove setupEnzyme and remove deprecated comment for RadialProgress ([#3337](https://github.com/Codecademy/gamut/pull/3337))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 5.3.4 (2026-04-29)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.14.0
+
+## 5.3.3 (2026-03-26)
+
+### 🩹 Fixes
+
+- minor type changes due to typescript upgrade ([#3254](https://github.com/Codecademy/gamut/pull/3254))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 17.13.1
+
+### ❤️ Thank You
+
+- Copilot @Copilot
+- jakemhiller @jakemhiller
 
 ### [5.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.3.1...@codecademy/gamut-tests@5.3.2) (2026-03-25)
 
