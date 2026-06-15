@@ -1,3 +1,30 @@
+# 72.0.0 (2026-06-15)
+
+### ⚠️  Breaking Changes
+
+- Remove deprecated accordion components ([#3366](https://github.com/Codecademy/gamut/pull/3366))
+
+  **BREAKING (`@codecademy/gamut`):** Remove `AccordionDeprecated`, `AccordionAreaDeprecated`, `AccordionButtonDeprecated`, and associated exported types
+
+  - Migrate to `Disclosure` for expandable sections; use `List` with expandable rows when multiple accordions are needed
+  - Internal `ButtonDeprecated` and `ButtonDeprecatedBase` (accordion-only, not re-exported) are removed with the accordion stack
+  - Removed Storybook docs for deprecated accordion components
+  - Accordion SCSS that imported legacy `@codecademy/gamut-styles` utils is removed with the accordion stack; use `Disclosure` and current gamut-styles APIs instead
+
+  **`@codecademy/gamut-styles`:** Patch release (CHANGELOG heading whitespace only; no package code changes in this PR)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.14
+- Updated gamut-patterns to 0.10.33
+- Updated gamut-styles to 20.0.1
+- Updated gamut-icons to 9.57.8
+- Updated gamut-tests to 6.0.4
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 # 71.0.0 (2026-06-04)
 
 ### ⚠️ Breaking Changes
