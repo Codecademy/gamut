@@ -8,8 +8,8 @@ export const ConnectedRadioGroupInput: React.FC<
 > = ({ name, options, disabled, customValidations, ...rest }) => {
   return (
     <ConnectedRadioGroup
-      name={name}
       customValidations={customValidations}
+      name={name}
       {...rest}
     >
       {options.map((elem) => {

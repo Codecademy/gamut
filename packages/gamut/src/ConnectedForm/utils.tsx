@@ -369,7 +369,12 @@ export function useDebouncedField<T extends InputTypes>({
   shouldDirtyOnChange,
   customValidations,
 }: DebouncedFieldProps<T>) {
-  const useFieldPayload = useField({ name, disabled, loading, customValidations });
+  const useFieldPayload = useField({
+    name,
+    disabled,
+    loading,
+    customValidations,
+  });
 
   const defaultValue = type === 'checkbox' ? false : '';
 
