@@ -12,3 +12,5 @@ export const GridBox = styled(
   gridStates,
   boxProps
 );
+
+export type { GridBoxProps } from './props';

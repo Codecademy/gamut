@@ -312,7 +312,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isCreatable={isCreatable}
         isDisabled={disabled}
         isMulti={multiple}
-        isOptionDisabled={(option) => option.disabled}
+        isOptionDisabled={(option: OptionStrict & { disabled?: boolean }) =>
+          option.disabled ?? false
+        }
         isSearchable={isSearchable}
         isValidNewOption={isValidNewOption}
         menuAlignment={menuAlignment}
@@ -327,7 +329,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
         onInputChange={onInputChange}
-        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
+        onKeyDown={
+          multiple
+            ? (e: React.KeyboardEvent<HTMLDivElement>) => keyPressHandler(e)
+            : undefined
+        }
         {...rest}
       />
     </SelectDropdownContext.Provider>

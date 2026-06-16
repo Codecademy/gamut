@@ -177,9 +177,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
   });
 
   const validation =
-    (validationRules &&
-      validationRules[name as keyof typeof validationRules]) ??
-    undefined;
+    validationRules?.[name as keyof typeof validationRules] ?? undefined;
 
   const ref = register(name, validation);
 
@@ -333,7 +331,6 @@ type InputTypes =
       | 'search'
       | 'month'
       | 'tel'
-      | 'time'
       | 'url'
       | 'week'
     >

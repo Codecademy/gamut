@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { ComponentProps, useState } from 'react';
+import { ComponentProps, useId, useState } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
@@ -95,11 +95,14 @@ export const Modal: React.FC<ModalProps> = ({
   views,
   ...rest
 }) => {
+  const titleId = useId();
   const [currentView, setCurrentView] = useState(0);
   const view = views?.[currentView];
   const image = (view?.image || rest?.image) ?? null;
 
   const titleText = title || views?.[currentView].title;
+  const needsLabelledBy = titleText && !ariaLabel;
+
   return (
     <Overlay
       data-testid="modal"
@@ -110,7 +113,7 @@ export const Modal: React.FC<ModalProps> = ({
       <ModalContainer
         aria-hidden="false"
         aria-label={ariaLabel}
-        aria-labelledby={titleText ? String(titleText) : undefined}
+        aria-labelledby={needsLabelledBy ? titleId : undefined}
         aria-modal="true"
         className={className}
         data-autofocus
@@ -125,6 +128,7 @@ export const Modal: React.FC<ModalProps> = ({
             as={headingLevel}
             fontSize={20}
             gridArea="title"
+            id={titleId}
             lineHeight="base"
           >
             {titleText}
