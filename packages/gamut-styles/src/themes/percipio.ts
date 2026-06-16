@@ -56,7 +56,7 @@ export const percipioTheme = createTheme({
       },
       border: {
         primary: 'navy-400',
-        secondary: 'navy-200',
+        secondary: 'navy-600',
         tertiary: 'navy-800',
         disabled: 'navy-300',
       },

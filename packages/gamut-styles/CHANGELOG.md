@@ -1,3 +1,13 @@
+## 20.0.2 (2026-06-16)
+
+### 🩹 Fixes
+
+- Updates percipioTheme's border-secondary token to be navy-600 (previously navy-200) for better contrast ([#3374](https://github.com/Codecademy/gamut/pull/3374))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 ## 20.0.1 (2026-06-15)
 
 ### 🩹 Fixes
