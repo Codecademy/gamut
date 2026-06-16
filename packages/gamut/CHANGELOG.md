@@ -1,3 +1,13 @@
+## 72.0.2 (2026-06-16)
+
+### 🩹 Fixes
+
+- remove lingering scss files from AccordionButtonDeprecated ([#3375](https://github.com/Codecademy/gamut/pull/3375))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 ## 72.0.1 (2026-06-16)
 
 ### 🧱 Updated Dependencies
