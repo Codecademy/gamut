@@ -588,7 +588,7 @@ describe('SelectDropdown', () => {
       });
 
       await act(async () => {
-        fireEvent.blur(combobox);
+        fireEvent.focusOut(combobox);
       });
 
       expect(combobox).toHaveValue('');
@@ -607,7 +607,7 @@ describe('SelectDropdown', () => {
       onInputChange.mockClear();
 
       await act(async () => {
-        fireEvent.blur(combobox);
+        fireEvent.focusOut(combobox);
       });
 
       expect(onInputChange).toHaveBeenCalledWith('', {
