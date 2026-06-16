@@ -1,7 +1,5 @@
 import { addParentPath, TableOfContents } from '~styleguide/blocks';
 
-import { parameters as accordionButtonDeprecatedParameters } from './AccordionButtonDeprecated/AccordionButtonDeprecated.mdx';
-import { parameters as accordionDeprecatedParameters } from './AccordionDeprecated/AccordionDeprecated.mdx';
 import { parameters as alertParameters } from './Alert/Alert.mdx';
 import { parameters as breadcrumbsParameters } from './Breadcrumbs/Breadcrumbs.mdx';
 import { parameters as coachmarkParameters } from './Coachmark/Coachmark.mdx';
@@ -19,8 +17,6 @@ import { parameters as videoParameters } from './Video/Video.mdx';
 export const MoleculeAboutToC = () => (
   <TableOfContents
     links={addParentPath('Molecules', [
-      accordionButtonDeprecatedParameters,
-      accordionDeprecatedParameters,
       alertParameters,
       breadcrumbsParameters,
       coachmarkParameters,

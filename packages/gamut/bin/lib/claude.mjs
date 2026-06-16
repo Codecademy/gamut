@@ -15,7 +15,7 @@ export async function claudePluginSpec(sourceRoot) {
   } catch {
     throw new Error(
       `Missing ${mp}.\n` +
-        `A .claude-plugin/marketplace.json is required for Claude Code installation.`,
+        `A .claude-plugin/marketplace.json is required for Claude Code installation.`
     );
   }
 
@@ -26,14 +26,20 @@ export async function claudePluginSpec(sourceRoot) {
   const { name: marketplaceName, plugins } = json;
 
   if (!marketplaceName || !Array.isArray(plugins) || plugins.length === 0) {
-    throw new Error(`Invalid marketplace.json — needs "name" and "plugins[]": ${mp}`);
+    throw new Error(
+      `Invalid marketplace.json — needs "name" and "plugins[]": ${mp}`
+    );
   }
 
   const entry =
-    plugins.find((p) => p.source === './' || p.source === '.' || p.source == null) ?? plugins[0];
+    plugins.find(
+      (p) => p.source === './' || p.source === '.' || p.source == null
+    ) ?? plugins[0];
 
   if (!entry?.name) {
-    throw new Error(`No plugin name found in marketplace.json plugins[]: ${mp}`);
+    throw new Error(
+      `No plugin name found in marketplace.json plugins[]: ${mp}`
+    );
   }
 
   return `${entry.name}@${marketplaceName}`;
@@ -47,6 +53,9 @@ export async function claudePluginSpec(sourceRoot) {
  */
 export function marketplaceName(spec) {
   const name = spec.split('@')[1];
-  if (!name) throw new Error(`Could not parse marketplace name from plugin spec: ${spec}`);
+  if (!name)
+    throw new Error(
+      `Could not parse marketplace name from plugin spec: ${spec}`
+    );
   return name;
 }
