@@ -1,6 +1,26 @@
+## 72.0.2 (2026-06-16)
+
+### 🩹 Fixes
+
+- remove lingering scss files from AccordionButtonDeprecated ([#3375](https://github.com/Codecademy/gamut/pull/3375))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 72.0.1 (2026-06-16)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.15
+- Updated gamut-patterns to 0.10.34
+- Updated gamut-styles to 20.0.2
+- Updated gamut-icons to 9.57.9
+- Updated gamut-tests to 6.0.5
+
 # 72.0.0 (2026-06-15)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - Remove deprecated accordion components ([#3366](https://github.com/Codecademy/gamut/pull/3366))
 
