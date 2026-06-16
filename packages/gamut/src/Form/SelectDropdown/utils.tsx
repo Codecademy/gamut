@@ -35,7 +35,7 @@ export const getCreatedOptionValue = (
   if (metaValue) return metaValue;
 
   if (!multiple) {
-    const value = (optionEvent as OptionStrict).value;
+    const { value } = optionEvent as OptionStrict;
     return value || undefined;
   }
 
