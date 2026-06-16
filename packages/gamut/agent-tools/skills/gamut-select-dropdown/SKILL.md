@@ -21,6 +21,24 @@ Use `Select` for standard single-select forms with minimal bundle cost. Use `Sel
 
 ---
 
+## Options
+
+`options` accepts plain strings or option objects. `value` is always a string and references an option's `value`.
+
+| Field          | Required | Notes                                                                |
+| -------------- | -------- | -------------------------------------------------------------------- |
+| `label`        | yes      | Display text                                                         |
+| `value`        | yes      | Unique string; what `value` / `string[]` reference                   |
+| `disabled`     | no       | Option cannot be selected                                            |
+| `subtitle`     | no       | Secondary text below the label                                       |
+| `rightLabel`   | no       | Text on the right side of the option                                 |
+| `icon`         | no       | A `@codecademy/gamut-icons` component                                |
+| `abbreviation` | no       | Short text shown in the input while the full label shows in the menu |
+
+Grouped options: `{ label, options: [...], divider? }` (extends react-select `GroupBase`; `divider` draws a rule above the group).
+
+---
+
 ## Controlled vs uncontrolled
 
 SelectDropdown does **not** accept `defaultValue`.
@@ -70,6 +88,7 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
 
 - `FormGroup` `htmlFor` must match control `id` / `name`.
 - Pass `name` on SelectDropdown (required for forms).
+- Pass `aria-label` (required for forms); it must match the FormGroupLabel `htmlFor` / `name`.
 - Pass `error` boolean when FormGroup has an error.
 - Generic FormGroup live-region behavior: see [`gamut-forms`](../gamut-forms/SKILL.md).
 
@@ -77,6 +96,7 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
 <FormGroup htmlFor="country" isSoloField label="Country" error={errors.country}>
   <SelectDropdown
     name="country"
+    aria-label="country"
     options={options}
     value={value}
     error={Boolean(errors.country)}
@@ -84,6 +104,20 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
   />
 </FormGroup>
 ```
+
+---
+
+## Styling & layout props
+
+| Prop                | Type                     | Default  | Notes                                                     |
+| ------------------- | ------------------------ | -------- | --------------------------------------------------------- |
+| `size`              | `'small' \| 'medium'`    | `medium` | Control height/density                                    |
+| `shownOptionsLimit` | `1`–`6`                  | `6`      | Visible options before the menu scrolls                   |
+| `inputWidth`        | `string \| number`       | —        | Width of the input independent of the menu                |
+| `dropdownWidth`     | `string \| number`       | —        | Width of the menu independent of the input                |
+| `menuAlignment`     | `'left' \| 'right'`      | `left`   | Menu edge alignment                                       |
+| `zIndex`            | `number`                 | auto     | Menu z-index                                              |
+| `inputProps`        | `{ hidden?, combobox? }` | —        | `data-*` / `aria-*` only, forwarded to the input elements |
 
 ---
 
@@ -147,9 +181,3 @@ const [value, setValue] = useState<string[]>([]);
   }}
 />;
 ```
-
----
-
-## Storybook note
-
-Default story args include `value: ''`. Spreading `{...args}` in custom renders behaves as controlled empty single. Omit `value` when demonstrating uncontrolled multi or creatable multi.
