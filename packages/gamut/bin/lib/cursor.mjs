@@ -4,7 +4,10 @@ import { join } from 'node:path';
 
 /** @returns {string} */
 export function cursorPluginsRoot() {
-  return process.env.CURSOR_PLUGINS_LOCAL ?? join(homedir(), '.cursor', 'plugins', 'local');
+  return (
+    process.env.CURSOR_PLUGINS_LOCAL ??
+    join(homedir(), '.cursor', 'plugins', 'local')
+  );
 }
 
 /**
