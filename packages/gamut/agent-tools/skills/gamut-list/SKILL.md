@@ -9,7 +9,7 @@ Structured, repeating layouts built from `List`, `ListRow`, `ListCol`, and `Tabl
 
 Source: `@codecademy/gamut` — [List.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/List.tsx)
 
-See also: [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA, focus, and keyboard interaction rules. [`gamut-layout`](../gamut-layout/SKILL.md) — spacing tokens and system props.
+See also: [`gamut-datatable`](../gamut-datatable/SKILL.md) — use instead of List when data needs sorting, filtering, or query state. [`gamut-datalist`](../gamut-datalist/SKILL.md) — use instead of List when rows need expansion or selection. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA, focus, and keyboard interaction rules. [`gamut-layout`](../gamut-layout/SKILL.md) — spacing tokens and system props.
 
 Storybook:
 
@@ -32,8 +32,16 @@ import { List, ListRow, ListCol, TableHeader } from '@codecademy/gamut';
 
 ## When to use List
 
+List is for **fully custom, manually composed layouts**. Reach for a higher-level component first:
+
+- Data that needs **sorting, filtering, or query state** → use [`DataTable`](../gamut-datatable/SKILL.md) or [`DataList`](../gamut-datalist/SKILL.md) instead of wiring these up manually in List.
+- Rows that need **expansion or row selection** → use [`DataList`](../gamut-datalist/SKILL.md).
+
+Use List directly when:
+
+- You need fully custom row/column composition that DataTable or DataList cannot accommodate.
 - Displaying repetitive content where individual rows may contain interactive elements, metrics, or controls — use List, not Card.
-- Comparing data across rows — use `variant="table"` (or `as="table"`) rather than a plain `<table>`.
+- Comparing data across rows with a fully custom layout — use `variant="table"` (or `as="table"`) rather than a plain `<table>`.
 - Needing numbered rows — use `as="ol"`.
 - **Needing multiple expandable/disclosure-style items** — use List's expandable row pattern (see [Expandable rows](#expandable-rows)), not multiple standalone `Disclosure` components.
 
