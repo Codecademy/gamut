@@ -1,6 +1,6 @@
 ---
 name: gamut-accessibility
-description: Deep Gamut accessibility reference (component matrix, overlays, tips, live regions, checklists). Form wiring and validation UX live in `gamut-forms`. Universal HTML/ARIA/focus/color rules: always-loaded `accessibility.mdc` — read that first; this skill does not duplicate them.
+description: Use this skill when implementing accessibility for a specific Gamut component, building a custom overlay or composite widget, or auditing component usage against WCAG — complements the always-loaded `accessibility.mdc` with Gamut component-specific patterns. Form wiring lives in `gamut-forms`.
 ---
 
 # Gamut Accessibility

@@ -9,8 +9,6 @@ Source: `@codecademy/gamut-tests` — [`index.tsx`](https://github.com/Codecadem
 
 ---
 
----
-
 ## What `MockGamutProvider` does (under `setupRtl`)
 
 `MockGamutProvider` forwards to `GamutProvider` with:

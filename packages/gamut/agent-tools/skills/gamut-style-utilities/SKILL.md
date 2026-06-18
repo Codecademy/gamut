@@ -7,7 +7,7 @@ description: Use this skill when authoring Gamut styles with @codecademy/gamut-s
 
 Source: `@codecademy/gamut-styles` — [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`css`, `variant`, `states` built on `PROPERTIES.all`).
 
-See also: [`gamut-theming`](../gamut-theming/SKILL.md) (which theme, `GamutProvider`, new themes). [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.*`, responsive props, `Box`). [`gamut-color-mode`](../gamut-color-mode/SKILL.md) (semantic color, `<ColorMode>`, `<Background>`). [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) and [system compose](https://gamut.codecademy.com/?path=/docs-foundations-system-compose--page).
+See also: [`gamut-theming`](../gamut-theming/SKILL.md) (which theme, `GamutProvider`, new themes). [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.*`, responsive props, `Box`). [`gamut-color-mode`](../gamut-color-mode/SKILL.md) (semantic color, `<ColorMode>`, `<Background>`). [Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) and [system compose](https://gamut.codecademy.com/?path=/docs-foundations-system-compose--page).
 
 ## Overview
 
@@ -99,9 +99,3 @@ const Sparkline = () => {
   return <path strokeWidth={theme.spacing[4]} d="M0 0 L10 10" />;
 };
 ```
-
-## Key principles
-
-- Prefer semantic color keys in `css` / `variant` / `states` so ColorMode and theme switches apply; see `gamut-color-mode`.
-- Never hardcode hex in component styles — use tokens / semantic aliases.
-- Prefer `variant` / `states` for modes and toggles instead of ad-hoc `theme` interpolation in template literals.

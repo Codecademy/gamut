@@ -79,7 +79,9 @@ Without `DESIGN.md` at the repo root, color findings are lower confidence — in
 
 ## Agent skills
 
-Related skills under [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/):
+### Exported skills
+
+Installed into app repos via `gamut plugin install`. Source: [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/)
 
 - `gamut-review` — codebase audit playbook
 - `gamut-theming` — theme selection, `GamutProvider`, `theme.d.ts`
@@ -92,7 +94,12 @@ Related skills under [`packages/gamut/agent-tools/skills/`](https://github.com/C
 - `gamut-system-props` — `system.*` / `Box`
 - `gamut-style-utilities` — `css`, `variant`, `states`
 - `gamut-typography`, `gamut-forms`, `gamut-accessibility`, `gamut-testing`
-- `gamut-create-skill` — workflow playbook for authoring a new Gamut agent skill from scratch
+
+### Contributor-only skills
+
+Available in this repo only — never exported. Source: [`local-skills/`](https://github.com/Codecademy/gamut/tree/main/local-skills/). Auto-synced to `.claude/skills/` and `.cursor/rules/` via the pre-commit hook; sync manually with `yarn sync-skills`.
+
+- `gamut-create-skill` — blueprint playbook for authoring a new Gamut agent skill from scratch
 
 ## Design-to-code (Figma MCP)
 

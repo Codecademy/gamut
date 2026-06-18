@@ -1,6 +1,6 @@
 ---
 name: gamut-forms
-description: Implementing or auditing Gamut forms — FormGroup, ConnectedForm, ConnectedFormGroup, GridForm, react-hook-form wiring, labels, and accessible error/description regions. Pair with `gamut-accessibility` for non-form widgets and `accessibility.mdc` for universal HTML/ARIA rules.
+description: Use this skill when implementing or auditing Gamut forms — FormGroup, ConnectedForm, ConnectedFormGroup, GridForm, react-hook-form wiring, labels, and accessible error/description regions. Pair with `gamut-accessibility` for non-form widgets and `accessibility.mdc` for universal HTML/ARIA rules.
 ---
 
 # Gamut forms

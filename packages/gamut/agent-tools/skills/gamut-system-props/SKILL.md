@@ -1,13 +1,13 @@
 ---
 name: gamut-system-props
-description: Use this skill when building or refactoring styled Gamut components that need layout, spacing, color, border, background, typography, positioning, grid, flex, shadow, list styles, or responsive values from @codecademy/gamut-styles — including composing system prop groups with variance.
+description: 'Use this skill when composing system prop groups (`system.*`) on styled components, selecting which group covers a CSS property, or building responsive props with `variance.compose()` — not for `css()`, `variant()`, or `states()` (see gamut-style-utilities).'
 ---
 
 # Gamut System Props
 
 Source: `@codecademy/gamut-styles` — [`variance/config.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/config.ts) (definitions) and [`variance/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/props.ts) (`variance.create` groups). `Box`, `FlexBox`, and `GridBox` compose the same groups in [`packages/gamut/src/Box/props.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/props.ts).
 
-See also: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [Styleguide — Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx) (semantic colors, responsive examples) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
+See also: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [Styleguide — Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic colors, responsive examples) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
 
 ## Overview
 
@@ -192,12 +192,3 @@ const Box = styled.div(css({ bg: 'navy-400', p: 4 }));
 // Semantic color (adapts to color mode)
 const Text = styled.div(css({ color: 'primary', p: 4 }));
 ```
-
-## Key principles
-
-- Compose `system.*` groups via `variance.compose()` — don't apply multiple groups by chaining `styled.div(system.a)(system.b)`.
-- Prefer semantic color names on `system.color` (e.g. `bg="background"`, `textColor="text"`) so values track ColorMode; use raw palette keys only when the design should stay fixed across modes.
-- Use `bg` with semantic tokens for most mode-aware surfaces; use `<Background>` from `@codecademy/gamut-styles` when you need its contrast- and mode-aware behavior, not for every tinted panel.
-- Use `system.space` values on the spacing scale rather than arbitrary pixel strings to keep rhythm consistent.
-- For background images/patterns use `system.background`; for solid fills use `system.color` / semantic `bg` (or `Background` when that component’s behavior is required).
-- For reusable variants or boolean states on styled primitives, use `variant` / `states` from `@codecademy/gamut-styles` and expose props with `StyleProps<typeof …>` from `@codecademy/variance` — see [Best practices](../../../../styleguide/src/lib/Meta/Best%20practices.mdx).

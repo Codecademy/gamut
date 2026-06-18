@@ -106,10 +106,3 @@ See Emotion’s [TypeScript / define a theme](https://emotion.sh/docs/typescript
 ## Creating a new theme
 
 See [Creating Themes](https://gamut.codecademy.com/?path=/docs-foundations-theme-creating-themes--docs) in Storybook. Themes are defined in `@codecademy/gamut-styles` and must extend the base theme shape with all required token keys.
-
-## Key principles
-
-- Pick the correct theme export for the product so tokens and fonts match design intent.
-- Align `theme.d.ts` / `Theme extends …` with the same theme interface you pass to `GamutProvider`.
-- Components stay portable across themes when they use token and semantic aliases rather than one-off hex; authoring rules live in `gamut-style-utilities` and `gamut-color-mode`.
-- `GamutProvider` wires theme, color mode, and logical-properties settings at the root; individual components should not hard-code which org theme is active.

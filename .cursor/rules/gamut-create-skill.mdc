@@ -1,17 +1,20 @@
 ---
 name: gamut-create-skill
-description: Use this skill when creating a new Gamut agent skill from scratch — including researching the component source and Storybook docs, writing SKILL.md, validating structure and token weight, checking consistency against existing skills, updating the Storybook AI Tools list, and adding a callout to the relevant component page. Do not use for general Gamut development tasks — see individual component skills for that.
+description: 'Blueprint — use this skill when authoring a new Gamut agent skill from scratch, from component source research through Storybook integration. Not for general Gamut development (see individual component skills).'
+alwaysApply: false
 ---
 
 # Gamut Create Skill
 
-Workflow playbook for authoring a new Gamut agent skill. Covers research, structure, token discipline, consistency validation, and Storybook integration. Intended for Gamut contributors adding skill coverage for a new or under-documented component.
+Blueprint playbook for authoring a new Gamut agent skill.
 
-Reference skills: [`gamut-buttons`](../gamut-buttons/SKILL.md) — reference for a tight component skill. [`gamut-datatable`](../gamut-datatable/SKILL.md) — reference for an organism skill with full API surface. [`gamut-review`](../gamut-review/SKILL.md) — reference for an audit/workflow skill.
+Reference skills: [`gamut-buttons`](../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md) — reference for a tight component skill. [`gamut-datatable`](../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md) — reference for an organism skill with full API surface. [`gamut-review`](../../packages/gamut/agent-tools/skills/gamut-review/SKILL.md) — reference for an audit/workflow skill.
 
 Storybook: [Meta / AI Tooling / Gamut plugin / Best practices](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-best-practices--page)
 
 Claude Code skill authoring reference: [Claude Code skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills)
+
+Skill quality review: use `/writing-great-skills` in Claude Code to audit a draft against information hierarchy, leading words, no-ops, and pruning before committing.
 
 ---
 
@@ -54,16 +57,31 @@ Check whether the component's Storybook MDX already has a `<Callout>` for the sk
 
 ## Skill directory structure
 
+There are two locations, depending on the intended audience:
+
+**Exported skills** — shipped to app repos via `gamut plugin install`:
+
 ```
 packages/gamut/agent-tools/skills/
   {skill-name}/
-    SKILL.md        ← only file; no README, no index
+    SKILL.md
 ```
 
-Rules:
+**Contributor-only skills** — available in this repo only, never exported:
+
+```
+local-skills/
+  {skill-name}/
+    SKILL.md        ← canonical source
+```
+
+Contributor skills are synced automatically to `.claude/skills/` (Claude Code) and `.cursor/rules/` (Cursor) by the pre-commit hook. To sync manually: `yarn sync-skills`. To watch during development: `yarn sync-skills:watch`.
+
+Rules (apply to both locations):
 
 - Directory name is kebab-case and must exactly match the `name:` frontmatter field
 - No other files in the directory
+- Contributor skills must also include `alwaysApply: false` in frontmatter (required by Cursor)
 
 ---
 
@@ -196,6 +214,7 @@ Run this against your draft before committing:
 - [ ] Non-obvious gotchas have a callout block
 - [ ] No trailing "See also" list that duplicates the top `See also:` block
 - [ ] Source code GitHub link present
+- [ ] Draft reviewed with `/writing-great-skills` before committing
 
 ---
 
@@ -236,9 +255,9 @@ For skills covering a concept rather than a single component (e.g. `gamut-color-
 
 ## Reference skills by type
 
-| Type                   | Skill                                              | Read it for                                       |
-| ---------------------- | -------------------------------------------------- | ------------------------------------------------- |
-| Tight component        | [`gamut-buttons`](../gamut-buttons/SKILL.md)       | Scope discipline, clean "When to use / not use"   |
-| Organism with full API | [`gamut-datatable`](../gamut-datatable/SKILL.md)   | Props table + ColumnConfig + gotcha note pattern  |
-| Audit / workflow       | [`gamut-review`](../gamut-review/SKILL.md)         | Multi-phase check structure, remediation pointers |
-| System / concept       | [`gamut-color-mode`](../gamut-color-mode/SKILL.md) | Semantic-first framing, cross-skill boundaries    |
+| Type                   | Skill                                                                                   | Read it for                                       |
+| ---------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Tight component        | [`gamut-buttons`](../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md)       | Scope discipline, clean "When to use / not use"   |
+| Organism with full API | [`gamut-datatable`](../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md)   | Props table + ColumnConfig + gotcha note pattern  |
+| Audit / workflow       | [`gamut-review`](../../packages/gamut/agent-tools/skills/gamut-review/SKILL.md)         | Multi-phase check structure, remediation pointers |
+| System / concept       | [`gamut-color-mode`](../../packages/gamut/agent-tools/skills/gamut-color-mode/SKILL.md) | Semantic-first framing, cross-skill boundaries    |

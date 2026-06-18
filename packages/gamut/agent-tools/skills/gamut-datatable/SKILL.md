@@ -224,40 +224,7 @@ Key points:
 
 ## Empty state
 
-DataTable shows a default empty state when `rows` is empty. Override with `emptyMessage`.
-
-```tsx
-<DataTable
-  id="my-table"
-  idKey="id"
-  columns={columns}
-  rows={[]}
-  emptyMessage={
-    <Box as="tbody" height="100%" width="100%">
-      <FlexBox
-        as="tr"
-        height="inherit"
-        position="absolute"
-        width="inherit"
-        zIndex={1}
-      >
-        <FlexBox
-          as="th"
-          center
-          column
-          left="calc(50% - 115px)"
-          p={16}
-          position="sticky"
-          top="calc(50% - 115px)"
-          width="fit-content"
-        >
-          <Text>No results found.</Text>
-        </FlexBox>
-      </FlexBox>
-    </Box>
-  }
-/>
-```
+DataTable shows a default empty state when `rows` is empty. Override with `emptyMessage`. For the `tbody > tr > th` layout pattern required for valid table semantics, see [`gamut-datalist` — Empty state](../gamut-datalist/SKILL.md#empty-state).
 
 ## Loading state
 
@@ -281,22 +248,7 @@ import { Background } from '@codecademy/gamut-styles';
 
 ## Container queries
 
-DataTable uses CSS container queries by default for responsive column stacking. Disable only when:
-
-- The table lives in a container narrower than its breakpoint.
-- You are managing your own responsive logic.
-
-```tsx
-<div style={{ width: '280px' }}>
-  <DataTable
-    disableContainerQuery
-    id="sidebar-table"
-    idKey="id"
-    rows={data}
-    columns={columns}
-  />
-</div>
-```
+DataTable uses CSS container queries by default for responsive column stacking. Pass `disableContainerQuery` when the table lives in a constrained container or you are managing your own responsive logic — same pattern as [`gamut-datalist`](../gamut-datalist/SKILL.md#container-queries).
 
 ## Accessibility
 

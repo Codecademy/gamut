@@ -1,6 +1,6 @@
 ---
 name: gamut-review
-description: Use this skill when auditing existing code for Gamut usage — dependencies, GamutProvider, deep imports, SCSS modules, className on Gamut components, nested selectors, hardcoded hex colors, non-Gamut CSS variables, and test patterns — and you need a consolidated report with pointers to matching Gamut skills.
+description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, hardcoded colors, and test setup, with pointers to remediation skills.
 ---
 
 # Gamut Review
