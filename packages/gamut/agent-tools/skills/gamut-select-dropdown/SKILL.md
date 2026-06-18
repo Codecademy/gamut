@@ -1,11 +1,11 @@
 ---
 name: gamut-select-dropdown
-description: Use when implementing or auditing SelectDropdown — single/multi modes, controlled vs uncontrolled value, creatable options, FormGroup wiring, and react-select action meta. Pair with gamut-forms for FormGroup/validation patterns.
+description: Use when implementing or auditing SelectDropdown — single/multi modes, controlled vs uncontrolled value, creatable options, FormGroup wiring, and onChange contract. Pair with gamut-forms for error live regions, ConnectedForm, and field-level validation.
 ---
 
 # Gamut SelectDropdown
 
-Styled dropdown built on react-select. Supports single and multi-select, searchable menus, creatable options, icons, groups, and abbreviations.
+Styled dropdown built on react-select.
 
 Source: `@codecademy/gamut` — [SelectDropdown.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/SelectDropdown/SelectDropdown.tsx)
 
@@ -80,7 +80,19 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
 - `isValidNewOption` — return `false` to hide the Add row.
 - `validationMessage` — replaces menu "No options" text; mirror in `FormGroup` `error` for field-level feedback.
 
-**Validation after blur:** react-select clears input on blur. Handle `onInputChange`: validate on `input-change`, re-validate from last typed value on `input-blur` so FormGroup error persists.
+**Validation after blur:** react-select clears input on blur before `onBlur` fires, so the value is gone by the time you'd validate it. Store the last typed value in a ref and re-validate from it on `input-blur`:
+
+```tsx
+const lastInput = useRef('');
+
+<SelectDropdown
+  isCreatable
+  onInputChange={(value, { action }) => {
+    if (action === 'input-change') lastInput.current = value;
+    if (action === 'input-blur') validate(lastInput.current);
+  }}
+/>;
+```
 
 ---
 
