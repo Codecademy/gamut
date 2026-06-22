@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { act, waitFor } from '@testing-library/react';
-import * as React from 'react';
+import { useState } from 'react';
 
 import { createPromise } from '../../utils';
 import { ConnectedForm, ConnectedFormGroup } from '..';
@@ -116,6 +116,43 @@ const renderViewWithBothValidations = setupRtl(ConnectedForm, {
   children: <TestFormWithBothValidations />,
 });
 
+// ─── Dynamic customValidations (rules changing after initial render) ──────────
+// Validates that memoized `validation` updates when customValidations changes.
+
+const DynamicValidationsForm: React.FC = () => {
+  const [strict, setStrict] = useState(false);
+
+  return (
+    <>
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedInput,
+          customValidations: strict
+            ? {
+                minLength: {
+                  value: 10,
+                  message: 'Must be at least 10 characters',
+                },
+              }
+            : undefined,
+        }}
+        label="Username"
+        name={mockInputKey}
+      />
+      <button type="button" onClick={() => setStrict(true)}>
+        Enable strict
+      </button>
+      <button type="submit">Submit</button>
+    </>
+  );
+};
+
+const renderViewWithDynamicValidations = setupRtl(ConnectedForm, {
+  defaultValues: { [mockInputKey]: mockDefaultValue },
+  onSubmit: () => null,
+  children: <DynamicValidationsForm />,
+});
+
 describe('ConnectedForm - useField', () => {
   describe('custom field-level validations (no form-level rules)', () => {
     it('should apply custom validation pattern rules', async () => {
@@ -205,6 +242,45 @@ describe('ConnectedForm - useField', () => {
         expect(
           view.queryByText('This field is required from form level')
         ).not.toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('dynamic customValidations (rules changing after initial render)', () => {
+    it('should enforce a rule added to customValidations after initial render', async () => {
+      const { view } = renderViewWithDynamicValidations();
+
+      const input = view.getByRole('textbox') as HTMLInputElement;
+
+      // Enter a short value that would fail minLength — before the rule exists
+      await act(async () => {
+        fireEvent.change(input, { target: { value: 'short' } });
+        fireEvent.blur(input);
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button', { name: 'Submit' }));
+      });
+
+      // No minLength error yet — the rule hasn't been added
+      expect(
+        view.queryByText('Must be at least 10 characters')
+      ).not.toBeInTheDocument();
+
+      // Now enable the stricter rule
+      await act(async () => {
+        fireEvent.click(view.getByRole('button', { name: 'Enable strict' }));
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button', { name: 'Submit' }));
+      });
+
+      // The newly added minLength rule should now fire
+      await waitFor(() => {
+        expect(
+          view.getByText('Must be at least 10 characters')
+        ).toBeInTheDocument();
       });
     });
   });

@@ -187,10 +187,13 @@ export const useField = ({
       validationRules[name as keyof typeof validationRules]) ??
     undefined;
 
-  const validation =
-    formValidation || customValidations
-      ? ({ ...formValidation, ...customValidations } as RegisterOptions)
-      : undefined;
+  const validation = useMemo(
+    () =>
+      formValidation || customValidations
+        ? ({ ...formValidation, ...customValidations } as RegisterOptions)
+        : undefined,
+    [formValidation, customValidations]
+  );
 
   const ref = register(name, validation);
 
