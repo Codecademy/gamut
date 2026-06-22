@@ -15,15 +15,27 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=8629%3A9005',
   {
     props: {
-      style: figma.enum('style', {
+      variant: figma.enum('style', {
         text: 'text',
         stroke: 'stroke',
       }),
       type: figma.enum('type', {
         basic: 'basic',
-        includeSkipToButtons: 'includeskiptobuttons',
+        includeSkipToButtons: 'includeSkipToButtons',
+      }),
+      chapterSize: figma.enum('chapterSize', {
+        '2': 2,
+        '3': 3,
+        '4': 4,
+        '5': 5,
+        '6': 6,
+        '7': 7,
+        '8': 8,
       }),
     },
-    example: (props) => <Pagination {...props} />,
+    // Note: totalPages and onChange are required props, but are not used in the example, these are placeholder values
+    example: (props) => (
+      <Pagination {...props} totalPages={10} onChange={() => { }} />
+    ),
   }
 );
