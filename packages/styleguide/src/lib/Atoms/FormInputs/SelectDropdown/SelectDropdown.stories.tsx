@@ -33,150 +33,6 @@ const meta: Meta<typeof SelectDropdown> = {
 export default meta;
 type Story = StoryObj<typeof SelectDropdown>;
 
-const CreatableStoryRender = (
-  args: React.ComponentProps<typeof SelectDropdown>
-) => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-
-  return (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="creatable-dropdown"
-        isSoloField
-        label="Type a new fruit and press Enter"
-      >
-        <SelectDropdown
-          {...args}
-          options={options}
-          onCreateOption={(inputValue) =>
-            setOptions((prev) => [...prev, inputValue])
-          }
-        />
-      </FormGroup>
-    </Box>
-  );
-};
-
-const CreatableMultiUncontrolledStoryRender = () => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-
-  return (
-    <Box height="18rem">
-      <FormGroup
-        htmlFor="creatable-multi-uncontrolled"
-        isSoloField
-        label="Pick fruits or add your own"
-      >
-        <SelectDropdown
-          isCreatable
-          multiple
-          name="creatable-multi-uncontrolled"
-          options={options}
-          placeholder="Select or type to add…"
-          onCreateOption={(inputValue) =>
-            setOptions((prev) => [...prev, inputValue])
-          }
-        />
-      </FormGroup>
-    </Box>
-  );
-};
-
-const CreatableMultiStoryRender = () => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-  const [value, setValue] = useState<string[]>([]);
-
-  return (
-    <Box height="18rem">
-      <FormGroup
-        htmlFor="creatable-multi-dropdown"
-        isSoloField
-        label="Pick fruits or add your own"
-      >
-        <SelectDropdown
-          isCreatable
-          multiple
-          name="creatable-multi-dropdown"
-          options={options}
-          placeholder="Select or type to add…"
-          value={value}
-          onChange={(selected, meta) => {
-            setValue(selected.map((option) => option.value));
-
-            if (meta.action === 'create-option' && meta.option) {
-              setOptions((prev) => [...prev, meta.option.value]);
-            }
-          }}
-        />
-      </FormGroup>
-    </Box>
-  );
-};
-
-const CreatableWithValidationStoryRender = () => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-  const [error, setError] = useState<string | undefined>();
-  const lastInputRef = useRef('');
-
-  const validate = (inputValue: string) => {
-    const trimmed = inputValue.trim();
-    if (trimmed.length < 3) return 'Enter at least 3 characters.';
-    return undefined;
-  };
-
-  const handleInputChange = (
-    inputValue: string,
-    { action }: InputActionMeta
-  ) => {
-    if (action === 'input-change') {
-      lastInputRef.current = inputValue;
-      setError(validate(inputValue));
-      return;
-    }
-
-    if (action === 'input-blur' && lastInputRef.current) {
-      // react-select clears the input on blur (default behavior). Re-apply
-      // validation from what the user typed so the FormGroup error persists.
-      setError(validate(lastInputRef.current));
-    }
-  };
-
-  return (
-    <Box height="15rem">
-      <FormGroup
-        error={error}
-        htmlFor="creatable-validated-dropdown"
-        isSoloField
-        label="Pick a fruit that is at least 3 characters long"
-      >
-        <SelectDropdown
-          error={Boolean(error)}
-          isCreatable
-          isValidNewOption={(inputValue: string) =>
-            !validate(inputValue) && inputValue.trim().length > 0
-          }
-          name="creatable-validated-dropdown"
-          options={options}
-          placeholder="Type at least 3 characters to add…"
-          validationMessage={({ inputValue }) =>
-            validate(inputValue) ?? 'No matching fruit'
-          }
-          onChange={() => {
-            lastInputRef.current = '';
-            setError(undefined);
-          }}
-          onCreateOption={(inputValue) => {
-            setOptions((prev) => [...prev, inputValue.trim()]);
-            lastInputRef.current = '';
-            setError(undefined);
-          }}
-          onInputChange={handleInputChange}
-        />
-      </FormGroup>
-    </Box>
-  );
-};
-
 export const Base: Story = {
   args: {
     name: 'base-dropdown',
@@ -268,30 +124,19 @@ export const SmallSearchable: Story = {
   ),
 };
 
-export const ShownOptionsDefault: Story = {
+export const FormGroupSelectDropdown: Story = {
   args: {
-    options: [
-      'i am not small',
-      ':)',
-      'a',
-      'b',
-      'g',
-      'v',
-      'g',
-      'asdf',
-      'fasdfas;',
-      'hi',
-      'asdfsadf',
-    ],
-    name: 'shownOptionsLimit01',
-    placeholder: 'six is the magic number',
+    options: ['hello', 'hi', 'howdy'],
+    value: 'oh no',
+    name: 'big-label',
   },
   render: (args) => (
-    <Box height="22rem">
+    <Box height="15rem">
       <FormGroup
-        htmlFor="shownOptionsLimit01"
+        htmlFor="big-label"
         isSoloField
-        label="i have the default shownOptionsLimit"
+        label="i am big label"
+        labelSize="large"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -299,33 +144,21 @@ export const ShownOptionsDefault: Story = {
   ),
 };
 
-export const ShownOptionsThree: Story = {
+export const FormGroupError: Story = {
   args: {
-    options: [
-      'i am not small',
-      ':)',
-      'a',
-      'b',
-      'g',
-      'v',
-      'g',
-      'asdf',
-      'fasdfas;',
-      'hi',
-      'asdfsadf',
-    ],
-    name: 'shownOptionsLimit02',
-    placeholder: 'three is the magic number',
-    shownOptionsLimit: 3,
+    options: ['Error', 'oh no', ':('],
+    name: 'error-example-unique',
+    placeholder: 'cry cry cry',
   },
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        htmlFor="shownOptionsLimit02"
+        error="error message!! no :'("
+        htmlFor="error-example-unique"
         isSoloField
-        label="i have three shownOptionsLimit"
+        label="i am ~styled... but something is wrong"
       >
-        <SelectDropdown {...args} />
+        <SelectDropdown error {...args} />
       </FormGroup>
     </Box>
   ),
@@ -434,124 +267,6 @@ export const RightLabels: Story = {
   ),
 };
 
-export const GroupDividers: Story = {
-  args: {
-    name: 'dividers-dropdown',
-    options: [
-      {
-        options: [
-          {
-            label: 'king@chess.com',
-            subtitle: 'The King of Chess',
-            value: 'king',
-            disabled: true,
-          },
-          {
-            label: 'queen@chess.com',
-            rightLabel: 'The Queen of Chess',
-            value: 'queen',
-          },
-          {
-            label: 'bishop@chess.com',
-            subtitle: 'Bishop Chess',
-            rightLabel: 'I can move diagonally',
-            value: 'bishop',
-            disabled: false,
-          },
-        ],
-      },
-      {
-        divider: true,
-        options: [
-          {
-            label: 'knight@chess.com',
-            subtitle: 'Sir Chess',
-            rightLabel: 'By leaps and bounds',
-            value: 'chess',
-            disabled: true,
-          },
-          {
-            label: 'pawn@chess.com',
-            value: 'pawn',
-            disabled: false,
-          },
-        ],
-      },
-    ],
-  },
-  render: (args) => (
-    <Box height="24rem">
-      <FormGroup
-        htmlFor="dividers-dropdown"
-        isSoloField
-        label="I have group dividers"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const GroupLabels: Story = {
-  args: {
-    name: 'group-labels-dropdown',
-    multiple: true,
-    options: [
-      {
-        label: 'Group 1',
-        options: [
-          {
-            label: 'king@chess.com',
-            subtitle: 'The King of Chess',
-            value: 'king',
-            disabled: true,
-          },
-          {
-            label: 'queen@chess.com',
-            rightLabel: 'The Queen of Chess',
-            value: 'queen',
-          },
-          {
-            label: 'bishop@chess.com',
-            subtitle: 'Bishop Chess',
-            rightLabel: 'I can move diagonally',
-            value: 'bishop',
-            disabled: false,
-          },
-        ],
-      },
-      {
-        label: 'Group 2',
-        options: [
-          {
-            label: 'knight@chess.com',
-            subtitle: 'Sir Chess',
-            rightLabel: 'By leaps and bounds',
-            value: 'chess',
-            disabled: true,
-          },
-          {
-            label: 'pawn@chess.com',
-            value: 'pawn',
-            disabled: false,
-          },
-        ],
-      },
-    ],
-  },
-  render: (args) => (
-    <Box height="24rem">
-      <FormGroup
-        htmlFor="group-labels-dropdown"
-        isSoloField
-        label="I have group labels + multiple select"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
 export const Icons: Story = {
   args: {
     name: 'pizzaz-dropdown',
@@ -576,99 +291,6 @@ export const Icons: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup htmlFor="pizzaz-dropdown" isSoloField label="i have pizzazz">
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const MultipleSelect: Story = {
-  args: {
-    name: 'multi-dropdown',
-    multiple: true,
-    options: [
-      {
-        label: 'Select Me',
-        value: 'xxx',
-      },
-      {
-        label: 'Multi Select',
-        value: 'yyy',
-      },
-      {
-        label: `Select All?`,
-        value: 'zzz',
-      },
-    ],
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="multi-dropdown"
-        isSoloField
-        label="I have multiple select options"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const FormGroupSelectDropdown: Story = {
-  args: {
-    options: ['hello', 'hi', 'howdy'],
-    value: 'oh no',
-    name: 'big-label',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="big-label"
-        isSoloField
-        label="i am big label"
-        labelSize="large"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const FormGroupError: Story = {
-  args: {
-    options: ['Error', 'oh no', ':('],
-    name: 'error-example-unique',
-    placeholder: 'cry cry cry',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        error="error message!! no :'("
-        htmlFor="error-example-unique"
-        isSoloField
-        label="i am ~styled... but something is wrong"
-      >
-        <SelectDropdown error {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const CustomInputProps: Story = {
-  args: {
-    options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
-    inputProps: {
-      hidden: { 'data-form-field': 'what' },
-      combobox: {
-        'data-testid': 'custom-select',
-        'data-cy': 'custom-dropdown',
-      },
-    },
-    name: 'what',
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup htmlFor="what" isSoloField label="i am ~styled">
         <SelectDropdown {...args} />
       </FormGroup>
     </Box>
@@ -858,6 +480,187 @@ export const ComplexAbbreviatedOptions: Story = {
   ),
 };
 
+export const GroupDividers: Story = {
+  args: {
+    name: 'dividers-dropdown',
+    options: [
+      {
+        options: [
+          {
+            label: 'king@chess.com',
+            subtitle: 'The King of Chess',
+            value: 'king',
+            disabled: true,
+          },
+          {
+            label: 'queen@chess.com',
+            rightLabel: 'The Queen of Chess',
+            value: 'queen',
+          },
+          {
+            label: 'bishop@chess.com',
+            subtitle: 'Bishop Chess',
+            rightLabel: 'I can move diagonally',
+            value: 'bishop',
+            disabled: false,
+          },
+        ],
+      },
+      {
+        divider: true,
+        options: [
+          {
+            label: 'knight@chess.com',
+            subtitle: 'Sir Chess',
+            rightLabel: 'By leaps and bounds',
+            value: 'chess',
+            disabled: true,
+          },
+          {
+            label: 'pawn@chess.com',
+            value: 'pawn',
+            disabled: false,
+          },
+        ],
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="24rem">
+      <FormGroup
+        htmlFor="dividers-dropdown"
+        isSoloField
+        label="I have group dividers"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const GroupLabels: Story = {
+  args: {
+    name: 'group-labels-dropdown',
+    multiple: true,
+    options: [
+      {
+        label: 'Group 1',
+        options: [
+          {
+            label: 'king@chess.com',
+            subtitle: 'The King of Chess',
+            value: 'king',
+            disabled: true,
+          },
+          {
+            label: 'queen@chess.com',
+            rightLabel: 'The Queen of Chess',
+            value: 'queen',
+          },
+          {
+            label: 'bishop@chess.com',
+            subtitle: 'Bishop Chess',
+            rightLabel: 'I can move diagonally',
+            value: 'bishop',
+            disabled: false,
+          },
+        ],
+      },
+      {
+        label: 'Group 2',
+        options: [
+          {
+            label: 'knight@chess.com',
+            subtitle: 'Sir Chess',
+            rightLabel: 'By leaps and bounds',
+            value: 'chess',
+            disabled: true,
+          },
+          {
+            label: 'pawn@chess.com',
+            value: 'pawn',
+            disabled: false,
+          },
+        ],
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="24rem">
+      <FormGroup
+        htmlFor="group-labels-dropdown"
+        isSoloField
+        label="I have group labels + multiple select"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const ShownOptionsDefault: Story = {
+  args: {
+    options: [
+      'i am not small',
+      ':)',
+      'a',
+      'b',
+      'g',
+      'v',
+      'g',
+      'asdf',
+      'fasdfas;',
+      'hi',
+      'asdfsadf',
+    ],
+    name: 'shownOptionsLimit01',
+    placeholder: 'six is the magic number',
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="shownOptionsLimit01"
+        isSoloField
+        label="i have the default shownOptionsLimit"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const ShownOptionsThree: Story = {
+  args: {
+    options: [
+      'i am not small',
+      ':)',
+      'a',
+      'b',
+      'g',
+      'v',
+      'g',
+      'asdf',
+      'fasdfas;',
+      'hi',
+      'asdfsadf',
+    ],
+    name: 'shownOptionsLimit02',
+    placeholder: 'three is the magic number',
+    shownOptionsLimit: 3,
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="shownOptionsLimit02"
+        isSoloField
+        label="i have three shownOptionsLimit"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
 export const IndependentWidths: Story = {
   args: {
     name: 'width-dropdown',
@@ -889,7 +692,6 @@ export const IndependentWidths: Story = {
     ],
     inputWidth: '150px',
     dropdownWidth: '350px',
-
     placeholder: 'Select a role',
   },
   render: (args) => (
@@ -1010,8 +812,6 @@ export const MenuAlignmentRight: Story = {
   ),
 };
 
-// These are for testing, I will delete before shipping
-
 export const zIndexOnMenu: Story = {
   render: (args) => (
     <FlexBox column height="500px">
@@ -1073,6 +873,116 @@ export const zIndexOnMenu: Story = {
   ),
 };
 
+const multiOptions = [
+  { label: 'JavaScript', value: 'javascript' },
+  { label: 'TypeScript', value: 'typescript' },
+  { label: 'Python', value: 'python' },
+  { label: 'Rust', value: 'rust' },
+  { label: 'Go', value: 'go' },
+];
+
+export const MultipleSelect: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: `**Uncontrolled multi-select** — omit \`value\` and SelectDropdown manages selection internally. Use this when you only need the value at form submission (e.g. via a hidden \`<input>\` or \`FormData\`) and no other part of the UI needs to react to selection changes.`,
+      },
+    },
+  },
+  args: {
+    name: 'multi-dropdown',
+    multiple: true,
+    options: [
+      {
+        label: 'Select Me',
+        value: 'xxx',
+      },
+      {
+        label: 'Multi Select',
+        value: 'yyy',
+      },
+      {
+        label: `Select All?`,
+        value: 'zzz',
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="multi-dropdown"
+        isSoloField
+        label="I have multiple select options"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+const MultipleSelectControlledRender = () => {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  return (
+    <Box height="20rem">
+      <FormGroup
+        htmlFor="multi-controlled"
+        isSoloField
+        label="Pick your languages"
+      >
+        <SelectDropdown
+          multiple
+          name="multi-controlled"
+          options={multiOptions}
+          placeholder="Select languages…"
+          value={selected}
+          onChange={(opts) => setSelected(opts.map((o) => o.value))}
+        />
+      </FormGroup>
+      <Box color="text-secondary" mt={8}>
+        {selected.length === 0
+          ? 'No languages selected yet.'
+          : `Selected: ${selected.join(', ')}`}
+      </Box>
+    </Box>
+  );
+};
+
+export const MultipleSelectControlled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: `**Controlled multi-select** — pass \`value: string[]\` and update it in \`onChange\`. Use this when another part of the UI needs to react to the current selection in real time (e.g. a summary panel, an enabled/disabled submit button, or a filtered list). The live "Selected:" line below shows why you'd reach for controlled state.`,
+      },
+    },
+  },
+  render: () => <MultipleSelectControlledRender />,
+};
+
+const CreatableStoryRender = (
+  args: React.ComponentProps<typeof SelectDropdown>
+) => {
+  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+
+  return (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="creatable-dropdown"
+        isSoloField
+        label="Type a new fruit and press Enter"
+      >
+        <SelectDropdown
+          {...args}
+          options={options}
+          onCreateOption={(inputValue) =>
+            setOptions((prev) => [...prev, inputValue])
+          }
+        />
+      </FormGroup>
+    </Box>
+  );
+};
+
 export const Creatable: Story = {
   args: {
     name: 'creatable-dropdown',
@@ -1082,32 +992,177 @@ export const Creatable: Story = {
   render: (args) => <CreatableStoryRender {...args} />,
 };
 
+const CreatableMultiUncontrolledStoryRender = () => {
+  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+
+  return (
+    <Box height="18rem">
+      <FormGroup
+        htmlFor="creatable-multi-uncontrolled"
+        isSoloField
+        label="Pick fruits or add your own"
+      >
+        <SelectDropdown
+          isCreatable
+          multiple
+          name="creatable-multi-uncontrolled"
+          options={options}
+          placeholder="Select or type to add…"
+          onCreateOption={(inputValue) =>
+            setOptions((prev) => [...prev, inputValue])
+          }
+        />
+      </FormGroup>
+    </Box>
+  );
+};
+
 export const CreatableMultiUncontrolled: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Uncontrolled creatable multi-select. Omit \`value\` and use \`onCreateOption\` to append new options to your list. Selection is managed internally — existing tags stay selected when a new option is created.`,
+        story: `**Uncontrolled creatable multi-select** — omit \`value\` and use \`onCreateOption\` to append new options. Selection is managed internally, so existing tags stay selected when a new option is created.
+
+Use this when you only need the final value on submit and no other part of the UI reacts to selection changes — for example, a "tags" field on a content creation form where you just want to collect the submitted array.`,
       },
     },
   },
   render: () => <CreatableMultiUncontrolledStoryRender />,
 };
 
+const CreatableMultiStoryRender = () => {
+  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+  const [value, setValue] = useState<string[]>([]);
+
+  return (
+    <Box height="18rem">
+      <FormGroup
+        htmlFor="creatable-multi-dropdown"
+        isSoloField
+        label="Pick fruits or add your own"
+      >
+        <SelectDropdown
+          isCreatable
+          multiple
+          name="creatable-multi-dropdown"
+          options={options}
+          placeholder="Select or type to add…"
+          value={value}
+          onChange={(selected, meta) => {
+            setValue(selected.map((option) => option.value));
+
+            if (meta.action === 'create-option' && meta.option) {
+              setOptions((prev) => [...prev, meta.option.value]);
+            }
+          }}
+        />
+      </FormGroup>
+    </Box>
+  );
+};
+
 export const CreatableMulti: Story = {
   parameters: {
     docs: {
       description: {
-        story: `Controlled creatable multi-select. When \`value\` is a \`string[]\`, update it in \`onChange\` on every selection change — including \`create-option\`. Append new values to \`options\` when \`meta.action === 'create-option'\`, or use \`onCreateOption\` as a convenience hook for option persistence.
+        story: `**Controlled creatable multi-select** — pass \`value: string[]\` and update it in \`onChange\` on every change, including \`create-option\`.
 
-\`onChange\` receives \`action: 'create-option'\` when the user picks the **Add** row; the first argument is the full selected array (existing tags plus the new value). Updating only \`options\` in \`onCreateOption\` without syncing \`value\` in \`onChange\` will clear the selection when \`options\` re-render.`,
+Use this when you need to read or reset the selection from outside the component — for example, a skill-tagging form that pre-populates from an API response, clears on cancel, or syncs to react-hook-form.
+
+**Pitfall:** Updating \`options\` in \`onCreateOption\` without also syncing \`value\` in \`onChange\` will clear the selection when \`options\` re-renders. Always keep both in sync. \`onChange\` receives \`meta.action === 'create-option'\` when the user picks the **Add** row; the first argument is the full selected array including the new entry.`,
       },
     },
   },
   render: () => <CreatableMultiStoryRender />,
 };
 
+const CreatableWithValidationStoryRender = () => {
+  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+  const [error, setError] = useState<string | undefined>();
+  const lastInputRef = useRef('');
+
+  const validate = (inputValue: string) => {
+    const trimmed = inputValue.trim();
+    if (trimmed.length < 3) return 'Enter at least 3 characters.';
+    return undefined;
+  };
+
+  const handleInputChange = (
+    inputValue: string,
+    { action }: InputActionMeta
+  ) => {
+    if (action === 'input-change') {
+      lastInputRef.current = inputValue;
+      setError(validate(inputValue));
+      return;
+    }
+
+    if (action === 'input-blur' && lastInputRef.current) {
+      // react-select clears the input on blur (default behavior). Re-apply
+      // validation from what the user typed so the FormGroup error persists.
+      setError(validate(lastInputRef.current));
+    }
+  };
+
+  return (
+    <Box height="15rem">
+      <FormGroup
+        error={error}
+        htmlFor="creatable-validated-dropdown"
+        isSoloField
+        label="Pick a fruit that is at least 3 characters long"
+      >
+        <SelectDropdown
+          error={Boolean(error)}
+          isCreatable
+          isValidNewOption={(inputValue: string) =>
+            !validate(inputValue) && inputValue.trim().length > 0
+          }
+          name="creatable-validated-dropdown"
+          options={options}
+          placeholder="Type at least 3 characters to add…"
+          validationMessage={({ inputValue }) =>
+            validate(inputValue) ?? 'No matching fruit'
+          }
+          onChange={() => {
+            lastInputRef.current = '';
+            setError(undefined);
+          }}
+          onCreateOption={(inputValue) => {
+            setOptions((prev) => [...prev, inputValue.trim()]);
+            lastInputRef.current = '';
+            setError(undefined);
+          }}
+          onInputChange={handleInputChange}
+        />
+      </FormGroup>
+    </Box>
+  );
+};
+
 export const CreatableWithValidation: Story = {
   render: () => <CreatableWithValidationStoryRender />,
+};
+
+export const CustomInputProps: Story = {
+  args: {
+    options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
+    inputProps: {
+      hidden: { 'data-form-field': 'what' },
+      combobox: {
+        'data-testid': 'custom-select',
+        'data-cy': 'custom-dropdown',
+      },
+    },
+    name: 'what',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup htmlFor="what" isSoloField label="i am ~styled">
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
 };
 
 export const Default: Story = {

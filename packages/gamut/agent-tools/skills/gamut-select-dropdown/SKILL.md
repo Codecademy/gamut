@@ -54,6 +54,46 @@ Single-select selection is derived from the `value` prop only — internal state
 
 **Controlled creatable multi pitfall:** Updating `options` alone without syncing `value` in `onChange` clears selection when options re-render.
 
+### When to use uncontrolled (multi only)
+
+Uncontrolled multi is appropriate when:
+
+- No other part of the UI needs to react to the current selection (no live summary, no dependent field, no enabled/disabled button).
+- You only need the value at form submission — via `FormData`, a submit handler reading the DOM, or react-hook-form's `getValues`.
+- Simplicity is the priority; omitting `value` means one less piece of state to manage.
+
+```tsx
+// Good fit: a "tags" field where only the submitted array matters
+<SelectDropdown
+  multiple
+  name="tags"
+  options={tagOptions}
+  onCreateOption={(v) => setTagOptions((prev) => [...prev, v])}
+/>
+```
+
+### When to use controlled
+
+Use controlled when:
+
+- Another part of the UI must reflect the current selection in real time (summary text, a filtered list, an enable/disable condition).
+- You need to pre-populate from an API response, reset on cancel, or sync with a form library like react-hook-form.
+- You are using single-select (the only supported mode for single).
+
+```tsx
+// Good fit: pre-populate from API, clear on cancel, show live summary
+const [selected, setSelected] = useState<string[]>(initialValues);
+
+<SelectDropdown
+  multiple
+  name="languages"
+  options={languageOptions}
+  value={selected}
+  onChange={(opts) => setSelected(opts.map((o) => o.value))}
+/>
+<p>Selected: {selected.join(', ') || 'none'}</p>
+```
+
 ---
 
 ## onChange contract
