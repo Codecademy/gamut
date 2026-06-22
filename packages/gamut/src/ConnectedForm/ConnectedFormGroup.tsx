@@ -65,6 +65,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   infotip,
 }: ConnectedFormGroupProps<T>) {
   const { component: Component, customValidations, ...rest } = field;
+  const fieldId = typeof id === 'string' && id !== '' ? id : name;
   const { error, isFirstError, isDisabled, setError, validation } = useField({
     name,
     disabled,
@@ -83,7 +84,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
-      htmlFor={id || name}
+      htmlFor={fieldId}
       infotip={infotip}
       isSoloField={isSoloField}
       required={Boolean(validation?.required)}
@@ -95,7 +96,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
 
   const textError = customError || getErrorMessage(error);
   const showError = !!(textError && !hideLabel);
-  const errorId = showError ? `${id || name}_error` : undefined;
+  const errorId = showError ? `${fieldId}_error` : undefined;
 
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>

@@ -347,7 +347,6 @@ type InputTypes =
       | 'search'
       | 'month'
       | 'tel'
-      | 'time'
       | 'url'
       | 'week'
     >
