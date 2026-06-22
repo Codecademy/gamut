@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`themes admin - theme shape 1`] = `
 {
@@ -1704,7 +1704,7 @@ exports[`themes percipio - theme shape 1`] = `
         "background-warning": "#FFF7E0",
         "border-disabled": "rgba(16,22,47,0.28)",
         "border-primary": "rgba(16,22,47,0.47)",
-        "border-secondary": "rgba(16,22,47,0.12)",
+        "border-secondary": "rgba(16,22,47,0.75)",
         "border-tertiary": "#10162F",
         "danger": "#B83C3C",
         "danger-hover": "#A52020",
@@ -1741,7 +1741,7 @@ exports[`themes percipio - theme shape 1`] = `
       "--color-background-warning": "var(--color-percipioBgWarning)",
       "--color-border-disabled": "var(--color-navy-300)",
       "--color-border-primary": "var(--color-navy-400)",
-      "--color-border-secondary": "var(--color-navy-200)",
+      "--color-border-secondary": "var(--color-navy-600)",
       "--color-border-tertiary": "var(--color-navy-800)",
       "--color-danger": "var(--color-percipioDanger)",
       "--color-danger-hover": "var(--color-percipioActionDangerHover)",
@@ -2084,7 +2084,7 @@ sans-serif",
       "background-warning": "percipioBgWarning",
       "border-disabled": "navy-300",
       "border-primary": "navy-400",
-      "border-secondary": "navy-200",
+      "border-secondary": "navy-600",
       "border-tertiary": "navy-800",
       "danger": "percipioDanger",
       "danger-hover": "percipioActionDangerHover",
