@@ -2,13 +2,46 @@ import { css, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { FlexBox } from '../../../Box';
+import { Box, FlexBox } from '../../../Box';
+import { FormError } from '../../../Form/elements/FormError';
 import {
   formFieldFocusStyles,
   formFieldStyles,
   inputSizeStyles,
 } from '../../../Form/styles';
-import { DATE_PICKER_FIELD_WIDTH } from '../../constants';
+import {
+  DATE_PICKER_ERROR_SLOT_HEIGHT,
+  DATE_PICKER_FIELD_WIDTH,
+} from '../../constants';
+
+export const DatePickerInputShellContainer = styled(Box)(
+  css({
+    width: 'fit-content',
+  })
+);
+
+export const DatePickerInputShellField = styled(Box)(
+  css({
+    position: 'relative',
+    width: 'fit-content',
+  })
+);
+
+export const DatePickerInputShellErrorSpacer = styled(Box)(
+  css({
+    minHeight: DATE_PICKER_ERROR_SLOT_HEIGHT,
+  })
+);
+
+export const DatePickerInputShellError = styled(FormError)(
+  css({
+    left: 0,
+    position: 'absolute',
+    top: '100%',
+    width: DATE_PICKER_FIELD_WIDTH,
+    whiteSpace: 'normal',
+  })
+);
 
 const shellFocusStyles = variant({
   variants: {

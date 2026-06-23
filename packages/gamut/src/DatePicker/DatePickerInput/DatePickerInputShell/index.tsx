@@ -4,6 +4,7 @@ import {
   forwardRef,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -19,11 +20,18 @@ import { DatePickerInputSegment } from '../Segment';
 import { SegmentLiteral } from '../Segment/elements';
 import {
   getDateSegmentsFromDate,
-  normalizeSegmentValues,
+  getSegmentValidationState,
   parseSegmentsToDate,
+  resolveSegmentsOnBlur,
   type SegmentValues,
 } from '../Segment/utils';
-import { SegmentedShell } from './elements';
+import {
+  DatePickerInputShellContainer,
+  DatePickerInputShellError,
+  DatePickerInputShellErrorSpacer,
+  DatePickerInputShellField,
+  SegmentedShell,
+} from './elements';
 import {
   type DatePartKind,
   formatDateISO8601DateOnly,
@@ -75,6 +83,7 @@ export const DatePickerInputShell = forwardRef<
     const date = isRange ? context.startDate : context.selectedDate;
 
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const errorId = useId();
 
     const { layout, fieldOrder } = useMemo(() => {
       const layout = getDateFormatLayout(locale);
@@ -87,13 +96,17 @@ export const DatePickerInputShell = forwardRef<
       [boundDate]
     );
     const [segments, setSegments] = useState<SegmentValues>(segmentsFromBound);
+    const [validationError, setValidationError] = useState<string | null>(null);
 
     const parsedForHidden = parseSegmentsToDate(segments);
     const hiddenValue = parsedForHidden
       ? formatDateISO8601DateOnly(parsedForHidden)
       : '';
+    const showError = Boolean(error) || Boolean(validationError);
 
     const isInputFocusedRef = useRef(false);
+    const segmentsRef = useRef(segments);
+    segmentsRef.current = segments;
     const containerRef = useRef<HTMLDivElement | null>(null);
     const segmentElRefs = useRef<
       Partial<Record<DatePartKind, HTMLSpanElement | null>>
@@ -122,6 +135,7 @@ export const DatePickerInputShell = forwardRef<
     useEffect(() => {
       if (!isInputFocusedRef.current) {
         setSegments(segmentsFromBound);
+        setValidationError(null);
       }
     }, [segmentsFromBound]);
 
@@ -156,44 +170,61 @@ export const DatePickerInputShell = forwardRef<
 
     const onSegmentChange = useCallback(
       (next: SegmentValues) => {
-        const parsed = parseSegmentsToDate(next);
-        if (parsed) commitParsedDate(parsed);
-        else if (!next.month && !next.day && !next.year) clearSelection();
+        const validation = getSegmentValidationState(next);
+
+        if (validation?.parsedDate) {
+          setValidationError(null);
+          commitParsedDate(validation.parsedDate);
+          return;
+        }
+
+        if (validation?.isInvalid) {
+          setValidationError(translations.invalidDateError);
+          return;
+        }
+
+        if (!next.month && !next.day && !next.year) {
+          setValidationError(null);
+          clearSelection();
+          return;
+        }
+
+        setValidationError(null);
       },
-      [clearSelection, commitParsedDate]
+      [clearSelection, commitParsedDate, translations.invalidDateError]
     );
 
     const onContainerBlur = useCallback(
       (e: FocusEvent<HTMLDivElement>) => {
         if (containerRef.current?.contains(e.relatedTarget as Node)) return;
         isInputFocusedRef.current = false;
-        setSegments((prev) => {
-          const normalized = normalizeSegmentValues(prev);
-          const parsed = parseSegmentsToDate(normalized);
-          if (parsed) {
-            const sameAsBound = isSameDay(parsed, boundDate);
-            if (isCalendarOpen && !sameAsBound) {
-              queueMicrotask(() => {
-                commitParsedDate(parsed);
-              });
-            }
-            return normalized;
-          }
-          if (!normalized.month && !normalized.day && !normalized.year) {
-            queueMicrotask(() => {
-              clearSelection();
-            });
-            return getDateSegmentsFromDate(null);
-          }
-          return segmentsFromBound;
-        });
+
+        const resolution = resolveSegmentsOnBlur(
+          segmentsRef.current,
+          boundDate
+        );
+
+        setValidationError(
+          resolution.isInvalid ? translations.invalidDateError : null
+        );
+        setSegments(resolution.segments);
+
+        if (resolution.shouldClear) {
+          clearSelection();
+        } else if (
+          resolution.parsedDate &&
+          isCalendarOpen &&
+          !isSameDay(resolution.parsedDate, boundDate)
+        ) {
+          commitParsedDate(resolution.parsedDate);
+        }
       },
       [
         boundDate,
-        segmentsFromBound,
         clearSelection,
         commitParsedDate,
         isCalendarOpen,
+        translations.invalidDateError,
       ]
     );
 
@@ -222,72 +253,87 @@ export const DatePickerInputShell = forwardRef<
     }, [isCalendarOpen, openCalendar, focusCalendar]);
 
     return (
-      <SegmentedShell
-        aria-labelledby={labelledById}
-        id={shellId}
-        inputSize={size}
-        ref={shellRef}
-        role="group"
-        variant={error ? 'error' : 'default'}
-        onBlur={onContainerBlur}
-        onClick={onShellClick}
-        onFocus={onShellFocus}
-        {...rest}
-      >
-        <FlexBox alignItems="center" justifyContent="center">
-          {layout.map((item, index) => {
-            if (item.kind === 'literal') {
-              return (
-                <SegmentLiteral
-                  aria-hidden
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`literal-${item.text}-${index}`}
-                >
-                  {`${item.text}`}
-                </SegmentLiteral>
-              );
-            }
-            const idx = fieldOrder.indexOf(item.field);
-            const prevField = idx > 0 ? fieldOrder[idx - 1] : null;
-            const nextField =
-              idx < fieldOrder.length - 1 ? fieldOrder[idx + 1] : null;
+      <DatePickerInputShellContainer>
+        <DatePickerInputShellField>
+          <SegmentedShell
+            aria-describedby={validationError ? errorId : undefined}
+            aria-labelledby={labelledById}
+            id={shellId}
+            inputSize={size}
+            ref={shellRef}
+            role="group"
+            variant={showError ? 'error' : 'default'}
+            onBlur={onContainerBlur}
+            onClick={onShellClick}
+            onFocus={onShellFocus}
+            {...rest}
+          >
+            <FlexBox alignItems="center" justifyContent="center">
+              {layout.map((item, index) => {
+                if (item.kind === 'literal') {
+                  return (
+                    <SegmentLiteral
+                      aria-hidden
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={`literal-${item.text}-${index}`}
+                    >
+                      {`${item.text}`}
+                    </SegmentLiteral>
+                  );
+                }
+                const idx = fieldOrder.indexOf(item.field);
+                const prevField = idx > 0 ? fieldOrder[idx - 1] : null;
+                const nextField =
+                  idx < fieldOrder.length - 1 ? fieldOrder[idx + 1] : null;
 
-            return (
-              <DatePickerInputSegment
-                applySegments={onSegmentChange}
-                assignSegmentRef={assignSegmentRef}
-                disabled={!!disabled}
-                error={!!error}
-                field={item.field}
-                key={item.field}
-                nextField={nextField}
-                prevField={prevField}
-                segments={segments}
-                setSegments={setSegments}
-                onAltArrowDown={onSegmentAltArrowDown}
-                onFocus={onSegmentFocus}
-                onSiblingFocus={onSiblingSegmentFocus}
-              />
-            );
-          })}
-        </FlexBox>
-        <input
-          aria-hidden
-          form={form}
-          name={name ?? 'datePickerInput'}
-          tabIndex={-1}
-          type="hidden"
-          value={hiddenValue}
-        />
-        <IconButton
-          mx={4}
-          icon={MiniCalendarIcon}
-          size="small"
-          tip={translations.openCalendarLabel}
-          ref={buttonRef}
-          onClick={() => buttonRef.current?.blur()}
-        />
-      </SegmentedShell>
+                return (
+                  <DatePickerInputSegment
+                    applySegments={onSegmentChange}
+                    assignSegmentRef={assignSegmentRef}
+                    disabled={!!disabled}
+                    error={showError}
+                    field={item.field}
+                    key={item.field}
+                    nextField={nextField}
+                    prevField={prevField}
+                    segments={segments}
+                    setSegments={setSegments}
+                    onAltArrowDown={onSegmentAltArrowDown}
+                    onFocus={onSegmentFocus}
+                    onSiblingFocus={onSiblingSegmentFocus}
+                  />
+                );
+              })}
+            </FlexBox>
+            <input
+              aria-hidden
+              form={form}
+              name={name ?? 'datePickerInput'}
+              tabIndex={-1}
+              type="hidden"
+              value={hiddenValue}
+            />
+            <IconButton
+              mx={4}
+              icon={MiniCalendarIcon}
+              size="small"
+              tip={translations.openCalendarLabel}
+              ref={buttonRef}
+              onClick={() => buttonRef.current?.blur()}
+            />
+          </SegmentedShell>
+          {validationError ? (
+            <DatePickerInputShellError
+              aria-live="polite"
+              id={errorId}
+              role="alert"
+            >
+              {validationError}
+            </DatePickerInputShellError>
+          ) : null}
+        </DatePickerInputShellField>
+        <DatePickerInputShellErrorSpacer aria-hidden />
+      </DatePickerInputShellContainer>
     );
   }
 );

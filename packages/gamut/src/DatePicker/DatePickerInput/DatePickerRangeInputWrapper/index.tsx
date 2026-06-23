@@ -7,6 +7,7 @@ import { FormGroupLabel } from '../../../Form/elements/FormGroupLabel';
 import {
   DATE_PICKER_FIELD_WIDTH,
   DATE_PICKER_RANGE_ARROW_WIDTH,
+  DATE_PICKER_SHELL_HEIGHT,
 } from '../../constants';
 import { useDatePicker } from '../../DatePickerContext';
 import { createDatePickerFieldIds } from '../../utils/fieldIds';
@@ -76,7 +77,7 @@ export const DatePickerRangeInputWrapper = forwardRef<
           {description}
         </DatePickerDescription>
       ) : null}
-      <FlexBox alignItems="center" columnGap={columnGap} ref={ref}>
+      <FlexBox alignItems="flex-start" columnGap={columnGap} ref={ref}>
         <DatePickerInputShell
           {...shellProps}
           labelledById={startField.fieldIds.labelledById}
@@ -85,7 +86,14 @@ export const DatePickerRangeInputWrapper = forwardRef<
           shellId={startField.fieldIds.shellId}
           size={size}
         />
-        <FlexBox center flexShrink={0} width={DATE_PICKER_RANGE_ARROW_WIDTH}>
+        <FlexBox
+          alignItems="center"
+          alignSelf="flex-start"
+          center
+          flexShrink={0}
+          height={DATE_PICKER_SHELL_HEIGHT[size ?? 'base']}
+          width={DATE_PICKER_RANGE_ARROW_WIDTH}
+        >
           {isRtl ? <MiniArrowLeftIcon /> : <MiniArrowRightIcon />}
         </FlexBox>
         <DatePickerInputShell
