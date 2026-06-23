@@ -7,7 +7,7 @@ description: Use this skill when building list or table layouts with List, ListR
 
 Structured, repeating layouts built from `List`, `ListRow`, `ListCol`, and `TableHeader`. Colors, borders, and spacing are wired through the `variant` and `spacing` props — consumers do not override these with raw CSS values.
 
-Source: `@codecademy/gamut` — [List.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/List.tsx)
+Source: `@codecademy/gamut` — [List.tsx](../../../src/List/List.tsx)
 
 See also: [`gamut-datatable`](../gamut-datatable/SKILL.md) — use instead of List when data needs sorting, filtering, or query state. [`gamut-datalist`](../gamut-datalist/SKILL.md) — use instead of List when rows need expansion or selection. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA, focus, and keyboard interaction rules. [`gamut-layout`](../gamut-layout/SKILL.md) — spacing tokens and system props.
 

@@ -5,7 +5,7 @@ description: Use this skill when applying Gamut typography tokens — font famil
 
 # Gamut Typography
 
-Implementation source of truth: [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
+Implementation source of truth: [`packages/gamut-styles/src/variables/typography.ts`](../../../../gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](../../../../gamut-styles/src/themes).
 
 ## Scope by theme
 

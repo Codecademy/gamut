@@ -7,7 +7,7 @@ description: Use this skill when building a DataList for item-focused layouts wi
 
 Item-focused list for managing, engaging with, and expanding individual rows. Use when users interact with items — opening details, selecting for bulk actions, or viewing expanded layouts — rather than scanning and comparing data across rows.
 
-Source: `@codecademy/gamut` — [DataList.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DataList/DataList.tsx)
+Source: `@codecademy/gamut` — [DataList.tsx](../../../src/DataList/DataList.tsx)
 
 See also: [`gamut-datatable`](../gamut-datatable/SKILL.md) — query-focused table for bulk data comparison. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction.
 

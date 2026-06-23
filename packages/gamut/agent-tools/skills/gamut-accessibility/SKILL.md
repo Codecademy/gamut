@@ -5,7 +5,7 @@ description: Use this skill when implementing accessibility for a specific Gamut
 
 # Gamut Accessibility
 
-Source: `@codecademy/gamut` — `react-aria-components` is used only in [`packages/gamut/src/Tabs/`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tabs/) (`Tabs.tsx`, `TabList.tsx`, `Tab.tsx`, `TabPanel.tsx`). `react-focus-on` powers `FocusTrap` ([`packages/gamut/src/FocusTrap/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FocusTrap/index.tsx)), used by overlays such as `Overlay` ([`packages/gamut/src/Overlay/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Overlay/index.tsx)) and `Popover`. Other widgets (e.g. `Menu`, `DatePicker`) implement keyboard and ARIA in Gamut code.
+Source: `@codecademy/gamut` — `react-aria-components` is used only in [`packages/gamut/src/Tabs/`](../../../src/Tabs/) (`Tabs.tsx`, `TabList.tsx`, `Tab.tsx`, `TabPanel.tsx`). `react-focus-on` powers `FocusTrap` ([`packages/gamut/src/FocusTrap/index.tsx`](../../../src/FocusTrap/index.tsx)), used by overlays such as `Overlay` ([`packages/gamut/src/Overlay/index.tsx`](../../../src/Overlay/index.tsx)) and `Popover`. Other widgets (e.g. `Menu`, `DatePicker`) implement keyboard and ARIA in Gamut code.
 
 Product-oriented button variants and props: [`gamut-buttons`](../gamut-buttons/SKILL.md)
 

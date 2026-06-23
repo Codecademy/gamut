@@ -5,7 +5,7 @@ description: Use this skill when applying Gamut spacing scale, border radii, res
 
 # Gamut Layout
 
-Token values match [`packages/gamut-styles/src/variables`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/variables) (`spacing.ts`, `borderRadii.ts`, `responsive.ts`). Breakpoints and max-content widths align with Storybook [Foundations / Layout](https://gamut.codecademy.com/?path=/docs-foundations-layout--docs).
+Token values match [`packages/gamut-styles/src/variables`](../../../../gamut-styles/src/variables) (`spacing.ts`, `borderRadii.ts`, `responsive.ts`). Breakpoints and max-content widths align with Storybook [Foundations / Layout](https://gamut.codecademy.com/?path=/docs-foundations-layout--docs).
 
 See also: [`gamut-system-props`](../gamut-system-props/SKILL.md) — `system.space`, responsive `Box` / `FlexBox` / `GridBox` props. [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — responsive examples.
 

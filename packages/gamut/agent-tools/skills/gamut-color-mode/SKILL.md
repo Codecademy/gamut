@@ -5,7 +5,7 @@ description: Use this skill when implementing light/dark behavior, semantic colo
 
 # Gamut ColorMode
 
-Source: `@codecademy/gamut-styles` — [`ColorMode.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/ColorMode.tsx)
+Source: `@codecademy/gamut-styles` — [`ColorMode.tsx`](../../../../gamut-styles/src/ColorMode.tsx)
 
 ## Overview
 
@@ -130,7 +130,7 @@ const prefersDark = usePrefersDarkMode();
 
 ## Semantic aliases
 
-These tokens describe roles; actual colors come from the active theme + ColorMode. Full alias tables: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — and per-theme breakdowns at [Core](https://gamut.codecademy.com/?path=/docs-foundations-theme-core-theme--docs) · [Admin](https://gamut.codecademy.com/?path=/docs-foundations-theme-admin-theme--docs) · [Platform](https://gamut.codecademy.com/?path=/docs-foundations-theme-platform-theme--docs) · [Percipio](https://gamut.codecademy.com/?path=/docs-foundations-theme-percipio-theme--docs) · [LX Studio](https://gamut.codecademy.com/?path=/docs-foundations-theme-lx-studio-theme--docs). Source: [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
+These tokens describe roles; actual colors come from the active theme + ColorMode. Full alias tables: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) — and per-theme breakdowns at [Core](https://gamut.codecademy.com/?path=/docs-foundations-theme-core-theme--docs) · [Admin](https://gamut.codecademy.com/?path=/docs-foundations-theme-admin-theme--docs) · [Platform](https://gamut.codecademy.com/?path=/docs-foundations-theme-platform-theme--docs) · [Percipio](https://gamut.codecademy.com/?path=/docs-foundations-theme-percipio-theme--docs) · [LX Studio](https://gamut.codecademy.com/?path=/docs-foundations-theme-lx-studio-theme--docs). Source: [`packages/gamut-styles/src/themes`](../../../../gamut-styles/src/themes).
 
 ## Raw palette (Core-centric reference)
 

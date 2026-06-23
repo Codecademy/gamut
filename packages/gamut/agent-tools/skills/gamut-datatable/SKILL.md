@@ -7,7 +7,7 @@ description: Use this skill when building a DataTable for bulk data analysis, co
 
 Structured, query-capable table for bulk data analysis and comparison. Sorting, filtering, loading, and empty states are built in. Use when the goal is to scan and compare information across rows — not to manage individual items.
 
-Source: `@codecademy/gamut` — [DataTable.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DataList/DataTable.tsx)
+Source: `@codecademy/gamut` — [DataTable.tsx](../../../src/DataList/DataTable.tsx)
 
 See also: [`gamut-datalist`](../gamut-datalist/SKILL.md) — item-focused list with expansion and selection. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction. [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — dark/light mode with `Background`.
 

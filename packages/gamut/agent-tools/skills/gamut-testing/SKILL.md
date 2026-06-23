@@ -5,7 +5,7 @@ description: Use this skill when writing or fixing unit tests for React componen
 
 # Gamut Testing
 
-Source: `@codecademy/gamut-tests` — [`index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-tests/src/index.tsx)
+Source: `@codecademy/gamut-tests` — [`index.tsx`](../../../../gamut-tests/src/index.tsx)
 
 ---
 
