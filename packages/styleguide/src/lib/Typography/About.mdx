@@ -7,7 +7,6 @@ import {
 } from '~styleguide/blocks';
 
 import { parameters as anchorParameters } from './Anchor/Anchor.mdx';
-import { parameters as hiddenTextParameters } from './HiddenText/HiddenText.mdx';
 import { parameters as textParameters } from './Text/Text.mdx';
 
 export const parameters = {
@@ -25,9 +24,5 @@ Foundations make up the smallest scale design values that comprise a design syst
 Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
 
 <TableOfContents
-  links={addParentPath(parameters.title, [
-    anchorParameters,
-    hiddenTextParameters,
-    textParameters,
-  ])}
+  links={addParentPath(parameters.title, [anchorParameters, textParameters])}
 />

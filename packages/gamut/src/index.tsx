@@ -1,6 +1,3 @@
-export * from './AccordionDeprecated';
-export * from './AccordionAreaDeprecated';
-export * from './AccordionButtonDeprecated';
 export * from './Alert';
 export * from './Anchor';
 export * from './Animation';
@@ -31,7 +28,6 @@ export type {
   SelectDropdownGroup,
 } from './Form/SelectDropdown';
 export * from './GridForm';
-export * from './HiddenText';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './List';
