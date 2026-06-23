@@ -100,6 +100,7 @@ description: Use this skill when {trigger 1}, {trigger 2}[, {trigger 3}] — {sc
 - Add anti-patterns where the boundary with another skill is non-obvious
 - Target: 1–2 sentences, ≤200 characters per sentence
 - Use inline backticks for component/function names
+- Do not wrap the value in quotes — bare YAML string, matching all other skills
 
 ---
 
