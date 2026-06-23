@@ -15,11 +15,12 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=19781%3A31027',
   {
     props: {
+      title: figma.string('title'),
+      children: figma.textContent('✏️ description'),
       image: figma.boolean('Image', {
         true: figma.children('.image'),
         false: undefined,
       }),
-      children: figma.textContent('✏️ description'),
       size: figma.enum('size', {
         small: 'small',
         medium: 'medium',
@@ -30,16 +31,16 @@ figma.connect(
         primary: 'primary',
         danger: 'danger',
       }),
-      title: figma.textContent('✏️ title'),
+      cancelCta: { children: 'Cancel', onClick: () => { }, href: '#' },
+      confirmCta: { children: 'Primary Action', onClick: () => { }, href: '#' },
       isOpen: true,
-      confirmCta: 'Primary action',
-      cancelCta: 'Cancel',
     },
-    example: ({ children, confirmCta, cancelCta, ...props }) => (
+    example: ({ children, cancelCta, confirmCta, ...props }) => (
       <Dialog
-        cancelCta={{ children: cancelCta }}
-        confirmCta={{ children: confirmCta }}
         {...props}
+        cancelCta={cancelCta}
+        confirmCta={confirmCta}
+        onRequestClose={() => { }}
       >
         {children}
       </Dialog>

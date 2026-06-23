@@ -12,36 +12,46 @@ import figma from '@figma/code-connect';
 
 figma.connect(
   Modal,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=19560%3A29540',
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=130899-13648',
   {
     props: {
-      modalProps: figma.nestedProps('Dialog', {
-        image: figma.boolean('Image', {
-          true: figma.children('.image'),
-          false: undefined,
-        }),
-        children: figma.textContent('✏️ description'),
-        size: figma.enum('size', {
-          small: 'small',
-          medium: 'medium',
-          large: 'large',
-          fluid: 'fluid',
-        }),
-        variant: figma.enum('variant', {
-          primary: 'primary',
-          danger: 'danger',
-        }),
-        title: figma.textContent('✏️ title'),
+      title: figma.string('title'),
+      children: figma.textContent('✏️ description'),
+      image: figma.boolean('Image', {
+        true: figma.children('.image'),
+        false: undefined,
       }),
+      size: figma.enum('size', {
+        small: 'small',
+        medium: 'medium',
+        large: 'large',
+        fluid: 'fluid',
+      }),
+      views: figma.boolean('views', {
+        true: [
+          {
+            title: 'First view title',
+            children: 'First view description',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Next'
+            },
+            secondaryCta: {
+              actionType: 'cancel',
+              children: 'Cancel'
+            },
+          },
+        ],
+        false: undefined,
+      }),
+      isOpen: true,
     },
-    example: ({ modalProps }) => (
+    example: ({ children, ...props }) => (
       <Modal
-        image={modalProps.image}
-        size={modalProps.size}
-        title={modalProps.title}
-        variant={modalProps.variant}
+        {...props}
+        onRequestClose={() => { }}
       >
-        {modalProps.children}
+        {children}
       </Modal>
     ),
   }
