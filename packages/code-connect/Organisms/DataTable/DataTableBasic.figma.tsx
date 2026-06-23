@@ -9,49 +9,55 @@ import figma from '@figma/code-connect';
  * code component, and update the `example` function to return the
  * code example you'd like to see in Figma
  */
-
 figma.connect(
   DataTable,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=9922-48146',
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=134718-26625',
   {
     props: {
-      size: figma.enum('Size', {
-        Normal: 'normal',
-        Condensed: 'condensed',
+      spacing: figma.enum('spacing', {
+        condensed: 'condensed',
+        normal: 'normal',
+        compact: 'compact',
       }),
-      columns: [
-        {
-          key: 'name',
-          header: 'Name',
-          size: 'xl',
-          sortable: true,
-        },
-        {
-          key: 'row1',
-          header: 'Row #',
-          size: 'sm',
-          sortable: true,
-        },
-        {
-          key: 'row2',
-          header: 'Row #',
-          size: 'sm',
-          sortable: true,
-        },
-      ],
-      rows: [
-        { name: 'Text Content', row1: '1', row2: '1' },
-        { name: 'Text Content', row1: '2', row2: '2' },
-        { name: 'Text Content', row1: '3', row2: '3' },
-        { name: 'Text Content', row1: '4', row2: '4' },
-        { name: 'Text Content', row1: '5', row2: '5' },
-        { name: 'Text Content', row1: '6', row2: '6' },
-        { name: 'Text Content', row1: '7', row2: '7' },
-        { name: 'Text Content', row1: '8', row2: '8' },
-        { name: 'Text Content', row1: '9', row2: '9' },
-        { name: 'Text Content', row1: '10', row2: '10' },
-      ],
+      scrollable: figma.boolean('scrollable'),
+      shadow: figma.boolean('shadow'),
+      rows: figma.boolean('showEmptyState', {
+        true: [],
+        false: [
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+          { header1: 'Cell', header2: 'Cell', header3: 'Cell', header4: 'Cell' },
+        ],
+      }),
+
     },
-    example: (props) => <DataTable {...props} />,
+    example: ({ spacing, scrollable, shadow, rows }) => {
+      const columns = [
+        { key: 'header1', header: 'Header', type: 'header', size: 'xl', sortable: true },
+        { key: 'header2', header: 'Header', size: 'md', sortable: true },
+        { key: 'header3', header: 'Header', size: 'md', sortable: true },
+        { key: 'header4', header: 'Header', size: 'md', sortable: true },
+        { key: 'header5', header: 'Header', type: 'control', size: 'md' },
+      ];
+
+      return (
+        <DataTable
+          id="example"
+          idKey="header1"
+          spacing={spacing}
+          scrollable={scrollable}
+          shadow={shadow}
+          columns={columns}
+          rows={rows}
+        />
+      )
+    },
   }
 );
