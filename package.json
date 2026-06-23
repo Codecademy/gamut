@@ -137,8 +137,6 @@
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "nx storybook styleguide",
-    "sync-skills": "node scripts/sync-local-skills.mjs",
-    "sync-skills:watch": "onchange 'local-skills/**' -- node scripts/sync-local-skills.mjs",
     "test": "nx run-many --target=test --all",
     "test:storybook": "nx run styleguide:storybook-test",
     "verify": "nx run-many --target=verify --parallel=3 --all",

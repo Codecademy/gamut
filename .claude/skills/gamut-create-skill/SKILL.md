@@ -1,14 +1,13 @@
 ---
 name: gamut-create-skill
 description: 'Blueprint — use this skill when authoring a new Gamut agent skill from scratch, from component source research through Storybook integration. Not for general Gamut development (see individual component skills).'
-alwaysApply: false
 ---
 
 # Gamut Create Skill
 
 Blueprint playbook for authoring a new Gamut agent skill.
 
-Reference skills: [`gamut-buttons`](../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md) — reference for a tight component skill. [`gamut-datatable`](../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md) — reference for an organism skill with full API surface. [`gamut-review`](../../packages/gamut/agent-tools/skills/gamut-review/SKILL.md) — reference for an audit/workflow skill.
+Reference skills: [`gamut-buttons`](../../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md) — reference for a tight component skill. [`gamut-datatable`](../../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md) — reference for an organism skill with full API surface. [`gamut-review`](../../../packages/gamut/agent-tools/skills/gamut-review/SKILL.md) — reference for an audit/workflow skill.
 
 Storybook: [Meta / AI Tooling / Gamut plugin / Best practices](https://gamut.codecademy.com/?path=/docs-meta-ai-tooling-gamut-plugin-best-practices--page)
 
@@ -70,18 +69,17 @@ packages/gamut/agent-tools/skills/
 **Contributor-only skills** — available in this repo only, never exported:
 
 ```
-local-skills/
+.claude/skills/
   {skill-name}/
-    SKILL.md        ← canonical source
+    SKILL.md
 ```
 
-Contributor skills are synced automatically to `.claude/skills/` (Claude Code) and `.cursor/rules/` (Cursor) by the pre-commit hook. To sync manually: `yarn sync-skills`. To watch during development: `yarn sync-skills:watch`.
+Commit these directly. Claude Code reads `.claude/skills/` natively, and Cursor discovers the same files via its [Claude-compatibility path](https://cursor.com/docs/skills) — no sync step or separate Cursor copy is needed.
 
 Rules (apply to both locations):
 
 - Directory name is kebab-case and must exactly match the `name:` frontmatter field
 - No other files in the directory
-- Contributor skills must also include `alwaysApply: false` in frontmatter (required by Cursor)
 
 ---
 
@@ -255,9 +253,9 @@ For skills covering a concept rather than a single component (e.g. `gamut-color-
 
 ## Reference skills by type
 
-| Type                   | Skill                                                                                   | Read it for                                       |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| Tight component        | [`gamut-buttons`](../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md)       | Scope discipline, clean "When to use / not use"   |
-| Organism with full API | [`gamut-datatable`](../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md)   | Props table + ColumnConfig + gotcha note pattern  |
-| Audit / workflow       | [`gamut-review`](../../packages/gamut/agent-tools/skills/gamut-review/SKILL.md)         | Multi-phase check structure, remediation pointers |
-| System / concept       | [`gamut-color-mode`](../../packages/gamut/agent-tools/skills/gamut-color-mode/SKILL.md) | Semantic-first framing, cross-skill boundaries    |
+| Type                   | Skill                                                                                      | Read it for                                       |
+| ---------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| Tight component        | [`gamut-buttons`](../../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md)       | Scope discipline, clean "When to use / not use"   |
+| Organism with full API | [`gamut-datatable`](../../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md)   | Props table + ColumnConfig + gotcha note pattern  |
+| Audit / workflow       | [`gamut-review`](../../../packages/gamut/agent-tools/skills/gamut-review/SKILL.md)         | Multi-phase check structure, remediation pointers |
+| System / concept       | [`gamut-color-mode`](../../../packages/gamut/agent-tools/skills/gamut-color-mode/SKILL.md) | Semantic-first framing, cross-skill boundaries    |

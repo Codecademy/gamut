@@ -254,7 +254,9 @@ Pass `loading` to replace row content with shimmer placeholders while data fetch
 DataList uses CSS container queries by default. Disable only when the list lives in a constrained container or you are managing your own responsive logic.
 
 ```tsx
-<div style={{ width: '280px' }}>
+import { Box, DataList } from '@codecademy/gamut';
+
+<Box width={280}>
   <DataList
     disableContainerQuery
     id="sidebar-list"
@@ -262,7 +264,7 @@ DataList uses CSS container queries by default. Disable only when the list lives
     rows={data}
     columns={columns}
   />
-</div>
+</Box>;
 ```
 
 ## Accessibility

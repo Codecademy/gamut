@@ -69,18 +69,33 @@ import { useLocalQuery } from '@codecademy/gamut';
 
 ## ColumnConfig
 
-| Field      | Type                                               | Notes                                                                                                               |
-| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `key`      | `keyof Row`                                        | Required; maps to a row data field                                                                                  |
-| `header`   | `string`                                           | Column header label                                                                                                 |
-| `type`     | `'header' \| 'control'`                            | `'header'` makes the column sticky when scrollable; `'control'` right-aligns and removes padding for action buttons |
-| `size`     | `'sm' \| 'md' \| 'lg' \| 'xl'`                     | Column width; omit to fit content                                                                                   |
-| `fill`     | `boolean`                                          | Expands the column to fill remaining width                                                                          |
-| `justify`  | `'left' \| 'right'`                                | Cell alignment                                                                                                      |
-| `sortable` | `boolean`                                          | Adds a sort toggle to the column header                                                                             |
-| `filters`  | `string[]`                                         | Adds a filter dropdown with these string values                                                                     |
-| `options`  | `Array<string \| { text: string; value: string }>` | Alternative to `filters` when display text differs from value                                                       |
-| `render`   | `(row: Row) => ReactElement \| null`               | Custom cell renderer                                                                                                |
+| Field      | Type                                                                                                                 | Notes                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `key`      | `keyof Row`                                                                                                          | Required; maps to a row data field                                                 |
+| `header`   | `string`                                                                                                             | Column header label                                                                |
+| `type`     | `'content' \| 'header' \| 'control' \| 'select' \| 'expand' \| 'expandControl' \| 'orderedHeader' \| 'tableControl'` | `ListColProps['type']`; `'content'` is default — see [Column `type`](#column-type) |
+| `size`     | `'content' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                                          | `'content'` (default) fits cell contents; use `sm`–`xl` for fixed column widths    |
+| `fill`     | `boolean`                                                                                                            | Expands the column to fill remaining width                                         |
+| `justify`  | `'left' \| 'right'`                                                                                                  | Cell alignment                                                                     |
+| `sortable` | `boolean`                                                                                                            | Adds a sort toggle to the column header                                            |
+| `filters`  | `string[]`                                                                                                           | Adds a filter dropdown with these string values                                    |
+| `options`  | `Array<string \| { text: string; value: string }>`                                                                   | Alternative to `filters` when display text differs from value                      |
+| `render`   | `(row: Row) => ReactElement \| null`                                                                                 | Custom cell renderer                                                               |
+
+### Column `type`
+
+| `type`          | Use for                                                                     |
+| --------------- | --------------------------------------------------------------------------- |
+| `content`       | Default; secondary data columns                                             |
+| `header`        | Primary label column; sticky when the table is scrollable                   |
+| `control`       | Action controls (buttons, menus); right-aligned, reduced padding            |
+| `select`        | Checkbox column — DataList adds this when `selectable` is set               |
+| `expand`        | Expanded content area                                                       |
+| `expandControl` | Expand toggle column — DataList adds this when `expandable` is set          |
+| `orderedHeader` | Internal; applied by `ListCol` for ordered lists — do not set manually      |
+| `tableControl`  | Internal; applied by table rows for `type: 'control'` — do not set manually |
+
+**DataTable** columns typically use `header` (sticky identifier) and `control` (row actions). Other values are inherited from `ListCol` for API parity; selection and expansion columns are handled by [`DataList`](../gamut-datalist/SKILL.md), not `ColumnConfig`.
 
 ## Basic usage
 

@@ -1,3 +1,1 @@
 npx lint-staged
-node scripts/sync-local-skills.mjs
-git add .claude/skills .cursor/rules
