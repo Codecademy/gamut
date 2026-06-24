@@ -5,7 +5,7 @@ description: 'Use this skill when composing system prop groups (`system.*`) on s
 
 # Gamut System Props
 
-Source: `@codecademy/gamut-styles` — [`variance/config.ts`](../../../../gamut-styles/src/variance/config.ts) (definitions) and [`variance/props.ts`](../../../../gamut-styles/src/variance/props.ts) (`variance.create` groups). `Box`, `FlexBox`, and `GridBox` compose the same groups in [`packages/gamut/src/Box/props.ts`](../../../src/Box/props.ts).
+Source: `@codecademy/gamut-styles` — `packages/gamut-styles/src/variance/config.ts` (definitions) and `packages/gamut-styles/src/variance/props.ts` (`variance.create` groups). `Box`, `FlexBox`, and `GridBox` compose the same groups in `packages/gamut/src/Box/props.ts`.
 
 See also: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css`, `variant`, `states`, `StyleProps`). [Styleguide — Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) (semantic colors, responsive examples) and Storybook [Responsive properties](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
 

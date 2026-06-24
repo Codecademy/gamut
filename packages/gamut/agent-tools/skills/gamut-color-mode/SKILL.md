@@ -5,7 +5,7 @@ description: Use this skill when implementing light/dark behavior, semantic colo
 
 # Gamut ColorMode
 
-Source: `@codecademy/gamut-styles` — [`ColorMode.tsx`](../../../../gamut-styles/src/ColorMode.tsx)
+Source: `@codecademy/gamut-styles` — `packages/gamut-styles/src/ColorMode.tsx`
 
 ## Overview
 
@@ -130,7 +130,7 @@ const prefersDark = usePrefersDarkMode();
 
 ## Semantic aliases
 
-These tokens describe roles; actual colors come from the active theme + ColorMode. Full alias tables: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page). Per-theme breakdowns: see [`gamut-theming`](../gamut-theming/SKILL.md). Source: [`packages/gamut-styles/src/themes`](../../../../gamut-styles/src/themes).
+These tokens describe roles; actual colors come from the active theme + ColorMode. Full alias tables: [Foundations / ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page). Per-theme breakdowns: see [`gamut-theming`](../gamut-theming/SKILL.md). Source: `packages/gamut-styles/src/themes`.
 
 ## Raw palette (Core-centric reference)
 
