@@ -257,3 +257,67 @@ export const WatchedFields = () => {
     </ConnectedForm>
   );
 };
+
+const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+export const CustomFieldValidations = () => {
+  const [numberType, setNumberType] = useState('even');
+
+  // validationRules are memoized on mount, so the "must be even/odd" rule
+  // can't live there — it depends on numberType's runtime value. customValidations
+  // on the field prop re-evaluates each render, making this cross-field
+  // dependency possible.
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: { numberType: 'even', number: '' },
+      validationRules: {
+        numberType: { required: 'Please select a number type' },
+        number: { required: 'Please select a number' },
+      },
+      watchedFields: {
+        fields: ['numberType'],
+        watchHandler: ([type]: string[]) => setNumberType(type),
+      },
+    });
+
+  return (
+    <ConnectedForm
+      display="flex"
+      flexDirection="column"
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      {...connectedFormProps}
+    >
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: 'numberType',
+          options: ['even', 'odd'],
+        }}
+        label="Number type"
+        name="numberType"
+      />
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: 'number',
+          options: numbers,
+          customValidations: {
+            validate: (value: string) => {
+              if (!value) return true;
+              const num = parseInt(value, 10);
+              if (numberType === 'even') {
+                return num % 2 === 0 || `${value} is odd — pick an even number`;
+              }
+              return num % 2 !== 0 || `${value} is even — pick an odd number`;
+            },
+          },
+        }}
+        label={`Pick an ${numberType} number`}
+        name="number"
+      />
+      <SubmitButton mt={8}>Submit</SubmitButton>
+    </ConnectedForm>
+  );
+};
