@@ -83,7 +83,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
-      htmlFor={fieldId}
+      htmlFor={id || name}
       infotip={infotip}
       isSoloField={isSoloField}
       required={Boolean(validation?.required)}
@@ -95,7 +95,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
 
   const textError = customError || getErrorMessage(error);
   const showError = !!(textError && !hideLabel);
-  const errorId = showError ? `${fieldId}_error` : undefined;
+  const errorId = showError ? `${id || name}_error` : undefined;
 
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
