@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/488 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/489 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>5.9s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.7s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -5219,6 +5219,37 @@ export const FormPage: React.FC = () =&gt; {
 ```
 
 `useDebouncedField` should not be used with any varaint of the standard `ConnectedInput`, as it will clash with the default `useField` instance used internally by those components.
+
+## Field-level custom validations
+
+Form-level `validationRules` (passed to `useConnectedForm`) are memoized on mount and cannot change after the form is created. When you need validation rules that depend on runtime values — for example, when one field&#39;s selection determines what&#39;s valid in another field — pass `customValidations` directly to any connected input or to the `field` prop of `ConnectedFormGroup`.
+
+`customValidations` accepts the same [react-hook-form `RegisterOptions`](https://react-hook-form.com/docs/useform/register) as `validationRules`, re-evaluates on every render, and is merged with any matching form-level rules (with `customValidations` taking priority when both define the same key).
+
+```tsx
+// The valid parity of `number` depends on `numberType`, a runtime value.
+// That rule can&#39;t live in validationRules (memoized), so it goes in customValidations.
+const [numberType, setNumberType] = useState(&#39;even&#39;);
+
+&lt;ConnectedFormGroup
+  name=&quot;number&quot;
+  label=&quot;Pick a number&quot;
+  field={{
+    component: ConnectedSelect,
+    options: [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;],
+    customValidations: {
+      validate: (value) =&gt; {
+        const num = parseInt(value, 10);
+        return numberType === &#39;even&#39;
+          ? num % 2 === 0 || `${value} is odd — pick an even number`
+          : num % 2 !== 0 || `${value} is even — pick an odd number`;
+      },
+    },
+  }}
+/&gt;;
+```
+
+Use `watchedFields` (see &lt;LinkTo id=&quot;Organisms/ConnectedForm/ConnectedForm&quot;&gt;ConnectedForm&lt;/LinkTo&gt;) to keep external state in sync with the field driving the conditional rule.
 </code></pre></div>
             </div>
         </div>
@@ -7737,7 +7768,7 @@ Using `popoverProps`, you can customize the look of the rendered popover. For ex
       <div class="badges">
         <label for="c-15-organisms-connectedform-connectedform-err" class="badge err as-toggle">prop type error</label>
         <label for="c-15-organisms-connectedform-connectedform-info" class="badge info as-toggle">1 info</label>
-        <label for="c-15-organisms-connectedform-connectedform-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-15-organisms-connectedform-connectedform-stories" class="badge ok as-toggle">3 stories</label>
         <label for="c-15-organisms-connectedform-connectedform-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -8029,6 +8060,70 @@ export const WatchedFields = () =&gt; {
     &lt;/ConnectedForm&gt;
   );
 };
+
+const numbers = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;];
+
+export const CustomFieldValidations = () =&gt; {
+  const [numberType, setNumberType] = useState(&#39;even&#39;);
+
+  // validationRules are memoized on mount, so the &quot;must be even/odd&quot; rule
+  // can&#39;t live there — it depends on numberType&#39;s runtime value. customValidations
+  // on the field prop re-evaluates each render, making this cross-field
+  // dependency possible.
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: { numberType: &#39;even&#39;, number: &#39;&#39; },
+      validationRules: {
+        numberType: { required: &#39;Please select a number type&#39; },
+        number: { required: &#39;Please select a number&#39; },
+      },
+      watchedFields: {
+        fields: [&#39;numberType&#39;],
+        watchHandler: ([type]: string[]) =&gt; setNumberType(type),
+      },
+    });
+
+  return (
+    &lt;ConnectedForm
+      display=&quot;flex&quot;
+      flexDirection=&quot;column&quot;
+      onSubmit={(values) =&gt; {
+        action(&#39;Form Submitted&#39;)(values);
+      }}
+      {...connectedFormProps}
+    &gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;numberType&#39;,
+          options: [&#39;even&#39;, &#39;odd&#39;],
+        }}
+        label=&quot;Number type&quot;
+        name=&quot;numberType&quot;
+      /&gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;number&#39;,
+          options: numbers,
+          customValidations: {
+            validate: (value: string) =&gt; {
+              if (!value) return true;
+              const num = parseInt(value, 10);
+              if (numberType === &#39;even&#39;) {
+                return num % 2 === 0 || `${value} is odd — pick an even number`;
+              }
+              return num % 2 !== 0 || `${value} is even — pick an odd number`;
+            },
+          },
+        }}
+        label={`Pick an ${numberType} number`}
+        name=&quot;number&quot;
+      /&gt;
+      &lt;SubmitButton mt={8}&gt;Submit&lt;/SubmitButton&gt;
+    &lt;/ConnectedForm&gt;
+  );
+};
 </code></pre></div>
     </div>
         </div>
@@ -8304,6 +8399,75 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
   );
 };</code></pre>
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Custom Field Validations</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CustomFieldValidations = () =&gt; {
+  const [numberType, setNumberType] = useState(&#39;even&#39;);
+
+  // validationRules are memoized on mount, so the &quot;must be even/odd&quot; rule
+  // can&#39;t live there — it depends on numberType&#39;s runtime value. customValidations
+  // on the field prop re-evaluates each render, making this cross-field
+  // dependency possible.
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: { numberType: &#39;even&#39;, number: &#39;&#39; },
+      validationRules: {
+        numberType: { required: &#39;Please select a number type&#39; },
+        number: { required: &#39;Please select a number&#39; },
+      },
+      watchedFields: {
+        fields: [&#39;numberType&#39;],
+        watchHandler: ([type]: string[]) =&gt; setNumberType(type),
+      },
+    });
+
+  return (
+    &lt;ConnectedForm
+      display=&quot;flex&quot;
+      flexDirection=&quot;column&quot;
+      onSubmit={(values) =&gt; {
+        action(&#39;Form Submitted&#39;)(values);
+      }}
+      {...connectedFormProps}
+    &gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;numberType&#39;,
+          options: [&#39;even&#39;, &#39;odd&#39;],
+        }}
+        label=&quot;Number type&quot;
+        name=&quot;numberType&quot;
+      /&gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;number&#39;,
+          options: numbers,
+          customValidations: {
+            validate: (value: string) =&gt; {
+              if (!value) return true;
+              const num = parseInt(value, 10);
+              if (numberType === &#39;even&#39;) {
+                return num % 2 === 0 || `${value} is odd — pick an even number`;
+              }
+              return num % 2 !== 0 || `${value} is even — pick an odd number`;
+            },
+          },
+        }}
+        label={`Pick an ${numberType} number`}
+        name=&quot;number&quot;
+      /&gt;
+      &lt;SubmitButton mt={8}&gt;Submit&lt;/SubmitButton&gt;
+    &lt;/ConnectedForm&gt;
+  );
+};</code></pre>
+            </div>
         </div>
     
         <div class="panel panel-docs">
@@ -8437,6 +8601,14 @@ If you need the values of your inputs before submission, for something like cond
 Watched fields aren&#39;t usually great for performance, so only use these fields when you need to.
 
 &lt;Canvas of={ConnectedFormStories.WatchedFields} /&gt;
+
+### `customValidations`
+
+When validation rules need to depend on runtime values — such as one field&#39;s selection determining what&#39;s valid in another — each connected input accepts a `customValidations` prop. Unlike `validationRules` (which is memoized on mount), `customValidations` re-evaluates on every render, making it the right tool for rules that need to change based on component state.
+
+See &lt;LinkTo id=&quot;Organisms/ConnectedForm/ConnectedFormInputs&quot;&gt;ConnectedFormInputs&lt;/LinkTo&gt; for full usage details.
+
+&lt;Canvas of={ConnectedFormStories.CustomFieldValidations} /&gt;
 
 ## Playground
 
@@ -46694,6 +46866,37 @@ export const FormPage: React.FC = () =&gt; {
 ```
 
 `useDebouncedField` should not be used with any varaint of the standard `ConnectedInput`, as it will clash with the default `useField` instance used internally by those components.
+
+## Field-level custom validations
+
+Form-level `validationRules` (passed to `useConnectedForm`) are memoized on mount and cannot change after the form is created. When you need validation rules that depend on runtime values — for example, when one field&#39;s selection determines what&#39;s valid in another field — pass `customValidations` directly to any connected input or to the `field` prop of `ConnectedFormGroup`.
+
+`customValidations` accepts the same [react-hook-form `RegisterOptions`](https://react-hook-form.com/docs/useform/register) as `validationRules`, re-evaluates on every render, and is merged with any matching form-level rules (with `customValidations` taking priority when both define the same key).
+
+```tsx
+// The valid parity of `number` depends on `numberType`, a runtime value.
+// That rule can&#39;t live in validationRules (memoized), so it goes in customValidations.
+const [numberType, setNumberType] = useState(&#39;even&#39;);
+
+&lt;ConnectedFormGroup
+  name=&quot;number&quot;
+  label=&quot;Pick a number&quot;
+  field={{
+    component: ConnectedSelect,
+    options: [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;],
+    customValidations: {
+      validate: (value) =&gt; {
+        const num = parseInt(value, 10);
+        return numberType === &#39;even&#39;
+          ? num % 2 === 0 || `${value} is odd — pick an even number`
+          : num % 2 !== 0 || `${value} is even — pick an odd number`;
+      },
+    },
+  }}
+/&gt;;
+```
+
+Use `watchedFields` (see &lt;LinkTo id=&quot;Organisms/ConnectedForm/ConnectedForm&quot;&gt;ConnectedForm&lt;/LinkTo&gt;) to keep external state in sync with the field driving the conditional rule.
 </code></pre></div>
             </div>
         </div>
@@ -49212,7 +49415,7 @@ Using `popoverProps`, you can customize the look of the rendered popover. For ex
       <div class="badges">
         <label for="c-error-15-organisms-connectedform-connectedform-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-15-organisms-connectedform-connectedform-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-15-organisms-connectedform-connectedform-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-15-organisms-connectedform-connectedform-stories" class="badge ok as-toggle">3 stories</label>
         <label for="c-error-15-organisms-connectedform-connectedform-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -49504,6 +49707,70 @@ export const WatchedFields = () =&gt; {
     &lt;/ConnectedForm&gt;
   );
 };
+
+const numbers = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;];
+
+export const CustomFieldValidations = () =&gt; {
+  const [numberType, setNumberType] = useState(&#39;even&#39;);
+
+  // validationRules are memoized on mount, so the &quot;must be even/odd&quot; rule
+  // can&#39;t live there — it depends on numberType&#39;s runtime value. customValidations
+  // on the field prop re-evaluates each render, making this cross-field
+  // dependency possible.
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: { numberType: &#39;even&#39;, number: &#39;&#39; },
+      validationRules: {
+        numberType: { required: &#39;Please select a number type&#39; },
+        number: { required: &#39;Please select a number&#39; },
+      },
+      watchedFields: {
+        fields: [&#39;numberType&#39;],
+        watchHandler: ([type]: string[]) =&gt; setNumberType(type),
+      },
+    });
+
+  return (
+    &lt;ConnectedForm
+      display=&quot;flex&quot;
+      flexDirection=&quot;column&quot;
+      onSubmit={(values) =&gt; {
+        action(&#39;Form Submitted&#39;)(values);
+      }}
+      {...connectedFormProps}
+    &gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;numberType&#39;,
+          options: [&#39;even&#39;, &#39;odd&#39;],
+        }}
+        label=&quot;Number type&quot;
+        name=&quot;numberType&quot;
+      /&gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;number&#39;,
+          options: numbers,
+          customValidations: {
+            validate: (value: string) =&gt; {
+              if (!value) return true;
+              const num = parseInt(value, 10);
+              if (numberType === &#39;even&#39;) {
+                return num % 2 === 0 || `${value} is odd — pick an even number`;
+              }
+              return num % 2 !== 0 || `${value} is even — pick an odd number`;
+            },
+          },
+        }}
+        label={`Pick an ${numberType} number`}
+        name=&quot;number&quot;
+      /&gt;
+      &lt;SubmitButton mt={8}&gt;Submit&lt;/SubmitButton&gt;
+    &lt;/ConnectedForm&gt;
+  );
+};
 </code></pre></div>
     </div>
         </div>
@@ -49779,6 +50046,75 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
   );
 };</code></pre>
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Custom Field Validations</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CustomFieldValidations = () =&gt; {
+  const [numberType, setNumberType] = useState(&#39;even&#39;);
+
+  // validationRules are memoized on mount, so the &quot;must be even/odd&quot; rule
+  // can&#39;t live there — it depends on numberType&#39;s runtime value. customValidations
+  // on the field prop re-evaluates each render, making this cross-field
+  // dependency possible.
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: { numberType: &#39;even&#39;, number: &#39;&#39; },
+      validationRules: {
+        numberType: { required: &#39;Please select a number type&#39; },
+        number: { required: &#39;Please select a number&#39; },
+      },
+      watchedFields: {
+        fields: [&#39;numberType&#39;],
+        watchHandler: ([type]: string[]) =&gt; setNumberType(type),
+      },
+    });
+
+  return (
+    &lt;ConnectedForm
+      display=&quot;flex&quot;
+      flexDirection=&quot;column&quot;
+      onSubmit={(values) =&gt; {
+        action(&#39;Form Submitted&#39;)(values);
+      }}
+      {...connectedFormProps}
+    &gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;numberType&#39;,
+          options: [&#39;even&#39;, &#39;odd&#39;],
+        }}
+        label=&quot;Number type&quot;
+        name=&quot;numberType&quot;
+      /&gt;
+      &lt;ConnectedFormGroup
+        field={{
+          component: ConnectedSelect,
+          id: &#39;number&#39;,
+          options: numbers,
+          customValidations: {
+            validate: (value: string) =&gt; {
+              if (!value) return true;
+              const num = parseInt(value, 10);
+              if (numberType === &#39;even&#39;) {
+                return num % 2 === 0 || `${value} is odd — pick an even number`;
+              }
+              return num % 2 !== 0 || `${value} is even — pick an odd number`;
+            },
+          },
+        }}
+        label={`Pick an ${numberType} number`}
+        name=&quot;number&quot;
+      /&gt;
+      &lt;SubmitButton mt={8}&gt;Submit&lt;/SubmitButton&gt;
+    &lt;/ConnectedForm&gt;
+  );
+};</code></pre>
+            </div>
         </div>
     
         <div class="panel panel-docs">
@@ -49912,6 +50248,14 @@ If you need the values of your inputs before submission, for something like cond
 Watched fields aren&#39;t usually great for performance, so only use these fields when you need to.
 
 &lt;Canvas of={ConnectedFormStories.WatchedFields} /&gt;
+
+### `customValidations`
+
+When validation rules need to depend on runtime values — such as one field&#39;s selection determining what&#39;s valid in another — each connected input accepts a `customValidations` prop. Unlike `validationRules` (which is memoized on mount), `customValidations` re-evaluates on every render, making it the right tool for rules that need to change based on component state.
+
+See &lt;LinkTo id=&quot;Organisms/ConnectedForm/ConnectedFormInputs&quot;&gt;ConnectedFormInputs&lt;/LinkTo&gt; for full usage details.
+
+&lt;Canvas of={ConnectedFormStories.CustomFieldValidations} /&gt;
 
 ## Playground
 
