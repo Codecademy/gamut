@@ -34,7 +34,7 @@ import { Menu, MenuItem, MenuSeparator } from '@codecademy/gamut';
 
 **Do not use Menu when:**
 
-- Selecting a value inside a form → use [`SelectDropdown`](https://gamut.codecademy.com/?path=/docs-molecules-selectdropdown--docs)
+- Selecting a value inside a form → use [`SelectDropdown`](https://gamut.codecademy.com/?path=/docs-molecules-selectdropdown--docs) <!-- gamut-select-dropdown skill coming in GMT-292 -->
 - Organizing collapsible nav sections → use `LayoutMenu`
 - Switching between content panels → use `Tabs`
 
