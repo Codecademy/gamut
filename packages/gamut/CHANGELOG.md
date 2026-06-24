@@ -1,3 +1,13 @@
+## 72.2.1 (2026-06-24)
+
+### 🩹 Fixes
+
+- Removed "content" as a size variant for DataGrid (DataTable + DataList) ([#3378](https://github.com/Codecademy/gamut/pull/3378))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 ## 72.2.0 (2026-06-24)
 
 ### 🚀 Features
