@@ -16,7 +16,7 @@ figma.connect(
   {
     props: {
       title: figma.string('title'),
-      children: figma.textContent('✏️ description'),
+      children: figma.slot('body'),
       image: figma.boolean('Image', {
         true: figma.children('.image'),
         false: undefined,
@@ -34,11 +34,11 @@ figma.connect(
             children: 'First view description',
             primaryCta: {
               actionType: 'confirm',
-              children: 'Next'
+              children: 'Next',
             },
             secondaryCta: {
               actionType: 'cancel',
-              children: 'Cancel'
+              children: 'Cancel',
             },
           },
         ],
@@ -47,10 +47,7 @@ figma.connect(
       isOpen: true,
     },
     example: ({ children, ...props }) => (
-      <Modal
-        {...props}
-        onRequestClose={() => { }}
-      >
+      <Modal {...props} onRequestClose={() => { }}>
         {children}
       </Modal>
     ),
