@@ -1,3 +1,54 @@
+## 72.2.1 (2026-06-24)
+
+### 🩹 Fixes
+
+- Removed "content" as a size variant for DataGrid (DataTable + DataList) ([#3378](https://github.com/Codecademy/gamut/pull/3378))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 72.2.0 (2026-06-24)
+
+### 🚀 Features
+
+- Adding customValidations for Connected fields, allowing field level validations to overwrite form-level ones. ([#3252](https://github.com/Codecademy/gamut/pull/3252))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Troy Chryssos
+
+## 72.1.0 (2026-06-24)
+
+### 🚀 Features
+
+- Update ai-skills with better setup instructions + DESIGN.md generation ([#3369](https://github.com/Codecademy/gamut/pull/3369))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
+## 72.0.2 (2026-06-16)
+
+### 🩹 Fixes
+
+- remove lingering scss files from AccordionButtonDeprecated ([#3375](https://github.com/Codecademy/gamut/pull/3375))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 72.0.1 (2026-06-16)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.15
+- Updated gamut-patterns to 0.10.34
+- Updated gamut-styles to 20.0.2
+- Updated gamut-icons to 9.57.9
+- Updated gamut-tests to 6.0.5
+
 # 72.0.0 (2026-06-15)
 
 ### ⚠️ Breaking Changes

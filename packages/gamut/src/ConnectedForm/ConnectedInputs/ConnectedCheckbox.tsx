@@ -16,10 +16,12 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   name,
   onUpdate,
   spacing,
+  customValidations,
 }) => {
   const { isDisabled, control, validation, isRequired } = useField({
     name,
     disabled,
+    customValidations,
   });
 
   return (
