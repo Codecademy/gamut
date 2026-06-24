@@ -90,7 +90,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
       selectInputRef?.current &&
       (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown')
     ) {
-      selectInputRef?.current.focus();
+      selectInputRef.current.focus();
     }
   };
 
@@ -102,7 +102,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
       role="button"
       tabIndex={0}
       {...restInnerProps}
-      ref={removeAllButtonRef}
+      ref={removeAllButtonRef as React.Ref<HTMLDivElement>}
       // eslint-disable-next-line gamut/no-inline-style
       style={style}
       onKeyDown={onKeyPress}

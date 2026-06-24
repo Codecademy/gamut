@@ -1,12 +1,9 @@
 import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, MutableRefObject } from 'react';
+import { ComponentProps, forwardRef, HTMLProps, Ref } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
-export type ButtonBaseRef =
-  | ((instance: ButtonBaseElements | null) => void)
-  | MutableRefObject<ButtonBaseElements | null>
-  | null;
+export type ButtonBaseRef = Ref<ButtonBaseElements | null>;
 
 export type ButtonBaseElementProps = HTMLProps<
   HTMLAnchorElement | HTMLButtonElement
@@ -62,6 +59,16 @@ type ButtonBaseProps =
   | (Exclude<ComponentProps<typeof ResetElement>, 'ref'> &
       ComponentProps<typeof ResetElementAnchor>);
 
+/**
+ * Narrows a ref union (anchor | button) to the element type for the current render branch.
+ * Use when forwarding refs from components that render either an anchor or a button (e.g. ButtonBase, Anchor).
+ */
+export function narrowButtonBaseRef<T extends ButtonBaseElements>(
+  ref: Ref<ButtonBaseElements | null>
+): Ref<T> {
+  return ref as Ref<T>;
+}
+
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonBaseProps
@@ -76,7 +83,7 @@ export const ButtonBase = forwardRef<
         {...filteredProps}
         as="button"
         disabled={!!disabled}
-        ref={ref as MutableRefObject<HTMLButtonElement>}
+        ref={narrowButtonBaseRef<HTMLButtonElement>(ref)}
         role={role}
         type={type}
       >
@@ -90,7 +97,7 @@ export const ButtonBase = forwardRef<
       {...rest}
       as="a"
       href={rest?.href}
-      ref={ref as MutableRefObject<HTMLAnchorElement>}
+      ref={narrowButtonBaseRef<HTMLAnchorElement>(ref)}
       role={role}
     >
       {children}

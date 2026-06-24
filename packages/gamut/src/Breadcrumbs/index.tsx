@@ -36,24 +36,24 @@ const BreadcrumbPart = styled(Box)(
 
 export type Crumb = { title: string };
 
-export type ClickableCrumb<T extends string | Object> = Crumb & {
+export type ClickableCrumb<T extends string | object> = Crumb & {
   href: string;
   payload: T;
 };
 
-export type Breadcrumb<T extends string | Object> = Crumb | ClickableCrumb<T>;
+export type Breadcrumb<T extends string | object> = Crumb | ClickableCrumb<T>;
 
-export const isClickableCrumb = <T extends string | Object>(
+export const isClickableCrumb = <T extends string | object>(
   crumb: Breadcrumb<T>
 ): crumb is ClickableCrumb<T> => !!(crumb as ClickableCrumb<T>).href;
 
-export type BreadcrumbsProps<T extends string | Object> = {
+export type BreadcrumbsProps<T extends string | object> = {
   crumbs: Breadcrumb<T>[];
   onClick?: (event: React.MouseEvent, crumb: ClickableCrumb<T>) => void;
   className?: string;
 };
 
-export const Breadcrumbs = <T extends string | Object>({
+export const Breadcrumbs = <T extends string | object>({
   crumbs,
   onClick,
   className,

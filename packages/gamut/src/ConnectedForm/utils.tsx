@@ -150,9 +150,15 @@ export const useFormState = () => {
 
 interface useFieldProps extends SubmitContextProps {
   name: string;
+  customValidations?: RegisterOptions;
 }
 
-export const useField = ({ name, disabled, loading }: useFieldProps) => {
+export const useField = ({
+  name,
+  disabled,
+  loading,
+  customValidations,
+}: useFieldProps) => {
   // This is fixed in a later react-hook-form version:
   // https://github.com/react-hook-form/react-hook-form/issues/2887
   // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -176,10 +182,18 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     loading,
   });
 
-  const validation =
+  const formValidation =
     (validationRules &&
       validationRules[name as keyof typeof validationRules]) ??
     undefined;
+
+  const validation = useMemo(
+    () =>
+      formValidation || customValidations
+        ? ({ ...formValidation, ...customValidations } as RegisterOptions)
+        : undefined,
+    [formValidation, customValidations]
+  );
 
   const ref = register(name, validation);
 
@@ -333,7 +347,6 @@ type InputTypes =
       | 'search'
       | 'month'
       | 'tel'
-      | 'time'
       | 'url'
       | 'week'
     >
@@ -344,7 +357,7 @@ type DebouncedFieldProps<T extends InputTypes> = Omit<
   GetInitialFormValueProps,
   'setLocalValue' | 'defaultValue'
 > &
-  Pick<useFieldProps, 'loading' | 'disabled' | 'name'> & {
+  Pick<useFieldProps, 'loading' | 'disabled' | 'name' | 'customValidations'> & {
     type: T;
     shouldDirtyOnChange?: boolean;
   };
@@ -356,8 +369,14 @@ export function useDebouncedField<T extends InputTypes>({
   loading,
   type,
   shouldDirtyOnChange,
+  customValidations,
 }: DebouncedFieldProps<T>) {
-  const useFieldPayload = useField({ name, disabled, loading });
+  const useFieldPayload = useField({
+    name,
+    disabled,
+    loading,
+    customValidations,
+  });
 
   const defaultValue = type === 'checkbox' ? false : '';
 

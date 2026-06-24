@@ -77,7 +77,7 @@ const ComponentRow = ({ array }: { array: typeof colTitles }) => {
         const badgeVariant = status === 'New' ? 'accent' : 'tertiary';
 
         return (
-          <BorderRow size="xl">
+          <BorderRow key={title} size="xl">
             <FlexBox alignItems="center" flexWrap="wrap" pl={8}>
               <Text mr={8} variant="title-sm">
                 {!skipTitle && title} {component}
@@ -110,7 +110,7 @@ const FeatureRow = ({
         <Text fontWeight="bold">{title}</Text>
       </ListCol>
       {features.map((details) => (
-        <DetailRow size="xl">
+        <DetailRow key={details} size="xl">
           <Text>{details}</Text>
         </DetailRow>
       ))}

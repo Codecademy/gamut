@@ -160,3 +160,34 @@ export const FormPage: React.FC = () => {
 ```
 
 `useDebouncedField` should not be used with any varaint of the standard `ConnectedInput`, as it will clash with the default `useField` instance used internally by those components.
+
+## Field-level custom validations
+
+Form-level `validationRules` (passed to `useConnectedForm`) are memoized on mount and cannot change after the form is created. When you need validation rules that depend on runtime values — for example, when one field's selection determines what's valid in another field — pass `customValidations` directly to any connected input or to the `field` prop of `ConnectedFormGroup`.
+
+`customValidations` accepts the same [react-hook-form `RegisterOptions`](https://react-hook-form.com/docs/useform/register) as `validationRules`, re-evaluates on every render, and is merged with any matching form-level rules (with `customValidations` taking priority when both define the same key).
+
+```tsx
+// The valid parity of `number` depends on `numberType`, a runtime value.
+// That rule can't live in validationRules (memoized), so it goes in customValidations.
+const [numberType, setNumberType] = useState('even');
+
+<ConnectedFormGroup
+  name="number"
+  label="Pick a number"
+  field={{
+    component: ConnectedSelect,
+    options: ['1', '2', '3', '4', '5', '6'],
+    customValidations: {
+      validate: (value) => {
+        const num = parseInt(value, 10);
+        return numberType === 'even'
+          ? num % 2 === 0 || `${value} is odd — pick an even number`
+          : num % 2 !== 0 || `${value} is even — pick an odd number`;
+      },
+    },
+  }}
+/>;
+```
+
+Use `watchedFields` (see <LinkTo id="Organisms/ConnectedForm/ConnectedForm">ConnectedForm</LinkTo>) to keep external state in sync with the field driving the conditional rule.

@@ -2,6 +2,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import * as React from 'react';
+import { RegisterOptions } from 'react-hook-form';
 
 import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';
@@ -42,7 +43,10 @@ export interface ConnectedFormGroupProps<T extends ConnectedField>
   /**
    * An object consisting of a `component` key to specify what ConnectedFormInput to render - the remaining key/value pairs are that components desired props.
    */
-  field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> & FieldProps<T>;
+  field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> &
+    FieldProps<T> & {
+      customValidations?: RegisterOptions;
+    };
 }
 
 export function ConnectedFormGroup<T extends ConnectedField>({
@@ -60,11 +64,13 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   isSoloField,
   infotip,
 }: ConnectedFormGroupProps<T>) {
+  const { component: Component, customValidations, ...rest } = field;
+  const fieldId = typeof id === 'string' && id !== '' ? id : name;
   const { error, isFirstError, isDisabled, setError, validation } = useField({
     name,
     disabled,
+    customValidations,
   });
-  const { component: Component, ...rest } = field;
 
   useEffect(() => {
     if (customError) {
@@ -78,10 +84,10 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
-      htmlFor={id || name}
+      htmlFor={fieldId}
       infotip={infotip}
       isSoloField={isSoloField}
-      required={!!validation?.required}
+      required={Boolean(validation?.required)}
       size={labelSize}
     >
       {label}
@@ -90,7 +96,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
 
   const textError = customError || getErrorMessage(error);
   const showError = !!(textError && !hideLabel);
-  const errorId = showError ? `${id || name}_error` : undefined;
+  const errorId = showError ? `${fieldId}_error` : undefined;
 
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
@@ -99,6 +105,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
         {...(rest as any)}
         aria-describedby={errorId}
         aria-invalid={showError}
+        customValidations={customValidations}
         disabled={disabled}
         name={name}
       />
