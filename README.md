@@ -278,6 +278,67 @@ This process minimizes the likelihood of accidental breaking changes in Gamut ne
 
 Changelog content is driven by the description in version plan files (in `.nx/version-plans/`), not the PR title or PR description.
 
+## AI Tool Plugins
+
+Gamut ships an agent-tools plugin with skills, rules, and agents for Claude Code and Cursor. Install it via the `gamut` CLI once you have `@codecademy/gamut` (or `@codecademy/gamut-kit`) installed.
+
+### Installing
+
+**Claude Code**
+
+```bash
+gamut plugin install claude
+```
+
+Registers the plugin at user scope via `claude plugin marketplace add`, then installs it. Skills become available as slash commands (e.g. `/gamut-buttons`, `/gamut-review`). If they don't appear immediately, run `/reload-plugins` inside Claude Code.
+
+**Cursor**
+
+```bash
+gamut plugin install cursor
+```
+
+Copies skills, rules, and agents into your project's `.cursor/` directory.
+
+### Themes — DESIGN.md
+
+Add `--theme` to also write a `DESIGN.md` into the current directory with theme-specific design tokens and component guidance:
+
+```bash
+gamut plugin install cursor --theme core       # Codecademy Core
+gamut plugin install cursor --theme percipio   # Percipio / LX Studio
+gamut plugin install cursor --theme admin      # Admin / Platform
+```
+
+Use `--force` to overwrite an existing `DESIGN.md`.
+
+### Scoped installs
+
+Install only a subset of the plugin content with `--scope`:
+
+```bash
+gamut plugin install cursor --scope skills    # skills only
+gamut plugin install cursor --scope rules     # rules only
+gamut plugin install cursor --scope agents    # agents only
+```
+
+### Updating and removing
+
+```bash
+gamut plugin install           # re-run to update to the latest version
+gamut plugin remove cursor     # remove the Cursor plugin
+gamut plugin remove claude     # remove the Claude Code plugin
+gamut plugin list              # list installed plugins
+```
+
+### One-off (no install)
+
+Run Claude Code with the plugin loaded for a single session without registering it:
+
+```bash
+claude --plugin-dir ./node_modules/@codecademy/gamut/agent-tools
+```
+
 ## Publishing Storybook
 
 Storybook is built and published automatically when there are merges into the main branch.
