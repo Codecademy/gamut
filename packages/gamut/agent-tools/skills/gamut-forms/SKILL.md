@@ -1,6 +1,6 @@
 ---
 name: gamut-forms
-description: Implementing or auditing Gamut forms — FormGroup, ConnectedForm, ConnectedFormGroup, GridForm, react-hook-form wiring, labels, and accessible error/description regions. Pair with `gamut-accessibility` for non-form widgets and `accessibility.mdc` for universal HTML/ARIA rules.
+description: Use this skill when implementing or auditing Gamut forms — FormGroup, ConnectedForm, ConnectedFormGroup, GridForm, react-hook-form wiring, labels, and accessible error/description regions. Pair with `gamut-accessibility` for non-form widgets and `accessibility.mdc` for universal HTML/ARIA rules.
 ---
 
 # Gamut forms
@@ -28,7 +28,7 @@ For typical product forms, prefer `GridForm` (declarative `fields`, `LayoutGrid`
 
 ## `FormGroup` (baseline)
 
-[`FormGroup.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormGroup.tsx)
+`packages/gamut/src/Form/elements/FormGroup.tsx`
 
 - `description` → `FormGroupDescription` with `aria-live="assertive"`.
 - `error` (string) → `FormError` with `aria-live="polite"` and `role="alert"`.
@@ -39,7 +39,7 @@ Raw `FormGroup` does not set `aria-describedby` or `aria-invalid` on `children`.
 
 ## `ConnectedFormGroup`
 
-[`ConnectedFormGroup.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedFormGroup.tsx)
+`packages/gamut/src/ConnectedForm/ConnectedFormGroup.tsx`
 
 - Passes `aria-describedby` (error region id when shown) and `aria-invalid` on the rendered field component.
 - `FormError`: `aria-live="assertive"` and `role="alert"` only when `isFirstError`; otherwise `aria-live="off"` and `role="status"` so subsequent errors do not interrupt repeatedly.
@@ -48,7 +48,7 @@ Raw `FormGroup` does not set `aria-describedby` or `aria-invalid` on `children`.
 
 ## `GridForm`
 
-[`GridFormInputGroup/index.tsx`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/GridForm/GridFormInputGroup/index.tsx) · [`GridFormTextInput`](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/GridForm/GridFormInputGroup/GridFormTextInput/index.tsx)
+`packages/gamut/src/GridForm/GridFormInputGroup/index.tsx` · `packages/gamut/src/GridForm/GridFormInputGroup/GridFormTextInput/index.tsx`
 
 - Composes `ConnectedForm`, `LayoutGrid`, `GridFormButtons`, and field metadata. `FormError` uses the same first-error assertive pattern as `ConnectedFormGroup` (`aria-live` assertive vs off, `role` alert vs status).
 - Built-in text inputs set `aria-invalid` and register with react-hook-form via `register`. Custom / `custom` / `custom-group` renderers must still expose correct `id`, `label`, and error surfacing consistent with this pattern.

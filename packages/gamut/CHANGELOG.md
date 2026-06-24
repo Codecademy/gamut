@@ -1,3 +1,13 @@
+## 72.1.0 (2026-06-24)
+
+### 🚀 Features
+
+- Update ai-skills with better setup instructions + DESIGN.md generation ([#3369](https://github.com/Codecademy/gamut/pull/3369))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 72.0.2 (2026-06-16)
 
 ### 🩹 Fixes
