@@ -7,9 +7,10 @@ import { ConnectedRadioGroupProps } from './types';
 export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
   name,
   onChange,
+  customValidations,
   ...rest
 }) => {
-  const { setValue, isRequired } = useField({ name });
+  const { setValue, isRequired } = useField({ name, customValidations });
 
   return (
     <RadioGroup

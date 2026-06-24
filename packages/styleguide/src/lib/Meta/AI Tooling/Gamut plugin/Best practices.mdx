@@ -79,16 +79,28 @@ Without `DESIGN.md` at the repo root, color findings are lower confidence — in
 
 ## Agent skills
 
-Related skills under [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/):
+### Exported skills
+
+Installed into app repos via `gamut plugin install`. Source: [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/)
 
 - `gamut-review` — codebase audit playbook
 - `gamut-theming` — theme selection, `GamutProvider`, `theme.d.ts`
 - `gamut-color-mode` — ColorMode and semantic color
 - `gamut-buttons` — button atoms, variants, disabled patterns
+- `gamut-list` — List, ListRow, ListCol primitives for custom layouts
+- `gamut-menu` — Menu, MenuItem, MenuSeparator for action, navigation, and floating menus
+- `gamut-datatable` — DataTable for sortable/filterable bulk data comparison
+- `gamut-datalist` — DataList for item management with expansion and selection
 - `gamut-layout` — spacing scale, breakpoints, page grid
 - `gamut-system-props` — `system.*` / `Box`
 - `gamut-style-utilities` — `css`, `variant`, `states`
 - `gamut-typography`, `gamut-forms`, `gamut-accessibility`, `gamut-testing`
+
+### Contributor-only skills
+
+Available in this repo only — never exported. These live directly in [`.claude/skills/`](https://github.com/Codecademy/gamut/tree/main/.claude/skills/), read natively by Claude Code and by Cursor via its [Claude-compatibility path](https://cursor.com/docs/skills).
+
+- `gamut-create-skill` — blueprint playbook for authoring a new Gamut agent skill from scratch
 
 ## Design-to-code (Figma MCP)
 

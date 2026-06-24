@@ -1,11 +1,11 @@
 ---
 name: gamut-layout
-description: Use this skill when applying Gamut spacing scale, border radii, viewport or container breakpoints, or page layout grid (LayoutGrid vs GridBox) — complements gamut-system-props for system.space and responsive props.
+description: Use this skill when applying Gamut spacing scale, border radii, responsive breakpoints (viewport or container), or the page layout grid (LayoutGrid vs GridBox) — including responsive prop patterns and mobile-first design. Complements gamut-system-props for system.space and responsive props.
 ---
 
 # Gamut Layout
 
-Token values match [`packages/gamut-styles/src/variables`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/variables) (`spacing.ts`, `borderRadii.ts`, `responsive.ts`). Breakpoints and max-content widths align with Storybook [Foundations / Layout](https://gamut.codecademy.com/?path=/docs-foundations-layout--docs).
+Token values match `packages/gamut-styles/src/variables` (`spacing.ts`, `borderRadii.ts`, `responsive.ts`). Breakpoints and max-content widths align with Storybook [Foundations / Layout](https://gamut.codecademy.com/?path=/docs-foundations-layout--docs).
 
 See also: [`gamut-system-props`](../gamut-system-props/SKILL.md) — `system.space`, responsive `Box` / `FlexBox` / `GridBox` props. [Meta / Best practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) — responsive examples.
 
