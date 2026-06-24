@@ -138,15 +138,16 @@ const lastInput = useRef('');
 
 ## FormGroup wiring
 
-- `FormGroup` `htmlFor` must match control `id` / `name`.
+- `FormGroup` `htmlFor` must match control `id` (not `name`). Alternatively, pass `htmlFor` directly on SelectDropdown and it becomes `id` downstream.
 - Pass `name` on SelectDropdown (required for forms).
-- Pass `aria-label` (required for forms); it must match the FormGroupLabel `htmlFor` / `name`.
+- Pass `aria-label` (required for forms); it must match the FormGroupLabel `htmlFor`.
 - Pass `error` boolean when FormGroup has an error.
 - Generic FormGroup live-region behavior: see [`gamut-forms`](../gamut-forms/SKILL.md).
 
 ```tsx
 <FormGroup htmlFor="country" isSoloField label="Country" error={errors.country}>
   <SelectDropdown
+    id="country"
     name="country"
     aria-label="country"
     options={options}

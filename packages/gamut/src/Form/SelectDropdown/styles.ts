@@ -234,12 +234,12 @@ export const getMemoizedStyles = (
         display: 'flex',
         padding: isSmall ? '3px 14px' : '11px 14px',
         ...(isNew && {
-          // Gradient creates the 1px divider line centred in the 16px spacer above the option text
+          // Gradient creates the 1px divider line at the top edge of the option background
           backgroundImage: `linear-gradient(${theme.colors['text-disabled']} 1px, transparent 1px)`,
-          backgroundPosition: '0 8px',
+          backgroundPosition: '0 0',
           backgroundRepeat: 'no-repeat',
           backgroundSize: '100% 1px',
-          paddingTop: isSmall ? '19px' : '27px',
+          paddingTop: isSmall ? '11px' : '19px',
         }),
       };
     },

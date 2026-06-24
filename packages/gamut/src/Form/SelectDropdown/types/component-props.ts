@@ -171,17 +171,11 @@ export interface BaseOnChangeProps {
  * Props for the typed React Select component wrapper.
  * Extends ReactSelectAdditionalProps with an optional ref and creatable flag.
  */
-export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
+export interface TypedReactSelectProps
+  extends ReactSelectAdditionalProps,
+    Pick<SelectDropdownCoreProps, 'formatCreateLabel' | 'isValidNewOption'> {
   /** Optional ref to the underlying react-select component */
   selectRef?: Ref<any>;
   /** When true, renders CreatableSelect instead of ReactSelect */
   isCreatable?: boolean;
-  /** Customises the "Add" row label */
-  formatCreateLabel?: (inputValue: string) => React.ReactNode;
-  /** Controls visibility of the "Add" row */
-  isValidNewOption?: (
-    inputValue: string,
-    value: OptionsType<OptionStrict>,
-    options: OptionsType<OptionStrict>
-  ) => boolean;
 }

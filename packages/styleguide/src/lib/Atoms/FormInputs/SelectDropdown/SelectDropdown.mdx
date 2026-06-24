@@ -153,7 +153,7 @@ const [value, setValue] = useState<string[]>(['Apple']);
 
 Set `isCreatable` to let users type and add options not already in the list. When the input doesn't match an existing option, an **Add "value"** row appears; selecting it fires `onCreateOption` with the typed string. The consumer owns persistence — append the new value to the `options` array.
 
-Creatable forces `isSearchable: true` since creation requires a text input. Passing `isSearchable={false}` alongside `isCreatable` is a TypeScript error.
+Creatable forces `isSearchable: true` since creation requires a text input. Passing `isSearchable={false}` alongside `isCreatable` will cause a TypeScript error.
 
 ### Single select
 
