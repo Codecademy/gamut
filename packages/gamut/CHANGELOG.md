@@ -1,3 +1,14 @@
+## 72.2.0 (2026-06-24)
+
+### 🚀 Features
+
+- Adding customValidations for Connected fields, allowing field level validations to overwrite form-level ones. ([#3252](https://github.com/Codecademy/gamut/pull/3252))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Troy Chryssos
+
 ## 72.1.0 (2026-06-24)
 
 ### 🚀 Features
