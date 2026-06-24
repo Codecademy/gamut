@@ -280,14 +280,14 @@ Changelog content is driven by the description in version plan files (in `.nx/ve
 
 ## AI Tool Plugins
 
-Gamut ships an agent-tools plugin with skills, rules, and agents for Claude Code and Cursor. Install it via the `gamut` CLI once you have `@codecademy/gamut` (or `@codecademy/gamut-kit`) installed.
+Gamut ships an agent-tools plugin with skills, rules, and agents for Claude Code and Cursor. The `gamut` CLI is included in `@codecademy/gamut` (and `@codecademy/gamut-kit`), so run it via `npx` from any project that has the package installed.
 
 ### Installing
 
 **Claude Code**
 
 ```bash
-gamut plugin install claude
+npx gamut plugin install claude
 ```
 
 Registers the plugin at user scope via `claude plugin marketplace add`, then installs it. Skills become available as slash commands (e.g. `/gamut-buttons`, `/gamut-review`). If they don't appear immediately, run `/reload-plugins` inside Claude Code.
@@ -295,7 +295,7 @@ Registers the plugin at user scope via `claude plugin marketplace add`, then ins
 **Cursor**
 
 ```bash
-gamut plugin install cursor
+npx gamut plugin install cursor
 ```
 
 Copies skills, rules, and agents into your project's `.cursor/` directory.
@@ -305,9 +305,9 @@ Copies skills, rules, and agents into your project's `.cursor/` directory.
 Add `--theme` to also write a `DESIGN.md` into the current directory with theme-specific design tokens and component guidance:
 
 ```bash
-gamut plugin install cursor --theme core       # Codecademy Core
-gamut plugin install cursor --theme percipio   # Percipio / LX Studio
-gamut plugin install cursor --theme admin      # Admin / Platform
+npx gamut plugin install cursor --theme core       # Codecademy Core
+npx gamut plugin install cursor --theme percipio   # Percipio / LX Studio
+npx gamut plugin install cursor --theme admin      # Admin / Platform
 ```
 
 Use `--force` to overwrite an existing `DESIGN.md`.
@@ -317,18 +317,18 @@ Use `--force` to overwrite an existing `DESIGN.md`.
 Install only a subset of the plugin content with `--scope`:
 
 ```bash
-gamut plugin install cursor --scope skills    # skills only
-gamut plugin install cursor --scope rules     # rules only
-gamut plugin install cursor --scope agents    # agents only
+npx gamut plugin install cursor --scope skills    # skills only
+npx gamut plugin install cursor --scope rules     # rules only
+npx gamut plugin install cursor --scope agents    # agents only
 ```
 
 ### Updating and removing
 
 ```bash
-gamut plugin install           # re-run to update to the latest version
-gamut plugin remove cursor     # remove the Cursor plugin
-gamut plugin remove claude     # remove the Claude Code plugin
-gamut plugin list              # list installed plugins
+npx gamut plugin install           # re-run to update to the latest version
+npx gamut plugin remove cursor     # remove the Cursor plugin
+npx gamut plugin remove claude     # remove the Claude Code plugin
+npx gamut plugin list              # list installed plugins
 ```
 
 ### One-off (no install)
