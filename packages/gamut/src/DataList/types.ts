@@ -73,7 +73,7 @@ export interface ColumnConfig<T> {
    */
   header?: string;
   type?: ListColProps['type'];
-  size?: ListColProps['size'];
+  size?: Exclude<ListColProps['size'], 'content'>;
   render?: (row: T) => ReactElement<any, any> | null;
   sortable?: boolean;
   filters?: string[];

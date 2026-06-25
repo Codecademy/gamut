@@ -7,11 +7,13 @@ import { ConnectedSelectProps } from './types';
 export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
   disabled,
   name,
+  customValidations,
   ...rest
 }) => {
   const { error, isDisabled, ref, isRequired } = useField({
     name,
     disabled,
+    customValidations,
   });
 
   return (
