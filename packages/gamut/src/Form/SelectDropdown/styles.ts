@@ -86,7 +86,7 @@ const textColor = css({
 });
 
 const placeholderColor = css({
-  color: 'text-disabled',
+  color: 'text-secondary',
 });
 
 export const getMemoizedStyles = (
