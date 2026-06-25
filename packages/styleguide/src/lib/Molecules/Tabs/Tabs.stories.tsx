@@ -106,8 +106,7 @@ export const Controlled = () => {
       <Background bg="yellow" mb={24} p={12}>
         <FormGroup htmlFor="active-tab" label="Active Tab">
           <Input
-            htmlFor="acrive-tab"
-            label="Active Tab"
+            htmlFor="active-tab"
             min={1}
             type="number"
             value={activeTab}

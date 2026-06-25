@@ -18,7 +18,10 @@ export const Default: React.FC<ComponentProps<typeof Rotation>> = (args) => {
   }, [args.rotated]);
 
   return (
-    <StrokeButton onClick={() => setRotated(!isRotated)}>
+    <StrokeButton
+      aria-label="Toggle rotation demo"
+      onClick={() => setRotated(!isRotated)}
+    >
       <Rotation {...args} rotated={isRotated}>
         <MiniChevronDownIcon />
       </Rotation>

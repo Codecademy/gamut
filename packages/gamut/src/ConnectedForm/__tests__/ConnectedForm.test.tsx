@@ -27,10 +27,10 @@ const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
     name: 'cool-checkbox',
   }) as HTMLInputElement;
   const selectField = view.getByRole('combobox', {
-    name: '',
+    name: /cool-select/,
   }) as HTMLInputElement;
   const textField = view.getByRole('textbox', {
-    name: '',
+    name: /cool-input/,
   }) as HTMLInputElement;
   const radioGroup = view.getByRole('radiogroup');
   const radioOption = view.getByLabelText('two') as HTMLInputElement;

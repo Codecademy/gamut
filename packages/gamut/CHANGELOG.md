@@ -51,7 +51,7 @@
 
 # 72.0.0 (2026-06-15)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - Remove deprecated accordion components ([#3366](https://github.com/Codecademy/gamut/pull/3366))
 
