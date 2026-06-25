@@ -292,7 +292,6 @@ export const CustomFieldValidations = () => {
       <ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: 'numberType',
           options: ['even', 'odd'],
         }}
         label="Number type"
@@ -301,7 +300,6 @@ export const CustomFieldValidations = () => {
       <ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: 'number',
           options: numbers,
           customValidations: {
             validate: (value: string) => {
