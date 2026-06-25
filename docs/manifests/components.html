@@ -582,7 +582,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>5.7s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.9s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -1763,7 +1763,7 @@ export const Custom: Story = {
         variant=&quot;custom&quot;
         {...args}
       /&gt;
-      &lt;Badge bg=&quot;green&quot; variant=&quot;custom&quot; {...args} /&gt;
+      &lt;Badge bg=&quot;green-400&quot; variant=&quot;custom&quot; {...args} /&gt;
       &lt;Badge bg=&quot;orange-500&quot; variant=&quot;custom&quot; {...args} /&gt;
       &lt;Badge
         bg=&quot;lightBlue&quot;
@@ -1888,7 +1888,7 @@ export const SmallSizeWithIcon: Story = {
     &lt;Badge
         background=&quot;linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)&quot;
         variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
-    &lt;Badge bg=&quot;green&quot; variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
+    &lt;Badge bg=&quot;green-400&quot; variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
     &lt;Badge bg=&quot;orange-500&quot; variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
     &lt;Badge bg=&quot;lightBlue&quot; variant=&quot;custom&quot; icon={icons.MiniStarIcon}&gt;Badge&lt;/Badge&gt;
 &lt;/FlexBox&gt;;</code></pre>
@@ -4005,6 +4005,7 @@ export const OverflowXExample: Story = {
       bg=&quot;background-selected&quot;
       overflowX=&quot;scroll&quot;
       p={16}
+      tabIndex={0}
       whiteSpace=&quot;nowrap&quot;
       width=&quot;200px&quot;
     &gt;
@@ -4024,7 +4025,13 @@ export const OverflowXExample: Story = {
 
 export const OverflowYExample: Story = {
   render: () =&gt; (
-    &lt;Box bg=&quot;background-selected&quot; height=&quot;100px&quot; overflowY=&quot;scroll&quot; p={16}&gt;
+    &lt;Box
+      bg=&quot;background-selected&quot;
+      height=&quot;100px&quot;
+      overflowY=&quot;scroll&quot;
+      p={16}
+      tabIndex={0}
+    &gt;
       &lt;Box bg=&quot;primary&quot; color=&quot;background-contrast&quot; p={8}&gt;
         This content is taller than its container and has{&#39; &#39;}
         &lt;Markdown text=&quot;`overflowY=&#39;scroll&#39;`.&quot; /&gt; Inspect the example to see
@@ -4110,6 +4117,7 @@ export const DirectionExample: Story = {
     bg=&quot;background-selected&quot;
     overflowX=&quot;scroll&quot;
     p={16}
+    tabIndex={0}
     whiteSpace=&quot;nowrap&quot;
     width=&quot;200px&quot;
   &gt;
@@ -4134,7 +4142,13 @@ export const DirectionExample: Story = {
               
               
               <pre><code>const OverflowYExample = () =&gt; (
-  &lt;Box bg=&quot;background-selected&quot; height=&quot;100px&quot; overflowY=&quot;scroll&quot; p={16}&gt;
+  &lt;Box
+    bg=&quot;background-selected&quot;
+    height=&quot;100px&quot;
+    overflowY=&quot;scroll&quot;
+    p={16}
+    tabIndex={0}
+  &gt;
     &lt;Box bg=&quot;primary&quot; color=&quot;background-contrast&quot; p={8}&gt;
       This content is taller than its container and has{&#39; &#39;}
       &lt;Markdown text=&quot;`overflowY=&#39;scroll&#39;`.&quot; /&gt; Inspect the example to see
@@ -6435,7 +6449,7 @@ export const Unchecked: Story = {
     htmlFor: &#39;example-unchecked&#39;,
     label: &#39;unchecked&#39;,
     name: &#39;example-unchecked&#39;,
-    checked: true,
+    checked: false,
   },
 };
 
@@ -6757,7 +6771,7 @@ import { MiniStarIcon } from "@codecademy/gamut-icons";</code></pre>
     htmlFor=&quot;example-unchecked&quot;
     label=&quot;unchecked&quot;
     name=&quot;example-unchecked&quot;
-    checked
+    checked={false}
     readOnly
     onChange={() =&gt; {}} /&gt;;</code></pre>
             </div>
@@ -7835,7 +7849,7 @@ export const Default = () =&gt; {
         inputField: &#39;&#39;,
         radioGroupField: undefined,
         textAreaField: &#39;&#39;,
-        nestedCheckboxesField: [&#39;react&#39;, &#39;typescript&#39;, &#39;backend&#39;],
+        nestedCheckboxesField: [&#39;angular&#39;, &#39;typescript&#39;, &#39;backend&#39;],
       },
       validationRules: {
         checkboxField: { required: &#39;you need to check this.&#39; },
@@ -8095,7 +8109,6 @@ export const CustomFieldValidations = () =&gt; {
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;numberType&#39;,
           options: [&#39;even&#39;, &#39;odd&#39;],
         }}
         label=&quot;Number type&quot;
@@ -8104,7 +8117,6 @@ export const CustomFieldValidations = () =&gt; {
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;number&#39;,
           options: numbers,
           customValidations: {
             validate: (value: string) =&gt; {
@@ -8166,7 +8178,7 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
         inputField: &#39;&#39;,
         radioGroupField: undefined,
         textAreaField: &#39;&#39;,
-        nestedCheckboxesField: [&#39;react&#39;, &#39;typescript&#39;, &#39;backend&#39;],
+        nestedCheckboxesField: [&#39;angular&#39;, &#39;typescript&#39;, &#39;backend&#39;],
       },
       validationRules: {
         checkboxField: { required: &#39;you need to check this.&#39; },
@@ -8438,7 +8450,6 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;numberType&#39;,
           options: [&#39;even&#39;, &#39;odd&#39;],
         }}
         label=&quot;Number type&quot;
@@ -8447,7 +8458,6 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;number&#39;,
           options: numbers,
           customValidations: {
             validate: (value: string) =&gt; {
@@ -8794,7 +8804,7 @@ export const States = () =&gt; {
 export const InfoTipAutoLabelling: Story = {
   render: () =&gt; (
     &lt;ConnectedForm
-      defaultValues={{ email: &#39;&#39; }}
+      defaultValues={{ emailInput: &#39;&#39; }}
       onSubmit={(values) =&gt; action(&#39;Form Submitted&#39;)(values)}
     &gt;
       &lt;ConnectedFormGroup
@@ -8804,7 +8814,7 @@ export const InfoTipAutoLabelling: Story = {
           placement: &#39;floating&#39;,
         }}
         label=&quot;Email address&quot;
-        name=&quot;email&quot;
+        name=&quot;emailInput&quot;
       /&gt;
     &lt;/ConnectedForm&gt;
   ),
@@ -8995,7 +9005,7 @@ export const InfoTipWithReactNodeLabel: Story = {
               
               <pre><code>const InfoTipAutoLabelling = () =&gt; (
   &lt;ConnectedForm
-    defaultValues={{ email: &#39;&#39; }}
+    defaultValues={{ emailInput: &#39;&#39; }}
     onSubmit={(values) =&gt; action(&#39;Form Submitted&#39;)(values)}
   &gt;
     &lt;ConnectedFormGroup
@@ -9005,7 +9015,7 @@ export const InfoTipWithReactNodeLabel: Story = {
         placement: &#39;floating&#39;,
       }}
       label=&quot;Email address&quot;
-      name=&quot;email&quot;
+      name=&quot;emailInput&quot;
     /&gt;
   &lt;/ConnectedForm&gt;
 );</code></pre>
@@ -17764,28 +17774,23 @@ export const Default: Story = {
   },
 };
 
-const FormGroupHtmlForExample = () =&gt; {
-  return (
-    &lt;FormGroup htmlFor=&quot;example1&quot; label=&quot;I am a label!!&quot;&gt;
-      &lt;Input htmlFor=&quot;example1&quot; /&gt;
-    &lt;/FormGroup&gt;
-  );
-};
-
 export const FormGroupHtmlFor: Story = {
-  render: () =&gt; &lt;FormGroupHtmlForExample /&gt;,
-};
-
-const FormGroupDivExample = () =&gt; {
-  return (
-    &lt;FormGroup label=&quot;I look like a label, but I&#39;m actually a div...&quot;&gt;
-      &lt;Input defaultValue=&quot;😔&quot; /&gt;
+  render: () =&gt; (
+    &lt;FormGroup htmlFor=&quot;example1&quot; label=&quot;I am a label!!&quot;&gt;
+      &lt;Input id=&quot;example1&quot; /&gt;
     &lt;/FormGroup&gt;
-  );
+  ),
 };
 
 export const FormGroupDiv: Story = {
-  render: () =&gt; &lt;FormGroupDivExample /&gt;,
+  render: () =&gt; (
+    &lt;FormGroup
+      id=&quot;div-form-group&quot;
+      label=&quot;I look like a label, but I&#39;m actually a div...&quot;
+    &gt;
+      &lt;Input aria-labelledby=&quot;div-form-group&quot; defaultValue=&quot;😔&quot; /&gt;
+    &lt;/FormGroup&gt;
+  ),
 };
 
 export const DefaultState: Story = {
@@ -17794,7 +17799,7 @@ export const DefaultState: Story = {
     required: true,
     description: &#39;You can tell by the asterisk.&#39;,
     htmlFor: &#39;required1&#39;,
-    children: &lt;Input htmlFor=&quot;required1&quot; /&gt;,
+    children: &lt;Input id=&quot;required1&quot; /&gt;,
   },
 };
 
@@ -17805,7 +17810,7 @@ export const Error: Story = {
     description: &#39;You can tell by the asterisk.&#39;,
     error: &#39;You messed up dude.&#39;,
     htmlFor: &#39;required-error&#39;,
-    children: &lt;Input defaultValue=&quot;&gt;_&gt;&quot; error htmlFor=&quot;required-error&quot; /&gt;,
+    children: &lt;Input defaultValue=&quot;&gt;_&gt;&quot; error id=&quot;required-error&quot; /&gt;,
   },
 };
 
@@ -17814,35 +17819,37 @@ export const Valid: Story = {
     required: true,
     label: &#39;I am also required!!&#39;,
     htmlFor: &#39;required-valid&#39;,
-    children: &lt;Input defaultValue=&quot;Good job!&quot; htmlFor=&quot;required-valid&quot; valid /&gt;,
+    children: &lt;Input defaultValue=&quot;Good job!&quot; id=&quot;required-valid&quot; valid /&gt;,
   },
 };
 
 export const LowEmphasisInfoTip: Story = {
   args: {
     label: &#39;Low emphasis&#39;,
+    htmlFor: &#39;low-emphasis-input&#39;,
     infotip: {
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
     },
-    children: &lt;Input /&gt;,
+    children: &lt;Input id=&quot;low-emphasis-input&quot; /&gt;,
   },
 };
 
 export const HighEmphasisInfoTip: Story = {
   args: {
     label: &#39;High emphasis&#39;,
+    htmlFor: &#39;high-emphasis-input&#39;,
     infotip: {
       emphasis: &#39;high&#39;,
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
     },
-    children: &lt;Input /&gt;,
+    children: &lt;Input id=&quot;high-emphasis-input&quot; /&gt;,
   },
 };
 
-const InfoTipLabellingExamples = () =&gt; {
-  return (
+export const InfoTipAutoLabelling: Story = {
+  render: () =&gt; (
     &lt;Box display=&quot;flex&quot; flexDirection=&quot;column&quot; gap={32}&gt;
       &lt;FormGroup
         htmlFor=&quot;auto-label-input&quot;
@@ -17851,7 +17858,7 @@ const InfoTipLabellingExamples = () =&gt; {
         }}
         label=&quot;Auto-labelling (default)&quot;
       &gt;
-        &lt;Input htmlFor=&quot;auto-label-input&quot; type=&quot;email&quot; /&gt;
+        &lt;Input id=&quot;auto-label-input&quot; type=&quot;email&quot; /&gt;
       &lt;/FormGroup&gt;
 
       &lt;FormGroup
@@ -17862,7 +17869,7 @@ const InfoTipLabellingExamples = () =&gt; {
         }}
         label=&quot;With ariaLabel&quot;
       &gt;
-        &lt;Input htmlFor=&quot;aria-label-input&quot; type=&quot;email&quot; /&gt;
+        &lt;Input id=&quot;aria-label-input&quot; type=&quot;email&quot; /&gt;
       &lt;/FormGroup&gt;
 
       &lt;FormGroup
@@ -17874,14 +17881,10 @@ const InfoTipLabellingExamples = () =&gt; {
         label=&quot;With ariaLabelledBy&quot;
       &gt;
         &lt;span id=&quot;custom-label-id&quot;&gt;Custom label for InfoTip button&lt;/span&gt;
-        &lt;Input htmlFor=&quot;aria-labelledby-input&quot; type=&quot;email&quot; /&gt;
+        &lt;Input id=&quot;aria-labelledby-input&quot; type=&quot;email&quot; /&gt;
       &lt;/FormGroup&gt;
     &lt;/Box&gt;
-  );
-};
-
-export const InfoTipAutoLabelling: Story = {
-  render: () =&gt; &lt;InfoTipLabellingExamples /&gt;,
+  ),
 };
 </code></pre></div>
     </div>
@@ -17926,7 +17929,11 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const FormGroupHtmlFor = () =&gt; &lt;FormGroupHtmlForExample /&gt;;</code></pre>
+              <pre><code>const FormGroupHtmlFor = () =&gt; (
+  &lt;FormGroup htmlFor=&quot;example1&quot; label=&quot;I am a label!!&quot;&gt;
+    &lt;Input id=&quot;example1&quot; /&gt;
+  &lt;/FormGroup&gt;
+);</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -17935,7 +17942,14 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const FormGroupDiv = () =&gt; &lt;FormGroupDivExample /&gt;;</code></pre>
+              <pre><code>const FormGroupDiv = () =&gt; (
+  &lt;FormGroup
+    id=&quot;div-form-group&quot;
+    label=&quot;I look like a label, but I&#39;m actually a div...&quot;
+  &gt;
+    &lt;Input aria-labelledby=&quot;div-form-group&quot; defaultValue=&quot;😔&quot; /&gt;
+  &lt;/FormGroup&gt;
+);</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -17948,7 +17962,7 @@ export const InfoTipAutoLabelling: Story = {
     label=&quot;I am required!!&quot;
     required
     description=&quot;You can tell by the asterisk.&quot;
-    htmlFor=&quot;required1&quot;&gt;&lt;Input htmlFor=&quot;required1&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
+    htmlFor=&quot;required1&quot;&gt;&lt;Input id=&quot;required1&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -17962,7 +17976,7 @@ export const InfoTipAutoLabelling: Story = {
     label=&quot;I am also required!!&quot;
     description=&quot;You can tell by the asterisk.&quot;
     error=&quot;You messed up dude.&quot;
-    htmlFor=&quot;required-error&quot;&gt;&lt;Input defaultValue=&quot;&gt;_&gt;&quot; error htmlFor=&quot;required-error&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
+    htmlFor=&quot;required-error&quot;&gt;&lt;Input defaultValue=&quot;&gt;_&gt;&quot; error id=&quot;required-error&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -17971,7 +17985,7 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const Valid = () =&gt; &lt;FormGroup required label=&quot;I am also required!!&quot; htmlFor=&quot;required-valid&quot;&gt;&lt;Input defaultValue=&quot;Good job!&quot; htmlFor=&quot;required-valid&quot; valid /&gt;&lt;/FormGroup&gt;;</code></pre>
+              <pre><code>const Valid = () =&gt; &lt;FormGroup required label=&quot;I am also required!!&quot; htmlFor=&quot;required-valid&quot;&gt;&lt;Input defaultValue=&quot;Good job!&quot; id=&quot;required-valid&quot; valid /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -17982,10 +17996,11 @@ export const InfoTipAutoLabelling: Story = {
               
               <pre><code>const LowEmphasisInfoTip = () =&gt; &lt;FormGroup
     label=&quot;Low emphasis&quot;
+    htmlFor=&quot;low-emphasis-input&quot;
     infotip={{
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
-    }}&gt;&lt;Input /&gt;&lt;/FormGroup&gt;;</code></pre>
+    }}&gt;&lt;Input id=&quot;low-emphasis-input&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -17996,11 +18011,12 @@ export const InfoTipAutoLabelling: Story = {
               
               <pre><code>const HighEmphasisInfoTip = () =&gt; &lt;FormGroup
     label=&quot;High emphasis&quot;
+    htmlFor=&quot;high-emphasis-input&quot;
     infotip={{
       emphasis: &#39;high&#39;,
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
-    }}&gt;&lt;Input /&gt;&lt;/FormGroup&gt;;</code></pre>
+    }}&gt;&lt;Input id=&quot;high-emphasis-input&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -18009,7 +18025,42 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const InfoTipAutoLabelling = () =&gt; &lt;InfoTipLabellingExamples /&gt;;</code></pre>
+              <pre><code>const InfoTipAutoLabelling = () =&gt; (
+  &lt;Box display=&quot;flex&quot; flexDirection=&quot;column&quot; gap={32}&gt;
+    &lt;FormGroup
+      htmlFor=&quot;auto-label-input&quot;
+      infotip={{
+        info: &#39;We will never share your email with third parties.&#39;,
+      }}
+      label=&quot;Auto-labelling (default)&quot;
+    &gt;
+      &lt;Input id=&quot;auto-label-input&quot; type=&quot;email&quot; /&gt;
+    &lt;/FormGroup&gt;
+
+    &lt;FormGroup
+      htmlFor=&quot;aria-label-input&quot;
+      infotip={{
+        ariaLabel: &#39;Email privacy information&#39;,
+        info: &#39;We will never share your email with third parties.&#39;,
+      }}
+      label=&quot;With ariaLabel&quot;
+    &gt;
+      &lt;Input id=&quot;aria-label-input&quot; type=&quot;email&quot; /&gt;
+    &lt;/FormGroup&gt;
+
+    &lt;FormGroup
+      htmlFor=&quot;aria-labelledby-input&quot;
+      infotip={{
+        ariaLabelledby: &#39;custom-label-id&#39;,
+        info: &#39;We will never share your email with third parties.&#39;,
+      }}
+      label=&quot;With ariaLabelledBy&quot;
+    &gt;
+      &lt;span id=&quot;custom-label-id&quot;&gt;Custom label for InfoTip button&lt;/span&gt;
+      &lt;Input id=&quot;aria-labelledby-input&quot; type=&quot;email&quot; /&gt;
+    &lt;/FormGroup&gt;
+  &lt;/Box&gt;
+);</code></pre>
             </div>
         </div>
     
@@ -20192,7 +20243,7 @@ export const CustomInputs: Story = {
           &lt;/&gt;
         ),
         label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input&#39;,
+        name: &#39;custom-text-input&#39;,
         size: 12,
         validation: {
           required: true,
@@ -20205,7 +20256,11 @@ export const CustomInputs: Story = {
       },
       {
         render: ({ error, setValue }) =&gt; (
-          &lt;FormGroup label=&quot;updog&quot; width=&quot;100%&quot;&gt;
+          &lt;FormGroup
+            htmlFor=&quot;custom-text-group-input&quot;
+            label=&quot;updog&quot;
+            width=&quot;100%&quot;
+          &gt;
             &lt;Input
               error={!!error}
               id=&quot;custom-text-group-input&quot;
@@ -20215,8 +20270,7 @@ export const CustomInputs: Story = {
           &lt;/FormGroup&gt;
         ),
         size: 12,
-        label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input-group&#39;,
+        name: &#39;custom-group-input&#39;,
         validation: {
           required: true,
           pattern: {
@@ -20741,7 +20795,7 @@ export const InfoTipWithReactNodeLabel: Story = {
           &lt;/&gt;
         ),
         label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input&#39;,
+        name: &#39;custom-text-input&#39;,
         size: 12,
         validation: {
           required: true,
@@ -20754,7 +20808,11 @@ export const InfoTipWithReactNodeLabel: Story = {
       },
       {
         render: ({ error, setValue }) =&gt; (
-          &lt;FormGroup label=&quot;updog&quot; width=&quot;100%&quot;&gt;
+          &lt;FormGroup
+            htmlFor=&quot;custom-text-group-input&quot;
+            label=&quot;updog&quot;
+            width=&quot;100%&quot;
+          &gt;
             &lt;Input
               error={!!error}
               id=&quot;custom-text-group-input&quot;
@@ -20764,8 +20822,7 @@ export const InfoTipWithReactNodeLabel: Story = {
           &lt;/FormGroup&gt;
         ),
         size: 12,
-        label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input-group&#39;,
+        name: &#39;custom-group-input&#39;,
         validation: {
           required: true,
           pattern: {
@@ -23750,7 +23807,7 @@ You can change the zIndex of your `InfoTip` with the zIndex property.
     | ^
   6 |   component: Input,
   7 |   args: {
-  8 |     htmlFor: &#39;example-input&#39;,
+  8 |     id: &#39;example-input&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/Input/Input.stories.tsx:
 import { FormGroup, Input } from &#39;@codecademy/gamut&#39;;
@@ -23760,8 +23817,7 @@ import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 const meta: Meta&lt;typeof Input&gt; = {
   component: Input,
   args: {
-    htmlFor: &#39;example-input&#39;,
-    name: &#39;example-input&#39;,
+    id: &#39;example-input&#39;,
     placeholder: &#39;Placeholder&#39;,
     type: &#39;text&#39;,
     size: &#39;base&#39;,
@@ -23784,9 +23840,8 @@ export const Default: Story = {
 
 export const Text: Story = {
   args: {
-    htmlFor: &#39;example-text&#39;,
+    id: &#39;example-text&#39;,
     defaultValue: &#39;Text&#39;,
-    name: &#39;example-text&#39;,
     type: &#39;text&#39;,
     required: true,
   },
@@ -23794,8 +23849,7 @@ export const Text: Story = {
 
 export const Number: Story = {
   args: {
-    htmlFor: &#39;example-number&#39;,
-    name: &#39;example-number&#39;,
+    id: &#39;example-number&#39;,
     type: &#39;number&#39;,
     defaultValue: 1,
   },
@@ -23803,8 +23857,7 @@ export const Number: Story = {
 
 export const File: Story = {
   args: {
-    htmlFor: &#39;example-file&#39;,
-    name: &#39;example-file&#39;,
+    id: &#39;example-file&#39;,
     type: &#39;file&#39;,
     value: &#39;&#39;,
     onChange: () =&gt; {},
@@ -23813,17 +23866,15 @@ export const File: Story = {
 
 export const Error: Story = {
   args: {
-    htmlFor: &#39;example-error&#39;,
+    id: &#39;example-error&#39;,
     defaultValue: &#39;Error&#39;,
-    name: &#39;example-error&#39;,
     error: true,
   },
 };
 
 export const Validated: Story = {
   args: {
-    htmlFor: &#39;example-valid&#39;,
-    name: &#39;example-placeholder&#39;,
+    id: &#39;example-valid&#39;,
     placeholder: &#39;Placeholder&#39;,
     defaultValue: &#39;Verified Text&#39;,
     valid: true,
@@ -23832,8 +23883,7 @@ export const Validated: Story = {
 
 export const Placeholder: Story = {
   args: {
-    htmlFor: &#39;example-placeholder&#39;,
-    name: &#39;example-placeholder&#39;,
+    id: &#39;example-placeholder&#39;,
     placeholder: &#39;Placeholder&#39;,
     defaultValue: undefined,
   },
@@ -23841,8 +23891,7 @@ export const Placeholder: Story = {
 
 export const Disabled: Story = {
   args: {
-    htmlFor: &#39;example-disabled&#39;,
-    name: &#39;example-disabled&#39;,
+    id: &#39;example-disabled&#39;,
     placeholder: &#39;Disabled&#39;,
     disabled: true,
     defaultValue: undefined,
@@ -23851,8 +23900,7 @@ export const Disabled: Story = {
 
 export const CustomIcon: Story = {
   args: {
-    htmlFor: &#39;example-icon&#39;,
-    name: &#39;example-icon&#39;,
+    id: &#39;example-icon&#39;,
     defaultValue: &#39;Hello...&#39;,
     icon: icons.ViewIcon,
   },
@@ -23861,10 +23909,10 @@ export const CustomIcon: Story = {
 export const FormGroupDefault: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
   },
   render: (args) =&gt; (
-    &lt;FormGroup htmlFor=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
+    &lt;FormGroup id=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
       &lt;Input {...args} /&gt;
     &lt;/FormGroup&gt;
   ),
@@ -23873,7 +23921,7 @@ export const FormGroupDefault: Story = {
 export const FormGroupError: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
     error: true,
   },
   render: (args) =&gt; (
@@ -23891,7 +23939,7 @@ export const FormGroupError: Story = {
 export const FormGroupLarge: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
     placeholder: &#39;Placeholder&#39;,
   },
   render: (args) =&gt; (
@@ -23910,7 +23958,7 @@ export const FormGroupLarge: Story = {
 export const FormGroupErrorLarge: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
     error: true,
   },
   render: (args) =&gt; (
@@ -23928,9 +23976,8 @@ export const FormGroupErrorLarge: Story = {
 
 export const TextSmall: Story = {
   args: {
-    htmlFor: &#39;example-text&#39;,
+    id: &#39;example-text&#39;,
     defaultValue: &#39;This input has less padding!&#39;,
-    name: &#39;example-text&#39;,
     type: &#39;text&#39;,
     required: true,
     size: &#39;small&#39;,
@@ -23939,9 +23986,8 @@ export const TextSmall: Story = {
 
 export const TextSmallError: Story = {
   args: {
-    htmlFor: &#39;example-text&#39;,
+    id: &#39;example-text&#39;,
     defaultValue: &#39;Still works like a charm!&#39;,
-    name: &#39;example-text&#39;,
     type: &#39;text&#39;,
     required: true,
     size: &#39;small&#39;,
@@ -23951,8 +23997,7 @@ export const TextSmallError: Story = {
 
 export const NumberSmall: Story = {
   args: {
-    htmlFor: &#39;example-number&#39;,
-    name: &#39;example-number&#39;,
+    id: &#39;example-number&#39;,
     type: &#39;number&#39;,
     defaultValue: 1,
     size: &#39;small&#39;,
@@ -23962,8 +24007,7 @@ export const NumberSmall: Story = {
 
 export const FileSmall: Story = {
   args: {
-    htmlFor: &#39;example-file&#39;,
-    name: &#39;example-file&#39;,
+    id: &#39;example-file&#39;,
     type: &#39;file&#39;,
     value: &#39;&#39;,
     onChange: () =&gt; {},
@@ -23974,8 +24018,7 @@ export const FileSmall: Story = {
 
 export const DisabledSmall: Story = {
   args: {
-    htmlFor: &#39;example-disabled&#39;,
-    name: &#39;example-disabled&#39;,
+    id: &#39;example-disabled&#39;,
     placeholder: &#39;Disabled&#39;,
     disabled: true,
     defaultValue: undefined,
@@ -24014,12 +24057,7 @@ export const DisabledSmall: Story = {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;Input
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    placeholder=&quot;Placeholder&quot;
-    type=&quot;text&quot;
-    size=&quot;base&quot; /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;Input id=&quot;example-input&quot; placeholder=&quot;Placeholder&quot; type=&quot;text&quot; size=&quot;base&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -24029,8 +24067,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Text = () =&gt; &lt;Input
-    htmlFor=&quot;example-text&quot;
-    name=&quot;example-text&quot;
+    id=&quot;example-text&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -24045,8 +24082,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Number = () =&gt; &lt;Input
-    htmlFor=&quot;example-number&quot;
-    name=&quot;example-number&quot;
+    id=&quot;example-number&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;number&quot;
     size=&quot;base&quot;
@@ -24060,8 +24096,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const File = () =&gt; &lt;Input
-    htmlFor=&quot;example-file&quot;
-    name=&quot;example-file&quot;
+    id=&quot;example-file&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;file&quot;
     size=&quot;base&quot;
@@ -24076,8 +24111,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Error = () =&gt; &lt;Input
-    htmlFor=&quot;example-error&quot;
-    name=&quot;example-error&quot;
+    id=&quot;example-error&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -24092,8 +24126,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Validated = () =&gt; &lt;Input
-    htmlFor=&quot;example-valid&quot;
-    name=&quot;example-placeholder&quot;
+    id=&quot;example-valid&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -24108,8 +24141,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Placeholder = () =&gt; &lt;Input
-    htmlFor=&quot;example-placeholder&quot;
-    name=&quot;example-placeholder&quot;
+    id=&quot;example-placeholder&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -24123,8 +24155,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Disabled = () =&gt; &lt;Input
-    htmlFor=&quot;example-disabled&quot;
-    name=&quot;example-disabled&quot;
+    id=&quot;example-disabled&quot;
     placeholder=&quot;Disabled&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -24139,8 +24170,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const CustomIcon = () =&gt; &lt;Input
-    htmlFor=&quot;example-icon&quot;
-    name=&quot;example-icon&quot;
+    id=&quot;example-icon&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -24154,10 +24184,9 @@ export const DisabledSmall: Story = {
               </div>
               
               
-              <pre><code>const FormGroupDefault = () =&gt; &lt;FormGroup htmlFor=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
+              <pre><code>const FormGroupDefault = () =&gt; &lt;FormGroup id=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -24177,8 +24206,7 @@ export const DisabledSmall: Story = {
     isSoloField
     label=&quot;i am a smol label&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -24200,8 +24228,7 @@ export const DisabledSmall: Story = {
     label=&quot;i am a large disabled label&quot;
     labelSize=&quot;large&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -24222,8 +24249,7 @@ export const DisabledSmall: Story = {
     label=&quot;i am also large label, but something is wrong.&quot;
     labelSize=&quot;large&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -24239,8 +24265,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const TextSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-text&quot;
-    name=&quot;example-text&quot;
+    id=&quot;example-text&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;small&quot;
@@ -24255,8 +24280,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const TextSmallError = () =&gt; &lt;Input
-    htmlFor=&quot;example-text&quot;
-    name=&quot;example-text&quot;
+    id=&quot;example-text&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;small&quot;
@@ -24272,8 +24296,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const NumberSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-number&quot;
-    name=&quot;example-number&quot;
+    id=&quot;example-number&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;number&quot;
     size=&quot;small&quot;
@@ -24288,8 +24311,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const FileSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-file&quot;
-    name=&quot;example-file&quot;
+    id=&quot;example-file&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;file&quot;
     size=&quot;small&quot;
@@ -24305,8 +24327,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const DisabledSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-disabled&quot;
-    name=&quot;example-disabled&quot;
+    id=&quot;example-disabled&quot;
     placeholder=&quot;Disabled&quot;
     type=&quot;text&quot;
     size=&quot;small&quot;
@@ -24395,7 +24416,7 @@ You can use a custom icon (from gamut-icons) in your Input elements. The error a
 
 ## FormGroup + Input
 
-`Input` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Input` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
+`Input` formats nicely in FormGroups and reflects error states. Make sure you provide an `htmlFor` to the `FormGroup` and an `id` to the `Input` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
 
 &lt;Canvas of={InputStories.FormGroupDefault} /&gt;
 &lt;Canvas of={InputStories.FormGroupError} /&gt;
@@ -32626,6 +32647,7 @@ const AvatarExample = () =&gt; {
   return (
     &lt;FlexBox center mt={16} py={96}&gt;
       &lt;PreviewTip
+        aria-label=&quot;sanrio unmotivated gudetama&quot;
         avatar={
           &lt;Box bg=&quot;navy&quot; borderRadius=&quot;full&quot; height=&quot;100%&quot; width=&quot;100%&quot;&gt;
             &lt;SmileyIndifferentIcon color=&quot;yellow&quot; size=&quot;100%&quot; /&gt;
@@ -33988,7 +34010,10 @@ export const Default: React.FC&lt;ComponentProps&lt;typeof Rotation&gt;&gt; = (a
   }, [args.rotated]);
 
   return (
-    &lt;StrokeButton onClick={() =&gt; setRotated(!isRotated)}&gt;
+    &lt;StrokeButton
+      aria-label=&quot;Toggle rotation demo&quot;
+      onClick={() =&gt; setRotated(!isRotated)}
+    &gt;
       &lt;Rotation {...args} rotated={isRotated}&gt;
         &lt;MiniChevronDownIcon /&gt;
       &lt;/Rotation&gt;
@@ -34036,7 +34061,7 @@ import { Rotation, StrokeButton } from "@codecademy/gamut";</code></pre>
     }, [args.rotated]);
 
     return (
-        &lt;StrokeButton onClick={() =&gt; setRotated(!isRotated)}&gt;
+        &lt;StrokeButton aria-label=&quot;Toggle rotation demo&quot; onClick={() =&gt; setRotated(!isRotated)}&gt;
             &lt;Rotation rotated={isRotated}&gt;
                 &lt;MiniChevronDownIcon /&gt;
             &lt;/Rotation&gt;
@@ -34137,7 +34162,7 @@ One common usage is to set the rotation of an arrow icon to indicate that a comp
     | ^
   7 |   component: Select,
   8 |   args: {
-  9 |     htmlFor: &#39;example-select&#39;,
+  9 |     id: &#39;example-select&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/Select/Select.stories.tsx:
 import { FormGroup, Select } from &#39;@codecademy/gamut&#39;;
@@ -34148,9 +34173,9 @@ const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;
 const meta: Meta&lt;typeof Select&gt; = {
   component: Select,
   args: {
-    htmlFor: &#39;example-select&#39;,
-    name: &#39;example-select&#39;,
+    id: &#39;example-select&#39;,
     options: fruitOptions,
+    &#39;aria-label&#39;: &#39;Select an option&#39;,
   },
   argTypes: {
     value: {
@@ -34203,7 +34228,7 @@ export const FormGroupBase: Story = {
   args: {
     options: [&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;],
     defaultValue: &#39;oh no&#39;,
-    name: &#39;form-group-base&#39;,
+    id: &#39;form-group-base&#39;,
   },
   render: (args) =&gt; (
     &lt;FormGroup
@@ -34223,7 +34248,7 @@ export const FormGroupSmall: Story = {
     options: [&#39;Small&#39;, &#39;Quite little&#39;],
     value: &#39;Small&#39;,
     sizeVariant: &#39;small&#39;,
-    name: &#39;form-group-small&#39;,
+    id: &#39;form-group-small&#39;,
   },
   render: (args) =&gt; (
     &lt;FormGroup
@@ -34267,7 +34292,7 @@ export const FormGroupSmall: Story = {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;Select htmlFor=&quot;example-select&quot; name=&quot;example-select&quot; options={fruitOptions} /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;Select id=&quot;example-select&quot; options={fruitOptions} aria-label=&quot;Select an option&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -34277,9 +34302,9 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Base = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;example-select&quot;
     options={[&#39;Base&#39;, &#39;Regular Size&#39;, &#39;Normal&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Regular Size&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -34290,12 +34315,11 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Small = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;small-variant&quot;
     options={[&#39;Small&#39;, &#39;Quite little&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Small&quot;
-    sizeVariant=&quot;small&quot;
-    id=&quot;small-variant&quot; /&gt;;</code></pre>
+    sizeVariant=&quot;small&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -34305,9 +34329,9 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Disabled = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;example-select&quot;
     options={[&#39;Disabled&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Disabled&quot;
     disabled /&gt;;</code></pre>
             </div>
@@ -34319,9 +34343,9 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Error = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;example-select&quot;
     options={[&#39;Error&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Error&quot;
     error /&gt;;</code></pre>
             </div>
@@ -34340,9 +34364,9 @@ export const FormGroupSmall: Story = {
     labelSize=&quot;large&quot;&gt;
     &lt;Select
         error
-        htmlFor=&quot;example-select&quot;
-        name=&quot;form-group-base&quot;
+        id=&quot;form-group-base&quot;
         options={[&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;]}
+        aria-label=&quot;Select an option&quot;
         defaultValue=&quot;oh no&quot; /&gt;
 &lt;/FormGroup&gt;;</code></pre>
             </div>
@@ -34358,9 +34382,9 @@ export const FormGroupSmall: Story = {
     isSoloField
     label=&quot;i am small and have a label&quot;&gt;
     &lt;Select
-        htmlFor=&quot;example-select&quot;
-        name=&quot;form-group-small&quot;
+        id=&quot;form-group-small&quot;
         options={[&#39;Small&#39;, &#39;Quite little&#39;]}
+        aria-label=&quot;Select an option&quot;
         value=&quot;Small&quot;
         sizeVariant=&quot;small&quot; /&gt;
 &lt;/FormGroup&gt;;</code></pre>
@@ -34428,7 +34452,7 @@ Use Select to handle single selection within a group of options.
 
 ## FormGroup + Select
 
-`Select` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Select` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
+`Select` formats nicely in FormGroups and reflects error states. Make sure you provide an `htmlFor` to the `FormGroup` and an `id` to the `Select` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
 
 &lt;Canvas of={SelectStories.FormGroupBase} /&gt;
 &lt;Canvas of={SelectStories.FormGroupSmall} /&gt;
@@ -34487,7 +34511,7 @@ Use Select to handle single selection within a group of options.
      | ^
   15 |   component: SelectDropdown,
   16 |   args: {
-  17 |     htmlFor: &#39;example-select&#39;,
+  17 |     id: &#39;example-select&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/SelectDropdown/SelectDropdown.stories.tsx:
 import {
@@ -34506,11 +34530,13 @@ const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;
 const meta: Meta&lt;typeof SelectDropdown&gt; = {
   component: SelectDropdown,
   args: {
-    htmlFor: &#39;example-select&#39;,
+    id: &#39;example-select&#39;,
+    name: &#39;example-select&#39;,
     options: fruitOptions,
     disabled: false,
     isSearchable: false,
     value: &#39;&#39;,
+    &#39;aria-label&#39;: &#39;Select an option&#39;,
   },
   argTypes: {
     value: {
@@ -34639,6 +34665,7 @@ export const ShownOptionsDefault: Story = {
       &#39;asdfsadf&#39;,
     ],
     name: &#39;shownOptionsLimit01&#39;,
+    id: &#39;shownOptionsLimit01&#39;,
     placeholder: &#39;six is the magic number&#39;,
   },
   render: (args) =&gt; (
@@ -34669,6 +34696,7 @@ export const ShownOptionsThree: Story = {
       &#39;hi&#39;,
       &#39;asdfsadf&#39;,
     ],
+    id: &#39;shownOptionsLimit02&#39;,
     name: &#39;shownOptionsLimit02&#39;,
     placeholder: &#39;three is the magic number&#39;,
     shownOptionsLimit: 3,
@@ -34688,6 +34716,7 @@ export const ShownOptionsThree: Story = {
 
 export const DisabledOptions: Story = {
   args: {
+    id: &#39;disabled-dropdown&#39;,
     name: &#39;disabled-dropdown&#39;,
     options: [
       {
@@ -34721,6 +34750,7 @@ export const DisabledOptions: Story = {
 
 export const Subtitles: Story = {
   args: {
+    id: &#39;subtitles-dropdown&#39;,
     name: &#39;subtitles-dropdown&#39;,
     options: [
       {
@@ -34756,6 +34786,7 @@ export const Subtitles: Story = {
 
 export const RightLabels: Story = {
   args: {
+    id: &#39;right-labels-dropdown&#39;,
     name: &#39;right-labels-dropdown&#39;,
     options: [
       {
@@ -34791,6 +34822,7 @@ export const RightLabels: Story = {
 
 export const GroupDividers: Story = {
   args: {
+    id: &#39;dividers-dropdown&#39;,
     name: &#39;dividers-dropdown&#39;,
     options: [
       {
@@ -34849,8 +34881,9 @@ export const GroupDividers: Story = {
 
 export const GroupLabels: Story = {
   args: {
-    name: &#39;group-labels-dropdown&#39;,
+    id: &#39;group-labels-dropdown&#39;,
     multiple: true,
+    name: &#39;group-labels-dropdown&#39;,
     options: [
       {
         label: &#39;Group 1&#39;,
@@ -34909,6 +34942,7 @@ export const GroupLabels: Story = {
 
 export const Icons: Story = {
   args: {
+    id: &#39;pizzaz-dropdown&#39;,
     name: &#39;pizzaz-dropdown&#39;,
     options: [
       {
@@ -34947,6 +34981,7 @@ export const CustomInputProps: Story = {
         &#39;data-cy&#39;: &#39;custom-dropdown&#39;,
       },
     },
+    id: &#39;what&#39;,
     name: &#39;what&#39;,
   },
   render: (args) =&gt; (
@@ -34960,6 +34995,7 @@ export const CustomInputProps: Story = {
 
 export const MultipleSelect: Story = {
   args: {
+    id: &#39;multi-dropdown&#39;,
     name: &#39;multi-dropdown&#39;,
     multiple: true,
     options: [
@@ -34994,6 +35030,7 @@ export const FormGroupSelectDropdown: Story = {
   args: {
     options: [&#39;hello&#39;, &#39;hi&#39;, &#39;howdy&#39;],
     value: &#39;oh no&#39;,
+    id: &#39;big-label&#39;,
     name: &#39;big-label&#39;,
   },
   render: (args) =&gt; (
@@ -35013,6 +35050,7 @@ export const FormGroupSelectDropdown: Story = {
 export const FormGroupError: Story = {
   args: {
     options: [&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;],
+    id: &#39;error-example-unique&#39;,
     name: &#39;error-example-unique&#39;,
     placeholder: &#39;cry cry cry&#39;,
   },
@@ -35032,6 +35070,7 @@ export const FormGroupError: Story = {
 
 export const AbbreviatedInput: Story = {
   args: {
+    id: &#39;abbreviated-dropdown&#39;,
     name: &#39;abbreviated-dropdown&#39;,
     options: [
       {
@@ -35080,6 +35119,7 @@ export const AbbreviatedInput: Story = {
 
 export const IndependentWidths: Story = {
   args: {
+    id: &#39;width-dropdown&#39;,
     name: &#39;width-dropdown&#39;,
     options: [
       {
@@ -35130,6 +35170,7 @@ export const IndependentWidths: Story = {
 
 export const SmallWithAbbreviations: Story = {
   args: {
+    id: &#39;small-abbreviated-dropdown&#39;,
     name: &#39;small-abbreviated-dropdown&#39;,
     options: [
       {
@@ -35182,6 +35223,7 @@ export const SmallWithAbbreviations: Story = {
 
 export const ComplexAbbreviatedOptions: Story = {
   args: {
+    id: &#39;complex-abbreviated-dropdown&#39;,
     name: &#39;complex-abbreviated-dropdown&#39;,
     options: [
       {
@@ -35235,6 +35277,7 @@ export const ComplexAbbreviatedOptions: Story = {
 
 export const AbbreviatedWithSubtitleAndRightLabel: Story = {
   args: {
+    id: &#39;abbreviated-detailed&#39;,
     name: &#39;abbreviated-detailed&#39;,
     options: [
       {
@@ -35275,6 +35318,7 @@ export const AbbreviatedWithSubtitleAndRightLabel: Story = {
 
 export const AbbreviatedSmallSize: Story = {
   args: {
+    id: &#39;abbreviated-small&#39;,
     name: &#39;abbreviated-small&#39;,
     options: [
       {
@@ -35316,6 +35360,7 @@ export const AbbreviatedSmallSize: Story = {
 };
 export const MenuAlignmentRight: Story = {
   args: {
+    id: &#39;menu-alignment-right&#39;,
     name: &#39;menu-alignment-right&#39;,
     options: [
       {
@@ -35368,6 +35413,7 @@ export const MenuAlignmentRight: Story = {
 
 export const DisabledMultiValue: Story = {
   args: {
+    id: &#39;disabled-small-multi&#39;,
     name: &#39;disabled-small-multi&#39;,
     options: [
       {
@@ -35402,7 +35448,7 @@ export const DisabledMultiValue: Story = {
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
       &lt;FormGroup
-        htmlFor=&quot;abbreviated-small&quot;
+        htmlFor=&quot;disabled-small-multi&quot;
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;
       &gt;
@@ -35414,6 +35460,7 @@ export const DisabledMultiValue: Story = {
 
 export const LongPlaceholder: Story = {
   args: {
+    id: &#39;long-placeholder&#39;,
     name: &#39;long-placeholder&#39;,
     options: [
       {
@@ -35458,6 +35505,7 @@ export const LongPlaceholder: Story = {
 };
 export const LongPlaceholderAgain: Story = {
   args: {
+    id: &#39;long-placeholder-again&#39;,
     name: &#39;long-placeholder-again&#39;,
     options: [
       {
@@ -35512,6 +35560,7 @@ export const zIndexOnMenu: Story = {
           label=&quot;This menu is rendered behind the header&quot;
         &gt;
           &lt;SelectDropdown
+            id=&quot;usesDefaultZIndex&quot;
             name=&quot;usesDefaultZIndex&quot;
             options={args.options}
             placeholder=&quot;Uses the default zIndex of 2&quot;
@@ -35523,6 +35572,7 @@ export const zIndexOnMenu: Story = {
           label=&quot;This menu floats above the table&#39;s header&quot;
         &gt;
           &lt;SelectDropdown
+            id=&quot;hasSetZIndex&quot;
             name=&quot;hasSetZIndex&quot;
             options={args.options}
             placeholder=&quot;Has a zIndex of 5&quot;
@@ -35595,11 +35645,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Default = () =&gt; &lt;Box height=&quot;18rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;example-select&quot;
         options={fruitOptions}
         disabled={false}
         isSearchable={false}
-        value=&quot;&quot; /&gt;
+        value=&quot;&quot;
+        aria-label=&quot;Select an option&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -35611,12 +35663,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Base = () =&gt; &lt;Box height=&quot;12rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;base-dropdown&quot;
         options={[&#39;Based&#39;, &#39;Regular Size&#39;, &#39;Normal&#39;]}
         disabled={false}
         isSearchable={false}
         value=&quot;&quot;
-        name=&quot;base-dropdown&quot;
+        aria-label=&quot;Select an option&quot;
         placeholder=&quot;all about that&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35629,12 +35682,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Searchable = () =&gt; &lt;Box height=&quot;12rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;searchable-dropdown&quot;
         options={[&#39;wow&#39;, &#39;wowee&#39;, &#39;wooooooow&#39;]}
         disabled={false}
         isSearchable
         value=&quot;&quot;
-        name=&quot;searchable-dropdown&quot;
+        aria-label=&quot;Select an option&quot;
         placeholder=&quot;i am searchable, it is cool&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35646,12 +35700,13 @@ export const zIndexOnMenu: Story = {
               
               
               <pre><code>const Disabled = () =&gt; &lt;SelectDropdown
-    htmlFor=&quot;example-select&quot;
+    id=&quot;example-select&quot;
+    name=&quot;disabled-dropdown-standalone&quot;
     options={[&#39;Disabled&#39;]}
     disabled
     isSearchable={false}
     value=&quot;&quot;
-    name=&quot;disabled-dropdown-standalone&quot;
+    aria-label=&quot;Select an option&quot;
     placeholder=&quot;Disabled&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -35663,12 +35718,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Error = () =&gt; &lt;Box height=&quot;10rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;error-dropdown-standalone&quot;
         options={[&#39;Small&#39;, &#39;Quite little&#39;]}
         disabled={false}
         isSearchable={false}
         value=&quot;Quite little&quot;
-        name=&quot;error-dropdown-standalone&quot;
+        aria-label=&quot;Select an option&quot;
         error /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35681,12 +35737,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Small = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;size-no-search&quot;
         options={[&#39;i am smol&#39;, &#39;yes I am!&#39;, &#39;:)&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]}
         disabled={false}
         isSearchable={false}
         value=&quot;&quot;
-        name=&quot;size-no-search&quot;
+        aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
         placeholder=&quot;click here!&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
@@ -35700,7 +35757,8 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const SmallSearchable = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;size-search&quot;
         options={[
           &#39;i am also smol&#39;,
           &#39;:)&#39;,
@@ -35717,7 +35775,7 @@ export const zIndexOnMenu: Story = {
         disabled={false}
         isSearchable
         value=&quot;&quot;
-        name=&quot;size-search&quot;
+        aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
         placeholder=&quot;no type here instead!&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
@@ -35735,7 +35793,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;i have the default shownOptionsLimit&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;shownOptionsLimit01&quot;
+            name=&quot;shownOptionsLimit01&quot;
             options={[
               &#39;i am not small&#39;,
               &#39;:)&#39;,
@@ -35752,7 +35811,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;shownOptionsLimit01&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;six is the magic number&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -35770,7 +35829,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;i have three shownOptionsLimit&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;shownOptionsLimit02&quot;
+            name=&quot;shownOptionsLimit02&quot;
             options={[
               &#39;i am not small&#39;,
               &#39;:)&#39;,
@@ -35787,7 +35847,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;shownOptionsLimit02&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;three is the magic number&quot;
             shownOptionsLimit={3} /&gt;
     &lt;/FormGroup&gt;
@@ -35806,7 +35866,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I might have disabled options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;disabled-dropdown&quot;
+            name=&quot;disabled-dropdown&quot;
             options={[
               {
                 label: &#39;I am disabled&#39;,
@@ -35826,7 +35887,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;disabled-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35840,7 +35901,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const Subtitles = () =&gt; &lt;Box height=&quot;18rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;subtitles-dropdown&quot; isSoloField label=&quot;I have subtitle options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;subtitles-dropdown&quot;
+            name=&quot;subtitles-dropdown&quot;
             options={[
               {
                 label: &#39;king@chess.com&#39;,
@@ -35862,7 +35924,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;subtitles-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35879,7 +35941,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I have right label options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;right-labels-dropdown&quot;
+            name=&quot;right-labels-dropdown&quot;
             options={[
               {
                 label: &#39;king@chess.com&#39;,
@@ -35901,7 +35964,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;right-labels-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35915,7 +35978,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const GroupDividers = () =&gt; &lt;Box height=&quot;24rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;dividers-dropdown&quot; isSoloField label=&quot;I have group dividers&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;dividers-dropdown&quot;
+            name=&quot;dividers-dropdown&quot;
             options={[
               {
                 options: [
@@ -35960,7 +36024,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;dividers-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -35977,7 +36041,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I have group labels + multiple select&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;group-labels-dropdown&quot;
+            name=&quot;group-labels-dropdown&quot;
             options={[
               {
                 label: &#39;Group 1&#39;,
@@ -36023,7 +36088,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;group-labels-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             multiple /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -36038,7 +36103,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const Icons = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;pizzaz-dropdown&quot; isSoloField label=&quot;i have pizzazz&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;pizzaz-dropdown&quot;
+            name=&quot;pizzaz-dropdown&quot;
             options={[
               {
                 label: &#39;ohai&#39;,
@@ -36059,7 +36125,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;pizzaz-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -36073,19 +36139,20 @@ export const zIndexOnMenu: Story = {
               <pre><code>const CustomInputProps = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;what&quot; isSoloField label=&quot;i am ~styled&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;what&quot;
+            name=&quot;what&quot;
             options={[&#39;inspect me to see my inputProps&#39;, &#39;yes I am!&#39;, &#39;:)&#39;]}
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
+            aria-label=&quot;Select an option&quot;
             inputProps={{
               hidden: { &#39;data-form-field&#39;: &#39;what&#39; },
               combobox: {
                 &#39;data-testid&#39;: &#39;custom-select&#39;,
                 &#39;data-cy&#39;: &#39;custom-dropdown&#39;,
               },
-            }}
-            name=&quot;what&quot; /&gt;
+            }} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -36102,7 +36169,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I have multiple select options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;multi-dropdown&quot;
+            name=&quot;multi-dropdown&quot;
             options={[
               {
                 label: &#39;Select Me&#39;,
@@ -36120,7 +36188,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;multi-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             multiple /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -36135,12 +36203,13 @@ export const zIndexOnMenu: Story = {
               <pre><code>const FormGroupSelectDropdown = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;big-label&quot; isSoloField label=&quot;i am big label&quot; labelSize=&quot;large&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;big-label&quot;
+            name=&quot;big-label&quot;
             options={[&#39;hello&#39;, &#39;hi&#39;, &#39;howdy&#39;]}
             disabled={false}
             isSearchable={false}
             value=&quot;oh no&quot;
-            name=&quot;big-label&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -36159,12 +36228,13 @@ export const zIndexOnMenu: Story = {
         label=&quot;i am ~styled... but something is wrong&quot;&gt;
         &lt;SelectDropdown
             error
-            htmlFor=&quot;example-select&quot;
+            id=&quot;error-example-unique&quot;
+            name=&quot;error-example-unique&quot;
             options={[&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;]}
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;error-example-unique&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;cry cry cry&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -36182,7 +36252,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Abbreviated Input Display&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;abbreviated-dropdown&quot;
+            name=&quot;abbreviated-dropdown&quot;
             options={[
               {
                 label: &#39;United States of America&#39;,
@@ -36213,7 +36284,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;abbreviated-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Input shows &quot;USA&quot; but dropdown shows &quot;United States of
                 America&quot;
@@ -36230,7 +36301,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const IndependentWidths = () =&gt; &lt;Box height=&quot;20rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;width-dropdown&quot; isSoloField label=&quot;Independent Width Control&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;width-dropdown&quot;
+            name=&quot;width-dropdown&quot;
             options={[
               {
                 label: &#39;Machine Learning Engineer&#39;,
@@ -36260,7 +36332,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;width-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;350px&quot;
             placeholder=&quot;Select a role&quot; /&gt;
@@ -36282,7 +36354,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;small-abbreviated-dropdown&quot;
+            name=&quot;small-abbreviated-dropdown&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -36313,7 +36386,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;small-abbreviated-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             size=&quot;small&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;200px&quot;
@@ -36337,7 +36410,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Complex Options with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;complex-abbreviated-dropdown&quot;
+            name=&quot;complex-abbreviated-dropdown&quot;
             options={[
               {
                 label: &#39;Senior Software Engineer&#39;,
@@ -36371,7 +36445,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;complex-abbreviated-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;400px&quot;
             placeholder=&quot;Select seniority level&quot; /&gt;
@@ -36393,7 +36467,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Abbreviated with Additional Details&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;abbreviated-detailed&quot;
+            name=&quot;abbreviated-detailed&quot;
             options={[
               {
                 label: &#39;Senior Software Engineer&#39;,
@@ -36420,7 +36495,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;abbreviated-detailed&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -36437,7 +36512,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;abbreviated-small&quot;
+            name=&quot;abbreviated-small&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -36463,7 +36539,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;abbreviated-small&quot;
+            aria-label=&quot;Select an option&quot;
             size=&quot;small&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;200px&quot; /&gt;
@@ -36484,7 +36560,8 @@ export const zIndexOnMenu: Story = {
         label=&quot;Menu Alignment: Right&quot;
         width=&quot;150px&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;menu-alignment-right&quot;
+            name=&quot;menu-alignment-right&quot;
             options={[
               {
                 label: &#39;Frontend Developer&#39;,
@@ -36508,7 +36585,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;menu-alignment-right&quot;
+            aria-label=&quot;Select an option&quot;
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;300px&quot;
             menuAlignment=&quot;right&quot;
@@ -36527,11 +36604,12 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const DisabledMultiValue = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup
-        htmlFor=&quot;abbreviated-small&quot;
+        htmlFor=&quot;disabled-small-multi&quot;
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;disabled-small-multi&quot;
+            name=&quot;disabled-small-multi&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -36557,7 +36635,7 @@ export const zIndexOnMenu: Story = {
             disabled
             isSearchable={false}
             value={[&#39;python&#39;, &#39;java&#39;]}
-            name=&quot;disabled-small-multi&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;Long truncated placeholder&quot;
             size=&quot;small&quot;
             inputWidth=&quot;100px&quot;
@@ -36579,7 +36657,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;long-placeholder&quot;
+            name=&quot;long-placeholder&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -36605,7 +36684,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;long-placeholder&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;Long truncated placeholder&quot;
             size=&quot;small&quot;
             inputWidth=&quot;300px&quot;
@@ -36628,7 +36707,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;long-placeholder-again&quot;
+            name=&quot;long-placeholder-again&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -36654,7 +36734,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;long-placeholder-again&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;Long truncated placeholder&quot;
             size=&quot;small&quot;
             inputWidth=&quot;400px&quot;
@@ -36679,6 +36759,7 @@ export const zIndexOnMenu: Story = {
             isSoloField
             label=&quot;This menu is rendered behind the header&quot;&gt;
             &lt;SelectDropdown
+                id=&quot;usesDefaultZIndex&quot;
                 name=&quot;usesDefaultZIndex&quot;
                 options={fruitOptions}
                 placeholder=&quot;Uses the default zIndex of 2&quot; /&gt;
@@ -36688,6 +36769,7 @@ export const zIndexOnMenu: Story = {
             isSoloField
             label=&quot;This menu floats above the table&#39;s header&quot;&gt;
             &lt;SelectDropdown
+                id=&quot;hasSetZIndex&quot;
                 name=&quot;hasSetZIndex&quot;
                 options={fruitOptions}
                 placeholder=&quot;Has a zIndex of 5&quot;
@@ -36951,7 +37033,7 @@ In the example below, the z-index menu is configured to the default value (`auto
 
 ### FormGroup + SelectDropdown
 
-`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
+`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an `htmlFor` to the `FormGroup` and an `id` to the `SelectDropdown` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
 
 &lt;Canvas of={SelectDropdownStories.FormGroupSelectDropdown} /&gt;
 &lt;Canvas of={SelectDropdownStories.FormGroupError} /&gt;
@@ -38254,8 +38336,7 @@ export const Controlled = () =&gt; {
       &lt;Background bg=&quot;yellow&quot; mb={24} p={12}&gt;
         &lt;FormGroup htmlFor=&quot;active-tab&quot; label=&quot;Active Tab&quot;&gt;
           &lt;Input
-            htmlFor=&quot;acrive-tab&quot;
-            label=&quot;Active Tab&quot;
+            htmlFor=&quot;active-tab&quot;
             min={1}
             type=&quot;number&quot;
             value={activeTab}
@@ -38537,8 +38618,7 @@ import {
       &lt;Background bg=&quot;yellow&quot; mb={24} p={12}&gt;
         &lt;FormGroup htmlFor=&quot;active-tab&quot; label=&quot;Active Tab&quot;&gt;
           &lt;Input
-            htmlFor=&quot;acrive-tab&quot;
-            label=&quot;Active Tab&quot;
+            htmlFor=&quot;active-tab&quot;
             min={1}
             type=&quot;number&quot;
             value={activeTab}
@@ -40085,20 +40165,26 @@ If you need the focus indicator of a screenreader to stay on the screen, you can
     | ^
   5 |   component: TextArea,
   6 |   args: {
-  7 |     htmlFor: &#39;example-input&#39;,
+  7 |     id: &#39;example-input&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/TextArea/TextArea.stories.tsx:
-import { TextArea } from &#39;@codecademy/gamut&#39;;
+import { FormGroup, TextArea } from &#39;@codecademy/gamut&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 const meta: Meta&lt;typeof TextArea&gt; = {
   component: TextArea,
   args: {
-    htmlFor: &#39;example-input&#39;,
-    name: &#39;example-input&#39;,
+    id: &#39;example-input&#39;,
     defaultValue: &#39;Some text&#39;,
     rows: 4,
   },
+  decorators: [
+    (Story) =&gt; (
+      &lt;FormGroup htmlFor=&quot;example-input&quot; isSoloField label=&quot;Enter text&quot;&gt;
+        &lt;Story /&gt;
+      &lt;/FormGroup&gt;
+    ),
+  ],
 };
 
 export default meta;
@@ -40149,7 +40235,7 @@ export const Placeholder: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { TextArea } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { FormGroup, TextArea } from "@codecademy/gamut";</code></pre>
               </div>
           
           
@@ -40160,11 +40246,7 @@ export const Placeholder: Story = {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    defaultValue=&quot;Some text&quot;
-    rows={4} /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;TextArea id=&quot;example-input&quot; defaultValue=&quot;Some text&quot; rows={4} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -40173,12 +40255,7 @@ export const Placeholder: Story = {
               </div>
               
               
-              <pre><code>const Disabled = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    defaultValue=&quot;Disabled&quot;
-    rows={4}
-    disabled /&gt;;</code></pre>
+              <pre><code>const Disabled = () =&gt; &lt;TextArea id=&quot;example-input&quot; defaultValue=&quot;Disabled&quot; rows={4} disabled /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -40187,12 +40264,7 @@ export const Placeholder: Story = {
               </div>
               
               
-              <pre><code>const Error = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    defaultValue=&quot;Error&quot;
-    rows={4}
-    error /&gt;;</code></pre>
+              <pre><code>const Error = () =&gt; &lt;TextArea id=&quot;example-input&quot; defaultValue=&quot;Error&quot; rows={4} error /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -40202,8 +40274,7 @@ export const Placeholder: Story = {
               
               
               <pre><code>const Placeholder = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
+    id=&quot;example-input&quot;
     defaultValue={undefined}
     rows={4}
     placeholder=&quot;Placeholder&quot; /&gt;;</code></pre>
@@ -40751,20 +40822,21 @@ When writing copy for a toast, Keep it brief, ensure the message is personal and
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;Toaster&quot; component.
-  26 | ];
-  27 |
-&gt; 28 | const meta: Meta&lt;typeof Toaster&gt; = {
+  27 | ];
+  28 |
+&gt; 29 | const meta: Meta&lt;typeof Toaster&gt; = {
      | ^
-  29 |   component: Toaster,
-  30 |   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
-  31 |   // Will fix this casting when the issue is resolved
+  30 |   component: Toaster,
+  31 |   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
+  32 |   // Will fix this casting when the issue is resolved
 
 ./packages/styleguide/src/lib/Molecules/Toasts/Toaster/Toaster.stories.tsx:
 import { FillButton, GridBox, Toast, Toaster } from &#39;@codecademy/gamut&#39;;
 import { AddIcon, TrashIcon } from &#39;@codecademy/gamut-icons&#39;;
 import { Target } from &#39;@codecademy/gamut-illustrations&#39;;
-import type { Meta } from &#39;@storybook/react&#39;;
-import { ComponentProps, useState } from &#39;react&#39;;
+import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
+import { useState } from &#39;react&#39;;
+import { expect, waitFor } from &#39;storybook/test&#39;;
 
 const exampleToasts = [
   {
@@ -40799,38 +40871,54 @@ const meta: Meta&lt;typeof Toaster&gt; = {
 
 export default meta;
 
-export const Default: React.FC&lt;ComponentProps&lt;typeof Toaster&gt;&gt; = (args) =&gt; {
-  const [toasts, setToasts] = useState(args.toasts || []);
+type Story = StoryObj&lt;typeof meta&gt;;
 
-  const removeToasts = () =&gt; {
-    setToasts([]);
-  };
+export const Default: Story = {
+  parameters: {
+    interactions: {
+      disable: false,
+    },
+  },
+  render: function DefaultStory(args) {
+    const [toasts, setToasts] = useState(args.toasts || []);
 
-  const addToasts = () =&gt; {
-    if (!toasts.length) {
-      setTimeout(() =&gt; setToasts(args.toasts || []), 1000);
-    }
-  };
+    const removeToasts = () =&gt; {
+      setToasts([]);
+    };
 
-  const removeOne = (id: string) =&gt; {
-    const filteredToasts = toasts.filter((toast) =&gt; toast.id !== id);
+    const addToasts = () =&gt; {
+      if (!toasts.length) {
+        setTimeout(() =&gt; setToasts(args.toasts || []), 1000);
+      }
+    };
 
-    setToasts(filteredToasts);
-  };
+    const removeOne = (id: string) =&gt; {
+      const filteredToasts = toasts.filter((toast) =&gt; toast.id !== id);
 
-  return (
-    &lt;&gt;
-      &lt;GridBox width={300}&gt;
-        &lt;FillButton icon={TrashIcon} mb={24} onClick={removeToasts}&gt;
-          Click me to remove all the Toasts
-        &lt;/FillButton&gt;
-        &lt;FillButton icon={AddIcon} onClick={addToasts}&gt;
-          Click me to reveal all the Toasts
-        &lt;/FillButton&gt;
-      &lt;/GridBox&gt;
-      &lt;Toaster {...args} toasts={toasts} onClose={removeOne} /&gt;
-    &lt;/&gt;
-  );
+      setToasts(filteredToasts);
+    };
+
+    return (
+      &lt;&gt;
+        &lt;GridBox width={300}&gt;
+          &lt;FillButton icon={TrashIcon} mb={24} onClick={removeToasts}&gt;
+            Click me to remove all the Toasts
+          &lt;/FillButton&gt;
+          &lt;FillButton icon={AddIcon} onClick={addToasts}&gt;
+            Click me to reveal all the Toasts
+          &lt;/FillButton&gt;
+        &lt;/GridBox&gt;
+        &lt;Toaster {...args} toasts={toasts} onClose={removeOne} /&gt;
+      &lt;/&gt;
+    );
+  },
+  play: async () =&gt; {
+    await waitFor(async () =&gt; {
+      await expect(
+        document.body.querySelectorAll(&#39;[role=&quot;status&quot;]&#39;).length
+      ).toEqual(4);
+    });
+  },
 };
 </code></pre></div>
     </div>
@@ -40887,9 +40975,9 @@ import { Target } from "@codecademy/gamut-illustrations";</code></pre>
     return &lt;&gt;
         &lt;GridBox width={300}&gt;
             &lt;FillButton icon={TrashIcon} mb={24} onClick={removeToasts}&gt;Click me to remove all the Toasts
-                        &lt;/FillButton&gt;
+                          &lt;/FillButton&gt;
             &lt;FillButton icon={AddIcon} onClick={addToasts}&gt;Click me to reveal all the Toasts
-                        &lt;/FillButton&gt;
+                          &lt;/FillButton&gt;
         &lt;/GridBox&gt;
         &lt;Toaster toasts={toasts} onClose={removeOne} /&gt;
     &lt;/&gt;;
@@ -40989,8 +41077,8 @@ Use Toaster as a container to display multiple Toasts.
 &gt; 6 | const meta: Meta&lt;typeof Toggle&gt; = {
     | ^
   7 |   component: Toggle,
-  8 |   args: {},
-  9 | };
+  8 |   args: {
+  9 |     label: &#39;Toggle me&#39;,
 
 ./packages/styleguide/src/lib/Atoms/Toggle/Toggle.stories.tsx:
 import { Text, Toggle } from &#39;@codecademy/gamut&#39;;
@@ -41000,7 +41088,9 @@ import { expect } from &#39;storybook/test&#39;;
 
 const meta: Meta&lt;typeof Toggle&gt; = {
   component: Toggle,
-  args: {},
+  args: {
+    label: &#39;Toggle me&#39;,
+  },
 };
 
 export default meta;
@@ -41153,7 +41243,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;Toggle /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -41162,7 +41252,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Medium = () =&gt; &lt;Toggle size=&quot;medium&quot; /&gt;;</code></pre>
+              <pre><code>const Medium = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; size=&quot;medium&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -41171,7 +41261,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Small = () =&gt; &lt;Toggle size=&quot;small&quot; /&gt;;</code></pre>
+              <pre><code>const Small = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; size=&quot;small&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -41180,7 +41270,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Disabled = () =&gt; &lt;Toggle disabled /&gt;;</code></pre>
+              <pre><code>const Disabled = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; disabled /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -41189,7 +41279,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const DisabledChecked = () =&gt; &lt;Toggle disabled checked /&gt;;</code></pre>
+              <pre><code>const DisabledChecked = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; disabled checked /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -41217,8 +41307,8 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               
               
               <pre><code>const ReactComponentLabel = () =&gt; &lt;Toggle
-    checked={false}
     label={&lt;Text&gt;I am a Text component&lt;/Text&gt;}
+    checked={false}
     ariaLabel=&quot;Hello there&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -41238,9 +41328,9 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               
               
               <pre><code>const ButtonElement = () =&gt; &lt;Toggle
+    label=&quot;button toggle&quot;
     as=&quot;button&quot;
     checked
-    label=&quot;button toggle&quot;
     onChange={undefined}
     onClick={() =&gt; null} /&gt;;</code></pre>
             </div>
@@ -43410,7 +43500,7 @@ export const Custom: Story = {
         variant=&quot;custom&quot;
         {...args}
       /&gt;
-      &lt;Badge bg=&quot;green&quot; variant=&quot;custom&quot; {...args} /&gt;
+      &lt;Badge bg=&quot;green-400&quot; variant=&quot;custom&quot; {...args} /&gt;
       &lt;Badge bg=&quot;orange-500&quot; variant=&quot;custom&quot; {...args} /&gt;
       &lt;Badge
         bg=&quot;lightBlue&quot;
@@ -43535,7 +43625,7 @@ export const SmallSizeWithIcon: Story = {
     &lt;Badge
         background=&quot;linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)&quot;
         variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
-    &lt;Badge bg=&quot;green&quot; variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
+    &lt;Badge bg=&quot;green-400&quot; variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
     &lt;Badge bg=&quot;orange-500&quot; variant=&quot;custom&quot;&gt;Badge&lt;/Badge&gt;
     &lt;Badge bg=&quot;lightBlue&quot; variant=&quot;custom&quot; icon={icons.MiniStarIcon}&gt;Badge&lt;/Badge&gt;
 &lt;/FlexBox&gt;;</code></pre>
@@ -45652,6 +45742,7 @@ export const OverflowXExample: Story = {
       bg=&quot;background-selected&quot;
       overflowX=&quot;scroll&quot;
       p={16}
+      tabIndex={0}
       whiteSpace=&quot;nowrap&quot;
       width=&quot;200px&quot;
     &gt;
@@ -45671,7 +45762,13 @@ export const OverflowXExample: Story = {
 
 export const OverflowYExample: Story = {
   render: () =&gt; (
-    &lt;Box bg=&quot;background-selected&quot; height=&quot;100px&quot; overflowY=&quot;scroll&quot; p={16}&gt;
+    &lt;Box
+      bg=&quot;background-selected&quot;
+      height=&quot;100px&quot;
+      overflowY=&quot;scroll&quot;
+      p={16}
+      tabIndex={0}
+    &gt;
       &lt;Box bg=&quot;primary&quot; color=&quot;background-contrast&quot; p={8}&gt;
         This content is taller than its container and has{&#39; &#39;}
         &lt;Markdown text=&quot;`overflowY=&#39;scroll&#39;`.&quot; /&gt; Inspect the example to see
@@ -45757,6 +45854,7 @@ export const DirectionExample: Story = {
     bg=&quot;background-selected&quot;
     overflowX=&quot;scroll&quot;
     p={16}
+    tabIndex={0}
     whiteSpace=&quot;nowrap&quot;
     width=&quot;200px&quot;
   &gt;
@@ -45781,7 +45879,13 @@ export const DirectionExample: Story = {
               
               
               <pre><code>const OverflowYExample = () =&gt; (
-  &lt;Box bg=&quot;background-selected&quot; height=&quot;100px&quot; overflowY=&quot;scroll&quot; p={16}&gt;
+  &lt;Box
+    bg=&quot;background-selected&quot;
+    height=&quot;100px&quot;
+    overflowY=&quot;scroll&quot;
+    p={16}
+    tabIndex={0}
+  &gt;
     &lt;Box bg=&quot;primary&quot; color=&quot;background-contrast&quot; p={8}&gt;
       This content is taller than its container and has{&#39; &#39;}
       &lt;Markdown text=&quot;`overflowY=&#39;scroll&#39;`.&quot; /&gt; Inspect the example to see
@@ -48082,7 +48186,7 @@ export const Unchecked: Story = {
     htmlFor: &#39;example-unchecked&#39;,
     label: &#39;unchecked&#39;,
     name: &#39;example-unchecked&#39;,
-    checked: true,
+    checked: false,
   },
 };
 
@@ -48404,7 +48508,7 @@ import { MiniStarIcon } from "@codecademy/gamut-icons";</code></pre>
     htmlFor=&quot;example-unchecked&quot;
     label=&quot;unchecked&quot;
     name=&quot;example-unchecked&quot;
-    checked
+    checked={false}
     readOnly
     onChange={() =&gt; {}} /&gt;;</code></pre>
             </div>
@@ -49482,7 +49586,7 @@ export const Default = () =&gt; {
         inputField: &#39;&#39;,
         radioGroupField: undefined,
         textAreaField: &#39;&#39;,
-        nestedCheckboxesField: [&#39;react&#39;, &#39;typescript&#39;, &#39;backend&#39;],
+        nestedCheckboxesField: [&#39;angular&#39;, &#39;typescript&#39;, &#39;backend&#39;],
       },
       validationRules: {
         checkboxField: { required: &#39;you need to check this.&#39; },
@@ -49742,7 +49846,6 @@ export const CustomFieldValidations = () =&gt; {
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;numberType&#39;,
           options: [&#39;even&#39;, &#39;odd&#39;],
         }}
         label=&quot;Number type&quot;
@@ -49751,7 +49854,6 @@ export const CustomFieldValidations = () =&gt; {
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;number&#39;,
           options: numbers,
           customValidations: {
             validate: (value: string) =&gt; {
@@ -49813,7 +49915,7 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
         inputField: &#39;&#39;,
         radioGroupField: undefined,
         textAreaField: &#39;&#39;,
-        nestedCheckboxesField: [&#39;react&#39;, &#39;typescript&#39;, &#39;backend&#39;],
+        nestedCheckboxesField: [&#39;angular&#39;, &#39;typescript&#39;, &#39;backend&#39;],
       },
       validationRules: {
         checkboxField: { required: &#39;you need to check this.&#39; },
@@ -50085,7 +50187,6 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;numberType&#39;,
           options: [&#39;even&#39;, &#39;odd&#39;],
         }}
         label=&quot;Number type&quot;
@@ -50094,7 +50195,6 @@ import { MiniArrowRightIcon } from "@codecademy/gamut-icons";</code></pre>
       &lt;ConnectedFormGroup
         field={{
           component: ConnectedSelect,
-          id: &#39;number&#39;,
           options: numbers,
           customValidations: {
             validate: (value: string) =&gt; {
@@ -50441,7 +50541,7 @@ export const States = () =&gt; {
 export const InfoTipAutoLabelling: Story = {
   render: () =&gt; (
     &lt;ConnectedForm
-      defaultValues={{ email: &#39;&#39; }}
+      defaultValues={{ emailInput: &#39;&#39; }}
       onSubmit={(values) =&gt; action(&#39;Form Submitted&#39;)(values)}
     &gt;
       &lt;ConnectedFormGroup
@@ -50451,7 +50551,7 @@ export const InfoTipAutoLabelling: Story = {
           placement: &#39;floating&#39;,
         }}
         label=&quot;Email address&quot;
-        name=&quot;email&quot;
+        name=&quot;emailInput&quot;
       /&gt;
     &lt;/ConnectedForm&gt;
   ),
@@ -50642,7 +50742,7 @@ export const InfoTipWithReactNodeLabel: Story = {
               
               <pre><code>const InfoTipAutoLabelling = () =&gt; (
   &lt;ConnectedForm
-    defaultValues={{ email: &#39;&#39; }}
+    defaultValues={{ emailInput: &#39;&#39; }}
     onSubmit={(values) =&gt; action(&#39;Form Submitted&#39;)(values)}
   &gt;
     &lt;ConnectedFormGroup
@@ -50652,7 +50752,7 @@ export const InfoTipWithReactNodeLabel: Story = {
         placement: &#39;floating&#39;,
       }}
       label=&quot;Email address&quot;
-      name=&quot;email&quot;
+      name=&quot;emailInput&quot;
     /&gt;
   &lt;/ConnectedForm&gt;
 );</code></pre>
@@ -59411,28 +59511,23 @@ export const Default: Story = {
   },
 };
 
-const FormGroupHtmlForExample = () =&gt; {
-  return (
-    &lt;FormGroup htmlFor=&quot;example1&quot; label=&quot;I am a label!!&quot;&gt;
-      &lt;Input htmlFor=&quot;example1&quot; /&gt;
-    &lt;/FormGroup&gt;
-  );
-};
-
 export const FormGroupHtmlFor: Story = {
-  render: () =&gt; &lt;FormGroupHtmlForExample /&gt;,
-};
-
-const FormGroupDivExample = () =&gt; {
-  return (
-    &lt;FormGroup label=&quot;I look like a label, but I&#39;m actually a div...&quot;&gt;
-      &lt;Input defaultValue=&quot;😔&quot; /&gt;
+  render: () =&gt; (
+    &lt;FormGroup htmlFor=&quot;example1&quot; label=&quot;I am a label!!&quot;&gt;
+      &lt;Input id=&quot;example1&quot; /&gt;
     &lt;/FormGroup&gt;
-  );
+  ),
 };
 
 export const FormGroupDiv: Story = {
-  render: () =&gt; &lt;FormGroupDivExample /&gt;,
+  render: () =&gt; (
+    &lt;FormGroup
+      id=&quot;div-form-group&quot;
+      label=&quot;I look like a label, but I&#39;m actually a div...&quot;
+    &gt;
+      &lt;Input aria-labelledby=&quot;div-form-group&quot; defaultValue=&quot;😔&quot; /&gt;
+    &lt;/FormGroup&gt;
+  ),
 };
 
 export const DefaultState: Story = {
@@ -59441,7 +59536,7 @@ export const DefaultState: Story = {
     required: true,
     description: &#39;You can tell by the asterisk.&#39;,
     htmlFor: &#39;required1&#39;,
-    children: &lt;Input htmlFor=&quot;required1&quot; /&gt;,
+    children: &lt;Input id=&quot;required1&quot; /&gt;,
   },
 };
 
@@ -59452,7 +59547,7 @@ export const Error: Story = {
     description: &#39;You can tell by the asterisk.&#39;,
     error: &#39;You messed up dude.&#39;,
     htmlFor: &#39;required-error&#39;,
-    children: &lt;Input defaultValue=&quot;&gt;_&gt;&quot; error htmlFor=&quot;required-error&quot; /&gt;,
+    children: &lt;Input defaultValue=&quot;&gt;_&gt;&quot; error id=&quot;required-error&quot; /&gt;,
   },
 };
 
@@ -59461,35 +59556,37 @@ export const Valid: Story = {
     required: true,
     label: &#39;I am also required!!&#39;,
     htmlFor: &#39;required-valid&#39;,
-    children: &lt;Input defaultValue=&quot;Good job!&quot; htmlFor=&quot;required-valid&quot; valid /&gt;,
+    children: &lt;Input defaultValue=&quot;Good job!&quot; id=&quot;required-valid&quot; valid /&gt;,
   },
 };
 
 export const LowEmphasisInfoTip: Story = {
   args: {
     label: &#39;Low emphasis&#39;,
+    htmlFor: &#39;low-emphasis-input&#39;,
     infotip: {
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
     },
-    children: &lt;Input /&gt;,
+    children: &lt;Input id=&quot;low-emphasis-input&quot; /&gt;,
   },
 };
 
 export const HighEmphasisInfoTip: Story = {
   args: {
     label: &#39;High emphasis&#39;,
+    htmlFor: &#39;high-emphasis-input&#39;,
     infotip: {
       emphasis: &#39;high&#39;,
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
     },
-    children: &lt;Input /&gt;,
+    children: &lt;Input id=&quot;high-emphasis-input&quot; /&gt;,
   },
 };
 
-const InfoTipLabellingExamples = () =&gt; {
-  return (
+export const InfoTipAutoLabelling: Story = {
+  render: () =&gt; (
     &lt;Box display=&quot;flex&quot; flexDirection=&quot;column&quot; gap={32}&gt;
       &lt;FormGroup
         htmlFor=&quot;auto-label-input&quot;
@@ -59498,7 +59595,7 @@ const InfoTipLabellingExamples = () =&gt; {
         }}
         label=&quot;Auto-labelling (default)&quot;
       &gt;
-        &lt;Input htmlFor=&quot;auto-label-input&quot; type=&quot;email&quot; /&gt;
+        &lt;Input id=&quot;auto-label-input&quot; type=&quot;email&quot; /&gt;
       &lt;/FormGroup&gt;
 
       &lt;FormGroup
@@ -59509,7 +59606,7 @@ const InfoTipLabellingExamples = () =&gt; {
         }}
         label=&quot;With ariaLabel&quot;
       &gt;
-        &lt;Input htmlFor=&quot;aria-label-input&quot; type=&quot;email&quot; /&gt;
+        &lt;Input id=&quot;aria-label-input&quot; type=&quot;email&quot; /&gt;
       &lt;/FormGroup&gt;
 
       &lt;FormGroup
@@ -59521,14 +59618,10 @@ const InfoTipLabellingExamples = () =&gt; {
         label=&quot;With ariaLabelledBy&quot;
       &gt;
         &lt;span id=&quot;custom-label-id&quot;&gt;Custom label for InfoTip button&lt;/span&gt;
-        &lt;Input htmlFor=&quot;aria-labelledby-input&quot; type=&quot;email&quot; /&gt;
+        &lt;Input id=&quot;aria-labelledby-input&quot; type=&quot;email&quot; /&gt;
       &lt;/FormGroup&gt;
     &lt;/Box&gt;
-  );
-};
-
-export const InfoTipAutoLabelling: Story = {
-  render: () =&gt; &lt;InfoTipLabellingExamples /&gt;,
+  ),
 };
 </code></pre></div>
     </div>
@@ -59573,7 +59666,11 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const FormGroupHtmlFor = () =&gt; &lt;FormGroupHtmlForExample /&gt;;</code></pre>
+              <pre><code>const FormGroupHtmlFor = () =&gt; (
+  &lt;FormGroup htmlFor=&quot;example1&quot; label=&quot;I am a label!!&quot;&gt;
+    &lt;Input id=&quot;example1&quot; /&gt;
+  &lt;/FormGroup&gt;
+);</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59582,7 +59679,14 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const FormGroupDiv = () =&gt; &lt;FormGroupDivExample /&gt;;</code></pre>
+              <pre><code>const FormGroupDiv = () =&gt; (
+  &lt;FormGroup
+    id=&quot;div-form-group&quot;
+    label=&quot;I look like a label, but I&#39;m actually a div...&quot;
+  &gt;
+    &lt;Input aria-labelledby=&quot;div-form-group&quot; defaultValue=&quot;😔&quot; /&gt;
+  &lt;/FormGroup&gt;
+);</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59595,7 +59699,7 @@ export const InfoTipAutoLabelling: Story = {
     label=&quot;I am required!!&quot;
     required
     description=&quot;You can tell by the asterisk.&quot;
-    htmlFor=&quot;required1&quot;&gt;&lt;Input htmlFor=&quot;required1&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
+    htmlFor=&quot;required1&quot;&gt;&lt;Input id=&quot;required1&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59609,7 +59713,7 @@ export const InfoTipAutoLabelling: Story = {
     label=&quot;I am also required!!&quot;
     description=&quot;You can tell by the asterisk.&quot;
     error=&quot;You messed up dude.&quot;
-    htmlFor=&quot;required-error&quot;&gt;&lt;Input defaultValue=&quot;&gt;_&gt;&quot; error htmlFor=&quot;required-error&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
+    htmlFor=&quot;required-error&quot;&gt;&lt;Input defaultValue=&quot;&gt;_&gt;&quot; error id=&quot;required-error&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59618,7 +59722,7 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const Valid = () =&gt; &lt;FormGroup required label=&quot;I am also required!!&quot; htmlFor=&quot;required-valid&quot;&gt;&lt;Input defaultValue=&quot;Good job!&quot; htmlFor=&quot;required-valid&quot; valid /&gt;&lt;/FormGroup&gt;;</code></pre>
+              <pre><code>const Valid = () =&gt; &lt;FormGroup required label=&quot;I am also required!!&quot; htmlFor=&quot;required-valid&quot;&gt;&lt;Input defaultValue=&quot;Good job!&quot; id=&quot;required-valid&quot; valid /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59629,10 +59733,11 @@ export const InfoTipAutoLabelling: Story = {
               
               <pre><code>const LowEmphasisInfoTip = () =&gt; &lt;FormGroup
     label=&quot;Low emphasis&quot;
+    htmlFor=&quot;low-emphasis-input&quot;
     infotip={{
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
-    }}&gt;&lt;Input /&gt;&lt;/FormGroup&gt;;</code></pre>
+    }}&gt;&lt;Input id=&quot;low-emphasis-input&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59643,11 +59748,12 @@ export const InfoTipAutoLabelling: Story = {
               
               <pre><code>const HighEmphasisInfoTip = () =&gt; &lt;FormGroup
     label=&quot;High emphasis&quot;
+    htmlFor=&quot;high-emphasis-input&quot;
     infotip={{
       emphasis: &#39;high&#39;,
       alignment: &#39;bottom-left&#39;,
       info: &#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&#39;,
-    }}&gt;&lt;Input /&gt;&lt;/FormGroup&gt;;</code></pre>
+    }}&gt;&lt;Input id=&quot;high-emphasis-input&quot; /&gt;&lt;/FormGroup&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -59656,7 +59762,42 @@ export const InfoTipAutoLabelling: Story = {
               </div>
               
               
-              <pre><code>const InfoTipAutoLabelling = () =&gt; &lt;InfoTipLabellingExamples /&gt;;</code></pre>
+              <pre><code>const InfoTipAutoLabelling = () =&gt; (
+  &lt;Box display=&quot;flex&quot; flexDirection=&quot;column&quot; gap={32}&gt;
+    &lt;FormGroup
+      htmlFor=&quot;auto-label-input&quot;
+      infotip={{
+        info: &#39;We will never share your email with third parties.&#39;,
+      }}
+      label=&quot;Auto-labelling (default)&quot;
+    &gt;
+      &lt;Input id=&quot;auto-label-input&quot; type=&quot;email&quot; /&gt;
+    &lt;/FormGroup&gt;
+
+    &lt;FormGroup
+      htmlFor=&quot;aria-label-input&quot;
+      infotip={{
+        ariaLabel: &#39;Email privacy information&#39;,
+        info: &#39;We will never share your email with third parties.&#39;,
+      }}
+      label=&quot;With ariaLabel&quot;
+    &gt;
+      &lt;Input id=&quot;aria-label-input&quot; type=&quot;email&quot; /&gt;
+    &lt;/FormGroup&gt;
+
+    &lt;FormGroup
+      htmlFor=&quot;aria-labelledby-input&quot;
+      infotip={{
+        ariaLabelledby: &#39;custom-label-id&#39;,
+        info: &#39;We will never share your email with third parties.&#39;,
+      }}
+      label=&quot;With ariaLabelledBy&quot;
+    &gt;
+      &lt;span id=&quot;custom-label-id&quot;&gt;Custom label for InfoTip button&lt;/span&gt;
+      &lt;Input id=&quot;aria-labelledby-input&quot; type=&quot;email&quot; /&gt;
+    &lt;/FormGroup&gt;
+  &lt;/Box&gt;
+);</code></pre>
             </div>
         </div>
     
@@ -61839,7 +61980,7 @@ export const CustomInputs: Story = {
           &lt;/&gt;
         ),
         label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input&#39;,
+        name: &#39;custom-text-input&#39;,
         size: 12,
         validation: {
           required: true,
@@ -61852,7 +61993,11 @@ export const CustomInputs: Story = {
       },
       {
         render: ({ error, setValue }) =&gt; (
-          &lt;FormGroup label=&quot;updog&quot; width=&quot;100%&quot;&gt;
+          &lt;FormGroup
+            htmlFor=&quot;custom-text-group-input&quot;
+            label=&quot;updog&quot;
+            width=&quot;100%&quot;
+          &gt;
             &lt;Input
               error={!!error}
               id=&quot;custom-text-group-input&quot;
@@ -61862,8 +62007,7 @@ export const CustomInputs: Story = {
           &lt;/FormGroup&gt;
         ),
         size: 12,
-        label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input-group&#39;,
+        name: &#39;custom-group-input&#39;,
         validation: {
           required: true,
           pattern: {
@@ -62388,7 +62532,7 @@ export const InfoTipWithReactNodeLabel: Story = {
           &lt;/&gt;
         ),
         label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input&#39;,
+        name: &#39;custom-text-input&#39;,
         size: 12,
         validation: {
           required: true,
@@ -62401,7 +62545,11 @@ export const InfoTipWithReactNodeLabel: Story = {
       },
       {
         render: ({ error, setValue }) =&gt; (
-          &lt;FormGroup label=&quot;updog&quot; width=&quot;100%&quot;&gt;
+          &lt;FormGroup
+            htmlFor=&quot;custom-text-group-input&quot;
+            label=&quot;updog&quot;
+            width=&quot;100%&quot;
+          &gt;
             &lt;Input
               error={!!error}
               id=&quot;custom-text-group-input&quot;
@@ -62411,8 +62559,7 @@ export const InfoTipWithReactNodeLabel: Story = {
           &lt;/FormGroup&gt;
         ),
         size: 12,
-        label: &#39;Gimme two more swags&#39;,
-        name: &#39;custom-input-group&#39;,
+        name: &#39;custom-group-input&#39;,
         validation: {
           required: true,
           pattern: {
@@ -65397,7 +65544,7 @@ You can change the zIndex of your `InfoTip` with the zIndex property.
     | ^
   6 |   component: Input,
   7 |   args: {
-  8 |     htmlFor: &#39;example-input&#39;,
+  8 |     id: &#39;example-input&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/Input/Input.stories.tsx:
 import { FormGroup, Input } from &#39;@codecademy/gamut&#39;;
@@ -65407,8 +65554,7 @@ import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 const meta: Meta&lt;typeof Input&gt; = {
   component: Input,
   args: {
-    htmlFor: &#39;example-input&#39;,
-    name: &#39;example-input&#39;,
+    id: &#39;example-input&#39;,
     placeholder: &#39;Placeholder&#39;,
     type: &#39;text&#39;,
     size: &#39;base&#39;,
@@ -65431,9 +65577,8 @@ export const Default: Story = {
 
 export const Text: Story = {
   args: {
-    htmlFor: &#39;example-text&#39;,
+    id: &#39;example-text&#39;,
     defaultValue: &#39;Text&#39;,
-    name: &#39;example-text&#39;,
     type: &#39;text&#39;,
     required: true,
   },
@@ -65441,8 +65586,7 @@ export const Text: Story = {
 
 export const Number: Story = {
   args: {
-    htmlFor: &#39;example-number&#39;,
-    name: &#39;example-number&#39;,
+    id: &#39;example-number&#39;,
     type: &#39;number&#39;,
     defaultValue: 1,
   },
@@ -65450,8 +65594,7 @@ export const Number: Story = {
 
 export const File: Story = {
   args: {
-    htmlFor: &#39;example-file&#39;,
-    name: &#39;example-file&#39;,
+    id: &#39;example-file&#39;,
     type: &#39;file&#39;,
     value: &#39;&#39;,
     onChange: () =&gt; {},
@@ -65460,17 +65603,15 @@ export const File: Story = {
 
 export const Error: Story = {
   args: {
-    htmlFor: &#39;example-error&#39;,
+    id: &#39;example-error&#39;,
     defaultValue: &#39;Error&#39;,
-    name: &#39;example-error&#39;,
     error: true,
   },
 };
 
 export const Validated: Story = {
   args: {
-    htmlFor: &#39;example-valid&#39;,
-    name: &#39;example-placeholder&#39;,
+    id: &#39;example-valid&#39;,
     placeholder: &#39;Placeholder&#39;,
     defaultValue: &#39;Verified Text&#39;,
     valid: true,
@@ -65479,8 +65620,7 @@ export const Validated: Story = {
 
 export const Placeholder: Story = {
   args: {
-    htmlFor: &#39;example-placeholder&#39;,
-    name: &#39;example-placeholder&#39;,
+    id: &#39;example-placeholder&#39;,
     placeholder: &#39;Placeholder&#39;,
     defaultValue: undefined,
   },
@@ -65488,8 +65628,7 @@ export const Placeholder: Story = {
 
 export const Disabled: Story = {
   args: {
-    htmlFor: &#39;example-disabled&#39;,
-    name: &#39;example-disabled&#39;,
+    id: &#39;example-disabled&#39;,
     placeholder: &#39;Disabled&#39;,
     disabled: true,
     defaultValue: undefined,
@@ -65498,8 +65637,7 @@ export const Disabled: Story = {
 
 export const CustomIcon: Story = {
   args: {
-    htmlFor: &#39;example-icon&#39;,
-    name: &#39;example-icon&#39;,
+    id: &#39;example-icon&#39;,
     defaultValue: &#39;Hello...&#39;,
     icon: icons.ViewIcon,
   },
@@ -65508,10 +65646,10 @@ export const CustomIcon: Story = {
 export const FormGroupDefault: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
   },
   render: (args) =&gt; (
-    &lt;FormGroup htmlFor=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
+    &lt;FormGroup id=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
       &lt;Input {...args} /&gt;
     &lt;/FormGroup&gt;
   ),
@@ -65520,7 +65658,7 @@ export const FormGroupDefault: Story = {
 export const FormGroupError: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
     error: true,
   },
   render: (args) =&gt; (
@@ -65538,7 +65676,7 @@ export const FormGroupError: Story = {
 export const FormGroupLarge: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
     placeholder: &#39;Placeholder&#39;,
   },
   render: (args) =&gt; (
@@ -65557,7 +65695,7 @@ export const FormGroupLarge: Story = {
 export const FormGroupErrorLarge: Story = {
   args: {
     defaultValue: &#39;123&#39;,
-    name: &#39;example-123&#39;,
+    id: &#39;example-123&#39;,
     error: true,
   },
   render: (args) =&gt; (
@@ -65575,9 +65713,8 @@ export const FormGroupErrorLarge: Story = {
 
 export const TextSmall: Story = {
   args: {
-    htmlFor: &#39;example-text&#39;,
+    id: &#39;example-text&#39;,
     defaultValue: &#39;This input has less padding!&#39;,
-    name: &#39;example-text&#39;,
     type: &#39;text&#39;,
     required: true,
     size: &#39;small&#39;,
@@ -65586,9 +65723,8 @@ export const TextSmall: Story = {
 
 export const TextSmallError: Story = {
   args: {
-    htmlFor: &#39;example-text&#39;,
+    id: &#39;example-text&#39;,
     defaultValue: &#39;Still works like a charm!&#39;,
-    name: &#39;example-text&#39;,
     type: &#39;text&#39;,
     required: true,
     size: &#39;small&#39;,
@@ -65598,8 +65734,7 @@ export const TextSmallError: Story = {
 
 export const NumberSmall: Story = {
   args: {
-    htmlFor: &#39;example-number&#39;,
-    name: &#39;example-number&#39;,
+    id: &#39;example-number&#39;,
     type: &#39;number&#39;,
     defaultValue: 1,
     size: &#39;small&#39;,
@@ -65609,8 +65744,7 @@ export const NumberSmall: Story = {
 
 export const FileSmall: Story = {
   args: {
-    htmlFor: &#39;example-file&#39;,
-    name: &#39;example-file&#39;,
+    id: &#39;example-file&#39;,
     type: &#39;file&#39;,
     value: &#39;&#39;,
     onChange: () =&gt; {},
@@ -65621,8 +65755,7 @@ export const FileSmall: Story = {
 
 export const DisabledSmall: Story = {
   args: {
-    htmlFor: &#39;example-disabled&#39;,
-    name: &#39;example-disabled&#39;,
+    id: &#39;example-disabled&#39;,
     placeholder: &#39;Disabled&#39;,
     disabled: true,
     defaultValue: undefined,
@@ -65661,12 +65794,7 @@ export const DisabledSmall: Story = {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;Input
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    placeholder=&quot;Placeholder&quot;
-    type=&quot;text&quot;
-    size=&quot;base&quot; /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;Input id=&quot;example-input&quot; placeholder=&quot;Placeholder&quot; type=&quot;text&quot; size=&quot;base&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -65676,8 +65804,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Text = () =&gt; &lt;Input
-    htmlFor=&quot;example-text&quot;
-    name=&quot;example-text&quot;
+    id=&quot;example-text&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -65692,8 +65819,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Number = () =&gt; &lt;Input
-    htmlFor=&quot;example-number&quot;
-    name=&quot;example-number&quot;
+    id=&quot;example-number&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;number&quot;
     size=&quot;base&quot;
@@ -65707,8 +65833,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const File = () =&gt; &lt;Input
-    htmlFor=&quot;example-file&quot;
-    name=&quot;example-file&quot;
+    id=&quot;example-file&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;file&quot;
     size=&quot;base&quot;
@@ -65723,8 +65848,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Error = () =&gt; &lt;Input
-    htmlFor=&quot;example-error&quot;
-    name=&quot;example-error&quot;
+    id=&quot;example-error&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -65739,8 +65863,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Validated = () =&gt; &lt;Input
-    htmlFor=&quot;example-valid&quot;
-    name=&quot;example-placeholder&quot;
+    id=&quot;example-valid&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -65755,8 +65878,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Placeholder = () =&gt; &lt;Input
-    htmlFor=&quot;example-placeholder&quot;
-    name=&quot;example-placeholder&quot;
+    id=&quot;example-placeholder&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -65770,8 +65892,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const Disabled = () =&gt; &lt;Input
-    htmlFor=&quot;example-disabled&quot;
-    name=&quot;example-disabled&quot;
+    id=&quot;example-disabled&quot;
     placeholder=&quot;Disabled&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -65786,8 +65907,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const CustomIcon = () =&gt; &lt;Input
-    htmlFor=&quot;example-icon&quot;
-    name=&quot;example-icon&quot;
+    id=&quot;example-icon&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;base&quot;
@@ -65801,10 +65921,9 @@ export const DisabledSmall: Story = {
               </div>
               
               
-              <pre><code>const FormGroupDefault = () =&gt; &lt;FormGroup htmlFor=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
+              <pre><code>const FormGroupDefault = () =&gt; &lt;FormGroup id=&quot;example-123&quot; isSoloField label=&quot;i am a smol label&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -65824,8 +65943,7 @@ export const DisabledSmall: Story = {
     isSoloField
     label=&quot;i am a smol label&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -65847,8 +65965,7 @@ export const DisabledSmall: Story = {
     label=&quot;i am a large disabled label&quot;
     labelSize=&quot;large&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -65869,8 +65986,7 @@ export const DisabledSmall: Story = {
     label=&quot;i am also large label, but something is wrong.&quot;
     labelSize=&quot;large&quot;&gt;
     &lt;Input
-        htmlFor=&quot;example-input&quot;
-        name=&quot;example-123&quot;
+        id=&quot;example-123&quot;
         placeholder=&quot;Placeholder&quot;
         type=&quot;text&quot;
         size=&quot;base&quot;
@@ -65886,8 +66002,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const TextSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-text&quot;
-    name=&quot;example-text&quot;
+    id=&quot;example-text&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;small&quot;
@@ -65902,8 +66017,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const TextSmallError = () =&gt; &lt;Input
-    htmlFor=&quot;example-text&quot;
-    name=&quot;example-text&quot;
+    id=&quot;example-text&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;text&quot;
     size=&quot;small&quot;
@@ -65919,8 +66033,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const NumberSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-number&quot;
-    name=&quot;example-number&quot;
+    id=&quot;example-number&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;number&quot;
     size=&quot;small&quot;
@@ -65935,8 +66048,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const FileSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-file&quot;
-    name=&quot;example-file&quot;
+    id=&quot;example-file&quot;
     placeholder=&quot;Placeholder&quot;
     type=&quot;file&quot;
     size=&quot;small&quot;
@@ -65952,8 +66064,7 @@ export const DisabledSmall: Story = {
               
               
               <pre><code>const DisabledSmall = () =&gt; &lt;Input
-    htmlFor=&quot;example-disabled&quot;
-    name=&quot;example-disabled&quot;
+    id=&quot;example-disabled&quot;
     placeholder=&quot;Disabled&quot;
     type=&quot;text&quot;
     size=&quot;small&quot;
@@ -66042,7 +66153,7 @@ You can use a custom icon (from gamut-icons) in your Input elements. The error a
 
 ## FormGroup + Input
 
-`Input` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Input` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
+`Input` formats nicely in FormGroups and reflects error states. Make sure you provide an `htmlFor` to the `FormGroup` and an `id` to the `Input` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
 
 &lt;Canvas of={InputStories.FormGroupDefault} /&gt;
 &lt;Canvas of={InputStories.FormGroupError} /&gt;
@@ -74273,6 +74384,7 @@ const AvatarExample = () =&gt; {
   return (
     &lt;FlexBox center mt={16} py={96}&gt;
       &lt;PreviewTip
+        aria-label=&quot;sanrio unmotivated gudetama&quot;
         avatar={
           &lt;Box bg=&quot;navy&quot; borderRadius=&quot;full&quot; height=&quot;100%&quot; width=&quot;100%&quot;&gt;
             &lt;SmileyIndifferentIcon color=&quot;yellow&quot; size=&quot;100%&quot; /&gt;
@@ -75635,7 +75747,10 @@ export const Default: React.FC&lt;ComponentProps&lt;typeof Rotation&gt;&gt; = (a
   }, [args.rotated]);
 
   return (
-    &lt;StrokeButton onClick={() =&gt; setRotated(!isRotated)}&gt;
+    &lt;StrokeButton
+      aria-label=&quot;Toggle rotation demo&quot;
+      onClick={() =&gt; setRotated(!isRotated)}
+    &gt;
       &lt;Rotation {...args} rotated={isRotated}&gt;
         &lt;MiniChevronDownIcon /&gt;
       &lt;/Rotation&gt;
@@ -75683,7 +75798,7 @@ import { Rotation, StrokeButton } from "@codecademy/gamut";</code></pre>
     }, [args.rotated]);
 
     return (
-        &lt;StrokeButton onClick={() =&gt; setRotated(!isRotated)}&gt;
+        &lt;StrokeButton aria-label=&quot;Toggle rotation demo&quot; onClick={() =&gt; setRotated(!isRotated)}&gt;
             &lt;Rotation rotated={isRotated}&gt;
                 &lt;MiniChevronDownIcon /&gt;
             &lt;/Rotation&gt;
@@ -75784,7 +75899,7 @@ One common usage is to set the rotation of an arrow icon to indicate that a comp
     | ^
   7 |   component: Select,
   8 |   args: {
-  9 |     htmlFor: &#39;example-select&#39;,
+  9 |     id: &#39;example-select&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/Select/Select.stories.tsx:
 import { FormGroup, Select } from &#39;@codecademy/gamut&#39;;
@@ -75795,9 +75910,9 @@ const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;
 const meta: Meta&lt;typeof Select&gt; = {
   component: Select,
   args: {
-    htmlFor: &#39;example-select&#39;,
-    name: &#39;example-select&#39;,
+    id: &#39;example-select&#39;,
     options: fruitOptions,
+    &#39;aria-label&#39;: &#39;Select an option&#39;,
   },
   argTypes: {
     value: {
@@ -75850,7 +75965,7 @@ export const FormGroupBase: Story = {
   args: {
     options: [&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;],
     defaultValue: &#39;oh no&#39;,
-    name: &#39;form-group-base&#39;,
+    id: &#39;form-group-base&#39;,
   },
   render: (args) =&gt; (
     &lt;FormGroup
@@ -75870,7 +75985,7 @@ export const FormGroupSmall: Story = {
     options: [&#39;Small&#39;, &#39;Quite little&#39;],
     value: &#39;Small&#39;,
     sizeVariant: &#39;small&#39;,
-    name: &#39;form-group-small&#39;,
+    id: &#39;form-group-small&#39;,
   },
   render: (args) =&gt; (
     &lt;FormGroup
@@ -75914,7 +76029,7 @@ export const FormGroupSmall: Story = {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;Select htmlFor=&quot;example-select&quot; name=&quot;example-select&quot; options={fruitOptions} /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;Select id=&quot;example-select&quot; options={fruitOptions} aria-label=&quot;Select an option&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -75924,9 +76039,9 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Base = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;example-select&quot;
     options={[&#39;Base&#39;, &#39;Regular Size&#39;, &#39;Normal&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Regular Size&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -75937,12 +76052,11 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Small = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;small-variant&quot;
     options={[&#39;Small&#39;, &#39;Quite little&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Small&quot;
-    sizeVariant=&quot;small&quot;
-    id=&quot;small-variant&quot; /&gt;;</code></pre>
+    sizeVariant=&quot;small&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -75952,9 +76066,9 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Disabled = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;example-select&quot;
     options={[&#39;Disabled&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Disabled&quot;
     disabled /&gt;;</code></pre>
             </div>
@@ -75966,9 +76080,9 @@ export const FormGroupSmall: Story = {
               
               
               <pre><code>const Error = () =&gt; &lt;Select
-    htmlFor=&quot;example-select&quot;
-    name=&quot;example-select&quot;
+    id=&quot;example-select&quot;
     options={[&#39;Error&#39;]}
+    aria-label=&quot;Select an option&quot;
     defaultValue=&quot;Error&quot;
     error /&gt;;</code></pre>
             </div>
@@ -75987,9 +76101,9 @@ export const FormGroupSmall: Story = {
     labelSize=&quot;large&quot;&gt;
     &lt;Select
         error
-        htmlFor=&quot;example-select&quot;
-        name=&quot;form-group-base&quot;
+        id=&quot;form-group-base&quot;
         options={[&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;]}
+        aria-label=&quot;Select an option&quot;
         defaultValue=&quot;oh no&quot; /&gt;
 &lt;/FormGroup&gt;;</code></pre>
             </div>
@@ -76005,9 +76119,9 @@ export const FormGroupSmall: Story = {
     isSoloField
     label=&quot;i am small and have a label&quot;&gt;
     &lt;Select
-        htmlFor=&quot;example-select&quot;
-        name=&quot;form-group-small&quot;
+        id=&quot;form-group-small&quot;
         options={[&#39;Small&#39;, &#39;Quite little&#39;]}
+        aria-label=&quot;Select an option&quot;
         value=&quot;Small&quot;
         sizeVariant=&quot;small&quot; /&gt;
 &lt;/FormGroup&gt;;</code></pre>
@@ -76075,7 +76189,7 @@ Use Select to handle single selection within a group of options.
 
 ## FormGroup + Select
 
-`Select` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Select` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
+`Select` formats nicely in FormGroups and reflects error states. Make sure you provide an `htmlFor` to the `FormGroup` and an `id` to the `Select` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
 
 &lt;Canvas of={SelectStories.FormGroupBase} /&gt;
 &lt;Canvas of={SelectStories.FormGroupSmall} /&gt;
@@ -76134,7 +76248,7 @@ Use Select to handle single selection within a group of options.
      | ^
   15 |   component: SelectDropdown,
   16 |   args: {
-  17 |     htmlFor: &#39;example-select&#39;,
+  17 |     id: &#39;example-select&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/SelectDropdown/SelectDropdown.stories.tsx:
 import {
@@ -76153,11 +76267,13 @@ const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;
 const meta: Meta&lt;typeof SelectDropdown&gt; = {
   component: SelectDropdown,
   args: {
-    htmlFor: &#39;example-select&#39;,
+    id: &#39;example-select&#39;,
+    name: &#39;example-select&#39;,
     options: fruitOptions,
     disabled: false,
     isSearchable: false,
     value: &#39;&#39;,
+    &#39;aria-label&#39;: &#39;Select an option&#39;,
   },
   argTypes: {
     value: {
@@ -76286,6 +76402,7 @@ export const ShownOptionsDefault: Story = {
       &#39;asdfsadf&#39;,
     ],
     name: &#39;shownOptionsLimit01&#39;,
+    id: &#39;shownOptionsLimit01&#39;,
     placeholder: &#39;six is the magic number&#39;,
   },
   render: (args) =&gt; (
@@ -76316,6 +76433,7 @@ export const ShownOptionsThree: Story = {
       &#39;hi&#39;,
       &#39;asdfsadf&#39;,
     ],
+    id: &#39;shownOptionsLimit02&#39;,
     name: &#39;shownOptionsLimit02&#39;,
     placeholder: &#39;three is the magic number&#39;,
     shownOptionsLimit: 3,
@@ -76335,6 +76453,7 @@ export const ShownOptionsThree: Story = {
 
 export const DisabledOptions: Story = {
   args: {
+    id: &#39;disabled-dropdown&#39;,
     name: &#39;disabled-dropdown&#39;,
     options: [
       {
@@ -76368,6 +76487,7 @@ export const DisabledOptions: Story = {
 
 export const Subtitles: Story = {
   args: {
+    id: &#39;subtitles-dropdown&#39;,
     name: &#39;subtitles-dropdown&#39;,
     options: [
       {
@@ -76403,6 +76523,7 @@ export const Subtitles: Story = {
 
 export const RightLabels: Story = {
   args: {
+    id: &#39;right-labels-dropdown&#39;,
     name: &#39;right-labels-dropdown&#39;,
     options: [
       {
@@ -76438,6 +76559,7 @@ export const RightLabels: Story = {
 
 export const GroupDividers: Story = {
   args: {
+    id: &#39;dividers-dropdown&#39;,
     name: &#39;dividers-dropdown&#39;,
     options: [
       {
@@ -76496,8 +76618,9 @@ export const GroupDividers: Story = {
 
 export const GroupLabels: Story = {
   args: {
-    name: &#39;group-labels-dropdown&#39;,
+    id: &#39;group-labels-dropdown&#39;,
     multiple: true,
+    name: &#39;group-labels-dropdown&#39;,
     options: [
       {
         label: &#39;Group 1&#39;,
@@ -76556,6 +76679,7 @@ export const GroupLabels: Story = {
 
 export const Icons: Story = {
   args: {
+    id: &#39;pizzaz-dropdown&#39;,
     name: &#39;pizzaz-dropdown&#39;,
     options: [
       {
@@ -76594,6 +76718,7 @@ export const CustomInputProps: Story = {
         &#39;data-cy&#39;: &#39;custom-dropdown&#39;,
       },
     },
+    id: &#39;what&#39;,
     name: &#39;what&#39;,
   },
   render: (args) =&gt; (
@@ -76607,6 +76732,7 @@ export const CustomInputProps: Story = {
 
 export const MultipleSelect: Story = {
   args: {
+    id: &#39;multi-dropdown&#39;,
     name: &#39;multi-dropdown&#39;,
     multiple: true,
     options: [
@@ -76641,6 +76767,7 @@ export const FormGroupSelectDropdown: Story = {
   args: {
     options: [&#39;hello&#39;, &#39;hi&#39;, &#39;howdy&#39;],
     value: &#39;oh no&#39;,
+    id: &#39;big-label&#39;,
     name: &#39;big-label&#39;,
   },
   render: (args) =&gt; (
@@ -76660,6 +76787,7 @@ export const FormGroupSelectDropdown: Story = {
 export const FormGroupError: Story = {
   args: {
     options: [&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;],
+    id: &#39;error-example-unique&#39;,
     name: &#39;error-example-unique&#39;,
     placeholder: &#39;cry cry cry&#39;,
   },
@@ -76679,6 +76807,7 @@ export const FormGroupError: Story = {
 
 export const AbbreviatedInput: Story = {
   args: {
+    id: &#39;abbreviated-dropdown&#39;,
     name: &#39;abbreviated-dropdown&#39;,
     options: [
       {
@@ -76727,6 +76856,7 @@ export const AbbreviatedInput: Story = {
 
 export const IndependentWidths: Story = {
   args: {
+    id: &#39;width-dropdown&#39;,
     name: &#39;width-dropdown&#39;,
     options: [
       {
@@ -76777,6 +76907,7 @@ export const IndependentWidths: Story = {
 
 export const SmallWithAbbreviations: Story = {
   args: {
+    id: &#39;small-abbreviated-dropdown&#39;,
     name: &#39;small-abbreviated-dropdown&#39;,
     options: [
       {
@@ -76829,6 +76960,7 @@ export const SmallWithAbbreviations: Story = {
 
 export const ComplexAbbreviatedOptions: Story = {
   args: {
+    id: &#39;complex-abbreviated-dropdown&#39;,
     name: &#39;complex-abbreviated-dropdown&#39;,
     options: [
       {
@@ -76882,6 +77014,7 @@ export const ComplexAbbreviatedOptions: Story = {
 
 export const AbbreviatedWithSubtitleAndRightLabel: Story = {
   args: {
+    id: &#39;abbreviated-detailed&#39;,
     name: &#39;abbreviated-detailed&#39;,
     options: [
       {
@@ -76922,6 +77055,7 @@ export const AbbreviatedWithSubtitleAndRightLabel: Story = {
 
 export const AbbreviatedSmallSize: Story = {
   args: {
+    id: &#39;abbreviated-small&#39;,
     name: &#39;abbreviated-small&#39;,
     options: [
       {
@@ -76963,6 +77097,7 @@ export const AbbreviatedSmallSize: Story = {
 };
 export const MenuAlignmentRight: Story = {
   args: {
+    id: &#39;menu-alignment-right&#39;,
     name: &#39;menu-alignment-right&#39;,
     options: [
       {
@@ -77015,6 +77150,7 @@ export const MenuAlignmentRight: Story = {
 
 export const DisabledMultiValue: Story = {
   args: {
+    id: &#39;disabled-small-multi&#39;,
     name: &#39;disabled-small-multi&#39;,
     options: [
       {
@@ -77049,7 +77185,7 @@ export const DisabledMultiValue: Story = {
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
       &lt;FormGroup
-        htmlFor=&quot;abbreviated-small&quot;
+        htmlFor=&quot;disabled-small-multi&quot;
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;
       &gt;
@@ -77061,6 +77197,7 @@ export const DisabledMultiValue: Story = {
 
 export const LongPlaceholder: Story = {
   args: {
+    id: &#39;long-placeholder&#39;,
     name: &#39;long-placeholder&#39;,
     options: [
       {
@@ -77105,6 +77242,7 @@ export const LongPlaceholder: Story = {
 };
 export const LongPlaceholderAgain: Story = {
   args: {
+    id: &#39;long-placeholder-again&#39;,
     name: &#39;long-placeholder-again&#39;,
     options: [
       {
@@ -77159,6 +77297,7 @@ export const zIndexOnMenu: Story = {
           label=&quot;This menu is rendered behind the header&quot;
         &gt;
           &lt;SelectDropdown
+            id=&quot;usesDefaultZIndex&quot;
             name=&quot;usesDefaultZIndex&quot;
             options={args.options}
             placeholder=&quot;Uses the default zIndex of 2&quot;
@@ -77170,6 +77309,7 @@ export const zIndexOnMenu: Story = {
           label=&quot;This menu floats above the table&#39;s header&quot;
         &gt;
           &lt;SelectDropdown
+            id=&quot;hasSetZIndex&quot;
             name=&quot;hasSetZIndex&quot;
             options={args.options}
             placeholder=&quot;Has a zIndex of 5&quot;
@@ -77242,11 +77382,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Default = () =&gt; &lt;Box height=&quot;18rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;example-select&quot;
         options={fruitOptions}
         disabled={false}
         isSearchable={false}
-        value=&quot;&quot; /&gt;
+        value=&quot;&quot;
+        aria-label=&quot;Select an option&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -77258,12 +77400,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Base = () =&gt; &lt;Box height=&quot;12rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;base-dropdown&quot;
         options={[&#39;Based&#39;, &#39;Regular Size&#39;, &#39;Normal&#39;]}
         disabled={false}
         isSearchable={false}
         value=&quot;&quot;
-        name=&quot;base-dropdown&quot;
+        aria-label=&quot;Select an option&quot;
         placeholder=&quot;all about that&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77276,12 +77419,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Searchable = () =&gt; &lt;Box height=&quot;12rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;searchable-dropdown&quot;
         options={[&#39;wow&#39;, &#39;wowee&#39;, &#39;wooooooow&#39;]}
         disabled={false}
         isSearchable
         value=&quot;&quot;
-        name=&quot;searchable-dropdown&quot;
+        aria-label=&quot;Select an option&quot;
         placeholder=&quot;i am searchable, it is cool&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77293,12 +77437,13 @@ export const zIndexOnMenu: Story = {
               
               
               <pre><code>const Disabled = () =&gt; &lt;SelectDropdown
-    htmlFor=&quot;example-select&quot;
+    id=&quot;example-select&quot;
+    name=&quot;disabled-dropdown-standalone&quot;
     options={[&#39;Disabled&#39;]}
     disabled
     isSearchable={false}
     value=&quot;&quot;
-    name=&quot;disabled-dropdown-standalone&quot;
+    aria-label=&quot;Select an option&quot;
     placeholder=&quot;Disabled&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -77310,12 +77455,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Error = () =&gt; &lt;Box height=&quot;10rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;error-dropdown-standalone&quot;
         options={[&#39;Small&#39;, &#39;Quite little&#39;]}
         disabled={false}
         isSearchable={false}
         value=&quot;Quite little&quot;
-        name=&quot;error-dropdown-standalone&quot;
+        aria-label=&quot;Select an option&quot;
         error /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77328,12 +77474,13 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const Small = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;size-no-search&quot;
         options={[&#39;i am smol&#39;, &#39;yes I am!&#39;, &#39;:)&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]}
         disabled={false}
         isSearchable={false}
         value=&quot;&quot;
-        name=&quot;size-no-search&quot;
+        aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
         placeholder=&quot;click here!&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
@@ -77347,7 +77494,8 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const SmallSearchable = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;SelectDropdown
-        htmlFor=&quot;example-select&quot;
+        id=&quot;example-select&quot;
+        name=&quot;size-search&quot;
         options={[
           &#39;i am also smol&#39;,
           &#39;:)&#39;,
@@ -77364,7 +77512,7 @@ export const zIndexOnMenu: Story = {
         disabled={false}
         isSearchable
         value=&quot;&quot;
-        name=&quot;size-search&quot;
+        aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
         placeholder=&quot;no type here instead!&quot; /&gt;
 &lt;/Box&gt;;</code></pre>
@@ -77382,7 +77530,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;i have the default shownOptionsLimit&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;shownOptionsLimit01&quot;
+            name=&quot;shownOptionsLimit01&quot;
             options={[
               &#39;i am not small&#39;,
               &#39;:)&#39;,
@@ -77399,7 +77548,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;shownOptionsLimit01&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;six is the magic number&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -77417,7 +77566,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;i have three shownOptionsLimit&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;shownOptionsLimit02&quot;
+            name=&quot;shownOptionsLimit02&quot;
             options={[
               &#39;i am not small&#39;,
               &#39;:)&#39;,
@@ -77434,7 +77584,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;shownOptionsLimit02&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;three is the magic number&quot;
             shownOptionsLimit={3} /&gt;
     &lt;/FormGroup&gt;
@@ -77453,7 +77603,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I might have disabled options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;disabled-dropdown&quot;
+            name=&quot;disabled-dropdown&quot;
             options={[
               {
                 label: &#39;I am disabled&#39;,
@@ -77473,7 +77624,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;disabled-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77487,7 +77638,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const Subtitles = () =&gt; &lt;Box height=&quot;18rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;subtitles-dropdown&quot; isSoloField label=&quot;I have subtitle options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;subtitles-dropdown&quot;
+            name=&quot;subtitles-dropdown&quot;
             options={[
               {
                 label: &#39;king@chess.com&#39;,
@@ -77509,7 +77661,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;subtitles-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77526,7 +77678,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I have right label options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;right-labels-dropdown&quot;
+            name=&quot;right-labels-dropdown&quot;
             options={[
               {
                 label: &#39;king@chess.com&#39;,
@@ -77548,7 +77701,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;right-labels-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77562,7 +77715,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const GroupDividers = () =&gt; &lt;Box height=&quot;24rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;dividers-dropdown&quot; isSoloField label=&quot;I have group dividers&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;dividers-dropdown&quot;
+            name=&quot;dividers-dropdown&quot;
             options={[
               {
                 options: [
@@ -77607,7 +77761,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;dividers-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77624,7 +77778,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I have group labels + multiple select&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;group-labels-dropdown&quot;
+            name=&quot;group-labels-dropdown&quot;
             options={[
               {
                 label: &#39;Group 1&#39;,
@@ -77670,7 +77825,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;group-labels-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             multiple /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -77685,7 +77840,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const Icons = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;pizzaz-dropdown&quot; isSoloField label=&quot;i have pizzazz&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;pizzaz-dropdown&quot;
+            name=&quot;pizzaz-dropdown&quot;
             options={[
               {
                 label: &#39;ohai&#39;,
@@ -77706,7 +77862,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;pizzaz-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77720,19 +77876,20 @@ export const zIndexOnMenu: Story = {
               <pre><code>const CustomInputProps = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;what&quot; isSoloField label=&quot;i am ~styled&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;what&quot;
+            name=&quot;what&quot;
             options={[&#39;inspect me to see my inputProps&#39;, &#39;yes I am!&#39;, &#39;:)&#39;]}
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
+            aria-label=&quot;Select an option&quot;
             inputProps={{
               hidden: { &#39;data-form-field&#39;: &#39;what&#39; },
               combobox: {
                 &#39;data-testid&#39;: &#39;custom-select&#39;,
                 &#39;data-cy&#39;: &#39;custom-dropdown&#39;,
               },
-            }}
-            name=&quot;what&quot; /&gt;
+            }} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77749,7 +77906,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;I have multiple select options&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;multi-dropdown&quot;
+            name=&quot;multi-dropdown&quot;
             options={[
               {
                 label: &#39;Select Me&#39;,
@@ -77767,7 +77925,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;multi-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             multiple /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -77782,12 +77940,13 @@ export const zIndexOnMenu: Story = {
               <pre><code>const FormGroupSelectDropdown = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;big-label&quot; isSoloField label=&quot;i am big label&quot; labelSize=&quot;large&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;big-label&quot;
+            name=&quot;big-label&quot;
             options={[&#39;hello&#39;, &#39;hi&#39;, &#39;howdy&#39;]}
             disabled={false}
             isSearchable={false}
             value=&quot;oh no&quot;
-            name=&quot;big-label&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -77806,12 +77965,13 @@ export const zIndexOnMenu: Story = {
         label=&quot;i am ~styled... but something is wrong&quot;&gt;
         &lt;SelectDropdown
             error
-            htmlFor=&quot;example-select&quot;
+            id=&quot;error-example-unique&quot;
+            name=&quot;error-example-unique&quot;
             options={[&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;]}
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;error-example-unique&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;cry cry cry&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -77829,7 +77989,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Abbreviated Input Display&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;abbreviated-dropdown&quot;
+            name=&quot;abbreviated-dropdown&quot;
             options={[
               {
                 label: &#39;United States of America&#39;,
@@ -77860,7 +78021,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;abbreviated-dropdown&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Input shows &quot;USA&quot; but dropdown shows &quot;United States of
                 America&quot;
@@ -77877,7 +78038,8 @@ export const zIndexOnMenu: Story = {
               <pre><code>const IndependentWidths = () =&gt; &lt;Box height=&quot;20rem&quot;&gt;
     &lt;FormGroup htmlFor=&quot;width-dropdown&quot; isSoloField label=&quot;Independent Width Control&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;width-dropdown&quot;
+            name=&quot;width-dropdown&quot;
             options={[
               {
                 label: &#39;Machine Learning Engineer&#39;,
@@ -77907,7 +78069,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;width-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;350px&quot;
             placeholder=&quot;Select a role&quot; /&gt;
@@ -77929,7 +78091,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;small-abbreviated-dropdown&quot;
+            name=&quot;small-abbreviated-dropdown&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -77960,7 +78123,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;small-abbreviated-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             size=&quot;small&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;200px&quot;
@@ -77984,7 +78147,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Complex Options with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;complex-abbreviated-dropdown&quot;
+            name=&quot;complex-abbreviated-dropdown&quot;
             options={[
               {
                 label: &#39;Senior Software Engineer&#39;,
@@ -78018,7 +78182,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;complex-abbreviated-dropdown&quot;
+            aria-label=&quot;Select an option&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;400px&quot;
             placeholder=&quot;Select seniority level&quot; /&gt;
@@ -78040,7 +78204,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Abbreviated with Additional Details&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;abbreviated-detailed&quot;
+            name=&quot;abbreviated-detailed&quot;
             options={[
               {
                 label: &#39;Senior Software Engineer&#39;,
@@ -78067,7 +78232,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;abbreviated-detailed&quot; /&gt;
+            aria-label=&quot;Select an option&quot; /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -78084,7 +78249,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;abbreviated-small&quot;
+            name=&quot;abbreviated-small&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -78110,7 +78276,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;abbreviated-small&quot;
+            aria-label=&quot;Select an option&quot;
             size=&quot;small&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;200px&quot; /&gt;
@@ -78131,7 +78297,8 @@ export const zIndexOnMenu: Story = {
         label=&quot;Menu Alignment: Right&quot;
         width=&quot;150px&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;menu-alignment-right&quot;
+            name=&quot;menu-alignment-right&quot;
             options={[
               {
                 label: &#39;Frontend Developer&#39;,
@@ -78155,7 +78322,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;menu-alignment-right&quot;
+            aria-label=&quot;Select an option&quot;
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;300px&quot;
             menuAlignment=&quot;right&quot;
@@ -78174,11 +78341,12 @@ export const zIndexOnMenu: Story = {
               
               <pre><code>const DisabledMultiValue = () =&gt; &lt;Box height=&quot;15rem&quot;&gt;
     &lt;FormGroup
-        htmlFor=&quot;abbreviated-small&quot;
+        htmlFor=&quot;disabled-small-multi&quot;
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;disabled-small-multi&quot;
+            name=&quot;disabled-small-multi&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -78204,7 +78372,7 @@ export const zIndexOnMenu: Story = {
             disabled
             isSearchable={false}
             value={[&#39;python&#39;, &#39;java&#39;]}
-            name=&quot;disabled-small-multi&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;Long truncated placeholder&quot;
             size=&quot;small&quot;
             inputWidth=&quot;100px&quot;
@@ -78226,7 +78394,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;long-placeholder&quot;
+            name=&quot;long-placeholder&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -78252,7 +78421,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;long-placeholder&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;Long truncated placeholder&quot;
             size=&quot;small&quot;
             inputWidth=&quot;300px&quot;
@@ -78275,7 +78444,8 @@ export const zIndexOnMenu: Story = {
         isSoloField
         label=&quot;Small Size with Abbreviations&quot;&gt;
         &lt;SelectDropdown
-            htmlFor=&quot;example-select&quot;
+            id=&quot;long-placeholder-again&quot;
+            name=&quot;long-placeholder-again&quot;
             options={[
               {
                 label: &#39;JavaScript&#39;,
@@ -78301,7 +78471,7 @@ export const zIndexOnMenu: Story = {
             disabled={false}
             isSearchable={false}
             value=&quot;&quot;
-            name=&quot;long-placeholder-again&quot;
+            aria-label=&quot;Select an option&quot;
             placeholder=&quot;Long truncated placeholder&quot;
             size=&quot;small&quot;
             inputWidth=&quot;400px&quot;
@@ -78326,6 +78496,7 @@ export const zIndexOnMenu: Story = {
             isSoloField
             label=&quot;This menu is rendered behind the header&quot;&gt;
             &lt;SelectDropdown
+                id=&quot;usesDefaultZIndex&quot;
                 name=&quot;usesDefaultZIndex&quot;
                 options={fruitOptions}
                 placeholder=&quot;Uses the default zIndex of 2&quot; /&gt;
@@ -78335,6 +78506,7 @@ export const zIndexOnMenu: Story = {
             isSoloField
             label=&quot;This menu floats above the table&#39;s header&quot;&gt;
             &lt;SelectDropdown
+                id=&quot;hasSetZIndex&quot;
                 name=&quot;hasSetZIndex&quot;
                 options={fruitOptions}
                 placeholder=&quot;Has a zIndex of 5&quot;
@@ -78598,7 +78770,7 @@ In the example below, the z-index menu is configured to the default value (`auto
 
 ### FormGroup + SelectDropdown
 
-`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
+`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an `htmlFor` to the `FormGroup` and an `id` to the `SelectDropdown` for maximum accessibility. See &lt;LinkTo id=&quot;Atoms/FormElements/FormGroup&quot;&gt;FormGroup&lt;/LinkTo&gt; story for the customizations available.
 
 &lt;Canvas of={SelectDropdownStories.FormGroupSelectDropdown} /&gt;
 &lt;Canvas of={SelectDropdownStories.FormGroupError} /&gt;
@@ -79901,8 +80073,7 @@ export const Controlled = () =&gt; {
       &lt;Background bg=&quot;yellow&quot; mb={24} p={12}&gt;
         &lt;FormGroup htmlFor=&quot;active-tab&quot; label=&quot;Active Tab&quot;&gt;
           &lt;Input
-            htmlFor=&quot;acrive-tab&quot;
-            label=&quot;Active Tab&quot;
+            htmlFor=&quot;active-tab&quot;
             min={1}
             type=&quot;number&quot;
             value={activeTab}
@@ -80184,8 +80355,7 @@ import {
       &lt;Background bg=&quot;yellow&quot; mb={24} p={12}&gt;
         &lt;FormGroup htmlFor=&quot;active-tab&quot; label=&quot;Active Tab&quot;&gt;
           &lt;Input
-            htmlFor=&quot;acrive-tab&quot;
-            label=&quot;Active Tab&quot;
+            htmlFor=&quot;active-tab&quot;
             min={1}
             type=&quot;number&quot;
             value={activeTab}
@@ -81732,20 +81902,26 @@ If you need the focus indicator of a screenreader to stay on the screen, you can
     | ^
   5 |   component: TextArea,
   6 |   args: {
-  7 |     htmlFor: &#39;example-input&#39;,
+  7 |     id: &#39;example-input&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/TextArea/TextArea.stories.tsx:
-import { TextArea } from &#39;@codecademy/gamut&#39;;
+import { FormGroup, TextArea } from &#39;@codecademy/gamut&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 const meta: Meta&lt;typeof TextArea&gt; = {
   component: TextArea,
   args: {
-    htmlFor: &#39;example-input&#39;,
-    name: &#39;example-input&#39;,
+    id: &#39;example-input&#39;,
     defaultValue: &#39;Some text&#39;,
     rows: 4,
   },
+  decorators: [
+    (Story) =&gt; (
+      &lt;FormGroup htmlFor=&quot;example-input&quot; isSoloField label=&quot;Enter text&quot;&gt;
+        &lt;Story /&gt;
+      &lt;/FormGroup&gt;
+    ),
+  ],
 };
 
 export default meta;
@@ -81796,7 +81972,7 @@ export const Placeholder: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { TextArea } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { FormGroup, TextArea } from "@codecademy/gamut";</code></pre>
               </div>
           
           
@@ -81807,11 +81983,7 @@ export const Placeholder: Story = {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    defaultValue=&quot;Some text&quot;
-    rows={4} /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;TextArea id=&quot;example-input&quot; defaultValue=&quot;Some text&quot; rows={4} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -81820,12 +81992,7 @@ export const Placeholder: Story = {
               </div>
               
               
-              <pre><code>const Disabled = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    defaultValue=&quot;Disabled&quot;
-    rows={4}
-    disabled /&gt;;</code></pre>
+              <pre><code>const Disabled = () =&gt; &lt;TextArea id=&quot;example-input&quot; defaultValue=&quot;Disabled&quot; rows={4} disabled /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -81834,12 +82001,7 @@ export const Placeholder: Story = {
               </div>
               
               
-              <pre><code>const Error = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
-    defaultValue=&quot;Error&quot;
-    rows={4}
-    error /&gt;;</code></pre>
+              <pre><code>const Error = () =&gt; &lt;TextArea id=&quot;example-input&quot; defaultValue=&quot;Error&quot; rows={4} error /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -81849,8 +82011,7 @@ export const Placeholder: Story = {
               
               
               <pre><code>const Placeholder = () =&gt; &lt;TextArea
-    htmlFor=&quot;example-input&quot;
-    name=&quot;example-input&quot;
+    id=&quot;example-input&quot;
     defaultValue={undefined}
     rows={4}
     placeholder=&quot;Placeholder&quot; /&gt;;</code></pre>
@@ -82398,20 +82559,21 @@ When writing copy for a toast, Keep it brief, ensure the message is personal and
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;Toaster&quot; component.
-  26 | ];
-  27 |
-&gt; 28 | const meta: Meta&lt;typeof Toaster&gt; = {
+  27 | ];
+  28 |
+&gt; 29 | const meta: Meta&lt;typeof Toaster&gt; = {
      | ^
-  29 |   component: Toaster,
-  30 |   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
-  31 |   // Will fix this casting when the issue is resolved
+  30 |   component: Toaster,
+  31 |   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
+  32 |   // Will fix this casting when the issue is resolved
 
 ./packages/styleguide/src/lib/Molecules/Toasts/Toaster/Toaster.stories.tsx:
 import { FillButton, GridBox, Toast, Toaster } from &#39;@codecademy/gamut&#39;;
 import { AddIcon, TrashIcon } from &#39;@codecademy/gamut-icons&#39;;
 import { Target } from &#39;@codecademy/gamut-illustrations&#39;;
-import type { Meta } from &#39;@storybook/react&#39;;
-import { ComponentProps, useState } from &#39;react&#39;;
+import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
+import { useState } from &#39;react&#39;;
+import { expect, waitFor } from &#39;storybook/test&#39;;
 
 const exampleToasts = [
   {
@@ -82446,38 +82608,54 @@ const meta: Meta&lt;typeof Toaster&gt; = {
 
 export default meta;
 
-export const Default: React.FC&lt;ComponentProps&lt;typeof Toaster&gt;&gt; = (args) =&gt; {
-  const [toasts, setToasts] = useState(args.toasts || []);
+type Story = StoryObj&lt;typeof meta&gt;;
 
-  const removeToasts = () =&gt; {
-    setToasts([]);
-  };
+export const Default: Story = {
+  parameters: {
+    interactions: {
+      disable: false,
+    },
+  },
+  render: function DefaultStory(args) {
+    const [toasts, setToasts] = useState(args.toasts || []);
 
-  const addToasts = () =&gt; {
-    if (!toasts.length) {
-      setTimeout(() =&gt; setToasts(args.toasts || []), 1000);
-    }
-  };
+    const removeToasts = () =&gt; {
+      setToasts([]);
+    };
 
-  const removeOne = (id: string) =&gt; {
-    const filteredToasts = toasts.filter((toast) =&gt; toast.id !== id);
+    const addToasts = () =&gt; {
+      if (!toasts.length) {
+        setTimeout(() =&gt; setToasts(args.toasts || []), 1000);
+      }
+    };
 
-    setToasts(filteredToasts);
-  };
+    const removeOne = (id: string) =&gt; {
+      const filteredToasts = toasts.filter((toast) =&gt; toast.id !== id);
 
-  return (
-    &lt;&gt;
-      &lt;GridBox width={300}&gt;
-        &lt;FillButton icon={TrashIcon} mb={24} onClick={removeToasts}&gt;
-          Click me to remove all the Toasts
-        &lt;/FillButton&gt;
-        &lt;FillButton icon={AddIcon} onClick={addToasts}&gt;
-          Click me to reveal all the Toasts
-        &lt;/FillButton&gt;
-      &lt;/GridBox&gt;
-      &lt;Toaster {...args} toasts={toasts} onClose={removeOne} /&gt;
-    &lt;/&gt;
-  );
+      setToasts(filteredToasts);
+    };
+
+    return (
+      &lt;&gt;
+        &lt;GridBox width={300}&gt;
+          &lt;FillButton icon={TrashIcon} mb={24} onClick={removeToasts}&gt;
+            Click me to remove all the Toasts
+          &lt;/FillButton&gt;
+          &lt;FillButton icon={AddIcon} onClick={addToasts}&gt;
+            Click me to reveal all the Toasts
+          &lt;/FillButton&gt;
+        &lt;/GridBox&gt;
+        &lt;Toaster {...args} toasts={toasts} onClose={removeOne} /&gt;
+      &lt;/&gt;
+    );
+  },
+  play: async () =&gt; {
+    await waitFor(async () =&gt; {
+      await expect(
+        document.body.querySelectorAll(&#39;[role=&quot;status&quot;]&#39;).length
+      ).toEqual(4);
+    });
+  },
 };
 </code></pre></div>
     </div>
@@ -82534,9 +82712,9 @@ import { Target } from "@codecademy/gamut-illustrations";</code></pre>
     return &lt;&gt;
         &lt;GridBox width={300}&gt;
             &lt;FillButton icon={TrashIcon} mb={24} onClick={removeToasts}&gt;Click me to remove all the Toasts
-                        &lt;/FillButton&gt;
+                          &lt;/FillButton&gt;
             &lt;FillButton icon={AddIcon} onClick={addToasts}&gt;Click me to reveal all the Toasts
-                        &lt;/FillButton&gt;
+                          &lt;/FillButton&gt;
         &lt;/GridBox&gt;
         &lt;Toaster toasts={toasts} onClose={removeOne} /&gt;
     &lt;/&gt;;
@@ -82636,8 +82814,8 @@ Use Toaster as a container to display multiple Toasts.
 &gt; 6 | const meta: Meta&lt;typeof Toggle&gt; = {
     | ^
   7 |   component: Toggle,
-  8 |   args: {},
-  9 | };
+  8 |   args: {
+  9 |     label: &#39;Toggle me&#39;,
 
 ./packages/styleguide/src/lib/Atoms/Toggle/Toggle.stories.tsx:
 import { Text, Toggle } from &#39;@codecademy/gamut&#39;;
@@ -82647,7 +82825,9 @@ import { expect } from &#39;storybook/test&#39;;
 
 const meta: Meta&lt;typeof Toggle&gt; = {
   component: Toggle,
-  args: {},
+  args: {
+    label: &#39;Toggle me&#39;,
+  },
 };
 
 export default meta;
@@ -82800,7 +82980,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Default = () =&gt; &lt;Toggle /&gt;;</code></pre>
+              <pre><code>const Default = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -82809,7 +82989,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Medium = () =&gt; &lt;Toggle size=&quot;medium&quot; /&gt;;</code></pre>
+              <pre><code>const Medium = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; size=&quot;medium&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -82818,7 +82998,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Small = () =&gt; &lt;Toggle size=&quot;small&quot; /&gt;;</code></pre>
+              <pre><code>const Small = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; size=&quot;small&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -82827,7 +83007,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const Disabled = () =&gt; &lt;Toggle disabled /&gt;;</code></pre>
+              <pre><code>const Disabled = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; disabled /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -82836,7 +83016,7 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               </div>
               
               
-              <pre><code>const DisabledChecked = () =&gt; &lt;Toggle disabled checked /&gt;;</code></pre>
+              <pre><code>const DisabledChecked = () =&gt; &lt;Toggle label=&quot;Toggle me&quot; disabled checked /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -82864,8 +83044,8 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               
               
               <pre><code>const ReactComponentLabel = () =&gt; &lt;Toggle
-    checked={false}
     label={&lt;Text&gt;I am a Text component&lt;/Text&gt;}
+    checked={false}
     ariaLabel=&quot;Hello there&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -82885,9 +83065,9 @@ export const InteractiveButtonToggle: React.FC = () =&gt; {
               
               
               <pre><code>const ButtonElement = () =&gt; &lt;Toggle
+    label=&quot;button toggle&quot;
     as=&quot;button&quot;
     checked
-    label=&quot;button toggle&quot;
     onChange={undefined}
     onClick={() =&gt; null} /&gt;;</code></pre>
             </div>
