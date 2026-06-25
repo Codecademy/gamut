@@ -1,6 +1,6 @@
 ---
 name: gamut-review
-description: Use this skill when auditing existing code for Gamut usage — dependencies, GamutProvider, deep imports, hardcoded hex colors, and test patterns — and you need a consolidated report with pointers to matching Gamut skills.
+description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, hardcoded colors, and test setup, with pointers to remediation skills.
 ---
 
 # Gamut Review
@@ -11,7 +11,7 @@ When `DESIGN.md` is present at the audit root, use it as the authoritative refer
 
 Run Check 0 first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
 
-Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
+Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ---
 
@@ -30,11 +30,12 @@ Resolve the audit root from the user's path if provided, otherwise the current w
 
 Read `package.json` at the audit root. Inspect `dependencies`, `devDependencies`, and `peerDependencies` combined.
 
-| Package                    | Expectation                                             |
-| -------------------------- | ------------------------------------------------------- |
-| `@codecademy/gamut`        | Required — core component library                       |
-| `@codecademy/gamut-styles` | Recommended — design tokens and theme primitives        |
-| `@codecademy/variance`     | Recommended — style-prop system used by Gamut internals |
+| Package                    | Expectation                                                                                                                                                                                                                                                                                                                                                                                                      |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@codecademy/gamut`        | Required — core component library                                                                                                                                                                                                                                                                                                                                                                                |
+| `@codecademy/gamut-styles` | Recommended — design tokens and theme primitives                                                                                                                                                                                                                                                                                                                                                                 |
+| `@codecademy/variance`     | Recommended — style-prop system used by Gamut internals                                                                                                                                                                                                                                                                                                                                                          |
+| `@codecademy/gamut-kit`    | Acceptable alternative meta-package — re-exports `@codecademy/gamut`, `@codecademy/gamut-styles`, `@codecademy/variance`, and more. Treat its presence as satisfying the three rows above; do not separately flag those packages as missing. **Caveat:** requires npm or yarn with `nodeLinker: node-modules`; not compatible with yarn Plug'n'Play. Flag as ⚠ warning if `.yarnrc.yml` shows `nodeLinker: pnp`. |
 
 ---
 
@@ -53,6 +54,8 @@ Search source files (`.ts`, `.tsx`, `.js`, `.jsx`) for these symbols. Skip `node
 
 For each found symbol report the first file path where it appears.
 
+**Conditional — `StyleProps` with `states()`/`variant()`**: If source files contain `states(` or `variant(` from `@codecademy/gamut-styles`, check whether component prop interfaces use `StyleProps<typeof ...>` from `@codecademy/variance`. When `states()`/`variant()` are present but `StyleProps` is absent from associated component interfaces, report as ⚠ warning: `StyleProps not used — state/variant props may be untyped`. Remediation: `import { StyleProps } from '@codecademy/variance'` and add `extends StyleProps<typeof myStates>` to the component interface. Skill reference: [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md).
+
 ---
 
 ## Check 3 — Import patterns
@@ -67,6 +70,108 @@ Grep source files for any of these patterns. Each match is an error.
 | `@codecademy/variance/src/`     | Deep src import — use the package root                                  |
 
 Report each violation as `file:line`.
+
+---
+
+## Check 3b — SCSS/CSS module imports and className on Gamut components
+
+Gamut components are styled via the variance system (system props, `css()`, `variant()`, `states()` from `@codecademy/gamut-styles`). Importing SCSS/CSS modules and passing `className` to Gamut components bypasses this system entirely, breaks ColorMode token propagation, and prevents system props from composing correctly.
+
+**Step 1 — SCSS/CSS module imports**
+
+Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for:
+
+```
+import .* from '.*\.(scss|css)'
+```
+
+Skip `node_modules`, `dist`. Each match is an error unless:
+
+- The import targets a third-party stylesheet (e.g. a carousel or date-picker vendor sheet that cannot be replaced) — flag as ⚠ warning with note "third-party vendor styles".
+- The file is a global reset or application shell (not a component) — flag as ⚠ warning.
+
+Report the count and list of files. If there are more than 5 files, group by directory and report totals rather than listing every file.
+
+**Step 2 — className on Gamut components**
+
+Grep source files for `className=` appearing on any of the core Gamut component names in the same JSX element opening tag. The known Gamut components to check:
+
+```
+Box, FlexBox, Column, LayoutGrid, GridBox, Card, Text, Anchor,
+FillButton, StrokeButton, TextButton, CTAButton, IconButton, Toggle,
+List, ListRow, ListCol, Background, Disclosure
+```
+
+Pattern (grep, case-sensitive):
+
+```
+<(Box|FlexBox|Column|LayoutGrid|GridBox|Card|Text|Anchor|FillButton|StrokeButton|TextButton|CTAButton|IconButton|Toggle|List|ListRow|ListCol|Background|Disclosure)\b[^>]*\bclassName=
+```
+
+Each match is an error. Report as `file:line  <ComponentName className={...}>`.
+
+Severity note: `className` is not always forbidden — some Gamut components accept it for integration with third-party tools (e.g. passing a class to an external drag-and-drop library). Downgrade to ⚠ warning only when the usage is clearly an integration seam, not styling.
+
+Remediation: replace SCSS module rules with system props directly on the Gamut component — use semantic ColorMode tokens as values (`color="text"`, `bg="background"`, `borderColor="border-primary"`, etc.) rather than hardcoded hex or palette names; use `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` (with `styled` from `@emotion/styled`) for styles not expressible as system props; delete the SCSS file when all rules are migrated.
+
+Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md)
+
+---
+
+## Check 3c — Nested selectors
+
+Nested selectors inside styled-component or Emotion template literals cause hard-to-isolate side effects and make consistent updates difficult. The [Gamut Best Practices](https://gamut.codecademy.com/?path=/docs-meta-best-practices--page) page flags two kinds as "at your own risk": tag selectors and Gamut component selectors.
+
+**Step 1 — Tag selectors**
+
+Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for bare HTML tag names appearing as CSS selector lines inside styled-component or Emotion template literals. Skip `node_modules`, `dist`, `.next`, `build`, `.turbo`.
+
+- Pattern A (named tags):
+  ```
+  ^\s*(div|span|p|ul|li|ol|a|img|h[1-6]|table|thead|tbody|tr|td|th|form|section|header|footer|nav|main)\s*\{
+  ```
+- Pattern B (universal selector):
+  ```
+  ^\s*\*\s*\{
+  ```
+  False-positive risk: `*` appears in JSDoc comment bodies (` * {`). Post-filter matches where the line is a comment (starts with `//` or matches `\s*\*\s`). For remaining matches, verify context before marking as a violation.
+
+Do NOT include SVG primitive tag names (`path`, `rect`, `circle`, `line`, `polyline`, `svg`) — styled SVG primitives in icon and form components are normal and not the target of this rule.
+
+Exemptions (downgrade to `ℹ note`, not warning):
+
+- Files that import `Global` from `@emotion/react` — intentional global reset/injection stylesheets.
+- Files whose name matches `*reboot*`, `*reset*`, `*global*`, or `*base-styles*`.
+
+**Step 2 — Gamut component selectors**
+
+Rather than enumerating every Gamut component by name (brittle, misses new additions), scope to files that already import from `@codecademy/gamut`, then grep those files for any PascalCase identifier used as a CSS selector:
+
+1. Find files that contain `from '@codecademy/gamut'`.
+2. In those files, grep for:
+   ```
+   \$\{[A-Z][A-Za-z]+\}[^{]*\{
+   ```
+   This matches any `${PascalCaseName}` followed by a rule block — i.e., a component used as a CSS child selector.
+
+Each match means a component is being targeted from a parent styled wrapper rather than styled directly. Report as `file:line  ${ComponentName} { ... }`.
+
+Severity note: `&:pseudo ${ComponentName}` (pseudo-class combinator preceding the interpolation) is lower risk — downgrade those to ⚠ warning with a note to verify scope. Bare `${ComponentName} { }` selector blocks are the primary target.
+
+**Severity:** ⚠ warning for all matches (per Best Practices: "you may still do so, but at your own risk").
+
+**Remediation:**
+
+_Tag selectors_ — plain HTML elements do not need to become Gamut components. Two valid paths:
+
+- Use `Box`, `FlexBox`, or `GridBox` with the `as` prop to render as the intended element — no extra DOM node needed: `<Box as="section" p={16} color="text">`, `<FlexBox as="nav" gap={8}>`.
+- Style in place with `styled.div(css({ color: 'text', p: 16 }))` using semantic ColorMode tokens from `@codecademy/gamut-styles` — keeps the element but brings it into the design system token graph.
+
+Replace the parent's nested selector rule with one of the above and remove the selector block.
+
+_Gamut component selectors_ — pass system props directly to the component (`alignSelf`, `mt`, etc.) rather than targeting it from a parent wrapper. Where dynamic behavior spans multiple children, prefer `css()` with `variant()` or `states()` from `@codecademy/gamut-styles` keyed to data attributes or boolean props on the parent.
+
+Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
 
 ---
 
@@ -185,6 +290,27 @@ Case-insensitive. Use to label `palette:` in the report; do not stop at this ste
 | `#006d82` | `teal-500` / `teal`        |
 | `#b3ccff` | `purple-300` / `purple`    |
 
+### Step 2 — Non-Gamut CSS custom properties (SCSS/CSS/Less files)
+
+After the hex scan, grep `.scss`, `.css`, and `.less` files for `var(--` occurrences. For each custom property name found, classify it:
+
+_Gamut-issued variables_ — skip these:
+
+- `--color-*` (ColorMode semantic aliases)
+- `--space*` (spacing scale)
+- `--font*` (font-size scale)
+- `--lineHeight*` (line-height scale)
+- `--borderWidth*` (border-width tokens)
+- `--fontFamily*` (font-family tokens)
+- `--fontWeight*` (font-weight tokens)
+
+_Non-Gamut variables_ — flag these:
+Any other name — especially camel-cased semantic names like `--darkNeutralColor`, `--whiteColor`, `--lightPrimaryColor`, `--colorNavy800`, `--borderGreyColor` — indicates a parallel token system (Skillsoft/Percipio globals, legacy design tokens, or ad-hoc project variables). These variables are NOT set by `GamutProvider`/`ColorMode` and will be undefined inside a Gamut-scoped tree unless the host shell also loads them.
+
+Severity: ✗ error for color-semantic variables (invisible in tests/Storybook without the host stylesheet); ⚠ warning for spacing/sizing variables that duplicate Gamut scale tokens.
+
+Reporting: count unique non-Gamut variable names and list the top offenders with frequency. Do not enumerate every call-site — just the variable names and usage counts. Suggest the nearest Gamut semantic alias where obvious (e.g. `--darkNeutralColor` → `--color-text`, `--whiteColor` → `--color-background`).
+
 ---
 
 ## Check 5 — Test setup
@@ -198,6 +324,7 @@ Grep test files (`**/__tests__/**/*.{ts,tsx}`, `**/*.test.{ts,tsx}`, `**/*.spec.
 | `from '@codecademy/gamut-tests'`                      | Good — report count of files using it | Correct import for `setupRtl` and `MockGamutProvider`                                                                                                                                                                                   |
 | `from 'component-test-setup'` (without gamut-tests)   | Warning                               | Should import `setupRtl` from `@codecademy/gamut-tests`, not directly from `component-test-setup` — the gamut-tests wrapper adds `MockGamutProvider` automatically                                                                      |
 | `new GamutProvider` or `<GamutProvider` in test files | Warning                               | Prefer `setupRtl`; use `MockGamutProvider` (sets `useCache={false}`, `useGlobals={false}`) in harnesses or stories, not `GamutProvider` directly                                                                                        |
+| `jest.mock\(.*[Gg]amut[Pp]rovider`                    | Warning                               | Mocking any file whose path contains `GamutProvider` (including project-internal wrappers) strips Emotion/theme context; prefer `setupRtl` from `@codecademy/gamut-tests`                                                               |
 
 Skill reference for remediation: [`gamut-testing`](../gamut-testing/SKILL.md)
 
@@ -231,10 +358,27 @@ Import patterns
        src/Thing.tsx:7
        src/Other.tsx:12
 
+SCSS modules & className                             [→ gamut-system-props] [→ gamut-style-utilities]
+  ✗  SCSS/CSS imports   14 files — migrate to system props and css()/variant()
+       src/components/Card/Card.scss
+       src/components/Nav/Nav.scss   (+ 12 more)
+  ✗  className on Gamut components   9 occurrences
+       src/components/Card/Card.tsx:14   <Box className={styles.wrapper}>
+       src/components/Nav/Nav.tsx:7      <Text className={styles.title}>
+
+Nested selectors                                    [→ gamut-system-props] [→ gamut-style-utilities]
+  ⚠  Tag selectors   3 occurrences — replace with system props or layout components (FlexBox, GridBox)
+       src/components/Nav/Nav.tsx:18   div { ... }
+       src/components/Hero/Hero.tsx:9    * { ... }  (verify scope — may be JSDoc false positive)
+  ⚠  Gamut component selectors   1 occurrence — use system props directly instead
+       src/components/Layout/Layout.tsx:12   ${Box} { align-self: start; }
+  (or: ✓  none found)
+
 Hardcoded colors                                                         [→ gamut-color-mode]
   ✗  src/Card.tsx:22   '#10162F'  →  semantic: text | palette: navy-800 | note: Core light body copy
   ⚠  src/Hero.tsx:14   '#1557FF'  →  semantic: primary (if link/CTA) | palette: blue-500 | note: no exact semantic; confirm theme
   ⚠  src/Nav.tsx:8     '#BADA55'  →  semantic: (n/a) | palette: — | note: no Gamut token
+  ✗  Non-Gamut CSS vars   --darkNeutralColor (8 uses), --whiteColor (5 uses)  →  --color-text, --color-background
 
 Test setup                                                               [→ gamut-testing]
   ✓  @codecademy/gamut-tests   used in 12 test files

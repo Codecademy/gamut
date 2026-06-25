@@ -5,7 +5,7 @@ description: Use this skill when choosing Gamut button atoms (FillButton, Stroke
 
 # Gamut Buttons
 
-Which button component and which `variant` to use. Colors are wired inside each atom — consumers do not pass `color`, `bg`, hex, or semantic token names on stock buttons.
+Which button component and which `variant` to use.
 
 See also: [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — semantic tokens for custom styled controls only, not stock button atoms; ColorMode / `<Background>` when placing buttons on colored surfaces. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — universal action and naming rules.
 
@@ -86,6 +86,10 @@ Hover, active, and disabled colors are handled by the component. Do not override
 - `href` + `disabled`: `ButtonBase` (internal) drops `href` and renders a `<button disabled>` — link-style buttons cannot stay anchors while disabled.
 - `IconButton`: provide an accessible name via `tip` (used as `aria-label` when `aria-label` is omitted). See ToolTip / IconButton Storybook pages.
 - `ButtonBase` is not exported from `@codecademy/gamut` (only the `ButtonBaseElements` type is). Prefer stock atoms; custom button styling belongs in Gamut itself or via `css` / `variant` from `gamut-styles`, not by importing `ButtonBase`.
+
+## Focus management — buttons with ToolTip
+
+When a button uses `placement="floating"` and the click does not naturally move DOM focus elsewhere, the tooltip may linger after a keyboard-triggered click. See [TOOLTIP_FOCUS.md](./TOOLTIP_FOCUS.md) for the pattern, when to apply `.blur()`, and when it is not needed.
 
 ## Rules
 
