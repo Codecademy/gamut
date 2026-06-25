@@ -65,6 +65,10 @@ export type IdentifiableKeys<T> = Extract<
 
 export type FilterOption = string | { text: string; value: string };
 
+export type DataGridColumnSize = Exclude<ListColProps['size'], 'content'>;
+
+export const DEFAULT_COLUMN_SIZE: DataGridColumnSize = 'md';
+
 export interface ColumnConfig<T> {
   key: keyof T;
   /**
@@ -73,7 +77,7 @@ export interface ColumnConfig<T> {
    */
   header?: string;
   type?: ListColProps['type'];
-  size?: Exclude<ListColProps['size'], 'content'>;
+  size?: DataGridColumnSize;
   render?: (row: T) => ReactElement<any, any> | null;
   sortable?: boolean;
   filters?: string[];

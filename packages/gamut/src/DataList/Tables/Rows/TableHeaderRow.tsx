@@ -11,7 +11,7 @@ import {
 } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
 import { useListState } from '../../hooks/useListState';
-import { ColumnConfig, Query } from '../../types';
+import { ColumnConfig, DEFAULT_COLUMN_SIZE, Query } from '../../types';
 import { StyledHeaderRow } from './elements';
 
 interface HeaderComponent {
@@ -56,7 +56,7 @@ export const TableHeaderRow: HeaderComponent = ({
           )}
         </ListCol>
       )}
-      {columns.map(({ key, header, sortable, filters, ...colProps }) => {
+      {columns.map(({ key, header, sortable, filters, size, ...colProps }) => {
         const rowProperty = key as string;
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = String(header || key);
@@ -73,6 +73,7 @@ export const TableHeaderRow: HeaderComponent = ({
             {...colProps}
             aria-sort={sortable ? ariaSortDirection : undefined}
             columnHeader
+            size={size ?? DEFAULT_COLUMN_SIZE}
           >
             <FlexBox
               alignItems={selectable ? 'center' : 'flex-end'}
