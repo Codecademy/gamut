@@ -70,7 +70,6 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     disabled,
     customValidations,
   });
-  const { component: Component, ...rest } = field;
   const uniqueIdSuffix = useId();
   const htmlForId = `${name}-${uniqueIdSuffix}`;
 
