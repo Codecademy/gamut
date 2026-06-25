@@ -17,94 +17,26 @@ permissions:
   issues: write
   actions: write
 
+concurrency:
+  group: npm-prerelease-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
 jobs:
   publish-alpha:
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'beta') }}
     runs-on: ubuntu-22.04
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prerelease-publish
         with:
-          fetch-depth: 0
-          ref: ${{  github.event.pull_request.head.ref }}
-
-      - name: Setup and Build
-        id: setup
-        uses: ./.github/actions/yarn
-
-      - name: Set git user
-        uses: ./.github/actions/set-git-user
-
-      - name: Set npm token
-        uses: ./.github/actions/set-npm-token
-        with:
-          token-secret: ${{ secrets.NODE_AUTH_TOKEN }}
-
-      - name: Ensure workflow is associated with a pull request
-        uses: ./.github/actions/validate-pr-context
-
-      - name: Skip build from automated commit
-        uses: ./.github/actions/skip-automated-commits
-        with:
+          node-auth-token: ${{ secrets.NODE_AUTH_TOKEN }}
+          gh-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
-
-      - run: npx nx run-many --target=publish-build --parallel=3
-
-      - name: Publish alpha packages
-        id: publish-alpha
-        run: |
-          SHORT_SHA=${GITHUB_SHA:0:6}
-          PREID="alpha.${SHORT_SHA}"
-          npx nx run gamut-release:alpha --preid="${PREID}" --manifest
-        env:
-          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
-
-      - name: List alpha packages versions
-        id: published
-        continue-on-error: true
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const manifestPath = 'alpha-publish-manifest.json';
-            const outputPath = 'alpha-publish-comment.md';
-            if (!fs.existsSync(manifestPath)) {
-              fs.writeFileSync(outputPath, '');
-              return;
-            }
-
-            const entries = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-            if (!Array.isArray(entries) || entries.length === 0) {
-              fs.writeFileSync(outputPath, '');
-              return;
-            }
-
-            const tableLines = [
-              '| Package | Version | npm | Diff |',
-              '| --- | --- | --- | --- |',
-              ...entries.map((entry) => {
-                const pkgUrl = `https://www.npmjs.com/package/${entry.name}`;
-                const versionUrl = `${pkgUrl}/v/${entry.version}`;
-                const baseVersion = entry.previousVersion || null;
-                const diffUrl = baseVersion
-                  ? `https://npmdiff.dev/${encodeURIComponent(
-                      entry.name
-                    )}/${baseVersion}/${entry.version}/`
-                  : null;
-                const npmLink = `[npm](${versionUrl})`;
-                const diffLink = diffUrl ? `[diff](${diffUrl})` : 'N/A';
-
-                return `| \`${entry.name}\` | \`${entry.version}\` | ${npmLink} | ${diffLink} |`;
-              }),
-            ];
-            const comment = `📬 Published Alpha Packages:\n\n${tableLines.join(
-              '\n'
-            )}\n`;
-            fs.writeFileSync(outputPath, comment);
-
-      - name: Comment with published alpha packages
-        uses: ./.github/actions/sticky-comment
-        if: ${{ !cancelled() && hashFiles('alpha-publish-comment.md') != '' }}
-        with:
-          github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          header: Alpha Packages
-          message-path: alpha-publish-comment.md
+          manifest-path: alpha-publish-manifest.json
+          comment-path: alpha-publish-comment.md
+          comment-title: Published Alpha Packages
+          sticky-header: Alpha Packages
+          publish-run: |
+            SHORT_SHA=${GITHUB_SHA:0:6}
+            PREID="alpha.${SHORT_SHA}"
+            npx nx run gamut-release:pre-release --preid="${PREID}" --manifest

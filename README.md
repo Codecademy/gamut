@@ -108,17 +108,21 @@ Add new Button variant and fix spacing issues
     - It will create git tags and GitHub releases
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
-### Publishing an alpha version of a module
+### Publishing an pre-release version of a module
 
-Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
+You can consume prerelease packages from npm before your PR merges. Two flows are available; **alpha** and **beta** are mutually exclusive on a PR.
+
+**Alpha (default):** On each push to the PR branch, CI publishes alpha releases (per-commit prerelease versions on npm). This does **not** run while the PR has the **`beta`** label.
+
+**Beta:** Add the **`beta`** label to the PR (create the label in the repo if it does not exist). That triggers a one-time publish to npm under the **`beta`** dist-tag (install with e.g. `yarn add @codecademy/gamut@beta`). Pushing new commits does **not** republish beta automatically; remove the **`beta`** label and add it again after your changes to trigger another publish.
 
 > NOTE: in case an alpha build is not published upon opening of the PR or Draft PR, re-run the `build-test` check and that will re-run the alpha build publishing flows
 
 1.  Create a PR or Draft PR.
-    - This will kickoff a Github Action workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
-1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
+    - Without the **`beta`** label, each push kicks off the workflow that publishes an alpha build. (This will appear in Github as the "Deploy")
+1.  After packages are published, the `codecademydev` bot should comment on your PR with the names of the published packages (separate comments for alpha vs beta). <br/>
     <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
-1.  Install this version of the package in your application you wish to test your changes on.
+1.  Install that version in the application where you want to test your changes (alpha by exact version from the table, or beta via `@beta` when using the beta flow).
 
 ### Working with pre-published changes
 
@@ -277,6 +281,67 @@ This process minimizes the likelihood of accidental breaking changes in Gamut ne
 ### Changelog Descriptions
 
 Changelog content is driven by the description in version plan files (in `.nx/version-plans/`), not the PR title or PR description.
+
+## AI Tool Plugins
+
+Gamut ships an agent-tools plugin with skills, rules, and agents for Claude Code and Cursor. The `gamut` CLI is included in `@codecademy/gamut` (and `@codecademy/gamut-kit`), so run it via `npx` from any project that has the package installed.
+
+### Installing
+
+**Claude Code**
+
+```bash
+npx gamut plugin install claude
+```
+
+Registers the plugin at user scope via `claude plugin marketplace add`, then installs it. Skills become available as slash commands (e.g. `/gamut-buttons`, `/gamut-review`). If they don't appear immediately, run `/reload-plugins` inside Claude Code.
+
+**Cursor**
+
+```bash
+npx gamut plugin install cursor
+```
+
+Copies skills, rules, and agents into your project's `.cursor/` directory.
+
+### Themes — DESIGN.md
+
+Add `--theme` to also write a `DESIGN.md` into the current directory with theme-specific design tokens and component guidance:
+
+```bash
+npx gamut plugin install cursor --theme core       # Codecademy Core
+npx gamut plugin install cursor --theme percipio   # Percipio / LX Studio
+npx gamut plugin install cursor --theme admin      # Admin / Platform
+```
+
+Use `--force` to overwrite an existing `DESIGN.md`.
+
+### Scoped installs
+
+Install only a subset of the plugin content with `--scope`:
+
+```bash
+npx gamut plugin install cursor --scope skills    # skills only
+npx gamut plugin install cursor --scope rules     # rules only
+npx gamut plugin install cursor --scope agents    # agents only
+```
+
+### Updating and removing
+
+```bash
+npx gamut plugin install           # re-run to update to the latest version
+npx gamut plugin remove cursor     # remove the Cursor plugin
+npx gamut plugin remove claude     # remove the Claude Code plugin
+npx gamut plugin list              # list installed plugins
+```
+
+### One-off (no install)
+
+Run Claude Code with the plugin loaded for a single session without registering it:
+
+```bash
+claude --plugin-dir ./node_modules/@codecademy/gamut/agent-tools
+```
 
 ## Publishing Storybook
 

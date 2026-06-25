@@ -1,0 +1,43 @@
+name: Publish Beta
+
+on:
+  pull_request:
+    types: [labeled]
+
+env:
+  NODE_VERSION: '22.13.1'
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: npm-prerelease-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  publish-beta:
+    if: github.event.label.name == 'beta' && github.event.pull_request.head.ref == 'cass-gmt-1607-publish'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/prerelease-publish
+        with:
+          node-auth-token: ${{ secrets.NODE_AUTH_TOKEN }}
+          gh-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
+          manifest-path: beta-publish-manifest.json
+          comment-path: beta-publish-comment.md
+          comment-title: 'Published Beta Packages (install with `@beta`):'
+          sticky-header: Beta Packages
+          publish-run: |
+            PREID="beta.pr${{ github.event.pull_request.number }}.${{ github.run_id }}"
+            npx nx run gamut-release:pre-release --preid="${PREID}" --publish-tag=beta --manifest=beta-publish-manifest.json

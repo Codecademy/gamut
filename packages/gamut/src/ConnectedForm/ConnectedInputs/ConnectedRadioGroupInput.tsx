@@ -5,9 +5,13 @@ import { ConnectedRadioGroupInputProps } from './types';
 
 export const ConnectedRadioGroupInput: React.FC<
   ConnectedRadioGroupInputProps
-> = ({ name, options, disabled, ...rest }) => {
+> = ({ name, options, disabled, customValidations, ...rest }) => {
   return (
-    <ConnectedRadioGroup name={name} {...rest}>
+    <ConnectedRadioGroup
+      customValidations={customValidations}
+      name={name}
+      {...rest}
+    >
       {options.map((elem) => {
         return (
           <ConnectedRadio

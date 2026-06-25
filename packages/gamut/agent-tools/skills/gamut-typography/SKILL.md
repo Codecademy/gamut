@@ -1,11 +1,11 @@
 ---
 name: gamut-typography
-description: Use this skill when creating or reviewing UI text in Gamut apps — headlines, body, captions, labels, code snippets, or text-heavy layouts. Covers theme-specific stacks (Core Apercu/Suisse vs Percipio/LX Skillsoft), fontSize / lineHeight tokens, semantic fontWeight title (700 vs 500), line length, and alignment for Codecademy-branded surfaces.
+description: Use this skill when applying Gamut typography tokens — font family, font size, line height, or semantic font weight (including the `fontWeight="title"` difference between Core 700 and Percipio/LX 500). See `gamut-system-props` for system.typography props.
 ---
 
 # Gamut Typography
 
-Implementation source of truth: [`packages/gamut-styles/src/variables/typography.ts`](https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variables/typography.ts) and themes under [`packages/gamut-styles/src/themes`](https://github.com/Codecademy/gamut/tree/main/packages/gamut-styles/src/themes).
+Implementation source of truth: `packages/gamut-styles/src/variables/typography.ts` and themes under `packages/gamut-styles/src/themes`.
 
 ## Scope by theme
 
