@@ -1,0 +1,24 @@
+---
+description: >-
+  Standards for editing Gamut design system packages (components, styles, tokens).
+  Use when changing files under packages/gamut, gamut-styles, gamut-patterns,
+  gamut-icons, gamut-illustrations, or styleguide component docs.
+globs:
+  - packages/gamut/**/*
+  - packages/gamut-styles/**/*
+  - packages/gamut-patterns/**/*
+  - packages/gamut-icons/**/*
+  - packages/gamut-illustrations/**/*
+  - packages/styleguide/**/*
+alwaysApply: false
+---
+
+# Gamut library packages
+
+- Prefer extending existing components in `packages/gamut` over duplicating patterns.
+- Read token sources in `packages/gamut-styles/src/variables/` before changing colors, spacing, type, or radii. Avoid hardcoded hex and non-token pixel values.
+- Use semantic color keys in component styles so they work under every ColorMode.
+- Add or update Storybook MDX in `packages/styleguide` for public API or behavior changes.
+- For **component file layout, variance typing, React conventions, and Storybook file pairing** in `packages/gamut` / `packages/styleguide`, follow `.cursor/rules/gamut-component-building.mdc` and the **gamut-library-authoring** skill below.
+- Follow `.cursor/rules/figma-rules.mdc` for icon/pattern/illustration package usage when implementing from design.
+- For detailed workflows (tokens, styling, MDX, quality gates), use the **gamut-library-authoring** Cursor skill (`/gamut-library-authoring` in chat, or open `.cursor/skills/gamut-library-authoring/SKILL.md`).

@@ -1,0 +1,11 @@
+{
+  "name": "codecademy-gamut-themes",
+  "version": "1.0.0",
+  "description": "ColorMode, Background, and semantic theme usage for Gamut apps.",
+  "author": {
+    "name": "Codecademy"
+  },
+  "keywords": ["gamut", "theme", "colormode", "dark-mode", "codecademy"],
+  "homepage": "https://gamut.codecademy.com/",
+  "repository": "https://github.com/Codecademy/gamut"
+}
