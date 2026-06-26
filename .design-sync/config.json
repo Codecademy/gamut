@@ -5,9 +5,13 @@
   "storybookConfigDir": "packages/styleguide/.storybook",
   "storybookStatic": ".design-sync/sb-reference",
   "buildCmd": "yarn nx run-many --target=build --projects=variance,gamut-styles,gamut-icons,gamut-patterns,gamut-illustrations,gamut && sed -i '' \"s|import '../styles/vds_base_theme.scss'|import '../styles/vds_base_theme.css' // patched for design-sync|\" packages/gamut/dist/Video/lib/VidstackPlayer.js && printf '/* @ds-css-runtime: vds_base_theme.scss patched to .css stub for esbuild compatibility */\\n' > packages/gamut/dist/Video/styles/vds_base_theme.css",
-  "extraEntries": ["@codecademy/gamut-styles"],
+  "extraEntries": [
+    "@codecademy/gamut-styles",
+    "@codecademy/gamut-styles/dist/themes"
+  ],
+  "readmeHeader": ".design-sync/conventions.md",
   "runtimeFontPrefixes": ["https://www.codecademy.com/gamut"],
-  "tsconfig": "../../../.design-sync/tsconfig.json",
+  "tsconfig": "../../.design-sync/tsconfig.json",
   "libOverrides": {
     "bundle.mjs": "enable minification — icons-as-code push unminified bundle to 5.2MB, over the 5MB upload limit"
   },
