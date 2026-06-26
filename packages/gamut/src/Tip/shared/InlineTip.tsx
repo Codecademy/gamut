@@ -1,3 +1,5 @@
+import { useCallback, useState } from 'react';
+
 import { InfoTipContainer } from '../InfoTip/styles';
 import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
@@ -15,6 +17,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
   avatar,
   children,
+  closeOnClick,
   escapeKeyPressHandler,
   id,
   inheritDims,
@@ -31,6 +34,15 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   zIndex,
 }) => {
   const isHoverType = type === 'tool' || type === 'preview';
+  const [isSuppressed, setIsSuppressed] = useState(false);
+
+  const handleClick = useCallback(() => {
+    if (closeOnClick) setIsSuppressed(true);
+  }, [closeOnClick]);
+
+  const handleBlur = useCallback(() => setIsSuppressed(false), []);
+
+  const handleMouseLeave = useCallback(() => setIsSuppressed(false), []);
 
   const InlineTipWrapper = isHoverType ? ToolTipWrapper : InfoTipWrapper;
   const InlineTipBodyWrapper = isHoverType
@@ -41,11 +53,18 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   const tipBodyAlignment = getAlignmentStyles({ alignment, avatar, type });
   const isHorizontalCenter = tipBodyAlignment === 'horizontalCenter';
 
+  const suppressedBodyStyle =
+    isHoverType && isSuppressed
+      ? { opacity: 0, visibility: 'hidden' as const, transition: 'none' }
+      : undefined;
+
   const target = (
     <TargetContainer
       height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
+      onBlur={isHoverType ? handleBlur : undefined}
+      onClick={isHoverType ? handleClick : undefined}
       onKeyDown={escapeKeyPressHandler}
     >
       {children}
@@ -57,6 +76,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       alignment={alignment}
       zIndex={zIndex ?? 1}
       {...inlineWrapperProps}
+      style={suppressedBodyStyle}
     >
       <TipBody
         alignment={tipBodyAlignment}
@@ -90,7 +110,10 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   );
 
   return (
-    <InlineTipWrapper {...tipWrapperProps}>
+    <InlineTipWrapper
+      {...(tipWrapperProps as any)}
+      onMouseLeave={isHoverType ? handleMouseLeave : undefined}
+    >
       {alignment.includes('top') ? (
         <>
           {tipBody}
