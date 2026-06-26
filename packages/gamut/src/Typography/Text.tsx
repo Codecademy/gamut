@@ -8,7 +8,17 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { ComponentProps, forwardRef } from 'react';
 
-import { typographyElementVariants, typographyStyleVariants } from './variants';
+import {
+  typographyElementVariants,
+  typographyStyleVariants,
+  typographyUtilities,
+} from './variants';
+
+export {
+  typographyElementVariants,
+  typographyStyleVariants,
+  typographyUtilities,
+};
 
 const displayVariants = variant({
   variants: typographyStyleVariants,

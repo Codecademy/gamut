@@ -24,7 +24,7 @@
       "dependsOn": ["^build"],
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-styles"],
       "options": {
-        "jestConfig": "packages/gamut-styles/jest.config.ts",
+        "jestConfig": "packages/gamut-styles/jest.config.cjs",
         "passWithNoTests": false
       }
     },

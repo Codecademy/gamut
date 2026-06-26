@@ -7,6 +7,13 @@
     "csstype": "^3.0.7",
     "lodash": "^4.17.23"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -19,7 +26,6 @@
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "peerDependencies": {
     "@emotion/react": "*",
     "typescript": ">=4.3.5"
@@ -31,5 +37,5 @@
   "scripts": {
     "build": "nx build @codecademy/variance"
   },
-  "types": "dist/index.d.ts"
+  "type": "module"
 }

@@ -10,6 +10,13 @@
     "get-nonce": "^1.0.0",
     "polished": "^4.1.2"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist",
     "core",
@@ -20,7 +27,6 @@
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "peerDependencies": {
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
@@ -35,5 +41,6 @@
   "repository": "git@github.com:Codecademy/gamut.git",
   "scripts": {
     "build": "nx build @codecademy/gamut-styles"
-  }
+  },
+  "type": "module"
 }

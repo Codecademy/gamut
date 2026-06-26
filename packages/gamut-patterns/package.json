@@ -9,13 +9,19 @@
     "@codecademy/variance": "0.26.1",
     "classnames": "^2.2.5"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "homepage": "https://github.com/Codecademy/gamut#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -31,5 +37,5 @@
     "format": "svgo -f ./src/svg --pretty --config=.svgo.yml"
   },
   "sideEffects": false,
-  "types": "dist/index.d.ts"
+  "type": "module"
 }

@@ -8,13 +8,19 @@
     "@codecademy/gamut-styles": "20.0.2",
     "classnames": "^2.2.5"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "homepage": "https://github.com/Codecademy/gamut#readme",
   "license": "MIT",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -31,5 +37,6 @@
   "sideEffects": [
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
-  ]
+  ],
+  "type": "module"
 }
