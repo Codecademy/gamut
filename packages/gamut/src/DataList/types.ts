@@ -67,8 +67,6 @@ export type FilterOption = string | { text: string; value: string };
 
 export type DataGridColumnSize = Exclude<ListColProps['size'], 'content'>;
 
-export const DEFAULT_COLUMN_SIZE: DataGridColumnSize = 'md';
-
 export interface ColumnConfig<T> {
   key: keyof T;
   /**

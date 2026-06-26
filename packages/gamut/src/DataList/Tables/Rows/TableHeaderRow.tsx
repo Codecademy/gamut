@@ -3,6 +3,7 @@ import { memo, ReactElement } from 'react';
 import { FlexBox } from '../../..';
 import { ListCol } from '../../../List';
 import { useListContext } from '../../../List/ListProvider';
+import { DEFAULT_COLUMN_SIZE } from '../../constants';
 import {
   ExpandControl,
   FilterControl,
@@ -11,7 +12,7 @@ import {
 } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
 import { useListState } from '../../hooks/useListState';
-import { ColumnConfig, DEFAULT_COLUMN_SIZE, Query } from '../../types';
+import { ColumnConfig, Query } from '../../types';
 import { StyledHeaderRow } from './elements';
 
 interface HeaderComponent {
