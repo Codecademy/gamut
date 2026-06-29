@@ -35,11 +35,12 @@ const inlineTipStates = states({
 
 const toolTipWrapperStates = states({
   suppress: {
-    '&:hover > div, &:focus-within > div': {
-      opacity: 0,
-      visibility: 'hidden',
-      transition: 'none',
-    },
+    '&:hover > [data-tooltip-body], &:has(:focus-visible) > [data-tooltip-body]':
+      {
+        opacity: 0,
+        visibility: 'hidden',
+        transition: 'none',
+      },
   },
 });
 
@@ -57,11 +58,12 @@ export const ToolTipWrapper = styled.div<
   StyleProps<typeof inlineTipStates> & StyleProps<typeof toolTipWrapperStates>
 >(
   css({
-    '&:hover > div, &:focus-within > div': {
-      opacity: 1,
-      transition: `opacity ${timing.fast} ${timing.base}`,
-      visibility: 'visible',
-    },
+    '&:hover > [data-tooltip-body], &:has(:focus-visible) > [data-tooltip-body]':
+      {
+        opacity: 1,
+        transition: `opacity ${timing.fast} ${timing.base}`,
+        visibility: 'visible',
+      },
     ...tipWrapperStyles,
   }),
   inlineTipStates,
