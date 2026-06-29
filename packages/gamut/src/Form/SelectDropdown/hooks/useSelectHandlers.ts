@@ -52,13 +52,14 @@ export const useSelectHandlers = ({
   removeAllButtonRef,
 }: UseSelectHandlersArgs): UseSelectHandlersReturn => {
   const [activated, setActivated] = useState(false);
-  const [multiValues, setMultiValues] = useState(
-    multiple &&
-      filterValueFromOptions(
-        selectOptions,
-        value,
-        isOptionsGrouped(selectOptions)
-      )
+  const [multiValues, setMultiValues] = useState<OptionStrict[] | false>(
+    multiple
+      ? filterValueFromOptions(
+          selectOptions,
+          value,
+          isOptionsGrouped(selectOptions)
+        )
+      : false
   );
 
   // Sync multi-select value from props when controlled (`value` is a string[]).

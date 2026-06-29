@@ -1,6 +1,6 @@
 import { StyleProps } from '@codecademy/variance';
 
-import { conditionalBorderStates } from '../styles';
+import { conditionalBorderStates } from '../core/styles';
 import { InternalInputsProps } from './component-props';
 
 /**
