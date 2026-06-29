@@ -40,15 +40,25 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
     if (closeOnClick) setIsSuppressed(true);
   }, [closeOnClick]);
 
-  const handleBlur = useCallback(() => setIsSuppressed(false), []);
+  const handleUnsuppress = useCallback(() => setIsSuppressed(false), []);
 
-  const handleMouseLeave = useCallback(() => setIsSuppressed(false), []);
+  // Skip synthetic enter/leave fired when a child changes visibility (relatedTarget stays inside the wrapper).
+  const handleMouseEnterAndLeave = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const related = e.relatedTarget as Node | null;
+      if (related && e.currentTarget.contains(related)) return;
+      setIsSuppressed(false);
+    },
+    []
+  );
 
   const InlineTipWrapper = isHoverType ? ToolTipWrapper : InfoTipWrapper;
   const InlineTipBodyWrapper = isHoverType
     ? ToolTipContainer
     : InfoTipContainer;
-  const inlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
+  const inlineWrapperProps = isHoverType
+    ? { 'data-tooltip-body': '' }
+    : { hideTip: isTipHidden };
   const tipWrapperProps = isHoverType
     ? { inheritDims, suppress: isSuppressed }
     : {};
@@ -60,7 +70,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
-      onBlur={isHoverType ? handleBlur : undefined}
+      onBlur={isHoverType ? handleUnsuppress : undefined}
       onClick={isHoverType ? handleClick : undefined}
       onKeyDown={escapeKeyPressHandler}
     >
@@ -108,7 +118,8 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   return (
     <InlineTipWrapper
       {...(tipWrapperProps as any)}
-      onMouseLeave={isHoverType ? handleMouseLeave : undefined}
+      onMouseEnter={isHoverType ? handleMouseEnterAndLeave : undefined}
+      onMouseLeave={isHoverType ? handleMouseEnterAndLeave : undefined}
     >
       {alignment.includes('top') ? (
         <>
