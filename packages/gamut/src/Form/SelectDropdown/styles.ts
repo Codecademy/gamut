@@ -223,13 +223,11 @@ export const getMemoizedStyles = (
       return {
         ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
         alignItems: 'center',
-        color: isNew
-          ? state.isDisabled
-            ? theme.colors['text-disabled']
-            : theme.colors.primary
-          : state.isDisabled
+        color: state.isDisabled
           ? theme.colors['text-disabled']
-          : theme.colors.text,
+          : isNew
+          ? theme.colors.primary
+          : theme.colors.text
         cursor: state.isDisabled ? 'not-allowed' : 'pointer',
         display: 'flex',
         padding: isSmall ? '3px 14px' : '11px 14px',
