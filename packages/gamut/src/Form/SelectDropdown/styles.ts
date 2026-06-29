@@ -227,7 +227,7 @@ export const getMemoizedStyles = (
           ? theme.colors['text-disabled']
           : isNew
           ? theme.colors.primary
-          : theme.colors.text
+          : theme.colors.text,
         cursor: state.isDisabled ? 'not-allowed' : 'pointer',
         display: 'flex',
         padding: isSmall ? '3px 14px' : '11px 14px',
