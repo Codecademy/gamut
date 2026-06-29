@@ -1,64 +1,21 @@
 import { useTheme } from '@emotion/react';
-import {
-  KeyboardEvent,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useId, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
-import { ActionMeta, Options as OptionsType, StylesConfig } from 'react-select';
+import { StylesConfig } from 'react-select';
 
-import { parseOptions, SelectOptionBase } from '../utils';
+import { onFocus } from './core/accessibility';
+import { defaultComponents } from './core/constants';
+import { getMemoizedStyles } from './core/styles';
+import { resolveNoOptionsMessage } from './core/utils';
 import {
-  AbbreviatedSingleValue,
-  CustomContainer,
-  CustomInput,
-  CustomValueContainer,
-  DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
-  IconOption,
-  MultiValueRemoveButton,
-  MultiValueWithColorMode,
-  onFocus,
-  RemoveAllButton,
   SelectDropdownContext,
   TypedReactSelect,
 } from './elements';
-import { getMemoizedStyles } from './styles';
-import {
-  OptionStrict,
-  SelectDropdownGroup,
-  SelectDropdownProps,
-} from './types';
-import {
-  filterValueFromOptions,
-  getCreatedOptionValue,
-  isMultipleSelectProps,
-  isOptionsGrouped,
-  isSingleSelectProps,
-  removeValueFromSelectedOptions,
-} from './utils';
-
-const defaultProps = {
-  name: undefined,
-  components: {
-    DropdownIndicator: DropdownButton,
-    IndicatorSeparator: () => null,
-    ClearIndicator: RemoveAllButton,
-    SelectContainer: CustomContainer,
-    ValueContainer: CustomValueContainer,
-    MultiValue: MultiValueWithColorMode,
-    MultiValueRemove: MultiValueRemoveButton,
-    Option: IconOption,
-    SingleValue: AbbreviatedSingleValue,
-    Input: CustomInput,
-  },
-};
-const onChangeAction = 'select-option';
+import { useSelectHandlers } from './hooks/useSelectHandlers';
+import { useSelectOptions } from './hooks/useSelectOptions';
+import { SelectDropdownProps } from './types';
 
 /**
  * A flexible dropdown select component built on top of react-select.
@@ -137,147 +94,28 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
 
-  const [activated, setActivated] = useState(false);
-  const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
-
-  // these are used to programatically manage the focus state of our multi-select options + 'Remove all' button
   const removeAllButtonRef = useRef<HTMLDivElement>(null);
   const selectInputRef = useRef<HTMLDivElement>(null);
 
-  const selectOptions = useMemo(():
-    | SelectOptionBase[]
-    | SelectDropdownGroup[] => {
-    if (
-      !options ||
-      (Array.isArray(options) && !options.length) ||
-      (typeof options === 'object' &&
-        !Array.isArray(options) &&
-        Object.keys(options).length === 0)
-    ) {
-      return [];
-    }
+  const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
 
-    if (isOptionsGrouped(options)) {
-      return options;
-    }
+  const { selectOptions, parsedValue } = useSelectOptions({
+    options,
+    id,
+    size,
+    value: value as string | string[] | undefined,
+  });
 
-    return parseOptions({ options, id, size });
-  }, [options, id, size]);
-
-  const parsedValue = useMemo(() => {
-    if (isOptionsGrouped(selectOptions)) {
-      for (const group of selectOptions) {
-        if (group.options) {
-          const foundOption = group.options.find(
-            (option) => option.value === value
-          );
-          if (foundOption) return foundOption;
-        }
-      }
-      return undefined;
-    }
-
-    return selectOptions.find((option) => option.value === value);
-  }, [selectOptions, value]);
-
-  const [multiValues, setMultiValues] = useState(
-    multiple && // To keep this efficient for non-multiSelect
-      filterValueFromOptions(
-        selectOptions,
-        value,
-        isOptionsGrouped(selectOptions)
-      )
-  );
-
-  // Sync multi-select value from props when controlled (`value` is a string[]).
-  // Uncontrolled multi (`value` undefined or '') keeps selection in local state.
-  useEffect(() => {
-    if (!multiple || !Array.isArray(value)) return;
-
-    const newMultiValues = filterValueFromOptions(
+  const { activated, multiValues, changeHandler, keyPressHandler } =
+    useSelectHandlers({
+      onChange,
+      multiple,
+      onCreateOption,
       selectOptions,
       value,
-      isOptionsGrouped(selectOptions)
-    );
-    if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
-
-    // We only update this when our passed in options or value changes, not multiValues.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options, value, multiple]);
-
-  const changeHandler = useCallback(
-    (
-      optionEvent: OptionStrict | OptionsType<OptionStrict>,
-      actionMeta: ActionMeta<OptionStrict>
-    ) => {
-      setActivated(true);
-
-      if (actionMeta.action === 'create-option') {
-        const createdValue = getCreatedOptionValue(
-          optionEvent,
-          actionMeta,
-          multiple
-        );
-
-        if (createdValue) {
-          onCreateOption?.(createdValue);
-        }
-      }
-
-      const onChangeProps = { onChange, multiple };
-      const forwardedMeta: ActionMeta<OptionStrict> =
-        actionMeta.action === 'create-option'
-          ? actionMeta
-          : {
-              action: onChangeAction,
-              option: isMultipleSelectProps(onChangeProps)
-                ? undefined
-                : (optionEvent as OptionStrict),
-            };
-
-      if (isSingleSelectProps(onChangeProps)) {
-        const singleOptionEvent = optionEvent as OptionStrict;
-
-        onChangeProps.onChange?.(singleOptionEvent, forwardedMeta);
-      }
-
-      if (isMultipleSelectProps(onChangeProps)) {
-        setMultiValues(optionEvent as OptionStrict[]);
-
-        onChangeProps.onChange?.(
-          optionEvent as OptionsType<OptionStrict>,
-          forwardedMeta
-        );
-      }
-    },
-    [onChange, multiple, onCreateOption]
-  );
-
-  const keyPressHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (multiple && e.key === 'Enter' && currentFocusedValue && multiValues) {
-      const newMultiValues = removeValueFromSelectedOptions(
-        multiValues,
-        currentFocusedValue
-      );
-
-      if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
-    }
-    if (
-      removeAllButtonRef.current !== null &&
-      e.key === 'ArrowRight' &&
-      multiValues &&
-      currentFocusedValue === multiValues[multiValues.length - 1].value
-    ) {
-      removeAllButtonRef.current.focus();
-    }
-  };
-
-  const noOptionsMessage =
-    validationMessage === undefined
-      ? undefined // fall back to react-select default ("No options")
-      : typeof validationMessage === 'function'
-      ? (validationMessage as (obj: { inputValue: string }) => React.ReactNode)
-      : () => validationMessage;
+      currentFocusedValue,
+      removeAllButtonRef,
+    });
 
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
@@ -294,12 +132,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }}
     >
       <TypedReactSelect
-        {...defaultProps}
         activated={activated}
         aria-live="assertive"
-        ariaLiveMessages={{
-          onFocus,
-        }}
+        ariaLiveMessages={{ onFocus }}
+        components={defaultComponents}
         dropdownWidth={dropdownWidth}
         error={Boolean(error)}
         formatCreateLabel={formatCreateLabel}
@@ -317,7 +153,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isValidNewOption={isValidNewOption}
         menuAlignment={menuAlignment}
         name={name}
-        noOptionsMessage={noOptionsMessage}
+        noOptionsMessage={resolveNoOptionsMessage(validationMessage)}
         options={selectOptions}
         placeholder={placeholder}
         selectRef={selectInputRef}
@@ -327,7 +163,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
         onInputChange={onInputChange}
-        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
+        onKeyDown={multiple ? keyPressHandler : undefined}
         {...rest}
       />
     </SelectDropdownContext.Provider>

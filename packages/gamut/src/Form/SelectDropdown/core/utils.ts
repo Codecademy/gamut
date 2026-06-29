@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { ActionMeta, Options as OptionsType } from 'react-select';
 
-import { SelectOptionBase } from '../utils';
+import { SelectOptionBase } from '../../utils';
 import {
   BaseOnChangeProps,
   ExtendedOption,
@@ -10,7 +11,7 @@ import {
   SelectDropdownOptions,
   SelectDropdownProps,
   SingleSelectDropdownProps,
-} from './types';
+} from '../types';
 
 export const isMultipleSelectProps = (
   props: BaseOnChangeProps
@@ -97,6 +98,18 @@ export const filterValueFromOptions = (
  * @param value - The value or values to remove
  * @returns New array with the specified values removed
  */
+export const resolveNoOptionsMessage = (
+  validationMessage: SelectDropdownProps['validationMessage']
+): ((obj: { inputValue: string }) => React.ReactNode) | undefined => {
+  if (validationMessage === undefined) return undefined;
+  if (typeof validationMessage === 'function') {
+    return validationMessage as (obj: {
+      inputValue: string;
+    }) => React.ReactNode;
+  }
+  return () => validationMessage;
+};
+
 export const removeValueFromSelectedOptions = (
   selectedOptions: ExtendedOption[] | SelectOptionBase[],
   value: SelectDropdownProps['value']

@@ -11,16 +11,16 @@ import {
   tagBaseStyles,
   tagLabelFontSize,
   tagLabelPadding,
-} from '../../Tag/styles';
+} from '../../../Tag/styles';
 import {
   formBaseComponentStyles,
   formBaseFieldStylesObject,
   formFieldDisabledStyles,
   formFieldPaddingStyles,
   InputSelectors,
-} from '../styles';
-import { ControlState, OptionState } from './types';
-import { BaseSelectComponentProps } from './types/styles';
+} from '../../styles';
+import { ControlState, OptionState } from '../types';
+import { BaseSelectComponentProps } from '../types/styles';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
