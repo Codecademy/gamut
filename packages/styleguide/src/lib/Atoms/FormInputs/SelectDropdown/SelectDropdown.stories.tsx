@@ -953,8 +953,8 @@ const MultipleSelectControlledRender = () => {
         label="Pick your languages"
       >
         <SelectDropdown
-          multiple
           id="multi-controlled"
+          multiple
           name="multi-controlled"
           options={multiOptions}
           placeholder="Select languages…"
