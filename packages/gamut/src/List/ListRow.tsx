@@ -114,6 +114,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     return (
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
+        as={isTable ? 'tr' : 'li'}
         expanded={isTable ? undefined : !!renderExpanded}
         flexWrap={
           isTable && renderExpanded

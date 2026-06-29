@@ -125,7 +125,7 @@ export const States = () => {
 export const InfoTipAutoLabelling: Story = {
   render: () => (
     <ConnectedForm
-      defaultValues={{ email: '' }}
+      defaultValues={{ emailInput: '' }}
       onSubmit={(values) => action('Form Submitted')(values)}
     >
       <ConnectedFormGroup
@@ -135,7 +135,7 @@ export const InfoTipAutoLabelling: Story = {
           placement: 'floating',
         }}
         label="Email address"
-        name="email"
+        name="emailInput"
       />
     </ConnectedForm>
   ),

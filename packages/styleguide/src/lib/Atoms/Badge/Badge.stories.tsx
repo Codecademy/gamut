@@ -55,7 +55,7 @@ export const Custom: Story = {
         variant="custom"
         {...args}
       />
-      <Badge bg="green" variant="custom" {...args} />
+      <Badge bg="green-400" variant="custom" {...args} />
       <Badge bg="orange-500" variant="custom" {...args} />
       <Badge
         bg="lightBlue"

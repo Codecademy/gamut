@@ -1,3 +1,17 @@
+## 3.0.6 (2026-06-25)
+
+### 🩹 Fixes
+
+- fix a11y errors and enable SB addon-a11y to error ([#3347](https://github.com/Codecademy/gamut/pull/3347))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.2.2
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 3.0.5 (2026-06-24)
 
 ### 🧱 Updated Dependencies
@@ -35,7 +49,7 @@
 
 # 3.0.0 (2026-06-15)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - Remove deprecated accordion components ([#3366](https://github.com/Codecademy/gamut/pull/3366))
 

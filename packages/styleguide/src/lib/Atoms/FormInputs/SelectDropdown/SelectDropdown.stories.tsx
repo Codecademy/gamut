@@ -16,11 +16,13 @@ const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
   args: {
-    htmlFor: 'example-select',
+    id: 'example-select',
+    name: 'example-select',
     options: fruitOptions,
     disabled: false,
     isSearchable: false,
     value: '',
+    'aria-label': 'Select an option',
   },
   argTypes: {
     value: {
@@ -128,6 +130,7 @@ export const FormGroupSelectDropdown: Story = {
   args: {
     options: ['hello', 'hi', 'howdy'],
     value: 'oh no',
+    id: 'big-label',
     name: 'big-label',
   },
   render: (args) => (
@@ -147,6 +150,7 @@ export const FormGroupSelectDropdown: Story = {
 export const FormGroupError: Story = {
   args: {
     options: ['Error', 'oh no', ':('],
+    id: 'error-example-unique',
     name: 'error-example-unique',
     placeholder: 'cry cry cry',
   },
@@ -166,6 +170,7 @@ export const FormGroupError: Story = {
 
 export const DisabledOptions: Story = {
   args: {
+    id: 'disabled-dropdown',
     name: 'disabled-dropdown',
     options: [
       {
@@ -199,6 +204,7 @@ export const DisabledOptions: Story = {
 
 export const Subtitles: Story = {
   args: {
+    id: 'subtitles-dropdown',
     name: 'subtitles-dropdown',
     options: [
       {
@@ -234,6 +240,7 @@ export const Subtitles: Story = {
 
 export const RightLabels: Story = {
   args: {
+    id: 'right-labels-dropdown',
     name: 'right-labels-dropdown',
     options: [
       {
@@ -269,6 +276,7 @@ export const RightLabels: Story = {
 
 export const Icons: Story = {
   args: {
+    id: 'pizzaz-dropdown',
     name: 'pizzaz-dropdown',
     options: [
       {
@@ -299,6 +307,7 @@ export const Icons: Story = {
 
 export const AbbreviatedInput: Story = {
   args: {
+    id: 'abbreviated-dropdown',
     name: 'abbreviated-dropdown',
     options: [
       {
@@ -347,6 +356,7 @@ export const AbbreviatedInput: Story = {
 
 export const AbbreviatedSmallSize: Story = {
   args: {
+    id: 'abbreviated-small',
     name: 'abbreviated-small',
     options: [
       {
@@ -389,6 +399,7 @@ export const AbbreviatedSmallSize: Story = {
 
 export const AbbreviatedWithSubtitleAndRightLabel: Story = {
   args: {
+    id: 'abbreviated-detailed',
     name: 'abbreviated-detailed',
     options: [
       {
@@ -429,6 +440,7 @@ export const AbbreviatedWithSubtitleAndRightLabel: Story = {
 
 export const ComplexAbbreviatedOptions: Story = {
   args: {
+    id: 'complex-abbreviated-dropdown',
     name: 'complex-abbreviated-dropdown',
     options: [
       {
@@ -482,6 +494,7 @@ export const ComplexAbbreviatedOptions: Story = {
 
 export const GroupDividers: Story = {
   args: {
+    id: 'dividers-dropdown',
     name: 'dividers-dropdown',
     options: [
       {
@@ -540,8 +553,9 @@ export const GroupDividers: Story = {
 
 export const GroupLabels: Story = {
   args: {
-    name: 'group-labels-dropdown',
+    id: 'group-labels-dropdown',
     multiple: true,
+    name: 'group-labels-dropdown',
     options: [
       {
         label: 'Group 1',
@@ -600,6 +614,7 @@ export const GroupLabels: Story = {
 
 export const ShownOptionsDefault: Story = {
   args: {
+    id: 'shownOptionsLimit01',
     options: [
       'i am not small',
       ':)',
@@ -631,6 +646,7 @@ export const ShownOptionsDefault: Story = {
 
 export const ShownOptionsThree: Story = {
   args: {
+    id: 'shownOptionsLimit02',
     options: [
       'i am not small',
       ':)',
@@ -663,6 +679,7 @@ export const ShownOptionsThree: Story = {
 
 export const IndependentWidths: Story = {
   args: {
+    id: 'width-dropdown',
     name: 'width-dropdown',
     options: [
       {
@@ -712,6 +729,7 @@ export const IndependentWidths: Story = {
 
 export const SmallWithAbbreviations: Story = {
   args: {
+    id: 'small-abbreviated-dropdown',
     name: 'small-abbreviated-dropdown',
     options: [
       {
@@ -764,6 +782,7 @@ export const SmallWithAbbreviations: Story = {
 
 export const MenuAlignmentRight: Story = {
   args: {
+    id: 'menu-alignment-right',
     name: 'menu-alignment-right',
     options: [
       {
@@ -823,6 +842,7 @@ export const zIndexOnMenu: Story = {
           label="This menu is rendered behind the header"
         >
           <SelectDropdown
+            id="usesDefaultZIndex"
             name="usesDefaultZIndex"
             options={args.options}
             placeholder="Uses the default zIndex of 2"
@@ -834,6 +854,7 @@ export const zIndexOnMenu: Story = {
           label="This menu floats above the table's header"
         >
           <SelectDropdown
+            id="hasSetZIndex"
             name="hasSetZIndex"
             options={args.options}
             placeholder="Has a zIndex of 5"
@@ -890,6 +911,7 @@ export const MultipleSelect: Story = {
     },
   },
   args: {
+    id: 'multi-dropdown',
     name: 'multi-dropdown',
     multiple: true,
     options: [
@@ -932,6 +954,7 @@ const MultipleSelectControlledRender = () => {
       >
         <SelectDropdown
           multiple
+          id="multi-controlled"
           name="multi-controlled"
           options={multiOptions}
           placeholder="Select languages…"

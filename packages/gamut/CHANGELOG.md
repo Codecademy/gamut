@@ -1,3 +1,14 @@
+## 72.2.2 (2026-06-25)
+
+### 🩹 Fixes
+
+- fix a11y errors and enable SB addon-a11y to error ([#3347](https://github.com/Codecademy/gamut/pull/3347))
+- fix a11y errors and enable SB addon-a11y to error ([#3347](https://github.com/Codecademy/gamut/pull/3347))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 72.2.1 (2026-06-24)
 
 ### 🩹 Fixes
@@ -51,7 +62,7 @@
 
 # 72.0.0 (2026-06-15)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - Remove deprecated accordion components ([#3366](https://github.com/Codecademy/gamut/pull/3366))
 
