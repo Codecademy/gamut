@@ -49,14 +49,11 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
     ? ToolTipContainer
     : InfoTipContainer;
   const inlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
-  const tipWrapperProps = isHoverType ? ({ inheritDims } as const) : {};
+  const tipWrapperProps = isHoverType
+    ? { inheritDims, suppress: isSuppressed }
+    : {};
   const tipBodyAlignment = getAlignmentStyles({ alignment, avatar, type });
   const isHorizontalCenter = tipBodyAlignment === 'horizontalCenter';
-
-  const suppressedBodyStyle =
-    isHoverType && isSuppressed
-      ? { opacity: 0, visibility: 'hidden' as const, transition: 'none' }
-      : undefined;
 
   const target = (
     <TargetContainer
@@ -76,7 +73,6 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       alignment={alignment}
       zIndex={zIndex ?? 1}
       {...inlineWrapperProps}
-      style={suppressedBodyStyle}
     >
       <TipBody
         alignment={tipBodyAlignment}

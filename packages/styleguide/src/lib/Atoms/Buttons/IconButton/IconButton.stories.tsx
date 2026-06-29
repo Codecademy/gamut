@@ -48,3 +48,11 @@ type Story = StoryObj<typeof IconButton>;
 export const Default: Story = {
   args: {},
 };
+
+export const CloseOnClick: Story = {
+  args: {
+    tip: 'Tooltip closes on click',
+    // eslint-disable-next-line no-console
+    onClick: () => console.log('button onClick fired'),
+  },
+};
