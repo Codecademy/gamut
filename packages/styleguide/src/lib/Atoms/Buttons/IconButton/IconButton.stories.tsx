@@ -1,4 +1,5 @@
-import { IconButton } from '@codecademy/gamut';
+import { FlexBox, IconButton } from '@codecademy/gamut';
+import { SparkleIcon } from '@codecademy/gamut-icons';
 import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
@@ -49,10 +50,44 @@ export const Default: Story = {
   args: {},
 };
 
+// eslint-disable-next-line no-console
+const logClick = () => console.log('button onClick fired');
+
 export const CloseOnClick: Story = {
-  args: {
-    tip: 'Tooltip closes on click',
-    // eslint-disable-next-line no-console
-    onClick: () => console.log('button onClick fired'),
-  },
+  render: () => (
+    <FlexBox center justifyContent="space-around" pt={48}>
+      <IconButton
+        icon={SparkleIcon}
+        tip="Closes on click (floating)"
+        tipProps={{ placement: 'floating', alignment: 'top-center' }}
+        onClick={logClick}
+      />
+      <IconButton
+        icon={SparkleIcon}
+        tip="Closes on click (inline)"
+        tipProps={{ placement: 'inline', alignment: 'top-center' }}
+        onClick={logClick}
+      />
+      <IconButton
+        icon={SparkleIcon}
+        tip="Stays open on click (floating)"
+        tipProps={{
+          placement: 'floating',
+          alignment: 'top-center',
+          closeOnClick: false,
+        }}
+        onClick={logClick}
+      />
+      <IconButton
+        icon={SparkleIcon}
+        tip="Stays open on click (inline)"
+        tipProps={{
+          placement: 'inline',
+          alignment: 'top-center',
+          closeOnClick: false,
+        }}
+        onClick={logClick}
+      />
+    </FlexBox>
+  ),
 };
