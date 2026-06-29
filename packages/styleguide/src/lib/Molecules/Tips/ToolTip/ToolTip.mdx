@@ -69,6 +69,12 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 <Canvas of={ToolTipStories.Disabled} />
 
+### Close on click
+
+By default, `ToolTip` closes on click and reappears only after the cursor leaves and re-enters. Pass `closeOnClick={false}` to opt out (e.g. copy → copied patterns). The first two buttons close on click; the last two stay open.
+
+<Canvas of={ToolTipStories.CloseOnClick} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={ToolTipStories.Default} />
