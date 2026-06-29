@@ -22,7 +22,6 @@ export type ToolTipProps = TipNewBaseProps &
      * Can be used for accessibility - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
     id?: string;
-    zIndex?: number;
   };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
