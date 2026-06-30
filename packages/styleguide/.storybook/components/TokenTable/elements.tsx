@@ -1,4 +1,4 @@
-import { system, variant } from '@codecademy/gamut-styles/src';
+import { system, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { StyleProps } from '@codecademy/variance';
 import { Box } from '@codecademy/gamut';
