@@ -2,9 +2,7 @@
 /* eslint-disable gamut/no-css-standalone */
 import '../vidstack-vendor.css';
 
-/* eslint-enable gamut/no-css-standalone */
 import { styledOptions } from '@codecademy/gamut-styles';
-import { Global } from '@emotion/react';
 import styled, { CSSObject } from '@emotion/styled';
 import {
   isYouTubeProvider,
@@ -84,7 +82,6 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
       style={{ width, height }}
       variables={vdsVariables}
     >
-      <Global styles={vdsBaseThemeStyles} />
       <MediaPlayer
         autoPlay={autoplay}
         controls={showDefaultProviderControls}
