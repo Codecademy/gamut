@@ -74,7 +74,7 @@ export const CustomValueContainer = ({
       const { inputId } = rest.selectProps;
       if (inputId) {
         const inputElement = document.getElementById(inputId);
-        if (inputElement && inputElement.getAttribute('role') === 'combobox') {
+        if (inputElement?.getAttribute('role') === 'combobox') {
           Object.entries(comboboxProps).forEach(([key, value]) => {
             inputElement.setAttribute(key, value);
           });

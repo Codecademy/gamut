@@ -4,7 +4,7 @@ import {
   ComponentProps,
   forwardRef,
   MouseEventHandler,
-  MutableRefObject,
+  Ref,
   useId,
 } from 'react';
 
@@ -59,6 +59,18 @@ interface MenuTextItem extends HTMLProps, ForwardListItemProps {
 }
 
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
+
+type MenuItemRefElement = HTMLLIElement | HTMLAnchorElement | HTMLButtonElement;
+
+/**
+ * Narrows the forwarded ref union to a specific element type for the current render branch.
+ * MenuItem renders exactly one of li, a, or button per call, so the ref is forwarded to that element.
+ */
+function narrowMenuItemRef<T extends MenuItemRefElement>(
+  ref: React.Ref<MenuItemRefElement | null>
+): Ref<T> {
+  return ref as Ref<T>;
+}
 
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
@@ -134,15 +146,13 @@ export const MenuItem = forwardRef<
     );
 
     if (listItemType === 'link' && !disabled) {
-      const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
-
       return (
         <ListItem {...listItemProps}>
           <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListLink
               {...(computed as ListLinkProps)}
               href={href}
-              ref={linkRef}
+              ref={narrowMenuItemRef<HTMLAnchorElement>(ref)}
               target={target}
             >
               {content}
@@ -153,7 +163,6 @@ export const MenuItem = forwardRef<
     }
 
     if (listItemType === 'button' || (listItemType === 'link' && disabled)) {
-      const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
       const handleClick: MouseEventHandler<HTMLButtonElement> = disabled
         ? () => null
         : (props.onClick as any as MouseEventHandler<HTMLButtonElement>);
@@ -163,7 +172,7 @@ export const MenuItem = forwardRef<
           <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListButton
               {...(computed as ListLinkProps)}
-              ref={buttonRef}
+              ref={narrowMenuItemRef<HTMLButtonElement>(ref)}
               onClick={handleClick}
             >
               {content}
@@ -173,11 +182,12 @@ export const MenuItem = forwardRef<
       );
     }
 
-    const liRef = ref as MutableRefObject<HTMLLIElement>;
-
     return (
       // These are non-interactive and will never have tooltips (nor should they).
-      <ListItem {...(computed as ListItemProps)} ref={liRef}>
+      <ListItem
+        {...(computed as ListItemProps)}
+        ref={narrowMenuItemRef<HTMLLIElement>(ref)}
+      >
         {content}
       </ListItem>
     );
