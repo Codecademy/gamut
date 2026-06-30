@@ -45,8 +45,8 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   // Skip synthetic enter/leave fired when a child changes visibility (relatedTarget stays inside the wrapper).
   const handleMouseEnterAndLeave = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      const related = e.relatedTarget as Node | null;
-      if (related && e.currentTarget.contains(related)) return;
+      const related = e.relatedTarget;
+      if (related instanceof Node && e.currentTarget.contains(related)) return;
       setIsSuppressed(false);
     },
     []
