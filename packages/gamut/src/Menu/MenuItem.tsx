@@ -76,6 +76,7 @@ export const MenuItem = forwardRef<
       target,
       width = 1,
       'aria-label': explicitAriaLabel,
+      closeOnClick = true,
       ...props
     },
     ref
@@ -160,7 +161,11 @@ export const MenuItem = forwardRef<
 
       return (
         <ListItem {...listItemProps}>
-          <MenuToolTipWrapper label={label} tipId={tipId}>
+          <MenuToolTipWrapper
+            closeOnClick={closeOnClick}
+            label={label}
+            tipId={tipId}
+          >
             <ListButton
               {...(computed as ListLinkProps)}
               ref={buttonRef}
