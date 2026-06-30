@@ -4,6 +4,7 @@ import ReactSelect, {
   GroupBase,
   Props,
 } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 
 import {
   CustomSelectComponentProps,
@@ -74,7 +75,7 @@ export const CustomValueContainer = ({
       const { inputId } = rest.selectProps;
       if (inputId) {
         const inputElement = document.getElementById(inputId);
-        if (inputElement && inputElement.getAttribute('role') === 'combobox') {
+        if (inputElement?.getAttribute('role') === 'combobox') {
           Object.entries(comboboxProps).forEach(([key, value]) => {
             inputElement.setAttribute(key, value);
           });
@@ -120,7 +121,11 @@ export const CustomInput = ({
 
 /**
  * Typed wrapper around react-select component.
- * Provides type safety for the underlying react-select implementation.
+ * Renders CreatableSelect when isCreatable is true, ReactSelect otherwise.
+ * Creatable-only props (formatCreateLabel, isValidNewOption) are stripped from
+ * the non-creatable path so they don't reach ReactSelect. `onCreateOption` is
+ * handled in SelectDropdown's changeHandler — do not pass it to CreatableSelect
+ * or react-select will skip onChange on create.
  */
 export function TypedReactSelect<
   OptionType,
@@ -128,7 +133,20 @@ export function TypedReactSelect<
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
 >({
   selectRef,
+  isCreatable,
+  formatCreateLabel,
+  isValidNewOption,
   ...props
 }: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
+  if (isCreatable) {
+    return (
+      <CreatableSelect
+        {...(props as any)}
+        formatCreateLabel={formatCreateLabel}
+        isValidNewOption={isValidNewOption}
+        ref={selectRef}
+      />
+    );
+  }
   return <ReactSelect {...props} ref={selectRef} />;
 }

@@ -1,5 +1,5 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, type RefObject } from 'react';
 
 import { PopoverVariants } from './elements';
 
@@ -104,17 +104,14 @@ export type PopoverProps = PopoverBaseProps &
 
     /**
      * The target element around which the popover will be positioned.
+     * Only ref objects (e.g. from useRef) are supported at runtime; RefCallback is not.
      */
-    targetRef: React.RefObject<
-      Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-    >;
+    targetRef: RefObject<HTMLElement | null>;
 
     /**
      * The PopoverContainer which contents will be rendered into.
      */
-    popoverContainerRef?:
-      | React.RefObject<HTMLDivElement>
-      | React.RefCallback<HTMLDivElement>;
+    popoverContainerRef?: React.Ref<HTMLDivElement | null>;
 
     /**
      * Whether to add width restrictions to Popover.
