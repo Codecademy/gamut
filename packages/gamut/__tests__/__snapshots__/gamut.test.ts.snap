@@ -11,6 +11,7 @@ exports[`Gamut Exported Keys 1`] = `
   "BodyPortal",
   "Box",
   "Breadcrumbs",
+  "ButtonSelectors",
   "Card",
   "Checkbox",
   "Coachmark",
