@@ -8,6 +8,13 @@
     "component-test-setup": "^0.3.1",
     "lodash": "^4.17.23"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -20,7 +27,6 @@
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "peerDependencies": {
     "react": "^17.0.2 || ^18.3.0 || ^19.0.0"
   },
@@ -32,5 +38,5 @@
     "build": "nx build @codecademy/gamut-tests",
     "verify": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts"
+  "type": "module"
 }

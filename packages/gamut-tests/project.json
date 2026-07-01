@@ -22,7 +22,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-tests"],
       "options": {
-        "jestConfig": "packages/gamut-tests/jest.config.ts",
+        "jestConfig": "packages/gamut-tests/jest.config.cjs",
         "passWithNoTests": true
       }
     },

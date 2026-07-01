@@ -31,7 +31,7 @@
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-patterns"],
       "dependsOn": ["build"],
       "options": {
-        "jestConfig": "packages/gamut-patterns/jest.config.ts"
+        "jestConfig": "packages/gamut-patterns/jest.config.cjs"
       }
     },
     "clean": {

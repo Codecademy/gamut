@@ -1,6 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-// eslint-disable-next-line gamut/import-paths
-import * as icons from '@codecademy/gamut-icons/src/icons/regular';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ImageGallery } from '~styleguide/blocks';

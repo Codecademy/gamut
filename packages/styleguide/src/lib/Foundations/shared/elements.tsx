@@ -7,8 +7,7 @@ import {
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
-// eslint-disable-next-line gamut/import-paths
-import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
+import { propConfig as ALL_PROPS } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';

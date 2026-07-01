@@ -9,6 +9,7 @@ export * from './Box';
 export * from './Breadcrumbs';
 export * from './Button';
 export type { ButtonBaseElements } from './ButtonBase/ButtonBase';
+export { ButtonSelectors } from './ButtonBase';
 export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';
