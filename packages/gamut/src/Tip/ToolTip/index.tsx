@@ -5,12 +5,12 @@ import { WithChildrenProp } from '../../utils';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
+  TipBaseProps,
   TipCenterAlignment,
   tipDefaultProps,
-  TipNewBaseProps,
 } from '../shared/types';
 
-export type ToolTipProps = TipNewBaseProps &
+export type ToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
