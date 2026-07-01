@@ -40,7 +40,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     const iconSize = iconSizeMapping[buttonSize];
 
     return (
-      <ToolTip closeOnClick info={tip} {...tipProps}>
+      <ToolTip closeOnClick info={tip} {...(tipProps as any)}>
         <IconButtonBase
           {...props}
           aria-label={ariaLabel || tip}
