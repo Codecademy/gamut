@@ -91,3 +91,15 @@ export const CloseOnClick: Story = {
     </FlexBox>
   ),
 };
+
+export const PersistTooltip: Story = {
+  args: {
+    tip: 'Tooltip stays open on click',
+    tipProps: {
+      placement: 'floating',
+      alignment: 'top-center',
+      closeOnClick: false,
+    },
+    onClick: logClick,
+  },
+};
