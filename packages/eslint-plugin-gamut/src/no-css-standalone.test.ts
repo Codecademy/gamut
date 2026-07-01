@@ -1,9 +1,9 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { TSESLint } from '@typescript-eslint/utils';
 
 import rule from './no-css-standalone';
 
-const ruleTester = new ESLintUtils.RuleTester({
-  parser: '@typescript-eslint/parser',
+const ruleTester = new TSESLint.RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
 });
 
 ruleTester.run('no-css-standalone', rule, {
