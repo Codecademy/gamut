@@ -142,6 +142,11 @@ export const TableRow: DataRow = ({
         if (loading) {
           return (
             <ListCol {...colProps} key={newKey}>
+              {type === 'header' && (
+                <Text as="span" screenreader>
+                  Loading data
+                </Text>
+              )}
               <Shimmer
                 height="calc(100% - 1rem)"
                 minHeight={24}

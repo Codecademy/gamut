@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
 import * as React from 'react';
 import { RegisterOptions } from 'react-hook-form';
 
@@ -70,6 +70,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     disabled,
     customValidations,
   });
+  const uniqueIdSuffix = useId();
+  const htmlForId = `${name}-${uniqueIdSuffix}`;
 
   useEffect(() => {
     if (customError) {
@@ -85,7 +87,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
-      htmlFor={fieldId}
+      htmlFor={id || htmlForId}
       infotip={infotip}
       isSoloField={isSoloField}
       required={Boolean(validation?.required)}
@@ -108,6 +110,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
         aria-invalid={showError}
         customValidations={customValidations}
         disabled={disabled}
+        htmlFor={htmlForId}
         name={name}
       />
       {children}

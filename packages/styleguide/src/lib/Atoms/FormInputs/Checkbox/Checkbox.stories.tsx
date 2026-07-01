@@ -43,7 +43,7 @@ export const Unchecked: Story = {
     htmlFor: 'example-unchecked',
     label: 'unchecked',
     name: 'example-unchecked',
-    checked: true,
+    checked: false,
   },
 };
 

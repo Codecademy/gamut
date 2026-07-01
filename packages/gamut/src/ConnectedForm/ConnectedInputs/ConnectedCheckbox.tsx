@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useId } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { Checkbox } from '../..';
@@ -23,6 +24,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
     disabled,
     customValidations,
   });
+  const uniqueIdSuffix = useId();
 
   return (
     <Controller
@@ -42,7 +44,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
           checked={value}
           className={className}
           disabled={isDisabled}
-          htmlFor={name}
+          htmlFor={`${name}-${uniqueIdSuffix}`}
           id={id}
           infotip={infotip}
           label={label}

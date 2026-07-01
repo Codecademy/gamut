@@ -87,6 +87,7 @@ export const MenuItem = forwardRef<
       label,
       target,
       width = 1,
+      'aria-label': explicitAriaLabel,
       ...props
     },
     ref
@@ -122,7 +123,7 @@ export const MenuItem = forwardRef<
       variant: 'link',
       role: role === 'menu' ? 'menuitem' : undefined,
       [activeProp]: active,
-      'aria-label': isIconOnly ? ariaLabel : undefined,
+      'aria-label': isIconOnly ? ariaLabel ?? explicitAriaLabel : undefined,
       'aria-describedby': !isIconOnly && ariaLabel ? tipId : undefined,
       'aria-disabled': disabled,
       isDisabled: disabled,

@@ -5,8 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Input> = {
   component: Input,
   args: {
-    htmlFor: 'example-input',
-    name: 'example-input',
+    id: 'example-input',
     placeholder: 'Placeholder',
     type: 'text',
     size: 'base',
@@ -29,9 +28,8 @@ export const Default: Story = {
 
 export const Text: Story = {
   args: {
-    htmlFor: 'example-text',
+    id: 'example-text',
     defaultValue: 'Text',
-    name: 'example-text',
     type: 'text',
     required: true,
   },
@@ -39,8 +37,7 @@ export const Text: Story = {
 
 export const Number: Story = {
   args: {
-    htmlFor: 'example-number',
-    name: 'example-number',
+    id: 'example-number',
     type: 'number',
     defaultValue: 1,
   },
@@ -48,8 +45,7 @@ export const Number: Story = {
 
 export const File: Story = {
   args: {
-    htmlFor: 'example-file',
-    name: 'example-file',
+    id: 'example-file',
     type: 'file',
     value: '',
     onChange: () => {},
@@ -58,17 +54,15 @@ export const File: Story = {
 
 export const Error: Story = {
   args: {
-    htmlFor: 'example-error',
+    id: 'example-error',
     defaultValue: 'Error',
-    name: 'example-error',
     error: true,
   },
 };
 
 export const Validated: Story = {
   args: {
-    htmlFor: 'example-valid',
-    name: 'example-placeholder',
+    id: 'example-valid',
     placeholder: 'Placeholder',
     defaultValue: 'Verified Text',
     valid: true,
@@ -77,8 +71,7 @@ export const Validated: Story = {
 
 export const Placeholder: Story = {
   args: {
-    htmlFor: 'example-placeholder',
-    name: 'example-placeholder',
+    id: 'example-placeholder',
     placeholder: 'Placeholder',
     defaultValue: undefined,
   },
@@ -86,8 +79,7 @@ export const Placeholder: Story = {
 
 export const Disabled: Story = {
   args: {
-    htmlFor: 'example-disabled',
-    name: 'example-disabled',
+    id: 'example-disabled',
     placeholder: 'Disabled',
     disabled: true,
     defaultValue: undefined,
@@ -96,8 +88,7 @@ export const Disabled: Story = {
 
 export const CustomIcon: Story = {
   args: {
-    htmlFor: 'example-icon',
-    name: 'example-icon',
+    id: 'example-icon',
     defaultValue: 'Hello...',
     icon: icons.ViewIcon,
   },
@@ -106,10 +97,10 @@ export const CustomIcon: Story = {
 export const FormGroupDefault: Story = {
   args: {
     defaultValue: '123',
-    name: 'example-123',
+    id: 'example-123',
   },
   render: (args) => (
-    <FormGroup htmlFor="example-123" isSoloField label="i am a smol label">
+    <FormGroup id="example-123" isSoloField label="i am a smol label">
       <Input {...args} />
     </FormGroup>
   ),
@@ -118,7 +109,7 @@ export const FormGroupDefault: Story = {
 export const FormGroupError: Story = {
   args: {
     defaultValue: '123',
-    name: 'example-123',
+    id: 'example-123',
     error: true,
   },
   render: (args) => (
@@ -136,7 +127,7 @@ export const FormGroupError: Story = {
 export const FormGroupLarge: Story = {
   args: {
     defaultValue: '123',
-    name: 'example-123',
+    id: 'example-123',
     placeholder: 'Placeholder',
   },
   render: (args) => (
@@ -155,7 +146,7 @@ export const FormGroupLarge: Story = {
 export const FormGroupErrorLarge: Story = {
   args: {
     defaultValue: '123',
-    name: 'example-123',
+    id: 'example-123',
     error: true,
   },
   render: (args) => (
@@ -173,9 +164,8 @@ export const FormGroupErrorLarge: Story = {
 
 export const TextSmall: Story = {
   args: {
-    htmlFor: 'example-text',
+    id: 'example-text',
     defaultValue: 'This input has less padding!',
-    name: 'example-text',
     type: 'text',
     required: true,
     size: 'small',
@@ -184,9 +174,8 @@ export const TextSmall: Story = {
 
 export const TextSmallError: Story = {
   args: {
-    htmlFor: 'example-text',
+    id: 'example-text',
     defaultValue: 'Still works like a charm!',
-    name: 'example-text',
     type: 'text',
     required: true,
     size: 'small',
@@ -196,8 +185,7 @@ export const TextSmallError: Story = {
 
 export const NumberSmall: Story = {
   args: {
-    htmlFor: 'example-number',
-    name: 'example-number',
+    id: 'example-number',
     type: 'number',
     defaultValue: 1,
     size: 'small',
@@ -207,8 +195,7 @@ export const NumberSmall: Story = {
 
 export const FileSmall: Story = {
   args: {
-    htmlFor: 'example-file',
-    name: 'example-file',
+    id: 'example-file',
     type: 'file',
     value: '',
     onChange: () => {},
@@ -219,8 +206,7 @@ export const FileSmall: Story = {
 
 export const DisabledSmall: Story = {
   args: {
-    htmlFor: 'example-disabled',
-    name: 'example-disabled',
+    id: 'example-disabled',
     placeholder: 'Disabled',
     disabled: true,
     defaultValue: undefined,
