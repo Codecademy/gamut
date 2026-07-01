@@ -33,9 +33,15 @@ For more detailed information on `IconButton` tooltips, take a look at the <Link
 
 ## Close on Click
 
-By default, `IconButton` tooltips close immediately on click and reappear only after the cursor leaves and re-enters. Pass `tipProps={{ closeOnClick: false }}` to opt out (e.g. copy → copied patterns). The first two buttons close on click; the last two stay open.
+By default, `IconButton` tooltips close immediately on click and reappear only after the cursor leaves and re-enters. The first two buttons below close on click; the last two stay open.
 
 <Canvas of={IconButtonStories.CloseOnClick} />
+
+### Persisting the tooltip
+
+Pass `tipProps={{ closeOnClick: false }}` to keep the tooltip visible after a click. Use this for actions where the tooltip content changes in response to the click, such as a copy → copied pattern.
+
+<Canvas of={IconButtonStories.PersistTooltip} />
 
 ## Playground
 

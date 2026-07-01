@@ -53,6 +53,18 @@ export const Default: Story = {
 // eslint-disable-next-line no-console
 const logClick = () => console.log('button onClick fired');
 
+export const PersistTooltip: Story = {
+  args: {
+    tip: 'Tooltip stays open on click',
+    tipProps: {
+      placement: 'floating',
+      alignment: 'top-center',
+      closeOnClick: false,
+    },
+    onClick: logClick,
+  },
+};
+
 export const CloseOnClick: Story = {
   render: () => (
     <FlexBox center justifyContent="space-around" pt={48}>
