@@ -1,3 +1,5 @@
+import { useCallback, useState } from 'react';
+
 import { InfoTipContainer } from '../InfoTip/styles';
 import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
@@ -15,6 +17,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
   avatar,
   children,
+  closeOnClick,
   escapeKeyPressHandler,
   id,
   inheritDims,
@@ -31,13 +34,34 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   zIndex,
 }) => {
   const isHoverType = type === 'tool' || type === 'preview';
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  const handleClick = useCallback(() => {
+    if (closeOnClick) setIsDismissed(true);
+  }, [closeOnClick]);
+
+  const handleUndismissed = useCallback(() => setIsDismissed(false), []);
+
+  // Skip synthetic enter/leave fired when a child changes visibility (relatedTarget stays inside the wrapper).
+  const handleMouseEnterAndLeave = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const related = e.relatedTarget;
+      if (related instanceof Node && e.currentTarget.contains(related)) return;
+      setIsDismissed(false);
+    },
+    []
+  );
 
   const InlineTipWrapper = isHoverType ? ToolTipWrapper : InfoTipWrapper;
   const InlineTipBodyWrapper = isHoverType
     ? ToolTipContainer
     : InfoTipContainer;
-  const inlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
-  const tipWrapperProps = isHoverType ? ({ inheritDims } as const) : {};
+  const inlineWrapperProps = isHoverType
+    ? { 'data-tooltip-body': '' }
+    : { hideTip: isTipHidden };
+  const tipWrapperProps = isHoverType
+    ? { inheritDims, dismissed: isDismissed }
+    : {};
   const tipBodyAlignment = getAlignmentStyles({ alignment, avatar, type });
   const isHorizontalCenter = tipBodyAlignment === 'horizontalCenter';
 
@@ -46,6 +70,8 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
+      onBlur={isHoverType ? handleUndismissed : undefined}
+      onClick={isHoverType ? handleClick : undefined}
       onKeyDown={escapeKeyPressHandler}
     >
       {children}
@@ -90,7 +116,11 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   );
 
   return (
-    <InlineTipWrapper {...tipWrapperProps}>
+    <InlineTipWrapper
+      {...(tipWrapperProps as any)}
+      onMouseEnter={isHoverType ? handleMouseEnterAndLeave : undefined}
+      onMouseLeave={isHoverType ? handleMouseEnterAndLeave : undefined}
+    >
       {alignment.includes('top') ? (
         <>
           {tipBody}
