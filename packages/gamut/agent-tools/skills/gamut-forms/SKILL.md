@@ -26,6 +26,22 @@ For typical product forms, prefer `GridForm` (declarative `fields`, `LayoutGrid`
 
 ---
 
+## SelectDropdown vs Select
+
+Use `Select` for standard single-select fields where bundle size matters and no special styling is needed. Use `SelectDropdown` when the design calls for any of:
+
+- Styled dropdown menu (react-select appearance)
+- Search / typeahead
+- Multi-select with tags
+- Creatable options
+- Option icons, subtitles, right labels, abbreviations, or grouped options
+
+`SelectDropdown` carries a larger JS dependency (react-select); don't reach for it as a default drop-in for `Select`.
+
+For full SelectDropdown API detail — controlled vs uncontrolled patterns, creatable options, react-select action metadata — use [`gamut-select-dropdown`](../gamut-select-dropdown/SKILL.md). Generic `FormGroup` wiring (labels, errors, live regions) still applies as documented below.
+
+---
+
 ## `FormGroup` (baseline)
 
 `packages/gamut/src/Form/elements/FormGroup.tsx`
