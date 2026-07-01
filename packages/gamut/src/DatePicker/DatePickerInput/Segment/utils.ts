@@ -1,4 +1,7 @@
-import type { DateFormatLayoutItem, DatePartKind } from '../utils';
+import type {
+  DateFormatLayoutItem,
+  DatePartKind,
+} from '../DatePickerInputShell/utils';
 
 export type SegmentValues = {
   month: string;
@@ -51,6 +54,20 @@ export const isStrictlyCompleteDateEntry = (strictSegments: SegmentValues) => {
   return year.length === 4 && month.length === 2 && day.length === 2;
 };
 
+/** Year is full length and both month and day have digits (e.g. 2/30/2026). */
+export const isCompleteDateEntryAttempt = (strictSegments: SegmentValues) => {
+  const { month, day, year } = strictSegments;
+  return year.length === 4 && month.length > 0 && day.length > 0;
+};
+
+export const padSegmentDigitsForParse = (
+  strictSegments: SegmentValues
+): SegmentValues => ({
+  month: strictSegments.month.padStart(2, '0'),
+  day: strictSegments.day.padStart(2, '0'),
+  year: strictSegments.year,
+});
+
 export const normalizeSegmentValues = (
   segments: SegmentValues
 ): SegmentValues => {
@@ -82,6 +99,89 @@ export const normalizeSegmentValues = (
     day = Number.isFinite(d) ? String(d).padStart(2, '0') : '';
   }
   return { month, day, year };
+};
+
+export type SegmentBlurResolution = {
+  isInvalid: boolean;
+  parsedDate: Date | null;
+  segments: SegmentValues;
+  shouldClear: boolean;
+};
+
+export type SegmentValidationState = {
+  isInvalid: boolean;
+  parsedDate: Date | null;
+  segments: SegmentValues;
+};
+
+export const getSegmentValidationState = (
+  segments: SegmentValues
+): SegmentValidationState | null => {
+  const strictSegments = getStrictSegmentDigits(segments);
+
+  if (isStrictlyCompleteDateEntry(strictSegments)) {
+    const parsed = parseSegmentsToDate(strictSegments);
+    return {
+      isInvalid: parsed === null,
+      parsedDate: parsed,
+      segments: parsed ? getDateSegmentsFromDate(parsed) : strictSegments,
+    };
+  }
+
+  if (isCompleteDateEntryAttempt(strictSegments)) {
+    const paddedSegments = padSegmentDigitsForParse(strictSegments);
+    const parsed = parseSegmentsToDate(paddedSegments);
+    return {
+      isInvalid: parsed === null,
+      parsedDate: parsed,
+      segments: parsed ? getDateSegmentsFromDate(parsed) : paddedSegments,
+    };
+  }
+
+  return null;
+};
+
+export const resolveSegmentsOnBlur = (
+  segments: SegmentValues,
+  boundDate: Date | null
+): SegmentBlurResolution => {
+  const validation = getSegmentValidationState(segments);
+
+  if (validation) {
+    return {
+      isInvalid: validation.isInvalid,
+      parsedDate: validation.parsedDate,
+      segments: validation.segments,
+      shouldClear: false,
+    };
+  }
+
+  const normalized = normalizeSegmentValues(segments);
+  const parsed = parseSegmentsToDate(normalized);
+  if (parsed) {
+    return {
+      isInvalid: false,
+      parsedDate: parsed,
+      segments: normalized,
+      shouldClear: false,
+    };
+  }
+
+  if (!normalized.month && !normalized.day && !normalized.year) {
+    return {
+      isInvalid: false,
+      parsedDate: null,
+      segments: getDateSegmentsFromDate(null),
+      shouldClear: true,
+    };
+  }
+
+  return {
+    isInvalid: false,
+    parsedDate: null,
+    segments: getDateSegmentsFromDate(boundDate),
+    shouldClear: false,
+  };
 };
 
 export const getSegmentPlaceholder = (field: DatePartKind) =>

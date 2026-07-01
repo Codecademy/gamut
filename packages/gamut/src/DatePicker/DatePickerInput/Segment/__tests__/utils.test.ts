@@ -1,16 +1,18 @@
-import type { DateFormatLayoutItem } from '../../utils';
+import { DateFormatLayoutItem } from '../../DatePickerInputShell/utils';
 import {
   appendSegmentDigit,
   buildCombinedFromSegments,
   digitsToSegments,
   getDateSegmentsFromDate,
   getSegmentSpinBounds,
+  getSegmentValidationState,
   getStrictSegmentDigits,
   isStrictlyCompleteDateEntry,
   normalizeSegmentValues,
   padSegmentNumber,
   parseSegmentNumericString,
   parseSegmentsToDate,
+  resolveSegmentsOnBlur,
   spinSegment,
 } from '../utils';
 
@@ -182,6 +184,111 @@ describe('normalizeSegmentValues', () => {
         day: '02',
         year: '2024',
       });
+    });
+  });
+});
+
+describe('getSegmentValidationState', () => {
+  it('returns invalid for a complete but impossible date', () => {
+    expect(
+      getSegmentValidationState({ month: '02', day: '30', year: '2023' })
+    ).toEqual({
+      isInvalid: true,
+      parsedDate: null,
+      segments: { month: '02', day: '30', year: '2023' },
+    });
+  });
+
+  it('returns valid for a complete date with single-digit month', () => {
+    expect(
+      getSegmentValidationState({ month: '2', day: '15', year: '2026' })
+    ).toEqual({
+      isInvalid: false,
+      parsedDate: new Date(2026, 1, 15),
+      segments: { month: '02', day: '15', year: '2026' },
+    });
+  });
+
+  it('returns null for incomplete input', () => {
+    expect(
+      getSegmentValidationState({ month: '02', day: '15', year: '20' })
+    ).toBeNull();
+  });
+});
+
+describe('resolveSegmentsOnBlur', () => {
+  it('keeps strict invalid dates visible and marks them invalid', () => {
+    expect(
+      resolveSegmentsOnBlur(
+        { month: '02', day: '30', year: '2023' },
+        new Date(2024, 0, 1)
+      )
+    ).toEqual({
+      isInvalid: true,
+      parsedDate: null,
+      segments: { month: '02', day: '30', year: '2023' },
+      shouldClear: false,
+    });
+  });
+
+  it('errors on invalid dates with single-digit month or day instead of clamping', () => {
+    expect(
+      resolveSegmentsOnBlur(
+        { month: '2', day: '30', year: '2026' },
+        new Date(2024, 0, 1)
+      )
+    ).toEqual({
+      isInvalid: true,
+      parsedDate: null,
+      segments: { month: '02', day: '30', year: '2026' },
+      shouldClear: false,
+    });
+  });
+
+  it('accepts valid dates with single-digit month or day', () => {
+    expect(
+      resolveSegmentsOnBlur({ month: '2', day: '15', year: '2026' }, null)
+    ).toEqual({
+      isInvalid: false,
+      parsedDate: new Date(2026, 1, 15),
+      segments: { month: '02', day: '15', year: '2026' },
+      shouldClear: false,
+    });
+  });
+
+  it('normalizes valid complete dates', () => {
+    expect(
+      resolveSegmentsOnBlur({ month: '03', day: '15', year: '2024' }, null)
+    ).toEqual({
+      isInvalid: false,
+      parsedDate: new Date(2024, 2, 15),
+      segments: { month: '03', day: '15', year: '2024' },
+      shouldClear: false,
+    });
+  });
+
+  it('reverts incomplete input to the bound date', () => {
+    expect(
+      resolveSegmentsOnBlur(
+        { month: '03', day: '15', year: '20' },
+        new Date(2024, 0, 1)
+      )
+    ).toEqual({
+      isInvalid: false,
+      parsedDate: null,
+      segments: { month: '01', day: '01', year: '2024' },
+      shouldClear: false,
+    });
+  });
+
+  it('clears empty input', () => {
+    expect(
+      resolveSegmentsOnBlur({ month: '', day: '', year: '' }, null)
+    ).toEqual({
+      isInvalid: false,
+      parsedDate: null,
+      segments: { month: '', day: '', year: '' },
+      shouldClear: true,
     });
   });
 });
