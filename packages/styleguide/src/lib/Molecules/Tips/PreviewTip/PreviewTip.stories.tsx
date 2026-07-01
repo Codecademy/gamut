@@ -32,6 +32,7 @@ const AvatarExample = () => {
   return (
     <FlexBox center mt={16} py={96}>
       <PreviewTip
+        aria-label="sanrio unmotivated gudetama"
         avatar={
           <Box bg="navy" borderRadius="full" height="100%" width="100%">
             <SmileyIndifferentIcon color="yellow" size="100%" />

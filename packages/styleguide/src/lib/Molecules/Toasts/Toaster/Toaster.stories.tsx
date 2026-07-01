@@ -1,8 +1,9 @@
 import { FillButton, GridBox, Toast, Toaster } from '@codecademy/gamut';
 import { AddIcon, TrashIcon } from '@codecademy/gamut-icons';
 import { Target } from '@codecademy/gamut-illustrations';
-import type { Meta } from '@storybook/react';
-import { ComponentProps, useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+import { expect, waitFor } from 'storybook/test';
 
 const exampleToasts = [
   {
@@ -37,36 +38,52 @@ const meta: Meta<typeof Toaster> = {
 
 export default meta;
 
-export const Default: React.FC<ComponentProps<typeof Toaster>> = (args) => {
-  const [toasts, setToasts] = useState(args.toasts || []);
+type Story = StoryObj<typeof meta>;
 
-  const removeToasts = () => {
-    setToasts([]);
-  };
+export const Default: Story = {
+  parameters: {
+    interactions: {
+      disable: false,
+    },
+  },
+  render: function DefaultStory(args) {
+    const [toasts, setToasts] = useState(args.toasts || []);
 
-  const addToasts = () => {
-    if (!toasts.length) {
-      setTimeout(() => setToasts(args.toasts || []), 1000);
-    }
-  };
+    const removeToasts = () => {
+      setToasts([]);
+    };
 
-  const removeOne = (id: string) => {
-    const filteredToasts = toasts.filter((toast) => toast.id !== id);
+    const addToasts = () => {
+      if (!toasts.length) {
+        setTimeout(() => setToasts(args.toasts || []), 1000);
+      }
+    };
 
-    setToasts(filteredToasts);
-  };
+    const removeOne = (id: string) => {
+      const filteredToasts = toasts.filter((toast) => toast.id !== id);
 
-  return (
-    <>
-      <GridBox width={300}>
-        <FillButton icon={TrashIcon} mb={24} onClick={removeToasts}>
-          Click me to remove all the Toasts
-        </FillButton>
-        <FillButton icon={AddIcon} onClick={addToasts}>
-          Click me to reveal all the Toasts
-        </FillButton>
-      </GridBox>
-      <Toaster {...args} toasts={toasts} onClose={removeOne} />
-    </>
-  );
+      setToasts(filteredToasts);
+    };
+
+    return (
+      <>
+        <GridBox width={300}>
+          <FillButton icon={TrashIcon} mb={24} onClick={removeToasts}>
+            Click me to remove all the Toasts
+          </FillButton>
+          <FillButton icon={AddIcon} onClick={addToasts}>
+            Click me to reveal all the Toasts
+          </FillButton>
+        </GridBox>
+        <Toaster {...args} toasts={toasts} onClose={removeOne} />
+      </>
+    );
+  },
+  play: async () => {
+    await waitFor(async () => {
+      await expect(
+        document.body.querySelectorAll('[role="status"]').length
+      ).toEqual(4);
+    });
+  },
 };

@@ -27,7 +27,7 @@ const mdxComponents = {
 const preview: Preview = {
   parameters: {
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
     interactions: {
       disable: true,

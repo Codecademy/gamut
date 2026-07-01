@@ -15,6 +15,7 @@ export const OverflowXExample: Story = {
       bg="background-selected"
       overflowX="scroll"
       p={16}
+      tabIndex={0}
       whiteSpace="nowrap"
       width="200px"
     >
@@ -34,7 +35,13 @@ export const OverflowXExample: Story = {
 
 export const OverflowYExample: Story = {
   render: () => (
-    <Box bg="background-selected" height="100px" overflowY="scroll" p={16}>
+    <Box
+      bg="background-selected"
+      height="100px"
+      overflowY="scroll"
+      p={16}
+      tabIndex={0}
+    >
       <Box bg="primary" color="background-contrast" p={8}>
         This content is taller than its container and has{' '}
         <Markdown text="`overflowY='scroll'`." /> Inspect the example to see

@@ -5,7 +5,9 @@ import { expect } from 'storybook/test';
 
 const meta: Meta<typeof Toggle> = {
   component: Toggle,
-  args: {},
+  args: {
+    label: 'Toggle me',
+  },
 };
 
 export default meta;
