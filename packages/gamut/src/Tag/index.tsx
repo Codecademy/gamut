@@ -89,7 +89,7 @@ export const Tag: React.FC<TagProps> = ({
       {isSelection && (
         <DismissButton
           aria-disabled={disabled}
-          aria-label={`Dismiss ${children} Tag`}
+          aria-label={`Dismiss ${children as string} Tag`}
           disabled={disabled}
           icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
           isLarge={isLarge}
