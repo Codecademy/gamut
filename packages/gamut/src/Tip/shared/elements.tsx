@@ -34,7 +34,7 @@ const inlineTipStates = states({
 });
 
 const toolTipWrapperStates = states({
-  suppress: {
+  dismissed: {
     '&:hover > [data-tooltip-body], &:has(:focus-visible) > [data-tooltip-body]':
       {
         opacity: 0,

@@ -34,20 +34,20 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   zIndex,
 }) => {
   const isHoverType = type === 'tool' || type === 'preview';
-  const [isSuppressed, setIsSuppressed] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
 
   const handleClick = useCallback(() => {
-    if (closeOnClick) setIsSuppressed(true);
+    if (closeOnClick) setIsDismissed(true);
   }, [closeOnClick]);
 
-  const handleUnsuppress = useCallback(() => setIsSuppressed(false), []);
+  const handleUndismissed = useCallback(() => setIsDismissed(false), []);
 
   // Skip synthetic enter/leave fired when a child changes visibility (relatedTarget stays inside the wrapper).
   const handleMouseEnterAndLeave = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       const related = e.relatedTarget;
       if (related instanceof Node && e.currentTarget.contains(related)) return;
-      setIsSuppressed(false);
+      setIsDismissed(false);
     },
     []
   );
@@ -60,7 +60,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
     ? { 'data-tooltip-body': '' }
     : { hideTip: isTipHidden };
   const tipWrapperProps = isHoverType
-    ? { inheritDims, suppress: isSuppressed }
+    ? { inheritDims, dismissed: isDismissed }
     : {};
   const tipBodyAlignment = getAlignmentStyles({ alignment, avatar, type });
   const isHorizontalCenter = tipBodyAlignment === 'horizontalCenter';
@@ -70,7 +70,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
-      onBlur={isHoverType ? handleUnsuppress : undefined}
+      onBlur={isHoverType ? handleUndismissed : undefined}
       onClick={isHoverType ? handleClick : undefined}
       onKeyDown={escapeKeyPressHandler}
     >
