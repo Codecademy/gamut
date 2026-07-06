@@ -11,6 +11,7 @@ import {
 } from 'react';
 
 import { FlexBox } from '../../Box';
+import { IconButton } from '../../Button';
 import { FormGroup } from '../../Form/elements/FormGroup';
 import type { InputWrapperProps } from '../../Form/inputs/Input';
 import { isSameDay } from '../DatePickerCalendar/Calendar/utils/dateGrid';
@@ -95,6 +96,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const isInputFocusedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
     const segmentElRefs = useRef<
       Partial<Record<DatePartKind, HTMLSpanElement | null>>
     >({});
@@ -227,7 +229,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     return (
       <FormGroup
-        htmlFor={inputId}
+        id={inputId}
         isSoloField
         label={label ?? defaultLabel}
         mb={0}
@@ -236,7 +238,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         width="fit-content"
       >
         <SegmentedShell
-          id={inputId}
+          aria-labelledby={inputId}
           inputSize={size}
           ref={shellRef}
           role="group"
@@ -292,15 +294,14 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
             type="hidden"
             value={hiddenValue}
           />
-          <FlexBox
-            alignItems="center"
-            justifyContent="center"
-            pl={16}
-            pr={8}
-            role="presentation"
-          >
-            <MiniCalendarIcon aria-hidden size={16} />
-          </FlexBox>
+          <IconButton
+            mx={4}
+            icon={MiniCalendarIcon}
+            size="small"
+            tip={translations.openCalendarLabel}
+            ref={buttonRef}
+            onClick={() => buttonRef.current?.blur()}
+          />
         </SegmentedShell>
       </FormGroup>
     );

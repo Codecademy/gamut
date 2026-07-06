@@ -151,14 +151,12 @@ describe('DatePicker', () => {
     expect(view.getAllByRole('group')).toHaveLength(2);
   });
 
-  it('associates the field label with the segment shell via label `for` and shell `id` (DatePickerInput)', () => {
+  it('associates the field label with the segment shell via aria-labelledby (DatePickerInput)', () => {
     const { view } = renderSingle();
     const shell = view.getByRole('group');
-    const shellId = shell.getAttribute('id');
-    expect(shellId).toBeTruthy();
-    expect(
-      view.container.querySelector(`label[for="${shellId}"]`)
-    ).toBeInTheDocument();
+    const labelledBy = shell.getAttribute('aria-labelledby');
+    expect(labelledBy).toBeTruthy();
+    expect(view.container.querySelector(`#${labelledBy}`)).toBeInTheDocument();
   });
 
   it('renders only children when the children prop is provided', () => {
