@@ -27,7 +27,7 @@
     "react-player": "^2.16.0",
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.2",
-    "react-use": "^15.3.8",
+    "react-use": "^17.6.1",
     "sanitize-markdown": "^2.6.7"
   },
   "files": [
