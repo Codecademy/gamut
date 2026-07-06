@@ -1616,7 +1616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.57.9, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.57.10, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
@@ -1648,8 +1648,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:72.2.2"
-    "@codecademy/gamut-icons": "npm:9.57.9"
+    "@codecademy/gamut": "npm:72.2.3"
+    "@codecademy/gamut-icons": "npm:9.57.10"
     "@codecademy/gamut-illustrations": "npm:0.58.15"
     "@codecademy/gamut-patterns": "npm:0.10.34"
     "@codecademy/gamut-styles": "npm:20.0.2"
@@ -1705,11 +1705,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:72.2.2, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:72.2.3, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.57.9"
+    "@codecademy/gamut-icons": "npm:9.57.10"
     "@codecademy/gamut-illustrations": "npm:0.58.15"
     "@codecademy/gamut-patterns": "npm:0.10.34"
     "@codecademy/gamut-styles": "npm:20.0.2"
