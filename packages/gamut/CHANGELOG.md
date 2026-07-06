@@ -1,3 +1,9 @@
+## 72.2.3 (2026-07-06)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.10
+
 ## 72.2.2 (2026-06-25)
 
 ### 🩹 Fixes
