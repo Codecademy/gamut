@@ -1,5 +1,6 @@
+/* Third-party Vidstack default theme styles */
 /* eslint-disable gamut/no-css-standalone */
-import '../styles/vds_base_theme.scss';
+import '../vidstack-vendor.css';
 
 import { styledOptions } from '@codecademy/gamut-styles';
 import styled, { CSSObject } from '@emotion/styled';
@@ -18,13 +19,14 @@ import React, { useRef } from 'react';
 
 import { Box } from '../../Box';
 import { VideoProps } from '..';
+import { vdsBaseThemeStyles } from '../styles';
 import { keyboardShortcuts } from './utils/constants';
 import { vdsVariables } from './utils/variables';
 import { VideoLayout } from './VideoLayout';
 
 const VariableProvider = styled(Box, styledOptions(['variables']))<{
   variables?: CSSObject;
-}>(({ variables }) => variables, {
+}>(({ variables }) => variables, vdsBaseThemeStyles, {
   width: '100%',
   height: '100%',
   position: 'relative',
