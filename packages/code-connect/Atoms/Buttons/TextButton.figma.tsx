@@ -28,6 +28,11 @@ figma.connect(
         normal: 'normal',
         large: 'large',
       }),
+      variant: figma.enum('variant', {
+        primary: 'primary',
+        secondary: 'secondary',
+        danger: 'danger',
+      }),
     },
     example: ({ children, ...props }) => (
       <TextButton {...props}>{children}</TextButton>
