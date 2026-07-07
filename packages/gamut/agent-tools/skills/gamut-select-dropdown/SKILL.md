@@ -140,7 +140,8 @@ const lastInput = useRef('');
 
 - `FormGroup` `htmlFor` must match control `id` (not `name`). Alternatively, pass `htmlFor` directly on SelectDropdown and it becomes `id` downstream.
 - Pass `name` on SelectDropdown (required for forms).
-- Pass `aria-label` (required for forms); it must match the FormGroupLabel `htmlFor`.
+- Rely on FormGroupLabel's `htmlFor`/`id` connection for the accessible label — this is the standard HTML pattern and preferred method.
+- Only add `aria-label` when absolutely necessary (e.g., no visible label, label is hidden, or form context requires it). Do not use `aria-label` when a FormGroupLabel is present, as it overrides the visible label.
 - Pass `error` boolean when FormGroup has an error.
 - Generic FormGroup live-region behavior: see [`gamut-forms`](../gamut-forms/SKILL.md).
 
@@ -149,7 +150,6 @@ const lastInput = useRef('');
   <SelectDropdown
     id="country"
     name="country"
-    aria-label="country"
     options={options}
     value={value}
     error={Boolean(errors.country)}
