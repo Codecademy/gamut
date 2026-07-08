@@ -1,3 +1,19 @@
+## 72.2.4 (2026-07-08)
+
+### 🩹 Fixes
+
+- Bumping react-use to 17.6.1 updates past js-cookie 2.2.1 vulnerability to js-cookie 3.0.7 ([#3393](https://github.com/Codecademy/gamut/pull/3393))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 72.2.3 (2026-07-06)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.10
+
 ## 72.2.2 (2026-06-25)
 
 ### 🩹 Fixes
