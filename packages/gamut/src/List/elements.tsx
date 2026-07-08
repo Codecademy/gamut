@@ -218,7 +218,7 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
     flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     top: 0,
     bg: 'background-current',
-    zIndex: zIndices.stickyHeader,
+    zIndex: zIndices.foreground,
     fontFamily: 'accent',
     pb: { _: 0, c_base: 8, c_sm: 0 },
   }),

@@ -101,26 +101,26 @@ const meta: Meta<typeof DataList> = {
     header: false,
     spacing: 'condensed',
     onRowSelect: () => {},
-    onRowExpand: () => {},
-    expandedContent: ({ row }) => (
-      <FlexBox borderColor="background-hover" borderTop={1} p={16} pl={[0, 64]}>
-        <DataTable
-          columns={[
-            { key: 'name', size: 'md' },
-            { key: 'text', size: 'lg' },
-          ]}
-          header={false}
-          id={row.name}
-          idKey="id"
-          rows={[
-            { id: 1, name: 'Sub Row 1', text: 'Ooo very cool' },
-            { id: 2, name: 'Sub Row 2', text: 'Ooo very cool' },
-            { id: 3, name: 'Sub Row 3', text: 'Ooo very cool' },
-          ]}
-          variant="table"
-        />
-      </FlexBox>
-    ),
+    // onRowExpand: () => {},
+    // expandedContent: ({ row }) => (
+    //   <FlexBox borderColor="background-hover" borderTop={1} p={16} pl={[0, 64]}>
+    //     <DataTable
+    //       columns={[
+    //         { key: 'name', size: 'md' },
+    //         { key: 'text', size: 'lg' },
+    //       ]}
+    //       header={false}
+    //       id={row.name}
+    //       idKey="id"
+    //       rows={[
+    //         { id: 1, name: 'Sub Row 1', text: 'Ooo very cool' },
+    //         { id: 2, name: 'Sub Row 2', text: 'Ooo very cool' },
+    //         { id: 3, name: 'Sub Row 3', text: 'Ooo very cool' },
+    //       ]}
+    //       variant="table"
+    //     />
+    //   </FlexBox>
+    // ),
   },
 };
 

@@ -14,16 +14,16 @@
  */
 export const zIndices = {
   /** Decorative layer behind content (underlines, backdrops, shadows). */
-  underlay: -1,
+  underlay: -100,
   /** Ground layer — establishes a local stacking context without lifting above siblings. */
   base: 0,
-  /** Content lifted just above a sibling underlay/base. */
-  foreground: 1,
   /**
-   * In-flow sticky content headers (e.g. a sticky table `thead`). Below the portal band,
-   * so every overlay and the app nav cover it. Not a portal layer.
+   * The raised in-flow layer: an element in front of what sits/scrolls behind it, but below
+   * all portal overlays. Covers content lifted above an `underlay` (e.g. text over its
+   * underline) and sticky content headers (e.g. a sticky table `thead`). Set to 100 so it
+   * clears common ad-hoc low z-index values.
    */
-  stickyHeader: 100,
+  foreground: 100,
   /** Portal floor / `BodyPortal` default — un-tokenized portal content lands here. */
   portal: 200,
   /** Persistent floating page furniture at rest (e.g. an AI chat launcher, help bubble). */

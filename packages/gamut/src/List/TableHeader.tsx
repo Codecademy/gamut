@@ -18,7 +18,7 @@ export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
         display="block"
         position="sticky"
         top={0}
-        zIndex={zIndices.stickyHeader}
+        zIndex={zIndices.foreground}
       >
         <HeaderRowEl
           {...rest}
