@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`themes admin - theme shape 1`] = `
 {
@@ -161,7 +161,7 @@ exports[`themes admin - theme shape 1`] = `
       "portal": 200,
       "toaster": 800,
       "tooltip": 900,
-      "underlay": -1,
+      "underlay": -100,
       "widget": 300,
     },
   },
@@ -280,7 +280,7 @@ exports[`themes admin - theme shape 1`] = `
       "--zIndices-portal": 200,
       "--zIndices-toaster": 800,
       "--zIndices-tooltip": 900,
-      "--zIndices-underlay": -1,
+      "--zIndices-underlay": -100,
       "--zIndices-widget": 300,
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
@@ -714,7 +714,7 @@ exports[`themes core - theme shape 1`] = `
       "portal": 200,
       "toaster": 800,
       "tooltip": 900,
-      "underlay": -1,
+      "underlay": -100,
       "widget": 300,
     },
   },
@@ -833,7 +833,7 @@ exports[`themes core - theme shape 1`] = `
       "--zIndices-portal": 200,
       "--zIndices-toaster": 800,
       "--zIndices-tooltip": 900,
-      "--zIndices-underlay": -1,
+      "--zIndices-underlay": -100,
       "--zIndices-widget": 300,
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
@@ -1270,7 +1270,7 @@ exports[`themes lxStudio - theme shape 1`] = `
       "portal": 200,
       "toaster": 800,
       "tooltip": 900,
-      "underlay": -1,
+      "underlay": -100,
       "widget": 300,
     },
   },
@@ -1392,7 +1392,7 @@ exports[`themes lxStudio - theme shape 1`] = `
       "--zIndices-portal": 200,
       "--zIndices-toaster": 800,
       "--zIndices-tooltip": 900,
-      "--zIndices-underlay": -1,
+      "--zIndices-underlay": -100,
       "--zIndices-widget": 300,
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
@@ -1847,7 +1847,7 @@ exports[`themes percipio - theme shape 1`] = `
       "portal": 200,
       "toaster": 800,
       "tooltip": 900,
-      "underlay": -1,
+      "underlay": -100,
       "widget": 300,
     },
   },
@@ -1982,7 +1982,7 @@ exports[`themes percipio - theme shape 1`] = `
       "--zIndices-portal": 200,
       "--zIndices-toaster": 800,
       "--zIndices-tooltip": 900,
-      "--zIndices-underlay": -1,
+      "--zIndices-underlay": -100,
       "--zIndices-widget": 300,
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
@@ -2504,7 +2504,7 @@ exports[`themes platform - theme shape 1`] = `
       "portal": 200,
       "toaster": 800,
       "tooltip": 900,
-      "underlay": -1,
+      "underlay": -100,
       "widget": 300,
     },
   },
@@ -2669,7 +2669,7 @@ exports[`themes platform - theme shape 1`] = `
       "--zIndices-portal": 200,
       "--zIndices-toaster": 800,
       "--zIndices-tooltip": 900,
-      "--zIndices-underlay": -1,
+      "--zIndices-underlay": -100,
       "--zIndices-widget": 300,
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
