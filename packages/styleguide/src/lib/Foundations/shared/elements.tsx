@@ -509,7 +509,7 @@ export const zIndices = {
           <>
             {examples.flatMap((example, i) => {
               const link = (
-                <LinkTo key={example.id} id={example.id}>
+                <LinkTo id={example.id} key={example.id}>
                   {example.label}
                 </LinkTo>
               );
