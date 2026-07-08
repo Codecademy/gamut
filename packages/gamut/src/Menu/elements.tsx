@@ -2,6 +2,7 @@ import {
   styledOptions,
   system,
   transitionConcat,
+  zIndices,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -88,7 +89,7 @@ const interactiveVariants = system.variant({
     alignItems: 'center',
     cursor: 'pointer',
     width: 1,
-    zIndex: 1,
+    zIndex: zIndices.foreground,
     px: 24,
     py: 12,
     position: 'relative',
@@ -108,7 +109,7 @@ const interactiveVariants = system.variant({
       border: 2,
       borderColor: 'primary',
       opacity: 0,
-      zIndex: -1,
+      zIndex: zIndices.underlay,
     },
     [MenuItemSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
@@ -224,7 +225,7 @@ const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
 export const ListLink = forwardRef<
   HTMLAnchorElement,
   ComponentProps<typeof StyledListLink>
->(({ zIndex = 1, ...rest }, ref) => (
+>(({ zIndex = zIndices.foreground, ...rest }, ref) => (
   <StyledListLink ref={ref} zIndex={zIndex} {...rest} />
 ));
 

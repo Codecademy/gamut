@@ -1,3 +1,4 @@
+import { zIndices } from '@codecademy/gamut-styles';
 import { ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
@@ -12,7 +13,13 @@ export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {
     const { spacing, scrollable, variant } = useListContext();
     return (
-      <Box as="thead" display="block" position="sticky" top={0} zIndex={2}>
+      <Box
+        as="thead"
+        display="block"
+        position="sticky"
+        top={0}
+        zIndex={zIndices.stickyHeader}
+      >
         <HeaderRowEl
           {...rest}
           ref={ref}

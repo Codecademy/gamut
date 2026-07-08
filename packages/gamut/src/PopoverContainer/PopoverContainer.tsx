@@ -1,4 +1,9 @@
-import { elementDir, system, useElementDir } from '@codecademy/gamut-styles';
+import {
+  elementDir,
+  system,
+  useElementDir,
+  zIndices,
+} from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -282,5 +287,5 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   if (inline) return content;
 
-  return <BodyPortal>{content}</BodyPortal>;
+  return <BodyPortal zIndex={zIndices.popover}>{content}</BodyPortal>;
 };

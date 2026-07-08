@@ -3,6 +3,7 @@ import {
   states,
   theme as GamutTheme,
   variant,
+  zIndices,
 } from '@codecademy/gamut-styles';
 import { StylesConfig } from 'react-select';
 
@@ -25,7 +26,6 @@ import { BaseSelectComponentProps } from './types/styles';
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
   display: 'flex',
-  zIndex: 3,
 });
 
 const selectFocusStyles = {
@@ -164,6 +164,12 @@ export const getMemoizedStyles = (
           : {}),
       };
     },
+    menuPortal: (provided) => ({
+      ...provided,
+      // The menu is portaled to the body, so it stacks at the page root as a popover —
+      // above sticky headers and modal content. A raw `zIndex` prop overrides as an escape hatch.
+      zIndex: zIndex ?? zIndices.popover,
+    }),
     menuList: (provided, state: BaseSelectComponentProps) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${

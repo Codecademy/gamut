@@ -1,4 +1,4 @@
-import { css } from '@codecademy/gamut-styles';
+import { css, zIndices } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 
@@ -12,7 +12,7 @@ const GridLineWrapper = styled(Box)(
     inset: 0,
     pointerEvents: 'none',
     position: 'absolute',
-    zIndex: 0,
+    zIndex: zIndices.base,
   })
 );
 

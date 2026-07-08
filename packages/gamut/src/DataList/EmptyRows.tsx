@@ -1,3 +1,5 @@
+import { zIndices } from '@codecademy/gamut-styles';
+
 import { FlexBox } from '../Box';
 import { FillButton } from '../Button';
 import { Text } from '../Typography';
@@ -15,7 +17,7 @@ export const EmptyRows = () => {
       position="sticky"
       top="calc(50% - 66px)"
       width="320px"
-      zIndex={1}
+      zIndex={zIndices.foreground}
     >
       <FlexBox as="tr" center column gap={16} width="100%">
         <th>

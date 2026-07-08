@@ -1,4 +1,4 @@
-import { css, states, timing } from '@codecademy/gamut-styles';
+import { css, states, timing, zIndices } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -83,7 +83,7 @@ export const TargetContainer = styled(Box)(
       border: 2,
       borderColor: 'primary',
       opacity: 0,
-      zIndex: 0,
+      zIndex: zIndices.base,
     },
     [TargetSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
