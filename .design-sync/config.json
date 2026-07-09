@@ -13,7 +13,8 @@
   "runtimeFontPrefixes": ["https://www.codecademy.com/gamut"],
   "tsconfig": "../../.design-sync/tsconfig.json",
   "libOverrides": {
-    "bundle.mjs": "enable minification — icons-as-code push unminified bundle to 5.2MB, over the 5MB upload limit"
+    "bundle.mjs": "enable minification — icons-as-code push unminified bundle to 5.2MB, over the 5MB upload limit",
+    "source-storybook.mjs": "group components by Storybook's top-level sidebar category (atoms/molecules/organisms/layouts/typography) instead of the segment immediately preceding the component name — full nested paths were tried and reverted, they break emit.mjs's hardcoded 3-level asset paths"
   },
   "titleMap": {
     "Border": null,
