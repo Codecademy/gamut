@@ -17,7 +17,7 @@ Storybook: [Atoms / FormInputs / SelectDropdown](https://gamut.codecademy.com/?p
 
 ## When to use SelectDropdown vs Select
 
-Use `Select` for standard single-select forms with minimal bundle cost. Use `SelectDropdown` when designs specify the styled dropdown menu, search, multi-select tags, creatable options, icons, groups, or abbreviations. SelectDropdown has a larger JavaScript dependency (react-select).
+Use `Select` for standard single-select forms with minimal bundle cost. Use `SelectDropdown` when designs specify the styled dropdown menu, search, multi-select tags, creatable options, icons, groups, or abbreviations. `SelectDropdown` has a larger JavaScript dependency (react-select).
 
 ---
 
@@ -43,7 +43,7 @@ Grouped options: `{ label, options: [...], divider? }` (extends react-select `Gr
 
 ## Controlled vs uncontrolled
 
-SelectDropdown does **not** accept `defaultValue`.
+`SelectDropdown` does **not** accept `defaultValue`.
 
 | Mode             | Uncontrolled                                       | Controlled                                                                        |
 | ---------------- | -------------------------------------------------- | --------------------------------------------------------------------------------- |
