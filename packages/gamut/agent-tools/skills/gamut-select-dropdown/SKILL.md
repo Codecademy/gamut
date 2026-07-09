@@ -41,7 +41,7 @@ Grouped options: `{ label, options: [...], divider? }` (extends react-select `Gr
 
 ## Controlled vs uncontrolled
 
-SelectDropdown does **not** accept `defaultValue`.
+`SelectDropdown` does **not** accept `defaultValue`.
 
 | Mode             | Uncontrolled                                       | Controlled                                                                        |
 | ---------------- | -------------------------------------------------- | --------------------------------------------------------------------------------- |
