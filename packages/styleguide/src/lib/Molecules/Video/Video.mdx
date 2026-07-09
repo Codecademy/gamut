@@ -46,17 +46,33 @@ The Video component is a feature-rich video player that supports multiple video 
 
 ## Variants
 
+### Default: Internal MP4 Video
+
+<Canvas of={VideoStories.Default} />
+
 ### HLS Stream With Captions, Chapters And Thumbnails
 
 <Canvas of={VideoStories.VideoWithTracksAndThumbnails} />
 
-### YouTube Video
+### YouTube Video (ReactVideoPlayer - No Captions)
 
 <Canvas of={VideoStories.Youtube} />
 
-### Vimeo Video
+### YouTube Video With Captions (VidstackPlayer)
+
+<Canvas of={VideoStories.YoutubeWithCaptions} />
+
+### Vimeo Video (ReactVideoPlayer - No Captions)
 
 <Canvas of={VideoStories.Vimeo} />
+
+### Multiple Video Sources
+
+<Canvas of={VideoStories.MultipleVideoSources} />
+
+### YouTube Without Embed (VidstackPlayer)
+
+<Canvas of={VideoStories.YoutubeWithoutEmbed} />
 
 ## Playground
 
