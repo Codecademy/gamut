@@ -1,3 +1,51 @@
+## 72.2.4 (2026-07-08)
+
+### 🩹 Fixes
+
+- Bumping react-use to 17.6.1 updates past js-cookie 2.2.1 vulnerability to js-cookie 3.0.7 ([#3393](https://github.com/Codecademy/gamut/pull/3393))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 72.2.3 (2026-07-06)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.10
+
+## 72.2.2 (2026-06-25)
+
+### 🩹 Fixes
+
+- fix a11y errors and enable SB addon-a11y to error ([#3347](https://github.com/Codecademy/gamut/pull/3347))
+- fix a11y errors and enable SB addon-a11y to error ([#3347](https://github.com/Codecademy/gamut/pull/3347))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 72.2.1 (2026-06-24)
+
+### 🩹 Fixes
+
+- Removed "content" as a size variant for DataGrid (DataTable + DataList) ([#3378](https://github.com/Codecademy/gamut/pull/3378))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 72.2.0 (2026-06-24)
+
+### 🚀 Features
+
+- Adding customValidations for Connected fields, allowing field level validations to overwrite form-level ones. ([#3252](https://github.com/Codecademy/gamut/pull/3252))
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Troy Chryssos
+
 ## 72.1.0 (2026-06-24)
 
 ### 🚀 Features
@@ -30,7 +78,7 @@
 
 # 72.0.0 (2026-06-15)
 
-### ⚠️  Breaking Changes
+### ⚠️ Breaking Changes
 
 - Remove deprecated accordion components ([#3366](https://github.com/Codecademy/gamut/pull/3366))
 

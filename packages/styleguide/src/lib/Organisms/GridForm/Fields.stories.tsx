@@ -255,7 +255,7 @@ export const CustomInputs: Story = {
           </>
         ),
         label: 'Gimme two more swags',
-        name: 'custom-input',
+        name: 'custom-text-input',
         size: 12,
         validation: {
           required: true,
@@ -268,7 +268,11 @@ export const CustomInputs: Story = {
       },
       {
         render: ({ error, setValue }) => (
-          <FormGroup label="updog" width="100%">
+          <FormGroup
+            htmlFor="custom-text-group-input"
+            label="updog"
+            width="100%"
+          >
             <Input
               error={!!error}
               id="custom-text-group-input"
@@ -278,8 +282,7 @@ export const CustomInputs: Story = {
           </FormGroup>
         ),
         size: 12,
-        label: 'Gimme two more swags',
-        name: 'custom-input-group',
+        name: 'custom-group-input',
         validation: {
           required: true,
           pattern: {

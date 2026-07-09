@@ -642,6 +642,18 @@ describe('DataGrid', () => {
     }
   );
 
+  describe('Loading state', () => {
+    it('renders screenreader loading text for header type columns when loading', () => {
+      const { view } = renderView({
+        loading: true,
+        rows: [],
+        columns: [{ key: 'name', type: 'header' }, { key: 'sin' }],
+      });
+
+      expect(view.getAllByText('Loading data')).toHaveLength(5);
+    });
+  });
+
   describe('Container query control', () => {
     it('applies container query styles by default', () => {
       const { view } = renderView();
