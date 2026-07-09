@@ -9,7 +9,7 @@ import { GamutProvider, ColorMode, FillButton } from './CodecademyGamut';
 
 function App() {
   return (
-    <GamutProvider theme={coreTheme}>
+    <GamutProvider theme={percipioTheme}>
       <ColorMode mode="light">
         {/* components here */}
         <FillButton>Click Me</FillButton>
@@ -54,7 +54,8 @@ For color values, use semantic theme keys (defined in the active theme) rather t
 
 - **Component API**: each component folder (`components/<group>/<Name>/`) contains a `.d.ts` TypeScript declaration and a `.prompt.md` usage reference — read those for props and composition patterns before coding.
 - **README**: `README.md` in the project root lists all available components grouped by category.
-- **Bundle**: `_ds_bundle.js` — all components and themes are on `window.CodecademyGamut`. Import them destructured: `const { FillButton, GamutProvider, coreTheme } = window.CodecademyGamut`.
+- **Bundle**: `_ds_bundle.js` — all components and themes are on `window.CodecademyGamut`. Import them destructured: `const { FillButton, GamutProvider, percipioTheme } = window.CodecademyGamut`.
+- **Guidelines**: `guidelines/<name>.md` files contain category-level usage rules (button variant selection, theming setup, a11y patterns, code-style rules, etc.) — read the relevant one before building with that component family.
 
 ## Idiomatic build example
 
@@ -69,12 +70,12 @@ const {
   Text,
   FillButton,
   StrokeButton,
-  coreTheme,
+  percipioTheme,
 } = window.CodecademyGamut;
 
 export default function HeroSection() {
   return (
-    <GamutProvider theme={coreTheme}>
+    <GamutProvider theme={percipioTheme}>
       <ColorMode mode="light">
         <Box padding="48px" maxWidth="800px">
           <Text as="h1" fontSize={34} fontWeight="title">

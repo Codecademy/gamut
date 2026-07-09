@@ -60,7 +60,7 @@
   "provider": {
     "component": "GamutProvider",
     "props": {
-      "theme": { "$ref": "coreTheme" }
+      "theme": { "$ref": "percipioTheme" }
     },
     "inner": {
       "component": "ColorMode",
