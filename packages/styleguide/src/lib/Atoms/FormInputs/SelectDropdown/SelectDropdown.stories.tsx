@@ -942,102 +942,133 @@ export const MultipleSelect: Story = {
   ),
 };
 
-const MultipleSelectControlledRender = () => {
-  const [selected, setSelected] = useState<string[]>([]);
-
-  return (
-    <Box height="20rem">
-      <FormGroup
-        htmlFor="multi-controlled"
-        isSoloField
-        label="Pick your languages"
-      >
-        <SelectDropdown
-          id="multi-controlled"
-          multiple
-          name="multi-controlled"
-          options={multiOptions}
-          placeholder="Select languages…"
-          value={selected}
-          onChange={(opts) => setSelected(opts.map((o) => o.value))}
-        />
-      </FormGroup>
-      <Box color="text-secondary" mt={8}>
-        {selected.length === 0
-          ? 'No languages selected yet.'
-          : `Selected: ${selected.join(', ')}`}
-      </Box>
-    </Box>
-  );
-};
-
 export const MultipleSelectControlled: Story = {
   parameters: {
     docs: {
       description: {
         story: `**Controlled multi-select** — pass \`value: string[]\` and update it in \`onChange\`. Use this when another part of the UI needs to react to the current selection in real time (e.g. a summary panel, an enabled/disabled submit button, or a filtered list). The live "Selected:" line below shows why you'd reach for controlled state.`,
       },
+      source: {
+        sourceState: 'shown',
+        code: `const [selected, setSelected] = useState<string[]>([]);
+
+<Box height="20rem">
+  <FormGroup
+    htmlFor="multi-controlled"
+    isSoloField
+    label="Pick your languages"
+  >
+    <SelectDropdown
+      id="multi-controlled"
+      multiple
+      name="multi-controlled"
+      options={multiOptions}
+      placeholder="Select languages…"
+      value={selected}
+      onChange={(opts) => setSelected(opts.map((o) => o.value))}
+    />
+  </FormGroup>
+  <Box color="text-secondary" mt={8}>
+    {selected.length === 0
+      ? 'No languages selected yet.'
+      : \`Selected: \${selected.join(', ')}\`}
+  </Box>
+</Box>`,
+      },
     },
   },
-  render: () => <MultipleSelectControlledRender />,
-};
+  render: () => {
+    const MultipleSelectControlledContent = () => {
+      const [selected, setSelected] = useState<string[]>([]);
 
-const CreatableStoryRender = (
-  args: React.ComponentProps<typeof SelectDropdown>
-) => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+      return (
+        <Box height="20rem">
+          <FormGroup
+            htmlFor="multi-controlled"
+            isSoloField
+            label="Pick your languages"
+          >
+            <SelectDropdown
+              id="multi-controlled"
+              multiple
+              name="multi-controlled"
+              options={multiOptions}
+              placeholder="Select languages…"
+              value={selected}
+              onChange={(opts) => setSelected(opts.map((o) => o.value))}
+            />
+          </FormGroup>
+          <Box color="text-secondary" mt={8}>
+            {selected.length === 0
+              ? 'No languages selected yet.'
+              : `Selected: ${selected.join(', ')}`}
+          </Box>
+        </Box>
+      );
+    };
 
-  return (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="creatable-dropdown"
-        isSoloField
-        label="Type a new fruit and press Enter"
-      >
-        <SelectDropdown
-          {...args}
-          options={options}
-          onCreateOption={(inputValue) =>
-            setOptions((prev) => [...prev, inputValue])
-          }
-        />
-      </FormGroup>
-    </Box>
-  );
+    return <MultipleSelectControlledContent />;
+  },
 };
 
 export const Creatable: Story = {
+  parameters: {
+    docs: {
+      source: {
+        sourceState: 'shown',
+        code: `const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+
+<Box height="15rem">
+  <FormGroup
+    htmlFor="creatable-dropdown"
+    isSoloField
+    label="Type a new fruit and press Enter"
+  >
+    <SelectDropdown
+      isCreatable
+      name="creatable-dropdown"
+      options={options}
+      placeholder="Select or type to add…"
+      onCreateOption={(inputValue) =>
+        setOptions((prev) => [...prev, inputValue])
+      }
+    />
+  </FormGroup>
+</Box>`,
+      },
+    },
+  },
   args: {
     name: 'creatable-dropdown',
     isCreatable: true,
     placeholder: 'Select or type to add…',
   },
-  render: (args) => <CreatableStoryRender {...args} />,
-};
+  render: (args) => {
+    const CreatableContent = () => {
+      const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
 
-const CreatableMultiUncontrolledStoryRender = () => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+      return (
+        <Box height="15rem">
+          <FormGroup
+            htmlFor="creatable-dropdown"
+            isSoloField
+            label="Type a new fruit and press Enter"
+          >
+            <SelectDropdown
+              {...args}
+              id="creatable-dropdown"
+              options={options}
+              onCreateOption={(inputValue) =>
+                setOptions((prev) => [...prev, inputValue])
+              }
+            />
+          </FormGroup>
+        </Box>
+      );
+    };
 
-  return (
-    <Box height="18rem">
-      <FormGroup
-        htmlFor="creatable-multi-uncontrolled"
-        isSoloField
-        label="Pick fruits or add your own"
-      >
-        <SelectDropdown
-          isCreatable
-          multiple
-          name="creatable-multi-uncontrolled"
-          options={options}
-          placeholder="Select or type to add…"
-          onCreateOption={(inputValue) =>
-            setOptions((prev) => [...prev, inputValue])
-          }
-        />
-      </FormGroup>
-    </Box>
-  );
+    return <CreatableContent />;
+  },
 };
 
 export const CreatableMultiUncontrolled: Story = {
@@ -1048,40 +1079,59 @@ export const CreatableMultiUncontrolled: Story = {
 
 Use this when you only need the final value on submit and no other part of the UI reacts to selection changes — for example, a "tags" field on a content creation form where you just want to collect the submitted array.`,
       },
+      source: {
+        sourceState: 'shown',
+        code: `const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+
+<Box height="18rem">
+  <FormGroup
+    htmlFor="creatable-multi-uncontrolled"
+    isSoloField
+    label="Pick fruits or add your own"
+  >
+    <SelectDropdown
+      isCreatable
+      multiple
+      name="creatable-multi-uncontrolled"
+      options={options}
+      placeholder="Select or type to add…"
+      onCreateOption={(inputValue) =>
+        setOptions((prev) => [...prev, inputValue])
+      }
+    />
+  </FormGroup>
+</Box>`,
+      },
     },
   },
-  render: () => <CreatableMultiUncontrolledStoryRender />,
-};
+  render: () => {
+    const CreatableMultiUncontrolledContent = () => {
+      const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
 
-const CreatableMultiStoryRender = () => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-  const [value, setValue] = useState<string[]>([]);
+      return (
+        <Box height="18rem">
+          <FormGroup
+            htmlFor="creatable-multi-uncontrolled"
+            isSoloField
+            label="Pick fruits or add your own"
+          >
+            <SelectDropdown
+              isCreatable
+              multiple
+              name="creatable-multi-uncontrolled"
+              options={options}
+              placeholder="Select or type to add…"
+              onCreateOption={(inputValue) =>
+                setOptions((prev) => [...prev, inputValue])
+              }
+            />
+          </FormGroup>
+        </Box>
+      );
+    };
 
-  return (
-    <Box height="18rem">
-      <FormGroup
-        htmlFor="creatable-multi-dropdown"
-        isSoloField
-        label="Pick fruits or add your own"
-      >
-        <SelectDropdown
-          isCreatable
-          multiple
-          name="creatable-multi-dropdown"
-          options={options}
-          placeholder="Select or type to add…"
-          value={value}
-          onChange={(selected, meta) => {
-            setValue(selected.map((option) => option.value));
-
-            if (meta.action === 'create-option' && meta.option) {
-              setOptions((prev) => [...prev, meta.option.value]);
-            }
-          }}
-        />
-      </FormGroup>
-    </Box>
-  );
+    return <CreatableMultiUncontrolledContent />;
+  },
 };
 
 export const CreatableMulti: Story = {
@@ -1094,77 +1144,203 @@ Use this when you need to read or reset the selection from outside the component
 
 **Pitfall:** Updating \`options\` in \`onCreateOption\` without also syncing \`value\` in \`onChange\` will clear the selection when \`options\` re-renders. Always keep both in sync. \`onChange\` receives \`meta.action === 'create-option'\` when the user picks the **Add** row; the first argument is the full selected array including the new entry.`,
       },
+      source: {
+        sourceState: 'shown',
+        code: `const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+const [value, setValue] = useState<string[]>([]);
+
+<Box height="18rem">
+  <FormGroup
+    htmlFor="creatable-multi-dropdown"
+    isSoloField
+    label="Pick fruits or add your own"
+  >
+    <SelectDropdown
+      isCreatable
+      multiple
+      name="creatable-multi-dropdown"
+      options={options}
+      placeholder="Select or type to add…"
+      value={value}
+      onChange={(selected, meta) => {
+        setValue(selected.map((option) => option.value));
+
+        if (meta.action === 'create-option' && meta.option) {
+          setOptions((prev) => [...prev, meta.option.value]);
+        }
+      }}
+    />
+  </FormGroup>
+</Box>`,
+      },
     },
   },
-  render: () => <CreatableMultiStoryRender />,
-};
+  render: () => {
+    const CreatableMultiContent = () => {
+      const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+      const [value, setValue] = useState<string[]>([]);
 
-const CreatableWithValidationStoryRender = () => {
-  const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
-  const [error, setError] = useState<string | undefined>();
-  const lastInputRef = useRef('');
+      return (
+        <Box height="18rem">
+          <FormGroup
+            htmlFor="creatable-multi-dropdown"
+            isSoloField
+            label="Pick fruits or add your own"
+          >
+            <SelectDropdown
+              isCreatable
+              multiple
+              name="creatable-multi-dropdown"
+              options={options}
+              placeholder="Select or type to add…"
+              value={value}
+              onChange={(selected, meta) => {
+                setValue(selected.map((option) => option.value));
 
-  const validate = (inputValue: string) => {
-    const trimmed = inputValue.trim();
-    if (trimmed.length < 3) return 'Enter at least 3 characters.';
-    return undefined;
-  };
+                if (meta.action === 'create-option' && meta.option) {
+                  setOptions((prev) => [...prev, meta.option.value]);
+                }
+              }}
+            />
+          </FormGroup>
+        </Box>
+      );
+    };
 
-  const handleInputChange = (
-    inputValue: string,
-    { action }: InputActionMeta
-  ) => {
-    if (action === 'input-change') {
-      lastInputRef.current = inputValue;
-      setError(validate(inputValue));
-      return;
-    }
-
-    if (action === 'input-blur' && lastInputRef.current) {
-      // react-select clears the input on blur (default behavior). Re-apply
-      // validation from what the user typed so the FormGroup error persists.
-      setError(validate(lastInputRef.current));
-    }
-  };
-
-  return (
-    <Box height="15rem">
-      <FormGroup
-        error={error}
-        htmlFor="creatable-validated-dropdown"
-        isSoloField
-        label="Pick a fruit that is at least 3 characters long"
-      >
-        <SelectDropdown
-          error={Boolean(error)}
-          isCreatable
-          isValidNewOption={(inputValue: string) =>
-            !validate(inputValue) && inputValue.trim().length > 0
-          }
-          name="creatable-validated-dropdown"
-          options={options}
-          placeholder="Type at least 3 characters to add…"
-          validationMessage={({ inputValue }) =>
-            validate(inputValue) ?? 'No matching fruit'
-          }
-          onChange={() => {
-            lastInputRef.current = '';
-            setError(undefined);
-          }}
-          onCreateOption={(inputValue) => {
-            setOptions((prev) => [...prev, inputValue.trim()]);
-            lastInputRef.current = '';
-            setError(undefined);
-          }}
-          onInputChange={handleInputChange}
-        />
-      </FormGroup>
-    </Box>
-  );
+    return <CreatableMultiContent />;
+  },
 };
 
 export const CreatableWithValidation: Story = {
-  render: () => <CreatableWithValidationStoryRender />,
+  parameters: {
+    docs: {
+      source: {
+        sourceState: 'shown',
+        code: `const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+const [error, setError] = useState<string | undefined>();
+const lastInputRef = useRef('');
+
+const validate = (inputValue: string) => {
+  const trimmed = inputValue.trim();
+  if (trimmed.length < 3) return 'Enter at least 3 characters.';
+  return undefined;
+};
+
+const handleInputChange = (
+  inputValue: string,
+  { action }: InputActionMeta
+) => {
+  if (action === 'input-change') {
+    lastInputRef.current = inputValue;
+    setError(validate(inputValue));
+    return;
+  }
+
+  if (action === 'input-blur' && lastInputRef.current) {
+    setError(validate(lastInputRef.current));
+  }
+};
+
+<Box height="15rem">
+  <FormGroup
+    error={error}
+    htmlFor="creatable-validated-dropdown"
+    isSoloField
+    label="Pick a fruit that is at least 3 characters long"
+  >
+    <SelectDropdown
+      error={Boolean(error)}
+      isCreatable
+      isValidNewOption={(inputValue: string) =>
+        !validate(inputValue) && inputValue.trim().length > 0
+      }
+      name="creatable-validated-dropdown"
+      options={options}
+      placeholder="Type at least 3 characters to add…"
+      validationMessage={({ inputValue }) =>
+        validate(inputValue) ?? 'No matching fruit'
+      }
+      onChange={() => {
+        lastInputRef.current = '';
+        setError(undefined);
+      }}
+      onCreateOption={(inputValue) => {
+        setOptions((prev) => [...prev, inputValue.trim()]);
+        lastInputRef.current = '';
+        setError(undefined);
+      }}
+      onInputChange={handleInputChange}
+    />
+  </FormGroup>
+</Box>`,
+      },
+    },
+  },
+  render: () => {
+    const CreatableWithValidationContent = () => {
+      const [options, setOptions] = useState(['Apple', 'Banana', 'Cherry']);
+      const [error, setError] = useState<string | undefined>();
+      const lastInputRef = useRef('');
+
+      const validate = (inputValue: string) => {
+        const trimmed = inputValue.trim();
+        if (trimmed.length < 3) return 'Enter at least 3 characters.';
+        return undefined;
+      };
+
+      const handleInputChange = (
+        inputValue: string,
+        { action }: InputActionMeta
+      ) => {
+        if (action === 'input-change') {
+          lastInputRef.current = inputValue;
+          setError(validate(inputValue));
+          return;
+        }
+
+        if (action === 'input-blur' && lastInputRef.current) {
+          setError(validate(lastInputRef.current));
+        }
+      };
+
+      return (
+        <Box height="15rem">
+          <FormGroup
+            error={error}
+            htmlFor="creatable-validated-dropdown"
+            isSoloField
+            label="Pick a fruit that is at least 3 characters long"
+          >
+            <SelectDropdown
+              error={Boolean(error)}
+              isCreatable
+              isValidNewOption={(inputValue: string) =>
+                !validate(inputValue) && inputValue.trim().length > 0
+              }
+              name="creatable-validated-dropdown"
+              options={options}
+              placeholder="Type at least 3 characters to add…"
+              validationMessage={({ inputValue }) =>
+                validate(inputValue) ?? 'No matching fruit'
+              }
+              onChange={() => {
+                lastInputRef.current = '';
+                setError(undefined);
+              }}
+              onCreateOption={(inputValue) => {
+                setOptions((prev) => [...prev, inputValue.trim()]);
+                lastInputRef.current = '';
+                setError(undefined);
+              }}
+              onInputChange={handleInputChange}
+            />
+          </FormGroup>
+        </Box>
+      );
+    };
+
+    return <CreatableWithValidationContent />;
+  },
 };
 
 export const CustomInputProps: Story = {

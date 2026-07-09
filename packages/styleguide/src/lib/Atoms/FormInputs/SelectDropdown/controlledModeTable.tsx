@@ -4,7 +4,7 @@ const controlledModeColumns = [
   {
     key: 'mode',
     name: 'Mode',
-    size: 'md' as const,
+    size: 'lg' as const,
     render: ({ mode }: { mode: string }) => <Code>{mode}</Code>,
   },
   {

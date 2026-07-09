@@ -23,17 +23,19 @@ Use `Select` for standard single-select forms with minimal bundle cost. Use `Sel
 
 ## Options
 
-`options` accepts plain strings or option objects. `value` is always a string and references an option's `value`.
+`options` accepts an array of plain strings or option objects. `value` is always a string and references an option's `value`.
 
-| Field          | Required | Notes                                                                |
-| -------------- | -------- | -------------------------------------------------------------------- |
-| `label`        | yes      | Display text                                                         |
-| `value`        | yes      | Unique string; what `value` / `string[]` reference                   |
-| `disabled`     | no       | Option cannot be selected                                            |
-| `subtitle`     | no       | Secondary text below the label                                       |
-| `rightLabel`   | no       | Text on the right side of the option                                 |
-| `icon`         | no       | A `@codecademy/gamut-icons` component                                |
-| `abbreviation` | no       | Short text shown in the input while the full label shows in the menu |
+The table below shows the keys and value types for an option object:
+
+| Field          | Type                              | Required | Notes                                                                |
+| -------------- | --------------------------------- | -------- | -------------------------------------------------------------------- |
+| `label`        | `string`                          | yes      | Display text                                                         |
+| `value`        | `string`                          | yes      | Unique string; what `value` / `string[]` reference                   |
+| `disabled`     | `boolean`                         | no       | Option cannot be selected                                            |
+| `subtitle`     | `string`                          | no       | Secondary text below the label                                       |
+| `rightLabel`   | `string`                          | no       | Text on the right side of the option                                 |
+| `icon`         | icon component from `gamut-icons` | no       | A `@codecademy/gamut-icons` component                                |
+| `abbreviation` | `string`                          | no       | Short text shown in the input while the full label shows in the menu |
 
 Grouped options: `{ label, options: [...], divider? }` (extends react-select `GroupBase`; `divider` draws a rule above the group).
 
@@ -140,8 +142,7 @@ const lastInput = useRef('');
 
 - `FormGroup` `htmlFor` must match control `id` (not `name`). Alternatively, pass `htmlFor` directly on SelectDropdown and it becomes `id` downstream.
 - Pass `name` on SelectDropdown (required for forms).
-- Rely on FormGroupLabel's `htmlFor`/`id` connection for the accessible label — this is the standard HTML pattern and preferred method.
-- Only add `aria-label` when absolutely necessary (e.g., no visible label, label is hidden, or form context requires it). Do not use `aria-label` when a FormGroupLabel is present, as it overrides the visible label.
+- Rely on FormGroupLabel's `htmlFor`/`id` connection for the accessible label — this is the standard HTML pattern and preferred method. Do not use `aria-label` when a FormGroupLabel is present, as it overrides the visible label.
 - Pass `error` boolean when FormGroup has an error.
 - Generic FormGroup live-region behavior: see [`gamut-forms`](../gamut-forms/SKILL.md).
 
