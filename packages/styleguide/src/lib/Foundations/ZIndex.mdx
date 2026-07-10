@@ -15,7 +15,9 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-Gamut exposes one semantic z-index scale, `zIndices`, so stacking order is coordinated by name
+z-index should only be used when necessary to override the default stacking order. When possible, use the default stacking order and avoid using z-index.
+
+To standardize z-index values across the application, Gamut exposes one semantic z-index scale, `zIndices`, so stacking order is coordinated by name
 instead of by scattered magic numbers. Import it from `@codecademy/gamut-styles` and pass a token to
 the `zIndex` prop:
 
@@ -27,49 +29,24 @@ import { zIndices } from '@codecademy/gamut-styles';
 
 ## The scale
 
-Values run in two bands. **In-flow** tokens (below `0`–`100`) order elements relative to their
-siblings inside a normal stacking context. **Portal** tokens (`200`+) order elements that render
-into a portal at `document.body` and compete at the page root. Portal values are spaced by 100.
-
 <TokenTable {...TABLES.zIndices} />
 
-- **`underlay` → `foreground`** are in-flow: a decorative layer behind content, a neutral ground
-  that establishes a stacking context, and content raised in front (including sticky headers).
-- **`portal` → `tooltip`** are the portal layers, ordered so the things that must never be clipped
-  (tooltips, toasts, popovers) sit above dialogs, which sit above side panels and the app bar.
-- `portal` is the floor of the portal band and the default for `BodyPortal`, so portaled content
-  that omits a specific token still lands above page content.
+## Custom z-index values
 
-## Why it's a _soft_ scale
+The `zIndex` prop is left **numeric**. `zIndices` is just a numeric object you reference by name; the prop still accepts a raw number. This is deliberate in situations where you need to set a z-index that is not part of the scale.
 
-Unlike hard token scales such as <LinkTo id="Foundations/Theme">borderRadii</LinkTo> or spacing —
-where the prop is bound to the scale and **only** accepts token values — the `zIndex` prop is left
-**numeric**. `zIndices` is just a numeric object you reference by name; the prop still accepts a raw
-number. This is deliberate:
+```tsx
+<Overlay zIndex={zIndices.modal + 5}>…</Overlay>; // just above modal
+<Box zIndex={605}>…</Box>; // deliberate one-off
+```
 
-- **Escape hatch.** Stacking occasionally needs a one-off value between two layers (e.g. a confirm
-  dialog nested inside a modal). You can pass a raw in-between number without leaving the system:
-
-  ```tsx
-  <Overlay zIndex={zIndices.modal + 5}>…</Overlay>; // just above modal
-  <Box zIndex={605}>…</Box>; // deliberate one-off
-  ```
-
-- **Arithmetic.** Some components derive a relative value from a base (e.g. a tooltip's shadow sits
-  a step behind its body: `zIndices.foreground - 2`). A token-only string prop can't express that.
-
-Binding `zIndex` to the scale as a hard token would break both of the above (variance scaled props
-reject raw numbers), so it stays soft. To keep it from sliding back into magic numbers, the
-`gamut/no-raw-z-index` lint rule flags bare numeric z-index values and steers you to a token; a
-genuine escape hatch uses an inline `eslint-disable` with a short justification.
+These situations should be rare, but when they do arise, you can use the scale as a reference point.
 
 ## Guidance
 
 - **Reach for a token first.** `zIndices.modal`, `zIndices.foreground`, etc. — the name documents
   intent far better than a number.
-- **In-flow vs. portal.** Use the in-flow tokens for stacking within a component; only portaled
-  content belongs on the `portal`+ band.
 - **Escape hatch sparingly.** A raw number is fine for a genuine one-off, but prefer
   `token ± n` so the relationship to the scale stays visible, and leave a comment.
 - **Third-party widgets** (e.g. injected marketing/chat scripts) set their own z-index and are out
-  of Gamut's control; `tooltip` is the highest Gamut layer.
+  of Gamut's control; `topmost` is the highest Gamut layer.

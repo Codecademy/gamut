@@ -26,7 +26,7 @@ interface BodyPortalProps {
   /**
    * Stacking layer for the portaled content. Pass a `zIndices` token
    * (e.g. `zIndices.modal`) or a raw number as an escape hatch. Defaults to
-   * `zIndices.portal` — the floor of the portal band — so un-tokenized portal content
+   * `zIndices.floating` — the floor of the portal band — so un-tokenized portal content
    * stays above local page content instead of silently landing at a low value.
    */
   zIndex?: number;
@@ -34,7 +34,7 @@ interface BodyPortalProps {
 
 export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
   children,
-  zIndex = zIndices.portal,
+  zIndex = zIndices.floating,
 }) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();

@@ -464,14 +464,15 @@ const zIndexExamples: Record<string, { label: string; id: string }[]> = {
     { label: 'Popover', id: 'Molecules/Popover' },
     { label: 'SelectDropdown', id: 'Atoms/FormInputs/SelectDropdown' },
   ],
-  toaster: [{ label: 'Toaster', id: 'Molecules/Toasts/Toaster' }],
-  tooltip: [{ label: 'ToolTip', id: 'Molecules/Tips/ToolTip' }],
+  topmost: [
+    { label: 'ToolTip', id: 'Molecules/Tips/ToolTip' },
+    { label: 'Toaster', id: 'Molecules/Toasts/Toaster' },
+  ],
 };
 
 // Tokens with no single component example get a short note instead of links.
 const zIndexNotes: Record<string, string> = {
-  portal: 'BodyPortal default',
-  widget: 'Floating launchers (none in Gamut yet)',
+  floating: 'BodyPortal default; floating launchers (e.g. AI chat button)',
   appBar: 'App header / nav (app-owned)',
 };
 
@@ -488,14 +489,6 @@ export const zIndices = {
       render: ({ id }: any) => <Code>zIndices.{id}</Code>,
     },
     VALUE_COLUMN,
-    {
-      key: 'band',
-      name: 'Band',
-      size: 'lg',
-      render: ({ value }: any) => (
-        <Code>{value >= zIndicesTokens.portal ? 'portal' : 'in-flow'}</Code>
-      ),
-    },
     {
       key: 'usedBy',
       name: 'Used by',
