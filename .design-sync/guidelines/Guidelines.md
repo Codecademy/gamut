@@ -22,7 +22,11 @@ Always use Gamut components, tokens, and patterns. Every element must trace back
 
 ### Step 2: Read all `design-tokens/` files (REQUIRED)
 
-`colors.md`, `spacing.md`, `typography.md`, `border-radius.md`.
+`colors.md`, `spacing.md`, `typography.md`, `border-radius.md` — theme-agnostic token _names_. Then read the file for whichever theme you're building for — token names resolve to different actual values (hex, weight, even radius size) per theme, and none of that is inferable from the names alone:
+
+- `design-tokens/theme-percipio.md` — **default in this project**
+- `design-tokens/theme-core.md` — Core / Admin / Platform (Codecademy)
+- `design-tokens/theme-lxstudio.md` — LX Studio (note: different border-radius scale than the others)
 
 ### Step 3: Plan the components needed (REQUIRED)
 
@@ -47,12 +51,17 @@ Always use Gamut components, tokens, and patterns. Every element must trace back
 | `ColorMode` / `Background` (dark/light regions, themes, modes)                     | `components/color-mode.md`      |
 | Breakpoints, container queries, the 12-column page grid                            | `components/layout.md`          |
 | Any component's accessibility behavior (what it handles vs. what you supply)       | `components/accessibility.md`   |
+| Any icon, or picking the right icon name                                           | `components/icons.md`           |
+| `Input` (controlled value, leading-icon slot)                                      | `components/input.md`           |
+| `BarChart` custom styling (`styleConfig`) or custom scale (`scaleInterval`)        | `components/bar-chart.md`       |
+| `DatePicker` locale/i18n                                                           | `components/date-picker.md`     |
 
 For a component's full prop list, read its `.d.ts` and `.prompt.md` in `components/<group>/<Name>/` — see the project README's Agent Information section.
 
 ### Step 5: Verify each icon exists in the icon library (REQUIRED)
 
-If a needed icon is unavailable, pick a different one and verify it.
+Check `components/icons.md` for the exact name. If a needed icon is
+unavailable, pick a different one and verify it there.
 
 ## Departures
 

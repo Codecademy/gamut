@@ -53,6 +53,30 @@ function App() {
 | Spacing, typography, border-radius token values         | `design-tokens/*.md`                                   |
 | Composed system-prop shorthand                          | `overview-styling.md`                                  |
 
+## Loading the bundle in this runtime (x-import)
+
+This environment evaluates each module via `new Function("React", "module", "exports", "require", code)` and loads React asynchronously — the bundle's own React-injection expects that. Four confirmed gotchas:
+
+1. **Never write `const React = window.React` at the top of an x-import `.jsx`.** `React` is already an injected function parameter, and the strict-mode TypeScript preset throws `SyntaxError: redeclaration of formal parameter React` if you redeclare it. Just use `React` directly (`React.useEffect`, or destructure `const { useState } = React`).
+2. **The bundle needs `window.React` set before it executes.** `_ds_bundle.js` references `react/jsx-runtime`, and its shim reads `window.React` at load time. A static `<script src="…_ds_bundle.js">` in `<helmet>` often runs before this runtime finishes loading React, producing `TypeError: can't access property "jsx", W5.exports is undefined`. Load the bundle only once `window.React` (and `window.ReactDOM`) exist:
+
+   ```html
+   <script>
+     (function w() {
+       if (window.React && window.ReactDOM) {
+         var s = document.createElement('script');
+         s.src = '_ds/.../_ds_bundle.js';
+         document.head.appendChild(s);
+       } else setTimeout(w, 30);
+     })();
+   </script>
+   ```
+
+3. **Don't "fix" #2 by loading your own React UMD bundle.** That creates a second React instance — `ReactDOM` binds to one, your hooks to the other — producing `can't access property "useState", g.current is null`. Always use the runtime's own `window.React`.
+4. **Because the bundle now loads after first render, guard the component that reads it.** Hold a `ready` state, poll `window.CodecademyGamut` in an effect, render a loading placeholder until it exists, and read Gamut components **at render time** (`const { FlexBox } = window.CodecademyGamut` inside the component), not by destructuring at module scope before the bundle has loaded.
+
+**One `GamutProvider` + `ColorMode` for the whole app.** Mounting individual Gamut components as separate x-imports, each with its own provider, won't share theme context between them.
+
 ## Dependency protection
 
 Never build a local shim, wrapper, or reimplementation of a Gamut component

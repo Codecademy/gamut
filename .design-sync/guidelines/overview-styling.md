@@ -14,6 +14,22 @@
   selectors, `${Component} { }` child selectors) — style the target
   directly with system props or `as`, not from a parent wrapper.
 
+**If a case looks like it needs inline `style`, it almost never does** —
+`css()`/`variant()`/`states()` (below) cover effectively everything system
+props don't, including things that feel like edge cases:
+
+- _Absolute-positioned icon inside an `Input`_ — not a `style={{ position:
+'absolute' }}` job. Use `system.positioning` props (`position`, `top`,
+  `left`) directly on a wrapping `Box`, or `css({ position: 'absolute', ... })`
+  if the positioning is conditional/branching.
+- _Fixed control widths that don't map to a spacing token_ — still a system
+  prop (`width="240px"` works with any CSS length, not just scale values) or
+  `css({ width: '240px' })`, not `style`.
+
+If you genuinely hit something neither system props nor `css()`/`variant()`/
+`states()` can express, that's a Departures case (below) — say so explicitly,
+don't silently reach for `style`.
+
 ## System props shorthand
 
 | Long form       | Shorthand |
