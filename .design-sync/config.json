@@ -14,7 +14,8 @@
   "tsconfig": "../../.design-sync/tsconfig.json",
   "libOverrides": {
     "bundle.mjs": "enable minification — icons-as-code push unminified bundle to 5.2MB, over the 5MB upload limit",
-    "source-storybook.mjs": "group components by Storybook's top-level sidebar category (atoms/molecules/organisms/layouts/typography) instead of the segment immediately preceding the component name — full nested paths were tried and reverted, they break emit.mjs's hardcoded 3-level asset paths"
+    "source-storybook.mjs": "group components by Storybook's top-level sidebar category (atoms/molecules/organisms/layouts/typography) instead of the segment immediately preceding the component name — full nested paths were tried and reverted, they break emit.mjs's hardcoded 3-level asset paths",
+    "docs.mjs": "append a fixed semantic-color/no-hex/no-inline-style footer to every ingested component doc — the fast path (setup doc -> one component's .prompt.md -> build) skips guidelines/conventions.md, so this is the one reinforcement that path can't skip"
   },
   "titleMap": {
     "Border": null,

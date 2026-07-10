@@ -2,11 +2,12 @@
 
 Before considering output final, verify:
 
-- [ ] Every color resolves to a Gamut semantic or core color token — no raw hex values.
+- [ ] Every color resolves to a Gamut semantic or core color token — no raw hex values. Status colors (success/error/warning) use `feedback-*` tokens, never brand green/red hex. Page and section backgrounds use `background-*` tokens or `<Background bg>`, never a styled `div`.
+- [ ] The whole tree renders inside `ColorMode` so semantic tokens resolve.
 - [ ] All spacing and sizing values match the spacing token scale.
 - [ ] Border radius values use one of the defined radius tokens.
 - [ ] Typography uses only accepted font families, sizes, weights, and line heights.
-- [ ] UI elements map to existing Gamut components where applicable — a purpose-built component (`List`, `DataList`, `DataTable`, `Toggle`, `Menu`, etc.) was used instead of recreating the pattern from `Box`/`FlexBox`.
+- [ ] UI elements map to existing Gamut components where applicable — a purpose-built component (`List`, `DataList`, `DataTable`, `Toggle`, `Menu`, etc.) was used instead of recreating the pattern from `Box`/`FlexBox`. Status labels, counts, pills, and chips use `Badge`/`Tag` — not a hand-styled `Box`.
 - [ ] Icons, illustrations, and patterns are sourced from the Gamut libraries.
 - [ ] Icon selection was determined by visual appearance and contextual clues (tooltip text, element purpose) — not by Figma layer names, which may be stale.
 - [ ] The design meets WCAG accessibility requirements for contrast and target size.

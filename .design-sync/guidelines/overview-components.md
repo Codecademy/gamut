@@ -21,10 +21,10 @@ Rules that apply to all Gamut components. Component-specific rules live in `comp
 Before writing custom markup for any UI pattern, inspect available Gamut components first:
 
 1. **Enumerate exports.** Check `window.CodecademyGamut` (or the root `README.md`'s component index) before building any UI element.
-2. **Prefer Gamut over raw HTML or hand-built layout.** If a Gamut component serves the purpose (e.g., `Menu` for navigation, `DataTable`/`DataList` for tabular or item data, `Tabs` for tab navigation, `List` for repeating rows, `Toggle` for on/off controls), use it — never recreate one from `Box`/`FlexBox`/`<ul>`/`<div>` and manual state. See `components/list.md`, `components/data-table.md`, `components/data-list.md`, `components/menu.md` for the purpose-built components most often reinvented from boxes.
+2. **Prefer Gamut over raw HTML or hand-built layout.** If a Gamut component serves the purpose (e.g., `Menu` for navigation, `DataTable`/`DataList` for tabular or item data, `Tabs` for tab navigation, `List` for repeating rows, `Toggle` for on/off controls), use it — never recreate one from `Box`/`FlexBox`/`<ul>`/`<div>` and manual state. See `components/list.md`, `components/data-table.md`, `components/data-list.md`, `components/menu.md` for the purpose-built components most often reinvented from boxes. This isn't limited to big organisms: `Badge`/`Tag` are just as often reinvented on a small scale. **A styled `Box`/`FlexBox` whose only content is a short label, count, status, or chip _is_ a reinvention of `Tag`/`Badge`** — check those first, before styling anything.
 3. **Read the component's type definitions** (`.d.ts` in its `components/<group>/<Name>/` folder) for props (e.g., `icon`, `variant`, `href`, `onClick` on `MenuItem`) before falling back to custom wrappers.
 4. **Never build custom media players** — Gamut exports `Video`. See `components/video.md`.
-5. **When no Gamut component exists**, leave a comment confirming this: `{/* No Gamut component available for [pattern] — using custom markup */}`
+5. **When no Gamut component exists, the comment is required, not optional.** Any custom markup without `{/* No Gamut component available for [pattern] — using custom markup */}` is incomplete — this is a checkpoint to pass before shipping, not an after-the-fact footnote.
 
 ### Gamut Component Quick Reference
 

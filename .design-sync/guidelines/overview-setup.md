@@ -24,6 +24,9 @@ function App() {
 }
 ```
 
+> **Color rule:** never hardcode hex. Semantic tokens only resolve inside
+> `ColorMode` — see `design-tokens/colors.md`.
+
 ### Rules
 
 1. **Default to `percipioTheme`.** Use it for every new build unless the

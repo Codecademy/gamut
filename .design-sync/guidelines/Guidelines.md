@@ -4,7 +4,12 @@ This project uses the Codecademy Gamut design system, pre-compiled into `_ds_bun
 
 ## Core Principle
 
-Always use Gamut components, tokens, and patterns. Every element must trace back to an existing token, component, or documented pattern — never introduce ad-hoc values when a system equivalent exists. Prefer a purpose-built component (`List`, `DataList`, `DataTable`, `Toggle`, `Menu`, etc.) over recreating one from `Box`/`FlexBox` — see `overview-components.md`'s Component Discovery section.
+Always use Gamut components, tokens, and patterns. Every element must trace back to an existing token, component, or documented pattern — never introduce ad-hoc values when a system equivalent exists. Non-negotiable, in order:
+
+1. **Every color is a semantic token, never hex.** Tokens only resolve inside `ColorMode` — see `design-tokens/colors.md`.
+2. **Wrap the tree in `ColorMode`.** Skipping it is why hex creeps back in.
+3. **Prefer a purpose-built component** (`List`, `DataList`, `DataTable`, `Toggle`, `Menu`, `Badge`, `Tag`, etc.) over recreating one from `Box`/`FlexBox` — see `overview-components.md`'s Component Discovery section.
+4. **Call out departures explicitly — never ship them silently.**
 
 ## Reading order — READ THIS FIRST
 

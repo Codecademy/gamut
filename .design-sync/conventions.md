@@ -8,6 +8,13 @@ Typography). Build with these components rather than one-off equivalents —
 they carry accessibility, theming, and interaction behavior that a hand-built
 version would have to reimplement.
 
+## Non-negotiables
+
+1. **Every color is a semantic token — never hex.** `text`, `background`, `primary`, `feedback-error`, etc. See `guidelines/design-tokens/colors.md`.
+2. **Wrap the tree in `ColorMode`.** Semantic tokens only resolve inside it.
+3. **Prefer purpose-built components over `Box`/`FlexBox` rebuilds.** `List`/`DataList`/`DataTable`/`Tabs`/`Badge`/`Tag` carry accessibility and theming a hand-built version doesn't.
+4. **Call out departures — never ship them silently.** If a build genuinely needs a hex value or a `className`, say so explicitly.
+
 ## Wrapping and setup
 
 Every Gamut component must be rendered inside `GamutProvider`. Without it, the theme tokens (spacing, typography, colors) are undefined and components render unstyled or throw.
