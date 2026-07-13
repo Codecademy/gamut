@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, Colors, zIndices } from '@codecademy/gamut-styles';
+import { Background, Colors, zIndexes } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { FlexBox } from '../Box';
@@ -52,7 +52,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
       escapeCloses
       isOpen={expanded}
       shroud
-      zIndex={zIndices.flyout}
+      zIndex={zIndexes.flyout}
       onRequestClose={onClose}
     >
       <Background bg={bg}>

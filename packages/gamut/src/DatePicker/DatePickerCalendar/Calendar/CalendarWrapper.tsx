@@ -1,5 +1,5 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { zIndices } from '@codecademy/gamut-styles';
+import { zIndexes } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Box } from '../../../Box';
@@ -13,7 +13,7 @@ export const CalendarWrapper: React.FC<WithChildrenProp> = ({ children }) => (
       border={1}
       borderRadius="sm"
       position="relative"
-      zIndex={zIndices.foreground}
+      zIndex={zIndexes.foreground}
     >
       {children}
     </Box>

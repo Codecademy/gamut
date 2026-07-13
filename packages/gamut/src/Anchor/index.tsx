@@ -2,7 +2,7 @@ import {
   styledOptions,
   system,
   variant,
-  zIndices,
+  zIndexes,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -26,7 +26,7 @@ const outlineFocusVisible = {
     border: 2,
     borderColor: 'primary',
     opacity: 0,
-    zIndex: zIndices.base,
+    zIndex: zIndexes.base,
   },
 
   [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {

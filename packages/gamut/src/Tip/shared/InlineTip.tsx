@@ -1,4 +1,4 @@
-import { zIndices } from '@codecademy/gamut-styles';
+import { zIndexes } from '@codecademy/gamut-styles';
 
 import { InfoTipContainer } from '../InfoTip/styles';
 import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
@@ -57,7 +57,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   const tipBody = (
     <InlineTipBodyWrapper
       alignment={alignment}
-      zIndex={zIndex ?? zIndices.foreground}
+      zIndex={zIndex ?? zIndexes.foreground}
       {...inlineWrapperProps}
     >
       <TipBody

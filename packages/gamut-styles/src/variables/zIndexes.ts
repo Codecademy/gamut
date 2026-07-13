@@ -1,18 +1,17 @@
 /**
- * Semantic z-index scale. A single scale covers both in-flow layers (low values) and
- * portal layers (≥200). Every z-index in Gamut should reference a token here rather than a
+ * Semantic z-index scale. Every z-index in Gamut should reference a token here rather than a
  * magic number.
  *
  * The `zIndex` prop is intentionally left numeric/unscaled, and this object is numeric, so
- * tokens are used as `zIndex={zIndices.modal}`. That preserves the escape hatch (a raw
- * in-between number, e.g. `zIndex={550}`) and arithmetic on tokens (e.g. `zIndices.foreground - 2`).
+ * tokens are used as `zIndex={zIndexes.modal}`. That preserves the escape hatch (a raw
+ * in-between number, e.g. `zIndex={550}`) and arithmetic on tokens (e.g. `zIndexes.foreground - 2`).
  *
  * Values are spaced by 100 so in-between escape-hatch numbers are available. `floating` (200) is
  * the floor of the portal band and the default for `BodyPortal`.
  *
  * @remarks PLEASE talk to web platform before adding new z-index tokens.
  */
-export const zIndices = {
+export const zIndexes = {
   /** Decorative layer behind content (underlines, backdrops, shadows). */
   underlay: -100,
   /** Ground layer — establishes a local stacking context without lifting above siblings. */

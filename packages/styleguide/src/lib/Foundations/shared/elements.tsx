@@ -6,7 +6,7 @@ import {
   lxStudioColors,
   theme,
   trueColors,
-  zIndices as zIndicesTokens,
+  zIndexes as zIndexesTokens,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
@@ -476,9 +476,9 @@ const zIndexNotes: Record<string, string> = {
   appBar: 'App header / nav (app-owned)',
 };
 
-export const zIndices = {
+export const zIndexes = {
   // Object insertion order runs low → high (underlay … tooltip).
-  rows: Object.entries(zIndicesTokens).map(([id, value]) => ({
+  rows: Object.entries(zIndexesTokens).map(([id, value]) => ({
     id,
     value,
   })),
@@ -486,7 +486,7 @@ export const zIndices = {
     { ...PROP_COLUMN, name: 'Token' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>zIndices.{id}</Code>,
+      render: ({ id }: any) => <Code>zIndexes.{id}</Code>,
     },
     VALUE_COLUMN,
     {

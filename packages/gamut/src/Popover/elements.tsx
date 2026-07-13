@@ -1,4 +1,4 @@
-import { timingValues, variant, zIndices } from '@codecademy/gamut-styles';
+import { timingValues, variant, zIndexes } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -66,7 +66,7 @@ export const PopoverPortal: React.FC<
   animation ? (
     <AnimatePresence>
       {isOpen && (
-        <BodyPortal zIndex={zIndices.popover}>
+        <BodyPortal zIndex={zIndexes.popover}>
           <motion.div
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -81,7 +81,7 @@ export const PopoverPortal: React.FC<
       )}
     </AnimatePresence>
   ) : (
-    <BodyPortal zIndex={zIndices.popover} {...rest} />
+    <BodyPortal zIndex={zIndexes.popover} {...rest} />
   );
 
 export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;

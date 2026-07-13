@@ -14,11 +14,11 @@ const ruleTester = new ESLintUtils.RuleTester({
 ruleTester.run('no-raw-z-index', rule, {
   valid: [
     // Semantic tokens are the expected usage.
-    `const styles = { zIndex: zIndices.modal };`,
-    `<Box zIndex={zIndices.stickyHeader} />;`,
+    `const styles = { zIndex: zIndexes.modal };`,
+    `<Box zIndex={zIndexes.stickyHeader} />;`,
     // Arithmetic on a token is allowed (e.g. Tip's shadow).
-    `const styles = { zIndex: zIndices.foreground - 2 };`,
-    `<Box zIndex={zIndices.modal + 5} />;`,
+    `const styles = { zIndex: zIndexes.foreground - 2 };`,
+    `<Box zIndex={zIndexes.modal + 5} />;`,
     // Variables / non-literal expressions are not flagged.
     `<Box zIndex={zIndex} />;`,
     `const styles = { zIndex };`,

@@ -2,7 +2,7 @@ import {
   ColorMode,
   system,
   useCurrentMode,
-  zIndices,
+  zIndexes,
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -24,9 +24,9 @@ const PortalWrapper = styled
 
 interface BodyPortalProps {
   /**
-   * Stacking layer for the portaled content. Pass a `zIndices` token
-   * (e.g. `zIndices.modal`) or a raw number as an escape hatch. Defaults to
-   * `zIndices.floating` — the floor of the portal band — so un-tokenized portal content
+   * Stacking layer for the portaled content. Pass a `zIndexes` token
+   * (e.g. `zIndexes.modal`) or a raw number as an escape hatch. Defaults to
+   * `zIndexes.floating` — the floor of the portal band — so un-tokenized portal content
    * stays above local page content instead of silently landing at a low value.
    */
   zIndex?: number;
@@ -34,7 +34,7 @@ interface BodyPortalProps {
 
 export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
   children,
-  zIndex = zIndices.floating,
+  zIndex = zIndexes.floating,
 }) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();

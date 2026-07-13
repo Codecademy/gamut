@@ -2,7 +2,7 @@ import {
   elementDir,
   system,
   useElementDir,
-  zIndices,
+  zIndexes,
 } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -287,5 +287,5 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   if (inline) return content;
 
-  return <BodyPortal zIndex={zIndices.popover}>{content}</BodyPortal>;
+  return <BodyPortal zIndex={zIndexes.popover}>{content}</BodyPortal>;
 };

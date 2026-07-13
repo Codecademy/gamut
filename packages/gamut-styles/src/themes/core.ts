@@ -11,7 +11,7 @@ import {
   lineHeight,
   mediaQueries,
   spacing,
-  zIndices,
+  zIndexes,
 } from '../variables';
 
 /**
@@ -29,7 +29,7 @@ export const coreTheme = createTheme({
   fontWeight,
   spacing,
   elements,
-  zIndices,
+  zIndexes,
 })
   .addColors(corePalette)
   .addColorModes('light', {
@@ -143,7 +143,7 @@ export const coreTheme = createTheme({
     2: `2px solid ${colors['border-primary']}`,
   }))
   .createScaleVariables('elements')
-  .createScaleVariables('zIndices')
+  .createScaleVariables('zIndexes')
   .addName('core')
   .build();
 

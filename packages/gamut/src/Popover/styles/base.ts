@@ -1,4 +1,4 @@
-import { states, variant, zIndices } from '@codecademy/gamut-styles';
+import { states, variant, zIndexes } from '@codecademy/gamut-styles';
 
 import { toolTipBodyCss } from '../../Tip/shared/styles/styles';
 
@@ -31,7 +31,7 @@ export const popoverStates = states({
 
 export const raisedDivVariants = variant({
   base: {
-    zIndex: zIndices.foreground,
+    zIndex: zIndexes.foreground,
   },
   defaultVariant: 'primary',
   variants: {

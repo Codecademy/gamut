@@ -1,4 +1,4 @@
-import { zIndices } from '@codecademy/gamut-styles';
+import { zIndexes } from '@codecademy/gamut-styles';
 import { ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
@@ -18,7 +18,7 @@ export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
         display="block"
         position="sticky"
         top={0}
-        zIndex={zIndices.foreground}
+        zIndex={zIndexes.foreground}
       >
         <HeaderRowEl
           {...rest}
