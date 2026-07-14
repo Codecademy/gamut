@@ -49,7 +49,6 @@ export default createRule({
     docs: {
       description:
         'Discourage raw numeric z-index values which can lead to z-index stacking issues and encourage usage of semantic tokens from the `zIndexes` scale.',
-      recommended: 'error',
     },
     messages: {
       noRawZIndex:
