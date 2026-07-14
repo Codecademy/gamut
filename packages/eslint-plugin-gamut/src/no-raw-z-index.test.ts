@@ -3,7 +3,7 @@ import { TSESLint } from '@typescript-eslint/utils';
 import rule from './no-raw-z-index';
 
 const ruleTester = new TSESLint.RuleTester({
-  parser: '@typescript-eslint/parser',
+  parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
