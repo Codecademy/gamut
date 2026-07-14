@@ -1,5 +1,5 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { css, variant } from '@codecademy/gamut-styles';
+import { css, variant, zIndexes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
@@ -147,7 +147,7 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   return (
     <PreviewTipPattern
       aria-hidden
-      zIndex={zIndex ? zIndex - 2 : -1}
+      zIndex={zIndex ? zIndex - 2 : zIndexes.underlay}
       {...shadowAlignment}
     >
       <CheckerDense />

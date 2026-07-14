@@ -1,4 +1,4 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { states, variant, zIndexes } from '@codecademy/gamut-styles';
 
 import { createVariantsFromAlignments } from '../../Tip/shared/styles/createVariantsUtils';
 import { tooltipArrowHeight } from '../../Tip/shared/styles/styles';
@@ -47,7 +47,7 @@ const beakVariantStyles = createVariantsFromAlignments(
 export const beakVariants = variant({
   base: {
     background: 'transparent',
-    zIndex: 1,
+    zIndex: zIndexes.foreground,
     position: 'fixed',
   },
   prop: 'beak',

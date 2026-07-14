@@ -6,6 +6,7 @@ import {
   lxStudioColors,
   theme,
   trueColors,
+  zIndexes as zIndexesTokens,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
@@ -434,6 +435,84 @@ export const borderRadii = {
           width="6rem"
         />
       ),
+    },
+  ],
+};
+
+// Representative components that use each token, linked to their Storybook stories.
+// Story ids are the folder path under `src/lib` (Storybook auto-title).
+const zIndexExamples: Record<string, { label: string; id: string }[]> = {
+  underlay: [
+    { label: 'Text', id: 'Typography/Text' },
+    { label: 'Menu', id: 'Molecules/Menu' },
+  ],
+  base: [
+    { label: 'Tabs', id: 'Molecules/Tabs' },
+    { label: 'Anchor', id: 'Typography/Anchor' },
+  ],
+  foreground: [
+    { label: 'Text', id: 'Typography/Text' },
+    { label: 'Tabs', id: 'Molecules/Tabs' },
+    { label: 'DataList', id: 'Organisms/Lists & Tables/DataList' },
+  ],
+  flyout: [{ label: 'Flyout', id: 'Molecules/Flyout' }],
+  modal: [
+    { label: 'Modal', id: 'Molecules/Modals/Modal' },
+    { label: 'Dialog', id: 'Molecules/Modals/Dialog' },
+  ],
+  popover: [
+    { label: 'Popover', id: 'Molecules/Popover' },
+    { label: 'SelectDropdown', id: 'Atoms/FormInputs/SelectDropdown' },
+  ],
+  topmost: [
+    { label: 'ToolTip', id: 'Molecules/Tips/ToolTip' },
+    { label: 'Toaster', id: 'Molecules/Toasts/Toaster' },
+  ],
+};
+
+// Tokens with no single component example get a short note instead of links.
+const zIndexNotes: Record<string, string> = {
+  floating: 'BodyPortal default; floating launchers (e.g. AI chat button)',
+  appBar: 'App header / nav (app-owned)',
+};
+
+export const zIndexes = {
+  // Object insertion order runs low → high (underlay … tooltip).
+  rows: Object.entries(zIndexesTokens).map(([id, value]) => ({
+    id,
+    value,
+  })),
+  columns: [
+    { ...PROP_COLUMN, name: 'Token' },
+    {
+      ...PATH_COLUMN,
+      render: ({ id }: any) => <Code>zIndexes.{id}</Code>,
+    },
+    VALUE_COLUMN,
+    {
+      key: 'usedBy',
+      name: 'Used by',
+      size: 'lg',
+      render: ({ id }: any) => {
+        const examples = zIndexExamples[id];
+        if (!examples?.length) {
+          return <Box color="text-secondary">{zIndexNotes[id] ?? '—'}</Box>;
+        }
+        return (
+          <>
+            {examples.flatMap((example, i) => {
+              const link = (
+                <LinkTo id={example.id} key={example.id}>
+                  {example.label}
+                </LinkTo>
+              );
+              return i === 0
+                ? [link]
+                : [<span key={`sep-${example.id}`}>, </span>, link];
+            })}
+          </>
+        );
+      },
     },
   ],
 };

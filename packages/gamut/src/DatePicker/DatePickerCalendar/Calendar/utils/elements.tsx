@@ -1,4 +1,9 @@
-import { css, states, transitionConcat } from '@codecademy/gamut-styles';
+import {
+  css,
+  states,
+  transitionConcat,
+  zIndexes,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -119,7 +124,7 @@ export const DateCell = styled.td<DateCellProps>(
       borderRadius: 'lg',
       border: 2,
       opacity: 0,
-      zIndex: 0,
+      zIndex: zIndexes.base,
     },
     '&:focus-visible::before': {
       opacity: 1,

@@ -1,4 +1,9 @@
-import { ColorMode, system, useCurrentMode } from '@codecademy/gamut-styles';
+import {
+  ColorMode,
+  system,
+  useCurrentMode,
+  zIndexes,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
@@ -19,16 +24,17 @@ const PortalWrapper = styled
 
 interface BodyPortalProps {
   /**
-   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
-   * will be reworked with: GM-624
-   * previously, zIndex was set to 1 in the CSS function
+   * Stacking layer for the portaled content. Pass a `zIndexes` token
+   * (e.g. `zIndexes.modal`) or a raw number as an escape hatch. Defaults to
+   * `zIndexes.floating` — the floor of the portal band — so un-tokenized portal content
+   * stays above local page content instead of silently landing at a low value.
    */
   zIndex?: number;
 }
 
 export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
   children,
-  zIndex = 1,
+  zIndex = zIndexes.floating,
 }) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();
