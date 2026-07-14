@@ -1,8 +1,8 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { TSESLint } from '@typescript-eslint/utils';
 
 import rule from './no-raw-z-index';
 
-const ruleTester = new ESLintUtils.RuleTester({
+const ruleTester = new TSESLint.RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
