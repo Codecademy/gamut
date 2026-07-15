@@ -1,0 +1,74 @@
+{
+  "projectId": "266cff67-7436-40c1-9899-2f4830adbc65",
+  "pkg": "@codecademy/gamut",
+  "shape": "storybook",
+  "storybookConfigDir": "packages/styleguide/.storybook",
+  "storybookStatic": ".design-sync/sb-reference",
+  "buildCmd": "yarn nx run-many --target=build --projects=variance,gamut-styles,gamut-icons,gamut-patterns,gamut-illustrations,gamut && sed -i '' \"s|import '../styles/vds_base_theme.scss'|import '../styles/vds_base_theme.css' // patched for design-sync|\" packages/gamut/dist/Video/lib/VidstackPlayer.js && printf '/* @ds-css-runtime: vds_base_theme.scss patched to .css stub for esbuild compatibility */\\n' > packages/gamut/dist/Video/styles/vds_base_theme.css",
+  "extraEntries": [
+    "@codecademy/gamut-styles",
+    "@codecademy/gamut-styles/dist/themes"
+  ],
+  "readmeHeader": ".design-sync/conventions.md",
+  "runtimeFontPrefixes": ["https://www.codecademy.com/gamut"],
+  "tsconfig": "../../.design-sync/tsconfig.json",
+  "libOverrides": {
+    "bundle.mjs": "enable minification — icons-as-code push unminified bundle to 5.2MB, over the 5MB upload limit",
+    "source-storybook.mjs": "group components by Storybook's top-level sidebar category (atoms/molecules/organisms/layouts/typography) instead of the segment immediately preceding the component name — full nested paths were tried and reverted, they break emit.mjs's hardcoded 3-level asset paths",
+    "docs.mjs": "append a fixed semantic-color/no-hex/no-inline-style footer to every ingested component doc — the fast path (setup doc -> one component's .prompt.md -> build) skips guidelines/conventions.md, so this is the one reinforcement that path can't skip"
+  },
+  "titleMap": {
+    "Border": null,
+    "Color": null,
+    "Layout": null,
+    "Positioning": null,
+    "Space": null,
+    "Responsiveproperties": null,
+    "Button": null,
+    "Mini": null,
+    "Regular": null,
+    "Illustrations": null,
+    "Patterns": null
+  },
+  "overrides": {
+    "Card": { "cardMode": "column" },
+    "PopoverContainer": { "cardMode": "column" },
+    "Tag": { "cardMode": "column" },
+    "GridBox": { "cardMode": "column" },
+    "ConnectedFormGroup": { "cardMode": "column" },
+    "SubmitButton": { "cardMode": "column" },
+    "FormGroup": { "cardMode": "column" },
+    "Radio": { "cardMode": "column" },
+    "Pagination": { "cardMode": "column" },
+    "Tabs": { "cardMode": "column" },
+    "InfoTip": { "cardMode": "column" },
+    "PreviewTip": { "cardMode": "column" },
+    "ToolTip": { "cardMode": "column" },
+    "Anchor": { "cardMode": "column" },
+    "Text": { "cardMode": "column" },
+    "SelectDropdown": { "cardMode": "single", "primaryStory": "Default" },
+    "List": { "cardMode": "single", "primaryStory": "Default" },
+    "DataList": { "cardMode": "single", "primaryStory": "Default" },
+    "DataTable": { "cardMode": "single", "primaryStory": "Default" },
+    "Alert": { "cardMode": "single", "primaryStory": "Default" },
+    "Popover": { "cardMode": "single", "primaryStory": "Default" },
+    "Toaster": { "cardMode": "single", "primaryStory": "Default" },
+    "BarChart": { "cardMode": "single", "primaryStory": "Default" },
+    "DatePicker": { "cardMode": "single", "primaryStory": "Default" },
+    "GridForm": { "cardMode": "single", "primaryStory": "Default" },
+    "Video": { "cardMode": "column" },
+    "Markdown": { "cardMode": "single", "primaryStory": "Default" }
+  },
+  "provider": {
+    "component": "GamutProvider",
+    "props": {
+      "theme": { "$ref": "percipioTheme" }
+    },
+    "inner": {
+      "component": "ColorMode",
+      "props": {
+        "mode": "light"
+      }
+    }
+  }
+}
