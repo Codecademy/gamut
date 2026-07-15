@@ -1,3 +1,4 @@
+import { zIndexes } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
@@ -98,6 +99,44 @@ describe('SelectDropdown', () => {
     await openDropdown(view);
 
     expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '8rem' });
+  });
+
+  describe('menu portal', () => {
+    // The menu portals to `document.body` (rather than rendering inline) so it can't be
+    // clipped by an `overflow: hidden` ancestor. This changed the DOM location of every
+    // menu's options in every consuming app, so it's covered explicitly here.
+    const getPortalNode = (view: ReturnType<typeof renderView>['view']) => {
+      const listbox = view.getByRole('listbox');
+      return listbox.parentElement?.parentElement as HTMLElement;
+    };
+
+    it('renders the options menu in a portal appended to document.body', async () => {
+      const { view } = renderView();
+
+      await openDropdown(view);
+
+      const listbox = view.getByRole('listbox');
+      expect(view.container).not.toContainElement(listbox);
+      expect(document.body).toContainElement(listbox);
+    });
+
+    it('applies the popover z-index token to the portaled menu by default', async () => {
+      const { view } = renderView();
+
+      await openDropdown(view);
+
+      expect(getPortalNode(view)).toHaveStyle({
+        zIndex: zIndexes.popover,
+      });
+    });
+
+    it('applies a raw zIndex override to the portaled menu when provided', async () => {
+      const { view } = renderView({ zIndex: 12345 });
+
+      await openDropdown(view);
+
+      expect(getPortalNode(view)).toHaveStyle({ zIndex: 12345 });
+    });
   });
 
   it('renders a dropdown with icons', async () => {
