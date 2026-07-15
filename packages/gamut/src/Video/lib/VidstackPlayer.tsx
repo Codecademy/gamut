@@ -3,6 +3,7 @@
 import '../vidstack-vendor.css';
 
 import { styledOptions } from '@codecademy/gamut-styles';
+import { Global } from '@emotion/react';
 import styled, { CSSObject } from '@emotion/styled';
 import {
   isYouTubeProvider,
@@ -26,7 +27,7 @@ import { VideoLayout } from './VideoLayout';
 
 const VariableProvider = styled(Box, styledOptions(['variables']))<{
   variables?: CSSObject;
-}>(({ variables }) => variables, vdsBaseThemeStyles, {
+}>(({ variables }) => variables, {
   width: '100%',
   height: '100%',
   position: 'relative',
@@ -82,6 +83,7 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
       style={{ width, height }}
       variables={vdsVariables}
     >
+      <Global styles={vdsBaseThemeStyles} />
       <MediaPlayer
         autoPlay={autoplay}
         controls={showDefaultProviderControls}
