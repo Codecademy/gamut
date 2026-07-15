@@ -30,6 +30,36 @@ import { walk } from '../../.ds-sync/lib/common.mjs';
 const COLOR_FOOTER =
   '\n\n---\n\nColors & backgrounds: semantic tokens only (`guidelines/design-tokens/colors.md`); never hex, never inline `style`.';
 
+// Per-component injected blocks, keyed by the component name derived from
+// the doc's own filename (see nameFromDocPath below). Two purposes:
+// (1) layout primitives are where a purpose-built-component miss actually
+// happens — catch it in the file being read at that moment, not just in a
+// guideline the fast path skips; (2) icon-prop components: a builder who
+// can't find the icon list drops icons entirely rather than guessing.
+const REACH_FOR_THIS_INSTEAD =
+  '\n\n---\n\n**Before composing with this, check whether a purpose-built component already covers it**: rows of data → `List`/`DataList`/`DataTable`; on/off → `Toggle`; nav/actions → `Menu`; status banner → `Alert`; status/category label → `Badge`/`Tag`. See `guidelines/components/index.md`.';
+const ICON_NOTE =
+  "\n\n---\n\n**Icon prop**: pick from `guidelines/components/icons.md`'s 371 names — don't guess or grep the bundle for icon exports.";
+const PER_COMPONENT_NOTES = {
+  Box: REACH_FOR_THIS_INSTEAD,
+  FlexBox: REACH_FOR_THIS_INSTEAD,
+  GridBox: REACH_FOR_THIS_INSTEAD,
+  FillButton: ICON_NOTE,
+  StrokeButton: ICON_NOTE,
+  TextButton: ICON_NOTE,
+  IconButton: ICON_NOTE,
+  Badge: ICON_NOTE,
+  Tag: ICON_NOTE,
+  Menu: ICON_NOTE,
+};
+
+// Best-effort component-name guess from the doc's own filename — ingestDoc
+// only receives a path (package-build.mjs's call site is unforked), so this
+// is the only signal available. False negatives (name doesn't match) just
+// mean no per-component block is added — safe, not a crash.
+const nameFromDocPath = (path) =>
+  basename(path).replace(/\.(stories\.mdx|docs\.mdx|mdx|md)$/i, '');
+
 // Cap on the doc body that lands in <Name>.prompt.md — the design agent reads
 // every .prompt.md, so one huge doc would crowd out the rest.
 export const DOC_BODY_CAP = 8000;
@@ -255,6 +285,8 @@ export function ingestDoc(path) {
       `  docs: ${basename(path)} truncated (${orig} → ${body.length})`
     );
   }
+  const perComponentNote = PER_COMPONENT_NOTES[nameFromDocPath(path)];
+  if (perComponentNote) body += perComponentNote;
   body += COLOR_FOOTER;
   return { body, category, keywords };
 }

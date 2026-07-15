@@ -27,6 +27,16 @@ Use List directly when:
 | `block`   | Feature-forward designs or page scaffolding; always on a colored background                        |
 | `plain`   | Minimal styling — no borders or backgrounds; apply custom styles per row via Emotion `styled`      |
 
+```jsx
+const { List, ListRow, ListCol } = window.CodecademyGamut;
+
+<List variant="default">{rows}</List>
+<List variant="table">{rows}</List>
+<List variant="card">{rows}</List>
+<List variant="block">{rows}</List>
+<List variant="plain">{rows}</List>
+```
+
 ## Spacing
 
 | `spacing`   | Use for                                      |

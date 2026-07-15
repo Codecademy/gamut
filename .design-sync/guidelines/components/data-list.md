@@ -25,6 +25,13 @@ Item-focused list for managing, engaging with, and expanding individual rows. Us
 | `default` | Standard bordered rows; best for most item-management layouts                      |
 | `card`    | Rows with vertical gap; best for content that doesn't need to be visually adjacent |
 
+```jsx
+const { DataList } = window.CodecademyGamut;
+
+<DataList id="list" idKey="id" columns={columns} rows={rows} variant="default" />
+<DataList id="list" idKey="id" columns={columns} rows={rows} variant="card" />
+```
+
 ## Props
 
 | Prop                    | Type                            | Default             | Notes                                                                                            |

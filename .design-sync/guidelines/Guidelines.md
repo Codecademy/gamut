@@ -8,7 +8,7 @@ Always use Gamut components, tokens, and patterns. Every element must trace back
 
 1. **Every color is a semantic token, never hex.** Tokens only resolve inside `ColorMode` — see `design-tokens/colors.md`.
 2. **Wrap the tree in `ColorMode`.** Skipping it is why hex creeps back in.
-3. **Prefer a purpose-built component** (`List`, `DataList`, `DataTable`, `Toggle`, `Menu`, `Badge`, `Tag`, etc.) over recreating one from `Box`/`FlexBox` — see `overview-components.md`'s Component Discovery section.
+3. **Prefer a purpose-built component** (`List`, `DataList`, `DataTable`, `Toggle`, `Menu`, `Badge`, `Tag`, etc.) over recreating one from `Box`/`FlexBox` — see `overview-components.md`'s Component Discovery section and `components/index.md`'s decision table.
 4. **Call out departures explicitly — never ship them silently.**
 
 ## Reading order — READ THIS FIRST
@@ -18,6 +18,7 @@ Always use Gamut components, tokens, and patterns. Every element must trace back
 - `overview-setup.md` — `GamutProvider` + theme (defaults to `percipioTheme`), runtime model
 - `overview-styling.md` — system props shorthand, `css()`/`variant()`/`states()`, no inline styles, no `className`, departures
 - `overview-components.md` — general component rules, discovery, prop validation, quick reference
+- `components/index.md` — one-line decision table for every component: use when / not this-use X instead. Scan this before writing any layout code.
 - `overview-icons.md` — selecting icons from the icon library
 - `overview-illustrations.md` — using the illustration library
 - `overview-patterns.md` — using the pattern library
@@ -35,31 +36,37 @@ Always use Gamut components, tokens, and patterns. Every element must trace back
 
 ### Step 3: Plan the components needed (REQUIRED)
 
+Check `recipes/` for a full composed example before planning from scratch — `recipes/data-list-with-status.md` (rows of data with a status indicator) and `recipes/tabbed-sections.md` (switchable content groups) cover the two patterns most often rebuilt from `Box`/`FlexBox`.
+
 ### Step 4: Read each component's guide BEFORE writing code that uses it (REQUIRED)
 
-| Using…                                                                             | Read first                      |
-| ---------------------------------------------------------------------------------- | ------------------------------- |
-| `FillButton` / `StrokeButton` / `TextButton` / `IconButton` / `CTAButton`          | `components/buttons.md`         |
-| `GridForm` / `ConnectedForm`                                                       | `components/forms.md`           |
-| `DataTable`                                                                        | `components/data-table.md`      |
-| `DataList`                                                                         | `components/data-list.md`       |
-| `List` / `ListRow` / `ListCol` / `TableHeader`                                     | `components/list.md`            |
-| `Menu` / `MenuItem` / `MenuSeparator`                                              | `components/menu.md`            |
-| `Card`                                                                             | `components/card.md`            |
-| `Select` / `SelectDropdown`                                                        | `components/select.md`          |
-| `RadialProgress`                                                                   | `components/radial-progress.md` |
-| `Shimmer` / `Spinner` / `FeatureShimmer`                                           | `components/loading-states.md`  |
-| `Coachmark`                                                                        | `components/coachmark.md`       |
-| `ToolTip` / `InfoTip`                                                              | `components/tooltips.md`        |
-| `Video`                                                                            | `components/video.md`           |
-| `Rotation` / `ExpandInCollapseOut` / `FadeInSlideOut` (or any Animation primitive) | `components/animations.md`      |
-| `ColorMode` / `Background` (dark/light regions, themes, modes)                     | `components/color-mode.md`      |
-| Breakpoints, container queries, the 12-column page grid                            | `components/layout.md`          |
-| Any component's accessibility behavior (what it handles vs. what you supply)       | `components/accessibility.md`   |
-| Any icon, or picking the right icon name                                           | `components/icons.md`           |
-| `Input` (controlled value, leading-icon slot)                                      | `components/input.md`           |
-| `BarChart` custom styling (`styleConfig`) or custom scale (`scaleInterval`)        | `components/bar-chart.md`       |
-| `DatePicker` locale/i18n                                                           | `components/date-picker.md`     |
+| Using…                                                                               | Read first                      |
+| ------------------------------------------------------------------------------------ | ------------------------------- |
+| `FillButton` / `StrokeButton` / `TextButton` / `IconButton` / `CTAButton`            | `components/buttons.md`         |
+| `GridForm` / `ConnectedForm`                                                         | `components/forms.md`           |
+| `DataTable`                                                                          | `components/data-table.md`      |
+| `DataList`                                                                           | `components/data-list.md`       |
+| `List` / `ListRow` / `ListCol` / `TableHeader`                                       | `components/list.md`            |
+| `Menu` / `MenuItem` / `MenuSeparator`                                                | `components/menu.md`            |
+| `Tabs` / `TabList` / `Tab` / `TabPanels` / `TabPanel` (composite, not a `tabs` prop) | `components/tabs.md`            |
+| `Card`                                                                               | `components/card.md`            |
+| `Badge`                                                                              | `components/badge.md`           |
+| `Tag`                                                                                | `components/tag.md`             |
+| `Alert`                                                                              | `components/alert.md`           |
+| `Select` / `SelectDropdown`                                                          | `components/select.md`          |
+| `RadialProgress`                                                                     | `components/radial-progress.md` |
+| `Shimmer` / `Spinner` / `FeatureShimmer`                                             | `components/loading-states.md`  |
+| `Coachmark`                                                                          | `components/coachmark.md`       |
+| `ToolTip` / `InfoTip`                                                                | `components/tooltips.md`        |
+| `Video`                                                                              | `components/video.md`           |
+| `Rotation` / `ExpandInCollapseOut` / `FadeInSlideOut` (or any Animation primitive)   | `components/animations.md`      |
+| `ColorMode` / `Background` (dark/light regions, themes, modes)                       | `components/color-mode.md`      |
+| Breakpoints, container queries, the 12-column page grid                              | `components/layout.md`          |
+| Any component's accessibility behavior (what it handles vs. what you supply)         | `components/accessibility.md`   |
+| Any icon, or picking the right icon name                                             | `components/icons.md`           |
+| `Input` (controlled value, leading-icon slot)                                        | `components/input.md`           |
+| `BarChart` custom styling (`styleConfig`) or custom scale (`scaleInterval`)          | `components/bar-chart.md`       |
+| `DatePicker` locale/i18n                                                             | `components/date-picker.md`     |
 
 For a component's full prop list, read its `.d.ts` and `.prompt.md` in `components/<group>/<Name>/` — see the project README's Agent Information section.
 

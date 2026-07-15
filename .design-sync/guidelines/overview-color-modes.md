@@ -18,6 +18,7 @@ For **any dark or light region, dark or light theme, dark or light section, dark
 3. **`ColorMode` renders a `<div>`** — it does not support an `as` prop. For semantic HTML, nest the appropriate element inside (e.g., `<nav>`, `<aside>`, `<footer>`).
 4. **System props work on `ColorMode`** — you can apply `position`, `width`, `height`, `p`, `m`, `zIndex`, etc. directly on the component to avoid extra wrapper elements.
 5. **`mode="system"` for user-preference toggles** — if the app offers a dark-mode toggle, use `ColorMode` with `mode="system"` or manage the mode value in state and pass it explicitly.
+6. **`Card`'s `variant="default"` follows `ColorMode`** — the other variants (`white`/`beige`/`yellow`, `navy`/`hyper`) are fixed regions that intentionally ignore the active mode. See `components/card.md`.
 
 ## Before writing code
 
