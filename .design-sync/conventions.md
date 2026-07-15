@@ -1,5 +1,13 @@
 # Gamut Design System
 
+> **STOP — required reading before generating any code.** Read these in order before writing a single line; this is a gate, not a suggestion:
+>
+> 1. `guidelines/Guidelines.md`
+> 2. `guidelines/overview-components.md` (the pattern → component discovery table)
+> 3. `guidelines/overview-styling.md` (the styling do/don't list)
+> 4. `guidelines/design-tokens/colors.md` + `guidelines/components/color-mode.md`
+> 5. The per-component `.prompt.md` for every component you will use.
+
 This is Codecademy's Gamut design system — the same components, tokens, and
 patterns used across Codecademy and Skillsoft's Percipio product. Every
 component in this project is browsable below, grouped the way they're
@@ -10,10 +18,11 @@ version would have to reimplement.
 
 ## Non-negotiables
 
-1. **Every color is a semantic token — never hex.** `text`, `background`, `primary`, `feedback-error`, etc. See `guidelines/design-tokens/colors.md`.
-2. **Wrap the tree in `ColorMode`.** Semantic tokens only resolve inside it.
-3. **Prefer purpose-built components over `Box`/`FlexBox` rebuilds.** `List`/`DataList`/`DataTable`/`Tabs`/`Badge`/`Tag` carry accessibility and theming a hand-built version doesn't.
-4. **Call out departures — never ship them silently.** If a build genuinely needs a hex value or a `className`, say so explicitly.
+1. **Props-only — no inline `style`, no inline `css` prop, no `className` for layout, spacing, or color.** Every system-prop-expressible style goes through a Gamut prop, `css()`, `variant()`, or `states()` — not Emotion's `css={...}` JSX prop written inline on an element. Any inline `style`/`css` or hex value is a **departure** and must be called out explicitly (see #5) — it is never a silent default.
+2. **Every color is a semantic token — never hex.** `text`, `background`, `primary`, `feedback-error`, etc. See `guidelines/design-tokens/colors.md`.
+3. **Wrap the tree in `ColorMode`.** Semantic tokens only resolve inside it.
+4. **Prefer purpose-built components over `Box`/`FlexBox` rebuilds.** `List`/`DataList`/`DataTable`/`Tabs`/`Badge`/`Tag` carry accessibility and theming a hand-built version doesn't.
+5. **Call out departures — never ship them silently.** If a build genuinely needs a hex value or a `className`, say so explicitly. This applies just as much to the _request itself_: if the designer/user asks for something outside system props, tokens, or semantic tokens (an exact hex, an arbitrary pixel value off the spacing scale, a one-off font size), tell them it deviates from the system before implementing it — don't silently comply, and don't silently substitute the nearest token without saying so.
 
 ## Wrapping and setup
 

@@ -47,6 +47,14 @@ function App() {
 | LX Studio | Learning Experience Studio                                 | `lxStudioTheme` |
 | Percipio  | Skillsoft Percipio platform (**default here**)             | `percipioTheme` |
 
+## Switching themes
+
+To change the product theme, do all three of these together — swapping only the theme prop leaves stale hardcoded values behind:
+
+1. **Change the `theme` prop on the single `GamutProvider`**: `<GamutProvider theme={coreTheme}>`. Available exports: `percipioTheme` (default), `coreTheme`, `platformTheme`, `adminTheme`, `lxStudioTheme`.
+2. **Update the destructure** of the theme export from `window.CodecademyGamut` to match the one you're using.
+3. **Re-resolve any hardcoded fallbacks** (e.g. `a`/`a:hover` link colors, loading-state colors) to the new theme's palette — these are the only place hex is tolerated, and they must track the active theme's `primary`. Everything else stays on semantic tokens, which re-resolve automatically, so no other color edits are needed. Do not swap tokens by hand for a theme change; semantic tokens adapt on their own once the theme prop and destructure are correct.
+
 ## Theme vs color mode vs style API
 
 | Concern                                                 | Where to read                                          |

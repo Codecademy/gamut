@@ -53,6 +53,15 @@ const PER_COMPONENT_NOTES = {
   Menu: ICON_NOTE,
 };
 
+// Prepended (not appended) — for warnings that must be seen before the rest
+// of the doc, not discovered after reading past it. List gets read for
+// "rows with controls" and "large sortable tabular data" alike; the latter
+// should have stopped at DataTable/DataList before reaching this file.
+const PER_COMPONENT_PREPEND = {
+  List: '**When to reach for `DataTable` / `DataList` instead**: `List` is for mixed-content rows with controls. If the view is primarily tabular data, has many rows, or needs column sorting/pagination, use `DataTable` (metrics-heavy, sortable columns) or `DataList` (large data sets with built-in sort/pagination) — they carry sorting, pagination, and accessibility a hand-managed `List` does not.\n\n---\n\n',
+  Menu: '**Use `Menu` for navigation and action lists — do not hand-build them.** Sidebar/section navigation, account menus, kebab/overflow actions, and any repeated list of links or actions should be composed with `Menu`, not rebuilt from `Box`/`FlexBox` rows with `as="a"`/`as="button"`. A hand-built version loses `Menu`\'s keyboard navigation, focus management, active/selected state, and ARIA roles. If a design shows a vertical nav rail or an actions dropdown, that is a `Menu`.\n\n---\n\n',
+};
+
 // Best-effort component-name guess from the doc's own filename — ingestDoc
 // only receives a path (package-build.mjs's call site is unforked), so this
 // is the only signal available. False negatives (name doesn't match) just
@@ -285,6 +294,8 @@ export function ingestDoc(path) {
       `  docs: ${basename(path)} truncated (${orig} → ${body.length})`
     );
   }
+  const perComponentPrepend = PER_COMPONENT_PREPEND[nameFromDocPath(path)];
+  if (perComponentPrepend) body = perComponentPrepend + body;
   const perComponentNote = PER_COMPONENT_NOTES[nameFromDocPath(path)];
   if (perComponentNote) body += perComponentNote;
   body += COLOR_FOOTER;

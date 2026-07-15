@@ -1,7 +1,7 @@
 # Styling Rules
 
-- **Never use inline `style` attributes.** All styling must use system props
-  or Gamut tokens — never the `style` JSX attribute or hardcoded values.
+- **Never use inline `style` attributes, and never use Emotion's inline `css` prop.** All styling must use system props
+  or Gamut tokens — never the `style` JSX attribute, an inline `css={...}` prop on an element, or hardcoded values. Use `css()`/`variant()`/`states()` composed on a `styled` component instead of writing `css={...}` inline.
 - **Use system props shorthand** for layout and spacing. Prefer abbreviated
   prop names over long-form equivalents.
 - **Never use SCSS/CSS modules or `className`** on a Gamut component
@@ -121,3 +121,5 @@ Prefer semantic color keys (`primary`, `text`) over raw palette tokens (`navy-40
 ## Departures — call out deviations, don't ship them silently
 
 If a build genuinely can't follow one of the rules above — no semantic token fits a required color, a third-party integration needs `className` — say so explicitly (e.g. "using hex `#...` here because no semantic token matches this color; flag for design review"). A silent departure looks system-compliant when it isn't.
+
+This applies to the _request_ as much as the output: if the designer/user asks for something outside system props, tokens, or semantic tokens (an exact hex, an arbitrary pixel value off the spacing scale, a one-off font size), tell them explicitly that it deviates from the system before implementing it. Don't silently comply with an off-system request, and don't silently coerce it to the nearest token without saying so — either way, the person asking should know the system was departed from.
