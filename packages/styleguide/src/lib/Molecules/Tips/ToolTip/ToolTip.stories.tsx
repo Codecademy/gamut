@@ -158,7 +158,6 @@ export const CloseOnClick: Story = {
   render: () => (
     <FlexBox center justifyContent="space-around" pt={48}>
       <ToolTip
-        closeOnClick
         id="coc-floating"
         info="Closes on click (floating)"
         placement="floating"
@@ -166,7 +165,6 @@ export const CloseOnClick: Story = {
         <StrokeButton aria-describedby="coc-floating">Floating</StrokeButton>
       </ToolTip>
       <ToolTip
-        closeOnClick
         id="coc-inline"
         info="Closes on click (inline)"
         placement="inline"

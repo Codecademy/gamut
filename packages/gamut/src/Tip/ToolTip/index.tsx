@@ -26,6 +26,7 @@ export type ToolTipProps = TipBaseProps &
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-center',
+  closeOnClick = true,
   children,
   info,
   placement = tipDefaultProps.placement,
@@ -44,6 +45,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 
   const tipProps = {
     alignment,
+    closeOnClick,
     info,
     wrapperRef,
     ...rest,
