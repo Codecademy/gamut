@@ -107,7 +107,9 @@ describe('SelectDropdown', () => {
     // menu's options in every consuming app, so it's covered explicitly here.
     const getPortalNode = (view: ReturnType<typeof renderView>['view']) => {
       const listbox = view.getByRole('listbox');
-      return listbox.parentElement?.parentElement as HTMLElement;
+      const portal = listbox.parentElement?.parentElement;
+      if (!portal) throw new Error('Expected portal node to exist');
+      return portal;
     };
 
     it('renders the options menu in a portal appended to document.body', async () => {
