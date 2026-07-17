@@ -22,7 +22,7 @@ const PortalWrapper = styled
   )
   .withComponent(ColorMode);
 
-interface BodyPortalProps {
+export interface BodyPortalProps {
   /**
    * Stacking layer for the portaled content. Pass a `zIndexes` token
    * (e.g. `zIndexes.modal`) or a raw number as an escape hatch. Defaults to
