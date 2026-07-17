@@ -1,4 +1,4 @@
-import { system, variant } from '@codecademy/gamut-styles';
+import { system, variant, zIndexes } from '@codecademy/gamut-styles';
 
 export const tabContainerVariants = variant({
   base: {
@@ -15,7 +15,7 @@ export const tabContainerVariants = variant({
         bg: 'text',
         position: 'absolute',
         bottom: 0,
-        zIndex: 0,
+        zIndex: zIndexes.base,
         width: '100%',
       },
     },

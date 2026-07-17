@@ -5,6 +5,7 @@ import {
   system,
   theme,
   variant,
+  zIndexes,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -217,7 +218,7 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
     flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     top: 0,
     bg: 'background-current',
-    zIndex: 2,
+    zIndex: zIndexes.foreground,
     fontFamily: 'accent',
     pb: { _: 0, c_base: 8, c_sm: 0 },
   }),
@@ -468,7 +469,7 @@ export const StickyHeaderColWrapper = styled.th(
       height: '100%',
       top: 0,
       left: 0,
-      zIndex: -1,
+      zIndex: zIndexes.underlay,
     },
     '&:after': {
       content: '""',
@@ -482,7 +483,7 @@ export const StickyHeaderColWrapper = styled.th(
       height: '100%',
       top: 0,
       left: 0,
-      zIndex: -1,
+      zIndex: zIndexes.underlay,
     },
     // p: 0 removes the browser's default padding of 1px
     p: 0,
@@ -490,7 +491,7 @@ export const StickyHeaderColWrapper = styled.th(
     flexShrink: 0,
     position: 'sticky',
     left: 0,
-    zIndex: 1,
+    zIndex: zIndexes.foreground,
     bg: { _: 'inherit', c_base: 'transparent', c_sm: 'inherit' },
     '&:not(:first-of-type)': {
       left: { _: 16, c_base: 0, c_sm: 16 },

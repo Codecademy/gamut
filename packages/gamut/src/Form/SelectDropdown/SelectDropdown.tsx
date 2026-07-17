@@ -278,6 +278,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         }
         isSearchable={isSearchable}
         menuAlignment={menuAlignment}
+        menuPortalTarget={
+          typeof document !== 'undefined' ? document.body : undefined
+        }
         name={name}
         options={selectOptions}
         placeholder={placeholder}

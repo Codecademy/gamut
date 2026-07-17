@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, TokenTable } from '~styleguide/blocks';
+
+import * as TABLES from './shared/elements';
+
+export const parameters = {
+  title: 'Z-Index',
+  subtitle:
+    'A single semantic scale for coordinating stacking order across Gamut.',
+  status: 'static',
+};
+
+<Meta title="Foundations/Z-Index" />
+
+<ComponentHeader {...parameters} />
+
+z-index should only be used when necessary to override the default stacking order. When possible, use the default stacking order and avoid using z-index.
+
+To standardize z-index values across the application, Gamut exposes one semantic z-index scale, `zIndexes`, so stacking order is coordinated by name
+instead of by scattered magic numbers. Import it from `@codecademy/gamut-styles` and pass a token to
+the `zIndex` prop:
+
+```tsx
+import { zIndexes } from '@codecademy/gamut-styles';
+
+<Box zIndex={zIndexes.modal}>…</Box>;
+```
+
+## The scale
+
+<TokenTable {...TABLES.zIndexes} />
+
+## Custom z-index values
+
+The `zIndex` prop is left **numeric**. `zIndexes` is just a numeric object you reference by name; the prop still accepts a raw number. This is deliberate in situations where you need to set a z-index that is not part of the scale.
+
+```tsx
+<Overlay zIndex={zIndexes.modal + 5}>…</Overlay>; // just above modal
+<Box zIndex={605}>…</Box>; // deliberate one-off
+```
+
+These situations should be rare, but when they do arise, you can use the scale as a reference point.
+
+## Guidance
+
+- **Reach for a token first.** `zIndexes.modal`, `zIndexes.foreground`, etc. — the name documents
+  intent far better than a number.
+- **Escape hatch sparingly.** A raw number is fine for a genuine one-off, but prefer
+  `token ± n` so the relationship to the scale stays visible, and leave a comment.
+- **Third-party widgets** (e.g. injected marketing/chat scripts) set their own z-index and are out
+  of Gamut's control; `topmost` is the highest Gamut layer.
