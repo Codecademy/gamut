@@ -61,7 +61,7 @@ const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-const dropdownBorderStyles = (zIndex = zIndexes.popover) =>
+const dropdownBorderStyles = (zIndex: number = zIndexes.popover) =>
   css({
     ...formBaseComponentStyles,
     border: 1,
