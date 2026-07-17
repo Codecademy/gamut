@@ -1648,7 +1648,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:72.2.3"
+    "@codecademy/gamut": "npm:72.2.4"
     "@codecademy/gamut-icons": "npm:9.57.10"
     "@codecademy/gamut-illustrations": "npm:0.58.15"
     "@codecademy/gamut-patterns": "npm:0.10.34"
@@ -1705,7 +1705,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:72.2.3, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:72.2.4, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
@@ -1731,7 +1731,7 @@ __metadata:
     react-player: "npm:^2.16.0"
     react-select: "npm:^5.2.2"
     react-truncate-markup: "npm:^5.1.2"
-    react-use: "npm:^15.3.8"
+    react-use: "npm:^17.6.1"
     sanitize-markdown: "npm:^2.6.7"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -7805,10 +7805,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/js-cookie@npm:2.2.6":
-  version: 2.2.6
-  resolution: "@types/js-cookie@npm:2.2.6"
-  checksum: 10c0/41dba47b7470d3dbf57025f53fd77bf70e35a0a7ce414b8ac77ed088c1273e2a549a63d59bc879735a5796cc6dc8f32c04a7ad9fe137f868747a35f843c3f9d1
+"@types/js-cookie@npm:^3.0.0":
+  version: 3.0.6
+  resolution: "@types/js-cookie@npm:3.0.6"
+  checksum: 10c0/173afaf5ea9d86c22395b9d2a00b6adb0006dcfef165d6dcb0395cdc32f5a5dcf9c3c60f97194119963a15849b8f85121e1ae730b03e40bc0c29b84396ba22f9
   languageName: node
   linkType: hard
 
@@ -8601,7 +8601,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xobotyi/scrollbar-width@npm:1.9.5":
+"@xobotyi/scrollbar-width@npm:^1.9.5":
   version: 1.9.5
   resolution: "@xobotyi/scrollbar-width@npm:1.9.5"
   checksum: 10c0/4ebc79e4f798e2a5e89a5122f8fc4a086f08a92a44ac020599c4fe20d105b7d76ba06c094260b5f386a75e7ce6f6c518d9fc295228b651296b99c4477f986ac4
@@ -10506,7 +10506,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"copy-to-clipboard@npm:^3.2.0":
+"copy-to-clipboard@npm:^3.3.1":
   version: 3.3.3
   resolution: "copy-to-clipboard@npm:3.3.3"
   dependencies:
@@ -16146,10 +16146,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-cookie@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "js-cookie@npm:2.2.1"
-  checksum: 10c0/ee67fc0f8495d0800b851910b5eb5bf49d3033adff6493d55b5c097ca6da46f7fe666b10e2ecb13cfcaf5b88d71c205ce00a7e646de791689bfd053bbb36a376
+"js-cookie@npm:^3.0.0":
+  version: 3.0.8
+  resolution: "js-cookie@npm:3.0.8"
+  checksum: 10c0/421912a4a55535bda32b3059835864e1182c3af5b4516df00a060edc1fa5a53d38bb8d5a91d5d305e396206f4fd11e829f17850aa5aa8164118c04d8ebf1ff5d
   languageName: node
   linkType: hard
 
@@ -17393,7 +17393,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nano-css@npm:^5.2.1":
+"nano-css@npm:^5.6.2":
   version: 5.6.2
   resolution: "nano-css@npm:5.6.2"
   dependencies:
@@ -19729,28 +19729,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-use@npm:^15.3.8":
-  version: 15.3.8
-  resolution: "react-use@npm:15.3.8"
+"react-use@npm:^17.6.1":
+  version: 17.6.1
+  resolution: "react-use@npm:17.6.1"
   dependencies:
-    "@types/js-cookie": "npm:2.2.6"
-    "@xobotyi/scrollbar-width": "npm:1.9.5"
-    copy-to-clipboard: "npm:^3.2.0"
+    "@types/js-cookie": "npm:^3.0.0"
+    "@xobotyi/scrollbar-width": "npm:^1.9.5"
+    copy-to-clipboard: "npm:^3.3.1"
     fast-deep-equal: "npm:^3.1.3"
     fast-shallow-equal: "npm:^1.0.0"
-    js-cookie: "npm:^2.2.1"
-    nano-css: "npm:^5.2.1"
+    js-cookie: "npm:^3.0.0"
+    nano-css: "npm:^5.6.2"
     react-universal-interface: "npm:^0.6.2"
     resize-observer-polyfill: "npm:^1.5.1"
-    screenfull: "npm:^5.0.0"
+    screenfull: "npm:^5.1.0"
     set-harmonic-interval: "npm:^1.0.1"
-    throttle-debounce: "npm:^2.1.0"
+    throttle-debounce: "npm:^3.0.1"
     ts-easing: "npm:^0.2.0"
-    tslib: "npm:^2.0.0"
+    tslib: "npm:^2.1.0"
   peerDependencies:
-    react: ^16.8.0  || ^17.0.0
-    react-dom: ^16.8.0  || ^17.0.0
-  checksum: 10c0/9679090467f65d079c684121e246e08e273c3898659755e0bf13a32f58d242d4c6531299fff310a92980041f8439d48519de6feec0c9f5b0a63d99f30876a279
+    react: "*"
+    react-dom: "*"
+  checksum: 10c0/8b3babd9f7db14624e172d22c2fb30f091d785e97d0aed84e47e52a3ca8dbdc0c094ab797bbd0e754ff2f92be82357c7a46e08dbc85244edfefa21475f760cdf
   languageName: node
   linkType: hard
 
@@ -20779,7 +20779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"screenfull@npm:^5.0.0":
+"screenfull@npm:^5.1.0":
   version: 5.2.0
   resolution: "screenfull@npm:5.2.0"
   checksum: 10c0/86fd49983e2edc153ee2e674a570c711cb0961a9cacca659309f79636ccc8ca8a0b830ea4dacdae7403a8bb7ba6affd5bcdce053aa97782961247a49bfd2ba68
@@ -22063,10 +22063,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"throttle-debounce@npm:^2.1.0":
-  version: 2.3.0
-  resolution: "throttle-debounce@npm:2.3.0"
-  checksum: 10c0/41648e4cf46f935818af32ecac34f9876c618f24e300551cbe3a0ca2c5828cb8d2f9b73e6e1e2f8c64237f70fbc8c541f9b5c9114da70b33b1ed10ba4cc6b15f
+"throttle-debounce@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "throttle-debounce@npm:3.0.1"
+  checksum: 10c0/c8e558479463b7ed8bac30d6b10cc87abd1c9fc64edfce2db4109be1a04acaef5d2d0557f49c1a3845ea07d9f79e6e0389b1b60db0a77c44e5b7a1216596f285
   languageName: node
   linkType: hard
 
