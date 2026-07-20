@@ -28,11 +28,6 @@ jobs:
         id: setup
         uses: ./.github/actions/yarn
 
-      - name: Add NPM auth token file
-        uses: ./.github/actions/set-npm-token
-        with:
-          token-secret: ${{ secrets.NPM_TOKEN }}
-
       - name: Ensure workflow is associated with a pull request
         uses: ./.github/actions/validate-pr-context
 
