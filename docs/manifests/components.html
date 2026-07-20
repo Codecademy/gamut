@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/489 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/491 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.5s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.9s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -22229,7 +22229,7 @@ export const MarkdownErrors: Story = {
       <div class="badges">
         <label for="c-46-atoms-buttons-iconbutton-err" class="badge err as-toggle">prop type error</label>
         <label for="c-46-atoms-buttons-iconbutton-info" class="badge info as-toggle">1 info</label>
-        <label for="c-46-atoms-buttons-iconbutton-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-46-atoms-buttons-iconbutton-stories" class="badge ok as-toggle">2 stories</label>
         <label for="c-46-atoms-buttons-iconbutton-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -22253,16 +22253,17 @@ export const MarkdownErrors: Story = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;IconButton&quot; component.
-  4 | import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
-  5 |
-&gt; 6 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof IconButton&gt;&gt; = {
-    | ^
-  7 |   component: IconButton,
-  8 |   args: {
-  9 |     disabled: false,
+   5 | import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
+   6 |
+&gt;  7 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof IconButton&gt;&gt; = {
+     | ^
+   8 |   component: IconButton,
+   9 |   args: {
+  10 |     disabled: false,
 
 ./packages/styleguide/src/lib/Atoms/Buttons/IconButton/IconButton.stories.tsx:
-import { IconButton } from &#39;@codecademy/gamut&#39;;
+import { FlexBox, IconButton } from &#39;@codecademy/gamut&#39;;
+import { SparkleIcon } from &#39;@codecademy/gamut-icons&#39;;
 import * as icons from &#39;@codecademy/gamut-icons&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
@@ -22312,6 +22313,48 @@ type Story = StoryObj&lt;typeof IconButton&gt;;
 export const Default: Story = {
   args: {},
 };
+
+// eslint-disable-next-line no-console
+const logClick = () =&gt; console.log(&#39;button onClick fired&#39;);
+
+export const CloseOnClick: Story = {
+  render: () =&gt; (
+    &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Closes on click (floating)&quot;
+        tipProps={{ placement: &#39;floating&#39;, alignment: &#39;top-center&#39; }}
+        onClick={logClick}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Closes on click (inline)&quot;
+        tipProps={{ placement: &#39;inline&#39;, alignment: &#39;top-center&#39; }}
+        onClick={logClick}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Stays open on click (floating)&quot;
+        tipProps={{
+          placement: &#39;floating&#39;,
+          alignment: &#39;top-center&#39;,
+          closeOnClick: false,
+        }}
+        onClick={logClick}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Stays open on click (inline)&quot;
+        tipProps={{
+          placement: &#39;inline&#39;,
+          alignment: &#39;top-center&#39;,
+          closeOnClick: false,
+        }}
+        onClick={logClick}
+      /&gt;
+    &lt;/FlexBox&gt;
+  ),
+};
 </code></pre></div>
     </div>
         </div>
@@ -22333,7 +22376,7 @@ export const Default: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { IconButton } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { FlexBox, IconButton } from "@codecademy/gamut";</code></pre>
               </div>
           
           
@@ -22350,6 +22393,50 @@ export const Default: Story = {
     icon={icons.SearchIcon}
     tip=&quot;ToolTip&quot;
     tipProps={{ placement: &#39;floating&#39;, alignment: &#39;top-center&#39; }} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Close On Click</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CloseOnClick = () =&gt; (
+  &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Closes on click (floating)&quot;
+      tipProps={{ placement: &#39;floating&#39;, alignment: &#39;top-center&#39; }}
+      onClick={logClick}
+    /&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Closes on click (inline)&quot;
+      tipProps={{ placement: &#39;inline&#39;, alignment: &#39;top-center&#39; }}
+      onClick={logClick}
+    /&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Stays open on click (floating)&quot;
+      tipProps={{
+        placement: &#39;floating&#39;,
+        alignment: &#39;top-center&#39;,
+        closeOnClick: false,
+      }}
+      onClick={logClick}
+    /&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Stays open on click (inline)&quot;
+      tipProps={{
+        placement: &#39;inline&#39;,
+        alignment: &#39;top-center&#39;,
+        closeOnClick: false,
+      }}
+      onClick={logClick}
+    /&gt;
+  &lt;/FlexBox&gt;
+);</code></pre>
             </div>
         </div>
     
@@ -22395,6 +22482,12 @@ export const parameters = {
 Use for secondary or space-constrained actions with recognizable icons. Use regular icons for normal buttons and mini icons for small buttons. Icon-only buttons must include a `tip` prop, which will also appear in the tooltip on hover and focus.
 
 For more detailed information on `IconButton` tooltips, take a look at the &lt;LinkTo id=&#39;Molecules/Tips/ToolTip&#39;&gt;ToolTip&lt;/LinkTo&gt; story.
+
+## Close on Click
+
+By default, `IconButton` tooltips close immediately on click and reappear only after the cursor leaves and re-enters. To persist the tooltip after a click, pass `tipProps={{ closeOnClick: false }}`. The first two buttons below close on click; the last two stay open.
+
+&lt;Canvas of={IconButtonStories.CloseOnClick} /&gt;
 
 ## Playground
 
@@ -28182,14 +28275,18 @@ export const IconMenu: Story = {
       &lt;&gt;
         &lt;MenuItem icon={AiChatSparkIcon} label=&quot;Chat&quot; onClick={() =&gt; {}} /&gt;
         &lt;MenuItem
-          href=&quot;#whatsup&quot;
           icon={BashShellIcon}
           label={{ alignment: &#39;right-center&#39;, info: &#39;Prompt&#39; }}
+          onClick={() =&gt; {}}
         /&gt;
         &lt;MenuItem
-          href=&quot;#whatsup-people&quot;
+          closeOnClick={false}
           icon={PeopleIcon}
-          label={{ alignment: &#39;right-center&#39;, info: &#39;People&#39; }}
+          label={{
+            alignment: &#39;right-center&#39;,
+            info: &quot;People (won&#39;t close tooltip on click)&quot;,
+          }}
+          onClick={() =&gt; {}}
         /&gt;
         &lt;MenuItem
           active
@@ -28537,14 +28634,18 @@ import { FlexBox, Menu, MenuItem, MenuSeparator, PopoverContainer, Text } from "
     variant=&quot;fixed&quot;&gt;(&lt;&gt;
       &lt;MenuItem icon={AiChatSparkIcon} label=&quot;Chat&quot; onClick={() =&gt; {}} /&gt;
       &lt;MenuItem
-        href=&quot;#whatsup&quot;
         icon={BashShellIcon}
         label={{ alignment: &#39;right-center&#39;, info: &#39;Prompt&#39; }}
+        onClick={() =&gt; {}}
       /&gt;
       &lt;MenuItem
-        href=&quot;#whatsup-people&quot;
+        closeOnClick={false}
         icon={PeopleIcon}
-        label={{ alignment: &#39;right-center&#39;, info: &#39;People&#39; }}
+        label={{
+          alignment: &#39;right-center&#39;,
+          info: &quot;People (won&#39;t close tooltip on click)&quot;,
+        }}
+        onClick={() =&gt; {}}
       /&gt;
       &lt;MenuItem
         active
@@ -41494,7 +41595,7 @@ If you use voiceover on either of the below, you will hear the difference this m
       <div class="badges">
         <label for="c-85-molecules-tips-tooltip-err" class="badge err as-toggle">prop type error</label>
         <label for="c-85-molecules-tips-tooltip-info" class="badge info as-toggle">1 info</label>
-        <label for="c-85-molecules-tips-tooltip-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-85-molecules-tips-tooltip-stories" class="badge ok as-toggle">8 stories</label>
         <label for="c-85-molecules-tips-tooltip-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -41678,6 +41779,47 @@ export const Disabled: Story = {
         &gt;
           Using aria-disabled
         &lt;/FillButton&gt;
+      &lt;/ToolTip&gt;
+    &lt;/FlexBox&gt;
+  ),
+};
+
+export const CloseOnClick: Story = {
+  render: () =&gt; (
+    &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+      &lt;ToolTip
+        id=&quot;coc-floating&quot;
+        info=&quot;Closes on click (floating)&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;coc-floating&quot;&gt;Floating&lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        id=&quot;coc-inline&quot;
+        info=&quot;Closes on click (inline)&quot;
+        placement=&quot;inline&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;coc-inline&quot;&gt;Inline&lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        closeOnClick={false}
+        id=&quot;stays-floating&quot;
+        info=&quot;Stays open on click (floating)&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;stays-floating&quot;&gt;
+          Floating (stays open)
+        &lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        closeOnClick={false}
+        id=&quot;stays-inline&quot;
+        info=&quot;Stays open on click (inline)&quot;
+        placement=&quot;inline&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;stays-inline&quot;&gt;
+          Inline (stays open)
+        &lt;/StrokeButton&gt;
       &lt;/ToolTip&gt;
     &lt;/FlexBox&gt;
   ),
@@ -41893,6 +42035,52 @@ export const HorizontalAlignments: Story = {
             </div>
             <div class="note ok">
               <div class="row">
+                <span class="ex-name">Close On Click</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CloseOnClick = () =&gt; (
+  &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+    &lt;ToolTip
+      id=&quot;coc-floating&quot;
+      info=&quot;Closes on click (floating)&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;coc-floating&quot;&gt;Floating&lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      id=&quot;coc-inline&quot;
+      info=&quot;Closes on click (inline)&quot;
+      placement=&quot;inline&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;coc-inline&quot;&gt;Inline&lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      closeOnClick={false}
+      id=&quot;stays-floating&quot;
+      info=&quot;Stays open on click (floating)&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;stays-floating&quot;&gt;
+        Floating (stays open)
+      &lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      closeOnClick={false}
+      id=&quot;stays-inline&quot;
+      info=&quot;Stays open on click (inline)&quot;
+      placement=&quot;inline&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;stays-inline&quot;&gt;
+        Inline (stays open)
+      &lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+  &lt;/FlexBox&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
                 <span class="ex-name">Horizontal Alignments</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -42010,6 +42198,12 @@ When using the `ToolTip` component, you must use the `id` prop is to associate t
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
 &lt;Canvas of={ToolTipStories.Disabled} /&gt;
+
+### Close on click
+
+By default, `ToolTip` closes on click and reappears only after the cursor leaves and re-enters. Pass `closeOnClick={false}` to opt out (e.g. copy → copied patterns). The first two buttons close on click; the last two stay open.
+
+&lt;Canvas of={ToolTipStories.CloseOnClick} /&gt;
 
 ## Playground
 
@@ -63966,7 +64160,7 @@ export const MarkdownErrors: Story = {
       <div class="badges">
         <label for="c-error-46-atoms-buttons-iconbutton-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-46-atoms-buttons-iconbutton-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-46-atoms-buttons-iconbutton-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-error-46-atoms-buttons-iconbutton-stories" class="badge ok as-toggle">2 stories</label>
         <label for="c-error-46-atoms-buttons-iconbutton-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -63990,16 +64184,17 @@ export const MarkdownErrors: Story = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;IconButton&quot; component.
-  4 | import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
-  5 |
-&gt; 6 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof IconButton&gt;&gt; = {
-    | ^
-  7 |   component: IconButton,
-  8 |   args: {
-  9 |     disabled: false,
+   5 | import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
+   6 |
+&gt;  7 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof IconButton&gt;&gt; = {
+     | ^
+   8 |   component: IconButton,
+   9 |   args: {
+  10 |     disabled: false,
 
 ./packages/styleguide/src/lib/Atoms/Buttons/IconButton/IconButton.stories.tsx:
-import { IconButton } from &#39;@codecademy/gamut&#39;;
+import { FlexBox, IconButton } from &#39;@codecademy/gamut&#39;;
+import { SparkleIcon } from &#39;@codecademy/gamut-icons&#39;;
 import * as icons from &#39;@codecademy/gamut-icons&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
@@ -64049,6 +64244,48 @@ type Story = StoryObj&lt;typeof IconButton&gt;;
 export const Default: Story = {
   args: {},
 };
+
+// eslint-disable-next-line no-console
+const logClick = () =&gt; console.log(&#39;button onClick fired&#39;);
+
+export const CloseOnClick: Story = {
+  render: () =&gt; (
+    &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Closes on click (floating)&quot;
+        tipProps={{ placement: &#39;floating&#39;, alignment: &#39;top-center&#39; }}
+        onClick={logClick}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Closes on click (inline)&quot;
+        tipProps={{ placement: &#39;inline&#39;, alignment: &#39;top-center&#39; }}
+        onClick={logClick}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Stays open on click (floating)&quot;
+        tipProps={{
+          placement: &#39;floating&#39;,
+          alignment: &#39;top-center&#39;,
+          closeOnClick: false,
+        }}
+        onClick={logClick}
+      /&gt;
+      &lt;IconButton
+        icon={SparkleIcon}
+        tip=&quot;Stays open on click (inline)&quot;
+        tipProps={{
+          placement: &#39;inline&#39;,
+          alignment: &#39;top-center&#39;,
+          closeOnClick: false,
+        }}
+        onClick={logClick}
+      /&gt;
+    &lt;/FlexBox&gt;
+  ),
+};
 </code></pre></div>
     </div>
         </div>
@@ -64070,7 +64307,7 @@ export const Default: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { IconButton } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { FlexBox, IconButton } from "@codecademy/gamut";</code></pre>
               </div>
           
           
@@ -64087,6 +64324,50 @@ export const Default: Story = {
     icon={icons.SearchIcon}
     tip=&quot;ToolTip&quot;
     tipProps={{ placement: &#39;floating&#39;, alignment: &#39;top-center&#39; }} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Close On Click</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CloseOnClick = () =&gt; (
+  &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Closes on click (floating)&quot;
+      tipProps={{ placement: &#39;floating&#39;, alignment: &#39;top-center&#39; }}
+      onClick={logClick}
+    /&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Closes on click (inline)&quot;
+      tipProps={{ placement: &#39;inline&#39;, alignment: &#39;top-center&#39; }}
+      onClick={logClick}
+    /&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Stays open on click (floating)&quot;
+      tipProps={{
+        placement: &#39;floating&#39;,
+        alignment: &#39;top-center&#39;,
+        closeOnClick: false,
+      }}
+      onClick={logClick}
+    /&gt;
+    &lt;IconButton
+      icon={SparkleIcon}
+      tip=&quot;Stays open on click (inline)&quot;
+      tipProps={{
+        placement: &#39;inline&#39;,
+        alignment: &#39;top-center&#39;,
+        closeOnClick: false,
+      }}
+      onClick={logClick}
+    /&gt;
+  &lt;/FlexBox&gt;
+);</code></pre>
             </div>
         </div>
     
@@ -64132,6 +64413,12 @@ export const parameters = {
 Use for secondary or space-constrained actions with recognizable icons. Use regular icons for normal buttons and mini icons for small buttons. Icon-only buttons must include a `tip` prop, which will also appear in the tooltip on hover and focus.
 
 For more detailed information on `IconButton` tooltips, take a look at the &lt;LinkTo id=&#39;Molecules/Tips/ToolTip&#39;&gt;ToolTip&lt;/LinkTo&gt; story.
+
+## Close on Click
+
+By default, `IconButton` tooltips close immediately on click and reappear only after the cursor leaves and re-enters. To persist the tooltip after a click, pass `tipProps={{ closeOnClick: false }}`. The first two buttons below close on click; the last two stay open.
+
+&lt;Canvas of={IconButtonStories.CloseOnClick} /&gt;
 
 ## Playground
 
@@ -69919,14 +70206,18 @@ export const IconMenu: Story = {
       &lt;&gt;
         &lt;MenuItem icon={AiChatSparkIcon} label=&quot;Chat&quot; onClick={() =&gt; {}} /&gt;
         &lt;MenuItem
-          href=&quot;#whatsup&quot;
           icon={BashShellIcon}
           label={{ alignment: &#39;right-center&#39;, info: &#39;Prompt&#39; }}
+          onClick={() =&gt; {}}
         /&gt;
         &lt;MenuItem
-          href=&quot;#whatsup-people&quot;
+          closeOnClick={false}
           icon={PeopleIcon}
-          label={{ alignment: &#39;right-center&#39;, info: &#39;People&#39; }}
+          label={{
+            alignment: &#39;right-center&#39;,
+            info: &quot;People (won&#39;t close tooltip on click)&quot;,
+          }}
+          onClick={() =&gt; {}}
         /&gt;
         &lt;MenuItem
           active
@@ -70274,14 +70565,18 @@ import { FlexBox, Menu, MenuItem, MenuSeparator, PopoverContainer, Text } from "
     variant=&quot;fixed&quot;&gt;(&lt;&gt;
       &lt;MenuItem icon={AiChatSparkIcon} label=&quot;Chat&quot; onClick={() =&gt; {}} /&gt;
       &lt;MenuItem
-        href=&quot;#whatsup&quot;
         icon={BashShellIcon}
         label={{ alignment: &#39;right-center&#39;, info: &#39;Prompt&#39; }}
+        onClick={() =&gt; {}}
       /&gt;
       &lt;MenuItem
-        href=&quot;#whatsup-people&quot;
+        closeOnClick={false}
         icon={PeopleIcon}
-        label={{ alignment: &#39;right-center&#39;, info: &#39;People&#39; }}
+        label={{
+          alignment: &#39;right-center&#39;,
+          info: &quot;People (won&#39;t close tooltip on click)&quot;,
+        }}
+        onClick={() =&gt; {}}
       /&gt;
       &lt;MenuItem
         active
@@ -83231,7 +83526,7 @@ If you use voiceover on either of the below, you will hear the difference this m
       <div class="badges">
         <label for="c-error-85-molecules-tips-tooltip-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-85-molecules-tips-tooltip-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-85-molecules-tips-tooltip-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-error-85-molecules-tips-tooltip-stories" class="badge ok as-toggle">8 stories</label>
         <label for="c-error-85-molecules-tips-tooltip-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -83415,6 +83710,47 @@ export const Disabled: Story = {
         &gt;
           Using aria-disabled
         &lt;/FillButton&gt;
+      &lt;/ToolTip&gt;
+    &lt;/FlexBox&gt;
+  ),
+};
+
+export const CloseOnClick: Story = {
+  render: () =&gt; (
+    &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+      &lt;ToolTip
+        id=&quot;coc-floating&quot;
+        info=&quot;Closes on click (floating)&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;coc-floating&quot;&gt;Floating&lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        id=&quot;coc-inline&quot;
+        info=&quot;Closes on click (inline)&quot;
+        placement=&quot;inline&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;coc-inline&quot;&gt;Inline&lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        closeOnClick={false}
+        id=&quot;stays-floating&quot;
+        info=&quot;Stays open on click (floating)&quot;
+        placement=&quot;floating&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;stays-floating&quot;&gt;
+          Floating (stays open)
+        &lt;/StrokeButton&gt;
+      &lt;/ToolTip&gt;
+      &lt;ToolTip
+        closeOnClick={false}
+        id=&quot;stays-inline&quot;
+        info=&quot;Stays open on click (inline)&quot;
+        placement=&quot;inline&quot;
+      &gt;
+        &lt;StrokeButton aria-describedby=&quot;stays-inline&quot;&gt;
+          Inline (stays open)
+        &lt;/StrokeButton&gt;
       &lt;/ToolTip&gt;
     &lt;/FlexBox&gt;
   ),
@@ -83630,6 +83966,52 @@ export const HorizontalAlignments: Story = {
             </div>
             <div class="note ok">
               <div class="row">
+                <span class="ex-name">Close On Click</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CloseOnClick = () =&gt; (
+  &lt;FlexBox center justifyContent=&quot;space-around&quot; pt={48}&gt;
+    &lt;ToolTip
+      id=&quot;coc-floating&quot;
+      info=&quot;Closes on click (floating)&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;coc-floating&quot;&gt;Floating&lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      id=&quot;coc-inline&quot;
+      info=&quot;Closes on click (inline)&quot;
+      placement=&quot;inline&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;coc-inline&quot;&gt;Inline&lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      closeOnClick={false}
+      id=&quot;stays-floating&quot;
+      info=&quot;Stays open on click (floating)&quot;
+      placement=&quot;floating&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;stays-floating&quot;&gt;
+        Floating (stays open)
+      &lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+    &lt;ToolTip
+      closeOnClick={false}
+      id=&quot;stays-inline&quot;
+      info=&quot;Stays open on click (inline)&quot;
+      placement=&quot;inline&quot;
+    &gt;
+      &lt;StrokeButton aria-describedby=&quot;stays-inline&quot;&gt;
+        Inline (stays open)
+      &lt;/StrokeButton&gt;
+    &lt;/ToolTip&gt;
+  &lt;/FlexBox&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
                 <span class="ex-name">Horizontal Alignments</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -83747,6 +84129,12 @@ When using the `ToolTip` component, you must use the `id` prop is to associate t
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
 &lt;Canvas of={ToolTipStories.Disabled} /&gt;
+
+### Close on click
+
+By default, `ToolTip` closes on click and reappears only after the cursor leaves and re-enters. Pass `closeOnClick={false}` to opt out (e.g. copy → copied patterns). The first two buttons close on click; the last two stay open.
+
+&lt;Canvas of={ToolTipStories.CloseOnClick} /&gt;
 
 ## Playground
 
