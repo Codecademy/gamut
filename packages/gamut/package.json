@@ -30,6 +30,13 @@
     "react-use": "^17.6.1",
     "sanitize-markdown": "^2.6.7"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist",
     "bin",
@@ -37,7 +44,6 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "overrides": {
     "@react-aria/interactions": "3.25.0"
   },
@@ -63,5 +69,6 @@
     "**/*.scss",
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
-  ]
+  ],
+  "type": "module"
 }

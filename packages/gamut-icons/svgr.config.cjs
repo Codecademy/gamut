@@ -1,7 +1,7 @@
-const emotionPlugin = require('./emotion-plugin');
-const maskPlugin = require('./mask-plugin');
-const template = require('./icon-template');
-const indexTemplate = require('./index-template');
+const emotionPlugin = require('./emotion-plugin.cjs');
+const maskPlugin = require('./mask-plugin.cjs');
+const template = require('./icon-template.cjs');
+const indexTemplate = require('./index-template.cjs');
 
 module.exports = {
   dimensions: false,

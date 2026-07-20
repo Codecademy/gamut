@@ -22,7 +22,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-illustrations"],
       "options": {
-        "jestConfig": "packages/gamut-illustrations/jest.config.ts"
+        "jestConfig": "packages/gamut-illustrations/jest.config.cjs"
       }
     },
     "clean": {

@@ -9,7 +9,7 @@ import {
   lxStudioTheme,
   percipioTheme,
   platformTheme,
-} from '@codecademy/gamut-styles/src';
+} from '@codecademy/gamut-styles';
 import { Theme } from '@emotion/react';
 
 const STORYBOOK_CSP_NONCE = 'storybook-csp-nonce';
