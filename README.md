@@ -108,17 +108,21 @@ Add new Button variant and fix spacing issues
     - It will create git tags and GitHub releases
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
-### Publishing an alpha version of a module
+### Publishing an pre-release version of a module
 
-Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
+You can consume prerelease packages from npm before your PR merges. Two flows are available; **alpha** and **beta** are mutually exclusive on a PR.
+
+**Alpha (default):** On each push to the PR branch, CI publishes alpha releases (per-commit prerelease versions on npm). This does **not** run while the PR has the **`beta`** label.
+
+**Beta:** Add the **`beta`** label to the PR (create the label in the repo if it does not exist). That triggers a one-time publish to npm under the **`beta`** dist-tag (install with e.g. `yarn add @codecademy/gamut@beta`). Pushing new commits does **not** republish beta automatically; remove the **`beta`** label and add it again after your changes to trigger another publish.
 
 > NOTE: in case an alpha build is not published upon opening of the PR or Draft PR, re-run the `build-test` check and that will re-run the alpha build publishing flows
 
 1.  Create a PR or Draft PR.
-    - This will kickoff a Github Action workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
-1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
+    - Without the **`beta`** label, each push kicks off the workflow that publishes an alpha build. (This will appear in Github as the "Deploy")
+1.  After packages are published, the `codecademydev` bot should comment on your PR with the names of the published packages (separate comments for alpha vs beta). <br/>
     <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
-1.  Install this version of the package in your application you wish to test your changes on.
+1.  Install that version in the application where you want to test your changes (alpha by exact version from the table, or beta via `@beta` when using the beta flow).
 
 ### Working with pre-published changes
 
