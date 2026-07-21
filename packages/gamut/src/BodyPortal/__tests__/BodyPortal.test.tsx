@@ -26,16 +26,25 @@ describe('BodyPortal', () => {
 
     const content = view.getByTestId('portal-content');
     expect(content.parentElement).toHaveStyle({
-      zIndex: 'floating',
+      zIndex: 'var(--zIndexes-floating)',
     });
   });
 
-  it('applies a custom zIndex when provided', () => {
+  it('resolves a custom z-index token to its CSS variable', () => {
     const { view } = renderView({ zIndex: 'modal' });
 
     const content = view.getByTestId('portal-content');
     expect(content.parentElement).toHaveStyle({
-      zIndex: 'modal',
+      zIndex: 'var(--zIndexes-modal)',
+    });
+  });
+
+  it('passes through a raw numeric z-index escape hatch', () => {
+    const { view } = renderView({ zIndex: 550 });
+
+    const content = view.getByTestId('portal-content');
+    expect(content.parentElement).toHaveStyle({
+      zIndex: 550,
     });
   });
 });
