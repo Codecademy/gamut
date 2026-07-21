@@ -3,7 +3,7 @@ import {
   states,
   theme as GamutTheme,
   variant,
-  zIndexes,
+  ZIndexValue,
 } from '@codecademy/gamut-styles';
 import { StylesConfig } from 'react-select';
 
@@ -61,7 +61,7 @@ const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-const dropdownBorderStyles = (zIndex: number = zIndexes.popover) =>
+const dropdownBorderStyles = (zIndex: ZIndexValue = 'popover') =>
   css({
     ...formBaseComponentStyles,
     border: 1,
@@ -91,7 +91,7 @@ const placeholderColor = css({
 
 export const getMemoizedStyles = (
   theme: typeof GamutTheme,
-  zIndex?: number
+  zIndex?: ZIndexValue
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({
@@ -168,7 +168,7 @@ export const getMemoizedStyles = (
       ...provided,
       // The menu is portaled to the body, so it stacks at the page root as a popover —
       // above sticky headers and modal content. A raw `zIndex` prop overrides as an escape hatch.
-      zIndex: zIndex ?? zIndexes.popover,
+      zIndex: zIndex ?? 'popover',
     }),
     menuList: (provided, state: BaseSelectComponentProps) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;

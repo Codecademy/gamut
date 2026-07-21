@@ -1,4 +1,4 @@
-import { Background, zIndexes } from '@codecademy/gamut-styles';
+import { Background } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import * as React from 'react';
@@ -25,10 +25,10 @@ export const Tabs: React.FC<TabsProps> = (props) => {
       {/* currently only supporting dark mode for the LE variant. */}
       {props.variant === 'block' ? (
         <Background bg="navy-800" height="100%">
-          <TabsBase position="relative" zIndex={zIndexes.base} {...props} />
+          <TabsBase position="relative" zIndex="base" {...props} />
         </Background>
       ) : (
-        <TabsBase position="relative" zIndex={zIndexes.base} {...props} />
+        <TabsBase position="relative" zIndex="base" {...props} />
       )}
     </TabProvider>
   );

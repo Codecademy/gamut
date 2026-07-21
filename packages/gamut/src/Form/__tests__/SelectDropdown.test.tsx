@@ -1,4 +1,3 @@
-import { zIndexes } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
@@ -128,7 +127,7 @@ describe('SelectDropdown', () => {
       await openDropdown(view);
 
       expect(getPortalNode(view)).toHaveStyle({
-        zIndex: zIndexes.popover,
+        zIndex: 'popover',
       });
     });
 

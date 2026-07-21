@@ -4,7 +4,6 @@ import {
   styledOptions,
   system,
   transitionConcat,
-  zIndexes,
 } from '@codecademy/gamut-styles';
 import { CSSObject, ThemeProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -68,7 +67,7 @@ export const buttonStyles = system.css({
     border: 2,
     inset: -5,
     opacity: 0,
-    zIndex: zIndexes.base,
+    zIndex: 'base',
   },
   [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
     opacity: 1,

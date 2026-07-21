@@ -3,7 +3,6 @@ import {
   styledOptions,
   system,
   variant,
-  zIndexes,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -77,7 +76,7 @@ const textStates = states({
     fontWeight: 'bold',
     minWidth: '0.4rem',
     position: 'relative',
-    zIndex: zIndexes.foreground,
+    zIndex: 'foreground',
     // the text is more legible against the background color with text smoothing
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
@@ -91,7 +90,7 @@ const textStates = states({
       position: 'absolute',
       top: '50%',
       width: 'calc(100% + 0.4rem)',
-      zIndex: zIndexes.underlay,
+      zIndex: 'underlay',
     },
   },
   screenreader: {

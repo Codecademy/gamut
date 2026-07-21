@@ -1,4 +1,4 @@
-import { system, zIndexes } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 
 import { WithChildrenProp } from '../utils';
@@ -24,7 +24,7 @@ export const sharedStates = system.states({
   },
   context: {
     position: 'relative',
-    zIndex: zIndexes.foreground,
+    zIndex: 'foreground',
   },
   'no-select': {
     WebkitTouchCallout: 'none',

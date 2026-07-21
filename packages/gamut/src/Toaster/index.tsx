@@ -1,4 +1,4 @@
-import { ColorMode, ColorModes, zIndexes } from '@codecademy/gamut-styles';
+import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 import * as React from 'react';
@@ -26,7 +26,7 @@ export const Toaster: React.FC<ToasterProps> = ({
   colorMode = 'light',
 }) => {
   return (
-    <BodyPortal zIndex={zIndexes.topmost}>
+    <BodyPortal zIndex="topmost">
       <ColorMode mode={colorMode}>
         <Box aria-live="polite" bottom={88} position="fixed" right={16}>
           <AnimatePresence>

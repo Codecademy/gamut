@@ -1,4 +1,4 @@
-import { states, zIndexes } from '@codecademy/gamut-styles';
+import { states, ZIndexValue } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useCallback } from 'react';
 import * as React from 'react';
@@ -35,10 +35,10 @@ export type OverlayProps = {
   allowScroll?: boolean;
   /**
    * Stacking layer for the Overlay. Pass a `zIndexes` token or a raw number (escape
-   * hatch). Defaults to `zIndexes.modal`; a portaled side panel should pass
-   * `zIndexes.flyout` to sit below modals.
+   * hatch). Defaults to `"modal"`; a portaled side panel should pass
+   * `"flyout"` to sit below modals.
    */
-  zIndex?: number;
+  zIndex?: ZIndexValue;
 };
 
 const OverlayContainer = styled(FlexBox)(
@@ -62,7 +62,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
   allowScroll = false,
-  zIndex = zIndexes.modal,
+  zIndex = 'modal',
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {

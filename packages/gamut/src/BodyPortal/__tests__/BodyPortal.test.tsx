@@ -1,4 +1,3 @@
-import { zIndexes } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { BodyPortal, BodyPortalProps } from '..';
@@ -27,16 +26,16 @@ describe('BodyPortal', () => {
 
     const content = view.getByTestId('portal-content');
     expect(content.parentElement).toHaveStyle({
-      zIndex: zIndexes.floating,
+      zIndex: 'floating',
     });
   });
 
   it('applies a custom zIndex when provided', () => {
-    const { view } = renderView({ zIndex: zIndexes.modal });
+    const { view } = renderView({ zIndex: 'modal' });
 
     const content = view.getByTestId('portal-content');
     expect(content.parentElement).toHaveStyle({
-      zIndex: zIndexes.modal,
+      zIndex: 'modal',
     });
   });
 });

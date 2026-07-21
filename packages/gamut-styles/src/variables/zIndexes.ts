@@ -2,9 +2,9 @@
  * Semantic z-index scale. Every z-index in Gamut should reference a token here rather than a
  * magic number.
  *
- * The `zIndex` prop is intentionally left numeric/unscaled, and this object is numeric, so
- * tokens are used as `zIndex={zIndexes.modal}`. That preserves the escape hatch (a raw
- * in-between number, e.g. `zIndex={550}`) and arithmetic on tokens (e.g. `zIndexes.foreground - 2`).
+ * The `zIndex` system prop accepts a token name directly (e.g. `zIndex="modal"`), this object's
+ * numeric values (e.g. `zIndex={zIndexes.modal}`), a raw in-between number as an escape hatch
+ * (e.g. `zIndex={550}`), or arithmetic on a token (e.g. `zIndexes.foreground - 2`).
  *
  * Values are spaced by 100 so in-between escape-hatch numbers are available. `floating` (200) is
  * the floor of the portal band and the default for `BodyPortal`.
@@ -42,3 +42,10 @@ export const zIndexes = {
    */
   topmost: 700,
 } as const;
+
+/**
+ * A `zIndexes` token name (e.g. `'foreground'`) or a raw number as an escape hatch
+ * (e.g. `550`, or `zIndexes.foreground + 1`). Use this for component `zIndex` props that
+ * forward to a `Box`-like `zIndex` system prop or `BodyPortal`.
+ */
+export type ZIndexValue = keyof typeof zIndexes | number;

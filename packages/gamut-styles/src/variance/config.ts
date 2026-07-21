@@ -328,10 +328,7 @@ export const positioning = {
     resolveProperty: getPropertyMode,
     transform: transformSize,
   },
-  // Intentionally unscaled: scaled variance props are token-only and reject raw numbers,
-  // which would break the numeric escape hatch and Tip's z-index arithmetic. Use the numeric
-  // `zIndexes` token object instead (e.g. zIndex={zIndexes.modal}).
-  zIndex: { property: 'zIndex' },
+  zIndex: { property: 'zIndex', scale: 'zIndexes' },
   opacity: { property: 'opacity' },
 } as const;
 

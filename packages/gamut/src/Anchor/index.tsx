@@ -26,7 +26,7 @@ const outlineFocusVisible = {
     border: 2,
     borderColor: 'primary',
     opacity: 0,
-    zIndex: zIndexes.base,
+    zIndex: 'base',
   },
 
   [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {

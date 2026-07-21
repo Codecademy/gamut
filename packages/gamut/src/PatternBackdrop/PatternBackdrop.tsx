@@ -1,5 +1,5 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { styledOptions, system, zIndexes } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { ComponentProps, forwardRef } from 'react';
@@ -13,7 +13,7 @@ const PatternBackdropBody = styled('div', styledOptions)<
 >(
   system.css({
     position: 'relative',
-    zIndex: zIndexes.foreground,
+    zIndex: 'foreground',
     bg: 'background',
     border: 1,
     maxWidth: 1,
@@ -33,7 +33,7 @@ export const PatternBackdrop = forwardRef<HTMLDivElement, PatternBackdropProps>(
       display="inline-block"
       maxWidth="100%"
       position="relative"
-      zIndex={zIndexes.foreground}
+      zIndex="foreground"
     >
       <CheckerDense
         dimensions={1}
