@@ -1,4 +1,4 @@
-import { ZIndexValue } from '@codecademy/gamut-styles';
+import { ZIndexType } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 
 import { conditionalBorderStates } from '../styles';
@@ -25,7 +25,7 @@ export interface SharedProps extends InternalInputsProps, SelectDropdownSizes {
    */
   menuAlignment?: 'left' | 'right';
   /** Z-index for the dropdown menu */
-  zIndex?: ZIndexValue;
+  zIndex?: ZIndexType;
 }
 
 /**

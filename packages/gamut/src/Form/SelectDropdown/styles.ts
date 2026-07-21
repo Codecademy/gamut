@@ -3,7 +3,7 @@ import {
   states,
   theme as GamutTheme,
   variant,
-  ZIndexValue,
+  ZIndexType,
 } from '@codecademy/gamut-styles';
 import { StylesConfig } from 'react-select';
 
@@ -61,7 +61,7 @@ const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-const dropdownBorderStyles = (zIndex: ZIndexValue = 'popover') =>
+const dropdownBorderStyles = (zIndex: ZIndexType = 'popover') =>
   css({
     ...formBaseComponentStyles,
     border: 1,
@@ -91,7 +91,7 @@ const placeholderColor = css({
 
 export const getMemoizedStyles = (
   theme: typeof GamutTheme,
-  zIndex?: ZIndexValue
+  zIndex?: ZIndexType
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({

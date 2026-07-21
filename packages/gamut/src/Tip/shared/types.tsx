@@ -1,4 +1,4 @@
-import { ZIndexValue } from '@codecademy/gamut-styles';
+import { ZIndexType } from '@codecademy/gamut-styles';
 import { ComponentProps, ReactNode } from 'react';
 
 import { Text } from '../../Typography';
@@ -55,7 +55,7 @@ export interface TipNewBaseProps {
 }
 export interface TipInlineProps extends TipNewBaseProps {
   placement?: 'inline';
-  zIndex?: ZIndexValue;
+  zIndex?: ZIndexType;
 }
 export interface TipFloatingProps extends TipNewBaseProps {
   placement: 'floating';
@@ -84,5 +84,5 @@ export type TipPlacementComponentProps = Omit<
     | ((node: HTMLDivElement | null) => void);
   type: 'info' | 'tool' | 'preview';
   wrapperRef?: React.RefObject<HTMLDivElement>;
-  zIndex?: ZIndexValue;
+  zIndex?: ZIndexType;
 } & React.PropsWithChildren;

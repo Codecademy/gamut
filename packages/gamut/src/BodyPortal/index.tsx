@@ -2,7 +2,7 @@ import {
   ColorMode,
   system,
   useCurrentMode,
-  ZIndexValue,
+  ZIndexType,
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -23,7 +23,7 @@ const PortalWrapper = styled
   .withComponent(ColorMode);
 
 export interface BodyPortalProps {
-  zIndex?: ZIndexValue;
+  zIndex?: ZIndexType;
 }
 
 export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({

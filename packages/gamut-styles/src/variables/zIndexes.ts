@@ -48,4 +48,4 @@ export const zIndexes = {
  * (e.g. `550`, or `zIndexes.foreground + 1`). Use this for component `zIndex` props that
  * forward to a `Box`-like `zIndex` system prop or `BodyPortal`.
  */
-export type ZIndexValue = keyof typeof zIndexes | number;
+export type ZIndexType = keyof typeof zIndexes | number;

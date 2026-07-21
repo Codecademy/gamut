@@ -1,4 +1,4 @@
-import { states, ZIndexValue } from '@codecademy/gamut-styles';
+import { states, ZIndexType } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useCallback } from 'react';
 import * as React from 'react';
@@ -38,7 +38,7 @@ export type OverlayProps = {
    * hatch). Defaults to `"modal"`; a portaled side panel should pass
    * `"flyout"` to sit below modals.
    */
-  zIndex?: ZIndexValue;
+  zIndex?: ZIndexType;
 };
 
 const OverlayContainer = styled(FlexBox)(

@@ -143,11 +143,12 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   zIndex,
 }) => {
   const shadowAlignment = getShadowAlignment(alignment);
+  const resolvedZIndex = typeof zIndex === 'string' ? zIndexes[zIndex] : zIndex;
 
   return (
     <PreviewTipPattern
       aria-hidden
-      zIndex={zIndex ? zIndex - 2 : zIndexes.underlay}
+      zIndex={resolvedZIndex ? resolvedZIndex - 2 : 'underlay'}
       {...shadowAlignment}
     >
       <CheckerDense />
