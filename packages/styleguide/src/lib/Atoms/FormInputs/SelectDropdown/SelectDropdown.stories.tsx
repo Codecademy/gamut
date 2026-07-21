@@ -38,8 +38,8 @@ type Story = StoryObj<typeof SelectDropdown>;
 export const Base: Story = {
   args: {
     name: 'base-dropdown',
-    options: ['Based', 'Regular Size', 'Normal'],
-    placeholder: 'all about that',
+    options: [],
+    placeholder: 'all about that test',
   },
   render: (args) => (
     <Box height="12rem">
@@ -1321,7 +1321,7 @@ const handleInputChange = (
               options={options}
               placeholder="Type at least 3 characters to add…"
               validationMessage={({ inputValue }) =>
-                validate(inputValue) ?? 'No matching fruit'
+                inputValue ? `is a fruit` : 'No matching fruit'
               }
               onChange={() => {
                 lastInputRef.current = '';

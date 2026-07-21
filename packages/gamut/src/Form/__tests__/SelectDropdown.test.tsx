@@ -12,6 +12,26 @@ import {
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
 
+const ToggleValidationMessageHarness = () => {
+  const [hasCustomMessage, setHasCustomMessage] = useState(true);
+
+  return (
+    <>
+      <button type="button" onClick={() => setHasCustomMessage(false)}>
+        disable custom message
+      </button>
+      <SelectDropdown
+        isSearchable
+        name="fruit"
+        options={[]}
+        validationMessage={
+          hasCustomMessage ? 'Enter at least 3 characters.' : undefined
+        }
+      />
+    </>
+  );
+};
+
 const CreatableMultiHarness = () => {
   const [options, setOptions] = useState(['Apple', 'Banana']);
 
@@ -59,6 +79,10 @@ const ControlledCreatableMultiHarness = ({
   );
 };
 
+const renderToggleValidationMessage = setupRtl(
+  ToggleValidationMessageHarness,
+  {}
+);
 const renderCreatableMulti = setupRtl(CreatableMultiHarness, {});
 const renderControlledCreatableMulti = setupRtl(
   ControlledCreatableMultiHarness,
@@ -467,7 +491,13 @@ describe('SelectDropdown', () => {
     });
 
     describe('validationMessage', () => {
+      afterEach(() => {
+        jest.useRealTimers();
+      });
+
       it('renders custom node text in place of the default "No options" state', async () => {
+        jest.useFakeTimers();
+
         const { view } = renderView({
           options: [],
           validationMessage: 'No fruits available',
@@ -475,8 +505,237 @@ describe('SelectDropdown', () => {
 
         await openDropdown(view);
 
-        expect(view.getByText('No fruits available')).toBeInTheDocument();
+        act(() => {
+          jest.advanceTimersByTime(500);
+        });
+
+        // Also announced via a standalone live region for screen readers.
+        expect(view.getAllByText('No fruits available')).toHaveLength(2);
         expect(view.queryByText('No options')).not.toBeInTheDocument();
+      });
+
+      describe('screen reader announcement', () => {
+        it('announces the validation message via a standalone live region when there are no options', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView({
+            options: [],
+            validationMessage: 'Enter at least 3 characters.',
+          });
+
+          await openDropdown(view);
+
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          // Only one status region should have announcement text - react-select's
+          // own internal live region stays silent when there are no options, so a
+          // duplicate, non-empty announcement here would mean it started firing too.
+          const statusRegions = view.getAllByRole('status');
+          const announced = statusRegions.filter(
+            (region) => region.textContent === 'Enter at least 3 characters.'
+          );
+          expect(announced).toHaveLength(1);
+        });
+
+        it('stays silent once options are present', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView();
+
+          await openDropdown(view);
+
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          expect(view.getByRole('status', { name: '' })).toBeInTheDocument();
+        });
+
+        it('announces react-select\'s default "No options" text when no validationMessage is set', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView({ options: [] });
+
+          await openDropdown(view);
+          view.getByText('No options');
+
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          const statusRegions = view.getAllByRole('status');
+          const announced = statusRegions.filter(
+            (region) => region.textContent === 'No options'
+          );
+          expect(announced).toHaveLength(1);
+        });
+
+        it('falls back to announcing the default "No options" text if validationMessage is removed', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderToggleValidationMessage();
+
+          await openDropdown(view);
+
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          expect(
+            view
+              .getAllByRole('status')
+              .some(
+                (region) =>
+                  region.textContent === 'Enter at least 3 characters.'
+              )
+          ).toBe(true);
+
+          act(() => {
+            fireEvent.click(
+              view.getByRole('button', { name: 'disable custom message' })
+            );
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          expect(
+            view
+              .getAllByRole('status')
+              .some((region) => region.textContent === 'No options')
+          ).toBe(true);
+        });
+
+        it('announces the validation message when react-select filters a non-empty options list down to zero matches', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView({
+            isSearchable: true,
+            options: selectOptions,
+            validationMessage: 'Enter at least 3 characters.',
+          });
+
+          await openDropdown(view);
+
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'zzz' },
+            });
+          });
+
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          const statusRegions = view.getAllByRole('status');
+          const announced = statusRegions.filter(
+            (region) => region.textContent === 'Enter at least 3 characters.'
+          );
+          expect(announced).toHaveLength(1);
+        });
+
+        it('re-announces the same message after the field is left and revisited', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView({
+            isSearchable: true,
+            options: selectOptions,
+            validationMessage: 'Enter at least 3 characters.',
+          });
+
+          const getAnnouncedStatusRegions = () =>
+            view
+              .getAllByRole('status')
+              .filter(
+                (region) =>
+                  region.textContent === 'Enter at least 3 characters.'
+              );
+
+          await openDropdown(view);
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'zz' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          expect(getAnnouncedStatusRegions()).toHaveLength(1);
+
+          // Leaving the field clears the announcement immediately (not
+          // debounced), so a later identical announcement still produces a
+          // real DOM mutation for AT live-region behavior to pick up on.
+          act(() => {
+            fireEvent.focusOut(view.getByRole('combobox'));
+          });
+
+          expect(getAnnouncedStatusRegions()).toHaveLength(0);
+
+          await openDropdown(view);
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'zz' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          expect(getAnnouncedStatusRegions()).toHaveLength(1);
+        });
+
+        it('remounts a fresh live-region node for each new announcement, even with different text', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView({
+            isSearchable: true,
+            options: ['Apple', 'Banana', 'Cherry'],
+            validationMessage: ({ inputValue }: { inputValue: string }) =>
+              inputValue ? `${inputValue} is a fruit` : 'No matching fruit',
+          });
+
+          const getAnnouncedStatusRegions = (text: string) =>
+            view
+              .getAllByRole('status')
+              .filter((region) => region.textContent === text);
+
+          await openDropdown(view);
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'd' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+          const [firstAnnouncement] = getAnnouncedStatusRegions('d is a fruit');
+          expect(firstAnnouncement).toBeInTheDocument();
+
+          act(() => {
+            fireEvent.focusOut(view.getByRole('combobox'));
+          });
+
+          await openDropdown(view);
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'z' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+
+          const [secondAnnouncement] =
+            getAnnouncedStatusRegions('z is a fruit');
+          expect(secondAnnouncement).toBeInTheDocument();
+          // Safari/VoiceOver can silently drop a live region's second update
+          // when it's just a text mutation on the same node - each new
+          // announcement must be a genuinely new DOM element.
+          expect(secondAnnouncement).not.toBe(firstAnnouncement);
+        });
       });
     });
   });

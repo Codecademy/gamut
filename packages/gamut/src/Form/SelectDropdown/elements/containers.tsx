@@ -1,4 +1,4 @@
-import { createContext, useLayoutEffect } from 'react';
+import { createContext, ReactNode, useEffect, useLayoutEffect } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -23,6 +23,29 @@ export const SelectDropdownContext =
     selectInputRef: undefined,
     removeAllButtonRef: undefined,
   });
+
+/**
+ * Wraps react-select's `NoOptionsMessage` to report its text via
+ * `onAnnouncementChange` for screen-reader announcement (see
+ * `useNoOptionsAnnouncement`). react-select controls this component's
+ * mount/unmount, so a mount/unmount effect is the only way to detect the
+ * "no options" state - there's no prop or event exposed for it.
+ */
+export const createNoOptionsMessage = (
+  onAnnouncementChange: (announcement: ReactNode) => void
+) =>
+  function NoOptionsMessage(
+    props: CustomSelectComponentProps<
+      typeof SelectDropdownElements.NoOptionsMessage
+    >
+  ) {
+    useEffect(() => {
+      onAnnouncementChange(props.children);
+      return () => onAnnouncementChange('');
+    }, [props.children]);
+
+    return <SelectDropdownElements.NoOptionsMessage {...props} />;
+  };
 
 /**
  * Custom container component that adds a hidden input for form submission.

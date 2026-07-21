@@ -11,6 +11,7 @@ export { onFocus } from '../core/accessibility';
 
 export {
   SelectDropdownContext,
+  createNoOptionsMessage,
   CustomContainer,
   CustomInput,
   CustomValueContainer,

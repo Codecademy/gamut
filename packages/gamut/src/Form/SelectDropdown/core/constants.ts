@@ -1,3 +1,5 @@
+import { ComponentType } from 'react';
+
 import {
   AbbreviatedSingleValue,
   CustomContainer,
@@ -10,7 +12,7 @@ import {
   RemoveAllButton,
 } from '../elements';
 
-export const defaultComponents = {
+const baseDefaultComponents = {
   DropdownIndicator: DropdownButton,
   IndicatorSeparator: () => null,
   ClearIndicator: RemoveAllButton,
@@ -22,5 +24,18 @@ export const defaultComponents = {
   SingleValue: AbbreviatedSingleValue,
   Input: CustomInput,
 };
+
+/**
+ * Builds the react-select `components` override map, optionally including a
+ * `NoOptionsMessage` override. Callers must memoize the result (e.g. via
+ * `useMemo`) - react-select treats a new `components` object identity as a
+ * reason to remount its internals.
+ */
+export const getDefaultComponents = (
+  noOptionsMessage?: ComponentType<any>
+) => ({
+  ...baseDefaultComponents,
+  ...(noOptionsMessage && { NoOptionsMessage: noOptionsMessage }),
+});
 
 export const ON_CHANGE_ACTION = 'select-option' as const;

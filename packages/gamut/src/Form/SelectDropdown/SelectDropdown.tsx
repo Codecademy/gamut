@@ -1,10 +1,12 @@
+import { screenReaderOnly } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useId, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 import { StylesConfig } from 'react-select';
 
 import { onFocus } from './core/accessibility';
-import { defaultComponents } from './core/constants';
+import { getDefaultComponents } from './core/constants';
 import { getMemoizedStyles } from './core/styles';
 import { resolveNoOptionsMessage } from './core/utils';
 import {
@@ -13,9 +15,13 @@ import {
   SelectDropdownContext,
   TypedReactSelect,
 } from './elements';
+import { useNoOptionsAnnouncement } from './hooks/useNoOptionsAnnouncement';
 import { useSelectHandlers } from './hooks/useSelectHandlers';
 import { useSelectOptions } from './hooks/useSelectOptions';
 import { SelectDropdownProps } from './types';
+
+/** Announces the custom `validationMessage` menu text - see `useNoOptionsAnnouncement`. */
+const NoOptionsLiveRegion = styled.div(screenReaderOnly);
 
 /**
  * A flexible dropdown select component built on top of react-select.
@@ -106,6 +112,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     value: value as string | string[] | undefined,
   });
 
+  const noOptionsMessage = resolveNoOptionsMessage(validationMessage);
+  const { noOptionsMessageComponent, announcement, announcementKey } =
+    useNoOptionsAnnouncement();
+  const components = useMemo(
+    () => getDefaultComponents(noOptionsMessageComponent),
+    [noOptionsMessageComponent]
+  );
+
   const { activated, multiValues, changeHandler, keyPressHandler } =
     useSelectHandlers({
       onChange,
@@ -135,7 +149,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         activated={activated}
         aria-live="assertive"
         ariaLiveMessages={{ onFocus }}
-        components={defaultComponents}
+        components={components}
         dropdownWidth={dropdownWidth}
         error={Boolean(error)}
         formatCreateLabel={formatCreateLabel}
@@ -153,7 +167,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isValidNewOption={isValidNewOption}
         menuAlignment={menuAlignment}
         name={name}
-        noOptionsMessage={resolveNoOptionsMessage(validationMessage)}
+        noOptionsMessage={noOptionsMessage}
         options={selectOptions}
         placeholder={placeholder}
         selectRef={selectInputRef}
@@ -166,6 +180,13 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         onKeyDown={multiple ? keyPressHandler : undefined}
         {...rest}
       />
+      <NoOptionsLiveRegion
+        aria-live="polite"
+        key={announcementKey}
+        role="status"
+      >
+        {announcement}
+      </NoOptionsLiveRegion>
     </SelectDropdownContext.Provider>
   );
 };
