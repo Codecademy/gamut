@@ -143,12 +143,19 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   zIndex,
 }) => {
   const shadowAlignment = getShadowAlignment(alignment);
-  const resolvedZIndex = typeof zIndex === 'string' ? zIndexes[zIndex] : zIndex;
+  // The shadow sits two layers below the tip. Resolve a token name to its numeric value so
+  // we can offset it; a raw number is used directly; anything else (a CSS global) falls back.
+  const numericZIndex =
+    typeof zIndex === 'number'
+      ? zIndex
+      : typeof zIndex === 'string' && zIndex in zIndexes
+      ? zIndexes[zIndex as keyof typeof zIndexes]
+      : undefined;
 
   return (
     <PreviewTipPattern
       aria-hidden
-      zIndex={resolvedZIndex ? resolvedZIndex - 2 : 'underlay'}
+      zIndex={numericZIndex ? numericZIndex - 2 : 'underlay'}
       {...shadowAlignment}
     >
       <CheckerDense />

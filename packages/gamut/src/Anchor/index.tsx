@@ -1,9 +1,4 @@
-import {
-  styledOptions,
-  system,
-  variant,
-  zIndexes,
-} from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';

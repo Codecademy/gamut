@@ -1,3 +1,5 @@
+import { Globals } from 'csstype';
+
 /**
  * Semantic z-index scale. Every z-index in Gamut should reference a token here rather than a
  * magic number.
@@ -44,8 +46,10 @@ export const zIndexes = {
 } as const;
 
 /**
- * A `zIndexes` token name (e.g. `'foreground'`) or a raw number as an escape hatch
- * (e.g. `550`, or `zIndexes.foreground + 1`). Use this for component `zIndex` props that
- * forward to a `Box`-like `zIndex` system prop or `BodyPortal`.
+ * A `zIndexes` token name (e.g. `'foreground'`), a raw number as an escape hatch
+ * (e.g. `550`, or `zIndexes.foreground + 1`), or a CSS global (`'initial'`, `'inherit'`, …).
+ * Use this for component `zIndex` props that forward to a `Box`-like `zIndex` system prop or
+ * `BodyPortal`. The scale still resolves token names to `var(--zIndexes-*)` at runtime; this
+ * type just also permits the numeric/global escape hatches the scale type alone would reject.
  */
-export type ZIndexType = keyof typeof zIndexes | number;
+export type ZIndexType = keyof typeof zIndexes | number | Globals;
