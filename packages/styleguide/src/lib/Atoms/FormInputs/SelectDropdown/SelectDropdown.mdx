@@ -147,7 +147,31 @@ const [value, setValue] = useState<string[]>(['Apple']);
 
 <Canvas of={SelectDropdownStories.MultipleSelectControlled} />
 
-`onChange` receives option objects (`{ label, value }`), not `event.target.value`. The second argument is react-select action metadata — use `meta.action === 'create-option'` in creatable mode.
+#### onChange contract
+
+`onChange` receives the full option object(s), not `event.target.value`. Extract the value field manually:
+
+```tsx
+// Single select
+onChange={(option) => setValue(option.value)}
+
+// Multi select
+onChange={(selected) => setValue(selected.map((option) => option.value))}
+```
+
+The second argument is react-select action metadata. Check `meta.action === 'create-option'` when you need special handling for newly created options — for example, in creatable mode, when you need to sync both `options` and `value` in `onChange`:
+
+```tsx
+onChange={(selected, meta) => {
+  setValue(selected.map((o) => o.value));
+
+  if (meta.action === 'create-option' && meta.option) {
+    setOptions((prev) => [...prev, meta.option.value]);
+  }
+}}
+```
+
+See the <LinkTo id="Atoms/FormInputs/SelectDropdown--CreatableMulti">Creatable Multi</LinkTo> story and <LinkTo id="Atoms/FormInputs/SelectDropdown--CreatableWithValidation">Creatable With Validation</LinkTo> example for patterns on syncing options and managing state.
 
 ## Creatable
 
@@ -175,7 +199,7 @@ Pass `value` as `string[]` and update it in `onChange` on every change, includin
 
 Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `validationMessage` to replace the default "No options" text with contextual feedback, and mirror the same message in `FormGroup`'s `error` prop so it's surfaced below the field.
 
-Because react-select clears the input on blur, persist validation state via `onInputChange`: validate on `input-change`, and re-validate from the last typed value on `input-blur` so the `FormGroup` error isn't lost when the input clears.
+Because the default behavior is to clear the input on blur, use `onInputChange` to persist validation state: validate on `input-change`, and re-validate from the last typed value on `input-blur` so the `FormGroup` error isn't lost when the input clears.
 
 <Canvas of={SelectDropdownStories.CreatableWithValidation} />
 

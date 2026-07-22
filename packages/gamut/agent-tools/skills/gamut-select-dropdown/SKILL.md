@@ -17,23 +17,25 @@ Storybook: [Atoms / FormInputs / SelectDropdown](https://gamut.codecademy.com/?p
 
 ## When to use SelectDropdown vs Select
 
-Use `Select` for standard single-select forms with minimal bundle cost. Use `SelectDropdown` when designs specify the styled dropdown menu, search, multi-select tags, creatable options, icons, groups, or abbreviations. SelectDropdown has a larger JavaScript dependency (react-select).
+Use `Select` for standard single-select forms with minimal bundle cost. Use `SelectDropdown` when designs specify the styled dropdown menu, search, multi-select tags, creatable options, icons, groups, or abbreviations. `SelectDropdown` has a larger JavaScript dependency (react-select).
 
 ---
 
 ## Options
 
-`options` accepts plain strings or option objects. `value` is always a string and references an option's `value`.
+`options` accepts an array of plain strings or option objects. `value` is always a string and references an option's `value`.
 
-| Field          | Required | Notes                                                                |
-| -------------- | -------- | -------------------------------------------------------------------- |
-| `label`        | yes      | Display text                                                         |
-| `value`        | yes      | Unique string; what `value` / `string[]` reference                   |
-| `disabled`     | no       | Option cannot be selected                                            |
-| `subtitle`     | no       | Secondary text below the label                                       |
-| `rightLabel`   | no       | Text on the right side of the option                                 |
-| `icon`         | no       | A `@codecademy/gamut-icons` component                                |
-| `abbreviation` | no       | Short text shown in the input while the full label shows in the menu |
+The table below shows the keys and value types for an option object:
+
+| Field          | Type                              | Required | Notes                                                                |
+| -------------- | --------------------------------- | -------- | -------------------------------------------------------------------- |
+| `label`        | `string`                          | yes      | Display text                                                         |
+| `value`        | `string`                          | yes      | Unique string; what `value` / `string[]` reference                   |
+| `disabled`     | `boolean`                         | no       | Option cannot be selected                                            |
+| `subtitle`     | `string`                          | no       | Secondary text below the label                                       |
+| `rightLabel`   | `string`                          | no       | Text on the right side of the option                                 |
+| `icon`         | icon component from `gamut-icons` | no       | A `@codecademy/gamut-icons` component                                |
+| `abbreviation` | `string`                          | no       | Short text shown in the input while the full label shows in the menu |
 
 Grouped options: `{ label, options: [...], divider? }` (extends react-select `GroupBase`; `divider` draws a rule above the group).
 
@@ -41,7 +43,7 @@ Grouped options: `{ label, options: [...], divider? }` (extends react-select `Gr
 
 ## Controlled vs uncontrolled
 
-SelectDropdown does **not** accept `defaultValue`.
+`SelectDropdown` does **not** accept `defaultValue`.
 
 | Mode             | Uncontrolled                                       | Controlled                                                                        |
 | ---------------- | -------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -140,7 +142,7 @@ const lastInput = useRef('');
 
 - `FormGroup` `htmlFor` must match control `id` (not `name`). Alternatively, pass `htmlFor` directly on SelectDropdown and it becomes `id` downstream.
 - Pass `name` on SelectDropdown (required for forms).
-- Pass `aria-label` (required for forms); it must match the FormGroupLabel `htmlFor`.
+- Rely on FormGroupLabel's `htmlFor`/`id` connection for the accessible label — this is the standard HTML pattern and preferred method. Do not use `aria-label` when a FormGroupLabel is present, as it overrides the visible label.
 - Pass `error` boolean when FormGroup has an error.
 - Generic FormGroup live-region behavior: see [`gamut-forms`](../gamut-forms/SKILL.md).
 
@@ -149,7 +151,6 @@ const lastInput = useRef('');
   <SelectDropdown
     id="country"
     name="country"
-    aria-label="country"
     options={options}
     value={value}
     error={Boolean(errors.country)}

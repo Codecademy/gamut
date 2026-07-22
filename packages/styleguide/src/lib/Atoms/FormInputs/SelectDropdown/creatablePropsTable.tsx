@@ -4,7 +4,7 @@ const creatablePropColumns = [
   {
     key: 'prop',
     name: 'Prop',
-    size: 'md' as const,
+    size: 'lg' as const,
     render: ({ prop }: { prop: string }) => <Code>{prop}</Code>,
   },
   {
@@ -16,7 +16,7 @@ const creatablePropColumns = [
   {
     key: 'defaultValue',
     name: 'Default',
-    size: 'md' as const,
+    size: 'lg' as const,
     render: ({ defaultValue }: { defaultValue: string | null }) =>
       defaultValue ? <Code>{defaultValue}</Code> : '—',
   },
