@@ -14,6 +14,11 @@ export type ToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
+     * If true, the tooltip closes immediately when the trigger is clicked or activated via keyboard.
+     * Pass `false` via `tipProps` on IconButton to opt out (e.g. copy → copied patterns).
+     */
+    closeOnClick?: boolean;
+    /**
      * Can be used for accessibility - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
     id?: string;
@@ -21,6 +26,7 @@ export type ToolTipProps = TipBaseProps &
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-center',
+  closeOnClick = true,
   children,
   info,
   placement = tipDefaultProps.placement,
@@ -39,6 +45,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 
   const tipProps = {
     alignment,
+    closeOnClick,
     info,
     wrapperRef,
     ...rest,

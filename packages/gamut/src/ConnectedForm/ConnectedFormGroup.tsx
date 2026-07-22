@@ -87,7 +87,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
-      htmlFor={fieldId}
+      htmlFor={id || htmlForId}
       infotip={infotip}
       isSoloField={isSoloField}
       required={Boolean(validation?.required)}

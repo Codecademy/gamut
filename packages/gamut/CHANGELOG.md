@@ -1,3 +1,13 @@
+## 72.2.5 (2026-07-20)
+
+### 🩹 Fixes
+
+- enable dismissal of ToolTip via onClick for interactive components like IconButton, MenuItem (icon-only), and FloatingToolTip + InlineToolTip ([#3388](https://github.com/Codecademy/gamut/pull/3388))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 ## 72.2.4 (2026-07-08)
 
 ### 🩹 Fixes
