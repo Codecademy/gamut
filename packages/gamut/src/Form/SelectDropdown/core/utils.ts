@@ -48,7 +48,8 @@ export const getCreatedOptionValue = (
 };
 
 export const isOptionGroup = (obj: unknown): obj is SelectDropdownGroup =>
-  obj != null &&
+  obj !== null &&
+  obj !== undefined &&
   typeof obj === 'object' &&
   'options' in obj &&
   obj.options !== undefined;
