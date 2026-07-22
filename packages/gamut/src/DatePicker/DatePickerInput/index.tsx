@@ -1,4 +1,6 @@
 import { MiniCalendarIcon } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import {
   type FocusEvent,
   forwardRef,
@@ -11,6 +13,8 @@ import {
 } from 'react';
 
 import { FlexBox } from '../../Box';
+import { IconButton } from '../../Button';
+import { FormError } from '../../Form/elements/FormError';
 import { FormGroup } from '../../Form/elements/FormGroup';
 import type { InputWrapperProps } from '../../Form/inputs/Input';
 import { isSameDay } from '../DatePickerCalendar/Calendar/utils/dateGrid';
@@ -31,13 +35,30 @@ import {
   getDateFieldOrder,
   getDateFormatLayout,
 } from './utils';
+import { validateSegments } from './utils/validation';
+
+/* FormError's `absolute` variant takes the message out of layout flow (anchored
+   to FormGroup's position: relative container), so the input never changes height:
+   the range-mode arrow stays aligned and no space is reserved when there's no error. */
+const AbsoluteFormError = styled(FormError)(
+  css({
+    // max-content keeps the message on one line rather than wrapping into the
+    // narrow input width.
+    width: 'max-content',
+    // The `absolute` variant anchors at top: calc(100% - 8px), which overlaps the
+    // bottom of the input. Nudge it down below the input with a small gap.
+    mt: 12,
+  })
+);
 
 export type DatePickerInputProps = Omit<
   InputWrapperProps,
-  'className' | 'type' | 'icon' | 'value' | 'onChange' | 'color'
+  'className' | 'type' | 'icon' | 'value' | 'onChange' | 'color' | 'error'
 > & {
   /** In range mode: which part of the range this input edits. Omit for single-date or combined display. */
   rangePart?: 'start' | 'end';
+  /** Error message to display. String for specific error, undefined for no error. */
+  error?: string;
 };
 
 export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
@@ -61,6 +82,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       isCalendarOpen,
       translations,
       disableDate,
+      setHasError,
     } = context;
 
     const isRange = mode === 'range';
@@ -87,6 +109,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       [boundDate]
     );
     const [segments, setSegments] = useState<SegmentValues>(segmentsFromBound);
+    const [inputError, setInputError] = useState<string>('');
 
     const parsedForHidden = parseSegmentsToDate(segments);
     const hiddenValue = parsedForHidden
@@ -95,6 +118,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const isInputFocusedRef = useRef(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
     const segmentElRefs = useRef<
       Partial<Record<DatePartKind, HTMLSpanElement | null>>
     >({});
@@ -159,11 +183,25 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     const onSegmentChange = useCallback(
       (next: SegmentValues) => {
-        const parsed = parseSegmentsToDate(next);
-        if (parsed) commitParsedDate(parsed);
-        else if (!next.month && !next.day && !next.year) clearSelection();
+        const validationResult = validateSegments(
+          next,
+          translations,
+          disableDate
+        );
+        if (validationResult.isValid) {
+          setInputError('');
+          setHasError(false);
+          commitParsedDate(validationResult.date);
+        } else if (!next.month && !next.day && !next.year) {
+          setInputError('');
+          setHasError(false);
+          clearSelection();
+        } else if (validationResult.errorMessage) {
+          setInputError(validationResult.errorMessage);
+          setHasError(true);
+        }
       },
-      [clearSelection, commitParsedDate]
+      [clearSelection, commitParsedDate, translations, disableDate, setHasError]
     );
 
     const onContainerBlur = useCallback(
@@ -171,24 +209,48 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         if (containerRef.current?.contains(e.relatedTarget as Node)) return;
         isInputFocusedRef.current = false;
         setSegments((prev) => {
-          const normalized = normalizeSegmentValues(prev);
-          const parsed = parseSegmentsToDate(normalized);
-          if (parsed) {
-            const sameAsBound = isSameDay(parsed, boundDate);
-            if (isCalendarOpen && !sameAsBound) {
-              queueMicrotask(() => {
-                commitParsedDate(parsed);
-              });
-            }
-            return normalized;
-          }
-          if (!normalized.month && !normalized.day && !normalized.year) {
+          // Check if all segments are empty
+          if (!prev.month && !prev.day && !prev.year) {
+            setInputError('');
+            setHasError(false);
             queueMicrotask(() => {
               clearSelection();
             });
             return getDateSegmentsFromDate(null);
           }
-          return segmentsFromBound;
+
+          // Validate raw input (without normalizing/clamping)
+          const validationResult = validateSegments(
+            prev,
+            translations,
+            disableDate
+          );
+
+          if (validationResult.isValid) {
+            // Valid complete date - normalize and commit
+            setInputError('');
+            setHasError(false);
+            const normalized = normalizeSegmentValues(prev);
+            const sameAsBound = isSameDay(validationResult.date, boundDate);
+            if (isCalendarOpen && !sameAsBound) {
+              queueMicrotask(() => {
+                commitParsedDate(validationResult.date);
+              });
+            }
+            return normalized;
+          }
+
+          // Incomplete entry on blur - show the incomplete-date error
+          if (!validationResult.errorMessage) {
+            setInputError(translations.invalidDateIncomplete);
+            setHasError(true);
+            return prev; // Keep incomplete input visible so user can correct it
+          }
+
+          // Invalid complete entry - show error and keep invalid input visible
+          setInputError(validationResult.errorMessage);
+          setHasError(true);
+          return prev;
         });
       },
       [
@@ -198,6 +260,9 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         clearSelection,
         commitParsedDate,
         isCalendarOpen,
+        translations,
+        disableDate,
+        setHasError,
       ]
     );
 
@@ -227,7 +292,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
 
     return (
       <FormGroup
-        htmlFor={inputId}
+        id={inputId}
         isSoloField
         label={label ?? defaultLabel}
         mb={0}
@@ -236,11 +301,12 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         width="fit-content"
       >
         <SegmentedShell
-          id={inputId}
+          aria-invalid={!!inputError}
+          aria-labelledby={inputId}
           inputSize={size}
           ref={shellRef}
           role="group"
-          variant={error ? 'error' : 'default'}
+          variant={inputError ? 'error' : 'default'}
           width="113px"
           onBlur={onContainerBlur}
           onClick={onShellClick}
@@ -270,7 +336,7 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
                   applySegments={onSegmentChange}
                   assignSegmentRef={assignSegmentRef}
                   disabled={!!disabled}
-                  error={!!error}
+                  error={!!inputError}
                   field={item.field}
                   key={item.field}
                   nextField={nextField}
@@ -292,16 +358,20 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
             type="hidden"
             value={hiddenValue}
           />
-          <FlexBox
-            alignItems="center"
-            justifyContent="center"
-            pl={16}
-            pr={8}
-            role="presentation"
-          >
-            <MiniCalendarIcon aria-hidden size={16} />
-          </FlexBox>
+          <IconButton
+            mx={4}
+            icon={MiniCalendarIcon}
+            size="small"
+            tip={translations.openCalendarLabel}
+            ref={buttonRef}
+            onClick={() => buttonRef.current?.blur()}
+          />
         </SegmentedShell>
+        {inputError && (
+          <AbsoluteFormError aria-live="polite" role="alert" variant="absolute">
+            {inputError}
+          </AbsoluteFormError>
+        )}
       </FormGroup>
     );
   }

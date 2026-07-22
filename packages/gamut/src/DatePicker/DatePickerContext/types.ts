@@ -10,6 +10,15 @@ interface DatePickerBaseContextValue<Mode extends 'single' | 'range'>
    */
   mode: Mode;
   /**
+   * Whether there is an error in any input. Used by DatePicker to adjust popover position
+   * when calendar is open. Only tracks IF error exists, not the message.
+   */
+  hasError: boolean;
+  /**
+   * Callback to set whether error exists. Called by DatePickerInput when validation errors occur.
+   */
+  setHasError: (hasError: boolean) => void;
+  /**
    * Resolved `Intl.Locale` for the `locale` prop (or the runtime default). The same object is
    * passed to formatters and to APIs such as `getWeekInfo` where available.
    */
