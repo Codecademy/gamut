@@ -17,7 +17,7 @@ export type InternalSelectProps = {
  * Ref type for programmatic focus management.
  * Used for managing focus on select input and remove all button.
  */
-export type ProgramaticFocusRef =
+export type ProgrammaticFocusRef =
   | React.MutableRefObject<HTMLDivElement>
   | React.MutableRefObject<null>;
 
@@ -31,9 +31,9 @@ export interface SelectDropdownContextValueTypes {
   /** Function to update the currently focused value */
   setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
   /** Ref to the select input for programmatic focus */
-  selectInputRef?: ProgramaticFocusRef;
+  selectInputRef?: ProgrammaticFocusRef;
   /** Ref to the remove all button for programmatic focus */
-  removeAllButtonRef?: ProgramaticFocusRef;
+  removeAllButtonRef?: ProgrammaticFocusRef;
 }
 
 /**

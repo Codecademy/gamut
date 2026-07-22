@@ -81,7 +81,7 @@ export type Scale<Config extends Prop> = ResponsiveProp<
 
 export interface TransformFn<P extends string, Config extends Prop> {
   (
-    value: Scale<Config> | Scale<Config>,
+    value: Scale<Config>,
     prop: P,
     props: ThemeProps<{ [K in P]?: Scale<Config> }>
   ): CSSObject;

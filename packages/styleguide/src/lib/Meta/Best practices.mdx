@@ -154,7 +154,7 @@ type BreakpointArray<T> = [
   T?, // sm
   T?, // md
   T?, // lg
-  T? // xl
+  T?, // xl
   T?, // c_xs
   T?, // c_sm
   T?, // c_md
@@ -171,16 +171,13 @@ type SystemProp<T> = T | BreakpointMap<T> | BreakpointArray<T>;
 import { Box } from '@codecademy/gamut';
 
 // Object Syntax
-<Box width={{ _: "100%", sm: "50%" }} />
+<Box width={{ _: '100%', sm: '50%' }} />
 
 // Array Syntax
-<Box width={["100%", ,"50%"]} />
+<Box width={['100%', , '50%']} />
 ```
 
-<Callout
-  text="If you wish to skip a breakpoint in using the
-    array shorthand you may specify undefined at the index."
-/>
+<Callout text="If you wish to skip a breakpoint when using the array shorthand you may specify undefined at the index." />
 
 ## Real-world use cases
 

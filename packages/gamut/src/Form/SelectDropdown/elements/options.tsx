@@ -46,13 +46,15 @@ const IconOptionLabel: React.FC<
 /**
  * Custom option component that displays a check icon for selected items.
  * Also manages ARIA attributes for accessibility.
+ * Skips the check icon for react-select/creatable's "Add" row (__isNew__).
  */
 export const IconOption = ({
   children,
   ...rest
 }: CustomSelectComponentProps<typeof SelectDropdownElements.Option>) => {
   const { size } = rest.selectProps;
-  const { isFocused, innerProps } = rest;
+  const { isFocused, innerProps, data } = rest;
+  const isNew = (data as any)?.__isNew__;
 
   return (
     <SelectDropdownElements.Option
@@ -60,7 +62,7 @@ export const IconOption = ({
       innerProps={{ ...innerProps, 'aria-selected': isFocused }}
     >
       {children}
-      {rest?.isSelected && (
+      {!isNew && rest?.isSelected && (
         <CheckIcon size={selectedIconSize[size ?? 'medium']} />
       )}
     </SelectDropdownElements.Option>
