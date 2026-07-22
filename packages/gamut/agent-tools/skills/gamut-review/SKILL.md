@@ -73,9 +73,9 @@ Report each violation as `file:line`.
 
 ---
 
-## Check 3b — SCSS/CSS module imports and className on Gamut components
+## Check 3b — SCSS/CSS module imports, className, and inline styles on Gamut components
 
-Gamut components are styled via the variance system (system props, `css()`, `variant()`, `states()` from `@codecademy/gamut-styles`). Importing SCSS/CSS modules and passing `className` to Gamut components bypasses this system entirely, breaks ColorMode token propagation, and prevents system props from composing correctly.
+Gamut components are styled via the variance system (system props, `css()`, `variant()`, `states()` from `@codecademy/gamut-styles`). Importing SCSS/CSS modules, passing `className`, and passing an inline `style` prop to Gamut components all bypass this system, break ColorMode token propagation, and prevent system props from composing correctly.
 
 **Step 1 — SCSS/CSS module imports**
 
@@ -112,7 +112,29 @@ Each match is an error. Report as `file:line  <ComponentName className={...}>`.
 
 Severity note: `className` is not always forbidden — some Gamut components accept it for integration with third-party tools (e.g. passing a class to an external drag-and-drop library). Downgrade to ⚠ warning only when the usage is clearly an integration seam, not styling.
 
-Remediation: replace SCSS module rules with system props directly on the Gamut component — use semantic ColorMode tokens as values (`color="text"`, `bg="background"`, `borderColor="border-primary"`, etc.) rather than hardcoded hex or palette names; use `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` (with `styled` from `@emotion/styled`) for styles not expressible as system props; delete the SCSS file when all rules are migrated.
+**Step 3 — inline `style` prop**
+
+Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for an inline `style` prop on any JSX element, and specifically on the known Gamut component names from Step 2:
+
+```
+style=\{\{
+```
+
+and
+
+```
+<(Box|FlexBox|Column|LayoutGrid|GridBox|Card|Text|Anchor|FillButton|StrokeButton|TextButton|CTAButton|IconButton|Toggle|List|ListRow|ListCol|Background|Disclosure)\b[^>]*\bstyle=\{
+```
+
+Skip `node_modules`, `dist`. Each match is an error — an inline `style` object silently bypasses ColorMode and the variance system exactly like `className` does, and its values are almost always hardcoded hex or pixel literals rather than tokens.
+
+Before reporting a match, check the matched line and the line immediately above it for an `eslint-disable` / `eslint-disable-next-line` comment referencing a style-related rule (e.g. `react/forbid-component-props`, `react/forbid-dom-props`, or any bare `eslint-disable(-next-line)` directly above the match). If found, still report the match but annotate it `(eslint-disabled)` and downgrade to ⚠ warning — someone made a deliberate, reviewed exception, but the suppression may be stale or broader than intended, so surface it rather than silently skip it.
+
+Report as `file:line  <ComponentName style={{...}}>` (or the bare JSX tag when not a known Gamut component).
+
+Severity note: like `className`, downgrade to ⚠ warning only for a clear third-party integration seam (e.g. a style object required by an external widget's API) — not for layout or color values that a Gamut component or system prop could express.
+
+Remediation: replace SCSS module rules and inline `style` objects with system props directly on the Gamut component — use semantic ColorMode tokens as values (`color="text"`, `bg="background"`, `borderColor="border-primary"`, etc.) rather than hardcoded hex, pixel literals, or inline objects; use `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` (with `styled` from `@emotion/styled`) for styles not expressible as system props; delete the SCSS file when all rules are migrated.
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md)
 
@@ -358,13 +380,16 @@ Import patterns
        src/Thing.tsx:7
        src/Other.tsx:12
 
-SCSS modules & className                             [→ gamut-system-props] [→ gamut-style-utilities]
+SCSS modules, className & inline style               [→ gamut-system-props] [→ gamut-style-utilities] [→ gamut-color-mode]
   ✗  SCSS/CSS imports   14 files — migrate to system props and css()/variant()
        src/components/Card/Card.scss
        src/components/Nav/Nav.scss   (+ 12 more)
   ✗  className on Gamut components   9 occurrences
        src/components/Card/Card.tsx:14   <Box className={styles.wrapper}>
        src/components/Nav/Nav.tsx:7      <Text className={styles.title}>
+  ✗  inline style on Gamut components   3 occurrences — use system props or css()/variant()/states() with semantic tokens
+       src/components/Hero/Hero.tsx:31   <Box style={{ color: '#10162F' }}>
+       src/components/Nav/Nav.tsx:19     <Text style={{ marginTop: 8 }}>  (eslint-disabled)  ⚠
 
 Nested selectors                                    [→ gamut-system-props] [→ gamut-style-utilities]
   ⚠  Tag selectors   3 occurrences — replace with system props or layout components (FlexBox, GridBox)
@@ -395,4 +420,4 @@ Test setup                                                               [→ ga
 Icons: `✓` = pass, `⚠` = warning (recommended, not required), `✗` = error (required).
 `[→ skill-name]` annotations indicate which Gamut skill has remediation guidance for that category.
 
-After printing the report, offer one sentence of prioritized next-step advice based on what was found.
+After printing the report, offer one sentence of prioritized next-step advice based on what was found, then ask the user whether they'd like you to fix the findings — do not apply any remediation unprompted.
