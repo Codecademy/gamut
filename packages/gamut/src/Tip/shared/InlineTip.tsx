@@ -68,7 +68,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   const target = (
     <TargetContainer
       height={inheritDims ? 'inherit' : undefined}
-      ref={wrapperRef}
+      ref={wrapperRef as React.Ref<HTMLDivElement>}
       width={inheritDims ? 'inherit' : undefined}
       onBlur={isHoverType ? handleUndismissed : undefined}
       onClick={isHoverType ? handleClick : undefined}
@@ -90,7 +90,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         color="currentColor"
         horizNarrow={narrow && isHorizontalCenter}
         id={id}
-        ref={contentRef}
+        ref={contentRef as React.Ref<HTMLDivElement>}
         role={type === 'tool' ? 'tooltip' : undefined}
         tabIndex={type === 'info' ? -1 : undefined}
         width={narrow && !isHorizontalCenter ? narrowWidth : 'max-content'}

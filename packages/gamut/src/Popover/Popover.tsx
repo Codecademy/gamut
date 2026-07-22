@@ -1,10 +1,10 @@
 import { useElementDir, useLogicalProperties } from '@codecademy/gamut-styles';
-import type { RefObject } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
 import {
+  getRefElement,
   useResizingParentEffect,
   useScrollingParentsEffect,
 } from '../PopoverContainer/hooks';
@@ -54,7 +54,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const logicalPropsEnabled = useLogicalProperties();
-  const isRtl = useElementDir(targetRef as RefObject<Element | null>) === 'rtl';
+  const isRtl = useElementDir(targetRef) === 'rtl';
 
   // This only needs to resolve the positioning - the beak uses logical properties so will automatically mirror in RTL.
   const resolvedSideAlign = useMemo(() => {
@@ -152,12 +152,12 @@ export const Popover: React.FC<PopoverProps> = ({
   ]);
 
   useEffect(() => {
-    setTargetRect(targetRef?.current?.getBoundingClientRect());
+    setTargetRect(getRefElement(targetRef)?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
   const updateTargetPosition = useCallback(
     (rect?: DOMRect) => {
-      const target = targetRef?.current;
+      const target = getRefElement(targetRef);
       if (!target) return;
 
       const newRect = rect || target.getBoundingClientRect();
@@ -167,7 +167,6 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   useScrollingParentsEffect(targetRef, updateTargetPosition);
-
   useResizingParentEffect(targetRef, setTargetRect);
 
   useEffect(() => {
@@ -187,7 +186,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
       const target = e.target as Node;
-      const targetElement = targetRef.current;
+      const targetElement = getRefElement(targetRef);
 
       if (!targetElement) return;
 
@@ -201,7 +200,7 @@ export const Popover: React.FC<PopoverProps> = ({
     },
     [onRequestClose, targetRef]
   );
-  if ((!isOpen || !targetRef) && !animation) return null;
+  if ((!isOpen || !targetRef.current) && !animation) return null;
   const alignment =
     (variant === 'primary' || beak) && beak !== 'center'
       ? 'aligned'
@@ -214,7 +213,9 @@ export const Popover: React.FC<PopoverProps> = ({
       data-floating="popover"
       data-testid="popover-content-container"
       position={position}
-      {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
+      {...(popoverContainerRef
+        ? { ref: popoverContainerRef as React.Ref<HTMLDivElement> }
+        : {})}
       role={role}
       // eslint-disable-next-line gamut/no-inline-style
       style={getPopoverPosition()}
@@ -223,7 +224,7 @@ export const Popover: React.FC<PopoverProps> = ({
       <RaisedDiv
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
-        ref={combinedRef}
+        ref={combinedRef as React.Ref<HTMLDivElement>}
         variant={variant}
         widthRestricted={widthRestricted}
       >
@@ -253,7 +254,10 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   return (
-    <PopoverPortal animation={animation} isOpen={Boolean(isOpen && targetRef)}>
+    <PopoverPortal
+      animation={animation}
+      isOpen={Boolean(isOpen && targetRef.current)}
+    >
       {skipFocusTrap ? (
         <>{contents}</>
       ) : (

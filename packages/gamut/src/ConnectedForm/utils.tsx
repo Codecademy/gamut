@@ -183,9 +183,7 @@ export const useField = ({
   });
 
   const formValidation =
-    (validationRules &&
-      validationRules[name as keyof typeof validationRules]) ??
-    undefined;
+    validationRules?.[name as keyof typeof validationRules];
 
   const validation = useMemo(
     () =>
@@ -347,7 +345,6 @@ type InputTypes =
       | 'search'
       | 'month'
       | 'tel'
-      | 'time'
       | 'url'
       | 'week'
     >

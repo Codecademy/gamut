@@ -1,13 +1,13 @@
 import { matchers } from '@emotion/jest';
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
+import { render } from '@testing-library/react';
 import { ComponentProps } from 'react';
 import * as React from 'react';
-import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
 import { theme } from '../__fixtures__/theme';
-// Add the custom matchers provided by '@emotion/jest'
+
 expect.extend(matchers);
 
 const styles = variance.create({
@@ -27,16 +27,20 @@ const setupRender = <T extends React.ElementType, P extends ComponentProps<T>>(
   Component: T,
   defaultProps?: P
 ) => {
-  return (props?: P) => {
+  return (props?: P): HTMLElement => {
     const mergedProps = { ...defaultProps, ...props };
 
-    return renderer
-      .create(
-        <ThemeProvider theme={theme}>
-          <Component {...(mergedProps as P)} />
-        </ThemeProvider>
-      )
-      .toJSON();
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <Component {...(mergedProps as P)} />
+      </ThemeProvider>
+    );
+
+    const el = container.firstElementChild;
+    if (!el || !(el instanceof HTMLElement)) {
+      throw new Error('Expected a styled root element');
+    }
+    return el;
   };
 };
 

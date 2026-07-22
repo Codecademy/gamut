@@ -211,7 +211,7 @@ const useMeasureWidth = ({
   onMeasure,
   isMeasuring,
 }: {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
   onMeasure: (width: number) => void;
   isMeasuring: boolean;
 }): void => {
@@ -233,7 +233,7 @@ const useMeasureWidth = ({
     }
 
     const element = ref.current;
-    const width = element?.getBoundingClientRect()?.width;
+    const { width } = element.getBoundingClientRect();
 
     if (width > 0) {
       onMeasure(width);
@@ -245,7 +245,7 @@ const useMeasureWidth = ({
 export const useMeasureCategoryLabelWidth = ({
   ref,
 }: {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 }): void => {
   const { setWidestCategoryLabelWidth, isMeasuring } = useBarChartContext();
   useMeasureWidth({
@@ -258,7 +258,7 @@ export const useMeasureCategoryLabelWidth = ({
 export const useMeasureTotalValueLabelWidth = ({
   ref,
 }: {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 }): void => {
   const { setWidestTotalValueLabelWidth, isMeasuring } = useBarChartContext();
   useMeasureWidth({

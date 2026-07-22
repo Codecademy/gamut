@@ -137,7 +137,7 @@ export function GridForm<Values extends FormValues<Values>>({
   const showRequiredText = hideRequiredText ? false : !hasComputedSoloField;
 
   return (
-    <ConnectedForm<Values>
+    <ConnectedForm
       defaultValues={defaultValues as DefaultValues<Values>}
       display="flex"
       flexDirection="column"
