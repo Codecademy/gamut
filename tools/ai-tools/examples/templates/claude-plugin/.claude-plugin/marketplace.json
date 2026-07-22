@@ -1,0 +1,9 @@
+{
+  "name": "gamut-ai-tools-templates",
+  "plugins": [
+    {
+      "name": "claude-plugin-template",
+      "source": "./"
+    }
+  ]
+}
