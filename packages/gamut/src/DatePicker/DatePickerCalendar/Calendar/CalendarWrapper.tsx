@@ -12,7 +12,7 @@ export const CalendarWrapper: React.FC<WithChildrenProp> = ({ children }) => (
       border={1}
       borderRadius="sm"
       position="relative"
-      zIndex={1}
+      zIndex="foreground"
     >
       {children}
     </Box>

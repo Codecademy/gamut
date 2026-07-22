@@ -282,5 +282,5 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   if (inline) return content;
 
-  return <BodyPortal>{content}</BodyPortal>;
+  return <BodyPortal zIndex="popover">{content}</BodyPortal>;
 };

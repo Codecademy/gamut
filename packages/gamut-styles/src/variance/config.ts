@@ -328,7 +328,10 @@ export const positioning = {
     resolveProperty: getPropertyMode,
     transform: transformSize,
   },
-  zIndex: { property: 'zIndex' },
+  // `scale: 'zIndexes'` resolves token names (e.g. `zIndex="modal"`) to `var(--zIndexes-*)`.
+  // `allowRawValue` keeps the numeric/global escape hatch (e.g. `zIndex={550}`,
+  // `zIndex={zIndexes.foreground + 1}`) that scaled props otherwise reject.
+  zIndex: { property: 'zIndex', scale: 'zIndexes', allowRawValue: true },
   opacity: { property: 'opacity' },
 } as const;
 

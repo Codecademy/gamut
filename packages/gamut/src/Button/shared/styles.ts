@@ -67,7 +67,7 @@ export const buttonStyles = system.css({
     border: 2,
     inset: -5,
     opacity: 0,
-    zIndex: 0,
+    zIndex: 'base',
   },
   [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
     opacity: 1,

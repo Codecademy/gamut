@@ -66,7 +66,7 @@ export const PopoverPortal: React.FC<
   animation ? (
     <AnimatePresence>
       {isOpen && (
-        <BodyPortal>
+        <BodyPortal zIndex="popover">
           <motion.div
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -81,7 +81,7 @@ export const PopoverPortal: React.FC<
       )}
     </AnimatePresence>
   ) : (
-    <BodyPortal {...rest} />
+    <BodyPortal zIndex="popover" {...rest} />
   );
 
 export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;

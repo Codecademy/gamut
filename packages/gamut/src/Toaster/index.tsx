@@ -26,7 +26,7 @@ export const Toaster: React.FC<ToasterProps> = ({
   colorMode = 'light',
 }) => {
   return (
-    <BodyPortal>
+    <BodyPortal zIndex="topmost">
       <ColorMode mode={colorMode}>
         <Box aria-live="polite" bottom={88} position="fixed" right={16}>
           <AnimatePresence>

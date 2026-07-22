@@ -98,7 +98,7 @@ export const TargetContainer = styled(Box)(
       border: 2,
       borderColor: 'primary',
       opacity: 0,
-      zIndex: 0,
+      zIndex: 'base',
     },
     [TargetSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
