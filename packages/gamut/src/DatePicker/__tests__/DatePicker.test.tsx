@@ -46,13 +46,15 @@ type RangeHarnessProps = {
   onEndSelected: (date: Date | null) => void;
 };
 
-const RangeHarness: FC<RangeHarnessProps> = ({
+const RangeHarness: FC<RangeHarnessProps & { description?: string }> = ({
   startDate,
   endDate,
   onStartSelected,
   onEndSelected,
+  description,
 }) => (
   <DatePicker
+    description={description}
     endDate={endDate}
     locale="en-US"
     mode="range"
@@ -151,14 +153,22 @@ describe('DatePicker', () => {
     expect(view.getAllByRole('group')).toHaveLength(2);
   });
 
-  it('associates the field label with the segment shell via label `for` and shell `id` (DatePickerInput)', () => {
+  it('renders one shared description spanning both range fields', () => {
+    const { view } = renderRange({
+      description: 'Insert any rules or instructions here.',
+    });
+
+    expect(
+      view.getAllByText('Insert any rules or instructions here.')
+    ).toHaveLength(1);
+  });
+
+  it('associates the field label with the segment shell via aria-labelledby (DatePickerInput)', () => {
     const { view } = renderSingle();
     const shell = view.getByRole('group');
-    const shellId = shell.getAttribute('id');
-    expect(shellId).toBeTruthy();
-    expect(
-      view.container.querySelector(`label[for="${shellId}"]`)
-    ).toBeInTheDocument();
+    const labelledBy = shell.getAttribute('aria-labelledby');
+    expect(labelledBy).toBeTruthy();
+    expect(view.container.querySelector(`#${labelledBy}`)).toBeInTheDocument();
   });
 
   it('renders only children when the children prop is provided', () => {
