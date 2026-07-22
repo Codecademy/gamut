@@ -121,6 +121,7 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
 - `onChange(selected, meta)` — use `meta.action === 'create-option'` to sync controlled `value` and `options` together.
 - `isValidNewOption` — return `false` to hide the Add row.
 - `validationMessage` — replaces menu "No options" text; mirror in `FormGroup` `error` for field-level feedback.
+- SelectDropdown already announces its "No options" text (default or `validationMessage`) to screen readers via a debounced, standalone live region — react-select's own live region stays silent while `options` is empty, so this fills that gap, including mid-fetch states. Don't build a separate announcement for this; just set `validationMessage`.
 
 **Validation after blur:** react-select clears input on blur before `onBlur` fires, so the value is gone by the time you'd validate it. Store the last typed value in a ref and re-validate from it on `input-blur`:
 
@@ -140,8 +141,8 @@ const lastInput = useRef('');
 
 ## FormGroup wiring
 
-- `FormGroup` `htmlFor` must match control `id` (not `name`). Alternatively, pass `htmlFor` directly on SelectDropdown and it becomes `id` downstream.
-- Pass `name` on SelectDropdown (required for forms).
+- `FormGroup` `htmlFor` must match SelectDropdown's `name` — **not** `id`. Unlike plain `Select`, SelectDropdown's `id`/`htmlFor` prop only sets the id of react-select's outer wrapper `<div>` (not labelable); the actual focusable combobox input always takes its id from `inputId`, which is `name`. A label pointed at `id` instead of `name` silently breaks the label/input association whenever the two differ.
+- Pass `name` on SelectDropdown (required for forms, and it doubles as the accessible id target).
 - Rely on FormGroupLabel's `htmlFor`/`id` connection for the accessible label — this is the standard HTML pattern and preferred method. Do not use `aria-label` when a FormGroupLabel is present, as it overrides the visible label.
 - Pass `error` boolean when FormGroup has an error.
 - Generic FormGroup live-region behavior: see [`gamut-forms`](../gamut-forms/SKILL.md).
@@ -149,7 +150,6 @@ const lastInput = useRef('');
 ```tsx
 <FormGroup htmlFor="country" isSoloField label="Country" error={errors.country}>
   <SelectDropdown
-    id="country"
     name="country"
     options={options}
     value={value}
