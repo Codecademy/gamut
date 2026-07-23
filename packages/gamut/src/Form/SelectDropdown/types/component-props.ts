@@ -103,10 +103,12 @@ export interface SelectDropdownCoreProps
     options: OptionsType<OptionStrict>
   ) => boolean;
   /**
-   * Customizes the message shown inside the dropdown menu when no option matches
-   * the current input (react-select's "No options" state). Useful for surfacing
-   * validation/error text directly in the dropdown. Accepts a node, or a function
-   * receiving the current input value.
+   * Replaces the default "No options" text shown inside the dropdown menu
+   * whenever no option matches the current input - an empty `options` array,
+   * or every option filtered out by a search. Not tied to `isCreatable`; any
+   * searchable SelectDropdown can use it. Accepts a `ReactNode`, or a function
+   * receiving `{ inputValue }` for live, input-specific validation/error copy
+   * (e.g. "No results for '{inputValue}'").
    */
   validationMessage?:
     | React.ReactNode

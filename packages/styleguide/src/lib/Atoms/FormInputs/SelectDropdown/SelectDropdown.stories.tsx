@@ -1321,7 +1321,7 @@ const handleInputChange = (
               options={options}
               placeholder="Type at least 3 characters to add…"
               validationMessage={({ inputValue }) =>
-                inputValue ? `is a fruit` : 'No matching fruit'
+                validate(inputValue) ?? 'No matching fruit'
               }
               onChange={() => {
                 lastInputRef.current = '';

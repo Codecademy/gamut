@@ -120,7 +120,7 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
 - `onCreateOption(inputValue)` — convenience hook to append to `options`.
 - `onChange(selected, meta)` — use `meta.action === 'create-option'` to sync controlled `value` and `options` together.
 - `isValidNewOption` — return `false` to hide the Add row.
-- `validationMessage` — replaces menu "No options" text; mirror in `FormGroup` `error` for field-level feedback.
+- `validationMessage` — content shown _inside the dropdown menu itself_ in place of the default "No options" text, whenever no option matches the current input (empty `options`, or every option filtered out by a search). Not tied to `isCreatable` — any searchable SelectDropdown can use it. Accepts a `ReactNode` or a function receiving `{ inputValue }`, so you can surface live validation/error copy (e.g. "No results for '{inputValue}'") right where the user is looking. Mirror the same text in `FormGroup`'s `error` prop for field-level feedback below the control.
 - SelectDropdown already announces its "No options" text (default or `validationMessage`) to screen readers via a debounced, standalone live region — react-select's own live region stays silent while `options` is empty, so this fills that gap, including mid-fetch states. Don't build a separate announcement for this; just set `validationMessage`.
 
 **Validation after blur:** react-select clears input on blur before `onBlur` fires, so the value is gone by the time you'd validate it. Store the last typed value in a ref and re-validate from it on `input-blur`:
