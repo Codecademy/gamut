@@ -63,9 +63,9 @@ export const tagUsageVariants = variant({
   },
   variants: {
     readOnly: {
-      bg: 'text-secondary',
+      bg: 'background-disabled',
       borderRadius: 'none',
-      color: 'background',
+      color: 'text',
     },
     selection: {
       bg: 'text-secondary',
