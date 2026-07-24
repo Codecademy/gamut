@@ -11,7 +11,7 @@ When `DESIGN.md` is present at the audit root, use it as the authoritative refer
 
 Run Check 0 first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
 
-Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
+Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md) · [`gamut-z-index`](../gamut-z-index/SKILL.md)
 
 ---
 

@@ -130,8 +130,8 @@ Percipio communicates **professional clarity** — clean, trustworthy, and enter
 
 **Design philosophy**:
 
-- Light mode only — no dark mode support
-- Brand blue (`sapphire` / `primary`) for buttons, links, and focus rings
+- Dark mode is supported but not bespoke — `percipioTheme` only overrides light-mode tokens (see `packages/gamut-styles/src/themes/percipio.ts`); dark mode falls back to Core's dark palette unmodified (see Semantic Color Aliases below)
+- Brand blue (`sapphire` / `primary`) for buttons, links, and focus rings in **light mode** — in dark mode `primary` resolves to Core's `yellow-500`, not `sapphire`
 - Text uses dedicated Percipio palette tokens (`percipioTextPrimary`, etc.)
 - Shadows are soft and minimal (`shadow-primary` → `navy-200`)
 - Title font weight is **500** via `fontWeight="title"` — use semantic weight, not literal `700`
@@ -140,79 +140,83 @@ Percipio communicates **professional clarity** — clean, trustworthy, and enter
 
 ## Themes
 
-Percipio uses a single Gamut theme — light mode only.
+Percipio uses a single Gamut theme with both light and dark modes.
 
-| Theme        | Use case                    | Base font             | Dark mode  |
-| ------------ | --------------------------- | --------------------- | ---------- |
-| **Percipio** | Skillsoft Percipio platform | Skillsoft Text / Sans | light only |
+| Theme        | Use case                    | Base font             | Dark mode                                             |
+| ------------ | --------------------------- | --------------------- | ----------------------------------------------------- |
+| **Percipio** | Skillsoft Percipio platform | Skillsoft Text / Sans | ✓ light + dark (dark inherited from Core, unmodified) |
 
-The active theme is set at the app root via `<GamutProvider theme={percipioTheme}>`.
+The active theme is set at the app root via `<GamutProvider theme={percipioTheme}>`. `percipioTheme` calls `.addColorModes('light', { light: {...} })` with **only** a `light` override map — there is no `dark` key in the theme definition, so every semantic token falls back to Core's `dark` values for that token when the app is in dark mode. This is different from `adminTheme`/`platformTheme`, which define their own explicit `dark` overrides on top of Core.
 
 ---
 
 ## Semantic Color Aliases
 
-Use these token names when specifying colors. Percipio is light mode only — there are no dark mode counterparts.
+Use these token names when specifying colors — they work in both light and dark mode via `<ColorMode>`. **Light** below is Percipio's own value (overridden in `percipio.ts` where noted); **Dark** is Core's unmodified dark value for that same token, since `percipioTheme` never defines a `dark` override map. A token whose Light column is a plain palette name (not a `percipio*` token) is itself inherited from Core in light mode too — Percipio didn't touch it in either mode.
 
 ### Text
 
-| Token            | Resolves to             | Use for                                          |
-| ---------------- | ----------------------- | ------------------------------------------------ |
-| `text`           | `percipioTextPrimary`   | Default body and UI text                         |
-| `text-accent`    | `percipioTextPrimary`   | Emphasis text (same value as `text` in Percipio) |
-| `text-secondary` | `percipioTextSecondary` | Supporting / secondary copy                      |
-| `text-disabled`  | `percipioTextDisabled`  | Disabled state labels                            |
+| Token            | Light                                                 | Dark        | Use for                     |
+| ---------------- | ----------------------------------------------------- | ----------- | --------------------------- |
+| `text`           | `percipioTextPrimary`                                 | `white`     | Default body and UI text    |
+| `text-accent`    | `percipioTextAccent` (same hex as `text` in Percipio) | `beige`     | Stronger emphasis text      |
+| `text-secondary` | `percipioTextSecondary`                               | `white-600` | Supporting / secondary copy |
+| `text-disabled`  | `percipioTextDisabled`                                | `white-500` | Disabled state labels       |
 
 ### Background
 
-| Token                 | Resolves to         | Use for                           |
-| --------------------- | ------------------- | --------------------------------- |
-| `background`          | `white`             | Default page/component background |
-| `background-primary`  | `percipioBgPrimary` | Slightly elevated surfaces        |
-| `background-selected` | `navy-100`          | Selected row / item               |
-| `background-hover`    | `navy-200`          | Hover state overlay               |
-| `background-disabled` | `navy-200`          | Disabled surface                  |
-| `background-success`  | `percipioBgSuccess` | Success state container           |
-| `background-warning`  | `percipioBgWarning` | Warning state container           |
-| `background-error`    | `percipioBgError`   | Error state container             |
+| Token                 | Light               | Dark         | Use for                           |
+| --------------------- | ------------------- | ------------ | --------------------------------- |
+| `background`          | `white`             | `navy-800`   | Default page/component background |
+| `background-primary`  | `percipioBgPrimary` | `navy-900`   | Slightly elevated surfaces        |
+| `background-selected` | `navy-100`          | `white-100`  | Selected row / item               |
+| `background-hover`    | `navy-200`          | `white-200`  | Hover state overlay               |
+| `background-disabled` | `navy-200`          | `white-200`  | Disabled surface                  |
+| `background-success`  | `percipioBgSuccess` | `green-900`  | Success state container           |
+| `background-warning`  | `percipioBgWarning` | `yellow-900` | Warning state container           |
+| `background-error`    | `percipioBgError`   | `red-900`    | Error state container             |
+
+Note the dark values for `background-primary`/`success`/`warning`/`error` are **Core's** dark tokens, not Percipio-specific — the `percipioBg*` tokens Percipio defines have no dark counterpart.
 
 ### Interactive
 
-| Token             | Resolves to                    | Use for                              |
-| ----------------- | ------------------------------ | ------------------------------------ |
-| `primary`         | `sapphire`                     | Primary CTA, links, focus rings      |
-| `primary-hover`   | `percipioActionPrimaryHover`   | Hover state of primary interactive   |
-| `primary-inverse` | `white`                        | Primary on a colored background      |
-| `secondary`       | `percipioActionSecondary`      | Secondary CTA, ghost buttons         |
-| `secondary-hover` | `percipioActionSecondaryHover` | Hover state of secondary interactive |
-| `danger`          | `percipioDanger`               | Destructive actions, error states    |
-| `danger-hover`    | `percipioActionDangerHover`    | Hover on danger interactive          |
+| Token             | Light                          | Dark         | Use for                              |
+| ----------------- | ------------------------------ | ------------ | ------------------------------------ |
+| `primary`         | `sapphire`                     | `yellow-500` | Primary CTA, links, focus rings      |
+| `primary-hover`   | `percipioActionPrimaryHover`   | `yellow-400` | Hover state of primary interactive   |
+| `primary-inverse` | `white`                        | `hyper-500`  | Primary on a colored background      |
+| `secondary`       | `percipioActionSecondary`      | `white`      | Secondary CTA, ghost buttons         |
+| `secondary-hover` | `percipioActionSecondaryHover` | `white-700`  | Hover state of secondary interactive |
+| `danger`          | `percipioDanger`               | `red-300`    | Destructive actions, error states    |
+| `danger-hover`    | `percipioActionDangerHover`    | `red-400`    | Hover on danger interactive          |
+
+**`primary` does not stay Percipio's brand blue in dark mode.** `sapphire` is a light-mode-only override; dark mode uses Core's `yellow-500` (the same value Core itself uses, since `percipioTheme` never defines a `dark` override). If a design calls for `sapphire` to persist in dark mode, that requires an actual theme change — adding a `dark` override to `percipioTheme` — not a documentation fix. Flag it rather than assuming the token already does this.
 
 ### Border
 
-Percipio's border weights use a non-standard order: `primary` is mid-weight, `secondary` is very light, `tertiary` is the strongest (solid navy). Use them for their semantic intent, not their numeric rank.
+Percipio's border weights use a non-standard order in light mode: `primary` is mid-weight, `secondary` is very light, `tertiary` is the strongest (solid navy). Use them for their semantic intent, not their numeric rank. Dark values are Core's unmodified dark borders.
 
-| Token              | Resolves to | Use for                             |
-| ------------------ | ----------- | ----------------------------------- |
-| `border-primary`   | `navy-400`  | Standard input and card borders     |
-| `border-secondary` | `navy-200`  | Subtle dividers, section separators |
-| `border-tertiary`  | `navy-800`  | Strong structural borders           |
-| `border-disabled`  | `navy-300`  | Disabled input borders              |
+| Token              | Light      | Dark        | Use for                             |
+| ------------------ | ---------- | ----------- | ----------------------------------- |
+| `border-primary`   | `navy-400` | `white`     | Standard input and card borders     |
+| `border-secondary` | `navy-600` | `white-600` | Subtle dividers, section separators |
+| `border-tertiary`  | `navy-800` | `white-300` | Strong structural borders           |
+| `border-disabled`  | `navy-300` | `white-500` | Disabled input borders              |
 
 ### Feedback
 
-| Token              | Resolves to               | Use for                          |
-| ------------------ | ------------------------- | -------------------------------- |
-| `feedback-error`   | `percipioDanger`          | Error messages, validation       |
-| `feedback-success` | `percipioFeedbackSuccess` | Success messages, confirmations  |
-| `feedback-warning` | `percipioFeedbackWarning` | Warning messages, caution states |
+| Token              | Light                     | Dark        | Use for                          |
+| ------------------ | ------------------------- | ----------- | -------------------------------- |
+| `feedback-error`   | `percipioDanger`          | `red-300`   | Error messages, validation       |
+| `feedback-success` | `percipioFeedbackSuccess` | `green-400` | Success messages, confirmations  |
+| `feedback-warning` | `percipioFeedbackWarning` | `yellow-0`  | Warning messages, caution states |
 
 ### Shadow
 
-| Token              | Resolves to |
-| ------------------ | ----------- |
-| `shadow-primary`   | `navy-200`  |
-| `shadow-secondary` | `navy-400`  |
+| Token              | Light      | Dark        |
+| ------------------ | ---------- | ----------- |
+| `shadow-primary`   | `navy-200` | `white`     |
+| `shadow-secondary` | `navy-400` | `white-600` |
 
 Use `shadow-primary` for standard elevated surfaces.
 
@@ -378,8 +382,8 @@ Key patterns:
 ### Colors
 
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
-- **Do** use `primary` (resolves to palette `sapphire`) as the brand interactive color.
-- **Don't** attempt dark mode — Percipio is light only.
+- **Do** use `primary` (resolves to palette `sapphire` in light mode) as the brand interactive color.
+- **Don't** assume Percipio has a bespoke dark palette — it inherits Core's dark values unmodified (see Semantic Color Aliases). `primary` in particular becomes Core's `yellow-500` in dark mode, not `sapphire` — verify visually rather than assuming brand color persists.
 
 ### Typography
 
