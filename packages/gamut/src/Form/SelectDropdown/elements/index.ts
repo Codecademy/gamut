@@ -6,10 +6,12 @@ export {
   RemoveAllButton,
 } from './multi-value';
 
-export { DropdownButton, onFocus } from './controls';
+export { DropdownButton } from './controls';
+export { onFocus } from '../core/accessibility';
 
 export {
   SelectDropdownContext,
+  createNoOptionsMessage,
   CustomContainer,
   CustomInput,
   CustomValueContainer,
