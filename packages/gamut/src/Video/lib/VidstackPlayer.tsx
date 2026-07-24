@@ -1,7 +1,9 @@
+/* Third-party Vidstack default theme styles */
 /* eslint-disable gamut/no-css-standalone */
-import '../styles/vds_base_theme.scss';
+import '../vidstack-vendor.css';
 
 import { styledOptions } from '@codecademy/gamut-styles';
+import { Global } from '@emotion/react';
 import styled, { CSSObject } from '@emotion/styled';
 import {
   isYouTubeProvider,
@@ -18,6 +20,7 @@ import React, { useRef } from 'react';
 
 import { Box } from '../../Box';
 import { VideoProps } from '..';
+import { vdsBaseThemeStyles } from '../styles';
 import { keyboardShortcuts } from './utils/constants';
 import { vdsVariables } from './utils/variables';
 import { VideoLayout } from './VideoLayout';
@@ -80,6 +83,7 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
       style={{ width, height }}
       variables={vdsVariables}
     >
+      <Global styles={vdsBaseThemeStyles} />
       <MediaPlayer
         autoPlay={autoplay}
         controls={showDefaultProviderControls}
