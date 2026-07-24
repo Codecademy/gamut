@@ -98,7 +98,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   // isSearchable is forced true when isCreatable is true (CreatableSelect requires a text input)
   const isSearchable = isCreatable || isSearchableProp;
   const rawInputId = useId();
-  const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
+  const inputId = name ?? `${id ?? rawInputId}-select-dropdown-${rawInputId}`;
 
   const removeAllButtonRef = useRef<HTMLDivElement>(null);
   const selectInputRef = useRef<HTMLDivElement>(null);

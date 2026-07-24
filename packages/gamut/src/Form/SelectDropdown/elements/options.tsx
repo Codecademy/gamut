@@ -54,7 +54,7 @@ export const IconOption = ({
 }: CustomSelectComponentProps<typeof SelectDropdownElements.Option>) => {
   const { size } = rest.selectProps;
   const { isFocused, innerProps, data } = rest;
-  const isNew = (data as any)?.__isNew__;
+  const isNew = (data as ExtendedOption & { __isNew__?: boolean })?.__isNew__;
 
   return (
     <SelectDropdownElements.Option
