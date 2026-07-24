@@ -70,6 +70,7 @@ const NoOptionsLiveRegion = styled.div(screenReaderOnly);
  * ```
  */
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
+  createOptionPosition,
   disabled,
   dropdownWidth,
   error,
@@ -150,6 +151,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         aria-live="assertive"
         ariaLiveMessages={{ onFocus }}
         components={components}
+        createOptionPosition={createOptionPosition}
         dropdownWidth={dropdownWidth}
         error={Boolean(error)}
         formatCreateLabel={formatCreateLabel}

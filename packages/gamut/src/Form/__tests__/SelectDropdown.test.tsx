@@ -837,6 +837,37 @@ describe('SelectDropdown', () => {
       expect(view.queryByText('Add "anything"')).not.toBeInTheDocument();
     });
 
+    it('places the "Add" row first when createOptionPosition is "first"', async () => {
+      const { view } = renderView({
+        isCreatable: true,
+        createOptionPosition: 'first',
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'e');
+      });
+
+      const optionLabels = view
+        .getAllByRole('option')
+        .map((o) => o.textContent);
+
+      expect(optionLabels[0]).toBe('Add "e"');
+    });
+
+    it('places the "Add" row last by default', async () => {
+      const { view } = renderView({ isCreatable: true });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'e');
+      });
+
+      const optionLabels = view
+        .getAllByRole('option')
+        .map((o) => o.textContent);
+
+      expect(optionLabels[optionLabels.length - 1]).toBe('Add "e"');
+    });
+
     it('clears the typed text when the input blurs', async () => {
       const { view } = renderView({ isCreatable: true });
 

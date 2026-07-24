@@ -71,6 +71,13 @@ const creatableProps = [
       'Controls when the "Add" row is visible. Use for min-length gating, pattern validation, or max-items caps.',
   },
   {
+    id: 'createOptionPosition',
+    prop: 'createOptionPosition',
+    type: "'first' | 'last'",
+    defaultValue: "'last'",
+    description: 'Sets the position of the "Add" row within the options list.',
+  },
+  {
     id: 'validationMessage',
     prop: 'validationMessage',
     type: 'ReactNode | (({ inputValue }) => ReactNode)',

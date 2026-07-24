@@ -1041,6 +1041,7 @@ export const Creatable: Story = {
   args: {
     name: 'creatable-dropdown',
     isCreatable: true,
+    createOptionPosition: 'last',
     placeholder: 'Select or type to add…',
   },
   render: (args) => {

@@ -179,6 +179,8 @@ Set `isCreatable` to let users type and add options not already in the list. Whe
 
 Creatable forces `isSearchable: true` since creation requires a text input. Passing `isSearchable={false}` alongside `isCreatable` will cause a TypeScript error.
 
+Use `createOptionPosition` to render the "Add" row above the rest of the options list instead of below it (the default).
+
 ### Single select
 
 <Canvas of={SelectDropdownStories.Creatable} />

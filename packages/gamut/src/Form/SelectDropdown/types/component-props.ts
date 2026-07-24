@@ -103,6 +103,11 @@ export interface SelectDropdownCoreProps
     options: OptionsType<OptionStrict>
   ) => boolean;
   /**
+   * Sets the position of the "Add" row within the options list.
+   * Defaults to react-select's built-in behavior ('last').
+   */
+  createOptionPosition?: 'first' | 'last';
+  /**
    * Replaces the default "No options" text shown inside the dropdown menu
    * whenever no option matches the current input - an empty `options` array,
    * or every option filtered out by a search. Not tied to `isCreatable`; any
@@ -175,7 +180,10 @@ export interface BaseOnChangeProps {
  */
 export interface TypedReactSelectProps
   extends ReactSelectAdditionalProps,
-    Pick<SelectDropdownCoreProps, 'formatCreateLabel' | 'isValidNewOption'> {
+    Pick<
+      SelectDropdownCoreProps,
+      'formatCreateLabel' | 'isValidNewOption' | 'createOptionPosition'
+    > {
   /** Optional ref to the underlying react-select component */
   selectRef?: Ref<any>;
   /** When true, renders CreatableSelect instead of ReactSelect */
