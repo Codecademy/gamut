@@ -1,3 +1,13 @@
+## 72.3.0 (2026-07-22)
+
+### 🚀 Features
+
+- update read-only tag colors ([#3399](https://github.com/Codecademy/gamut/pull/3399))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 72.2.5 (2026-07-20)
 
 ### 🩹 Fixes
