@@ -72,7 +72,7 @@ Do not rebuild this with a `className`/inline-`style` override or a separate dec
 </FormGroup>
 ```
 
-For an error state on the group, pass `error` to each `Radio` (there is no group-level `error` prop on `RadioGroup` itself) and surface the message the same way as any other field — via `FormGroup`'s `error` prop, not a second live region (see [Live regions](#live-regions-do-not-double-up)).
+For an error state on the group, pass `error` to each `Radio` (there is no group-level `error` prop on `RadioGroup` itself) and surface the message the same way as any other field — via `FormGroup`'s `error` prop, not a second live region (see "Live regions — do not double up" below).
 
 ---
 
