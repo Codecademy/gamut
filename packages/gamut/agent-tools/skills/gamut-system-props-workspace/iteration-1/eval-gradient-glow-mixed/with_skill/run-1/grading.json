@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+      "passed": true,
+      "evidence": "`styled(Box)(css({ background: 'radial-gradient(...)' }))` \u2014 css()-wrapped, not raw."
+    },
+    {
+      "text": "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "`p={24}` is a prop on the rendered JSX element, not inside the css() object with the gradient."
+    },
+    {
+      "text": "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "`display=\"flex\" alignItems=\"center\" justifyContent=\"center\"` are props, not inside the css() object."
+    },
+    {
+      "text": "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent",
+      "passed": true,
+      "evidence": "`radial-gradient(circle, #3A10E5 0%, rgba(58,16,229,0.5) 45%, rgba(58,16,229,0) 100%)` \u2014 correct 3-stop radial gradient fading to transparent."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 0,
+      "Write": 1,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 14,
+    "total_steps": 1,
+    "files_created": ["GradientGlow.tsx"],
+    "errors_encountered": 0,
+    "output_chars": 1100,
+    "transcript_chars": 0
+  },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Passes all assertions, but used an unnecessary styled(Box)(css()) wrapper for the gradient. system.background's `background` prop has no token scale and accepts any CSS value, so the gradient could have been passed as a plain prop with zero styled() usage \u2014 see eval-comparison note. The skill's original example cited gradients as 'not expressible as a prop', which was incorrect and has since been fixed."
+    ],
+    "workarounds": []
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "expectations": [
+    {
+      "text": "Does not wrap Box/FlexBox in styled() at all (raw or css()-wrapped) since every property here has a direct prop equivalent",
+      "passed": true,
+      "evidence": "Renders <FlexBox ref={ref} column p={16} mt={24} color=\"white\" {...props}> directly \u2014 no styled() wrapper anywhere in the file."
+    },
+    {
+      "text": "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+      "passed": true,
+      "evidence": "Uses FlexBox with the `column` prop, not a display/flexDirection CSS declaration."
+    },
+    {
+      "text": "Expresses the 16px padding via a p prop rather than raw padding CSS",
+      "passed": true,
+      "evidence": "`p={16}` on the JSX element."
+    },
+    {
+      "text": "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+      "passed": true,
+      "evidence": "`mt={24}` on the JSX element."
+    },
+    {
+      "text": "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code",
+      "passed": false,
+      "evidence": "Uses `color=\"white\"` \u2014 this is a raw core palette token (fixed, non-adaptive), not a semantic ColorMode alias like `text`/`text-accent`. It avoids a hex literal but still fails the semantic-token bar; it will not adapt between light/dark mode."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 0,
+      "Write": 1,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 31,
+    "total_steps": 1,
+    "files_created": ["HeroContainer.tsx"],
+    "errors_encountered": 0,
+    "output_chars": 900,
+    "transcript_chars": 0
+  },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "color=\"white\" is a token but not a semantic/adaptive one \u2014 the skill's guidance mentions semantic tokens only in passing next to the wrapper-deletion rule; consider making that more prominent."
+    ],
+    "workarounds": []
+  }
+}

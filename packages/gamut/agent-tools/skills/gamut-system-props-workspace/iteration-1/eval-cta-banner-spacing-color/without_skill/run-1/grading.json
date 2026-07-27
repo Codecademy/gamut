@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "Does not wrap FlexBox/Box in styled() using a raw tagged-template literal or plain object",
+      "passed": true,
+      "evidence": "No styled() call \u2014 renders <FlexBox gap={12} bg=\"background-primary\" borderRadius=\"lg\" position=\"relative\" zIndex={2} {...props}> directly."
+    },
+    {
+      "text": "Expresses the 12px gap via a gap prop rather than raw CSS",
+      "passed": true,
+      "evidence": "`gap={12}`."
+    },
+    {
+      "text": "Uses the bg (or background) prop with a semantic/named token, not a raw hex literal",
+      "passed": true,
+      "evidence": "`bg=\"background-primary\"`, same semantic token as the with_skill run."
+    },
+    {
+      "text": "Expresses the 8px border radius via a borderRadius prop rather than raw CSS",
+      "passed": true,
+      "evidence": "`borderRadius=\"lg\"` \u2014 resolves to 8px via the borderRadii scale; arguably more idiomatic than a raw number since it uses the named scale key."
+    },
+    {
+      "text": "Expresses position/z-index via position and zIndex props rather than raw CSS",
+      "passed": true,
+      "evidence": "`position=\"relative\" zIndex={2}`."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 0,
+      "Write": 1,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 21,
+    "total_steps": 1,
+    "files_created": ["CTAContainer.tsx"],
+    "errors_encountered": 0,
+    "output_chars": 800,
+    "transcript_chars": 0
+  },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [],
+    "workarounds": []
+  }
+}

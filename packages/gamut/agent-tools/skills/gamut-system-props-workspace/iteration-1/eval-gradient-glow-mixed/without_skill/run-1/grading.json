@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "text": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+      "passed": true,
+      "evidence": "No styled() wrapper is used at all \u2014 condition doesn't trigger, graded as satisfied by default."
+    },
+    {
+      "text": "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "`p={24}` directly on <Box>."
+    },
+    {
+      "text": "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "`display=\"flex\" alignItems=\"center\" justifyContent=\"center\"` directly on <Box>."
+    },
+    {
+      "text": "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent",
+      "passed": true,
+      "evidence": "`radial-gradient(circle at center, #3A10E5 0%, rgba(58,16,229,0.6) 40%, rgba(58,16,229,0.15) 70%, transparent 100%)` \u2014 correct 4-stop radial gradient fading to transparent."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 0,
+      "Write": 1,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 16,
+    "total_steps": 1,
+    "files_created": ["GradientGlow.tsx"],
+    "errors_encountered": 0,
+    "output_chars": 750,
+    "transcript_chars": 0
+  },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/...",
+        "reason": "This run passes trivially by not using styled() at all \u2014 and this is actually the strictly better answer (zero wrapper vs. an unnecessary styled()+css() wrapper in the with_skill run), which the current assertion set doesn't reward. A future iteration should add an explicit 'no styled() wrapper used at all' bonus check for this eval, now that the skill correctly documents that `background` accepts gradients as a plain prop."
+      }
+    ],
+    "overall": "Both configurations pass all 4 assertions for this eval; assertions as originally written don't fully capture the qualitative difference uncovered during grading (see with_skill's needs_review note)."
+  }
+}
