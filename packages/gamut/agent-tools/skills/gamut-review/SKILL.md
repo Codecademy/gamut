@@ -229,14 +229,14 @@ Confirm the matched name is actually the Gamut import in that file (not an unrel
 
 Read the properties inside the flagged block:
 
-- **Every property has a direct system-prop equivalent** (layout/flex/space/color/border/positioning/typography — see [`gamut-system-props`](../gamut-system-props/SKILL.md) prop groups) → ✗ error. Remediation: delete the `styled()` wrapper; pass the same values as props directly on the JSX element. Flag `display: 'flex'`/`display:flex` specifically — recommend `FlexBox` instead of `Box` + a `display` prop.
-- **Something in the block isn't expressible as a prop** (gradients, `background-clip`, a variant that should branch on a prop) → ⚠ warning. Remediation: keep `styled(ComponentName)`, but move the object into `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` instead of a raw literal — and pull the properties that _are_ expressible (padding, display, plain colors) back out to props rather than leaving them in the escape hatch just because one sibling property forced it.
+- **Every property has a direct system-prop equivalent** (layout/flex/space/color/border/positioning/typography — see [`gamut-system-props`](../gamut-system-props/SKILL.md) prop groups) → ✗ error. Remediation: delete the `styled()` wrapper; pass the same values as props directly on the JSX element. Flag `display: 'flex'`/`display:flex` specifically — recommend `FlexBox` instead of `Box` + a `display` prop. Note that `background` (unlike `bg`) has no token scale and takes any CSS value as-is — a gradient string is already valid as a plain `background` prop and does **not** by itself justify a `styled()` wrapper.
+- **Something in the block isn't expressible as a prop** (`background-clip`, `background-blend-mode`, a variant that should branch on a prop, pseudo-selectors) → ⚠ warning. Remediation: keep `styled(ComponentName)`, but move the object into `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` instead of a raw literal — and pull the properties that _are_ expressible (padding, display, plain colors, gradients via `background`) back out to props rather than leaving them in the escape hatch just because one sibling property forced it.
 
 Report as `file:line  styled(ComponentName)` with the classification and the specific properties found, e.g.:
 
 ```
 src/HeroSection.tsx:14  styled(Box)`...` — display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props (color: use a semantic token)
-src/GradientGlow.tsx:8  styled(Box)`...` — background (multi-stop gradient) + padding → wrap in css(), move padding to a prop
+src/ColumnTitle.tsx:8   styled(Box)`...` — background-clip: text + padding → wrap in css(), move padding to a prop
 ```
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md#dont-wrap-a-gamut-component-in-styled-to-hand-write-css) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
@@ -489,7 +489,7 @@ styled(GamutComponent) bypassing system props            [→ gamut-system-props
   ✗  styled(Box) raw CSS   1 occurrence — every property has a prop equivalent
        src/HeroSection.tsx:14   display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props
   ⚠  styled(Box) raw CSS   1 occurrence — partially expressible, needs css() not a raw literal
-       src/GradientGlow.tsx:8   background (multi-stop gradient) + padding → wrap in css(), move padding to a prop
+       src/ColumnTitle.tsx:8   background-clip: text + padding → wrap in css(), move padding to a prop
   (or: ✓  none found)
 
 Hardcoded colors                                                         [→ gamut-color-mode]
