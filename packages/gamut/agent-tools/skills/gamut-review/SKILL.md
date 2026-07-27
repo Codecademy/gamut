@@ -1,6 +1,6 @@
 ---
 name: gamut-review
-description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, hardcoded colors, and test setup, with pointers to remediation skills.
+description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, styled() wrapping that bypasses system props, hardcoded colors, bespoke component duplication, and test setup, with pointers to remediation skills.
 ---
 
 # Gamut Review
@@ -9,9 +9,9 @@ Audit existing code at the path the user provides (default: current working dire
 
 When `DESIGN.md` is present at the audit root, use it as the authoritative reference for product design intent, token names, and component patterns. It is copied from `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` in `@codecademy/gamut` agent-tools (via `gamut plugin install --theme <name>`). When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
 
-Run Check 0 first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
+Run Check 0 first, then Checks 1–6, then print a single consolidated report using the format at the end of this file.
 
-Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md) · [`gamut-z-index`](../gamut-z-index/SKILL.md)
+Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md) · [`gamut-z-index`](../gamut-z-index/SKILL.md) · [`gamut-component-first`](../gamut-component-first/SKILL.md)
 
 ---
 
@@ -197,6 +197,52 @@ Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`ga
 
 ---
 
+## Check 3d — `styled(GamutComponent)` bypassing system props
+
+Wrapping an already-Gamut component in `styled()` and writing raw CSS (a tagged template or plain object, not `css()`/`variant()`/`states()`) is the same bypass as `className`/inline `style` on a Gamut component wearing a different hat — none of it gets ColorMode token resolution, responsive-prop scaling, or the variance pipeline, and it duplicates an API the wrapped component already exposes as props.
+
+**Step 1 — scope to files that already import from `@codecademy/gamut`**
+
+Same technique as Check 3c Step 2 (enumerating every component name by hand is brittle and misses new additions). Find files containing:
+
+```
+from '@codecademy/gamut'
+```
+
+**Step 2 — grep those files for `styled(PascalCaseName)` not wrapped in `css()`/`variant()`/`states()`**
+
+Two patterns, both violations:
+
+```
+styled\([A-Z][A-Za-z]+\)`
+```
+
+```
+styled\([A-Z][A-Za-z]+\)\(\s*\{
+```
+
+The first catches the tagged-template form (`` styled(Box)`display: flex;` ``); the second catches the plain-object function-call form (`styled(Box)({ display: 'flex' })`). `styled(Box)(css({...}))`, `styled(Box)(variant({...}))`, and `styled(Box)(states({...}))` do **not** match either pattern — the character right after the opening `(` is a letter, not a backtick or `{`. That's the compliant form; don't flag it.
+
+Confirm the matched name is actually the Gamut import in that file (not an unrelated same-named local component) before reporting.
+
+**Step 3 — classify each match**
+
+Read the properties inside the flagged block:
+
+- **Every property has a direct system-prop equivalent** (layout/flex/space/color/border/positioning/typography — see [`gamut-system-props`](../gamut-system-props/SKILL.md) prop groups) → ✗ error. Remediation: delete the `styled()` wrapper; pass the same values as props directly on the JSX element. Flag `display: 'flex'`/`display:flex` specifically — recommend `FlexBox` instead of `Box` + a `display` prop.
+- **Something in the block isn't expressible as a prop** (gradients, `background-clip`, a variant that should branch on a prop) → ⚠ warning. Remediation: keep `styled(ComponentName)`, but move the object into `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` instead of a raw literal — and pull the properties that _are_ expressible (padding, display, plain colors) back out to props rather than leaving them in the escape hatch just because one sibling property forced it.
+
+Report as `file:line  styled(ComponentName)` with the classification and the specific properties found, e.g.:
+
+```
+src/HeroSection.tsx:14  styled(Box)`...` — display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props (color: use a semantic token)
+src/GradientGlow.tsx:8  styled(Box)`...` — background (multi-stop gradient) + padding → wrap in css(), move padding to a prop
+```
+
+Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md#dont-wrap-a-gamut-component-in-styled-to-hand-write-css) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
+
+---
+
 ## Check 4 — Hardcoded colors (semantic-first)
 
 Rule: Inline hex literals in application UI code are violations. Remediation is not “replace hex with `navy-800`” — prefer semantic ColorMode tokens (`text`, `background`, `primary`, …) so light/dark and theme switches stay correct. Reserve raw palette tokens for colors that must stay fixed and for `bg` on `<Background>` from `@codecademy/gamut-styles` (section surfaces with content).
@@ -352,6 +398,46 @@ Skill reference for remediation: [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ---
 
+## Check 6 — Bespoke component duplication
+
+Unlike Checks 1–5, this check is heuristic, not deterministic — every match needs a human glance before acting. Report all matches as ⚠ warning (never ✗ error), and say so explicitly in the finding.
+
+The goal: find custom-built UI that duplicates something `@codecademy/gamut` already provides — a hand-rolled modal, dropdown, tooltip, or focus trap living next to the library that already solves it. See [`gamut-component-first`](../gamut-component-first/SKILL.md) for the full decision table and the "signals" list this check is built from.
+
+**Step 1 — Suspicious ARIA roles without a matching Gamut import**
+
+Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for hand-set roles:
+
+```
+role=["']?(dialog|menu|tooltip|listbox|alert)["']?
+```
+
+For each match, check whether the same file imports the corresponding component from `@codecademy/gamut` (`Modal`/`Dialog` for `dialog`, `Menu` for `menu`, `ToolTip`/`PreviewTip`/`InfoTip`/`Tip` for `tooltip`, `SelectDropdown` for `listbox`, `Alert` for `alert`). If the import is absent, flag it.
+
+**Step 2 — Component files named after a Gamut component that don't import it**
+
+Look for source files whose filename (not import path) matches a known Gamut component name — `Modal`, `Dialog`, `Dropdown`, `Tooltip`, `Popover`, `Menu`, `Toast`, `Accordion`, `Tabs`, `Pagination`, `Avatar`, `Badge`, `Tag` — and check whether that file imports the matching name from `@codecademy/gamut`. A same-named local file that does _not_ import from the library is a strong signal of a parallel implementation.
+
+**Step 3 — Hand-rolled dismiss/focus-trap logic**
+
+Grep for manual Escape-key or outside-click dismiss handling that isn't going through Gamut's `Overlay`/`FocusTrap`/`PopoverContainer`:
+
+```
+(key === ['"]Escape['"]|addEventListener\(['"]keydown)
+```
+
+in files that don't import `Overlay`, `FocusTrap`, or `PopoverContainer` from `@codecademy/gamut`. Same idea for manual outside-click listeners (`addEventListener('click'` at the document/window level alongside a "contains" check).
+
+**Step 4 — SCSS/CSS module files named after a Gamut component**
+
+Cross-reference with Check 3b's SCSS import list: a stylesheet named `Modal.scss`, `Dropdown.module.css`, `Tooltip.scss`, etc. is worth a second look even if Check 3b already flagged the import generically — the filename is the signal that this isn't just "some CSS," it's a parallel version of a specific Gamut component.
+
+**Reporting:** for each match, name the likely Gamut component from the [decision table](../gamut-component-first/SKILL.md#decision-table-common-needs) and note this needs manual confirmation — a real product-specific one-off will look identical to a grep tool.
+
+Skill reference for remediation: [`gamut-component-first`](../gamut-component-first/SKILL.md)
+
+---
+
 ## Output format
 
 ```
@@ -399,6 +485,13 @@ Nested selectors                                    [→ gamut-system-props] [�
        src/components/Layout/Layout.tsx:12   ${Box} { align-self: start; }
   (or: ✓  none found)
 
+styled(GamutComponent) bypassing system props            [→ gamut-system-props] [→ gamut-style-utilities]
+  ✗  styled(Box) raw CSS   1 occurrence — every property has a prop equivalent
+       src/HeroSection.tsx:14   display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props
+  ⚠  styled(Box) raw CSS   1 occurrence — partially expressible, needs css() not a raw literal
+       src/GradientGlow.tsx:8   background (multi-stop gradient) + padding → wrap in css(), move padding to a prop
+  (or: ✓  none found)
+
 Hardcoded colors                                                         [→ gamut-color-mode]
   ✗  src/Card.tsx:22   '#10162F'  →  semantic: text | palette: navy-800 | note: Core light body copy
   ⚠  src/Hero.tsx:14   '#1557FF'  →  semantic: primary (if link/CTA) | palette: blue-500 | note: no exact semantic; confirm theme
@@ -412,6 +505,11 @@ Test setup                                                               [→ ga
        src/components/Bar/__tests__/Bar.test.tsx:5
   ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
        src/components/Baz/__tests__/Baz.test.tsx:2
+
+Bespoke component duplication (heuristic — confirm manually)              [→ gamut-component-first]
+  ⚠  src/components/ConfirmDialog/ConfirmDialog.tsx:9   role="dialog" with no Modal/Dialog import — likely reinventing gamut-modal
+  ⚠  src/components/Dropdown/Dropdown.tsx                filename matches a Gamut component; no @codecademy/gamut import found — compare against SelectDropdown
+  (or: ✓  none found)
 
 ══════════════════════════════════════════════════
 <N> error(s), <N> warning(s) found.   (or "All checks passed." if none)

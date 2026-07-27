@@ -15,6 +15,8 @@ Use `css()`, `variant()`, and `states()` from `@codecademy/gamut-styles` for typ
 
 For layout-heavy styled components, prefer composing `system.*` via `variance.compose()` (see `gamut-system-props`) instead of re-stating every longhand in `css()`.
 
+**Wrapping an existing Gamut component** (`styled(Box)`, `styled(Text)`, …) in a raw template literal or plain object instead of `css()`/`variant()`/`states()` is a common bypass — before reaching for any of the APIs below on an already-Gamut component, read [`gamut-system-props`](../gamut-system-props/SKILL.md#dont-wrap-a-gamut-component-in-styled-to-hand-write-css) first. Most of the time the fix is deleting the `styled()` wrapper entirely, not picking a different one of these three functions.
+
 ## `css()` — static style objects
 
 ```tsx

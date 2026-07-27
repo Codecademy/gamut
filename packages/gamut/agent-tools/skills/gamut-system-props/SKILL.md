@@ -178,6 +178,29 @@ Slots map in order to: base, `xs`, `sm`, `md`, `lg`, `xl`, then `c_xs` … `c_xl
 
 Full typings and behavior: [Responsive properties (Storybook)](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page).
 
+## Don't wrap a Gamut component in `styled()` to hand-write CSS
+
+`Box`, `FlexBox`, `GridBox`, `Text`, and the rest of `@codecademy/gamut` already compose the prop groups above. Writing ` styled(Box)`` display: flex; padding: 16px; `` (a tagged template) or  `styled(Box)({ display: 'flex', padding: 16 })`(a plain object, not`css()`) throws that API away — the wrapper's raw CSS gets none of the token scaling, responsive-object/array syntax, or ColorMode resolution the same properties would get as props, and it duplicates an API the component already exposes directly. This is the same bypass as `className`or an inline`style` prop on a Gamut component (see [`gamut-review`](../gamut-review/SKILL.md) Check 3b) — it's just wearing a `styled()` costume.
+
+```tsx
+// wrong — Box already has all of these as props
+const HeroContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin-top: 24px;
+  color: white;
+`;
+
+// correct — delete the wrapper, pass props directly
+// (display: flex → use FlexBox, not Box + display="flex")
+<FlexBox flexDirection="column" p={16} mt={24} color="text">
+```
+
+Check every property in the block against the prop groups above (`system.layout`, `system.space`, `system.color`, `system.flex`, `system.positioning`, …) before reaching for `styled()` at all. If everything in the block has a direct prop equivalent, there should be no `styled()` wrapper — the values belong inline on the JSX element, and a semantic ColorMode token (not `white`/a hex literal) where the property is a color.
+
+**If something genuinely isn't expressible as a prop** (a multi-stop gradient, `background-clip: text`, a variant that should branch on a prop rather than live as a boolean pile) — keep wrapping the component, but wrap the style value in `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` instead of a raw template literal or plain object. That keeps every _other_ property in the same block token-typed and theme-aware, and is the only form of `styled(GamutComponent)` this rule doesn't flag. See [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) for `css()`/`variant()`/`states()`. Don't let one non-expressible property (a gradient, a clip) drag otherwise-plain properties (`padding`, `display`) into the same raw-CSS escape hatch — move those back out to props.
+
 ## Using `css()` for styled definitions
 
 For static styles in styled components, use `css()` from `@codecademy/gamut-styles` (same implementation as `system.css` on the `system` namespace).
