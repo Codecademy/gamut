@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "confirm-delete-overlay",
+  "prompt": "I'm building a delete button for a list item in this gamut monorepo (@codecademy/gamut). When clicked, I need to show a confirmation prompt asking 'Are you sure you want to delete this item?' with Cancel and Delete buttons, dismissible via Escape or clicking outside. Build this for me as a component called ConfirmDeletePrompt. Save it to ./outputs/ConfirmDeletePrompt.tsx.",
+  "assertions": [
+    "Uses Gamut's Dialog or Modal component (imported from @codecademy/gamut) rather than a hand-rolled overlay",
+    "Does not manually implement Escape-key or outside-click dismiss logic (e.g. no addEventListener('keydown'...) or document-level click listeners) -- that responsibility belongs to Overlay/FocusTrap inside Dialog/Modal",
+    "Does not use a hand-rolled position: fixed/absolute overlay shell with manual show/hide state for the backdrop",
+    "Confirm/Cancel actions are wired through the component's real props (e.g. Dialog's confirmCta/cancelCta) rather than custom buttons floating in a hand-built shell"
+  ]
+}
