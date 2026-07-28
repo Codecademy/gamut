@@ -246,12 +246,27 @@ css\(\s*\{[^}]*\b(padding|margin|background-color|border-radius|font-size|font-w
 
 Each match is **✗ error**, not a style nit — the value silently doesn't get the intended token/rem conversion regardless of what number is written, which is a functional bug, not a preference. This check applies independently of Step 3's classification — a block can pass Step 3 (genuinely needs `css()` for one property) and still fail Step 4 (a _different_ property inside that same block used the wrong key name).
 
+**Step 5 — plain `<Box display="flex">`/`<Box display="grid">` (heuristic, not a bypass)**
+
+Unlike Steps 1–4, this isn't a system-props bypass — `display` is a real system prop and the code works correctly. It's a semantic-consistency nit: `FlexBox`/`GridBox` already default to `display: flex`/`display: grid`, so reaching for `Box` + a `display` prop says the same thing more verbosely and loses the more legible component name at the call site.
+
+Grep files already confirmed to import `Box` from `@codecademy/gamut` (Step 1) for:
+
+```
+<Box\b[^>]*\bdisplay=\{?["']flex["']\}?
+<Box\b[^>]*\bdisplay=\{?["']grid["']\}?
+```
+
+Always **⚠ warning**, never ✗ — don't flag `display="inline-flex"`/`"inline-grid"`, or a conditionally-computed `display` (e.g. `display={isOpen ? 'flex' : 'none'}`); both are legitimate reasons to stay on `Box`.
+
 Report as `file:line  styled(ComponentName)` with the classification and the specific properties found, e.g.:
 
 ```
 src/HeroSection.tsx:14  styled(Box)`...` — display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props (color: use a semantic token)
 src/ColumnTitle.tsx:8   styled(Box)`...` — background-clip: text + padding → wrap in css(), move padding to a prop
 src/GlowShell.tsx:15    css({ padding: 24, ... }) — 'padding' is not a recognized alias; use 'p' or the value bypasses the spacing scale entirely (renders as an unscaled literal px value), even though the block correctly stays in css() for the gradient
+src/Panel.tsx:9         <Box display="flex" ...> — same defaults as FlexBox, more legible as FlexBox
+src/Grid.tsx:14         <Box display="grid" ...> — same defaults as GridBox, more legible as GridBox
 ```
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md#dont-wrap-a-gamut-component-in-styled-to-hand-write-css) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
@@ -507,6 +522,9 @@ styled(GamutComponent) bypassing system props            [→ gamut-system-props
        src/HeroSection.tsx:14   display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props
   ⚠  styled(Box) raw CSS   1 occurrence — partially expressible, needs css() not a raw literal
        src/ColumnTitle.tsx:8   background-clip: text + padding → wrap in css(), move padding to a prop
+  ⚠  Box used where FlexBox/GridBox fits   2 occurrences — same defaults, more legible name
+       src/Panel.tsx:9    <Box display="flex" ...>   → FlexBox
+       src/Grid.tsx:14    <Box display="grid" ...>   → GridBox
   (or: ✓  none found)
 
 Hardcoded colors                                                         [→ gamut-color-mode]
