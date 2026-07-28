@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "audit-hero-section",
+  "prompt": "Can you review this file for Gamut design system compliance issues? /Users/kenny.lin/Documents/eng/codecademy-eng/gamut/packages/gamut/agent-tools/skills/gamut-review-workspace/iteration-1/eval-audit-hero-section/fixture/HeroSection.tsx -- write your findings to ./outputs/report.md",
+  "assertions": [
+    "Flags the './HeroSection.scss' import as an SCSS/CSS module violation",
+    "Flags className=\"hero-wrapper\" on the Box component as a violation",
+    "Flags the inline style={{ color: '#10162F' }} on Box as a violation",
+    "For the hex #10162F, recommends the semantic token 'text' (not just the palette name navy-800) as the primary remediation"
+  ]
+}

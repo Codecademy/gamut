@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags the './HeroSection.scss' import as an SCSS/CSS module violation",
+      "passed": true,
+      "evidence": "\"SCSS/CSS imports 1 file\" with the exact file path and remediation note, correctly using the Check 3b Step 1 format."
+    },
+    {
+      "text": "Flags className=\"hero-wrapper\" on the Box component as a violation",
+      "passed": true,
+      "evidence": "\"className on Gamut components 1 occurrence -- HeroSection.tsx:6 <Box className=\\\"hero-wrapper\\\" ...>\", correctly noted as not an integration seam."
+    },
+    {
+      "text": "Flags the inline style={{ color: '#10162F' }} on Box as a violation",
+      "passed": true,
+      "evidence": "\"inline style on Gamut components 1 occurrence\" with the exact line and value, correctly checked for an eslint-disable comment (found none)."
+    },
+    {
+      "text": "For the hex #10162F, recommends the semantic token 'text' (not just the palette name navy-800) as the primary remediation",
+      "passed": true,
+      "evidence": "\"semantic: text | palette: navy / navy-800\" -- semantic listed first per Check 4's semantic-first rule."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Report includes an honest, self-aware note that the bare <h1> (bypassing Gamut's Text/typography component) was NOT flagged as a violation because no existing gamut-review check targets bare heading tags outside nested-selector context -- a real, correctly-identified scope gap. The without_skill run for this same eval independently found and flagged this exact gap as a real issue -- worth considering as a future Check addition."
+    ],
+    "workarounds": []
+  }
+}

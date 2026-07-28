@@ -232,11 +232,26 @@ Read the properties inside the flagged block:
 - **Every property has a direct system-prop equivalent** (layout/flex/space/color/border/positioning/typography — see [`gamut-system-props`](../gamut-system-props/SKILL.md) prop groups) → ✗ error. Remediation: delete the `styled()` wrapper; pass the same values as props directly on the JSX element. Flag `display: 'flex'`/`display:flex` specifically — recommend `FlexBox` instead of `Box` + a `display` prop. Note that `background` (unlike `bg`) has no token scale and takes any CSS value as-is — a gradient string is already valid as a plain `background` prop and does **not** by itself justify a `styled()` wrapper.
 - **Something in the block isn't expressible as a prop** (`background-clip`, `background-blend-mode`, a variant that should branch on a prop, pseudo-selectors) → ⚠ warning. Remediation: keep `styled(ComponentName)`, but move the object into `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` instead of a raw literal — and pull the properties that _are_ expressible (padding, display, plain colors, gradients via `background`) back out to props rather than leaving them in the escape hatch just because one sibling property forced it.
 
+**Step 4 — raw CSS property names inside `css()` silently skip the scale lookup**
+
+Being wrapped in `css()` (the compliant form from Step 2) isn't enough on its own to guarantee token-scale treatment. `css()`'s scale-aware behavior only applies to the _alias_ keys variance defines (`p`, `m`, `bg`, `borderRadius`, `fontSize`, `fontWeight`, `lineHeight`, …) — not the literal CSS property name. `padding: 24` inside a `css({...})` call is **not** the same as `p: 24`: variance's static-CSS extraction (`getStaticCss` in `packages/variance/src/core.ts`) passes any key it doesn't recognize as an alias straight through as literal, unscaled CSS. A block that _looks_ correct because it's wrapped in `css()` can still bypass the spacing/typography scale entirely if the property inside is spelled out as the raw CSS name instead of its alias.
+
+Grep for raw CSS property names as keys inside a `css({...})` call, where a shorter alias exists:
+
+```
+css\(\s*\{[^}]*\b(padding|margin|background-color|border-radius|font-size|font-weight|line-height)\s*:
+```
+
+(non-exhaustive — the pattern is: any CSS property name used as a key where its alias — `p`/`m`/`bg`/`borderRadius`/`fontSize`/`fontWeight`/`lineHeight` — belongs instead.)
+
+Each match is **✗ error**, not a style nit — the value silently doesn't get the intended token/rem conversion regardless of what number is written, which is a functional bug, not a preference. This check applies independently of Step 3's classification — a block can pass Step 3 (genuinely needs `css()` for one property) and still fail Step 4 (a _different_ property inside that same block used the wrong key name).
+
 Report as `file:line  styled(ComponentName)` with the classification and the specific properties found, e.g.:
 
 ```
 src/HeroSection.tsx:14  styled(Box)`...` — display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props (color: use a semantic token)
 src/ColumnTitle.tsx:8   styled(Box)`...` — background-clip: text + padding → wrap in css(), move padding to a prop
+src/GlowShell.tsx:15    css({ padding: 24, ... }) — 'padding' is not a recognized alias; use 'p' or the value bypasses the spacing scale entirely (renders as an unscaled literal px value), even though the block correctly stays in css() for the gradient
 ```
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md#dont-wrap-a-gamut-component-in-styled-to-hand-write-css) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
@@ -400,7 +415,7 @@ Skill reference for remediation: [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ## Check 6 — Bespoke component duplication
 
-Unlike Checks 1–5, this check is heuristic, not deterministic — every match needs a human glance before acting. Report all matches as ⚠ warning (never ✗ error), and say so explicitly in the finding.
+Unlike Checks 1–5, this check is heuristic, not deterministic — every match needs a human glance before acting. **Every Check 6 finding is reported with `⚠`. There is no `✗` option for this check** — if a match feels like a clear-cut violation, that feeling is exactly the failure mode this rule exists to catch (a confident-looking ARIA-role/hand-rolled-listener match is still just a pattern match, not a certainty).
 
 The goal: find custom-built UI that duplicates something `@codecademy/gamut` already provides — a hand-rolled modal, dropdown, tooltip, or focus trap living next to the library that already solves it. See [`gamut-component-first`](../gamut-component-first/SKILL.md) for the full decision table and the "signals" list this check is built from.
 
@@ -412,11 +427,11 @@ Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for hand-set roles:
 role=["']?(dialog|menu|tooltip|listbox|alert)["']?
 ```
 
-For each match, check whether the same file imports the corresponding component from `@codecademy/gamut` (`Modal`/`Dialog` for `dialog`, `Menu` for `menu`, `ToolTip`/`PreviewTip`/`InfoTip`/`Tip` for `tooltip`, `SelectDropdown` for `listbox`, `Alert` for `alert`). If the import is absent, flag it.
+For each match, check whether the same file imports the corresponding component from `@codecademy/gamut` (`Modal`/`Dialog` for `dialog`, `Menu` for `menu`, `ToolTip`/`PreviewTip`/`InfoTip`/`Tip` for `tooltip`, `SelectDropdown` for `listbox`, `Alert` for `alert`). If the import is absent, report as `⚠  <file>:<line>  role="..." with no matching Gamut import`.
 
 **Step 2 — Component files named after a Gamut component that don't import it**
 
-Look for source files whose filename (not import path) matches a known Gamut component name — `Modal`, `Dialog`, `Dropdown`, `Tooltip`, `Popover`, `Menu`, `Toast`, `Accordion`, `Tabs`, `Pagination`, `Avatar`, `Badge`, `Tag` — and check whether that file imports the matching name from `@codecademy/gamut`. A same-named local file that does _not_ import from the library is a strong signal of a parallel implementation.
+Look for source files whose filename (not import path) matches a known Gamut component name — `Modal`, `Dialog`, `Dropdown`, `Tooltip`, `Popover`, `Menu`, `Toast`, `Accordion`, `Tabs`, `Pagination`, `Avatar`, `Badge`, `Tag` — and check whether that file imports the matching name from `@codecademy/gamut`. A same-named local file that does _not_ import from the library is a strong signal of a parallel implementation. Report as `⚠  <file>  filename matches a Gamut component; no @codecademy/gamut import found`.
 
 **Step 3 — Hand-rolled dismiss/focus-trap logic**
 
@@ -426,13 +441,15 @@ Grep for manual Escape-key or outside-click dismiss handling that isn't going th
 (key === ['"]Escape['"]|addEventListener\(['"]keydown)
 ```
 
-in files that don't import `Overlay`, `FocusTrap`, or `PopoverContainer` from `@codecademy/gamut`. Same idea for manual outside-click listeners (`addEventListener('click'` at the document/window level alongside a "contains" check).
+in files that don't import `Overlay`, `FocusTrap`, or `PopoverContainer` from `@codecademy/gamut`. Same idea for manual outside-click listeners (`addEventListener('click'` at the document/window level alongside a "contains" check). Report as `⚠  <file>:<line>  hand-rolled dismiss logic, no FocusTrap/Overlay/PopoverContainer import`.
 
 **Step 4 — SCSS/CSS module files named after a Gamut component**
 
-Cross-reference with Check 3b's SCSS import list: a stylesheet named `Modal.scss`, `Dropdown.module.css`, `Tooltip.scss`, etc. is worth a second look even if Check 3b already flagged the import generically — the filename is the signal that this isn't just "some CSS," it's a parallel version of a specific Gamut component.
+Cross-reference with Check 3b's SCSS import list: a stylesheet named `Modal.scss`, `Dropdown.module.css`, `Tooltip.scss`, etc. is worth a second look even if Check 3b already flagged the import generically — the filename is the signal that this isn't just "some CSS," it's a parallel version of a specific Gamut component. Report as `⚠  <file>  stylesheet named after a Gamut component`.
 
 **Reporting:** for each match, name the likely Gamut component from the [decision table](../gamut-component-first/SKILL.md#decision-table-common-needs) and note this needs manual confirmation — a real product-specific one-off will look identical to a grep tool.
+
+**Before finalizing the report**, re-scan every line under this section specifically for a `✗` icon. If you find one, that's a mistake — change it to `⚠`. **When computing the final `<N> error(s), <N> warning(s)` tally, count every Check 6 match toward the warning total, never the error total, even if a `✗` slipped through above** — this is the one place a stray icon can't corrupt the report's headline numbers.
 
 Skill reference for remediation: [`gamut-component-first`](../gamut-component-first/SKILL.md)
 

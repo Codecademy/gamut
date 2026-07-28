@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags this component as duplicating an existing Gamut component (bespoke dialog) -- role=\"dialog\" is set by hand with no Modal/Dialog import",
+      "passed": true,
+      "evidence": "Finding #1, \"Reinvents an existing component instead of using Dialog/Modal (Critical)\", with a full working Dialog-based replacement code sample."
+    },
+    {
+      "text": "Flags the manual document.addEventListener('keydown', ...) Escape-key handling as hand-rolled dismiss logic that Overlay/FocusTrap already provides",
+      "passed": true,
+      "evidence": "Finding #7, \"Duplicated, less robust escape/outside-click handling\"."
+    },
+    {
+      "text": "Points remediation at gamut-modal and/or gamut-component-first",
+      "passed": true,
+      "evidence": "Cannot cite these skills by name (had no access to them), but the substantive remediation is identical: recommends Dialog directly with a working code sample -- the same component either skill would point to."
+    },
+    {
+      "text": "Treats this as a warning/heuristic finding needing manual confirmation, not an unconditional hard error -- since it's pattern-matching, not a certainty",
+      "passed": false,
+      "evidence": "Report presents every finding with a confident severity label (Critical/High/Medium/Low) and declarative language (\"This should be used instead of hand-rolled markup\") with no hedging that this is a heuristic judgment that could have false positives for a genuinely custom, product-specific widget. Never having been taught the heuristic-confidence distinction, it has no reason to hedge -- but the assertion is about the report's calibration, not the run's awareness of a specific rule, so this is graded as not meeting the bar either, for a different underlying reason than the with_skill run's failure."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Extraordinarily thorough -- 13 distinct findings vs. gamut-review's ~5, correctly citing the same real no-inline-style ESLint rule found in the other evals, and correctly citing the exact FocusTrap/index.tsx eslint-disable precedent. Took roughly 2x the tool calls and 9 minutes vs. with_skill's ~8 minutes for a comparable core finding, but produced meaningfully more comprehensive coverage (focus trap, z-index, ARIA completeness, button/typography component usage, overflow handling) than the current gamut-review skill's Check 6 scope."
+    ],
+    "workarounds": []
+  }
+}

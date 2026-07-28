@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Flags the './HeroSection.scss' import as an SCSS/CSS module violation",
+      "passed": true,
+      "evidence": "Finding #3, citing the real @codecademy/eslint-plugin-gamut no-css-standalone rule (error) by exact file/line -- more precise than gamut-review's own check, which doesn't know this ESLint rule exists."
+    },
+    {
+      "text": "Flags className=\"hero-wrapper\" on the Box component as a violation",
+      "passed": true,
+      "evidence": "Finding #5 explicitly names className and treats combining it with external SCSS as fighting the styling model."
+    },
+    {
+      "text": "Flags the inline style={{ color: '#10162F' }} on Box as a violation",
+      "passed": true,
+      "evidence": "Finding #1, citing the real no-inline-style ESLint rule (error) by exact source file."
+    },
+    {
+      "text": "For the hex #10162F, recommends the semantic token 'text' (not just the palette name navy-800) as the primary remediation",
+      "passed": true,
+      "evidence": "Finding #2: \"Should be <Box color=\\\"text\\\"> instead\", with correct dark-mode reasoning (text resolves to white in dark mode) as to why this matters."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "This run discovered two real, existing ESLint rules in @codecademy/eslint-plugin-gamut (no-inline-style, no-css-standalone) that gamut-review's Check 3b substantially duplicates -- neither the skill nor its author (me, in this session) knew this plugin existed. Verified real via direct file inspection (packages/eslint-plugin-gamut/src/no-inline-style.ts, no-css-standalone.ts both exist and are set to error in recommended.ts). This also explains a detail noticed much earlier in this same benchmarking session: packages/gamut/src/FocusTrap/index.tsx has a `// eslint-disable-next-line gamut/no-inline-style` comment, which is exactly this rule.",
+      "Also independently found and flagged the bare <h1> bypassing Gamut's Text/typography component -- a real issue outside any existing gamut-review check (the with_skill run for this same eval explicitly noted this same gap in its own report, correctly recognizing it as out of scope for the current skill)."
+    ],
+    "workarounds": []
+  }
+}
