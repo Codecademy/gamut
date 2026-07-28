@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "skill_name": "gamut-style-utilities",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-27T21:37:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 241.016,
+        "tokens": 50512,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses variant() with a variants map keyed by status, not manual branching",
+          "passed": true,
+          "evidence": "variant({ prop: 'status', base, defaultVariant: 'info', variants: { success, warning, info } })."
+        },
+        {
+          "text": "status prop type is derived from the variant definition via StyleProps",
+          "passed": true,
+          "evidence": "StyleProps<typeof statusBadgeVariants>."
+        },
+        {
+          "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+          "passed": true,
+          "evidence": "success uses background-success/feedback-success, warning uses background-warning/feedback-warning -- exactly the semantic tokens the fix pointed at. info correctly falls back to a raw pair (blue-0/blue-500) with an explicit comment explaining no semantic info token exists yet and that this one deliberately won't adapt to ColorMode -- this is the reasoned exception, not the default."
+        },
+        {
+          "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+          "passed": true,
+          "evidence": "styled.span, no wrapping."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 128.343,
+        "tokens": 38410,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+          "passed": true,
+          "evidence": "states({ selected, disabled })."
+        },
+        {
+          "text": "Does not hand-write a separate combined selected+disabled branch",
+          "passed": true,
+          "evidence": "Only selected/disabled blocks; both merge independently."
+        },
+        {
+          "text": "Props typed via StyleProps<typeof theStates>",
+          "passed": true,
+          "evidence": "ChipProps = StyleProps<typeof chipStates> & Omit<ButtonHTMLAttributes<...>, 'disabled'>."
+        },
+        {
+          "text": "Colors are semantic tokens, not raw hex",
+          "passed": true,
+          "evidence": "background, border, text, background-hover, primary, primary-hover, background-disabled, border-disabled, text-disabled -- all semantic."
+        }
+      ],
+      "notes": [
+        "chipBaseStyles uses borderRadius: 'max', which is NOT a valid borderRadii token -- the actual scale (packages/gamut-styles/src/variables/borderRadii.ts) is none/sm/md/lg/xl/full. This is a fabricated token and will not render the intended pill shape. Not caught by the pre-registered assertions for this eval (which focus on states()-vs-variant(), StyleProps, and color semantics, not border-radius validity), so it does not affect the numeric pass_rate here, but it's a real defect worth fixing and worth adding as a future assertion or a general 'verify token exists before using it' skill callout."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 104.106,
+        "tokens": 29785,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses useTheme() to read a real theme color token in JS",
+          "passed": true,
+          "evidence": "useTheme(), theme.colors[color]."
+        },
+        {
+          "text": "The token path read genuinely exists in the theme",
+          "passed": true,
+          "evidence": "Default color='primary', typed as the real Colors type."
+        },
+        {
+          "text": "Does not try to apply CSS-based styling for the stroke value",
+          "passed": true,
+          "evidence": "No css()/variant()/states(); plain SVG attributes."
+        },
+        {
+          "text": "Rest of the component still follows normal library styling conventions",
+          "passed": true,
+          "evidence": "Clean typed component, documented reasoning."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 200.968,
+        "tokens": 40007,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses variant() with a variants map keyed by status, not manual branching",
+          "passed": true,
+          "evidence": "variant({ prop: 'status', defaultVariant: 'info', base, variants: {...} })."
+        },
+        {
+          "text": "status prop type is derived from the variant definition via StyleProps",
+          "passed": true,
+          "evidence": "StyleProps<typeof statusVariants> & { status: StatusBadgeStatus }."
+        },
+        {
+          "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+          "passed": false,
+          "evidence": "Uses raw palette pairs for all three: green-100/green-900 (success), yellow-0/yellow-900 (warning), blue-100/blue-800 (info) -- despite real semantic background-success/feedback-success and background-warning/feedback-warning tokens existing for exactly this purpose. This is a reversal from iteration 1's without_skill run on this same eval, which did use the semantic tokens -- baseline behavior on this point is not consistent run-to-run."
+        },
+        {
+          "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+          "passed": true,
+          "evidence": "styled('span', styledOptions), no wrapping."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 229.51,
+        "tokens": 52191,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+          "passed": true,
+          "evidence": "states({ selected, disabled }) with a comment on declaration-order precedence."
+        },
+        {
+          "text": "Does not hand-write a separate combined selected+disabled branch",
+          "passed": true,
+          "evidence": "Only selected/disabled blocks, no combined branch."
+        },
+        {
+          "text": "Props typed via StyleProps<typeof theStates>",
+          "passed": false,
+          "evidence": "ChipProps is a hand-written interface ({ selected?: boolean; disabled?: boolean }), not derived from StyleProps<typeof chipStates> -- disconnected from the states() definition, unlike iteration 1's without_skill run for this same eval (which did use StyleProps). Inconsistent baseline behavior on this point too."
+        },
+        {
+          "text": "Colors are semantic tokens, not raw hex",
+          "passed": true,
+          "evidence": "background-current, border-secondary, text, background-hover, background-selected, primary, background-disabled, border-disabled, text-disabled -- all semantic. Also correctly uses borderRadius: 'xl', a real valid token (unlike the with_skill run's fabricated 'max')."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 130.187,
+        "tokens": 33960,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses useTheme() to read a real theme color token in JS",
+          "passed": true,
+          "evidence": "useTheme(), theme.colors[color]."
+        },
+        {
+          "text": "The token path read genuinely exists in the theme",
+          "passed": true,
+          "evidence": "Default color='primary', typed via the real Colors type."
+        },
+        {
+          "text": "Does not try to apply CSS-based styling for the stroke value",
+          "passed": true,
+          "evidence": "No css()/variant()/states(); plain SVG attributes, forwards SVGProps for consumer overrides."
+        },
+        {
+          "text": "Rest of the component still follows normal library styling conventions",
+          "passed": true,
+          "evidence": "Cites real precedent (Card/styles.tsx theme.colors usage), stroke-width inset handling is a nice touch."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 157.8217,
+        "stddev": 73.0605,
+        "min": 104.106,
+        "max": 241.016
+      },
+      "tokens": {
+        "mean": 39569.0,
+        "stddev": 10411.9927,
+        "min": 29785,
+        "max": 50512
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 186.8883,
+        "stddev": 51.1365,
+        "min": 130.187,
+        "max": 229.51
+      },
+      "tokens": {
+        "mean": 42052.6667,
+        "stddev": 9286.0597,
+        "min": 33960,
+        "max": 52191
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.17",
+      "time_seconds": "-29.1",
+      "tokens": "-2484"
+    }
+  },
+  "notes": [
+    "with_skill hit a clean 1.0 across all 3 evals (up from 0.917 in iteration 1), stddev 0 -- the color-token fix closed the badge-variant-status gap: with_skill now uses background-success/feedback-success and background-warning/feedback-warning explicitly, citing the skill's new callout by name in its own transcript.",
+    "without_skill's badge-variant-status score flipped the other way this iteration (0.75, using raw green-100/green-900, yellow-0/yellow-900, blue-100/blue-800 pairs for all three statuses) -- iteration 1's without_skill run on this same eval had used the correct semantic tokens. Baseline behavior on this specific point is not reliable run-to-run; with_skill has now gotten it right in both iterations.",
+    "without_skill also lost a point on chip-independent-states this iteration for a different reason: it typed ChipProps as a hand-written interface instead of StyleProps<typeof chipStates>, disconnecting the prop types from the states() definition. Iteration 1's without_skill run for this same eval had used StyleProps correctly -- another instance of baseline inconsistency, this time unrelated to color tokens.",
+    "Important qualitative catch that the numeric pass_rate does NOT capture: with_skill's chip-independent-states output uses borderRadius: 'max', which is not a valid token (the real scale is none/sm/md/lg/xl/full, confirmed in borderRadii.ts) -- a fabricated value that will not render the intended pill shape. without_skill's equivalent correctly used borderRadius: 'xl'. This wasn't part of the pre-registered assertions for this eval (which focus on states()-vs-variant(), StyleProps, and color semantics) so it doesn't move the pass_rate, but it's a real defect and a reminder that a high pass_rate on pre-registered checks doesn't mean the output is bug-free -- read the actual files, not just the assertion grid.",
+    "sparkline-theme-color tied at 1.0/1.0 again in both iterations -- useTheme() is reliably discovered/applied correctly by both configurations for this specific escape-hatch case.",
+    "Methodology note: this iteration's agents were explicitly instructed not to read prior-iteration outputs in the workspace directory (to close the leakage gap flagged in the gamut-system-props benchmark). No agent this round reported consulting prior benchmark outputs.",
+    "Net trend: with_skill is now ahead on pass_rate (+0.17) while also being cheaper and faster (-2,484 tokens, -29.1s) -- consistent with the pattern seen after the equivalent fix in gamut-system-props, where correcting a misleading example closed the quality gap without costing efficiency."
+  ]
+}

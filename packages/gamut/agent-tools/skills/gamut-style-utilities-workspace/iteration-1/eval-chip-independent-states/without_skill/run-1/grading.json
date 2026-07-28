@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+      "passed": true,
+      "evidence": "system.states({ selected, disabled }) with a comment explicitly contrasting it against variant()."
+    },
+    {
+      "text": "Does not hand-write a separate combined selected+disabled branch",
+      "passed": true,
+      "evidence": "Only selected/disabled blocks; both apply simultaneously, no combined branch."
+    },
+    {
+      "text": "Props typed via StyleProps<typeof theStates>",
+      "passed": true,
+      "evidence": "ChipStateProps = StyleProps<typeof chipStates>, composed into ChipProps."
+    },
+    {
+      "text": "Colors are semantic tokens, not raw hex",
+      "passed": true,
+      "evidence": "background, background-hover, background-selected, primary, border-tertiary, text — all semantic tokens."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

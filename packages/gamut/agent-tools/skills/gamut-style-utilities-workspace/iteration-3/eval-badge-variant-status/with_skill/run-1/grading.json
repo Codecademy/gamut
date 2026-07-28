@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Uses variant() with a variants map keyed by status, not manual branching",
+      "passed": true,
+      "evidence": "variant({ prop: 'status', base, variants: {...} })."
+    },
+    {
+      "text": "status prop type is derived from the variant definition via StyleProps",
+      "passed": true,
+      "evidence": "StyleProps<typeof statusBadgeVariants>."
+    },
+    {
+      "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+      "passed": true,
+      "evidence": "background-success/feedback-success, background-warning/feedback-warning used correctly; info falls back to verified-real blue-0/blue-800 with an explicit, well-reasoned comment citing the same gap Alert's general variant hits, and explicitly notes this is NOT a pattern to copy for success/warning. Third consecutive iteration with_skill gets this right."
+    },
+    {
+      "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+      "passed": true,
+      "evidence": "styled.span, no wrapping."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "This run's own transcript reports it initially wrote a fabricated token (blue-900, which does not exist) and caught/fixed it before finishing -- direct evidence that the new 'verify a scale token exists' callout added to gamut-style-utilities is generalizing beyond the specific borderRadius example it was written around."
+    ],
+    "workarounds": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+      "passed": true,
+      "evidence": "states({ selected, disabled }) with a comment on declaration-order precedence."
+    },
+    {
+      "text": "Does not hand-write a separate combined selected+disabled branch",
+      "passed": true,
+      "evidence": "Only selected/disabled blocks, no combined branch."
+    },
+    {
+      "text": "Props typed via StyleProps<typeof theStates>",
+      "passed": false,
+      "evidence": "ChipProps is a hand-written interface ({ selected?: boolean; disabled?: boolean }), not derived from StyleProps<typeof chipStates> -- disconnected from the states() definition, unlike iteration 1's without_skill run for this same eval (which did use StyleProps). Inconsistent baseline behavior on this point too."
+    },
+    {
+      "text": "Colors are semantic tokens, not raw hex",
+      "passed": true,
+      "evidence": "background-current, border-secondary, text, background-hover, background-selected, primary, background-disabled, border-disabled, text-disabled -- all semantic. Also correctly uses borderRadius: 'xl', a real valid token (unlike the with_skill run's fabricated 'max')."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 }
+}

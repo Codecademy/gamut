@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses variant() with a variants map keyed by status, not manual branching",
+      "passed": true,
+      "evidence": "variant({ prop: 'status', base: {...}, variants: { success, warning, info } }) — correct."
+    },
+    {
+      "text": "status prop type is derived from the variant definition via StyleProps",
+      "passed": true,
+      "evidence": "StyleProps<typeof statusBadgeVariants> used."
+    },
+    {
+      "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+      "passed": true,
+      "evidence": "Uses background-success/feedback-success and background-warning/feedback-warning exactly, with an explanatory comment noting this keeps the badge in sync with dark/light color modes. info falls back to blue-100/blue-500 with a comment explaining no dedicated info token exists — same reasonable exception as the with_skill run."
+    },
+    {
+      "text": "Does not wrap an existing Gamut component in styled() — this is a new primitive",
+      "passed": true,
+      "evidence": "Built as styled.span, not wrapping an existing component."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

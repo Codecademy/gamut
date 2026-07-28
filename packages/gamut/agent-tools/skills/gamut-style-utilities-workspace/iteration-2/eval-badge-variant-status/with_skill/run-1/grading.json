@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses variant() with a variants map keyed by status, not manual branching",
+      "passed": true,
+      "evidence": "variant({ prop: 'status', base, defaultVariant: 'info', variants: { success, warning, info } })."
+    },
+    {
+      "text": "status prop type is derived from the variant definition via StyleProps",
+      "passed": true,
+      "evidence": "StyleProps<typeof statusBadgeVariants>."
+    },
+    {
+      "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+      "passed": true,
+      "evidence": "success uses background-success/feedback-success, warning uses background-warning/feedback-warning -- exactly the semantic tokens the fix pointed at. info correctly falls back to a raw pair (blue-0/blue-500) with an explicit comment explaining no semantic info token exists yet and that this one deliberately won't adapt to ColorMode -- this is the reasoned exception, not the default."
+    },
+    {
+      "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+      "passed": true,
+      "evidence": "styled.span, no wrapping."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

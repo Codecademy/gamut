@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses useTheme() to read a real theme color token in JS",
+      "passed": true,
+      "evidence": "useTheme(), theme.colors[color]."
+    },
+    {
+      "text": "The token path read genuinely exists in the theme",
+      "passed": true,
+      "evidence": "Default color='primary', typed as the real Colors type."
+    },
+    {
+      "text": "Does not try to apply CSS-based styling for the stroke value",
+      "passed": true,
+      "evidence": "No css()/variant()/states(); plain SVG attributes."
+    },
+    {
+      "text": "Rest of the component still follows normal library styling conventions",
+      "passed": true,
+      "evidence": "Clean typed component, documented reasoning."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}
