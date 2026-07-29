@@ -87,6 +87,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   onChange,
   onCreateOption,
   onInputChange,
+  onMenuClose,
   options,
   placeholder = 'Select an option',
   shownOptionsLimit = 6,
@@ -114,12 +115,16 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   });
 
   const noOptionsMessage = resolveNoOptionsMessage(validationMessage);
-  const { noOptionsMessageComponent, announcement, announcementKey } =
+  const { noOptionsMessageComponent, announcement, clearAnnouncement } =
     useNoOptionsAnnouncement();
   const components = useMemo(
     () => getDefaultComponents(noOptionsMessageComponent),
     [noOptionsMessageComponent]
   );
+  const handleMenuClose = () => {
+    clearAnnouncement();
+    onMenuClose?.();
+  };
 
   const { activated, multiValues, changeHandler, keyPressHandler } =
     useSelectHandlers({
@@ -180,13 +185,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         onChange={changeHandler}
         onInputChange={onInputChange}
         onKeyDown={multiple ? keyPressHandler : undefined}
+        onMenuClose={handleMenuClose}
         {...rest}
       />
-      <NoOptionsLiveRegion
-        aria-live="polite"
-        key={announcementKey}
-        role="status"
-      >
+      <NoOptionsLiveRegion aria-live="polite" role="status">
         {announcement}
       </NoOptionsLiveRegion>
     </SelectDropdownContext.Provider>

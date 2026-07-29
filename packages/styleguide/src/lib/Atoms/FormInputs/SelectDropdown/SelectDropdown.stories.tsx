@@ -1221,9 +1221,13 @@ export const CreatableWithValidation: Story = {
 const [error, setError] = useState<string | undefined>();
 const lastInputRef = useRef('');
 
+// Three distinct validation reasons, each with its own message - only one
+// can apply to a given inputValue, so validationMessage always shows the
+// single most relevant reason instead of stacking them.
 const validate = (inputValue: string) => {
   const trimmed = inputValue.trim();
   if (trimmed.length < 3) return 'Enter at least 3 characters.';
+  if (!/^[a-zA-Z\\s]+$/.test(trimmed)) return 'Only letters are allowed.';
   return undefined;
 };
 
@@ -1247,7 +1251,7 @@ const handleInputChange = (
     error={error}
     htmlFor="creatable-validated-dropdown"
     isSoloField
-    label="Pick a fruit that is at least 3 characters long"
+    label="Pick a fruit name that is at least 3 letters long"
   >
     <SelectDropdown
       error={Boolean(error)}
@@ -1257,8 +1261,10 @@ const handleInputChange = (
       }
       name="creatable-validated-dropdown"
       options={options}
-      placeholder="Type at least 3 characters to add…"
+      placeholder="Type at least 3 letters to add…"
       validationMessage={({ inputValue }) =>
+        // Falls back to "No matching fruit" once the input clears both
+        // validation reasons above but still doesn't match an option.
         validate(inputValue) ?? 'No matching fruit'
       }
       onChange={() => {
@@ -1283,9 +1289,13 @@ const handleInputChange = (
       const [error, setError] = useState<string | undefined>();
       const lastInputRef = useRef('');
 
+      // Three distinct validation reasons, each with its own message - only
+      // one can apply to a given inputValue, so validationMessage always
+      // shows the single most relevant reason instead of stacking them.
       const validate = (inputValue: string) => {
         const trimmed = inputValue.trim();
         if (trimmed.length < 3) return 'Enter at least 3 characters.';
+        if (!/^[a-zA-Z\s]+$/.test(trimmed)) return 'Only letters are allowed.';
         return undefined;
       };
 
@@ -1310,7 +1320,7 @@ const handleInputChange = (
             error={error}
             htmlFor="creatable-validated-dropdown"
             isSoloField
-            label="Pick a fruit that is at least 3 characters long"
+            label="Pick a fruit name that is at least 3 letters long"
           >
             <SelectDropdown
               error={Boolean(error)}
@@ -1320,8 +1330,11 @@ const handleInputChange = (
               }
               name="creatable-validated-dropdown"
               options={options}
-              placeholder="Type at least 3 characters to add…"
+              placeholder="Type at least 3 letters to add…"
               validationMessage={({ inputValue }) =>
+                // Falls back to "No matching fruit" once the input clears
+                // both validation reasons above but still doesn't match an
+                // option.
                 validate(inputValue) ?? 'No matching fruit'
               }
               onChange={() => {

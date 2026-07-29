@@ -1,4 +1,11 @@
-import { ComponentType, ReactNode, useEffect, useMemo, useState } from 'react';
+import {
+  ComponentType,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { createNoOptionsMessage } from '../elements';
 
@@ -9,8 +16,13 @@ interface UseNoOptionsAnnouncementReturn {
   noOptionsMessageComponent: ComponentType<any>;
   /** Current text for the standalone accessibility live region */
   announcement: ReactNode;
-  /** Changes whenever `announcement` has a new value to announce */
-  announcementKey: number;
+  /**
+   * Clears the announcement immediately - pass to react-select's
+   * `onMenuClose` so the region empties whenever the menu closes for any
+   * reason (blur, Escape, selecting an option), not just when
+   * `NoOptionsMessage` happens to unmount.
+   */
+  clearAnnouncement: () => void;
 }
 
 /*
@@ -19,18 +31,20 @@ interface UseNoOptionsAnnouncementReturn {
   region. react-select's own live region only fires when its `options` prop
   is non-empty, so it never speaks the "no options" state - this fills that
   gap, including while a consumer is mid-fetch with an empty `options` array.
+
+  The caller must render `announcement` inside a live-region element that
+  stays mounted for the component's lifetime (no key-based remounting).
+  VoiceOver/Safari only tracks a live region it discovered on first mount -
+  swapping in a new DOM node for every announcement makes it stop hearing
+  updates after the first one. Repeat (even identical) announcements are
+  instead produced by clearing to '' immediately, then setting the real text
+  after a debounce, so the same node gets a genuine, detectable mutation.
 */
 export const useNoOptionsAnnouncement = (): UseNoOptionsAnnouncementReturn => {
   const [rawAnnouncement, setRawAnnouncement] = useState<ReactNode>('');
   const [announcement, setAnnouncement] = useState<ReactNode>('');
-  const [announcementKey, setAnnouncementKey] = useState(0);
 
   useEffect(() => {
-    /*
-      Applying '' immediately (rather than debounced) guarantees a real DOM
-      mutation happens before an identical message can be shown again -
-      aria-live announcements depend on an actual content change to fire.
-    */
     if (!rawAnnouncement) {
       setAnnouncement('');
       return;
@@ -42,23 +56,12 @@ export const useNoOptionsAnnouncement = (): UseNoOptionsAnnouncementReturn => {
     return () => clearTimeout(timeoutId);
   }, [rawAnnouncement]);
 
-  useEffect(() => {
-    /*
-      Safari/VoiceOver can silently drop a live region's second announcement
-      when it's only a text mutation on an already-mounted node. Incrementing
-      this key (used by the caller to key the live region element) forces
-      React to unmount and recreate the DOM node for every new announcement,
-      so each one is a genuinely fresh node.
-    */
-    if (announcement) {
-      setAnnouncementKey((key) => key + 1);
-    }
-  }, [announcement]);
-
   const noOptionsMessageComponent = useMemo(
     () => createNoOptionsMessage(setRawAnnouncement),
     []
   );
 
-  return { noOptionsMessageComponent, announcement, announcementKey };
+  const clearAnnouncement = useCallback(() => setRawAnnouncement(''), []);
+
+  return { noOptionsMessageComponent, announcement, clearAnnouncement };
 };

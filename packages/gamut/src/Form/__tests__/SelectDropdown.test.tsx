@@ -636,6 +636,59 @@ describe('SelectDropdown', () => {
           expect(announced).toHaveLength(1);
         });
 
+        it('switches the announcement when the validation reason changes, without leaving the field', async () => {
+          jest.useFakeTimers();
+
+          // Mirrors the "creatable-validated-dropdown" story: one reason for
+          // input that's too short, a different reason for input that's long
+          // enough but still matches nothing.
+          const validate = (inputValue: string) =>
+            inputValue.trim().length < 3
+              ? 'Enter at least 3 characters.'
+              : undefined;
+
+          const { view } = renderView({
+            isSearchable: true,
+            options: selectOptions,
+            validationMessage: ({ inputValue }: { inputValue: string }) =>
+              validate(inputValue) ?? 'No matching fruit',
+          });
+
+          const getAnnounced = (text: string) =>
+            view
+              .getAllByRole('status')
+              .filter((region) => region.textContent === text);
+
+          await openDropdown(view);
+
+          // Too short - first reason.
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'z' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+          expect(getAnnounced('Enter at least 3 characters.')).toHaveLength(1);
+          expect(getAnnounced('No matching fruit')).toHaveLength(0);
+
+          // Long enough, but still zero matches - second, different reason.
+          // No unmount/remount happens here since NoOptionsMessage stays
+          // mounted throughout (options are zero both before and after);
+          // only its text changes.
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'zzz' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+          expect(getAnnounced('Enter at least 3 characters.')).toHaveLength(0);
+          expect(getAnnounced('No matching fruit')).toHaveLength(1);
+        });
+
         it('re-announces the same message after the field is left and revisited', async () => {
           jest.useFakeTimers();
 
@@ -687,7 +740,75 @@ describe('SelectDropdown', () => {
           expect(getAnnouncedStatusRegions()).toHaveLength(1);
         });
 
-        it('remounts a fresh live-region node for each new announcement, even with different text', async () => {
+        it('clears the announcement as soon as the menu closes, even when validationMessage keeps producing the same text', async () => {
+          jest.useFakeTimers();
+
+          const { view } = renderView({
+            options: [],
+            validationMessage: 'No fruits available',
+          });
+
+          const getAnnouncedStatusRegions = () =>
+            view
+              .getAllByRole('status')
+              .filter((region) => region.textContent === 'No fruits available');
+
+          await openDropdown(view);
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+          expect(getAnnouncedStatusRegions()).toHaveLength(1);
+
+          // Escape closes the menu without changing the options list, so
+          // `validationMessage` would still resolve to the same text -
+          // clearing must be driven by the menu closing, not by the message
+          // text changing.
+          act(() => {
+            fireEvent.keyDown(view.getByRole('combobox'), { key: 'Escape' });
+          });
+
+          expect(getAnnouncedStatusRegions()).toHaveLength(0);
+        });
+
+        it('still calls a consumer-supplied onMenuClose when clearing the announcement', async () => {
+          jest.useFakeTimers();
+          const onMenuClose = jest.fn();
+
+          const { view } = renderView({
+            isSearchable: true,
+            options: selectOptions,
+            validationMessage: 'Enter at least 3 characters.',
+            onMenuClose,
+          });
+
+          const getAnnouncedStatusRegions = () =>
+            view
+              .getAllByRole('status')
+              .filter(
+                (region) =>
+                  region.textContent === 'Enter at least 3 characters.'
+              );
+
+          await openDropdown(view);
+          act(() => {
+            fireEvent.change(view.getByRole('combobox'), {
+              target: { value: 'zz' },
+            });
+          });
+          act(() => {
+            jest.advanceTimersByTime(500);
+          });
+          expect(getAnnouncedStatusRegions()).toHaveLength(1);
+
+          act(() => {
+            fireEvent.keyDown(view.getByRole('combobox'), { key: 'Escape' });
+          });
+
+          expect(getAnnouncedStatusRegions()).toHaveLength(0);
+          expect(onMenuClose).toHaveBeenCalledTimes(1);
+        });
+
+        it('keeps announcing from the same stable live-region node across multiple announcements', async () => {
           jest.useFakeTimers();
 
           const { view } = renderView({
@@ -713,6 +834,11 @@ describe('SelectDropdown', () => {
           });
           const [firstAnnouncement] = getAnnouncedStatusRegions('d is a fruit');
           expect(firstAnnouncement).toBeInTheDocument();
+          // VoiceOver/Safari only track a live region it discovered on its
+          // first mount - swapping in a fresh DOM node for later
+          // announcements makes it stop hearing them, so the node itself
+          // must stay the same object across announcements.
+          const liveRegionNode = view.getByRole('status');
 
           act(() => {
             fireEvent.focusOut(view.getByRole('combobox'));
@@ -731,10 +857,7 @@ describe('SelectDropdown', () => {
           const [secondAnnouncement] =
             getAnnouncedStatusRegions('z is a fruit');
           expect(secondAnnouncement).toBeInTheDocument();
-          // Safari/VoiceOver can silently drop a live region's second update
-          // when it's just a text mutation on the same node - each new
-          // announcement must be a genuinely new DOM element.
-          expect(secondAnnouncement).not.toBe(firstAnnouncement);
+          expect(secondAnnouncement).toBe(liveRegionNode);
         });
       });
     });
