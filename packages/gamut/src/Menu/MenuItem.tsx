@@ -49,6 +49,7 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
   disabled?: boolean;
+  closeOnClick?: boolean;
 }
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
@@ -56,6 +57,7 @@ interface MenuTextItem extends HTMLProps, ForwardListItemProps {
   children: React.ReactNode;
   label?: ToolTipLabel;
   disabled?: boolean;
+  closeOnClick?: never;
 }
 
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
@@ -76,6 +78,7 @@ export const MenuItem = forwardRef<
       target,
       width = 1,
       'aria-label': explicitAriaLabel,
+      closeOnClick = true,
       ...props
     },
     ref
@@ -160,7 +163,11 @@ export const MenuItem = forwardRef<
 
       return (
         <ListItem {...listItemProps}>
-          <MenuToolTipWrapper label={label} tipId={tipId}>
+          <MenuToolTipWrapper
+            closeOnClick={closeOnClick}
+            label={label}
+            tipId={tipId}
+          >
             <ListButton
               {...(computed as ListLinkProps)}
               ref={buttonRef}
