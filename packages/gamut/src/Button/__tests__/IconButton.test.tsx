@@ -70,4 +70,34 @@ describe('IconButton', () => {
 
     await waitFor(() => expect(view.queryAllByText(tip).length).toBe(2));
   });
+
+  describe('closeOnClick', () => {
+    beforeEach(() => {
+      onClick.mockClear();
+    });
+
+    it('does not prevent button onClick when the inline tip click handler fires', async () => {
+      const { view } = renderView();
+
+      await userEvent.click(view.getByRole('button', { name: label }));
+
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not prevent button onClick when the floating tip click handler fires', async () => {
+      const { view } = renderFloatingView();
+
+      await userEvent.click(view.getByRole('button', { name: label }));
+
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not prevent button onClick when closeOnClick is disabled', async () => {
+      const { view } = renderView({ tipProps: { closeOnClick: false } });
+
+      await userEvent.click(view.getByRole('button', { name: label }));
+
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+  });
 });

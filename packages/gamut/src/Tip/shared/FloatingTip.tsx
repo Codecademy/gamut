@@ -24,6 +24,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   alignment,
   avatar,
   children,
+  closeOnClick,
   escapeKeyPressHandler,
   inheritDims,
   info,
@@ -122,6 +123,21 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     ? (e: FocusOrMouseEvent) => handleShowHideAction(e)
     : undefined;
 
+  const handleClick = useCallback(() => {
+    if (hoverDelayRef.current) {
+      clearTimeout(hoverDelayRef.current);
+      hoverDelayRef.current = undefined;
+    }
+    if (focusDelayRef.current) {
+      clearTimeout(focusDelayRef.current);
+      focusDelayRef.current = undefined;
+    }
+    setIsOpen(false);
+    setIsFocused(false);
+  }, []);
+
+  const clickHandler = closeOnClick && isHoverType ? handleClick : undefined;
+
   const contents = isPreviewType ? (
     <PreviewTipContents
       avatar={avatar}
@@ -151,6 +167,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         ref={ref as React.Ref<HTMLDivElement>}
         width={inheritDims ? 'inherit' : undefined}
         onBlur={toolOnlyEventFunc}
+        onClick={clickHandler}
         onFocus={toolOnlyEventFunc}
         onKeyDown={escapeKeyPressHandler}
         onMouseDown={(e) => e.preventDefault()}
