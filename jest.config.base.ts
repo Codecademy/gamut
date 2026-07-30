@@ -1,5 +1,6 @@
-import type { Config } from 'jest';
 import path from 'node:path';
+
+import type { Config } from 'jest';
 
 const COVERAGE_PATH_IGNORE_PATTERNS = [
   '<rootDir>/node_modules/',
@@ -30,7 +31,7 @@ const baseConfig = (packageName: string, overrides: Config): Config => {
     moduleNameMapper: {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$':
         '<rootDir>/../../script/jest/fileMock',
-      '\\.(css|scss)$': '<rootDir>/../../script/jest/styleMock',
+      '\\.css$': '<rootDir>/../../script/jest/styleMock',
     },
     testPathIgnorePatterns: ['node_modules', 'dist'],
     ...overrides,
