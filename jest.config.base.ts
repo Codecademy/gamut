@@ -1,6 +1,5 @@
-import path from 'node:path';
-
 import type { Config } from 'jest';
+import path from 'node:path';
 
 const COVERAGE_PATH_IGNORE_PATTERNS = [
   '<rootDir>/node_modules/',
