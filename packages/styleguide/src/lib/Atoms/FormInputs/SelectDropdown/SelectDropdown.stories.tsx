@@ -1367,6 +1367,7 @@ export const CustomInputProps: Story = {
         'data-cy': 'custom-dropdown',
       },
     },
+    id: 'what',
     name: 'what',
   },
   render: (args) => (
