@@ -1,3 +1,13 @@
+## 72.3.1 (2026-07-30)
+
+### 🩹 Fixes
+
+- update flyout close iconbutton aria label to be closeLabel prop ([#3401](https://github.com/Codecademy/gamut/pull/3401))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 72.3.0 (2026-07-22)
 
 ### 🚀 Features
