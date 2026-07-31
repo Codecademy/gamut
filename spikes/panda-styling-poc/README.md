@@ -1,130 +1,130 @@
 # Gamut → Panda CSS spike (GMT-1715)
 
-Branch: `cass-GMT-1715` (base `cass-gmt-1709`). Isolated, self-contained — does
-**not** touch the gamut workspaces. Explores whether Panda can replace Emotion
-while (a) keeping the `variance`-style authoring helpers, (b) keeping type-safe
-theme tokens, and (c) keeping runtime **theme + color-mode switching** the way
-the Storybook switchers do today. Grounded in the real
-`packages/gamut/src/Button` and `packages/styleguide/.storybook`.
+Branch: `cass-GMT-1715` (base `cass-gmt-1709`). A **yarn workspace + nx project**
+(`spikes/panda-styling-poc`, registered via root `workspaces: ["spikes/*"]`),
+isolated from the published `packages/*`. Explores whether Panda can replace
+Emotion while keeping (a) the `variance`-style authoring helpers, (b) type-safe
+theme tokens, (c) runtime **theme + color-mode switching** like the Storybook
+switchers, and (d) an **external API that barely changes**. Grounded in the real
+`packages/gamut/src/Button`, `packages/styleguide/.storybook`, and the
+`gamut-style-utilities` / `gamut-system-props` / `gamut-color-mode` /
+`gamut-theming` skills.
 
-## Run it
+## Run it (yarn + nx)
 
 ```
-npm install
-npm run codegen     # panda codegen → typed styled-system/
-npm run typecheck   # tsc --noEmit
-npm run cssgen      # → src/gamut-static.css (the one static sheet a consumer imports)
-npm run build       # codegen + cssgen + vite build (proves it all bundles/renders)
-npm run dev         # interactive: click the theme + colorMode switchers
+yarn install                              # from repo root — installs the workspace
+yarn nx run panda-styling-poc:dev         # example page → http://localhost:5173
+yarn nx run panda-styling-poc:build       # codegen + cssgen + vite build
+yarn nx run panda-styling-poc:typecheck   # tsc --noEmit (proves token type-safety)
 ```
 
-## What it covers
+`codegen` (typed `styled-system/`) and `cssgen` (`src/gamut-static.css`) run
+automatically as nx target dependencies.
 
-- `styled` JSX factory (`src/gamut/Button.tsx`, and a consumer-authored `Card` in `App.tsx`)
-- `GamutProvider`, `ColorMode`, `Background` re-implemented on Panda (`src/gamut/*`)
-- A Gamut **facade barrel** (`src/gamut/index.ts`) — consumers import `styled`/`css`/components from here, never from `@emotion/*` or `styled-system/*`
-- Runtime **theme** (core/admin) + **colorMode** (light/dark) switchers mirroring `globalTypes` (`src/App.tsx`)
+## Example page (`src/App.tsx`)
+
+A small Vite page demonstrating **Panda variants** and switching:
+
+- the `Button` recipe across every `variant` × `size` (+ `disabled`)
+- a `variant()`-style recipe (`<Anchor tone="…">`) and `states()`-style booleans (`<Wrapper disabled center>`)
+- ambient **colorMode** (light/dark) + **theme** (core/admin) switchers (attribute flips)
+- a static **`<Background bg="navy">`** surface with its own contrast-selected mode
 
 ---
 
 ## FINDINGS (running log)
 
-### ✅ Type-safe tokens — stronger than today, and it holds across the factory
+### ✅ Type-safe tokens — native, stronger than today
 
-- `tsc` passes on valid usage; bad token / bad variant / bad size **fail** `tsc`
-  (`color: 'chartreuse'` → rejected against generated `ColorToken`; `variant:'ghost'`,
-  `size:'huge'` → rejected against the variant unions).
-- `Background`'s `bg` prop is typed with Panda's generated `ColorToken` — the
-  guardrail extends to component props, not just `css()`.
-- **Verdict:** meets the hard requirement natively (generated, not hand-augmented).
+`tsc` passes on valid usage; bad token / variant / size all **fail** `tsc`
+(`strictTokens` + generated `ColorToken` / variant unions). The guardrail even
+caught a raw `minHeight="100vh"` (wanted the `screen` size token). `Background`'s
+`bg` prop is typed to the raw palette tokens.
 
-### ✅ `styled` JSX factory — works, and comes FROM Gamut
+### ✅ API shape — NO `className`; prop/object authoring, close to today
 
-- `styled('button', buttonRecipe)` (Button) and inline-recipe `styled('div', {...})`
-  (consumer `Card`) both type-check and build.
-- Re-exported from the facade barrel, so consumers do
-  `import { styled } from '@codecademy/gamut-styles'` — never `@emotion/styled`.
-- **Verdict:** the `createButtonComponent = styled(ButtonBase)(...)` pattern ports.
+You style with **system-style props on components** + typed variant/state props +
+the `css` prop — not `className={css(...)}`. `src/authoring-comparison.tsx` maps
+every Best-practices idiom:
 
-### ✅ ColorMode / GamutProvider / Background — work, and mostly SHRINK
+| Today (gamut, Emotion)                                  | Panda equivalent                                                                       | Closeness                                                     |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `<Box padding={4} bg="primary" />`                      | `<Box padding="4" bg="primary" />`                                                     | ~identical (token keys are strings)                           |
+| `<FillButton variant="primary" size="small" />`         | `<Button variant="primary" size="small" />`                                            | identical                                                     |
+| `styled.div(css({ p: 4 }))`                             | `styled('div', { base: { p: '4' } })` / `<Box p="4" />` / `<styled.div css={{...}} />` | **shape changes** (fn-composition → recipe config / css prop) |
+| `styled.a(variant({ base, defaultVariant, variants }))` | `styled('a', { base, variants, defaultVariants })`                                     | very close                                                    |
+| `styled.div(states({ disabled, center }))`              | `styled('div', { variants: { disabled: { true }, center: { true } } })`                | call site identical: `<Wrapper disabled center />`            |
+| `StyleProps<typeof someStates>`                         | `StyledVariantProps<typeof Wrapper>`                                                   | 1:1                                                           |
+| semantic tokens as values (`bg="primary"`)              | same                                                                                   | identical                                                     |
 
-- All three re-implemented on Panda and render/build cleanly.
-- `ColorMode` = set `data-color-mode`; nested modes work (a forced-dark subtree
-  inside a light tree resolves correctly via `[data-color-mode=dark] &`).
-- `GamutProvider` sheds its Emotion job: **no `CacheProvider`/`createEmotionCache`,
-  no Emotion `ThemeProvider`, no `<Global>` injection**. It's now optional (just
-  sets the initial mode). Consumers import one static stylesheet instead.
-- `Background` keeps the `background-current` React context; only the style
-  application changes (Panda `css({ bg })` instead of Emotion `styled`).
+**The one real divergence:** `styled.div(css({...}))` — calling the factory with
+a _style function_ — becomes `styled('div', { base })` (recipe config) or the
+`css` prop, because Panda's static analyzer must see literal style objects.
 
-### ✅ Theme + ColorMode SWITCHING — YES, matches the Storybook switchers
+### ✅ Background owns STATIC color-mode context (per the ColorMode/theming skills)
 
-**This was the key open question.** Today the Storybook decorator swaps a whole
-theme _object_ into `<GamutProvider theme={adminTheme}>` and flips color-mode via
-`Background`/`ColorMode`. Both are really "swap which set of CSS custom properties
-is active" — Emotion's `ThemeProvider` is mostly ceremony.
+`<ColorMode mode="light|dark|system">` sets the **ambient** mode (high in the
+tree, via `GamutProvider`). `<Background bg="<palette token>">` is for a
+**static** fixed-palette surface — it picks the light/dark mode with best contrast
+and establishes its OWN color-mode context + `background-current` for descendants.
+The POC's `Background` sets `data-color-mode` from the palette (`src/gamut/Background.tsx`);
+the navy `<Background>` on the example page makes `text` resolve to the dark value
+with no `<ColorMode>` wrapper. Correct per skill guidance.
 
-Panda does the same with **pre-generated static CSS + attribute flips**. The
-generated `src/gamut-static.css` contains:
+### ✅ `styled` factory + `GamutProvider` — work, and `GamutProvider` SHRINKS
 
-- `[data-color-mode=dark] { --colors-*: … }` (light/dark)
-- `[data-panda-theme=admin] { --colors-*: … }` (theme)
-- `[data-panda-theme=admin][data-color-mode=dark] { … }` (**combined** — every
-  theme × mode combo is expressible)
+`styled('button', recipe)` (Button) and inline `styled('div', {...})` (Card)
+build; `styled` is re-exported from the Gamut facade (never `@emotion/styled`).
+`GamutProvider` sheds its Emotion job — no `CacheProvider`/`createEmotionCache`,
+no Emotion `ThemeProvider`, no `<Global>` injection; consumers import one static
+stylesheet instead.
 
-So the 5 themes × 2 modes switch at runtime by setting `data-panda-theme` +
-`data-color-mode` — **no re-render, no theme-object swap, zero runtime cost.**
-`App.tsx`'s two `useState` switchers demonstrate it (see `npm run dev`).
+### ✅ Theme + ColorMode SWITCHING — matches the Storybook switchers
 
-- **Verdict:** runtime theme + colorMode switching is fully supported, and is a
-  _better_ fit than Emotion because Gamut already themes via CSS variables.
+Today the decorator swaps a theme _object_ into `<GamutProvider theme={adminTheme}>`
+and flips mode via `Background`/`ColorMode` — both are really "swap which CSS
+custom properties are active." Panda does the same with pre-generated static CSS +
+attribute flips. `src/gamut-static.css` contains `[data-color-mode=dark]`,
+`[data-panda-theme=admin]`, and the combined `[data-panda-theme=admin][data-color-mode=dark]`
+— so 5 themes × 2 modes switch at runtime by flipping attributes, **no re-render,
+zero runtime cost**. The example page's switchers demonstrate it.
 
-### ✅ Zero-runtime output + bundling
+### ✅ Zero-runtime + bundling
 
-- `panda cssgen` → static `src/gamut-static.css` (all themes/modes/recipes).
-- `vite build` → 90 modules, one CSS asset (~18KB) + JS. No runtime style engine.
+`nx build` runs `codegen` → `cssgen` → `vite build`: 92 modules, one static CSS
+asset (~19KB), no runtime style engine.
 
 ---
 
 ## Consumer-surface change analysis (beyond "`styled` comes from Gamut")
 
-Day-to-day component usage (import components, use `css`/`states`/`variant`/system
-props) stays largely the same IF Gamut ships pre-built CSS and keeps the facade
-stable. Beyond `styled`'s import source, the real consumer-facing changes are:
+Day-to-day usage (components + system props + semantic tokens + variants) stays
+largely the same. Beyond `styled`'s import source, the real changes are:
 
-| Change                                                                                               | Impact                                                                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Import one static stylesheet** (`@codecademy/gamut-styles/styles.css`) once                        | NEW, but replaces Emotion cache/SSR extraction wiring — net simpler                                                                                                           |
-| **`css` prop** (JSX pragma `@emotion/react`)                                                         | Breaks if used; steer to `css()` + `className` / system props. Hardest lock-in                                                                                                |
-| **Theme customization**                                                                              | Custom themes move from Emotion theme objects → Panda `themes` config / token overrides. Affects theme authors                                                                |
-| **Reading resolved color VALUES in JS** (`useTheme().colors.x`, chart/canvas libs, `_getColorValue`) | Tokens now resolve to `var(--…)` strings, not hex. JS that needs the computed value needs `getComputedStyle` or a values map. **Watch BarChart / anything drawing to canvas** |
-| **SSR**                                                                                              | No Emotion critical-CSS extraction; just ship the static sheet                                                                                                                |
-| **Tests**                                                                                            | `@emotion/jest` matchers (`toHaveStyleRule`) change; style assertions rewrite                                                                                                 |
-| **Theme/colorMode switching**                                                                        | Same concept (attribute flip); `data-panda-theme` + `data-color-mode` instead of `<GamutProvider theme>` + `Background`                                                       |
-| **Build**                                                                                            | Consumers no longer transpile Emotion / run `@emotion/babel-plugin`                                                                                                           |
-
-**Bottom line:** the swap is breaking, but the consumer blast radius beyond
-`styled`'s source is concentrated in: the `css` prop, JS-resolved color values
-(charts), theme customization, and test style-assertions — all codemoddable or
-documentable, consistent with the "breaking + codemod" plan.
+| Change                                                                                           | Impact                                                                                                       |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| Import one static stylesheet once                                                                | NEW, but replaces Emotion cache/SSR wiring — net simpler                                                     |
+| **`css` prop** (Emotion JSX pragma)                                                              | Breaks if used; steer to system props / `css()` / `styled`. Hardest lock-in                                  |
+| Theme customization                                                                              | Emotion theme objects → Panda `themes` config / token overrides                                              |
+| **Reading resolved color VALUES in JS** (`useTheme().colors.x`, charts/canvas, `_getColorValue`) | Tokens resolve to `var(--…)`, not hex. Needs `getComputedStyle` or a values map. **Watch BarChart / canvas** |
+| SSR                                                                                              | No Emotion critical-CSS extraction; ship the static sheet                                                    |
+| Tests                                                                                            | `@emotion/jest` matchers (`toHaveStyleRule`) change                                                          |
+| Build                                                                                            | Consumers no longer transpile Emotion / run `@emotion/babel-plugin`                                          |
 
 ---
 
 ## Still NOT proven (open per the recommendation)
 
-- **Rspack + Module Federation** with a shared `styled-system`/stylesheet (spike #2,
-  the highest-risk unknown for `platform`). Not attempted here.
-- **Runtime-dynamic, non-token style values** (arbitrary computed styles) — must
-  fall back to inline CSS vars; not exercised.
-- **JS-resolved color values** for charts/canvas (`_getColorValue`) — flagged above
-  as a real surface, not solved here.
-- Full breadth of `system.*` responsive props; the `::after` focus-outline pseudo.
-- A browser render was not visually verified (build + type-check only; `npm run dev`
-  is available for manual verification).
+- **Rspack + Module Federation** with a shared stylesheet (platform — highest risk).
+- **JS-resolved color values** for charts/canvas (`useTheme()` escape hatch, `_getColorValue`).
+- Runtime-dynamic, non-token style values (need inline CSS-var fallback).
+- A browser render wasn't visually verified beyond dev-server boot (`yarn nx run panda-styling-poc:dev`).
 
 ## Files
 
 - `panda.config.ts` — tokens, semantic (light/dark) tokens, `admin` theme, `button` recipe
-- `src/gamut/*` — the facade: `styled` (Button), `ColorMode`, `Background`, `GamutProvider`, barrel
-- `src/App.tsx` — consumer view + theme/colorMode switchers
-- `src/gamut-static.css` — generated static sheet (after `cssgen`; git-ignored)
+- `src/gamut/*` — facade: `styled`, `Box`, `Button`, `ColorMode`, `Background`, `GamutProvider`, barrel
+- `src/authoring-comparison.tsx` — today's idioms vs Panda, side by side
+- `src/App.tsx` — the example page (variants + switchers)
+- `project.json` — nx targets (codegen/cssgen/typecheck/build/dev)

@@ -1,0 +1,48 @@
+{
+  "name": "panda-styling-poc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "spikes/panda-styling-poc/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "codegen": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn codegen"
+      }
+    },
+    "cssgen": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["codegen"],
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn cssgen"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["codegen"],
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn typecheck"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["codegen", "cssgen"],
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn build"
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["codegen", "cssgen"],
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn dev"
+      }
+    }
+  }
+}

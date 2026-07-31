@@ -1,13 +1,12 @@
 import type { ReactNode } from 'react';
-import { css } from 'styled-system/css';
+
+import { Box } from './Box';
 
 export type ColorModeName = 'light' | 'dark';
 
-/* Analog of gamut `ColorMode`/`VariableProvider`. Gamut computes per-mode
- * `--color-*` variables with `serializeTokens` and sets them on a wrapper.
- * Panda does the same: the semantic tokens' `_dark` condition is keyed to
- * `[data-color-mode=dark] &`, so setting the attribute flips every color var
- * for the subtree — including NESTED modes. No Emotion, no runtime serialize. */
+/* Analog of gamut `ColorMode`/`VariableProvider`. Authored with system-style
+ * PROPS on `Box` (bg/color) — no className. Setting `data-color-mode` flips the
+ * semantic tokens' `_dark` condition for the subtree, incl. nested modes. */
 export const ColorMode = ({
   mode,
   children,
@@ -15,10 +14,7 @@ export const ColorMode = ({
   mode: ColorModeName;
   children?: ReactNode;
 }) => (
-  <div
-    data-color-mode={mode}
-    className={css({ color: 'text', bg: 'background' })}
-  >
+  <Box data-color-mode={mode} bg="background" color="text">
     {children}
-  </div>
+  </Box>
 );

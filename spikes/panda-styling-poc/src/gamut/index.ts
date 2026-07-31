@@ -4,6 +4,7 @@
 export { styled } from 'styled-system/jsx';
 export { css } from 'styled-system/css';
 
+export { Box } from './Box';
 export { Button } from './Button';
 export { ColorMode, type ColorModeName } from './ColorMode';
 export { Background, useBackground } from './Background';
