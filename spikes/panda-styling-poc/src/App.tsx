@@ -10,13 +10,33 @@ import {
   Background,
   Box,
   Button,
+  css,
   GamutProvider,
   getColorValue,
   styled,
   styledDynamic,
+  token,
 } from './gamut';
 
 type Mode = 'light' | 'dark';
+
+// CSP-note demo: a static class whose background reads a CSS var; only the var
+// itself is set inline (see below). The colors live in the static stylesheet.
+const swatchBox = css({
+  bg: 'var(--swatch)',
+  color: 'text',
+  p: '16',
+  minWidth: '56',
+  borderRadius: 'md',
+  borderWidth: '2',
+  borderColor: 'border-primary',
+});
+const SWATCHES: SemanticAlias[] = [
+  'primary',
+  'danger',
+  'interface',
+  'secondary',
+];
 
 const BUTTON_VARIANTS = [
   'primary',
@@ -94,6 +114,7 @@ export const App = () => {
   const [theme, setTheme] = useState<ThemeName>('core');
   const [mode, setMode] = useState<Mode>('light');
   const [percent, setPercent] = useState(60);
+  const [swatch, setSwatch] = useState<SemanticAlias>('primary');
 
   return (
     // `data-panda-theme` selects the theme token set (undefined = default "core")
@@ -227,6 +248,34 @@ export const App = () => {
               <Box color="text-disabled" fontSize="14">
                 fill={getColorValue('primary', mode, theme)} — a raw hex, not a
                 var(); needed by non-CSS consumers.
+              </Box>
+            </Section>
+
+            <Section title="Themeable dynamic value — token.var() + inline CSS var (CSP-aware)">
+              <Row>
+                {SWATCHES.map((s) => (
+                  <Button
+                    key={s}
+                    size="small"
+                    variant="interface"
+                    onClick={() => setSwatch(s)}
+                  >
+                    {s}
+                  </Button>
+                ))}
+              </Row>
+              {/* `--swatch` points at a TOKEN var, so the box stays theme/mode-aware
+                  (flip the switchers — it recolors), unlike getColorValue's raw hex.
+                  Only ONE inline custom property is set; the colors live in the static
+                  sheet. Strict CSP `style-src` still applies to the inline attr; for a
+                  FINITE set, prefer a variant() (className, zero inline style). */}
+              <Box
+                className={swatchBox}
+                style={
+                  { '--swatch': token.var(`colors.${swatch}`) } as CSSProperties
+                }
+              >
+                bg = token.var(colors.{swatch}) — themeable
               </Box>
             </Section>
           </Card>

@@ -3,6 +3,7 @@
  * This is the single stable surface a future engine swap rewrites behind. */
 export { styled } from 'styled-system/jsx';
 export { css } from 'styled-system/css';
+export { token } from 'styled-system/tokens';
 
 export { Box } from './Box';
 export { Button } from './Button';
