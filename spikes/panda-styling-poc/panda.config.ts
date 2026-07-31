@@ -107,8 +107,11 @@ export default defineConfig({
     },
   },
 
-  // pre-generate the admin theme's CSS so switching is a static attribute flip
-  staticCss: { themes: ['admin'] },
+  // A DESIGN SYSTEM must force-generate all recipe variants + themes, so
+  // consumers can select any variant — including DYNAMICALLY (`variant={x}` in a
+  // loop), which Panda's usage scanner can't see. Without this, only
+  // statically-literal variants ship. `['*']` = every variant combination.
+  staticCss: { recipes: { button: ['*'] }, themes: ['admin'] },
   themes: {
     admin: { semanticTokens: { colors: toSemanticColors('admin') } },
   },

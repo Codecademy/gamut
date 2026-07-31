@@ -116,6 +116,37 @@ Tokens now come from a single `src/tokens.source.ts` feeding BOTH Panda's CSS
 vars and `getColorValue` — the portable-token story, and what makes the JS
 resolver safe.
 
+### ⚠️ Dynamic variant selection needs `staticCss` (design-system requirement)
+
+Panda tree-shakes recipe variants to those it sees as **static literals**. The
+example page selects variants in a `.map()` (`variant={variant}`), so at first
+`secondary`/`large` were **missing** from the CSS. A design system must force-emit
+all variants so consumers can pass any variant (incl. dynamically):
+`staticCss: { recipes: { button: ['*'] }, themes: ['admin'] }`. After that, all
+`gmt-button--variant_*` / `--size_*` classes ship.
+
+### ⚠️ When runtime styles ARE genuinely needed (per Panda docs)
+
+Panda is build-time; it "silently skips" styles it can't statically read (dynamic
+keys, computed values, function-derived values, `colorMap[runtimeKey]`). Genuine
+cases that need a runtime path, and the Panda-sanctioned mechanism:
+
+| Case (Gamut-relevant)                                                                 | Mechanism                                                                                                                                                    |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Value unknown at build — user/CMS/API color, drag/popover coordinates, computed px    | inline `style` + CSS var, `style={{ '--x': token.var('colors.primary') }}` then `css({ color: 'var(--x)' })` — **stays a token, so ColorMode still applies** |
+| Dynamically-selected recipe variant (`variant={x}`)                                   | `staticCss` (pre-generate) — above                                                                                                                           |
+| Non-CSS consumer needs a resolved VALUE — @nivo/canvas/`fill`, 3rd-party inline style | `token()` / our `getColorValue()` (raw hex; not themeable after read)                                                                                        |
+| Prop-conditional style with pseudo-selectors                                          | `variant()`/`states()` (static) — not the inline hatch                                                                                                       |
+| Truly runtime theme (arbitrary, not a predefined theme)                               | Panda `injectTheme()` (dynamic theme injection)                                                                                                              |
+| Progress/meter width, dynamic non-token values                                        | inline `style` (our `styledDynamic`)                                                                                                                         |
+
+**CSP note:** the recommended dynamic path is inline styles, which strict CSP
+`style-src` blocks (chakra-ui/panda #1709). Gamut passes a CSP nonce to Emotion's
+cache today; under Panda the _static sheet_ needs no nonce, but the inline-style
+escape hatch for dynamic values reintroduces a CSP consideration for consumers
+with strict policies. **Prefer the CSS-var pattern (themeable + fewer inline
+styles) over raw inline hex wherever the value is a token.**
+
 ---
 
 ## Consumer-surface change analysis (beyond "`styled` comes from Gamut")
