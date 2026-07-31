@@ -95,6 +95,27 @@ zero runtime cost**. The example page's switchers demonstrate it.
 `nx build` runs `codegen` → `cssgen` → `vite build`: 92 modules, one static CSS
 asset (~19KB), no runtime style engine.
 
+### ✅ Escape hatches — the two residuals are covered, API stays compatible
+
+The usage survey found two things that don't fit pure zero-runtime; both are
+handled by small facade additions so the external API stays compatible:
+
+- **`getColorValue(alias, mode, theme)`** (`src/gamut/color-values.ts`) — reads a
+  resolved color VALUE in JS (the charts/canvas case). Returns raw hex derived
+  from the SAME `src/tokens.source.ts` that builds the CSS vars, so it can't drift.
+  The example page feeds it into an SVG "chart" that recolors when you flip the
+  theme/colorMode switchers. Analog of gamut's `_getColorValue`.
+- **`styledDynamic(Tag)(props => styles)`** (`src/gamut/styledDynamic.tsx`) —
+  keeps the `styled(fn)` authoring shape for genuinely dynamic VALUES; applies the
+  computed object as inline `style` (forfeits zero-runtime for that one
+  component). `$`-prefixed transient props are stripped from the DOM. The example
+  page drives a prop-controlled `<Meter>` width with it. Use `variant()`/`states()`
+  for dynamic + pseudo-selector cases.
+
+Tokens now come from a single `src/tokens.source.ts` feeding BOTH Panda's CSS
+vars and `getColorValue` — the portable-token story, and what makes the JS
+resolver safe.
+
 ---
 
 ## Consumer-surface change analysis (beyond "`styled` comes from Gamut")
@@ -102,29 +123,32 @@ asset (~19KB), no runtime style engine.
 Day-to-day usage (components + system props + semantic tokens + variants) stays
 largely the same. Beyond `styled`'s import source, the real changes are:
 
-| Change                                                                                           | Impact                                                                                                       |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| Import one static stylesheet once                                                                | NEW, but replaces Emotion cache/SSR wiring — net simpler                                                     |
-| **`css` prop** (Emotion JSX pragma)                                                              | Breaks if used; steer to system props / `css()` / `styled`. Hardest lock-in                                  |
-| Theme customization                                                                              | Emotion theme objects → Panda `themes` config / token overrides                                              |
-| **Reading resolved color VALUES in JS** (`useTheme().colors.x`, charts/canvas, `_getColorValue`) | Tokens resolve to `var(--…)`, not hex. Needs `getComputedStyle` or a values map. **Watch BarChart / canvas** |
-| SSR                                                                                              | No Emotion critical-CSS extraction; ship the static sheet                                                    |
-| Tests                                                                                            | `@emotion/jest` matchers (`toHaveStyleRule`) change                                                          |
-| Build                                                                                            | Consumers no longer transpile Emotion / run `@emotion/babel-plugin`                                          |
+| Change                                                                                           | Impact                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Import one static stylesheet once                                                                | NEW, but replaces Emotion cache/SSR wiring — net simpler                                                                                          |
+| **`css` prop** (Emotion JSX pragma)                                                              | Breaks if used; steer to system props / `css()` / `styled`. Hardest lock-in                                                                       |
+| Theme customization                                                                              | Emotion theme objects → Panda `themes` config / token overrides                                                                                   |
+| **Reading resolved color VALUES in JS** (`useTheme().colors.x`, charts/canvas, `_getColorValue`) | Tokens resolve to `var(--…)`, not hex → use the provided **`getColorValue()`** escape hatch. **Watch BarChart / canvas**                          |
+| **Dynamic prop-driven `styled(fn)` styles**                                                      | Not statically extractable → codemod to `variant()`/`states()`, or use the **`styledDynamic()`** escape hatch (inline style, that component only) |
+| SSR                                                                                              | No Emotion critical-CSS extraction; ship the static sheet                                                                                         |
+| Tests                                                                                            | `@emotion/jest` matchers (`toHaveStyleRule`) change                                                                                               |
+| Build                                                                                            | Consumers no longer transpile Emotion / run `@emotion/babel-plugin`                                                                               |
 
 ---
 
 ## Still NOT proven (open per the recommendation)
 
 - **Rspack + Module Federation** with a shared stylesheet (platform — highest risk).
-- **JS-resolved color values** for charts/canvas (`useTheme()` escape hatch, `_getColorValue`).
-- Runtime-dynamic, non-token style values (need inline CSS-var fallback).
 - A browser render wasn't visually verified beyond dev-server boot (`yarn nx run panda-styling-poc:dev`).
+- The escape hatches are prototypes: `styledDynamic` handles dynamic values but not
+  dynamic + pseudo-selectors; `getColorValue` is theme+mode aware but resolves for
+  the mode you pass (charts re-resolve on mode change).
 
 ## Files
 
-- `panda.config.ts` — tokens, semantic (light/dark) tokens, `admin` theme, `button` recipe
-- `src/gamut/*` — facade: `styled`, `Box`, `Button`, `ColorMode`, `Background`, `GamutProvider`, barrel
+- `src/tokens.source.ts` — single source of truth (palette + semantic maps, per theme/mode)
+- `panda.config.ts` — builds Panda tokens/themes/recipe FROM `tokens.source`
+- `src/gamut/*` — facade: `styled`, `Box`, `Button`, `ColorMode`, `Background`, `GamutProvider`, `getColorValue`, `styledDynamic`, barrel
 - `src/authoring-comparison.tsx` — today's idioms vs Panda, side by side
-- `src/App.tsx` — the example page (variants + switchers)
+- `src/App.tsx` — the example page (variants + switchers + escape-hatch demos)
 - `project.json` — nx targets (codegen/cssgen/typecheck/build/dev)

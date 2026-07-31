@@ -1,9 +1,36 @@
 import { defineConfig, defineRecipe } from '@pandacss/dev';
 
-/* Gamut → Panda spike (GMT-1715): styled factory + GamutProvider + ColorMode +
- * Background, and the consumer-surface question. jsxFramework: 'react' so Panda
- * generates the `styled` factory + JSX style props. Tokens mirror the earlier
- * scratch POC (semantic light/dark colors = ColorMode). */
+import {
+  type SemanticAlias,
+  type ThemeName,
+  palette,
+  semanticColors,
+} from './src/tokens.source';
+
+/* Gamut → Panda spike (GMT-1715). Tokens are built from the shared
+ * `src/tokens.source` so the CSS variables Panda emits and the JS `getColorValue`
+ * escape hatch share one source of truth. */
+
+// palette hex → Panda raw color tokens
+const colorTokens = Object.fromEntries(
+  Object.entries(palette).map(([key, value]) => [key, { value }])
+);
+
+// semantic alias map (per theme) → Panda semanticTokens with light/dark
+const toSemanticColors = (theme: ThemeName) => {
+  const light = semanticColors[theme].light;
+  const dark = semanticColors[theme].dark;
+  const colors: Record<string, { value: { base: string; _dark: string } }> = {};
+  (Object.keys(light) as SemanticAlias[]).forEach((alias) => {
+    colors[alias] = {
+      value: {
+        base: `{colors.${light[alias]}}`,
+        _dark: `{colors.${dark[alias]}}`,
+      },
+    };
+  });
+  return colors;
+};
 
 const makeFillVariant = (color: string) => ({
   bg: color,
@@ -80,75 +107,16 @@ export default defineConfig({
     },
   },
 
-  // Pre-generate every theme's CSS statically so switching is a zero-runtime
-  // attribute flip (mirrors gamut's Storybook theme switcher: core/admin/…).
+  // pre-generate the admin theme's CSS so switching is a static attribute flip
   staticCss: { themes: ['admin'] },
-
-  // === Multi-theme (Core/Admin/…) ===  the analog of gamut's `themeMap`.
-  // Each theme is a pre-built semantic-token set; each ALSO carries its own
-  // light/dark via `_dark`. Applied at runtime with `data-panda-theme="admin"`,
-  // exactly like gamut swaps `theme={adminTheme}` today — but no re-render.
   themes: {
-    admin: {
-      semanticTokens: {
-        colors: {
-          primary: {
-            value: { base: '{colors.teal}', _dark: '{colors.white}' },
-          },
-          'primary-hover': {
-            value: { base: '{colors.teal-hover}', _dark: '{colors.gray-200}' },
-          },
-          secondary: {
-            value: { base: '{colors.navy}', _dark: '{colors.gray-200}' },
-          },
-          'secondary-hover': {
-            value: { base: '{colors.teal}', _dark: '{colors.white}' },
-          },
-          danger: { value: { base: '{colors.red}', _dark: '{colors.red}' } },
-          'danger-hover': {
-            value: { base: '{colors.red-hover}', _dark: '{colors.red-hover}' },
-          },
-          interface: {
-            value: { base: '{colors.gray-700}', _dark: '{colors.gray-200}' },
-          },
-          'interface-hover': {
-            value: { base: '{colors.gray}', _dark: '{colors.white}' },
-          },
-          background: {
-            value: { base: '{colors.gray-200}', _dark: '{colors.navy}' },
-          },
-          'background-hover': {
-            value: { base: '{colors.white}', _dark: '{colors.gray-700}' },
-          },
-          'background-disabled': {
-            value: { base: '{colors.gray-200}', _dark: '{colors.gray-700}' },
-          },
-          text: { value: { base: '{colors.navy}', _dark: '{colors.white}' } },
-          'text-disabled': {
-            value: { base: '{colors.gray}', _dark: '{colors.gray}' },
-          },
-          'border-primary': {
-            value: { base: '{colors.teal}', _dark: '{colors.white}' },
-          },
-        },
-      },
-    },
+    admin: { semanticTokens: { colors: toSemanticColors('admin') } },
   },
+
   theme: {
     extend: {
       tokens: {
-        colors: {
-          navy: { value: '#0a1f43' },
-          blue: { value: '#1f4287' },
-          'blue-hover': { value: '#16336b' },
-          red: { value: '#c8102e' },
-          'red-hover': { value: '#a00d25' },
-          gray: { value: '#6b7280' },
-          'gray-200': { value: '#e5e7eb' },
-          'gray-700': { value: '#374151' },
-          white: { value: '#ffffff' },
-          black: { value: '#111111' },
-        },
+        colors: colorTokens,
         spacing: {
           '4': { value: '4px' },
           '8': { value: '8px' },
@@ -170,48 +138,7 @@ export default defineConfig({
         radii: { md: { value: '4px' }, lg: { value: '8px' } },
         borderWidths: { '2': { value: '2px' } },
       },
-      semanticTokens: {
-        colors: {
-          primary: {
-            value: { base: '{colors.blue}', _dark: '{colors.white}' },
-          },
-          'primary-hover': {
-            value: { base: '{colors.blue-hover}', _dark: '{colors.gray-200}' },
-          },
-          secondary: {
-            value: { base: '{colors.navy}', _dark: '{colors.gray-200}' },
-          },
-          'secondary-hover': {
-            value: { base: '{colors.blue}', _dark: '{colors.white}' },
-          },
-          danger: { value: { base: '{colors.red}', _dark: '{colors.red}' } },
-          'danger-hover': {
-            value: { base: '{colors.red-hover}', _dark: '{colors.red-hover}' },
-          },
-          interface: {
-            value: { base: '{colors.gray-700}', _dark: '{colors.gray-200}' },
-          },
-          'interface-hover': {
-            value: { base: '{colors.gray}', _dark: '{colors.white}' },
-          },
-          background: {
-            value: { base: '{colors.white}', _dark: '{colors.navy}' },
-          },
-          'background-hover': {
-            value: { base: '{colors.gray-200}', _dark: '{colors.gray-700}' },
-          },
-          'background-disabled': {
-            value: { base: '{colors.gray-200}', _dark: '{colors.gray-700}' },
-          },
-          text: { value: { base: '{colors.black}', _dark: '{colors.white}' } },
-          'text-disabled': {
-            value: { base: '{colors.gray}', _dark: '{colors.gray}' },
-          },
-          'border-primary': {
-            value: { base: '{colors.blue}', _dark: '{colors.white}' },
-          },
-        },
-      },
+      semanticTokens: { colors: toSemanticColors('core') },
       recipes: { button },
     },
   },

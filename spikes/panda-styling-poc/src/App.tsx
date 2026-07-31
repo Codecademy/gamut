@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { type CSSProperties, useState } from 'react';
 
-// Consumer imports EVERYTHING from the Gamut facade — incl. `styled`/`Box`.
+// Consumer imports EVERYTHING from the Gamut facade — incl. `styled`/`Box` and
+// the two escape hatches (`styledDynamic`, `getColorValue`).
 import { Anchor, Wrapper } from './authoring-comparison';
-import { Background, Box, Button, GamutProvider, styled } from './gamut';
+import {
+  type ColorModeName,
+  type SemanticAlias,
+  type ThemeName,
+  Background,
+  Box,
+  Button,
+  GamutProvider,
+  getColorValue,
+  styled,
+  styledDynamic,
+} from './gamut';
 
-type ThemeName = 'core' | 'admin';
 type Mode = 'light' | 'dark';
 
 const BUTTON_VARIANTS = [
@@ -33,6 +44,29 @@ const Toolbar = styled('div', {
   base: { display: 'flex', gap: '8', p: '16', alignItems: 'center' },
 });
 
+// ESCAPE HATCH #2 — runtime `styled` for a genuinely dynamic value (bar width),
+// with its color resolved in JS via escape hatch #1. Keeps the old
+// `styled(Tag)(props => styles)` authoring shape.
+const Meter = styledDynamic('div')(
+  ({
+    $percent,
+    $tone,
+    $mode,
+    $theme,
+  }: {
+    $percent: number;
+    $tone: SemanticAlias;
+    $mode: ColorModeName;
+    $theme: ThemeName;
+  }): CSSProperties => ({
+    width: `${$percent}%`,
+    height: 12,
+    borderRadius: 6,
+    background: getColorValue($tone, $mode, $theme),
+    transition: 'width 200ms',
+  })
+);
+
 const Section = ({
   title,
   children,
@@ -54,14 +88,12 @@ const Row = ({ children }: { children: React.ReactNode }) => (
   </Box>
 );
 
-/* Small example PAGE. Run `yarn nx run panda-styling-poc:dev`. Demonstrates:
- *  - Panda RECIPE variants on <Button> (variant × size + disabled)
- *  - `variant()`-style recipe (Anchor `tone`) and `states()`-style booleans (Wrapper)
- *  - ambient COLORMODE (light/dark) via GamutProvider + THEME (core/admin) switching
- *  - STATIC color-mode context via <Background bg="navy"> (its own dark context) */
+/* Example PAGE — `yarn nx run panda-styling-poc:dev`. Demonstrates variants,
+ * theme/colorMode switching, static Background, and the two escape hatches. */
 export const App = () => {
   const [theme, setTheme] = useState<ThemeName>('core');
   const [mode, setMode] = useState<Mode>('light');
+  const [percent, setPercent] = useState(60);
 
   return (
     // `data-panda-theme` selects the theme token set (undefined = default "core")
@@ -133,6 +165,69 @@ export const App = () => {
                 <Wrapper center>centered</Wrapper>
                 <Wrapper disabled>disabled</Wrapper>
               </Row>
+            </Section>
+          </Card>
+
+          {/* === ESCAPE HATCHES === */}
+          <Card>
+            <Section title="Escape hatch #2 — styledDynamic (dynamic width, prop-driven)">
+              <Box display="flex" flexDirection="column" gap="8">
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={percent}
+                  onChange={(e) => setPercent(Number(e.target.value))}
+                />
+                <Box
+                  borderWidth="2"
+                  borderColor="border-primary"
+                  borderRadius="md"
+                  padding="4"
+                >
+                  <Meter
+                    $percent={percent}
+                    $tone="primary"
+                    $mode={mode}
+                    $theme={theme}
+                  />
+                </Box>
+                <Box color="text-disabled" fontSize="14">
+                  width={percent}% — a runtime value Panda can't statically
+                  extract; applied as inline style.
+                </Box>
+              </Box>
+            </Section>
+
+            <Section title="Escape hatch #1 — getColorValue() into an SVG (the charts case)">
+              {/* JS-resolved hex, theme + mode aware — recomputes when you flip the switchers */}
+              <svg width="180" height="80" role="img" aria-label="bar chart">
+                <rect
+                  x="0"
+                  y="20"
+                  width="40"
+                  height="60"
+                  fill={getColorValue('primary', mode, theme)}
+                />
+                <rect
+                  x="50"
+                  y="40"
+                  width="40"
+                  height="40"
+                  fill={getColorValue('danger', mode, theme)}
+                />
+                <rect
+                  x="100"
+                  y="10"
+                  width="40"
+                  height="70"
+                  fill={getColorValue('interface', mode, theme)}
+                />
+              </svg>
+              <Box color="text-disabled" fontSize="14">
+                fill={getColorValue('primary', mode, theme)} — a raw hex, not a
+                var(); needed by non-CSS consumers.
+              </Box>
             </Section>
           </Card>
 
