@@ -3501,34 +3501,109 @@ iframe.vds-youtube[data-no-controls] {
   }
 }
 
-iframe.vds-youtube[data-no-controls]{height:120%}
+/**
+ * Youtube overlay
+ * - Why 120% ? hiding yt logo and copy link button which are not accessible.
+ */
 
-[data-started] iframe.vds-youtube[data-no-controls]{height:1000%}
+iframe.vds-youtube[data-no-controls] {
+  height: 120%;
+}
 
-:where(.vds-button .vds-icon){border-radius:unset}
+[data-started] iframe.vds-youtube[data-no-controls] {
+  height: 1000%;
+}
 
-.vds-controls button{border-radius:var(--media-button-border-radius)}
+/* Control buttons */
 
-:where(.vds-video-layout[data-sm]) :where(.vds-button){padding:0px 4px !important}
+:where(.vds-button .vds-icon) {
+  border-radius: unset;
+}
 
-:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track){background-color:var(--color-gray-600)}
+.vds-controls button {
+  border-radius: var(--media-button-border-radius);
+}
 
-:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track-fill){background-color:var(--color-secondary)}
+:where(.vds-video-layout[data-sm]) :where(.vds-button) {
+  padding: 0px 4px !important;
+}
 
-.vds-video-layout .vds-time-slider .vds-slider-value{border:unset;color:#fff}
+/* Small layout volume / time slider */
 
-.vds-tooltip-content::after{content:"";transform:rotate(45deg);border-style:solid;display:block;width:1rem;height:1rem;position:absolute;border-color:currentColor}
+:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track) {
+  background-color: var(--color-gray-600);
+}
 
-:where(.vds-tooltip-content[data-placement~=top])::after{border-width:0 1px 1px 0;bottom:-0.5rem;left:calc(50% - .5rem);background-image:linear-gradient(to top left, var(--color-background-contrast) 55%, rgba(0, 0, 0, 0) 20%)}
+:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track-fill) {
+  background-color: var(--color-secondary);
+}
 
-:where(.vds-tooltip-content[data-placement~=bottom])::after{border-width:1px 0px 0px 1px;top:-0.5rem;left:calc(50% - .5rem);background-image:linear-gradient(to bottom right, var(--color-background-contrast) 55%, rgba(0, 0, 0, 0) 20%)}
+.vds-video-layout .vds-time-slider .vds-slider-value {
+  border: unset;
+  color: white;
+}
 
-:where(.vds-tooltip-content[data-placement~=start])::after{left:calc(0% + .5rem)}
+/* Tooltip */
 
-:where(.vds-tooltip-content[data-placement~=end])::after{left:unset;right:calc(0% + .5rem)}
+.vds-tooltip-content::after {
+  content: "";
+  transform: rotate(45deg);
+  border-style: solid;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  border-color: currentColor;
+}
 
-@keyframes vds-tooltip-exit{0%{opacity:1}100%{opacity:0}}
+:where(.vds-tooltip-content[data-placement~="top"])::after {
+  border-width: 0 1px 1px 0;
+  bottom: -0.5rem;
+  left: calc(50% - 0.5rem);
+  background-image: linear-gradient(
+    to top left,
+    var(--color-background-contrast) 55%,
+    rgba(0, 0, 0, 0) 20%
+  );
+}
 
-@keyframes vds-tooltip-enter{0%{opacity:0}100%{opacity:1}}
+:where(.vds-tooltip-content[data-placement~="bottom"])::after {
+  border-width: 1px 0px 0px 1px;
+  top: -0.5rem;
+  left: calc(50% - 0.5rem);
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-background-contrast) 55%,
+    rgba(0, 0, 0, 0) 20%
+  );
+}
 
-/*# sourceMappingURL=4834.css.map*/
+:where(.vds-tooltip-content[data-placement~="start"])::after {
+  left: calc(0% + 0.5rem);
+}
+
+:where(.vds-tooltip-content[data-placement~="end"])::after {
+  left: unset;
+  right: calc(0% + 0.5rem);
+}
+
+@keyframes vds-tooltip-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes vds-tooltip-enter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/*# sourceMappingURL=2145.css.map*/
