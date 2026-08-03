@@ -17,6 +17,9 @@ fontSize / fontFamily / fontWeight / lineHeight / borderRadii scales — so valu
 match production (e.g. `hyper-500 #3A10E5`, `navy-800 #10162F`). Real Apercu +
 Suisse web fonts load from Codecademy's CDN via `src/fonts.css`.
 
+**Migrating consumers?** See [`BREAKING-CHANGES.md`](./BREAKING-CHANGES.md) for the
+known Emotion→Panda breaking changes with before/after code examples.
+
 ## Run it (yarn + nx)
 
 ```
