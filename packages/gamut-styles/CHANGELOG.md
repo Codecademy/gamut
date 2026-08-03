@@ -1,3 +1,15 @@
+## 20.1.0 (2026-08-03)
+
+### 🚀 Features
+
+- remove scss from video component and all configs ([#3390](https://github.com/Codecademy/gamut/pull/3390))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Haiku 4.5
+- Claude Opus 4.8 (1M context)
+
 ## 20.0.2 (2026-06-16)
 
 ### 🩹 Fixes
