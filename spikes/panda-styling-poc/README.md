@@ -88,10 +88,12 @@ with no `<ColorMode>` wrapper. Correct per skill guidance.
 `icon` + `iconPosition` (via an `InlineIconButton` equivalent), `href` (polymorphic
 `ButtonBase` renders an `<a>`), `disabled`, and system props. Backed by per-atom
 Panda recipes (`gmt-fill/stroke/text/cta/icon-button`). A consumer's
-`<FillButton variant="primary" size="small" icon={Icon}>` / `<IconButton icon tip>`
+`<FillButton variant="primary" size="small" icon={Icon}>` / `<IconButton icon tip tipProps>`
 / `<FillButton href="…">` compiles and renders unchanged — the only difference is
-`styled` comes from Gamut, not Emotion. (One noted simplification: `IconButton`
-omits the `<ToolTip>` wrapper, keeping the `tip`/`aria-label` props.)
+`styled` comes from Gamut, not Emotion. `IconButton` wraps a **Panda-native
+`ToolTip` rebuild** (`src/gamut/ToolTip.tsx`) — same API (`info`/`placement`/
+`alignment`/`closeOnClick`/`id`) authored in Panda `css`, NOT imported from the
+Emotion package (spike stays Emotion-free). Simplified to top-center placement.
 
 ### ✅ Provider / ColorMode / Background separation matches real usage
 
@@ -203,7 +205,7 @@ largely the same. Beyond `styled`'s import source, the real changes are:
 
 - `panda.config.ts` — derives Panda tokens/themes/recipe from the REAL `@codecademy/gamut-styles` theme (corePalette + coreTheme/adminTheme `.modes` + scales)
 - `src/fonts.css` — real Apercu/Suisse `@font-face` (Codecademy CDN)
-- `src/gamut/*` — facade: `styled`, `Box`, the Button atoms (`Button.tsx`) + polymorphic `ButtonBase`, `ColorMode`, `Background`, `GamutProvider`, `getColorValue`, `styledDynamic`, barrel
+- `src/gamut/*` — facade: `styled`, `Box`, the Button atoms (`Button.tsx`) + polymorphic `ButtonBase`, `ToolTip` (Panda rebuild), `ColorMode`, `Background`, `GamutProvider`, `getColorValue`, `styledDynamic`, barrel
 - `src/authoring-comparison.tsx` — today's idioms vs Panda, side by side
 - `src/App.tsx` — the example page (variants + switchers + escape-hatch demos)
 - `project.json` — nx targets (codegen/cssgen/typecheck/build/dev)

@@ -14,6 +14,7 @@ import {
 } from 'styled-system/recipes';
 
 import { type ButtonBaseElements, ButtonBase } from './ButtonBase';
+import { type ToolTipProps, ToolTip } from './ToolTip';
 
 /* Reproduces the real Gamut Button atoms so consumers' external API is
  * unchanged: FillButton / StrokeButton / TextButton / CTAButton / IconButton,
@@ -87,23 +88,31 @@ export const TextButton = forwardRef<ButtonBaseElements, TextButtonProps>(
   )
 );
 
-/** IconButton — icon-only. Keeps gamut's prop surface (icon, aria-label, tip).
- *  NOTE: real gamut wraps this in <ToolTip>; omitted here (uses title/aria-label). */
+/** IconButton — icon-only, wrapped in the (Panda-native) ToolTip, matching
+ *  gamut's prop surface: icon, aria-label, tip, tipProps. */
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
-  IconComponentType & { 'aria-label'?: string; tip?: string };
+  IconComponentType & {
+    'aria-label'?: string;
+    tip: string;
+    tipProps?: Omit<ToolTipProps, 'info' | 'children'>;
+  };
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ icon: Icon, 'aria-label': ariaLabel, tip, size, ...props }, ref) => {
+  (
+    { icon: Icon, 'aria-label': ariaLabel, tip, tipProps, size, ...props },
+    ref
+  ) => {
     const iconPx = size === 'small' ? 16 : 24;
     return (
-      <IconButtonBase
-        ref={ref}
-        aria-label={ariaLabel ?? tip}
-        size={size}
-        title={tip}
-        {...props}
-      >
-        <Icon size={iconPx} />
-      </IconButtonBase>
+      <ToolTip closeOnClick info={tip} {...tipProps}>
+        <IconButtonBase
+          ref={ref}
+          aria-label={ariaLabel ?? tip}
+          size={size}
+          {...props}
+        >
+          <Icon size={iconPx} />
+        </IconButtonBase>
+      </ToolTip>
     );
   }
 );

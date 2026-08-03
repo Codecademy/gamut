@@ -13,5 +13,6 @@ export { getColorValue, palette } from './color-values';
 export type { SemanticAlias, ThemeName } from './color-values';
 export { styledDynamic } from './styledDynamic';
 export { ColorMode, type ColorModeName } from './ColorMode';
+export { ToolTip, type ToolTipProps } from './ToolTip';
 export { Background, useBackground } from './Background';
 export { GamutProvider } from './GamutProvider';
