@@ -112,6 +112,8 @@ onChange={(selected) => setValue(selected.map((o) => o.value))}
 
 Second argument is react-select `ActionMeta`. For creatable creates: `meta.action === 'create-option'`. Do **not** pass `onCreateOption` to react-select directly — Gamut invokes it from `changeHandler` while still forwarding `create-option` to consumer `onChange`.
 
+**Action normalization gotcha:** for every action other than `create-option`, `changeHandler` overwrites the real react-select action with a hardcoded `'select-option'` before calling consumer `onChange`. `meta.action` never distinguishes `remove-value`, `clear`, `pop-value`, or `deselect-option` — only `'select-option'` or `'create-option'` ever reach you. Derive "cleared" / "removed one tag" from a diff of the `selected` array instead of `meta.action`.
+
 ---
 
 ## Creatable
@@ -122,9 +124,9 @@ Second argument is react-select `ActionMeta`. For creatable creates: `meta.actio
 - `isValidNewOption` — return `false` to hide the Add row.
 - `createOptionPosition` — `'first' | 'last'` (default `'last'`). Renders the Add row above or below the rest of the options list.
 - `validationMessage` — content shown _inside the dropdown menu itself_ in place of the default "No options" text, whenever no option matches the current input (empty `options`, or every option filtered out by a search). Not tied to `isCreatable` — any searchable SelectDropdown can use it. Accepts a `ReactNode` or a function receiving `{ inputValue }`, so you can surface live validation/error copy (e.g. "No results for '{inputValue}'") right where the user is looking. Mirror the same text in `FormGroup`'s `error` prop for field-level feedback below the control.
-- SelectDropdown already announces its "No options" text (default or `validationMessage`) to screen readers via a debounced, standalone live region — react-select's own live region stays silent while `options` is empty, so this fills that gap, including mid-fetch states. Don't build a separate announcement for this; just set `validationMessage`.
+- SelectDropdown already announces its "No options" text (default or `validationMessage`) to screen readers via a debounced (`400ms`), standalone `aria-live="polite" role="status"` live region — react-select's own live region only fires when its `options` prop is non-empty, so it stays silent for the empty-options case; this fills that gap, including mid-fetch states. Don't build a separate announcement for this; just set `validationMessage`.
 
-**Validation after blur:** react-select clears input on blur before `onBlur` fires, so the value is gone by the time you'd validate it. Store the last typed value in a ref and re-validate from it on `input-blur`:
+**Validation after blur:** react-select's `onInputChange` reports an empty string on the `'input-blur'` action — the typed value has already been cleared internally by the time that fires. Store the last typed value in a ref during `'input-change'` and re-validate from it on `'input-blur'`:
 
 ```tsx
 const lastInput = useRef('');
@@ -171,7 +173,7 @@ const lastInput = useRef('');
 | `inputWidth`        | `string \| number`       | —        | Width of the input independent of the menu                |
 | `dropdownWidth`     | `string \| number`       | —        | Width of the menu independent of the input                |
 | `menuAlignment`     | `'left' \| 'right'`      | `left`   | Menu edge alignment                                       |
-| `zIndex`            | `number`                 | auto     | Menu z-index                                              |
+| `zIndex`            | `number`                 | `2`      | Menu z-index (control container defaults to `3`)          |
 | `inputProps`        | `{ hidden?, combobox? }` | —        | `data-*` / `aria-*` only, forwarded to the input elements |
 
 ---
