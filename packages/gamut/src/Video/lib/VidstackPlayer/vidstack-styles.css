@@ -1,11 +1,11 @@
-@import "~@vidstack/react/player/styles/default/theme.css";
-@import "~@vidstack/react/player/styles/default/layouts/video.css";
-@import "~@vidstack/react/player/styles/default/layouts/audio.css";
+@import "@vidstack/react/player/styles/default/theme.css";
+@import "@vidstack/react/player/styles/default/layouts/video.css";
+@import "@vidstack/react/player/styles/default/layouts/audio.css";
 
 /**
-  * Youtube overlay
-  * - Why 120% ? hiding yt logo and copy link button which are not accessible.
-  */
+ * Youtube overlay
+ * - Why 120% ? hiding yt logo and copy link button which are not accessible.
+ */
 iframe.vds-youtube[data-no-controls] {
   height: 120%;
 }
@@ -14,7 +14,7 @@ iframe.vds-youtube[data-no-controls] {
   height: 1000%;
 }
 
-// Control buttons
+/* Control buttons */
 :where(.vds-button .vds-icon) {
   border-radius: unset;
 }
@@ -27,7 +27,7 @@ iframe.vds-youtube[data-no-controls] {
   padding: 0px 4px !important;
 }
 
-// Small layout volume / time slider
+/* Small layout volume / time slider */
 :where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track) {
   background-color: var(--color-gray-600);
 }
@@ -39,7 +39,7 @@ iframe.vds-youtube[data-no-controls] {
   color: white;
 }
 
-// Tooltip
+/* Tooltip */
 .vds-tooltip-content::after {
   content: "";
   -webkit-transform: rotate(45deg);

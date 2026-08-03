@@ -1,5 +1,6 @@
+/* Vidstack default theme (vendored via @import) + gamut overrides */
 /* eslint-disable gamut/no-css-standalone */
-import '../styles/vds_base_theme.scss';
+import './vidstack-styles.css';
 
 import { styledOptions } from '@codecademy/gamut-styles';
 import styled, { CSSObject } from '@emotion/styled';
@@ -16,11 +17,11 @@ import {
 } from '@vidstack/react';
 import React, { useRef } from 'react';
 
-import { Box } from '../../Box';
-import { VideoProps } from '..';
-import { keyboardShortcuts } from './utils/constants';
-import { vdsVariables } from './utils/variables';
-import { VideoLayout } from './VideoLayout';
+import { Box } from '../../../Box';
+import { VideoProps } from '../..';
+import { keyboardShortcuts } from '../utils/constants';
+import { VideoLayout } from '../VideoLayout';
+import { vdsVariables } from './variables';
 
 const VariableProvider = styled(Box, styledOptions(['variables']))<{
   variables?: CSSObject;
