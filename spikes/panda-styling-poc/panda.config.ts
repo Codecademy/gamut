@@ -41,70 +41,136 @@ const toSemanticColors = (theme: ThemeWithModes) => {
   return colors;
 };
 
-const makeFillVariant = (color: string) => ({
-  bg: color,
+/* Recipes mirror the real Gamut Button atoms: Fill/Stroke/Text share a variant
+ * set (primary/secondary/danger/interface) + text size scale; CTA is
+ * primary-only; Icon uses square sizes. Heights use the `[value]` escape hatch
+ * (not tokens). Colors/spacing/fontSize stay real tokens under strictTokens. */
+const VARIANTS = ['primary', 'secondary', 'danger', 'interface'] as const;
+type RecipeConfig = Parameters<typeof defineRecipe>[0];
+
+const variantMap = (fn: (c: string) => object) =>
+  Object.fromEntries(VARIANTS.map((v) => [v, fn(v)]));
+
+const fillVariant = (c: string) => ({
+  bg: c,
   color: 'background',
-  _hover: { bg: `${color}-hover`, color: 'background' },
-  _active: { bg: color, color: 'background', borderColor: 'border-primary' },
+  _hover: { bg: `${c}-hover`, color: 'background' },
+  _active: { bg: c, color: 'background', borderColor: 'border-primary' },
   _disabled: { bg: 'background-disabled', color: 'text-disabled' },
 });
-
-const button = defineRecipe({
-  className: 'gmt-button',
-  jsx: ['Button'],
-  base: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: '2',
-    borderStyle: 'solid',
-    borderColor: 'transparent',
-    borderRadius: 'md',
-    fontFamily: 'base',
-    cursor: 'pointer',
-    _disabled: { cursor: 'not-allowed', userSelect: 'none' },
+const strokeVariant = (c: string) => ({
+  bg: 'transparent',
+  borderColor: c,
+  color: c,
+  _hover: { bg: 'background-hover' },
+  _active: { bg: c, color: 'background' },
+  _disabled: {
+    bg: 'transparent',
+    borderColor: 'background-disabled',
+    color: 'text-disabled',
   },
-  variants: {
-    size: {
-      // height/minWidth aren't design tokens in Gamut — author them as raw
-      // values via Panda's `[value]` escape hatch (strictTokens still guards
-      // colors/spacing/fontSize, which ARE tokens).
-      small: {
-        fontSize: '14',
-        height: '[32px]',
-        minWidth: '[32px]',
-        py: '4',
-        px: '8',
-        fontWeight: 'title',
-      },
-      normal: {
-        fontSize: '16',
-        height: '[40px]',
-        minWidth: '[40px]',
-        py: '4',
-        px: '16',
-        fontWeight: 'title',
-      },
-      large: {
-        fontSize: '18',
-        height: '[56px]',
-        minWidth: '[40px]',
-        py: '4',
-        px: '16',
-        fontWeight: 'title',
-      },
-    },
-    variant: {
-      primary: makeFillVariant('primary'),
-      secondary: makeFillVariant('secondary'),
-      danger: makeFillVariant('danger'),
-      interface: makeFillVariant('interface'),
-    },
-  },
-  defaultVariants: { size: 'normal', variant: 'primary' },
 });
+const textVariant = (c: string) => ({
+  borderColor: 'transparent',
+  color: c === 'interface' ? 'text' : c,
+  _hover: { color: c, bg: 'background-hover' },
+  _focusVisible: { color: c },
+  _active: { color: 'text' },
+  _disabled: { color: 'text-disabled', bg: 'transparent' },
+});
+
+const base = {
+  position: 'relative',
+  whiteSpace: 'nowrap',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderWidth: '2',
+  borderStyle: 'solid',
+  borderColor: 'transparent',
+  borderRadius: 'md',
+  fontFamily: 'base',
+  cursor: 'pointer',
+  appearance: 'none',
+  textDecoration: 'none',
+  _disabled: { cursor: 'not-allowed', userSelect: 'none' },
+};
+const textSize = {
+  small: {
+    fontSize: '14',
+    height: '[32px]',
+    minWidth: '[32px]',
+    py: '4',
+    px: '8',
+    fontWeight: 'title',
+  },
+  normal: {
+    fontSize: '16',
+    height: '[40px]',
+    minWidth: '[40px]',
+    py: '4',
+    px: '16',
+    fontWeight: 'title',
+  },
+  large: {
+    fontSize: '18',
+    height: '[56px]',
+    minWidth: '[40px]',
+    py: '4',
+    px: '16',
+    fontWeight: 'title',
+  },
+};
+const iconSize = {
+  small: { height: '[32px]', width: '[32px]' },
+  normal: { height: '[40px]', width: '[40px]' },
+  large: { height: '[56px]', width: '[56px]' },
+};
+
+const makeButton = (
+  className: string,
+  jsx: string,
+  variantFn: (c: string) => object,
+  opts: { size?: object; defaultVariant?: string } = {}
+) =>
+  defineRecipe({
+    className,
+    jsx: [jsx],
+    base,
+    variants: { size: opts.size ?? textSize, variant: variantMap(variantFn) },
+    defaultVariants: {
+      size: 'normal',
+      variant: opts.defaultVariant ?? 'primary',
+    },
+  } as RecipeConfig);
+
+const fillButton = makeButton('gmt-fill-button', 'FillButton', fillVariant);
+const strokeButton = makeButton(
+  'gmt-stroke-button',
+  'StrokeButton',
+  strokeVariant
+);
+const textButton = makeButton('gmt-text-button', 'TextButton', textVariant);
+const iconButton = makeButton('gmt-icon-button', 'IconButton', textVariant, {
+  size: iconSize,
+  defaultVariant: 'secondary',
+});
+const ctaButton = defineRecipe({
+  className: 'gmt-cta-button',
+  jsx: ['CTAButton'],
+  base: {
+    ...base,
+    fontFamily: 'accent',
+    fontWeight: 'title',
+    color: 'background',
+    bg: 'primary',
+    py: '12',
+    px: '24',
+    _hover: { bg: 'primary-hover' },
+    _active: { bg: 'secondary' },
+    _disabled: { bg: 'background-disabled', color: 'text-disabled' },
+  },
+} as RecipeConfig);
 
 export default defineConfig({
   preflight: false,
@@ -120,7 +186,16 @@ export default defineConfig({
   },
 
   // force-emit all recipe variants + the admin theme (dynamic selection safe)
-  staticCss: { recipes: { button: ['*'] }, themes: ['admin'] },
+  staticCss: {
+    recipes: {
+      fillButton: ['*'],
+      strokeButton: ['*'],
+      textButton: ['*'],
+      iconButton: ['*'],
+      ctaButton: ['*'],
+    },
+    themes: ['admin'],
+  },
   themes: {
     admin: {
       semanticTokens: {
@@ -144,7 +219,7 @@ export default defineConfig({
       semanticTokens: {
         colors: toSemanticColors(coreTheme as unknown as ThemeWithModes),
       },
-      recipes: { button },
+      recipes: { fillButton, strokeButton, textButton, iconButton, ctaButton },
     },
   },
 });

@@ -9,12 +9,17 @@ import {
   type ThemeName,
   Background,
   Box,
-  Button,
+  ColorMode,
   css,
+  CTAButton,
+  FillButton,
   GamutProvider,
   getColorValue,
+  IconButton,
+  StrokeButton,
   styled,
   styledDynamic,
+  TextButton,
   token,
 } from './gamut';
 
@@ -108,6 +113,19 @@ const Row = ({ children }: { children: React.ReactNode }) => (
   </Box>
 );
 
+// a plain icon component (consumers pass gamut-icons; any {size} component works)
+const StarIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden
+  >
+    <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 9.5l6.9-.6z" />
+  </svg>
+);
+
 /* Example PAGE — `yarn nx run panda-styling-poc:dev`. Demonstrates variants,
  * theme/colorMode switching, static Background, and the two escape hatches. */
 export const App = () => {
@@ -117,10 +135,10 @@ export const App = () => {
   const [swatch, setSwatch] = useState<SemanticAlias>('primary');
 
   return (
-    // `data-panda-theme` selects the theme token set (undefined = default "core")
-    <div data-panda-theme={theme === 'core' ? undefined : theme}>
-      {/* GamutProvider sets the ambient color mode (light/dark) for the whole app */}
-      <GamutProvider mode={mode}>
+    // GamutProvider selects the theme; a single <ColorMode> sets the ambient
+    // mode; <Background> handles individual themed surfaces below.
+    <GamutProvider theme={theme}>
+      <ColorMode mode={mode}>
         <Box
           bg="background"
           color="text"
@@ -136,20 +154,20 @@ export const App = () => {
           </Box>
 
           <Toolbar>
-            <Button
+            <FillButton
               size="small"
               variant="interface"
               onClick={() => setTheme((t) => (t === 'core' ? 'admin' : 'core'))}
             >
               theme: {theme}
-            </Button>
-            <Button
+            </FillButton>
+            <FillButton
               size="small"
               variant="interface"
               onClick={() => setMode((m) => (m === 'light' ? 'dark' : 'light'))}
             >
               colorMode: {mode}
-            </Button>
+            </FillButton>
           </Toolbar>
 
           {/* === RECIPE VARIANTS: variant × size === */}
@@ -158,16 +176,49 @@ export const App = () => {
               <Section key={variant} title={`variant="${variant}"`}>
                 <Row>
                   {BUTTON_SIZES.map((size) => (
-                    <Button key={size} variant={variant} size={size}>
+                    <FillButton key={size} variant={variant} size={size}>
                       {size}
-                    </Button>
+                    </FillButton>
                   ))}
-                  <Button variant={variant} disabled>
+                  <FillButton variant={variant} disabled>
                     disabled
-                  </Button>
+                  </FillButton>
                 </Row>
               </Section>
             ))}
+          </Card>
+
+          {/* === BUTTON ATOMS — same external API as Gamut === */}
+          <Card>
+            <Section title="Button atoms — unchanged consumer API">
+              <Row>
+                <FillButton variant="primary" icon={StarIcon}>
+                  FillButton
+                </FillButton>
+                <StrokeButton
+                  variant="primary"
+                  icon={StarIcon}
+                  iconPosition="right"
+                >
+                  StrokeButton
+                </StrokeButton>
+                <TextButton variant="danger">TextButton</TextButton>
+                <CTAButton>CTAButton</CTAButton>
+                <IconButton icon={StarIcon} aria-label="Star" tip="Star" />
+              </Row>
+              <Row>
+                {/* href → renders an <a> via ButtonBase, exactly like gamut */}
+                <FillButton variant="secondary" href="#">
+                  Link (anchor)
+                </FillButton>
+                <TextButton variant="interface" size="small">
+                  small text
+                </TextButton>
+                <StrokeButton variant="danger" disabled>
+                  disabled
+                </StrokeButton>
+              </Row>
+            </Section>
           </Card>
 
           {/* === variant()-style recipe + states()-style booleans === */}
@@ -255,14 +306,14 @@ export const App = () => {
             <Section title="Themeable dynamic value — token.var() + inline CSS var (CSP-aware)">
               <Row>
                 {SWATCHES.map((s) => (
-                  <Button
+                  <FillButton
                     key={s}
                     size="small"
                     variant="interface"
                     onClick={() => setSwatch(s)}
                   >
                     {s}
-                  </Button>
+                  </FillButton>
                 ))}
               </Row>
               {/* `--swatch` points at a TOKEN var, so the box stays theme/mode-aware
@@ -289,10 +340,10 @@ export const App = () => {
           <Section title="Static <Background bg='navy-800'> — own contrast-selected mode">
             <Background bg="navy-800">
               <Box padding="24" display="flex" gap="8" alignItems="center">
-                <Button variant="primary">Primary</Button>
-                <Button variant="danger" size="small">
+                <FillButton variant="primary">Primary</FillButton>
+                <FillButton variant="danger" size="small">
                   Danger
-                </Button>
+                </FillButton>
                 <Box color="text" padding="8">
                   readable text on navy (semantic `text` resolves to the
                   dark-mode value)
@@ -301,7 +352,7 @@ export const App = () => {
             </Background>
           </Section>
         </Box>
-      </GamutProvider>
-    </div>
+      </ColorMode>
+    </GamutProvider>
   );
 };

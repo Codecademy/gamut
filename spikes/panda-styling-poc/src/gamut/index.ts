@@ -6,7 +6,8 @@ export { css } from 'styled-system/css';
 export { token } from 'styled-system/tokens';
 
 export { Box } from './Box';
-export { Button } from './Button';
+export { ButtonBase } from './ButtonBase';
+export * from './Button';
 // escape hatches that keep the external API compatible under zero-runtime:
 export { getColorValue, palette } from './color-values';
 export type { SemanticAlias, ThemeName } from './color-values';

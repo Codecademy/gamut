@@ -1,22 +1,23 @@
 import type { ReactNode } from 'react';
 
-import { type ColorModeName, ColorMode } from './ColorMode';
+import type { ThemeName } from './color-values';
 
-/* Analog of gamut `GamutProvider` — but under Panda (zero-runtime) it sheds most
- * of its Emotion responsibilities:
- *   - ❌ No <CacheProvider> / createEmotionCache — nothing injects styles at runtime.
- *   - ❌ No Emotion <ThemeProvider> — tokens are global CSS vars from the static sheet.
- *   - ❌ No <Global> Reboot/Variables/Typography injection — that CSS ships statically.
- * What remains is optional: set the initial color mode. Consumers import the
- * static stylesheet ONCE (see src/main.tsx) instead of wiring a cache/provider.
+/* Analog of gamut `GamutProvider` — the PROVIDER role only: it selects the
+ * active theme token set (via `data-panda-theme`, the analog of gamut's
+ * `theme={coreTheme}` prop). Under Panda (zero-runtime) the rest of gamut's
+ * provider job disappears: no `CacheProvider`/`createEmotionCache`, no Emotion
+ * `ThemeProvider`, no `<Global>` injection — the static stylesheet is imported
+ * once (see src/main.tsx).
  *
- * NOTE ON CSP NONCE: gamut passes a `nonce` to the Emotion cache for CSP. With a
- * static stylesheet there is no injected <style> to nonce, so this concern
- * largely disappears (a real gap only if runtime-dynamic inline styles remain). */
+ * Color MODE is intentionally NOT set here. As in real Gamut, place a single
+ * `<ColorMode mode="…">` inside the provider for the ambient mode, and use
+ * `<Background>` for individual themed surfaces. */
 export const GamutProvider = ({
-  mode = 'light',
+  theme = 'core',
   children,
 }: {
-  mode?: ColorModeName;
+  theme?: ThemeName;
   children?: ReactNode;
-}) => <ColorMode mode={mode}>{children}</ColorMode>;
+}) => (
+  <div data-panda-theme={theme === 'core' ? undefined : theme}>{children}</div>
+);

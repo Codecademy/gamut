@@ -33,10 +33,11 @@ automatically as nx target dependencies.
 
 A small Vite page demonstrating **Panda variants** and switching:
 
-- the `Button` recipe across every `variant` × `size` (+ `disabled`)
+- the **Button atoms** (`FillButton`/`StrokeButton`/`TextButton`/`CTAButton`/`IconButton`) with the real prop surface (`variant`/`size`/`icon`/`iconPosition`/`href`/`disabled`)
+- a `FillButton` grid across every `variant` × `size` (+ `disabled`)
 - a `variant()`-style recipe (`<Anchor tone="…">`) and `states()`-style booleans (`<Wrapper disabled center>`)
 - ambient **colorMode** (light/dark) + **theme** (core/admin) switchers (attribute flips)
-- a static **`<Background bg="navy">`** surface with its own contrast-selected mode
+- a static **`<Background bg="navy-800">`** surface with its own contrast-selected mode
 
 ---
 
@@ -79,13 +80,28 @@ The POC's `Background` sets `data-color-mode` from the palette (`src/gamut/Backg
 the navy `<Background>` on the example page makes `text` resolve to the dark value
 with no `<ColorMode>` wrapper. Correct per skill guidance.
 
-### ✅ `styled` factory + `GamutProvider` — work, and `GamutProvider` SHRINKS
+### ✅ Button atoms — SAME external API as Gamut (the key proof)
 
-`styled('button', recipe)` (Button) and inline `styled('div', {...})` (Card)
-build; `styled` is re-exported from the Gamut facade (never `@emotion/styled`).
-`GamutProvider` sheds its Emotion job — no `CacheProvider`/`createEmotionCache`,
-no Emotion `ThemeProvider`, no `<Global>` injection; consumers import one static
-stylesheet instead.
+`src/gamut/Button.tsx` reproduces the real atoms — `FillButton`, `StrokeButton`,
+`TextButton`, `CTAButton`, `IconButton` — with the actual prop surface: `variant`
+(`primary`/`secondary`/`danger`/`interface`), `size` (`small`/`normal`/`large`),
+`icon` + `iconPosition` (via an `InlineIconButton` equivalent), `href` (polymorphic
+`ButtonBase` renders an `<a>`), `disabled`, and system props. Backed by per-atom
+Panda recipes (`gmt-fill/stroke/text/cta/icon-button`). A consumer's
+`<FillButton variant="primary" size="small" icon={Icon}>` / `<IconButton icon tip>`
+/ `<FillButton href="…">` compiles and renders unchanged — the only difference is
+`styled` comes from Gamut, not Emotion. (One noted simplification: `IconButton`
+omits the `<ToolTip>` wrapper, keeping the `tip`/`aria-label` props.)
+
+### ✅ Provider / ColorMode / Background separation matches real usage
+
+Per mono's idiom, `GamutProvider` is the PROVIDER (selects the theme — `data-panda-theme`);
+a single `<ColorMode mode>` sets the ambient mode; `<Background bg="<palette>">`
+handles individual static-themed surfaces (contrast-selected mode). `ColorMode` is
+used once. `GamutProvider` sheds its Emotion job — no `CacheProvider`/
+`createEmotionCache`, no Emotion `ThemeProvider`, no `<Global>` injection; consumers
+import one static stylesheet instead. `styled` is re-exported from the facade
+(never `@emotion/styled`).
 
 ### ✅ Theme + ColorMode SWITCHING — matches the Storybook switchers
 
@@ -187,7 +203,7 @@ largely the same. Beyond `styled`'s import source, the real changes are:
 
 - `panda.config.ts` — derives Panda tokens/themes/recipe from the REAL `@codecademy/gamut-styles` theme (corePalette + coreTheme/adminTheme `.modes` + scales)
 - `src/fonts.css` — real Apercu/Suisse `@font-face` (Codecademy CDN)
-- `src/gamut/*` — facade: `styled`, `Box`, `Button`, `ColorMode`, `Background`, `GamutProvider`, `getColorValue`, `styledDynamic`, barrel
+- `src/gamut/*` — facade: `styled`, `Box`, the Button atoms (`Button.tsx`) + polymorphic `ButtonBase`, `ColorMode`, `Background`, `GamutProvider`, `getColorValue`, `styledDynamic`, barrel
 - `src/authoring-comparison.tsx` — today's idioms vs Panda, side by side
 - `src/App.tsx` — the example page (variants + switchers + escape-hatch demos)
 - `project.json` — nx targets (codegen/cssgen/typecheck/build/dev)
