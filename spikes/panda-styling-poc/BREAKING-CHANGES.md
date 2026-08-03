@@ -95,6 +95,124 @@ runtime interpolations need manual conversion** to `variant()`/`states()` or
 interpolations / 634 `theme`-in-`${}`; platform ~16 (localized to `spark-studio`).
 Call-site usage (`<Toggle tone="on" disabled />`) does **not** change.
 
+### 2a. Internal authoring — Gamut uses these patterns too
+
+The reboot must migrate Gamut's OWN component styles, not just consumers'. In
+`packages/gamut/src`: **109** `styled(`, **69** `variant(`, **42** `states(`,
+**87** `css(`, **97** `system.*` / `variance.compose`, **110** `StyleProps<…>`,
+**7** template-literal `styled.x\`…\``, **3** `keyframes`, and **0** Emotion
+`css`-prop pragmas. Most is mechanical; a few patterns need real rework.
+
+| Internal pattern                             | Example (file)                                                               | Panda mapping                                                                       | Effort                      |
+| -------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------- |
+| `variant({ base, variants })`                | `Badge/index.tsx` `colorVariants`                                            | recipe `variants`                                                                   | 🟩 mechanical               |
+| `system.states({…})` / `states()`            | `Box/props.ts` `flexStates`/`sharedStates`                                   | boolean `variants`                                                                  | 🟩 mechanical               |
+| `system.compose(…)` + `StyleProps<typeof x>` | `Box/props.ts` `boxProps` (110 `StyleProps` sites)                           | style props on `styled(…)` + generated prop types (`StyledVariantProps`)            | 🟨 mechanical but pervasive |
+| static `css({…})`                            | everywhere                                                                   | recipe `base` / `css()`                                                             | 🟩 mechanical               |
+| `styledOptions([…])` (`shouldForwardProp`)   | `Badge`, `Button/shared/styles.ts`                                           | Panda auto-forwards style/variant props; drop most, else `shouldForwardProp` option | 🟩 mostly removable         |
+| `keyframes` (`@emotion/react`)               | `Loading/Shimmer.tsx` `slide`/`fade`                                         | `panda.config` `theme.keyframes` + reference by name                                | 🟨 mechanical               |
+| **template-literal** `styled.a\`…\``         | `Form/inputs/Checkbox.tsx` (` styled.svg\``/ `styled.input\``), `AppWrapper` | rewrite CSS string → object recipe/`css`                                            | 🟥 manual (7 files)         |
+| **dynamic prop interpolation**               | `Loading/Shimmer.tsx` `ShimmerForeground` (gradient from a prop)             | inline CSS var + static class, or `styledDynamic`                                   | 🟥 manual                   |
+| **`useCurrentMode()` → JS color value**      | `Loading/Shimmer.tsx` (mode → `rgba`)                                        | mode-conditioned tokens, or `getColorValue(alias, mode)`                            | 🟥 manual                   |
+| `modeColorProps` (per-mode var injection)    | `Button/shared/styles.ts`                                                    | `data-color-mode` scope via `<ColorMode>` / `<Background>`                          | 🟨 mechanical               |
+
+**`variant()` — mechanical (Badge):**
+
+```tsx
+// BEFORE (packages/gamut/src/Badge/index.tsx)
+const colorVariants = variant({
+  defaultVariant: 'primary',
+  base: {
+    borderRadius: 'xl',
+    fontFamily: 'accent',
+    px: 8,
+    whiteSpace: 'nowrap',
+  },
+  variants: {
+    primary: { bg: 'text', textColor: 'background' },
+    accent: { bg: 'yellow', textColor: 'navy' },
+    tertiary: { bg: 'transparent', border: 1, borderColor: 'border-secondary' },
+  },
+});
+const Badge = styled('span')(colorVariants);
+
+// AFTER — one recipe (base + variants); call site <Badge variant="accent"> unchanged
+const badge = defineRecipe({
+  className: 'gmt-badge',
+  base: {
+    borderRadius: 'xl',
+    fontFamily: 'accent',
+    px: '8',
+    whiteSpace: 'nowrap',
+  },
+  variants: {
+    variant: {
+      primary: { bg: 'text', color: 'background' },
+      accent: { bg: 'yellow', color: 'navy' },
+      tertiary: {
+        bg: 'transparent',
+        borderWidth: '1',
+        borderColor: 'border-secondary',
+      },
+    },
+  },
+  defaultVariants: { variant: 'primary' },
+});
+```
+
+**`keyframes` — mechanical (Shimmer):**
+
+```tsx
+// BEFORE
+import { keyframes } from '@emotion/react';
+const slide = keyframes({ from: { left: -500 }, to: { left: 500 } });
+// …animation: `${slide} 2s linear infinite`
+
+// AFTER — panda.config theme.keyframes, referenced by name
+// theme: { extend: { keyframes: {
+//   slide: { from: { left: '-500px' }, to: { left: '500px' } },
+//   fade:  { from: { opacity: '0' },   to: { opacity: '1' } },
+// } } }
+css({
+  animation: 'slide 2s linear infinite, fade 1s linear infinite alternate',
+});
+```
+
+**Dynamic prop interpolation + `useCurrentMode` — the hard one (Shimmer):**
+
+```tsx
+// BEFORE — a runtime prop drives the gradient; mode read in JS picks the rgba channels
+const ShimmerForeground = styled(Box)<{ foregroundBg: string }>((props) =>
+  css({
+    background: `linear-gradient(to right,
+    rgba(${props.foregroundBg},0) 20%, rgba(${props.foregroundBg},0.2) 50%,
+    rgba(${props.foregroundBg},0) 80%)`,
+  })
+);
+const mode = useCurrentMode();
+<ShimmerForeground foregroundBg={mode === 'light' ? '0,0,0' : '255,255,255'} />;
+
+// AFTER — static gradient using a CSS var; only the channel value is inline
+const shimmer = css({
+  background:
+    'linear-gradient(to right, rgba(var(--fg),0) 20%, rgba(var(--fg),0.2) 50%, rgba(var(--fg),0) 80%)',
+});
+const mode = useCurrentMode();
+<Box
+  className={shimmer}
+  style={
+    { '--fg': mode === 'light' ? '0,0,0' : '255,255,255' } as CSSProperties
+  }
+/>;
+```
+
+**Net (internal):** ~90% of Gamut's own styling (`variant`/`states`/`css`/system
+props/`StyleProps`) is a mechanical port to recipes + generated prop types. The
+real work is concentrated in the same two 🟥 patterns as consumers — the **7
+template-literal `styled`** components and the handful of **dynamic
+prop-interpolated / `useCurrentMode`-driven** styles (e.g. `Shimmer`) — plus
+moving `keyframes` and `modeColorProps` into Panda's model.
+
 ---
 
 ## 3. Token values are strings; bare numbers aren't tokens 🟨
