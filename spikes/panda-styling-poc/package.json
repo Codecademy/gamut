@@ -12,6 +12,8 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@codecademy/gamut-styles": "workspace:*",
+    "@codecademy/variance": "workspace:*",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

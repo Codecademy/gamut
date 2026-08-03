@@ -1,34 +1,43 @@
+import { adminTheme } from '@codecademy/gamut-styles/dist/themes/admin';
+import { coreTheme } from '@codecademy/gamut-styles/dist/themes/core';
+import {
+  borderRadii,
+  corePalette,
+  fontFamily,
+  fontSize,
+  fontWeight,
+  lineHeight,
+  spacing,
+} from '@codecademy/gamut-styles/dist/variables';
 import { defineConfig, defineRecipe } from '@pandacss/dev';
 
-import {
-  type SemanticAlias,
-  type ThemeName,
-  palette,
-  semanticColors,
-} from './src/tokens.source';
+/* Gamut → Panda spike (GMT-1715), using the REAL Gamut Core theme. Tokens are
+ * derived directly from `@codecademy/gamut-styles` (palette, semantic light/dark
+ * color modes, spacing / fontSize / fontFamily / fontWeight / lineHeight /
+ * borderRadii), so the spike matches production values. `getColorValue`
+ * (src/gamut/color-values.ts) reads the SAME theme, so the JS resolver can't
+ * drift. Real Apercu/Suisse web fonts are loaded via src/fonts.css. */
 
-/* Gamut → Panda spike (GMT-1715). Tokens are built from the shared
- * `src/tokens.source` so the CSS variables Panda emits and the JS `getColorValue`
- * escape hatch share one source of truth. */
+type ModeMap = Record<string, string>;
+type ThemeWithModes = { modes: { light: ModeMap; dark: ModeMap } };
 
-// palette hex → Panda raw color tokens
-const colorTokens = Object.fromEntries(
-  Object.entries(palette).map(([key, value]) => [key, { value }])
-);
+const asTokens = (obj: Record<string, string | number>) =>
+  Object.fromEntries(
+    Object.entries(obj).map(([k, v]) => [k, { value: String(v) }])
+  );
 
-// semantic alias map (per theme) → Panda semanticTokens with light/dark
-const toSemanticColors = (theme: ThemeName) => {
-  const light = semanticColors[theme].light;
-  const dark = semanticColors[theme].dark;
+// semantic alias → { base: {colors.<lightKey>}, _dark: {colors.<darkKey>} }
+const toSemanticColors = (theme: ThemeWithModes) => {
+  const { light, dark } = theme.modes;
   const colors: Record<string, { value: { base: string; _dark: string } }> = {};
-  (Object.keys(light) as SemanticAlias[]).forEach((alias) => {
+  for (const alias of Object.keys(light)) {
     colors[alias] = {
       value: {
         base: `{colors.${light[alias]}}`,
-        _dark: `{colors.${dark[alias]}}`,
+        _dark: `{colors.${dark[alias] ?? light[alias]}}`,
       },
     };
-  });
+  }
   return colors;
 };
 
@@ -107,41 +116,39 @@ export default defineConfig({
     },
   },
 
-  // A DESIGN SYSTEM must force-generate all recipe variants + themes, so
-  // consumers can select any variant — including DYNAMICALLY (`variant={x}` in a
-  // loop), which Panda's usage scanner can't see. Without this, only
-  // statically-literal variants ship. `['*']` = every variant combination.
+  // force-emit all recipe variants + the admin theme (dynamic selection safe)
   staticCss: { recipes: { button: ['*'] }, themes: ['admin'] },
   themes: {
-    admin: { semanticTokens: { colors: toSemanticColors('admin') } },
+    admin: {
+      semanticTokens: {
+        colors: toSemanticColors(adminTheme as unknown as ThemeWithModes),
+      },
+    },
   },
 
   theme: {
     extend: {
       tokens: {
-        colors: colorTokens,
-        spacing: {
-          '4': { value: '4px' },
-          '8': { value: '8px' },
-          '16': { value: '16px' },
-          '24': { value: '24px' },
-        },
+        colors: asTokens(corePalette as Record<string, string>),
+        spacing: asTokens(spacing as Record<string, string | number>),
+        // Gamut doesn't tokenize control heights; add a small sizes scale.
         sizes: {
           '32': { value: '32px' },
           '40': { value: '40px' },
+          '48': { value: '48px' },
           '56': { value: '56px' },
+          '64': { value: '64px' },
         },
-        fontSizes: {
-          '14': { value: '14px' },
-          '16': { value: '16px' },
-          '18': { value: '18px' },
-        },
-        fontWeights: { base: { value: '400' }, title: { value: '700' } },
-        fonts: { base: { value: 'system-ui, sans-serif' } },
-        radii: { md: { value: '4px' }, lg: { value: '8px' } },
-        borderWidths: { '2': { value: '2px' } },
+        fontSizes: asTokens(fontSize as Record<string, string>),
+        fonts: asTokens(fontFamily as Record<string, string>),
+        fontWeights: asTokens(fontWeight as Record<string, string | number>),
+        lineHeights: asTokens(lineHeight as Record<string, string | number>),
+        radii: asTokens(borderRadii as Record<string, string>),
+        borderWidths: { '1': { value: '1px' }, '2': { value: '2px' } },
       },
-      semanticTokens: { colors: toSemanticColors('core') },
+      semanticTokens: {
+        colors: toSemanticColors(coreTheme as unknown as ThemeWithModes),
+      },
       recipes: { button },
     },
   },

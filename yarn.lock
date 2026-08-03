@@ -1717,7 +1717,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:20.0.2, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:20.0.2, @codecademy/gamut-styles@workspace:*, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
@@ -1816,7 +1816,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/variance@npm:0.26.1, @codecademy/variance@workspace:packages/variance":
+"@codecademy/variance@npm:0.26.1, @codecademy/variance@workspace:*, @codecademy/variance@workspace:packages/variance":
   version: 0.0.0-use.local
   resolution: "@codecademy/variance@workspace:packages/variance"
   dependencies:
@@ -19528,6 +19528,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "panda-styling-poc@workspace:spikes/panda-styling-poc"
   dependencies:
+    "@codecademy/gamut-styles": "workspace:*"
+    "@codecademy/variance": "workspace:*"
     "@pandacss/dev": "npm:^0.53.0"
     "@types/react": "npm:18.3.27"
     "@types/react-dom": "npm:18.3.1"

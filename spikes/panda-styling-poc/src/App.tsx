@@ -124,6 +124,7 @@ export const App = () => {
         <Box
           bg="background"
           color="text"
+          fontFamily="base"
           padding="24"
           minHeight="screen"
           display="flex"
@@ -272,7 +273,11 @@ export const App = () => {
               <Box
                 className={swatchBox}
                 style={
-                  { '--swatch': token.var(`colors.${swatch}`) } as CSSProperties
+                  {
+                    '--swatch': token.var(
+                      `colors.${swatch}` as Parameters<typeof token.var>[0]
+                    ),
+                  } as CSSProperties
                 }
               >
                 bg = token.var(colors.{swatch}) — themeable
@@ -281,8 +286,8 @@ export const App = () => {
           </Card>
 
           {/* === STATIC color-mode context via <Background> (own dark context) === */}
-          <Section title="Static <Background bg='navy'> — own contrast-selected mode">
-            <Background bg="navy">
+          <Section title="Static <Background bg='navy-800'> — own contrast-selected mode">
+            <Background bg="navy-800">
               <Box padding="24" display="flex" gap="8" alignItems="center">
                 <Button variant="primary">Primary</Button>
                 <Button variant="danger" size="small">

@@ -10,6 +10,13 @@ switchers, and (d) an **external API that barely changes**. Grounded in the real
 `gamut-style-utilities` / `gamut-system-props` / `gamut-color-mode` /
 `gamut-theming` skills.
 
+**Uses the REAL Gamut Core theme.** Panda tokens are derived directly from
+`@codecademy/gamut-styles` (a workspace dep) — the actual `corePalette`, the
+`coreTheme`/`adminTheme` semantic light/dark `.modes`, and the real spacing /
+fontSize / fontFamily / fontWeight / lineHeight / borderRadii scales — so values
+match production (e.g. `hyper-500 #3A10E5`, `navy-800 #10162F`). Real Apercu +
+Suisse web fonts load from Codecademy's CDN via `src/fonts.css`.
+
 ## Run it (yarn + nx)
 
 ```
@@ -102,7 +109,8 @@ handled by small facade additions so the external API stays compatible:
 
 - **`getColorValue(alias, mode, theme)`** (`src/gamut/color-values.ts`) — reads a
   resolved color VALUE in JS (the charts/canvas case). Returns raw hex derived
-  from the SAME `src/tokens.source.ts` that builds the CSS vars, so it can't drift.
+  from the SAME real Gamut theme (`@codecademy/gamut-styles` `.modes` + `corePalette`)
+  that builds the CSS vars, so it can't drift.
   The example page feeds it into an SVG "chart" that recolors when you flip the
   theme/colorMode switchers. Analog of gamut's `_getColorValue`.
 - **`styledDynamic(Tag)(props => styles)`** (`src/gamut/styledDynamic.tsx`) —
@@ -112,9 +120,9 @@ handled by small facade additions so the external API stays compatible:
   page drives a prop-controlled `<Meter>` width with it. Use `variant()`/`states()`
   for dynamic + pseudo-selector cases.
 
-Tokens now come from a single `src/tokens.source.ts` feeding BOTH Panda's CSS
-vars and `getColorValue` — the portable-token story, and what makes the JS
-resolver safe.
+Both Panda's CSS vars and `getColorValue` read the same real
+`@codecademy/gamut-styles` theme — the portable-token story, and what makes the
+JS resolver safe (it can't drift from the CSS).
 
 ### ⚠️ Dynamic variant selection needs `staticCss` (design-system requirement)
 
@@ -177,8 +185,8 @@ largely the same. Beyond `styled`'s import source, the real changes are:
 
 ## Files
 
-- `src/tokens.source.ts` — single source of truth (palette + semantic maps, per theme/mode)
-- `panda.config.ts` — builds Panda tokens/themes/recipe FROM `tokens.source`
+- `panda.config.ts` — derives Panda tokens/themes/recipe from the REAL `@codecademy/gamut-styles` theme (corePalette + coreTheme/adminTheme `.modes` + scales)
+- `src/fonts.css` — real Apercu/Suisse `@font-face` (Codecademy CDN)
 - `src/gamut/*` — facade: `styled`, `Box`, `Button`, `ColorMode`, `Background`, `GamutProvider`, `getColorValue`, `styledDynamic`, barrel
 - `src/authoring-comparison.tsx` — today's idioms vs Panda, side by side
 - `src/App.tsx` — the example page (variants + switchers + escape-hatch demos)
