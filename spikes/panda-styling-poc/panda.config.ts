@@ -68,26 +68,29 @@ const button = defineRecipe({
   },
   variants: {
     size: {
+      // height/minWidth aren't design tokens in Gamut — author them as raw
+      // values via Panda's `[value]` escape hatch (strictTokens still guards
+      // colors/spacing/fontSize, which ARE tokens).
       small: {
         fontSize: '14',
-        height: '32',
-        minWidth: '32',
+        height: '[32px]',
+        minWidth: '[32px]',
         py: '4',
         px: '8',
         fontWeight: 'title',
       },
       normal: {
         fontSize: '16',
-        height: '40',
-        minWidth: '40',
+        height: '[40px]',
+        minWidth: '[40px]',
         py: '4',
         px: '16',
         fontWeight: 'title',
       },
       large: {
         fontSize: '18',
-        height: '56',
-        minWidth: '40',
+        height: '[56px]',
+        minWidth: '[40px]',
         py: '4',
         px: '16',
         fontWeight: 'title',
@@ -131,14 +134,6 @@ export default defineConfig({
       tokens: {
         colors: asTokens(corePalette as Record<string, string>),
         spacing: asTokens(spacing as Record<string, string | number>),
-        // Gamut doesn't tokenize control heights; add a small sizes scale.
-        sizes: {
-          '32': { value: '32px' },
-          '40': { value: '40px' },
-          '48': { value: '48px' },
-          '56': { value: '56px' },
-          '64': { value: '64px' },
-        },
         fontSizes: asTokens(fontSize as Record<string, string>),
         fonts: asTokens(fontFamily as Record<string, string>),
         fontWeights: asTokens(fontWeight as Record<string, string | number>),

@@ -26,7 +26,7 @@ const swatchBox = css({
   bg: 'var(--swatch)',
   color: 'text',
   p: '16',
-  minWidth: '56',
+  minWidth: '[56px]',
   borderRadius: 'md',
   borderWidth: '2',
   borderColor: 'border-primary',
