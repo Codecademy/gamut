@@ -1,3 +1,15 @@
+## 72.5.0 (2026-08-03)
+
+### 🚀 Features
+
+- feat(SelectDropdown): add isCreatable prop + remove SearchIcon ([#3371](https://github.com/Codecademy/gamut/pull/3371))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
 ## 72.4.0 (2026-08-03)
 
 ### 🚀 Features
