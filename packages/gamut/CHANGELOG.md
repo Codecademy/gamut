@@ -1,3 +1,56 @@
+## 72.5.0 (2026-08-03)
+
+### 🚀 Features
+
+- feat(SelectDropdown): add isCreatable prop + remove SearchIcon ([#3371](https://github.com/Codecademy/gamut/pull/3371))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
+## 72.4.0 (2026-08-03)
+
+### 🚀 Features
+
+- remove scss from video ([#3390](https://github.com/Codecademy/gamut/pull/3390))
+- remove scss from video component and all configs ([#3390](https://github.com/Codecademy/gamut/pull/3390))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.16
+- Updated gamut-patterns to 0.10.35
+- Updated gamut-styles to 20.1.0
+- Updated gamut-icons to 9.57.11
+- Updated gamut-tests to 6.0.6
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Haiku 4.5
+- Claude Opus 4.8 (1M context)
+
+## 72.3.1 (2026-07-30)
+
+### 🩹 Fixes
+
+- update flyout close iconbutton aria label to be closeLabel prop ([#3401](https://github.com/Codecademy/gamut/pull/3401))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
+## 72.3.0 (2026-07-22)
+
+### 🚀 Features
+
+- update read-only tag colors ([#3399](https://github.com/Codecademy/gamut/pull/3399))
+
+### ❤️ Thank You
+
+- Amy Resnik
+
 ## 72.2.5 (2026-07-20)
 
 ### 🩹 Fixes
