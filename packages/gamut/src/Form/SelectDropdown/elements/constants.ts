@@ -3,7 +3,6 @@ import {
   CloseIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
-  SearchIcon,
 } from '@codecademy/gamut-icons';
 
 export const iconSize = { small: 12, medium: 16 };
@@ -17,14 +16,6 @@ export const indicatorIcons = {
   mediumChevron: {
     size: iconSize.medium,
     icon: ArrowChevronDownIcon,
-  },
-  smallSearchable: {
-    size: iconSize.small,
-    icon: SearchIcon,
-  },
-  mediumSearchable: {
-    size: iconSize.medium,
-    icon: SearchIcon,
   },
   smallRemove: {
     size: iconSize.small,
