@@ -217,8 +217,13 @@ Pass an `inputProps` object with `hidden` and `combobox` keys to forward attribu
 - `combobox`: forwarded to the visible react-select input
 
 <Callout
-  text="These props are passed directly to the underlying elements, so they only
-  accept `data-*` and `aria-*` attributes to ensure validity."
+  text={
+    <>
+      These props are passed directly to the underlying elements, so they only
+      accept <code>data-*</code> and <code>aria-*</code> attributes to ensure
+      validity.
+    </>
+  }
 />
 
 <Canvas of={SelectDropdownStories.CustomInputProps} />
