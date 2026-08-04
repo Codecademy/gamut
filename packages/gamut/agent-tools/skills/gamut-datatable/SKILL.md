@@ -227,7 +227,7 @@ Key points:
 
 - `closeOnViewportExit` on `PopoverContainer` closes the menu when its row scrolls out of view.
 - `allowPageInteraction` lets users interact with the table while the menu is open.
-- Modals opened from menu items render at `zIndex={3}` by default, above the table header.
+- Modals opened from menu items render at `zIndex="modal"` by default, above the table header.
 
 ## Scrollable table
 

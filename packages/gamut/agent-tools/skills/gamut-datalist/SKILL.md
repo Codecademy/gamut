@@ -221,7 +221,7 @@ DataList shows a default empty state when `rows` is empty. Override with `emptyM
         height="inherit"
         position="absolute"
         width="inherit"
-        zIndex={1}
+        zIndex="foreground"
       >
         <FlexBox
           as="th"

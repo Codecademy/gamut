@@ -1,6 +1,6 @@
 ---
 name: gamut-review
-description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, hardcoded colors, and test setup, with pointers to remediation skills.
+description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, hardcoded colors, raw z-index values, and test setup, with pointers to remediation skills.
 ---
 
 # Gamut Review
@@ -9,9 +9,9 @@ Audit existing code at the path the user provides (default: current working dire
 
 When `DESIGN.md` is present at the audit root, use it as the authoritative reference for product design intent, token names, and component patterns. It is copied from `DESIGN.Codecademy.md`, `DESIGN.Percipio.md`, or `DESIGN.LXStudio.md` in `@codecademy/gamut` agent-tools (via `gamut plugin install --theme <name>`). When a finding maps to a skill, note it in the report so the developer knows where to get remediation guidance.
 
-Run Check 0 first, then Checks 1–5, then print a single consolidated report using the format at the end of this file.
+Run Check 0 first, then Checks 1–6, then print a single consolidated report using the format at the end of this file.
 
-Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
+Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-zindex`](../gamut-zindex/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ---
 
@@ -330,6 +330,45 @@ Skill reference for remediation: [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ---
 
+## Check 6 — Raw z-index values
+
+Gamut coordinates stacking order through one semantic scale, `zIndexes`, from `@codecademy/gamut-styles`: `underlay` (-100), `base` (0), `foreground` (100), `floating` (200), `appBar` (300), `flyout` (400), `modal` (500), `popover` (600), `topmost` (700). A raw numeric z-index bypasses this scale and is what the `gamut/no-raw-z-index` eslint rule (`error` level) exists to catch — this check finds the same violations by grep so they show up even in a repo that hasn't wired the rule into its eslint config yet.
+
+Discovery: Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for a raw numeric literal (optionally negative) in a `zIndex` JSX prop or a `zIndex`/`'z-index'` style-object key. Skip `node_modules`, `dist`, `.next`, `build`, `.turbo`.
+
+- JSX prop: `zIndex=\{-?[0-9]+\}`
+- Style object key: `\bzIndex:\s*-?[0-9]+\b` and `['"]z-index['"]:\s*-?[0-9]+`
+
+Exclude a match when:
+
+- The line (or the line above it) has `eslint-disable-next-line gamut/no-raw-z-index` / `eslint-disable-line gamut/no-raw-z-index` with a justifying comment — the rule allows this as a deliberate escape hatch. Report as `ℹ note`, not a violation.
+- The value is arithmetic on a token, e.g. `zIndex={zIndexes.foreground - 2}` — the regexes above only match when a number immediately follows `{`/`:`, so a leading token identifier already excludes these; discard any accidental match where the captured "number" is preceded by an identifier or `.`.
+- A variable is being passed (`zIndex={zIndex}`, `zIndex: props.zIndex`) — not a literal, not flagged (same as the eslint rule).
+
+### Workflow (each match)
+
+1. Record the raw number and whether it's a JSX prop or style-object key.
+2. Suggest the nearest scale token:
+
+   | Raw value | Suggested token                                                                                                                                                                                           |
+   | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `-1`      | `zIndexes.underlay`                                                                                                                                                                                       |
+   | `0`       | `zIndexes.base`                                                                                                                                                                                           |
+   | `1`–`3`   | `zIndexes.foreground` (common legacy in-flow/sticky value)                                                                                                                                                |
+   | other     | Nearest token by magnitude (e.g. `12` → `zIndexes.foreground` or `zIndexes.appBar - 288`, depending on stacking intent) — flag `⚠ needs manual review` since intent isn't inferable from the number alone |
+
+3. For an "other" value with no obvious nearest token, still report the match but mark it for manual review rather than guessing a token — the developer who wrote the number knows what it needed to sit above/below.
+
+Severity: ✗ error for every raw literal match (mirrors the eslint rule's `error` level) except lines exempted by an inline disable comment (→ ℹ note).
+
+Reporting: `file:line  zIndex={<n>}  →  suggest: zIndexes.<token>` (JSX) or `file:line  zIndex: <n>  →  suggest: zIndexes.<token>` (style object). For unmapped "other" values: `file:line  zIndex={<n>}  →  ⚠ needs manual review — no obvious token`.
+
+Also check whether the project depends on `@codecademy/gamut-styles` at a version that exports `zIndexes` (see Check 1) — if not, note that upgrading is required before remediation.
+
+Skill reference: [`gamut-zindex`](../gamut-zindex/SKILL.md) — full scale reference, `ZIndexType`, and `gamut/no-raw-z-index` rule details.
+
+---
+
 ## Output format
 
 ```
@@ -379,6 +418,12 @@ Hardcoded colors                                                         [→ ga
   ⚠  src/Hero.tsx:14   '#1557FF'  →  semantic: primary (if link/CTA) | palette: blue-500 | note: no exact semantic; confirm theme
   ⚠  src/Nav.tsx:8     '#BADA55'  →  semantic: (n/a) | palette: — | note: no Gamut token
   ✗  Non-Gamut CSS vars   --darkNeutralColor (8 uses), --whiteColor (5 uses)  →  --color-text, --color-background
+
+Raw z-index                                                              [→ gamut-zindex]
+  ✗  src/HeroBanner.tsx:9    zIndex={3}   →  suggest: zIndexes.foreground
+  ✗  src/Nav.tsx:14     zIndex: 12  →  ⚠ needs manual review — no obvious token
+  ℹ  src/Vendor.tsx:31  zIndex={9999}  (eslint-disable-next-line gamut/no-raw-z-index — justified)
+  (or: ✓  none found)
 
 Test setup                                                               [→ gamut-testing]
   ✓  @codecademy/gamut-tests   used in 12 test files

@@ -144,7 +144,7 @@ const Overlay = styled.div(variance.compose(system.layout, system.positioning));
 <Overlay position="absolute" top={0} left={0} width="100%" height="100%" />;
 ```
 
-Key props: `position`, `inset`, `top`, `right`, `bottom`, `left`, `zIndex`, `opacity`
+Key props: `position`, `inset`, `top`, `right`, `bottom`, `left`, `zIndex`, `opacity`. For choosing a `zIndex` value, see [`gamut-zindex`](../gamut-zindex/SKILL.md) (the semantic `zIndexes` scale and the `gamut/no-raw-z-index` lint rule).
 
 ### `system.shadow`
 
