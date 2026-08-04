@@ -78,7 +78,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               {title}
             </Text>
             <IconButton
-              aria-label="Close"
+              aria-label={closeLabel}
               icon={MiniDeleteIcon}
               mx={16}
               tip={closeLabel}

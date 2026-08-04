@@ -1,3 +1,9 @@
+## 0.10.35 (2026-08-03)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 20.1.0
+
 ## 0.10.34 (2026-06-16)
 
 ### 🧱 Updated Dependencies

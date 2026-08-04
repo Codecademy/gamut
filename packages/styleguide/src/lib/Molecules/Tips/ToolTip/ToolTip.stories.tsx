@@ -154,6 +154,47 @@ export const Disabled: Story = {
   ),
 };
 
+export const CloseOnClick: Story = {
+  render: () => (
+    <FlexBox center justifyContent="space-around" pt={48}>
+      <ToolTip
+        id="coc-floating"
+        info="Closes on click (floating)"
+        placement="floating"
+      >
+        <StrokeButton aria-describedby="coc-floating">Floating</StrokeButton>
+      </ToolTip>
+      <ToolTip
+        id="coc-inline"
+        info="Closes on click (inline)"
+        placement="inline"
+      >
+        <StrokeButton aria-describedby="coc-inline">Inline</StrokeButton>
+      </ToolTip>
+      <ToolTip
+        closeOnClick={false}
+        id="stays-floating"
+        info="Stays open on click (floating)"
+        placement="floating"
+      >
+        <StrokeButton aria-describedby="stays-floating">
+          Floating (stays open)
+        </StrokeButton>
+      </ToolTip>
+      <ToolTip
+        closeOnClick={false}
+        id="stays-inline"
+        info="Stays open on click (inline)"
+        placement="inline"
+      >
+        <StrokeButton aria-describedby="stays-inline">
+          Inline (stays open)
+        </StrokeButton>
+      </ToolTip>
+    </FlexBox>
+  ),
+};
+
 export const HorizontalAlignments: Story = {
   render: () => (
     <>

@@ -1,13 +1,17 @@
-import { SelectOptionBase } from '../utils';
+import * as React from 'react';
+import { ActionMeta, Options as OptionsType } from 'react-select';
+
+import { SelectOptionBase } from '../../utils';
 import {
   BaseOnChangeProps,
   ExtendedOption,
   MultiSelectDropdownProps,
+  OptionStrict,
   SelectDropdownGroup,
   SelectDropdownOptions,
   SelectDropdownProps,
   SingleSelectDropdownProps,
-} from './types';
+} from '../types';
 
 export const isMultipleSelectProps = (
   props: BaseOnChangeProps
@@ -16,6 +20,32 @@ export const isMultipleSelectProps = (
 export const isSingleSelectProps = (
   props: BaseOnChangeProps
 ): props is SingleSelectDropdownProps => !props.multiple;
+
+type CreatableOption = OptionStrict & { __isNew__?: boolean };
+
+/**
+ * Resolves the value for a newly created option from react-select action metadata
+ * or the onChange option payload. Returns undefined when no reliable value exists.
+ */
+export const getCreatedOptionValue = (
+  optionEvent: OptionStrict | OptionsType<OptionStrict>,
+  actionMeta: ActionMeta<OptionStrict>,
+  multiple?: boolean
+): string | undefined => {
+  const metaValue = actionMeta.option?.value;
+  if (metaValue) return metaValue;
+
+  if (!multiple) {
+    const { value } = optionEvent as OptionStrict;
+    return value || undefined;
+  }
+
+  const newOption = (optionEvent as OptionsType<OptionStrict>).find(
+    (option) => (option as CreatableOption).__isNew__
+  );
+
+  return newOption?.value || undefined;
+};
 
 export const isOptionGroup = (obj: unknown): obj is SelectDropdownGroup =>
   obj != null &&
@@ -68,6 +98,18 @@ export const filterValueFromOptions = (
  * @param value - The value or values to remove
  * @returns New array with the specified values removed
  */
+export const resolveNoOptionsMessage = (
+  validationMessage: SelectDropdownProps['validationMessage']
+): ((obj: { inputValue: string }) => React.ReactNode) | undefined => {
+  if (validationMessage === undefined) return undefined;
+  if (typeof validationMessage === 'function') {
+    return validationMessage as (obj: {
+      inputValue: string;
+    }) => React.ReactNode;
+  }
+  return () => validationMessage;
+};
+
 export const removeValueFromSelectedOptions = (
   selectedOptions: ExtendedOption[] | SelectOptionBase[],
   value: SelectDropdownProps['value']

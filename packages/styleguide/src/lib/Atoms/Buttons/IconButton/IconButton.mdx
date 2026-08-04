@@ -31,6 +31,12 @@ Use for secondary or space-constrained actions with recognizable icons. Use regu
 
 For more detailed information on `IconButton` tooltips, take a look at the <LinkTo id='Molecules/Tips/ToolTip'>ToolTip</LinkTo> story.
 
+## Close on Click
+
+By default, `IconButton` tooltips close immediately on click and reappear only after the cursor leaves and re-enters. To persist the tooltip after a click, pass `tipProps={{ closeOnClick: false }}`. The first two buttons below close on click; the last two stay open.
+
+<Canvas of={IconButtonStories.CloseOnClick} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={IconButtonStories.Default} />

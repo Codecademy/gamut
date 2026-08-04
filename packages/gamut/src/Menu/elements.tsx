@@ -243,8 +243,9 @@ export const ListButton = styled(
 export const MenuToolTipWrapper: React.FC<
   Pick<ComponentProps<typeof MenuItem>, 'children' | 'label'> & {
     tipId: string;
+    closeOnClick?: boolean;
   }
-> = ({ children, label, tipId }) => {
+> = ({ children, label, tipId, closeOnClick }) => {
   if (!label) {
     return <>{children}</>;
   }
@@ -267,5 +268,9 @@ export const MenuToolTipWrapper: React.FC<
           ...defaultTipProps,
         };
 
-  return <ToolTip {...(wrapperProps as ToolTipProps)}>{children}</ToolTip>;
+  return (
+    <ToolTip closeOnClick={closeOnClick} {...(wrapperProps as ToolTipProps)}>
+      {children}
+    </ToolTip>
+  );
 };
