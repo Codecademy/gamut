@@ -1,3 +1,4 @@
+import { rangeContainsDisabled } from '../../DatePickerCalendar/utils/dateSelect';
 import type { DatePickerTranslations } from '../../utils/translations';
 import type { SegmentValues } from '../Segment/utils';
 import { parseSegmentsToDate } from '../Segment/utils';
@@ -132,7 +133,7 @@ export function validateSegments(
 
   if (parsed) {
     // Date is structurally valid, now check if it's disabled
-    if (disableDate && disableDate(parsed)) {
+    if (disableDate?.(parsed)) {
       return {
         isValid: false,
         errorMessage: generateErrorMessage(
@@ -159,7 +160,11 @@ export function validateSegments(
 }
 
 /**
- * Validates a date range to ensure no dates in the range are disabled.
+ * Validates a committed date range to ensure no dates within it are disabled.
+ * Returns null when the range is complete and clear (or incomplete), or a
+ * `range-contains-disabled-date` result when any date in the span is disabled.
+ * Delegates the span walk to `rangeContainsDisabled` (the same check the
+ * calendar uses) so typed and clicked ranges stay consistent.
  */
 export function validateDateRange(
   startDate: Date | null,
@@ -169,25 +174,16 @@ export function validateDateRange(
 ): ValidationResult | null {
   if (!startDate || !endDate || !disableDate) return null;
 
-  // Check if any date in the range is disabled
-  const current = new Date(startDate);
-  while (current <= endDate) {
-    if (disableDate(current)) {
-      return {
-        isValid: false,
-        errorMessage: generateErrorMessage(
-          'range-contains-disabled-date',
-          {
-            month: '',
-            day: '',
-            year: '',
-          },
-          translations
-        ),
-        reason: 'range-contains-disabled-date',
-      };
-    }
-    current.setDate(current.getDate() + 1);
+  if (rangeContainsDisabled({ startDate, endDate, disableDate })) {
+    return {
+      isValid: false,
+      errorMessage: generateErrorMessage(
+        'range-contains-disabled-date',
+        { month: '', day: '', year: '' },
+        translations
+      ),
+      reason: 'range-contains-disabled-date',
+    };
   }
 
   return null;

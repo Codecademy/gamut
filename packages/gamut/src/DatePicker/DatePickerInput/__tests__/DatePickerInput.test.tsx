@@ -168,4 +168,63 @@ describe('DatePickerInput', () => {
     const hidden = view.container.querySelector('input[type="hidden"]')!;
     expect(hidden).toHaveValue('2024-03-15');
   });
+
+  describe('range disabled-date validation', () => {
+    // Disables March 20, 2024 - a date that sits inside the range typed below.
+    const disableDate = (date: Date) =>
+      date.getFullYear() === 2024 &&
+      date.getMonth() === 2 &&
+      date.getDate() === 20;
+
+    it('shows the range error and does not commit when a typed range spans a disabled date', async () => {
+      const user = userEvent.setup();
+      const onRangeSelection = jest.fn();
+      const { view } = renderInput({
+        context: createMockRangeContext({
+          startDate: new Date(2024, 2, 15),
+          endDate: null,
+          activeRangePart: 'end',
+          disableDate,
+          onRangeSelection,
+        }),
+        rangePart: 'end',
+      });
+
+      view.getByRole('spinbutton', { name: 'month' }).focus();
+      await user.keyboard('03');
+      await user.keyboard('25');
+      await user.keyboard('2024');
+
+      view.getByText('This date range contains unavailable dates');
+      expect(onRangeSelection).not.toHaveBeenCalled();
+    });
+
+    it('commits and clears the error when the typed range avoids disabled dates', async () => {
+      const user = userEvent.setup();
+      const onRangeSelection = jest.fn();
+      const { view } = renderInput({
+        context: createMockRangeContext({
+          startDate: new Date(2024, 2, 15),
+          endDate: null,
+          activeRangePart: 'end',
+          disableDate,
+          onRangeSelection,
+        }),
+        rangePart: 'end',
+      });
+
+      view.getByRole('spinbutton', { name: 'month' }).focus();
+      await user.keyboard('03');
+      await user.keyboard('18');
+      await user.keyboard('2024');
+
+      expect(
+        view.queryByText('This date range contains unavailable dates')
+      ).toBeNull();
+      expect(onRangeSelection).toHaveBeenCalledWith(
+        new Date(2024, 2, 15),
+        new Date(2024, 2, 18)
+      );
+    });
+  });
 });

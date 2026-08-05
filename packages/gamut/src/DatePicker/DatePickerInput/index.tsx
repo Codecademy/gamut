@@ -35,7 +35,7 @@ import {
   getDateFieldOrder,
   getDateFormatLayout,
 } from './utils';
-import { validateSegments } from './utils/validation';
+import { validateDateRange, validateSegments } from './utils/validation';
 
 /* FormError's `absolute` variant takes the message out of layout flow (anchored
    to FormGroup's position: relative container), so the input never changes height:
@@ -57,15 +57,10 @@ export type DatePickerInputProps = Omit<
 > & {
   /** In range mode: which part of the range this input edits. Omit for single-date or combined display. */
   rangePart?: 'start' | 'end';
-  /** Error message to display. String for specific error, undefined for no error. */
-  error?: string;
 };
 
 export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
-  (
-    { disabled, error, form, label, name, rangePart, size = 'base', ...rest },
-    ref
-  ) => {
+  ({ disabled, form, label, name, rangePart, size = 'base', ...rest }, ref) => {
     const context = useDatePicker();
 
     if (context === null) {
@@ -171,6 +166,38 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       [isRange, rangePart, context, endDate, date, disableDate]
     );
 
+    // Returns the range-level error message for the range that *would* be
+    // committed if `parsed` were applied to this input, or null. Mirrors the
+    // endpoint conditions in handleDateSelectRange so we only flag spans that
+    // would actually become a committed start+end range (both set, in order).
+    const getRangeError = useCallback(
+      (parsed: Date): string | null => {
+        if (!isRange || !rangePart) return null;
+        const rangeStart =
+          rangePart === 'start'
+            ? parsed
+            : date && parsed.getTime() >= date.getTime()
+            ? date
+            : null;
+        const rangeEnd =
+          rangePart === 'end'
+            ? parsed
+            : endDate && parsed.getTime() <= endDate.getTime()
+            ? endDate
+            : null;
+        const rangeResult = validateDateRange(
+          rangeStart,
+          rangeEnd,
+          translations,
+          disableDate
+        );
+        return rangeResult && !rangeResult.isValid
+          ? rangeResult.errorMessage
+          : null;
+      },
+      [isRange, rangePart, date, endDate, translations, disableDate]
+    );
+
     const clearSelection = useCallback(() => {
       if (!isRange) {
         context.onSelection(null);
@@ -189,9 +216,15 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           disableDate
         );
         if (validationResult.isValid) {
-          setInputError('');
-          setHasError(false);
-          commitParsedDate(validationResult.date);
+          const rangeError = getRangeError(validationResult.date);
+          if (rangeError) {
+            setInputError(rangeError);
+            setHasError(true);
+          } else {
+            setInputError('');
+            setHasError(false);
+            commitParsedDate(validationResult.date);
+          }
         } else if (!next.month && !next.day && !next.year) {
           setInputError('');
           setHasError(false);
@@ -201,7 +234,14 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           setHasError(true);
         }
       },
-      [clearSelection, commitParsedDate, translations, disableDate, setHasError]
+      [
+        clearSelection,
+        commitParsedDate,
+        getRangeError,
+        translations,
+        disableDate,
+        setHasError,
+      ]
     );
 
     const onContainerBlur = useCallback(
@@ -227,6 +267,14 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
           );
 
           if (validationResult.isValid) {
+            // Valid individual date, but the resulting range may span a
+            // disabled date - keep the raw input visible and surface the error.
+            const rangeError = getRangeError(validationResult.date);
+            if (rangeError) {
+              setInputError(rangeError);
+              setHasError(true);
+              return prev;
+            }
             // Valid complete date - normalize and commit
             setInputError('');
             setHasError(false);
@@ -256,9 +304,9 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       [
         containerRef,
         boundDate,
-        segmentsFromBound,
         clearSelection,
         commitParsedDate,
+        getRangeError,
         isCalendarOpen,
         translations,
         disableDate,
@@ -301,7 +349,6 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
         width="fit-content"
       >
         <SegmentedShell
-          aria-invalid={!!inputError}
           aria-labelledby={inputId}
           inputSize={size}
           ref={shellRef}
@@ -359,11 +406,11 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
             value={hiddenValue}
           />
           <IconButton
-            mx={4}
             icon={MiniCalendarIcon}
+            mx={4}
+            ref={buttonRef}
             size="small"
             tip={translations.openCalendarLabel}
-            ref={buttonRef}
             onClick={() => buttonRef.current?.blur()}
           />
         </SegmentedShell>
