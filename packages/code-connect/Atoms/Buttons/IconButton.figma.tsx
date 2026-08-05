@@ -15,7 +15,11 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A90',
   {
     props: {
-      icon: figma.instance('icon'),
+      icon: figma.enum('size', {
+        small: figma.instance('icon-mini'),
+        normal: figma.instance('icon'),
+        large: figma.instance('icon'),
+      }),
       size: figma.enum('size', {
         normal: 'normal',
         small: 'small',
@@ -23,6 +27,11 @@ figma.connect(
       }),
       toolTipInfo: figma.nestedProps('tooltip', {
         tip: figma.textContent('✏️ tooltip'),
+      }),
+      variant: figma.enum('variant', {
+        primary: 'primary',
+        secondary: 'secondary',
+        danger: 'danger',
       }),
     },
     example: (props) => <IconButton {...props} tip={props.toolTipInfo?.tip} />,

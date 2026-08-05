@@ -15,7 +15,14 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1971-2489',
   {
     props: {
-      active: figma.boolean('active'),
+      active: figma.boolean('active', {
+        true: true,
+        false: false,
+      }),
+      disabled: figma.boolean('disabled', {
+        true: true,
+        false: false,
+      }),
       icon: figma.boolean('leading-icon', {
         true: figma.instance('↳ icon'),
         false: undefined,

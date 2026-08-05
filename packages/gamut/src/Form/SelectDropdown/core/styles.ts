@@ -11,16 +11,16 @@ import {
   tagBaseStyles,
   tagLabelFontSize,
   tagLabelPadding,
-} from '../../Tag/styles';
+} from '../../../Tag/styles';
 import {
   formBaseComponentStyles,
   formBaseFieldStylesObject,
   formFieldDisabledStyles,
   formFieldPaddingStyles,
   InputSelectors,
-} from '../styles';
-import { ControlState, OptionState } from './types';
-import { BaseSelectComponentProps } from './types/styles';
+} from '../../styles';
+import { ControlState, OptionState } from '../types';
+import { BaseSelectComponentProps } from '../types/styles';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -86,7 +86,7 @@ const textColor = css({
 });
 
 const placeholderColor = css({
-  color: 'text-disabled',
+  color: 'text-secondary',
 });
 
 export const getMemoizedStyles = (
@@ -150,6 +150,8 @@ export const getMemoizedStyles = (
         ...provided,
         ...dropdownBorderStyles(zIndex)({ theme }),
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+        // Drop react-select's default menu drop shadow; the border above defines the edge.
+        boxShadow: 'none',
         ...(dropdownWidth
           ? {
               minWidth: dropdownWidth,
@@ -211,14 +213,34 @@ export const getMemoizedStyles = (
         backgroundColor: theme.colors['secondary-hover'],
       },
     }),
-    option: (provided, state: OptionState) => ({
-      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-      alignItems: 'center',
-      color: state.isDisabled ? 'text-disabled' : 'default',
-      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-      display: 'flex',
-      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+    noOptionsMessage: (provided) => ({
+      ...provided,
+      color: theme.colors['text-secondary'],
     }),
+    option: (provided, state: OptionState) => {
+      const isNew = state.data?.__isNew__;
+      const isSmall = state.selectProps.size === 'small';
+      return {
+        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+        alignItems: 'center',
+        color: state.isDisabled
+          ? theme.colors['text-disabled']
+          : isNew
+          ? theme.colors.primary
+          : theme.colors.text,
+        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+        display: 'flex',
+        padding: isSmall ? '3px 14px' : '11px 14px',
+        ...(isNew && {
+          // Gradient creates the 1px divider line at the top edge of the option background
+          backgroundImage: `linear-gradient(${theme.colors['text-disabled']} 1px, transparent 1px)`,
+          backgroundPosition: '0 0',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 1px',
+          paddingTop: isSmall ? '11px' : '19px',
+        }),
+      };
+    },
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),

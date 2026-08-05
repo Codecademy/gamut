@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast } from '@codecademy/gamut';
+import { Anchor, Toast } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -25,14 +25,19 @@ figma.connect(
         true: <SomeReactNode />,
         false: undefined,
       }),
-      children: figma.boolean('description', {
+      description: figma.boolean('description', {
         true: figma.string('↳ description'),
         false: undefined,
       }),
+      anchor: figma.boolean('anchor', {
+        true: <Anchor>Anchor link</Anchor>,
+        false: undefined,
+      }),
     },
-    example: ({ children, iconProps, ...props }) => (
-      <Toast {...props}>
-        {children}
+    example: ({ anchor, description, iconProps, ...props }) => (
+      <Toast {...props} onClose={() => { }}>
+        {description}
+        {anchor}
       </Toast>
     ),
   }
