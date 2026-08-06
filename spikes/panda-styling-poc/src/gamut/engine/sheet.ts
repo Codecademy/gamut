@@ -145,7 +145,17 @@ const cssText = (blocks: Block[], className: string) =>
  * order in globals.css is what makes that deterministic. */
 const LAYER = 'gamut.consumer';
 
-const inserted = new Set<string>();
+/* Three separate concerns, because conflating them caused a real SSR bug:
+ *   rules    — className -> CSS text. Process-wide, grows once per unique style.
+ *   inSheet  — what has actually been inserted into the DOM (browser only).
+ *   emitted  — what is included in the CURRENT SSR response.
+ *
+ * `styled` memoises class resolution, so on a cache hit `inject` is never
+ * reached. If registration lived inside `inject`, the second SSR response would
+ * ship markup whose class names had no CSS behind them. */
+const rules = new Map<string, string>();
+const inSheet = new Set<string>();
+const emitted = new Set<string>();
 const collected: string[] = [];
 let sheetEl: HTMLStyleElement | undefined;
 
@@ -157,7 +167,7 @@ const element = (nonce?: string) => {
     // adopt rules already delivered by SSR so we never double-insert
     found.textContent
       ?.match(/\.gmt-[a-z0-9]+/g)
-      ?.forEach((match) => inserted.add(match.slice(1)));
+      ?.forEach((match) => inSheet.add(match.slice(1)));
     return found;
   }
   const created = document.createElement('style');
@@ -179,9 +189,32 @@ const append = (text: string, nonce?: string) => {
 };
 
 /**
- * Turns a resolved CSSObject into a class name, inserting the rule once.
+ * Accounts for a class's rule: inserts it into the DOM in the browser, or adds it
+ * to the current SSR response on the server. Idempotent per destination.
+ *
+ * Public because `styled` memoises class resolution and must still call this on a
+ * cache hit — otherwise a second SSR response carries class names with no CSS.
+ */
+export const register = (className: string, nonce?: string) => {
+  const text = rules.get(className);
+  if (!text) return;
+
+  if (typeof document === 'undefined') {
+    if (emitted.has(className)) return;
+    emitted.add(className);
+    collected.push(text);
+    return;
+  }
+
+  if (inSheet.has(className)) return;
+  inSheet.add(className);
+  append(text, nonce);
+};
+
+/**
+ * Turns a resolved CSSObject into a class name, registering the rule once.
  * Deterministic: identical styles always produce the identical class, on both
- * server and client, so SSR needs no cache handoff and cannot mismatch.
+ * server and client, so SSR cannot produce a hydration mismatch.
  */
 export const inject = (styles: CSSObject, nonce?: string): string => {
   const blocks = serialize(styles);
@@ -196,12 +229,10 @@ export const inject = (styles: CSSObject, nonce?: string): string => {
     .join('');
   const className = `gmt-${hash(canonical)}`;
 
-  if (inserted.has(className)) return className;
-  inserted.add(className);
-
-  const text = `@layer ${LAYER}{${cssText(blocks, className)}}`;
-  if (typeof document === 'undefined') collected.push(text);
-  else append(text, nonce);
+  if (!rules.has(className)) {
+    rules.set(className, `@layer ${LAYER}{${cssText(blocks, className)}}`);
+  }
+  register(className, nonce);
 
   return className;
 };
@@ -214,9 +245,10 @@ export const inject = (styles: CSSObject, nonce?: string): string => {
 export const extractStyles = () => {
   const text = collected.join('');
   collected.length = 0;
-  inserted.clear();
+  // only the per-response set resets; `rules` is a permanent process-wide cache
+  emitted.clear();
   return text;
 };
 
 // test/measurement seam — lets the harness count rules without a DOM
-export const __rules = () => [...inserted];
+export const __rules = () => [...rules.keys()];

@@ -23,7 +23,14 @@ import { variance } from '@codecademy/variance';
  * ternaries, `theme.x` access and computed enum keys all keep working — the
  * exact cases a static extractor has to punt on. */
 
-export const css = variance.createCss(all);
+const baseCss = variance.createCss(all);
+
+/* `staticStyle` marks a style function whose output depends only on the theme —
+ * never on props. That lets `styled` resolve it ONCE per theme instead of on
+ * every render, which is what makes module-scope `styled(...)` cheap enough to
+ * be the recommended path for reusable components. See engine/styled.tsx. */
+export const css = ((cssProps: Parameters<typeof baseCss>[0]) =>
+  Object.assign(baseCss(cssProps), { staticStyle: true })) as typeof baseCss;
 
 const baseVariant = variance.createVariant(all);
 const baseStates = variance.createStates(all);

@@ -10,7 +10,7 @@ import {
 } from 'react';
 
 import { systemPropNames } from './props';
-import { inject } from './sheet';
+import { inject, register } from './sheet';
 import { useNonce, useTheme } from './theme';
 
 /* `styled` with the Emotion composed call shape — `styled(C)(a, b, c)` — where
@@ -75,6 +75,29 @@ const defaultForward =
     return typeof target === 'string' ? !systemPropNames.has(prop) : true;
   };
 
+/* A style function is predictable if it either reads nothing but the theme
+ * (`css()`, marked `staticStyle`) or declares exactly which props it reads
+ * (`variant()`, `states()`, variance parsers, which expose `propNames`). When
+ * every function in the chain is predictable, the resolved class is a pure
+ * function of (theme, the values of those props) and can be memoised.
+ *
+ * A hand-written `(props) => ({...})` is NOT predictable — it may read anything —
+ * so those components opt out and resolve per render, as before. */
+const isPredictable = (fn: StyleFn) => {
+  const meta = fn as { staticStyle?: boolean; propNames?: string[] };
+  return Boolean(meta.staticStyle || meta.propNames);
+};
+
+/* Cache key from only the props that can actually affect styles. Iterates the
+ * props (usually few) rather than the consumed set (up to 126 system props). */
+const memoKey = (props: Record<string, unknown>, consumed: Set<string>) => {
+  const parts: string[] = [];
+  Object.keys(props).forEach((key) => {
+    if (consumed.has(key)) parts.push(`${key}:${String(props[key])}`);
+  });
+  return parts.sort().join('|');
+};
+
 const displayNameOf = (target: ElementType) =>
   typeof target === 'string'
     ? target
@@ -95,22 +118,64 @@ const styledFactory =
     const target = (meta[TARGET] ?? Component) as ElementType;
     const fns = [...(meta[STYLES] ?? []), ...styleFns];
 
+    const consumed = consumedProps(fns);
+
     /* Recomputed from the whole chain, not inherited — extending adds style fns
      * with their own consumed props, which a parent's filter can't know about. */
     const shouldForward =
-      options.shouldForwardProp ?? defaultForward(target, consumedProps(fns));
+      options.shouldForwardProp ?? defaultForward(target, consumed);
+
+    /* Per-component, per-theme class cache. This is what separates the two
+     * consumer tiers: a module-scope `styled(...)` whose styles don't vary by
+     * prop resolves to the empty key, so it merges and hashes ONCE at first
+     * render and is a Map lookup for every instance after. Inline system props
+     * can't benefit — their values arrive per instance. */
+    const memoizable = fns.every(isPredictable);
+    const cache = new WeakMap<object, Map<string, string>>();
+
+    const merged = (props: Record<string, unknown>, theme: object) =>
+      fns.reduce<CSSObject>(
+        (acc, fn) => merge(acc, fn({ ...props, theme } as ThemeProps)),
+        {}
+      );
+
+    const resolveClass = (
+      props: Record<string, unknown>,
+      theme: object,
+      nonce?: string
+    ) => {
+      if (!memoizable) return inject(merged(props, theme), nonce);
+
+      let perTheme = cache.get(theme);
+      if (!perTheme) {
+        perTheme = new Map();
+        cache.set(theme, perTheme);
+      }
+
+      const key = memoKey(props, consumed);
+      const hit = perTheme.get(key);
+      if (hit !== undefined) {
+        /* Cheap, and REQUIRED: the memo skips `inject`, so without this the rule
+         * would be missing from the current SSR response even though the markup
+         * references its class. */
+        register(hit, nonce);
+        return hit;
+      }
+
+      const generated = inject(merged(props, theme), nonce);
+      perTheme.set(key, generated);
+      return generated;
+    };
 
     const Styled = forwardRef<unknown, Record<string, unknown>>(
       (props, ref) => {
         const theme = useTheme();
         const nonce = useNonce();
 
-        const resolved = fns.reduce<CSSObject>(
-          (acc, fn) => merge(acc, fn({ ...props, theme } as ThemeProps)),
-          {}
-        );
-
-        const className = [inject(resolved, nonce), props.className]
+        const className = [
+          resolveClass(props, theme as object, nonce),
+          props.className,
+        ]
           .filter(Boolean)
           .join(' ');
 

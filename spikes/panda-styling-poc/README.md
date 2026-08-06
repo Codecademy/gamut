@@ -83,6 +83,89 @@ computed enum keys, ternaries, template literals. 21/21 pass, and the check for
 
 Findings write-up: `~/code/base camp/reboot/panda-via-gamut-option-a.md`.
 
+## Which authoring path should I use? (three tiers)
+
+The useful distinction isn't "runtime vs zero-runtime" — it's **per-instance vs
+per-definition**. A `styled(...)` call at module scope has its styles fixed when
+the module loads, so its class can be resolved once and reused by every instance.
+Inline system props can't do that, because their values arrive per instance.
+
+| tier | how you write it                 | when styles resolve                                   | reach for it when                                      |
+| ---- | -------------------------------- | ----------------------------------------------------- | ------------------------------------------------------ |
+| 1    | inline system props              | every render, per instance                            | values vary per instance, or it's a one-off            |
+| 2    | `styled(...)` at module scope    | **once** per theme + variant combo, then a Map lookup | the component is reused, or rendered many times        |
+| 3    | tier 2 **+** Panda in your build | build time; zero JS                                   | you want true zero-runtime and will add the build step |
+
+### Tier 1 — inline system props: values that vary per instance
+
+```tsx
+// GOOD: a one-off gap, and a width driven by component state
+<Box mt={16} px={24}>
+  <ProgressBar width={`${percentComplete}%`} />
+</Box>
+
+// GOOD: layout that differs at each usage site
+<FlexBox columnGap={12} alignItems="center" />
+```
+
+Each distinct combination of values becomes one injected class, deduped by hash.
+So 500 `<Box p={16} />` share a single class — but the _lookup_ runs per render.
+
+```tsx
+// AVOID: the same 6 props repeated at 40 call sites. Nothing is wrong with the
+// output, but you pay per-instance resolution 40x and duplicate the intent.
+<Box p={24} mb={16} bg="background" borderRadius="md" border={1} borderColor="border-primary">
+```
+
+### Tier 2 — `styled(...)` at module scope: reusable components
+
+```tsx
+import { css, states, styled, variant } from '@codecademy/gamut-styles';
+
+// Resolves ONCE at first render. Every instance after is a Map lookup.
+const Card = styled(Box)(
+  css({ p: 24, mb: 16, bg: 'background', borderRadius: 'md' }),
+  variant({
+    defaultVariant: 'raised',
+    variants: { raised: { boxShadow: 'md' }, flat: { boxShadow: 'none' } },
+  }),
+  states({ interactive: { cursor: 'pointer' } })
+);
+
+<Card variant="flat" interactive />;
+```
+
+Memoisation applies because every argument is _predictable_ — `css()` reads only
+the theme, `variant()`/`states()` declare which props they read. A hand-written
+function opts the component out, since it could read anything:
+
+```tsx
+// NOT memoised — resolves per render. Correct, just not free.
+const Bar = styled(Box)<{ $pct: number }>((props) => ({
+  width: `${props.$pct}%`,
+}));
+```
+
+That's the rule of thumb: **fixed styles → `styled`; per-instance values →
+system props.** They compose freely, so the usual shape is a `styled` component
+with a couple of system props at the call site:
+
+```tsx
+<Card variant="raised" mt={32} /> // tier 2 for the component, tier 1 for the nudge
+```
+
+### Tier 3 — add Panda to your build for true zero-runtime
+
+Same authoring as tier 2. The difference is a ~12-line `panda.config.ts` in your
+app (`presets` + `importMap`), which extracts your own call sites at build time so
+no JS resolves styles at all. Proven in
+`~/code/base camp/reboot/panda-via-gamut-option-b.md`.
+
+Worth it when: you have a measured styling cost on a hot page, or a hard
+zero-runtime requirement. Not worth it when: you'd rather not own Panda in your
+build pipeline — tiers 1 and 2 work with **zero** build configuration, which is
+the whole point of the facade.
+
 ## Example page (`src/App.tsx`)
 
 A small Vite page demonstrating **Panda variants** and switching:
