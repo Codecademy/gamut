@@ -16,6 +16,7 @@ import { defineConfig, defineRecipe } from '@pandacss/dev';
  * hand-written recipes below so the two can be compared in one build. */
 import {
   generatedFillButton,
+  generatedOverlap,
   generatedTextButton,
 } from './src/precompute/generated-recipes';
 
@@ -248,6 +249,7 @@ export default defineConfig({
       ctaButton: ['*'],
       generatedFillButton: ['*'],
       generatedTextButton: ['*'],
+      generatedOverlap: ['*'],
     },
     themes: ['admin'],
   },
@@ -282,6 +284,7 @@ export default defineConfig({
         ctaButton,
         generatedFillButton,
         generatedTextButton,
+        generatedOverlap,
       },
     },
   },

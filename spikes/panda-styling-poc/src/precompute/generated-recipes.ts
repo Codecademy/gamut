@@ -311,3 +311,21 @@ export const generatedTextButton = defineRecipe({
     size: 'normal',
   },
 } as RecipeConfig);
+
+export const generatedOverlap = defineRecipe({
+  className: 'gmt-gen-overlap',
+  base: {},
+  variants: {
+    warning: {
+      true: {
+        backgroundColor: '[var(--color-yellow)]',
+      },
+    },
+    error: {
+      true: {
+        backgroundColor: '[var(--color-red)]',
+      },
+    },
+  },
+  defaultVariants: {},
+} as RecipeConfig);

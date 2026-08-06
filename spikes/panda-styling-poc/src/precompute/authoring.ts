@@ -134,3 +134,18 @@ export const sizeVariants = variant({
 export const buttonStates = states({
   fullWidth: { width: '100%' },
 } as never);
+
+/* FIDELITY PROBE — two states that set the SAME property.
+ *
+ * `states()` deep-merges every active state in DECLARATION order, so with both
+ * flags on, `error` (declared later) wins at runtime. Panda instead emits one
+ * INDEPENDENT class per active boolean variant, so the winner is decided by
+ * STYLESHEET order. If those two disagree, migrated components change appearance
+ * silently — no error, no type failure, just a different colour.
+ *
+ * mono has 62 `states()` sites, so this needs to be verified rather than assumed.
+ * See verify-fidelity.ts. */
+export const overlapStates = states({
+  warning: { bg: 'yellow' },
+  error: { bg: 'red' },
+} as never);
