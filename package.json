@@ -144,7 +144,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "spikes/*"
     ]
   }
 }

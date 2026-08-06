@@ -1,0 +1,30 @@
+{
+  "name": "emotion-to-gamut-poc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "spikes/emotion-to-gamut-poc/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/emotion-to-gamut-poc",
+        "command": "yarn dev"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/emotion-to-gamut-poc",
+        "command": "yarn build"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/emotion-to-gamut-poc",
+        "command": "yarn typecheck"
+      }
+    }
+  }
+}
