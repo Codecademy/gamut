@@ -24,7 +24,9 @@ import { type ToolTipProps, ToolTip } from './ToolTip';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'interface';
 export type ButtonSize = 'small' | 'normal' | 'large';
-export type IconComponentType = { icon: ComponentType<{ size?: number }> };
+export type IconComponentType = {
+  icon: ComponentType<{ 'aria-hidden'?: boolean; size?: number }>;
+};
 
 // styled(ButtonBase, recipe) — Panda applies recipe classes to the polymorphic base
 const FillButtonBase = styled(ButtonBase, fillButton);
@@ -47,9 +49,9 @@ const inlineIcon = (
   const iconSize = size === 'small' ? 12 : 16;
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-      {iconPosition === 'left' && <Icon size={iconSize} />}
+      {iconPosition === 'left' && <Icon aria-hidden size={iconSize} />}
       {children}
-      {iconPosition === 'right' && <Icon size={iconSize} />}
+      {iconPosition === 'right' && <Icon aria-hidden size={iconSize} />}
     </span>
   );
 };
@@ -58,7 +60,14 @@ type InlineIconProps = Partial<IconComponentType> & {
   iconPosition?: 'left' | 'right';
 };
 
-export type FillButtonProps = ComponentProps<typeof FillButtonBase> &
+// real Gamut only ever accepts a single `ButtonSize` literal for `size` (no
+// responsive/conditional values) — narrow Panda's generated variant prop to
+// match rather than exposing Panda-only responsive syntax on the public API
+type WithButtonSize<P> = Omit<P, 'size'> & { size?: ButtonSize };
+
+export type FillButtonProps = WithButtonSize<
+  ComponentProps<typeof FillButtonBase>
+> &
   InlineIconProps;
 export const FillButton = forwardRef<ButtonBaseElements, FillButtonProps>(
   ({ icon, iconPosition = 'left', children, size, ...props }, ref) => (
@@ -68,7 +77,9 @@ export const FillButton = forwardRef<ButtonBaseElements, FillButtonProps>(
   )
 );
 
-export type StrokeButtonProps = ComponentProps<typeof StrokeButtonBase> &
+export type StrokeButtonProps = WithButtonSize<
+  ComponentProps<typeof StrokeButtonBase>
+> &
   InlineIconProps;
 export const StrokeButton = forwardRef<ButtonBaseElements, StrokeButtonProps>(
   ({ icon, iconPosition = 'left', children, size, ...props }, ref) => (
@@ -78,7 +89,9 @@ export const StrokeButton = forwardRef<ButtonBaseElements, StrokeButtonProps>(
   )
 );
 
-export type TextButtonProps = ComponentProps<typeof TextButtonBase> &
+export type TextButtonProps = WithButtonSize<
+  ComponentProps<typeof TextButtonBase>
+> &
   InlineIconProps;
 export const TextButton = forwardRef<ButtonBaseElements, TextButtonProps>(
   ({ icon, iconPosition = 'left', children, size, ...props }, ref) => (
@@ -88,9 +101,19 @@ export const TextButton = forwardRef<ButtonBaseElements, TextButtonProps>(
   )
 );
 
+// matches real Gamut's iconSizeMapping — IconButton's inner glyph is scaled
+// differently from the fill/stroke/text inline icon scale above
+const iconButtonGlyphSize: Record<ButtonSize, number> = {
+  small: 16,
+  normal: 24,
+  large: 40,
+};
+
 /** IconButton — icon-only, wrapped in the (Panda-native) ToolTip, matching
  *  gamut's prop surface: icon, aria-label, tip, tipProps. */
-export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
+export type IconButtonProps = WithButtonSize<
+  ComponentProps<typeof IconButtonBase>
+> &
   IconComponentType & {
     'aria-label'?: string;
     tip: string;
@@ -101,7 +124,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     { icon: Icon, 'aria-label': ariaLabel, tip, tipProps, size, ...props },
     ref
   ) => {
-    const iconPx = size === 'small' ? 16 : 24;
+    const iconPx = iconButtonGlyphSize[size ?? 'normal'];
     return (
       <ToolTip closeOnClick info={tip} {...tipProps}>
         <IconButtonBase

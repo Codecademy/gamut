@@ -51,9 +51,14 @@ type RecipeConfig = Parameters<typeof defineRecipe>[0];
 const variantMap = (fn: (c: string) => object) =>
   Object.fromEntries(VARIANTS.map((v) => [v, fn(v)]));
 
+// mirrors real Gamut's ButtonSelectors.OUTLINE / OUTLINE_FOCUS_VISIBLE — the
+// focus-ring `::before` pseudo-element, colored per variant
+const outline = (c: string) => ({ '&::before': { borderColor: c } });
+
 const fillVariant = (c: string) => ({
   bg: c,
   color: 'background',
+  ...outline(c),
   _hover: { bg: `${c}-hover`, color: 'background' },
   _active: { bg: c, color: 'background', borderColor: 'border-primary' },
   _disabled: { bg: 'background-disabled', color: 'text-disabled' },
@@ -62,6 +67,7 @@ const strokeVariant = (c: string) => ({
   bg: 'transparent',
   borderColor: c,
   color: c,
+  ...outline(c),
   _hover: { bg: 'background-hover' },
   _active: { bg: c, color: 'background' },
   _disabled: {
@@ -73,6 +79,7 @@ const strokeVariant = (c: string) => ({
 const textVariant = (c: string) => ({
   borderColor: 'transparent',
   color: c === 'interface' ? 'text' : c,
+  ...outline(c),
   _hover: { color: c, bg: 'background-hover' },
   _focusVisible: { color: c },
   _active: { color: 'text' },
@@ -94,6 +101,22 @@ const base = {
   appearance: 'none',
   textDecoration: 'none',
   _disabled: { cursor: 'not-allowed', userSelect: 'none' },
+  // focus ring: transparent by default, colored per-variant via `outline()`,
+  // revealed only on keyboard focus (matches real Gamut's OUTLINE selectors)
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    inset: '[-5px]',
+    borderRadius: 'lg',
+    borderWidth: '2',
+    borderStyle: 'solid',
+    borderColor: 'transparent',
+    opacity: '0',
+    zIndex: '0',
+    transitionProperty: 'opacity',
+    transitionDuration: 'fast',
+  },
+  '&:focus-visible::before': { opacity: '1' },
 };
 const textSize = {
   small: {
@@ -155,6 +178,11 @@ const iconButton = makeButton('gmt-icon-button', 'IconButton', textVariant, {
   size: iconSize,
   defaultVariant: 'secondary',
 });
+// real Gamut's CTAButton casts a hard drop-shadow that grows on hover and
+// flattens on active/disabled — the "brutalist" CTA treatment
+const ctaShadow = (offset: number) =>
+  `[-${offset}px ${offset}px 0 0 {colors.text}]`;
+
 const ctaButton = defineRecipe({
   className: 'gmt-cta-button',
   jsx: ['CTAButton'],
@@ -166,10 +194,23 @@ const ctaButton = defineRecipe({
     bg: 'primary',
     py: '12',
     px: '24',
-    _hover: { bg: 'primary-hover' },
-    _active: { bg: 'secondary' },
-    _disabled: { bg: 'background-disabled', color: 'text-disabled' },
+    boxShadow: ctaShadow(4),
+    '&::before': {
+      ...base['&::before'],
+      borderColor: 'primary',
+      bottom: '[-9px]',
+      left: '[-9px]',
+    },
+    _hover: { bg: 'primary-hover', boxShadow: ctaShadow(8) },
+    _active: { bg: 'secondary', boxShadow: '[none]' },
+    _disabled: {
+      bg: 'background-disabled',
+      color: 'text-disabled',
+      boxShadow: '[none]',
+    },
   },
+  variants: { variant: { primary: {} } },
+  defaultVariants: { variant: 'primary' },
 } as RecipeConfig);
 
 export default defineConfig({
@@ -182,6 +223,10 @@ export default defineConfig({
     extend: {
       dark: '[data-color-mode=dark] &',
       light: '[data-color-mode=light] &',
+      // real Gamut's disabled styling also matches `[aria-disabled='true']`
+      // (see ButtonSelectors.DISABLED) — override Panda's built-in condition
+      // so `_disabled` blocks above apply to both states
+      disabled: '&:is(:disabled, [disabled], [aria-disabled=true])',
     },
   },
 
