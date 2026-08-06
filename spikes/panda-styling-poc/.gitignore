@@ -2,3 +2,4 @@ node_modules/
 styled-system/
 dist/
 src/gamut-static.css
+.proof/

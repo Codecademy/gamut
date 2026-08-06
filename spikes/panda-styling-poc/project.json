@@ -43,6 +43,20 @@
         "cwd": "spikes/panda-styling-poc",
         "command": "yarn dev"
       }
+    },
+    "proof": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn proof"
+      }
+    },
+    "measure": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-styling-poc",
+        "command": "yarn measure"
+      }
     }
   }
 }

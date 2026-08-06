@@ -10,6 +10,14 @@ switchers, and (d) an **external API that barely changes**. Grounded in the real
 `gamut-style-utilities` / `gamut-system-props` / `gamut-color-mode` /
 `gamut-theming` skills.
 
+**Headline result:** (d) turned out to be stronger than "barely changes" —
+`styled(C)(css(…), variant(…), states(…))` survives **unchanged**, because
+`variance` already resolves styles at runtime and Emotion was only merging and
+injecting them. Replacing that one layer (`src/gamut/engine/`) removes Emotion
+internally and externally with no call-site migration. See
+[`src/proof/`](./src/proof) and
+`~/code/base camp/reboot/panda-via-gamut-option-a.md`.
+
 **Uses the REAL Gamut Core theme.** Panda tokens are derived directly from
 `@codecademy/gamut-styles` (a workspace dep) — the actual `corePalette`, the
 `coreTheme`/`adminTheme` semantic light/dark `.modes`, and the real spacing /
@@ -27,7 +35,50 @@ yarn install                              # from repo root — installs the work
 yarn nx run panda-styling-poc:dev         # example page → http://localhost:5173
 yarn nx run panda-styling-poc:build       # codegen + cssgen + vite build
 yarn nx run panda-styling-poc:typecheck   # tsc --noEmit (proves token type-safety)
+yarn nx run panda-styling-poc:proof       # 21 call-site parity checks (Option A)
+yarn nx run panda-styling-poc:measure     # CSS size: prebuilt atomics vs injector
 ```
+
+## Two authoring models, both in here
+
+This spike covers **both** halves of the styling question. They are not
+alternatives to pick between — they're different tiers of the same design.
+
+|            | tier 1/2 — Panda-native                         | tier 3/4 — the Emotion-free engine         |
+| ---------- | ----------------------------------------------- | ------------------------------------------ |
+| for        | Gamut's **own** components                      | **existing consumer call sites**           |
+| shape      | `styled(tag, recipe)`, `css({…})` → class names | `styled(C)(css(…), variant(…), states(…))` |
+| resolution | static, zero-runtime                            | runtime (`variance` → `insertRule`)        |
+| where      | `src/gamut/Button.tsx`, `src/App.tsx`           | `src/gamut/engine/`, `src/proof/`          |
+
+### `src/gamut/engine/` — Option A
+
+An Emotion-free `styled` that preserves the **existing external API exactly**, so
+today's Emotion-authored call sites migrate by changing one import. `variance` is
+reused untouched — `css`/`variant`/`states` are the same factories consumers use
+now, which is why the composed shape survives at full fidelity rather than being
+approximated.
+
+- `props.ts` — `css`/`variant`/`states`/`system.*` rebuilt on the **real** Gamut
+  prop config, zero Emotion imports.
+- `sheet.ts` — the injector that replaces Emotion: deterministic FNV-1a hashing
+  (so SSR can't mismatch), `@layer gamut.consumer` for override precedence, the
+  `focusVisible` stylis-plugin behaviour reimplemented, CSP nonce support, and
+  `extractStyles()` in place of `extractCriticalToChunks`.
+- `styled.tsx` — the composed call shape, `withComponent`, and a small CSS parser
+  so `` styled.div`…` `` template literals work too.
+- `theme.tsx` — the augmentable theme registry replacing
+  `declare module '@emotion/react'`.
+
+`src/proof/parity.tsx` renders a call site copied **verbatim** from
+`mono/libs/ui/login-or-register/src/OAuthButtons/elements.tsx` (chosen because it
+hits nested `@media`, responsive object values, system-prop aliases,
+`withComponent`, and the bare-identifier `styled(X)(a, b)` shape at once) plus the
+cases static extraction provably cannot reach — prop functions, `theme.x` access,
+computed enum keys, ternaries, template literals. 21/21 pass, and the check for
+"zero Emotion in the bundled runtime" reads its own bundle rather than asserting.
+
+Findings write-up: `~/code/base camp/reboot/panda-via-gamut-option-a.md`.
 
 `codegen` (typed `styled-system/`) and `cssgen` (`src/gamut-static.css`) run
 automatically as nx target dependencies.
