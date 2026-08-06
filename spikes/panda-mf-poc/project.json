@@ -1,0 +1,38 @@
+{
+  "name": "panda-mf-poc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "spikes/panda-mf-poc/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "codegen": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn codegen"
+      }
+    },
+    "cssgen": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["codegen"],
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn cssgen"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn build"
+      }
+    },
+    "federation": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn federation"
+      }
+    }
+  }
+}

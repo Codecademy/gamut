@@ -1,0 +1,54 @@
+/* Real Gamut Core web fonts (Apercu + Suisse), served from Codecademy's CDN.
+ * Mirrors the @font-face rules gamut-styles' <Typography> Global injects
+ * (packages/gamut-styles/src/globals/Typography.tsx +
+ *  src/remoteAssets/fonts.ts, FONT_ASSET_PATH = https://www.codecademy.com/gamut). */
+
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://www.codecademy.com/gamut/apercu-regular-pro.woff2")
+      format("woff2"),
+    url("https://www.codecademy.com/gamut/apercu-regular-pro.woff")
+      format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: normal;
+  src: url("https://www.codecademy.com/gamut/apercu-italic-pro.woff2")
+      format("woff2"),
+    url("https://www.codecademy.com/gamut/apercu-italic-pro.woff")
+      format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: bold;
+  src: url("https://www.codecademy.com/gamut/apercu-bold-pro.woff2")
+      format("woff2"),
+    url("https://www.codecademy.com/gamut/apercu-bold-pro.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse";
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://www.codecademy.com/gamut/SuisseIntlMono-Regular-WebS.woff2")
+      format("woff2"),
+    url("https://www.codecademy.com/gamut/SuisseIntlMono-Regular-WebS.woff")
+      format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse";
+  font-style: normal;
+  font-weight: bold;
+  src: url("https://www.codecademy.com/gamut/SuisseIntlMono-Bold-WebS.woff2")
+      format("woff2"),
+    url("https://www.codecademy.com/gamut/SuisseIntlMono-Bold-WebS.woff")
+      format("woff");
+}
