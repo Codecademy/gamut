@@ -39,6 +39,9 @@ yarn nx run panda-styling-poc:proof       # 21 call-site parity checks (Option A
 yarn nx run panda-styling-poc:measure     # CSS size: prebuilt atomics vs injector
 ```
 
+`codegen` (typed `styled-system/`) and `cssgen` (`src/gamut-static.css`) run
+automatically as nx target dependencies.
+
 ## Two authoring models, both in here
 
 This spike covers **both** halves of the styling question. They are not
@@ -79,9 +82,6 @@ computed enum keys, ternaries, template literals. 21/21 pass, and the check for
 "zero Emotion in the bundled runtime" reads its own bundle rather than asserting.
 
 Findings write-up: `~/code/base camp/reboot/panda-via-gamut-option-a.md`.
-
-`codegen` (typed `styled-system/`) and `cssgen` (`src/gamut-static.css`) run
-automatically as nx target dependencies.
 
 ## Example page (`src/App.tsx`)
 
