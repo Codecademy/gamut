@@ -3,7 +3,7 @@ import { breakpoints } from '@codecademy/gamut-styles/dist/variables/responsive'
 import { all } from '@codecademy/gamut-styles/dist/variance/config';
 import { gzipSync } from 'node:zlib';
 
-import { css } from '../gamut/engine';
+import { css, inject } from '../gamut/engine';
 
 /* Measures the two candidate resolution strategies for system props against the
  * REAL Gamut prop config + Core theme, so the numbers reflect Gamut's actual
@@ -176,6 +176,36 @@ const injected = projections.map((n) => {
   );
   return { n, ...measured };
 });
+
+/* --------------------------------------------------------------------------
+ * C. Dynamic values: the unbounded-class footgun, and the fix.
+ *
+ * The injector hashes the resolved CSSObject, so a genuinely continuous value
+ * (`width: 37.5%`) produces a NEW CLASS PER VALUE. A progress bar animating
+ * 0->100% emits ~100 rules that are never reused. This is the one way a consumer
+ * can make the runtime path grow without bound.
+ *
+ * The fix keeps the class static and puts only the VALUE inline, as a CSS custom
+ * property — one class forever, regardless of how many values occur.
+ * ------------------------------------------------------------------------ */
+const percentages = Array.from({ length: 100 }, (_, i) => `${i}%`);
+
+// naive: width baked into the style object -> one class per distinct value
+const naive = new Set(
+  percentages.map((value) => inject({ width: value } as never))
+);
+
+// custom property: class is constant, value rides an inline `style` attribute
+const viaVariable = new Set(
+  percentages.map(() => inject({ width: 'var(--bar-width)' } as never))
+);
+
+console.log('\nC. DYNAMIC VALUES — 100 distinct widths');
+console.log(`  baked into the style object: ${naive.size} classes`);
+console.log(`  via a CSS custom property:   ${viaVariable.size} class`);
+console.log(
+  `  => ${naive.size}x fewer rules, and the count no longer grows with the data`
+);
 
 console.log('\nHYBRID — base atomics prebuilt, everything else injected');
 console.log(`  prebuilt base atomics:                 ${atomicBase.label}`);

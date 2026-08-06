@@ -104,23 +104,67 @@ Inline system props can't do that, because their values arrive per instance.
 ### Tier 1 — inline system props: values that vary per instance
 
 ```tsx
-// GOOD: a one-off gap, and a width driven by component state
+// GOOD: a one-off nudge, and layout that differs at this usage site
 <Box mt={16} px={24}>
-  <ProgressBar width={`${percentComplete}%`} />
+  <FlexBox columnGap={12} alignItems="center" />
 </Box>
-
-// GOOD: layout that differs at each usage site
-<FlexBox columnGap={12} alignItems="center" />
 ```
 
-Each distinct combination of values becomes one injected class, deduped by hash.
-So 500 `<Box p={16} />` share a single class — but the _lookup_ runs per render.
+Each distinct **combination** of values becomes one injected class, deduped by
+hash. So 500 `<Box p={16} />` share a single class — the _lookup_ runs per render,
+but the CSS does not grow.
 
 ```tsx
-// AVOID: the same 6 props repeated at 40 call sites. Nothing is wrong with the
-// output, but you pay per-instance resolution 40x and duplicate the intent.
+// AVOID: the same 6 props repeated at 40 call sites. The output is fine, but you
+// pay per-instance resolution 40x and duplicate the intent. Promote to tier 2.
 <Box p={24} mb={16} bg="background" borderRadius="md" border={1} borderColor="border-primary">
 ```
+
+```tsx
+// DON'T: a continuous value baked into a style prop. Every distinct value hashes
+// to a NEW CLASS — animate this 0->100 and you have emitted 100 rules that will
+// never be reused. Measured: `yarn nx run panda-styling-poc:measure` section C.
+<Box width={`${percentComplete}%`} />
+```
+
+### When you genuinely need a runtime value — and what to do about it
+
+Some values simply cannot be known ahead of time. The legitimate cases:
+
+| case                     | example                                                      |
+| ------------------------ | ------------------------------------------------------------ |
+| driven by state or props | progress bars, sliders, expanding panels                     |
+| measured from the DOM    | sticky offsets, virtualised row heights, popover placement   |
+| supplied by data         | a brand colour from an API, an author-chosen accent in a CMS |
+| animated                 | anything interpolating a value per frame                     |
+| genuinely arbitrary      | `width: 37.5%`, `calc(100% - 17px)`, a computed `translateY` |
+
+**The pattern for all of them is the same: keep the class static, make only the
+_value_ dynamic, via a CSS custom property.** The class is then a tier-2 constant
+that resolves once, and the per-instance part rides an inline `style` attribute —
+which costs no CSS at all.
+
+```tsx
+// RECOMMENDED — one class, forever, no matter how many values occur.
+const ProgressFill = styled(Box)(
+  css({ height: 8, bg: 'primary', width: 'var(--fill-width)' })
+);
+
+<ProgressFill style={{ '--fill-width': `${percentComplete}%` }} />;
+```
+
+Measured on 100 distinct widths: **100 classes baked in vs 1 class via a custom
+property.** The custom-property count doesn't grow with your data; the naive one
+grows linearly and never stops.
+
+This also survives SSR cleanly, because the class name is constant and the varying
+part is a plain HTML attribute — nothing to extract, nothing to mismatch.
+
+If you'd rather keep the old `styled(Tag)(props => styles)` authoring shape while
+migrating, `styledDynamic` (`src/gamut/styledDynamic.tsx`) preserves it and applies
+the computed styles as an inline `style` object. It forfeits pseudo-selectors and
+media queries for that component — use `variant()`/`states()` for those, and this
+hatch only for dynamic _values_.
 
 ### Tier 2 — `styled(...)` at module scope: reusable components
 
@@ -161,9 +205,36 @@ with a couple of system props at the call site:
 
 ### Tier 3 — add Panda to your build for true zero-runtime
 
-Same authoring as tier 2. The difference is a ~12-line `panda.config.ts` in your
-app (`presets` + `importMap`), which extracts your own call sites at build time so
-no JS resolves styles at all. Proven in
+**The component code does not change at all.** You add a ~12-line config and a
+build step; the same tier-2 `Card` above now resolves at build time instead of at
+first render.
+
+```ts
+// your-app/panda.config.ts — the ONLY new code
+import { defineConfig } from '@pandacss/dev';
+import { gamutPreset } from '@codecademy/gamut-styles/panda-preset';
+
+export default defineConfig({
+  presets: [gamutPreset], // Gamut's tokens, semantic colours, recipes
+  importMap: {
+    // tells Panda's extractor that css/styled imported from Gamut are Panda calls
+    css: '@codecademy/gamut-styles',
+    jsx: '@codecademy/gamut-styles',
+  },
+  include: ['./src/**/*.{ts,tsx}'],
+  outdir: 'styled-system',
+  jsxFramework: 'react',
+});
+```
+
+```jsonc
+// package.json — extraction runs before your bundler's CSS pipeline
+"scripts": { "prebuild": "panda cssgen --outfile src/app-static.css" }
+```
+
+Verified across a real package boundary — including that Gamut's build and the
+consumer's build produce **byte-identical class names** for identical styles, the
+failure that would otherwise render components silently unstyled. See
 `~/code/base camp/reboot/panda-via-gamut-option-b.md`.
 
 Worth it when: you have a measured styling cost on a hot page, or a hard
