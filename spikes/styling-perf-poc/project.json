@@ -1,0 +1,23 @@
+{
+  "name": "styling-perf-poc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "spikes/styling-perf-poc/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "bench": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/styling-perf-poc",
+        "command": "yarn bench"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/styling-perf-poc",
+        "command": "yarn typecheck"
+      }
+    }
+  }
+}

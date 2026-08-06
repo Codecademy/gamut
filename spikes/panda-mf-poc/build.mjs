@@ -6,6 +6,14 @@ import { rspack } from '@rspack/core';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const styledSystem = path.resolve(__dirname, 'styled-system');
 
+/* Aliased so the runtime engine can be declared a federation `shared` singleton —
+ * `shared` keys are request strings, and a relative path can't be one. In real
+ * Gamut this is just `@codecademy/gamut-styles`. */
+const gamutEngine = path.resolve(
+  __dirname,
+  '../panda-styling-poc/src/gamut/engine'
+);
+
 const swc = {
   test: /\.tsx?$/,
   loader: 'builtin:swc-loader',
@@ -22,7 +30,7 @@ const common = {
   devtool: false,
   resolve: {
     extensions: ['.tsx', '.ts', '.mjs', '.js'],
-    alias: { 'styled-system': styledSystem },
+    alias: { 'styled-system': styledSystem, '@gamut-engine': gamutEngine },
   },
   module: { rules: [swc, { test: /\.css$/, type: 'css' }] },
   experiments: { css: true },
@@ -32,6 +40,11 @@ const { ModuleFederationPlugin } = rspack.container;
 const shared = {
   react: { singleton: true, requiredVersion: false },
   'react-dom': { singleton: true, requiredVersion: false },
+  /* MANDATORY, not an optimisation. The runtime engine holds React context (the
+   * theme) and the injected-rule registry in module scope; an unshared copy in a
+   * remote gets its own of each, so the host's ThemeProvider becomes invisible to
+   * it. See src/federation/verify.cjs for the failure reproduced. */
+  '@gamut-engine': { singleton: true, requiredVersion: false },
 };
 
 const remoteConfig = {

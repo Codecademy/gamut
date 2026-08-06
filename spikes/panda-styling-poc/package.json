@@ -11,7 +11,8 @@
     "build": "vite build",
     "dev": "vite",
     "proof": "esbuild src/proof/parity.tsx --bundle --platform=node --format=cjs --jsx=automatic --outfile=.proof/parity.cjs --log-level=warning && node .proof/parity.cjs",
-    "measure": "esbuild src/proof/measure.ts --bundle --platform=node --format=cjs --outfile=.proof/measure.cjs --log-level=warning && node .proof/measure.cjs"
+    "measure": "esbuild src/proof/measure.ts --bundle --platform=node --format=cjs --outfile=.proof/measure.cjs --log-level=warning && node .proof/measure.cjs",
+    "precompute": "esbuild src/precompute/generate.ts --bundle --platform=node --format=cjs --outfile=.proof/generate.cjs --log-level=warning && node .proof/generate.cjs"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "workspace:*",

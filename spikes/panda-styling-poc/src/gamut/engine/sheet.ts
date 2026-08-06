@@ -69,7 +69,13 @@ const UNITLESS = new Set([
   'strokeWidth',
 ]);
 
-const declValue = (prop: string, raw: string | number) =>
+/**
+ * Formats a declaration value the way Emotion does — bare numbers get `px`
+ * unless the property is unitless, and `0` never gets a unit. Exported because
+ * the precompute step needs the identical rule; duplicating it would let the
+ * static and runtime paths drift apart.
+ */
+export const declValue = (prop: string, raw: string | number) =>
   typeof raw === 'number' && raw !== 0 && !UNITLESS.has(prop)
     ? `${raw}px`
     : String(raw);

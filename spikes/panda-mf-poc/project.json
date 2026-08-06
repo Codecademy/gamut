@@ -7,16 +7,32 @@
   "targets": {
     "codegen": {
       "executor": "nx:run-commands",
-      "options": { "cwd": "spikes/panda-mf-poc", "command": "yarn codegen" }
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn codegen"
+      }
     },
     "cssgen": {
       "executor": "nx:run-commands",
       "dependsOn": ["codegen"],
-      "options": { "cwd": "spikes/panda-mf-poc", "command": "yarn cssgen" }
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn cssgen"
+      }
     },
     "build": {
       "executor": "nx:run-commands",
-      "options": { "cwd": "spikes/panda-mf-poc", "command": "yarn build" }
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn build"
+      }
+    },
+    "federation": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "spikes/panda-mf-poc",
+        "command": "yarn federation"
+      }
     }
   }
 }

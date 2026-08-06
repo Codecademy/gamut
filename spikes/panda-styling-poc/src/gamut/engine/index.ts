@@ -25,4 +25,4 @@ export {
   type GamutTheme,
   type Theme,
 } from './theme';
-export { extractStyles, inject } from './sheet';
+export { declValue, extractStyles, inject } from './sheet';

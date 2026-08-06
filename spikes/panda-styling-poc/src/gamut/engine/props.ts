@@ -32,14 +32,27 @@ const baseStates = variance.createStates(all);
  * sites today must hand-maintain `styledOptions(['isFancy'])` to keep state props
  * off the DOM. Attaching the names here lets `styled` filter them automatically —
  * removing a whole category of boilerplate rather than porting it. */
+/* `variantMeta` / `stateMeta` exist for the PRECOMPUTE step (src/precompute).
+ * variance closes over its config, so from the outside there is no way to learn
+ * which variant keys a `variant()` function accepts — which makes enumerating the
+ * prop space impossible. Exposing it here is what lets a build step execute these
+ * functions across their whole domain and emit static Panda recipes, leaving the
+ * 109 internal call sites untouched. */
 export const variant = ((config: Parameters<typeof baseVariant>[0]) =>
   Object.assign(baseVariant(config), {
     propNames: [config.prop ?? 'variant'],
+    variantMeta: {
+      prop: config.prop ?? 'variant',
+      keys: Object.keys(config.variants ?? {}),
+      defaultVariant: config.defaultVariant,
+      hasBase: Boolean(config.base),
+    },
   })) as typeof baseVariant;
 
 export const states = ((config: Parameters<typeof baseStates>[0]) =>
   Object.assign(baseStates(config), {
     propNames: Object.keys(config),
+    stateMeta: { keys: Object.keys(config) },
   })) as typeof baseStates;
 
 /** `system.*` prop groups, unchanged — for `variance.compose()` at call sites. */

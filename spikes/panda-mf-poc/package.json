@@ -7,7 +7,8 @@
   "scripts": {
     "codegen": "panda codegen",
     "cssgen": "panda cssgen --outfile src/ui/gamut.css",
-    "build": "panda codegen && panda cssgen --outfile src/ui/gamut.css && node build.mjs"
+    "build": "panda codegen && panda cssgen --outfile src/ui/gamut.css && node build.mjs",
+    "federation": "esbuild src/federation/copy.tsx --bundle --platform=node --format=cjs --jsx=automatic --external:react --external:react-dom --outfile=.mf/copyA.cjs --log-level=warning && esbuild src/federation/copy.tsx --bundle --platform=node --format=cjs --jsx=automatic --external:react --external:react-dom --outfile=.mf/copyB.cjs --log-level=warning && node src/federation/verify.cjs"
   },
   "dependencies": {
     "react": "18.3.1",
