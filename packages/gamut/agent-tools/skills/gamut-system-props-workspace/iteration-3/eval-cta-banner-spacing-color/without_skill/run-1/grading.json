@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "Does not wrap FlexBox/Box in styled() using a raw tagged-template literal or plain object",
+      "passed": false,
+      "evidence": "`styled(FlexBox)<FlexBoxProps>(css({ gap, bg, borderRadius, position, zIndex }))` — kept an unnecessary wrapper (2nd time out of 3 iterations for this eval)."
+    },
+    {
+      "text": "Expresses the 12px gap via a gap prop rather than raw CSS",
+      "passed": true,
+      "evidence": "`gap: 12` shorthand key inside css()."
+    },
+    {
+      "text": "Uses the bg (or background) prop with a semantic/named token, not a raw hex literal",
+      "passed": true,
+      "evidence": "`bg: 'background-primary'`."
+    },
+    {
+      "text": "Expresses the 8px border radius via a borderRadius prop rather than raw CSS",
+      "passed": true,
+      "evidence": "`borderRadius: 'lg'`."
+    },
+    {
+      "text": "Expresses position/z-index via position and zIndex props rather than raw CSS",
+      "passed": true,
+      "evidence": "`position: 'relative', zIndex: 2` inside css()."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 1, "total": 5, "pass_rate": 0.8 }
+}

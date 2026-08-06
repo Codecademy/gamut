@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+      "passed": true,
+      "evidence": "states({ selected, disabled })."
+    },
+    {
+      "text": "Does not hand-write a separate combined selected+disabled branch",
+      "passed": true,
+      "evidence": "Only selected/disabled blocks, no combined branch."
+    },
+    {
+      "text": "Props typed via StyleProps<typeof theStates>",
+      "passed": false,
+      "evidence": "selected/disabled are hand-declared booleans on ChipStyleProps (which only derives StyleProps<typeof chipProps> for the spacing/layout/typography composition) -- not derived from StyleProps<typeof chipStates>. Third iteration, third different outcome on this exact point (pass/fail/fail)."
+    },
+    {
+      "text": "Colors are semantic tokens, not raw hex",
+      "passed": true,
+      "evidence": "background, border-secondary, text, background-hover, primary, background-selected -- all semantic. Also correctly uses borderRadius: 'full' (verified valid via a full tsc typecheck this run, per the transcript)."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 }
+}

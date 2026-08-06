@@ -9,7 +9,7 @@ Item-focused list for managing, engaging with, and expanding individual rows. Us
 
 Source: `@codecademy/gamut` — `packages/gamut/src/DataList/DataList.tsx`
 
-See also: [`gamut-datatable`](../gamut-datatable/SKILL.md) — query-focused table for bulk data comparison. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction.
+See also: [`gamut-datatable`](../gamut-datatable/SKILL.md) — query-focused table for bulk data comparison. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction. [`gamut-z-index`](../gamut-z-index/SKILL.md) — the `zIndex` values used by the sticky header row and `EmptyRows`/`emptyMessage` below.
 
 Storybook: [Organisms / Lists & Tables / DataList](https://gamut.codecademy.com/?path=/docs-organisms-lists-tables-datalist--docs)
 
@@ -206,7 +206,7 @@ For server-side filtering or pagination, manage `query` and `onQueryChange` exte
 
 ## Empty state
 
-DataList shows a default empty state when `rows` is empty. Override with `emptyMessage`.
+DataList shows a default empty state when `rows` is empty. Override with `emptyMessage`. The default and the example below both use `zIndex={1}` to sit above table rows without a token — see [`gamut-z-index`](../gamut-z-index/SKILL.md) before changing it.
 
 ```tsx
 <DataList

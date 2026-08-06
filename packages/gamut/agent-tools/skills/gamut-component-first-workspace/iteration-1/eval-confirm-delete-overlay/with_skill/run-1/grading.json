@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Dialog or Modal from @codecademy/gamut rather than a hand-rolled overlay",
+      "passed": true,
+      "evidence": "import { Dialog } from '@codecademy/gamut'; wraps Dialog with variant, confirmCta, cancelCta."
+    },
+    {
+      "text": "Does not manually implement Escape-key or outside-click dismiss logic",
+      "passed": true,
+      "evidence": "No addEventListener/keydown/click handlers anywhere; relies entirely on Dialog's onRequestClose."
+    },
+    {
+      "text": "Does not use a hand-rolled position:fixed/absolute overlay shell",
+      "passed": true,
+      "evidence": "No styled overlay markup at all -- Dialog is used directly."
+    },
+    {
+      "text": "Confirm/Cancel wired through the component's real props",
+      "passed": true,
+      "evidence": "confirmCta={{ children: 'Delete', onClick: onConfirm }}, cancelCta={{ children: 'Cancel' }}."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}
