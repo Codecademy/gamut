@@ -1,8 +1,9 @@
 # Panda under the hood, Gamut's styling API unchanged
 
 **What this proves:** Panda CSS can generate Gamut's design tokens and its
-components' CSS, while every existing call site keeps working exactly as written.
-The only change a consumer makes is one import.
+components' CSS, while every existing call site keeps working exactly as written —
+with **Emotion gone entirely, runtime and types**. A consumer changes one import
+plus one type-augmentation specifier.
 
 ```bash
 yarn install                              # once, from the repo root
@@ -94,14 +95,17 @@ untouched Emotion-era API. Panda underneath, API unchanged, in one component.
 
 ## 6. Verified mechanically
 
-- `yarn typecheck` clean — and token safety is intact: `fontSize={12}` is
-  **rejected**, because 12 isn't a `fontSize` token.
+- `yarn typecheck` clean — including `src/type-safety.test-d.tsx`, 9 negative
+  cases that must each error (see §8). Token safety intact: `fontSize={12}` is
+  **rejected**.
 - `yarn build` clean. 30kB of CSS, **3.46kB gzipped** (it compresses hard: mostly
   repeated variable declarations).
 - Rendered in jsdom: **85 CSS variables referenced, 333 defined, 0 missing**;
   **32 classes in the DOM, 0 without a matching rule**.
 - Panda emits all 5 themes × 2 modes, and all 4 `strokeButton` variant classes via
   `staticCss`.
+- `grep '@emotion' packages/variance/src` returns nothing; the built bundle
+  contains no `serializeStyles` / `insertStyles` / `createCache` / `@emotion`.
 
 ## 7. Three things worth knowing (all found the hard way)
 
@@ -124,25 +128,87 @@ per-theme overrides.
 (rose/fuchsia/violet/…) is dead weight for a design system with its own tokens.
 Keeping `preset-base` for utilities and conditions is enough.
 
-## 8. The one honest caveat
+## 8. Theme type safety with no Emotion at all — including in the types
 
-`src/gamut-theme.d.ts` still augments `@emotion/react`. It is **types-only** —
-nothing at runtime imports Emotion.
+**Emotion is now gone from this PoC completely, types included.** The bundle check
+above covers runtime; this section covers types.
 
-`variance` anchors its whole prop type system to Emotion's `Theme` at two lines:
+### Why Emotion was in the types at all
 
+`variance` needs **one mutable, global type slot** to learn what your theme
+contains, so `scale: 'colors'` typechecks and token names autocomplete. That slot
+used to be Emotion's `Theme` interface — and Emotion did nothing with it. It just
+happened to be the interface everyone augmented.
+
+`variance` already defined its own theme types (`BaseTheme`, `Breakpoints` in
+`types/theme.ts`); it was *borrowing* Emotion's interface purely as the registry.
+So it now owns the slot:
+
+```ts
+// packages/variance/src/types/theme.ts
+export interface Theme extends BaseTheme {}   // ← augment this
 ```
-packages/variance/src/types/props.ts:1     import { Theme } from '@emotion/react';
-packages/variance/src/types/config.ts:31   scale?: keyof Theme | MapScale | ArrayScale;
+
+Four files changed, all types-only: `types/theme.ts` (owns the registry and drops
+`declare module '@emotion/react'`), plus `types/props.ts`, `types/config.ts` and
+`utils/serializeTokens.ts` importing `Theme` from `./theme` instead. **`grep
+'@emotion' packages/variance/src` now returns nothing.**
+
+> Correction: earlier notes on this said "exactly two lines." That was wrong —
+> it's four files, and one of them was variance augmenting Emotion itself.
+
+### What a consumer changes
+
+Same shape, different module:
+
+```diff
+- declare module '@emotion/react'       { export interface Theme extends CoreTheme {} }
++ declare module '@codecademy/variance' { export interface Theme extends CoreTheme {} }
 ```
 
-Without the augmentation `keyof Theme` is `never`, every `scale: 'colors'`
-degrades, and you get cascading nonsense errors. Adding that one file took this PoC
-**from 20+ type errors to 1**.
+That's the whole migration for the 19 real augmentation sites (18 in mono, 1 in
+`platform/src/themes/platform.d.ts`). See `src/gamut-theme.d.ts`.
 
-This isn't new migration work — **every mono app already has this file** (18, plus
-1 in platform). A real migration repoints those two `variance` lines at a
-Gamut-owned registry, and the 19 sites change specifier only.
+### Proof that nothing was lost: `src/type-safety.test-d.tsx`
+
+`yarn typecheck` **is** the assertion — there's no runtime in that file. It pins
+both halves of the question, and it fails in both directions: if a negative case
+silently started compiling, TypeScript reports `Unused '@ts-expect-error'
+directive`. (Verified by deliberately breaking one case.)
+
+**Scale-valued props still validate against the theme** — these all error:
+
+```ts
+css({ fontSize: 12 });          // not a fontSize token
+css({ p: 5 });                  // not a spacing token
+css({ bg: 'chartreuse' });      // not a colour token or alias
+<Box p={5} />;                  // still rejected as a JSX prop
+```
+
+**`variant()` and `states()` produce dependable types.** Resolved shapes:
+
+```ts
+StyleProps<typeof positionVariants>
+//  = VariantProps<"position", false | "left" | "right" | "center"> & { theme?: Theme }
+StyleProps<typeof toggleStates>
+//  = Partial<Record<"compact" | "isFancy", boolean>>              & { theme?: Theme }
+```
+
+So the prop is named after `prop`, its values are the exact literal union of the
+declared keys, and states are exactly the declared booleans. These all error:
+
+```ts
+{ position: 'middle' }    // not a declared variant
+{ variant: 'left' }       // the prop is `position`
+{ isFancy: 'yes' }        // states are booleans
+{ hasBorder: true }       // never declared
+```
+
+**Worth knowing why this holds:** `variant()` and `states()` derive their prop
+types from the **config object you pass them**, not from the theme. `Theme` only
+appears in the `theme?:` member. So the registry swap can't affect them — only
+scale-valued props (`p`, `bg`, `fontSize`) depend on `keyof Theme`, and those are
+verified above.
 
 ## 9. Scope
 
@@ -151,7 +217,8 @@ panda.config.ts        Panda: tokens for 5 themes x 2 modes + a component recipe
 src/
   App.tsx              the demo — real mono call sites, only the import changed
   gamut-panda.css      generated by `panda cssgen` (gitignored)
-  gamut-theme.d.ts     the types-only Emotion touchpoint (§8)
+  gamut-theme.d.ts     the theme registry augmentation (§8)
+  type-safety.test-d.tsx  compile-time proof that token safety survived (§8)
   gamut/               stands in for @codecademy/gamut-styles
     index.ts           the public surface — the "swap target"
     props.ts           css / variant / states / systemProps on the REAL config

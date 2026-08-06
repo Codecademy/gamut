@@ -1,29 +1,20 @@
 import type { CoreTheme } from './gamut/theme';
 
-/* The ONE remaining Emotion touchpoint, and it is types-only.
+/* THEME TYPE SAFETY — with no Emotion anywhere, at runtime OR in types.
  *
- * `@codecademy/variance` anchors its whole prop type system to Emotion's `Theme`
- * at exactly two lines:
+ * `variance` needs one mutable, global type slot to learn what your theme
+ * contains, so that `scale: 'colors'` typechecks and token names autocomplete.
+ * That slot used to be Emotion's `Theme` interface — Emotion did nothing with it;
+ * it just happened to be the interface everyone augmented. `variance` now owns
+ * the slot itself (packages/variance/src/types/theme.ts), so this augmentation
+ * is the same shape against a different module:
  *
- *   packages/variance/src/types/props.ts:1     import { Theme } from '@emotion/react';
- *   packages/variance/src/types/config.ts:31   scale?: keyof Theme | MapScale | ArrayScale;
+ *   - declare module '@emotion/react'        { export interface Theme extends CoreTheme {} }
+ *   + declare module '@codecademy/variance'  { export interface Theme extends CoreTheme {} }
  *
- * Without this augmentation `Theme` is `{}`, so `keyof Theme` is `never` and every
- * `scale: 'colors'` in the prop config degrades — you get cascading nonsense errors
- * on `css()` calls and on component children.
- *
- * Every mono app already has a file exactly like this (18 of them, plus 1 in
- * platform), so this is NOT extra migration work — it's what exists today.
- *
- * A real migration repoints those two variance lines at a Gamut-owned registry,
- * after which this file becomes:
- *
- *   declare module '@codecademy/gamut-styles' {
- *     export interface GamutTheme extends CoreTheme {}
- *   }
- *
- * Nothing at runtime imports Emotion — see src/gamut/, which is Emotion-free. */
-declare module '@emotion/react' {
+ * That is the whole migration for the 19 real augmentation sites (18 in mono,
+ * 1 in platform/src/themes/platform.d.ts). */
+declare module '@codecademy/variance' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   export interface Theme extends CoreTheme {}
 }
