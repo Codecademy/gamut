@@ -17,10 +17,13 @@ import {
   ColorMode,
   css,
   FlexBox,
+  GamutProvider,
   states,
+  StrokeButton,
   styled,
   styledOptions,
   Text,
+  themes,
   variant,
 } from './gamut';
 
@@ -57,17 +60,6 @@ const StyledSection = styled(
  * 2. css() + states() + the composed shape + withComponent — copied VERBATIM
  *    from mono/libs/ui/login-or-register/src/OAuthButtons/elements.tsx
  * ══════════════════════════════════════════════════════════════════════════ */
-
-const StrokeButton = styled('button')(
-  css({
-    border: 2,
-    borderColor: 'primary',
-    color: 'primary',
-    bg: 'transparent',
-    borderRadius: 'md',
-    cursor: 'pointer',
-  })
-);
 
 const StyledGridBox = styled(Box.withComponent('ul'))(
   css({
@@ -146,19 +138,33 @@ const Section = ({
 
 export const App = () => {
   const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [themeName, setThemeName] = useState('core');
 
   return (
-    <ColorMode mode={mode}>
+    <GamutProvider theme={themes[themeName]}>
+      <ColorMode mode={mode}>
       <Box p={32} minHeight="100vh" fontFamily="base">
         <FlexBox alignItems="center" justifyContent="space-between" mb={32}>
           <Text fontSize={26} fontWeight="title">
             Emotion → Gamut: same API, one import changed
           </Text>
-          <StrokeButton
-            onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-          >
-            {mode} mode
-          </StrokeButton>
+          <FlexBox columnGap={8} alignItems="center">
+            {Object.keys(themes).map((name) => (
+              <StrokeButton
+                key={name}
+                variant={name === themeName ? 'primary' : 'danger'}
+                size="small"
+                onClick={() => setThemeName(name)}
+              >
+                {name}
+              </StrokeButton>
+            ))}
+            <StrokeButton
+              onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+            >
+              {mode} mode
+            </StrokeButton>
+          </FlexBox>
         </FlexBox>
 
         <Section
@@ -174,7 +180,7 @@ export const App = () => {
 
         <Section
           title="2. css() + states(), composed"
-          note="Verbatim from mono OAuthButtons/elements.tsx — nested @media, responsive { _, xs } values, bare-identifier composition, and Box.withComponent('ul')."
+          note="THE PROOF: StrokeButton's own CSS is 100% Panda static output. The consumer then extends it with the unchanged styled(X)(css(…), states(…)) API — verbatim from mono OAuthButtons/elements.tsx, incl. nested @media and responsive { _, xs } values."
         >
           <StyledGridBox>
             <li>
@@ -257,7 +263,8 @@ export const App = () => {
               .join('\n')}
           </Pre>
         </Section>
-      </Box>
-    </ColorMode>
+        </Box>
+      </ColorMode>
+    </GamutProvider>
   );
 };

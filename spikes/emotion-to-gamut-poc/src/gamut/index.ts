@@ -13,11 +13,22 @@ export type { StyleFn, StyledComponent, StyledOptions } from './styled';
 
 export { css, states, styledOptions, systemProps, variant } from './props';
 
-export { GamutProvider, useTheme } from './theme';
+export { GamutProvider, themes, useTheme } from './theme';
 export type { CoreTheme } from './theme';
 
-export { Background, Box, ColorMode, FlexBox, Text } from './components';
-export type { BoxProps, ColorModeName } from './components';
+export {
+  Background,
+  Box,
+  ColorMode,
+  FlexBox,
+  StrokeButton,
+  Text,
+} from './components';
+export type {
+  BoxProps,
+  ColorModeName,
+  StrokeButtonProps,
+} from './components';
 
 // used by the demo page to display the CSS the engine generated
 export { allRules } from './sheet';

@@ -5,9 +5,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "dev": "panda cssgen --outfile src/gamut-panda.css && vite",
+    "build": "panda cssgen --outfile src/gamut-panda.css && vite build",
+    "typecheck": "tsc --noEmit",
+    "tokens": "panda cssgen --outfile src/gamut-panda.css"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "workspace:*",
@@ -16,6 +17,7 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@pandacss/dev": "^0.53.0",
     "@types/react": "18.3.27",
     "@types/react-dom": "18.3.1",
     "@vitejs/plugin-react": "^4.3.4",

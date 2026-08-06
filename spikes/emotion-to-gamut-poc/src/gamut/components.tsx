@@ -1,5 +1,6 @@
 import type { StyleProps } from '@codecademy/variance';
-import type { ReactNode } from 'react';
+import { type ComponentPropsWithoutRef, type ReactNode, forwardRef } from 'react';
+import { strokeButton } from 'styled-system/recipes';
 
 import { css, systemProps } from './props';
 import { styled } from './styled';
@@ -18,6 +19,31 @@ export const FlexBox = styled('div')<BoxProps>(
 );
 
 export const Text = styled('span')<BoxProps>(systemProps);
+
+/* ── A Gamut component backed ENTIRELY by Panda ──────────────────────────────
+ * Its CSS is static, generated at build time from the recipe in panda.config.ts.
+ * Zero runtime style work: this just picks class names.
+ *
+ * `className` is merged in so a consumer can still extend it with the unchanged
+ * `styled(StrokeButton)(css(…), states(…))` API — see App.tsx section 2. That
+ * combination is the whole proof: Panda underneath, API untouched on top. */
+export type StrokeButtonProps = ComponentPropsWithoutRef<'button'> & {
+  variant?: 'primary' | 'danger';
+  size?: 'small' | 'normal';
+};
+
+export const StrokeButton = forwardRef<HTMLButtonElement, StrokeButtonProps>(
+  ({ variant, size, className, ...rest }, ref) => (
+    <button
+      ref={ref}
+      className={[strokeButton({ variant, size }), className]
+        .filter(Boolean)
+        .join(' ')}
+      {...rest}
+    />
+  )
+);
+StrokeButton.displayName = 'StrokeButton';
 
 export type ColorModeName = 'light' | 'dark';
 

@@ -1,4 +1,6 @@
+import { adminTheme } from '@codecademy/gamut-styles/dist/themes/admin';
 import { coreTheme } from '@codecademy/gamut-styles/dist/themes/core';
+import { platformTheme } from '@codecademy/gamut-styles/dist/themes/platform';
 import { type ReactNode, createContext, useContext } from 'react';
 
 /* Replaces Emotion's `ThemeProvider` + the
@@ -6,12 +8,25 @@ import { type ReactNode, createContext, useContext } from 'react';
 
 export type CoreTheme = typeof coreTheme;
 
+/** The Gamut themes this PoC maps. Same palette; different semantic aliases. */
+export const themes = {
+  core: coreTheme,
+  admin: adminTheme,
+  platform: platformTheme,
+} as unknown as Record<string, CoreTheme>;
+
 const ThemeContext = createContext<CoreTheme>(coreTheme);
 ThemeContext.displayName = 'GamutTheme';
 
 export const useTheme = () => useContext(ThemeContext);
 
-/** Stand-in for `GamutProvider`. Supplies the theme and Gamut's CSS variables. */
+/* Stand-in for `GamutProvider`. Supplies the theme object only — the CSS variables
+ * it references are emitted at BUILD time by Panda (see panda.config.ts), so
+ * there's no `<Variables>` component shipping them as JS.
+ *
+ * This is what Gamut's theme values actually look like:
+ *   coreTheme.colors.primary === 'var(--color-primary)'
+ * `variance` just emits that reference; Panda defines it. */
 export const GamutProvider = ({
   theme = coreTheme,
   children,
@@ -20,36 +35,11 @@ export const GamutProvider = ({
   children?: ReactNode;
 }) => (
   <ThemeContext.Provider value={theme}>
-    <Variables theme={theme} />
-    {children}
+    {/* `data-theme` selects which alias block applies; `display: contents` means
+        this wrapper adds the hook without affecting layout. Switching themes is
+        an attribute flip — only variable assignments change. */}
+    <div data-theme={theme.name} style={{ display: 'contents' }}>
+      {children}
+    </div>
   </ThemeContext.Provider>
 );
-
-/* Emits `--color-*` for every semantic alias in each mode. Colour mode then works
- * by REASSIGNING these variables on a wrapper, which is how nested modes resolve
- * from the nearest ancestor. (Selector-based conditions can't do that: an element
- * inside light-inside-dark matches both, and source order wins over proximity.) */
-const Variables = ({ theme }: { theme: CoreTheme }) => {
-  const { modes, colors } = theme as unknown as {
-    modes: Record<'light' | 'dark', Record<string, string>>;
-    colors: Record<string, string>;
-  };
-
-  const block = (mode: 'light' | 'dark') =>
-    Object.entries(modes[mode])
-      .map(([alias, token]) => `--color-${alias}:${colors[token] ?? token};`)
-      .join('');
-
-  return (
-    <style
-      data-gamut-variables=""
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{
-        __html: [
-          `:root,[data-color-mode=light]{${block('light')}}`,
-          `[data-color-mode=dark]{${block('dark')}}`,
-        ].join(''),
-      }}
-    />
-  );
-};
