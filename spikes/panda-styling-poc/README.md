@@ -47,12 +47,17 @@ automatically as nx target dependencies.
 This spike covers **both** halves of the styling question. They are not
 alternatives to pick between — they're different tiers of the same design.
 
-|            | tier 1/2 — Panda-native                         | tier 3/4 — the Emotion-free engine         |
+|            | Panda-native (Gamut's own internals)            | the Emotion-free engine (consumer surface) |
 | ---------- | ----------------------------------------------- | ------------------------------------------ |
 | for        | Gamut's **own** components                      | **existing consumer call sites**           |
 | shape      | `styled(tag, recipe)`, `css({…})` → class names | `styled(C)(css(…), variant(…), states(…))` |
 | resolution | static, zero-runtime                            | runtime (`variance` → `insertRule`)        |
 | where      | `src/gamut/Button.tsx`, `src/App.tsx`           | `src/gamut/engine/`, `src/proof/`          |
+
+Note the "three tiers" section further down numbers the **consumer-facing**
+authoring paths (system props / module-scope `styled` / `styled` + a build step).
+That's a different axis from this table, which splits Gamut's internals from the
+consumer surface.
 
 ### `src/gamut/engine/` — Option A
 
