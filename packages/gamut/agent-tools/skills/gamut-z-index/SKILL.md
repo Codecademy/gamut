@@ -7,7 +7,7 @@ description: Use this skill when something needs to float, stick, or portal abov
 
 There is no single documented z-index scale. `DESIGN.md` names exactly one token — `headerZ`. Everything else that floats, sticks, or portals is a small ad hoc integer (0–5) baked into component internals, split across two isolated stacking tiers by `AppWrapper` and `BodyPortal`. Read this before reaching for a bigger number.
 
-Source: `packages/gamut-styles/src/variables/elements.ts` · `packages/gamut/src/AppWrapper/index.tsx` · `packages/gamut/src/BodyPortal/index.tsx` · `packages/gamut/src/Overlay/index.tsx`
+Source: `packages/gamut-styles/src/variables/elements.ts` · `packages/gamut/src/AppWrapper/index.tsx` · `packages/gamut/src/BodyPortal/index.tsx` · `packages/gamut/src/Overlay/index.tsx` · `packages/gamut/src/Popover/elements.tsx` · `packages/gamut/src/PopoverContainer/PopoverContainer.tsx` · `packages/gamut/src/Toaster/index.tsx`
 
 See also: [`gamut-modal`](../gamut-modal/SKILL.md) — Modal/Dialog composition (this skill covers what happens when something else floats above or inside one). [`gamut-menu`](../gamut-menu/SKILL.md) — floating menus via `PopoverContainer`. [`gamut-datalist`](../gamut-datalist/SKILL.md) / [`gamut-datatable`](../gamut-datatable/SKILL.md) — sticky headers, `EmptyRows`, row-menu-opens-Modal pattern.
 
@@ -29,9 +29,15 @@ Everything below this line is **not** a token — it's a component default you c
 
 **Tier 1 — in-page**, inside `AppWrapper`. `AppWrapper` (`packages/gamut/src/AppWrapper/index.tsx`) wraps the app root in `position: relative; z-index: 1` specifically to "safely reset the stacking context" — its own comment warns: **do not change its `position`/`z-index` or extend it with overrides to those properties.** Every non-portalled component (sticky List headers, inline Tips, Tabs, inline Popovers, SelectDropdown menus, …) only has to out-rank its _local_ siblings inside this one context. `headerZ` (15) sits comfortably above all of them (the highest non-portalled value in the table below is 5).
 
-**Tier 2 — body portals**, via `BodyPortal` (`ReactDOM.createPortal(..., document.body)`). `Overlay` (used by `Modal`/`Dialog`) and any non-`inline` `PopoverContainer` (floating menus, `DatePicker` calendar, portalling `SelectDropdown` usage) render as a **sibling of `AppWrapper`**, not a descendant of it. Their z-index only has to out-rank _other portals_ — it never has to clear `headerZ`, which is why a plain `Modal` reliably covers a sticky global header without needing `zIndex > 15`.
+**Tier 2 — body portals**, via `BodyPortal` (`ReactDOM.createPortal(..., document.body)`). `Overlay` (used by `Modal`/`Dialog`), floating `Tip` (`ToolTip`/`InfoTip`/`PreviewTip` with `placement="floating"`, via `Popover`), any non-`inline` `PopoverContainer` (floating menus, `DatePicker` calendar, portalling `SelectDropdown` usage), and `Toaster` all render as a **sibling of `AppWrapper`**, not a descendant of it. Their z-index only has to out-rank _other portals_ — it never has to clear `headerZ`, which is why a plain `Modal` reliably covers a sticky global header without needing `zIndex > 15`.
 
-`BodyPortal`'s default (`1`) is called out in its own source comment as **"a TEMPORARY stopgap solution to avoid zIndex conflicts... will be reworked with GM-624"** — treat every Tier 2 number here as fragile plumbing, not settled design intent.
+`BodyPortal`'s default (`1`) is called out in its own source comment as **"a TEMPORARY stopgap solution to avoid zIndex conflicts... will be reworked with GM-624"** — treat every Tier 2 number here as fragile plumbing, not settled design intent. As of this writing, the current Tier 2 ordering is:
+
+```
+Overlay (3) < Toaster (4) < Popover / PopoverContainer, portalled (5, tied)
+```
+
+This isn't derived from any scale — it's a hand-picked, hardcoded stopgap (each override is marked `// TEMPORARY: ... until GM-624 lands a shared z-index scale`) chosen to satisfy exactly the constraints known at patch time: `Toaster` must clear `Overlay` (a toast should never be hidden by a modal/flyout behind it), and `Popover`/`PopoverContainer` must clear `Toaster` (a tooltip or menu — including a toast's own close-button tooltip — must never render behind the toast it belongs to) while staying **tied with each other**, not just above it, because a `Popover`-based tip and a `PopoverContainer`-based menu can be open and overlapping at the same time, and their relative order needs to fall back to DOM mount order (whichever opened later paints on top) rather than a fixed winner. Any new Tier 2 consumer needs a deliberate, explicit `zIndex` fit into this chain — the plain `BodyPortal` default of `1` is now strictly _below_ everything in active use, so silently relying on the default (as `Popover`, `PopoverContainer`, and `Toaster` used to) will render behind an open `Overlay`.
 
 ---
 
