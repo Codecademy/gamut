@@ -77,15 +77,18 @@ const serialize = (
   return out;
 };
 
+/* One string per CSS rule. `insertRule` accepts exactly one rule per call, so the
+ * split has to happen here rather than at the call site. */
+const ruleTexts = (blocks: Block[], className: string): string[] =>
+  blocks.map(({ at, selector, decls }) => {
+    const body = `${selector.replace(/&/g, `.${className}`)}{${decls.join(
+      ';'
+    )}}`;
+    return at.reduceRight((inner, rule) => `${rule}{${inner}}`, body);
+  });
+
 const cssText = (blocks: Block[], className: string) =>
-  blocks
-    .map(({ at, selector, decls }) => {
-      const body = `${selector.replace(/&/g, `.${className}`)}{${decls.join(
-        ';'
-      )}}`;
-      return at.reduceRight((inner, rule) => `${rule}{${inner}}`, body);
-    })
-    .join('');
+  ruleTexts(blocks, className).join('');
 
 const rules = new Map<string, string>();
 const inSheet = new Set<string>();
@@ -97,6 +100,70 @@ const element = () => {
   sheetEl.setAttribute('data-gamut', '');
   document.head.appendChild(sheetEl);
   return sheetEl;
+};
+
+/* ── Getting rules into the page ─────────────────────────────────────────────
+ * A `<style>` element has two representations: its child DOM nodes, and the
+ * parsed `CSSStyleSheet` the engine actually consults. Changing the children
+ * invalidates the parsed sheet, so the browser REPARSES the entire accumulated
+ * text. Appending rule n therefore costs O(n), and the whole sequence is O(n²).
+ *
+ * Measured in `~/code/base camp/reboot/injector-browser-poc` (headless Chromium
+ * + CDP), inserting 2,000 rules:
+ *
+ *     appendChild(createTextNode)   1169.5ms      ← what this used to do
+ *     insertRule                       1.8ms      ← ~650x faster, and linear
+ *
+ * That took the engine from 1.58x Emotion on mount to 1.08x — parity, alongside
+ * 1.01x style recalculation and 0.99x CSS bytes.
+ *
+ * NOTE ON `@layer`: the sibling engine in `panda-styling-poc` wraps each payload
+ * in `@layer gamut.consumer{…}` so that a multi-rule payload counts as one rule.
+ * Deliberately not done here. Emotion appends UNLAYERED CSS, and unlayered rules
+ * beat every layered rule in the cascade — so adopting a layer would silently
+ * change precedence against Panda's own `@layer` output. Splitting into one
+ * `insertRule` call per rule keeps Emotion's cascade semantics exactly. */
+
+/* A rule the browser refuses — an unsupported at-rule, a property this engine
+ * rejects. The previous fallback appended it to the SHARED sheet as a text node,
+ * which put that sheet back on the quadratic curve permanently and silently: one
+ * bad rule and every subsequent insert reparsed everything. Give the casualty its
+ * own element instead. Cost is one extra `<style>`; it cannot slow anything else
+ * down, and the rule still applies.
+ *
+ * Trade-off: a quarantined rule sits after the main sheet in document order, so
+ * it wins ties it would previously have lost. That only affects rules that would
+ * otherwise not have applied at all. */
+const quarantine = (text: string, error: unknown) => {
+  const fallback = document.createElement('style');
+  fallback.setAttribute('data-gamut-fallback', '');
+  fallback.textContent = text;
+  document.head.appendChild(fallback);
+
+  if (process.env.NODE_ENV !== 'production')
+    // eslint-disable-next-line no-console
+    console.warn('[gamut] insertRule rejected a rule; quarantined it', {
+      text,
+      error,
+    });
+};
+
+const insertRules = (texts: string[]) => {
+  const target = element();
+
+  for (const text of texts) {
+    const { sheet } = target;
+    // no parsed sheet yet (element not connected) — nothing to splice into
+    if (!sheet) {
+      quarantine(text, new Error('style element has no CSSStyleSheet'));
+      continue;
+    }
+    try {
+      sheet.insertRule(text, sheet.cssRules.length);
+    } catch (error) {
+      quarantine(text, error);
+    }
+  }
 };
 
 /** Resolved styles in, class name out. Each unique rule is inserted exactly once. */
@@ -116,7 +183,7 @@ export const inject = (styles: CSSObject): string => {
   if (!rules.has(className)) rules.set(className, cssText(blocks, className));
   if (!inSheet.has(className)) {
     inSheet.add(className);
-    element().appendChild(document.createTextNode(rules.get(className)!));
+    insertRules(ruleTexts(blocks, className));
   }
 
   return className;
@@ -130,11 +197,12 @@ export const allRules = () => [...rules.entries()];
  * rest of this PoC doesn't already cover. Both fall out of the same serializer —
  * they just skip the class-scoping step. */
 
-const insertOnce = (key: string, text: string) => {
+const insertOnce = (key: string, texts: string[]) => {
   if (rules.has(key)) return;
-  rules.set(key, text);
+  // joined for `allRules()`, which is display-only
+  rules.set(key, texts.join(''));
   inSheet.add(key);
-  element().appendChild(document.createTextNode(text));
+  insertRules(texts);
 };
 
 /**
@@ -154,8 +222,8 @@ export const injectGlobal = (styles: CSSObject) => {
 
   if (!blocks.length) return;
   // no `&` in a global selector, so the className argument is never substituted
-  const text = cssText(blocks, 'global');
-  insertOnce(`global-${hash(text)}`, text);
+  const texts = ruleTexts(blocks, 'global');
+  insertOnce(`global-${hash(texts.join(''))}`, texts);
 };
 
 /**
@@ -173,6 +241,7 @@ export const keyframes = (frames: CSSObject): string => {
     .join('');
 
   const name = `gmt-kf-${hash(body)}`;
-  insertOnce(name, `@keyframes ${name}{${body}}`);
+  // a single `@keyframes` block is one rule, so insertRule takes it as-is
+  insertOnce(name, [`@keyframes ${name}{${body}}`]);
   return name;
 };
