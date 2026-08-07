@@ -21,6 +21,7 @@ export {
   Box,
   ColorMode,
   FlexBox,
+  Global,
   StrokeButton,
   Text,
 } from './components';
@@ -31,4 +32,4 @@ export type {
 } from './components';
 
 // used by the demo page to display the CSS the engine generated
-export { allRules } from './sheet';
+export { allRules, injectGlobal, keyframes } from './sheet';

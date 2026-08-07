@@ -88,10 +88,31 @@ Two sections are copied **verbatim** out of mono.
 | 3 | System props — `<Box p={16} bg="primary" />` | real Gamut prop config + scales |
 | 4 | `<ColorMode>` / `<Background>`, incl. nested light-inside-dark | — |
 | 5 | `` styled.span`…` `` with `${props => …}` interpolation | mono has 234 of these |
+| 6 | `<Global>` and `keyframes()` — the last two Emotion APIs Gamut used | 10 + 5 references in `packages/*` |
 
 **Section 2 is the actual proof.** `StrokeButton`'s own CSS is 100% Panda static
 output (`.gmt-stroke-button--variant_primary`), and a consumer extends it with the
 untouched Emotion-era API. Panda underneath, API unchanged, in one component.
+
+### Every Emotion API Gamut uses, and its replacement
+
+The point of §6 on the page: **nothing is left over.** Measured across
+`packages/*/src`:
+
+| Emotion API | sites | replaced by |
+| --- | --- | --- |
+| `styled` | 111 | `src/gamut/styled.tsx` — same composed call shape |
+| `css` | 17 | Gamut's own `css()` (already `variance`), or `injectGlobal` for globals |
+| `Theme` / `useTheme` / `ThemeProvider` / `ThemeContext` | 17 | `src/gamut/theme.tsx` + variance's registry (§8) |
+| `Global` | 10 | `<Global styles={…} />` — same call shape, plain style object |
+| `keyframes` | 5 | `keyframes()` → returns the generated animation name |
+| `isPropValid` | 4 | the prop config is already the source of truth |
+| `createCache` / `CacheProvider` / `Options` / `StylisPlugin` | 10 | **nothing — not needed.** Class names are content-hashed and deterministic, so there's no per-request cache to thread and no stylis plugin chain to configure |
+| `SerializedStyles` / `CSSObject` | 4 | `CSSObject` from `@codecademy/variance` |
+
+The one genuinely unreplaced item is `@emotion/jest`'s `matchers` (4 test sites),
+which assert on Emotion-generated CSS. Those need an equivalent matcher against
+the Gamut stylesheet — straightforward, but not built here.
 
 ## 6. Verified mechanically
 
@@ -104,6 +125,9 @@ untouched Emotion-era API. Panda underneath, API unchanged, in one component.
   **32 classes in the DOM, 0 without a matching rule**.
 - Panda emits all 5 themes × 2 modes, and all 4 `strokeButton` variant classes via
   `staticCss`.
+- `<Global>` emits `body{margin:0}` **unscoped** (no class prefix), and
+  `keyframes()` emits a complete `@keyframes gmt-kf-…{0%, 100%{opacity:1}50%{opacity:0.35}}`
+  that the animating element references by name.
 - `grep '@emotion' packages/variance/src` returns nothing; the built bundle
   contains no `serializeStyles` / `insertStyles` / `createCache` / `@emotion`.
 

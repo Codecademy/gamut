@@ -124,3 +124,55 @@ export const inject = (styles: CSSObject): string => {
 
 /** Everything emitted so far — used by the page to show the generated CSS. */
 export const allRules = () => [...rules.entries()];
+
+/* ── Replacing Emotion's last two APIs ───────────────────────────────────────
+ * `<Global>` and `keyframes()` are the only Emotion features Gamut uses that the
+ * rest of this PoC doesn't already cover. Both fall out of the same serializer —
+ * they just skip the class-scoping step. */
+
+const insertOnce = (key: string, text: string) => {
+  if (rules.has(key)) return;
+  rules.set(key, text);
+  inSheet.add(key);
+  element().appendChild(document.createTextNode(text));
+};
+
+/**
+ * Replaces Emotion's `<Global styles={…} />` (10 references in packages/*).
+ *
+ * Top-level keys are REAL selectors rather than being scoped to a generated
+ * class — that's the only difference from `inject`.
+ */
+export const injectGlobal = (styles: CSSObject) => {
+  const blocks: Block[] = [];
+
+  Object.entries(styles).forEach(([selector, declarations]) => {
+    if (declarations && typeof declarations === 'object') {
+      serialize(declarations as CSSObject, selector, [], blocks);
+    }
+  });
+
+  if (!blocks.length) return;
+  // no `&` in a global selector, so the className argument is never substituted
+  const text = cssText(blocks, 'global');
+  insertOnce(`global-${hash(text)}`, text);
+};
+
+/**
+ * Replaces Emotion's `keyframes` (5 references in packages/*).
+ *
+ * Returns the generated animation NAME, so it drops into either shape Emotion
+ * supports: `animationName: spin` or `` animation: `${spin} 1s linear` ``.
+ */
+export const keyframes = (frames: CSSObject): string => {
+  const body = Object.entries(frames)
+    .map(([step, declarations]) => {
+      const blocks = serialize(declarations as CSSObject, step, []);
+      return cssText(blocks, 'kf');
+    })
+    .join('');
+
+  const name = `gmt-kf-${hash(body)}`;
+  insertOnce(name, `@keyframes ${name}{${body}}`);
+  return name;
+};

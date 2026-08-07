@@ -3,6 +3,7 @@ import { type ComponentPropsWithoutRef, type ReactNode, forwardRef } from 'react
 import { strokeButton } from 'styled-system/recipes';
 
 import { css, systemProps } from './props';
+import { injectGlobal } from './sheet';
 import { styled } from './styled';
 
 /* The handful of Gamut components the demo needs, built on the new engine.
@@ -87,3 +88,11 @@ export const Background = ({
     {children}
   </Box>
 );
+
+/* Replaces Emotion's `<Global styles={…} />`. Same call shape, minus the
+ * `css` tagged template — a plain style object, which is what Gamut's own
+ * globals (Reboot, Typography, Variables) already author. */
+export const Global = ({ styles }: { styles: Record<string, unknown> }) => {
+  injectGlobal(styles as never);
+  return null;
+};

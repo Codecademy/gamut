@@ -18,10 +18,12 @@ import {
   css,
   FlexBox,
   GamutProvider,
+  Global,
   states,
   StrokeButton,
   styled,
   styledOptions,
+  keyframes,
   Text,
   themes,
   variant,
@@ -113,6 +115,20 @@ const Pill = styled.span<{ $tone: string }>`
 `;
 
 /* ════════════════════════════════════════════════════════════════════════════
+ * 6. The last two Emotion APIs: <Global> and keyframes()
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+// replaces Emotion's `keyframes` (5 references in packages/*)
+const pulse = keyframes({
+  '0%, 100%': { opacity: 1 },
+  '50%': { opacity: 0.35 },
+});
+
+const Pulsing = styled(Box)(
+  css({ animation: `${pulse} 1.4s ease-in-out infinite` } as never)
+);
+
+/* ════════════════════════════════════════════════════════════════════════════
  * The page
  * ══════════════════════════════════════════════════════════════════════════ */
 
@@ -142,6 +158,13 @@ export const App = () => {
 
   return (
     <GamutProvider theme={themes[themeName]}>
+      {/* replaces Emotion's <Global> (10 references in packages/*) */}
+      <Global
+        styles={{
+          body: { margin: 0 },
+          '*, *::before, *::after': { boxSizing: 'border-box' },
+        }}
+      />
       <ColorMode mode={mode}>
       <Box p={32} minHeight="100vh" fontFamily="base">
         <FlexBox alignItems="center" justifyContent="space-between" mb={32}>
@@ -242,6 +265,21 @@ export const App = () => {
             <Pill $tone="rebeccapurple">purple</Pill>
             <Pill $tone="teal">teal</Pill>
           </FlexBox>
+        </Section>
+
+        <Section
+          title="6. <Global> and keyframes()"
+          note="The last two Emotion APIs Gamut still used. Both fall out of the same serializer — they just skip the class-scoping step. body{margin:0} and box-sizing are applied globally by <Global>; the box below animates via a generated @keyframes name."
+        >
+          <Pulsing
+            p={16}
+            bg="primary"
+            textColor="background"
+            borderRadius="md"
+            display="inline-block"
+          >
+            keyframes() → {pulse}
+          </Pulsing>
         </Section>
 
         <Section
