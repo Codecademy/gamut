@@ -2,7 +2,7 @@ export type FormValues<T> = {
   [key in keyof T]?: T[key];
 };
 
-export { CheckboxPaddingProps } from './inputs/Checkbox';
+export type { CheckboxPaddingProps } from './inputs/Checkbox';
 
 export interface BaseInputProps {
   label?: string;
