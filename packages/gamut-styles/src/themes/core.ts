@@ -140,6 +140,24 @@ export const coreTheme = createTheme({
     1: `1px solid ${colors['border-primary']}`,
     2: `2px solid ${colors['border-primary']}`,
   }))
+  .addScale('elevation', ({ colors }: { colors: Record<string, string> }) => {
+    const shadowPrimary = colors['shadow-primary'];
+    const offset = 8;
+    const lift = 4;
+    const shadow = (x: number) => `${x}px ${offset}px 0 0 ${shadowPrimary}`;
+
+    return {
+      rest: { shadow: `0 0 0 0 ${shadowPrimary}`, transform: 'none' },
+      hover: {
+        shadow: shadow(-offset),
+        transform: `translate(${lift}px, -${lift}px)`,
+      },
+      'hover-mirrored': {
+        shadow: shadow(offset),
+        transform: `translate(-${lift}px, -${lift}px)`,
+      },
+    };
+  })
   .createScaleVariables('elements')
   .addName('core')
   .build();
