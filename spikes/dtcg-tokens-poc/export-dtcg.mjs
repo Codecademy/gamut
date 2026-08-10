@@ -183,7 +183,8 @@ if (unexpressible.length) {
   for (const { path, value, why } of unexpressible)
     console.log(`     ${path} = ${JSON.stringify(value)}\n       → ${why}`);
 }
+// trailing newline, so re-running doesn't dirty the working tree
 writeFileSync(
   'tokens/.unexpressible.json',
-  JSON.stringify(unexpressible, null, 2)
+  `${JSON.stringify(unexpressible, null, 2)}\n`
 );
