@@ -1,0 +1,256 @@
+{
+  "spacing": {
+    "0": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0,
+        "unit": "px"
+      }
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      }
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.5,
+        "unit": "rem"
+      }
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.75,
+        "unit": "rem"
+      }
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.5,
+        "unit": "rem"
+      }
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "rem"
+      }
+    },
+    "40": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.5,
+        "unit": "rem"
+      }
+    },
+    "48": {
+      "$type": "dimension",
+      "$value": {
+        "value": 3,
+        "unit": "rem"
+      }
+    },
+    "64": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      }
+    },
+    "96": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6,
+        "unit": "rem"
+      }
+    }
+  },
+  "radii": {
+    "none": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0,
+        "unit": "px"
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": {
+        "value": 16,
+        "unit": "px"
+      }
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": {
+        "value": 999,
+        "unit": "px"
+      }
+    }
+  },
+  "fontSize": {
+    "14": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0.875,
+        "unit": "rem"
+      }
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "rem"
+      }
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.125,
+        "unit": "rem"
+      }
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.25,
+        "unit": "rem"
+      }
+    },
+    "22": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.375,
+        "unit": "rem"
+      }
+    },
+    "26": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1.625,
+        "unit": "rem"
+      }
+    },
+    "34": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.125,
+        "unit": "rem"
+      }
+    },
+    "44": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2.75,
+        "unit": "rem"
+      }
+    },
+    "64": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      }
+    }
+  },
+  "lineHeight": {
+    "base": {
+      "$type": "number",
+      "$value": 1.5
+    },
+    "spacedTitle": {
+      "$type": "number",
+      "$value": 1.3
+    },
+    "title": {
+      "$type": "number",
+      "$value": 1.2
+    }
+  },
+  "fontWeight": {
+    "400": {
+      "$type": "fontWeight",
+      "$value": 400
+    },
+    "700": {
+      "$type": "fontWeight",
+      "$value": 700
+    },
+    "base": {
+      "$type": "fontWeight",
+      "$value": 400
+    },
+    "title": {
+      "$type": "fontWeight",
+      "$value": 700
+    }
+  },
+  "fontFamily": {
+    "accent": {
+      "$type": "fontFamily",
+      "$value": "\"Suisse\", \"Apercu\", -apple-system, BlinkMacSystemFont,\n\"Segoe UI\", \"Roboto\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\",\n\"Helvetica Neue\", sans-serif"
+    },
+    "base": {
+      "$type": "fontFamily",
+      "$value": "\"Apercu\", -apple-system, BlinkMacSystemFont, \"Segoe UI\",\n\"Roboto\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\nsans-serif"
+    },
+    "monospace": {
+      "$type": "fontFamily",
+      "$value": "Monaco, Menlo, \"Ubuntu Mono\", \"Droid Sans Mono\", Consolas,\nmonospace"
+    },
+    "system": {
+      "$type": "fontFamily",
+      "$value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Ubuntu\",\n\"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif"
+    }
+  },
+  "elements": {
+    "headerHeight": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4,
+        "unit": "rem"
+      }
+    },
+    "headerZ": {
+      "$type": "dimension",
+      "$value": {
+        "value": 15,
+        "unit": "px"
+      }
+    }
+  }
+}

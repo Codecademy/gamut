@@ -1,0 +1,12 @@
+[
+  {
+    "path": "borders.1",
+    "value": "1px solid var(--color-border-primary)",
+    "why": "CSS shorthand embedding a var() ref to a mode-dependent semantic colour; DTCG `border` is a composite and would need one value per mode"
+  },
+  {
+    "path": "borders.2",
+    "value": "2px solid var(--color-border-primary)",
+    "why": "CSS shorthand embedding a var() ref to a mode-dependent semantic colour; DTCG `border` is a composite and would need one value per mode"
+  }
+]

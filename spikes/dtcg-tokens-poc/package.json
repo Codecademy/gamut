@@ -1,0 +1,17 @@
+{
+  "name": "dtcg-tokens-poc",
+  "description": "GMT-1715 spike: are Gamut's tokens expressible as engine-neutral W3C DTCG, with Style Dictionary emitting CSS vars + TS types at parity? Not published.",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "theme": "../../node_modules/.bin/esbuild ../../packages/gamut-styles/src/themes/core.ts --bundle --format=esm --platform=node --outfile=.tmp/core.mjs --log-level=error",
+    "tokens": "yarn theme && node export-dtcg.mjs",
+    "build": "node build.mjs",
+    "verify": "node verify.mjs",
+    "all": "yarn tokens && yarn build && yarn verify"
+  },
+  "devDependencies": {
+    "style-dictionary": "5.5.0"
+  }
+}
