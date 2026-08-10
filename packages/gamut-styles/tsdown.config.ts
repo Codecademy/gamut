@@ -21,7 +21,7 @@ import { defineConfig } from 'tsdown';
 export default defineConfig({
   entry: ['src/index.ts', 'src/AssetProvider.tsx'],
   format: ['esm', 'cjs'],
-  dts: true,
+  dts: { tsconfig: 'tsconfig.lib.json' },
   outDir: 'dist-tsdown',
   external: [
     '@emotion/react',

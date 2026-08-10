@@ -59,19 +59,62 @@ gamut-styles exports: 83   (css ✓ variant ✓ states ✓ coreTheme ✓ GamutPr
 @codecademy/gamut-styles/dist/AssetProvider → ✓ blocked: ERR_PACKAGE_PATH_NOT_EXPORTED
 ```
 
-So the highest-priority known consumer break — `gamut-styles/dist/AssetProvider`
-(`createFontLinks`, used in mono's app entry points) — **can be preserved as a real
-subpath** (`@codecademy/gamut-styles/AssetProvider`) rather than requiring a code
-change. Consumers still have to update the specifier, but it's a rename, not a
-refactor. The old path fails loudly, which is what you want.
+So a deep import **can** be preserved as a real subpath, and the old path fails
+loudly — which is what you want.
 
-### tsdown's own `dts` may remove the need for `tsc --emitDeclarationOnly`
+> ⚠️ **But this particular one didn't need a subpath at all.** I described
+> `gamut-styles/dist/AssetProvider` (`createFontLinks`) as the _highest-priority
+> break that must become a public export_. It already **is** one:
+> `src/index.ts:3` has `export * from './AssetProvider'`, and both `createFontLinks`
+> and `AssetProvider` resolve off the root — verified by importing them.
+>
+> So the fix is a rename to the **root** specifier, not a promotion to a subpath. The
+> `./AssetProvider` entry above stands as a valid test of the _mechanism_, but it is
+> not needed for this import, and shipping it would enshrine a subpath nobody
+> requires. See `~/code/base camp/reboot/exports-map-design.md`, which dispositions
+> all ~14 deep paths on the rule that **entries are a build-time device while the
+> exports map is a public commitment.**
 
-`build-tooling-rfc.md` recommends keeping the separate `tsc` step. Worth
-re-testing: on `gamut-styles`, tsdown's **bundled** declarations were _smaller_
-than tsc's per-file output — **396kB in 1 file vs 481kB across 47 files**. Not a
-recommendation yet (bundled `.d.ts` has different consumer-typecheck
-characteristics), but the assumption that tsc is needed didn't survive contact.
+### ⚠️ CORRECTED — keep `tsc --emitDeclarationOnly`. Bundled declarations don't compose.
+
+An earlier revision of this doc said tsdown's own `dts` _"may remove the need for
+`tsc --emitDeclarationOnly`"_, on the basis that its bundled declarations came out
+smaller than tsc's per-file output (396kB in 1 file vs 481kB across 47). **That
+suggestion was wrong, and the RFC's original recommendation to keep `tsc` is
+correct.**
+
+The first measurement was taken while `gamut-styles` still resolved
+`@codecademy/variance` to its **Babel** per-file `.d.ts`. Once variance ships
+**bundled** declarations — which is what migrating variance to tsdown means — the
+downstream build fails:
+
+| variance declarations | `gamut-styles` dts build |
+| --------------------- | ------------------------ |
+| per-file (`tsc`)      | ✅ **0 errors**, 1.6s    |
+| bundled (tsdown)      | ❌ **50 × TS4023**       |
+
+```
+TS4023: Exported variable 'providerProps' has or is using name '…' from
+        external module '…/variance/dist-tsdown/index' but cannot be named
+```
+
+The downstream package can't name types the upstream's bundled `.d.ts` doesn't
+re-export. **Causation verified by flipping variance's `types` field back and forth**
+— 0 errors vs 50, nothing else changed. So this is a property of bundled
+declarations, not a one-off.
+
+Two related notes:
+
+- **`dts: true` alone isn't enough on these packages.** It fails with _"You have
+  `references` in your tsconfig"_ because the root `tsconfig.json` is a
+  references-only shell. `dts: { tsconfig: 'tsconfig.lib.json' }` gets past it.
+- **This branch now uses the finding-driven hybrid**: JS from `dist-tsdown/`,
+  declarations from `dist/` via the existing `tsc` step. That is exactly
+  `build-tooling-rfc.md`'s recommendation, now with evidence behind it rather than
+  assumption.
+
+Credit: the RSC session hit this independently on the same package and traced it to
+variance's bundled `.d.ts`; this table is the confirmation.
 
 ## Four things found the hard way
 
