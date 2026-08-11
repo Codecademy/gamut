@@ -1,8 +1,11 @@
-name: Publish Alpha
+name: Publish
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: '22.13.1'
@@ -10,21 +13,24 @@ env:
   NX_CLOUD: false
   IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
 
-permissions:
-  id-token: write
-  contents: read
-  pull-requests: write
-  issues: write
-  actions: write
-
 jobs:
   publish-alpha:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-22.04
+    concurrency:
+      group: publish-alpha-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+      issues: write
+      actions: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{  github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup and Build
         id: setup
@@ -32,11 +38,6 @@ jobs:
 
       - name: Set git user
         uses: ./.github/actions/set-git-user
-
-      - name: Set npm token
-        uses: ./.github/actions/set-npm-token
-        with:
-          token-secret: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Ensure workflow is associated with a pull request
         uses: ./.github/actions/validate-pr-context
@@ -56,7 +57,6 @@ jobs:
           npx nx run gamut-release:alpha --preid="${PREID}" --manifest
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
 
       - name: List alpha packages versions
         id: published
@@ -108,3 +108,50 @@ jobs:
           github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
           message-path: alpha-publish-comment.md
+
+  publish-production:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    concurrency:
+      group: publish-production
+      cancel-in-progress: false
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+
+      - name: Skip build from automated commit
+        uses: ./.github/actions/skip-automated-commits
+        with:
+          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
+
+      - name: Setup and Build
+        uses: ./.github/actions/yarn
+
+      - name: Cache Nx
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/nx
+          key: nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-
+            nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-
+            nx-${{ runner.os }}-
+
+      - name: Set git user
+        uses: ./.github/actions/set-git-user
+
+      - name: Build All Packages
+        run: yarn build
+
+      - name: NX Release
+        run: npx nx release -y
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
