@@ -1,0 +1,14 @@
+{
+  "name": "gamut-emitter-poc",
+  "description": "Ticket 011: a Gamut-owned atomic CSS emitter with no @pandacss/* dependency, diffed byte-for-byte against gamut-atomics-poc's Panda-generated oracle.",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "emit": "node emit.mjs",
+    "verify": "node verify.mjs",
+    "recipes": "node recipes.mjs",
+    "verify-recipes": "node verify-recipes.mjs",
+    "all": "node emit.mjs && node verify.mjs && node recipes.mjs && node verify-recipes.mjs"
+  }
+}
