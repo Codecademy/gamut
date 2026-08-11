@@ -86,3 +86,4 @@ report*.json
 # Alpha Publish Artifacts
 alpha-publish-manifest.json
 alpha-publish-comment.md
+dist-tsdown/

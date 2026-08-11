@@ -91,6 +91,7 @@
     "syncpack": "^10.9.3",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
+    "tsdown": "0.22.14",
     "tslib": "2.4.0",
     "typescript": "5.9.3"
   },

@@ -10,6 +10,24 @@
     "get-nonce": "^1.0.0",
     "polished": "^4.1.2"
   },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist-tsdown/index.d.mts",
+        "require": "./dist-tsdown/index.d.cts"
+      },
+      "import": "./dist-tsdown/index.mjs",
+      "require": "./dist-tsdown/index.cjs"
+    },
+    "./AssetProvider": {
+      "types": {
+        "import": "./dist-tsdown/AssetProvider.d.mts",
+        "require": "./dist-tsdown/AssetProvider.d.cts"
+      },
+      "import": "./dist-tsdown/AssetProvider.mjs",
+      "require": "./dist-tsdown/AssetProvider.cjs"
+    }
+  },
   "files": [
     "dist",
     "core",
@@ -19,8 +37,8 @@
     "utils.scss"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist-tsdown/index.cjs",
+  "module": "dist-tsdown/index.mjs",
   "peerDependencies": {
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
@@ -35,5 +53,6 @@
   "repository": "git@github.com:Codecademy/gamut.git",
   "scripts": {
     "build": "nx build @codecademy/gamut-styles"
-  }
+  },
+  "types": "dist-tsdown/index.d.cts"
 }

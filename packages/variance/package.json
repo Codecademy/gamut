@@ -7,6 +7,16 @@
     "csstype": "^3.0.7",
     "lodash": "^4.17.23"
   },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.ts"
+      },
+      "import": "./dist-tsdown/index.mjs",
+      "require": "./dist-tsdown/index.cjs"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -18,8 +28,8 @@
     "styles"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist-tsdown/index.cjs",
+  "module": "dist-tsdown/index.mjs",
   "peerDependencies": {
     "@emotion/react": "*",
     "typescript": ">=4.3.5"
