@@ -3,6 +3,7 @@ import { createTheme } from '@codecademy/variance';
 import {
   borderRadii,
   containerQueries,
+  coreElevation,
   corePalette,
   elements,
   fontFamily,
@@ -140,26 +141,7 @@ export const coreTheme = createTheme({
     1: `1px solid ${colors['border-primary']}`,
     2: `2px solid ${colors['border-primary']}`,
   }))
-  .addScale('elevation', ({ colors }: { colors: Record<string, string> }) => {
-    const shadowPrimary = colors['shadow-primary'];
-    const offset = 8;
-    const lift = 4;
-    const shadow = (x: number) => `${x}px ${offset}px 0 0 ${shadowPrimary}`;
-
-    return {
-      rest: { shadow: `0 0 0 0 ${shadowPrimary}`, transform: 'none' },
-      hover: {
-        shadow: shadow(-offset),
-        transform: `translate(${lift}px, -${lift}px)`,
-      },
-      // camelCase: variance's `LiteralPaths` splits token paths on `-`, so a
-      // hyphenated key would resolve to `never` and drop out of the theme type.
-      hoverMirrored: {
-        shadow: shadow(offset),
-        transform: `translate(-${lift}px, -${lift}px)`,
-      },
-    };
-  })
+  .addScale('elevation', coreElevation)
   .createScaleVariables('elements')
   .addName('core')
   .build();

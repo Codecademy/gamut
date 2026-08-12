@@ -2,6 +2,7 @@ import { createTheme } from '@codecademy/variance';
 
 import {
   fontWeightMediumTitle,
+  percipioElevation,
   percipioFontFamily,
   percipioPalette,
 } from '../variables';
@@ -62,20 +63,7 @@ export const percipioTheme = createTheme({
       },
     },
   })
-  .addScale('elevation', ({ colors }: { colors: Record<string, string> }) => {
-    const shadowPrimary = colors['shadow-primary'];
-    const shadowSecondary = colors['shadow-secondary'];
-    const hover = `0 1px 4px 0 ${shadowPrimary}, 0 2px 11px 0 ${shadowSecondary}`;
-
-    return {
-      rest: {
-        shadow: `0 1px 4px 0 ${shadowPrimary}, 0 2px 7px 0 ${shadowPrimary}`,
-        transform: 'none',
-      },
-      hover: { shadow: hover, transform: 'none' },
-      hoverMirrored: { shadow: hover, transform: 'none' },
-    };
-  })
+  .addScale('elevation', percipioElevation)
   .addName('percipio')
   .build();
 
