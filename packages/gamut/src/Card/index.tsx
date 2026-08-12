@@ -3,7 +3,7 @@ import { borderRadii, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { DynamicCardWrapper, MotionBox, StaticCardWrapper } from './elements';
-import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
+import { patternFadeInOut, useCardElevation } from './styles';
 import { CardProps } from './types';
 
 type BorderRadiusToken = keyof typeof borderRadii;
@@ -30,10 +30,7 @@ export const Card: React.FC<CardProps> = ({
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
   const isOutline = shadow === 'outline';
 
-  const setHoverShadow =
-    shadow === 'patternRight'
-      ? hoverShadowRight(resolvedBorderRadius)
-      : hoverShadowLeft(resolvedBorderRadius);
+  const setHoverShadow = useCardElevation(shadow, resolvedBorderRadius);
 
   const initialVariant = isOutline ? 'initialOutline' : 'initial';
   const animateVariant = isOutline ? 'animateOutline' : 'animate';

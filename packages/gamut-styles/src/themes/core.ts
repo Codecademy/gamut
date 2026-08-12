@@ -152,7 +152,9 @@ export const coreTheme = createTheme({
         shadow: shadow(-offset),
         transform: `translate(${lift}px, -${lift}px)`,
       },
-      'hover-mirrored': {
+      // camelCase: variance's `LiteralPaths` splits token paths on `-`, so a
+      // hyphenated key would resolve to `never` and drop out of the theme type.
+      hoverMirrored: {
         shadow: shadow(offset),
         transform: `translate(-${lift}px, -${lift}px)`,
       },

@@ -73,7 +73,7 @@ export const percipioTheme = createTheme({
         transform: 'none',
       },
       hover: { shadow: hover, transform: 'none' },
-      'hover-mirrored': { shadow: hover, transform: 'none' },
+      hoverMirrored: { shadow: hover, transform: 'none' },
     };
   })
   .addName('percipio')
