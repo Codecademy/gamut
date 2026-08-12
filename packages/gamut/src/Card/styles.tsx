@@ -1,6 +1,26 @@
-import { theme, timingValues, variant } from '@codecademy/gamut-styles';
+import {
+  ElevationState,
+  theme,
+  timingValues,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { useTheme } from '@emotion/react';
+import { Theme, useTheme } from '@emotion/react';
+
+/**
+ * The theme's elevation scale is flattened to dashcase tokens (`rest-shadow`,
+ * `hoverMirrored-transform`, ...), so per-state groups don't exist on the
+ * theme at runtime. This regroups one state's tokens into a spreadable style
+ * object, mapping the `shadow` token onto the `boxShadow` property
+ * framer-motion animates.
+ */
+const getElevationStyles = (
+  elevation: Theme['elevation'],
+  state: ElevationState
+) => ({
+  boxShadow: elevation[`${state}-shadow`],
+  transform: elevation[`${state}-transform`],
+});
 
 const SHADOW_OFFSET = 8;
 const SHADOW_OFFSET_INITIAL = 6;
@@ -83,34 +103,31 @@ export const useCardElevation = (
   borderRadius?: string
 ) => {
   const { elevation } = useTheme();
-  const isMirrored = shadow === 'patternRight';
+  const hoverState: ElevationState =
+    shadow === 'patternRight' ? 'hoverMirrored' : 'hover';
 
   return {
     initial: {
-      boxShadow: elevation['rest-shadow'],
-      transform: elevation['rest-transform'],
+      ...getElevationStyles(elevation, 'rest'),
       borderRadius,
       transition: REST_TRANSITION,
     },
+    // outline variants keep their bespoke two-layer shadow but share the
+    // elevation scale's transforms
     initialOutline: {
+      ...getElevationStyles(elevation, 'rest'),
       boxShadow: `-${SHADOW_OFFSET_INITIAL}px ${SHADOW_OFFSET_INITIAL}px 0 0px ${theme.colors['background-current']}, -${SHADOW_OFFSET_INITIAL}px ${SHADOW_OFFSET_INITIAL}px 0 1px ${theme.colors['border-primary']}`,
-      transform: elevation['rest-transform'],
       borderRadius,
       transition: REST_TRANSITION,
     },
     animate: {
-      boxShadow: isMirrored
-        ? elevation['hoverMirrored-shadow']
-        : elevation['hover-shadow'],
-      transform: isMirrored
-        ? elevation['hoverMirrored-transform']
-        : elevation['hover-transform'],
+      ...getElevationStyles(elevation, hoverState),
       borderRadius,
       transition: HOVER_TRANSITION,
     },
     animateOutline: {
+      ...getElevationStyles(elevation, 'hover'),
       boxShadow: `-${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 0px ${theme.colors['shadow-primary']}, -${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 1px ${theme.colors['shadow-primary']}`,
-      transform: elevation['hover-transform'],
       borderRadius,
       transition: HOVER_TRANSITION,
     },
