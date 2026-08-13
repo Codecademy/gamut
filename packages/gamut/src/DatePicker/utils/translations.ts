@@ -17,6 +17,8 @@ export interface DatePickerTranslations {
   last30DaysDisplayText?: string;
   /** Label for the last 90 days quick action (default: "Last 90 days"). */
   last90DaysDisplayText?: string;
+  /** Generic fallback error message for an invalid date (default: "Invalid date"). */
+  invalidDate?: string;
   /** Error message for incomplete date entry (default: "Incomplete date"). */
   invalidDateIncomplete?: string;
   /** Error message for invalid month (default: "Month must be between 1 and 12"). */
@@ -42,6 +44,7 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> 
     last7DaysDisplayText: 'Last 7 days',
     last30DaysDisplayText: 'Last 30 days',
     last90DaysDisplayText: 'Last 90 days',
+    invalidDate: 'Invalid date',
     invalidDateIncomplete: 'Incomplete date',
     invalidDateInvalidMonth: 'Month must be between 1 and 12',
     invalidDateInvalidDay: '{{month}} does not have {{day}} days',

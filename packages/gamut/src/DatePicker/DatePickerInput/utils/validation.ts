@@ -9,28 +9,22 @@ export type ErrorReason =
   | 'invalid-day'
   | 'date-rollover'
   | 'disabled-date'
-  | 'range-contains-disabled-date';
+  | 'range-contains-disabled-date'
+  | 'invalid-date';
 
 export type ValidationResult =
   | { isValid: true; date: Date }
   | { isValid: false; errorMessage: string; reason: ErrorReason };
 
-/**
- * Detects the specific reason why a date is invalid.
- * Assumes segments are "complete enough" (all three fields have at least some input).
- */
-function detectValidationIssue(segments: SegmentValues): ErrorReason | null {
+const detectValidationIssue = (segments: SegmentValues): ErrorReason | null => {
   const { month, day, year } = segments;
 
-  // Parse to numbers for validation
   const monthNumber = parseInt(month, 10);
   const dayNumber = parseInt(day, 10);
   const yearNumber = parseInt(year, 10);
 
-  // Check month validity
   if (monthNumber < 1 || monthNumber > 12) return 'invalid-month';
 
-  // Try to create the date - if it fails, it's either invalid day or date rollover
   const parsed = new Date(yearNumber, monthNumber - 1, dayNumber);
   if (
     parsed.getFullYear() !== yearNumber ||
@@ -43,84 +37,59 @@ function detectValidationIssue(segments: SegmentValues): ErrorReason | null {
   }
 
   return null;
-}
+};
 
-/**
- * Generates a human-readable error message based on the validation issue.
- */
-export function generateErrorMessage(
+export const generateErrorMessage = (
   reason: ErrorReason,
   segments: SegmentValues,
   translations: Required<DatePickerTranslations>
-): string {
+) => {
   const { month, day } = segments;
   const monthNumber = parseInt(month, 10);
 
   switch (reason) {
     case 'incomplete':
-      return translations.invalidDateIncomplete || 'Incomplete date';
+      return translations.invalidDateIncomplete;
 
     case 'invalid-month':
-      return (
-        translations.invalidDateInvalidMonth || 'Month must be between 1 and 12'
-      );
+      return translations.invalidDateInvalidMonth;
 
-    case 'invalid-day': {
-      const monthName = new Date(2024, monthNumber - 1, 1).toLocaleString(
-        'en-US',
-        { month: 'long' }
-      );
-      const message =
-        translations.invalidDateInvalidDay ||
-        '{{month}} does not have {{day}} days';
-      return message.replace('{{month}}', monthName).replace('{{day}}', day);
-    }
-
+    case 'invalid-day':
     case 'date-rollover': {
       const monthName = new Date(2024, monthNumber - 1, 1).toLocaleString(
         'en-US',
         { month: 'long' }
       );
       const message =
-        translations.invalidDateRollover ||
-        '{{month}} does not have {{day}} days';
+        reason === 'invalid-day'
+          ? translations.invalidDateInvalidDay
+          : translations.invalidDateRollover;
       return message.replace('{{month}}', monthName).replace('{{day}}', day);
     }
 
     case 'disabled-date':
-      return (
-        translations.invalidDateNotAvailable || 'This date is not available'
-      );
+      return translations.invalidDateNotAvailable;
 
     case 'range-contains-disabled-date':
-      return (
-        translations.invalidDateRangeContainsDisabledDate ||
-        'This date range contains unavailable dates'
-      );
+      return translations.invalidDateRangeContainsDisabledDate;
 
+    case 'invalid-date':
     default:
-      return 'Invalid date';
+      return translations.invalidDate;
   }
-}
+};
 
-/**
- * Validates a set of date segments and returns either a valid date or an error message.
- * Requires: year to be exactly 4 digits, month and day to have digits and parse to valid numbers.
- * Checks for structural validity (date exists), disabled dates, and generates specific error messages.
- */
-export function validateSegments(
+export const validateSegments = (
   segments: SegmentValues,
   translations: Required<DatePickerTranslations>,
   disableDate?: (date: Date) => boolean
-): ValidationResult {
+): ValidationResult => {
   const { month, day, year } = segments;
 
-  // Require complete year (4 digits), month, and day to have input
   const hasCompleteYear = year.length === 4;
   const hasMonthAndDay = month.length > 0 && day.length > 0;
 
   if (!hasCompleteYear || !hasMonthAndDay) {
-    // Incomplete entry - return as valid (no error), but with no date
     return {
       isValid: false,
       errorMessage: '',
@@ -128,11 +97,9 @@ export function validateSegments(
     };
   }
 
-  // Entry is complete (year has 4 digits, month and day have input) - validate it
   const parsed = parseSegmentsToDate(segments);
 
   if (parsed) {
-    // Date is structurally valid, now check if it's disabled
     if (disableDate?.(parsed)) {
       return {
         isValid: false,
@@ -144,12 +111,11 @@ export function validateSegments(
         reason: 'disabled-date',
       };
     }
-    // Date is valid and not disabled
+
     return { isValid: true, date: parsed };
   }
 
-  // Date is not valid - detect specific reason (must be one since entry is complete)
-  const reason = detectValidationIssue(segments) || 'date-rollover';
+  const reason = detectValidationIssue(segments) ?? 'invalid-date';
 
   const errorMessage = generateErrorMessage(reason, segments, translations);
   return {
@@ -157,21 +123,14 @@ export function validateSegments(
     errorMessage,
     reason,
   };
-}
+};
 
-/**
- * Validates a committed date range to ensure no dates within it are disabled.
- * Returns null when the range is complete and clear (or incomplete), or a
- * `range-contains-disabled-date` result when any date in the span is disabled.
- * Delegates the span walk to `rangeContainsDisabled` (the same check the
- * calendar uses) so typed and clicked ranges stay consistent.
- */
-export function validateDateRange(
+export const validateDateRange = (
   startDate: Date | null,
   endDate: Date | null,
   translations: Required<DatePickerTranslations>,
   disableDate?: (date: Date) => boolean
-): ValidationResult | null {
+): ValidationResult | null => {
   if (!startDate || !endDate || !disableDate) return null;
 
   if (rangeContainsDisabled({ startDate, endDate, disableDate })) {
@@ -187,4 +146,4 @@ export function validateDateRange(
   }
 
   return null;
-}
+};
