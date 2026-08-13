@@ -96,3 +96,11 @@ Percipio currently only supports `light` mode.
 The Percipio theme uses Skillsoft Sans for accent text and Skillsoft Text for body text. Roboto Mono is used for monospace, and Roboto sans-serif for the `system` font family slot.
 
 <TokenTable {...TABLES.percipioFontFamily} />
+
+## Elevation
+
+**Key**: `elevation`
+
+The Percipio theme provides its own elevation scale: surfaces cast a soft, blurred shadow rather than the Core theme's hard offset shadow, and they do not lift on hover — every `transform` token is `none`. The scale has the same three states as the Core theme — `rest`, `hover`, and `hoverMirrored` — each providing a `shadow` and a `transform` token accessible with a dashcase key `elevation['${state}-${property}']`, so components like `Card` work across themes without changes.
+
+<TokenTable {...TABLES.percipioElevation} />
