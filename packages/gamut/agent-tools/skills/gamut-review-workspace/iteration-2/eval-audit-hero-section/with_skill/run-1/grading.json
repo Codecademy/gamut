@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags the './HeroSection.scss' import as an SCSS/CSS module violation",
+      "passed": true,
+      "evidence": "\"SCSS/CSS imports 1 file\" with exact path and remediation."
+    },
+    {
+      "text": "Flags className=\"hero-wrapper\" on the Box component as a violation",
+      "passed": true,
+      "evidence": "\"className on Gamut components 1 occurrence\"."
+    },
+    {
+      "text": "Flags the inline style={{ color: '#10162F' }} on Box as a violation",
+      "passed": true,
+      "evidence": "\"inline style on Gamut components 1 occurrence\"."
+    },
+    {
+      "text": "For the hex #10162F, recommends the semantic token 'text' (not just the palette name navy-800) as the primary remediation",
+      "passed": true,
+      "evidence": "\"semantic: text ... | palette: navy-800\" -- semantic listed first, with an honest low-confidence caveat since no DESIGN.md exists."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Tally is 4 errors this time (vs 3 in iteration 1) because the report deliberately double-counts the #10162F line as both an inline-style violation and a hardcoded-color violation, explicitly explained as intentional (two distinct problems on one line). Also again self-reports the bare <h1>/Text gap as informational-only, correctly excluded from the tally."
+    ],
+    "workarounds": []
+  }
+}

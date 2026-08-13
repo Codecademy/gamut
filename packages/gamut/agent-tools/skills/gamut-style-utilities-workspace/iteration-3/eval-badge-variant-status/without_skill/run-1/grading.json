@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses variant() with a variants map keyed by status, not manual branching",
+      "passed": true,
+      "evidence": "variant({ defaultVariant: 'info', prop: 'status', base, variants: {...} })."
+    },
+    {
+      "text": "status prop type is derived from the variant definition via StyleProps",
+      "passed": true,
+      "evidence": "StyleProps<typeof statusVariants> composed with StyleProps<typeof statusBadgeProps>."
+    },
+    {
+      "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+      "passed": false,
+      "evidence": "Uses bare raw palette names 'green'/'yellow'/'blue' with textColor 'white'/'navy'/'white' -- even less nuanced than iteration 2's same-hue pairs (green-100/green-900 etc). Third iteration, third different (all wrong) answer on this exact point for without_skill."
+    },
+    {
+      "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+      "passed": true,
+      "evidence": "styled('span', styledOptions), no wrapping."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 }
+}

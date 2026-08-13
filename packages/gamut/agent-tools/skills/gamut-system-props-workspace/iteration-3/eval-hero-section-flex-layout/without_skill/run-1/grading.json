@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "Does not wrap Box/FlexBox in styled() at all (raw or css()-wrapped) since every property here has a direct prop equivalent",
+      "passed": false,
+      "evidence": "`styled(Box)<BoxProps>(css({ display, flexDirection, p, mt, color }))` — kept an unnecessary wrapper, 3rd time out of 3 iterations for this eval."
+    },
+    {
+      "text": "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+      "passed": true,
+      "evidence": "css({ display: 'flex', flexDirection: 'column' }) shorthand keys."
+    },
+    {
+      "text": "Expresses the 16px padding via a p prop rather than raw padding CSS",
+      "passed": true,
+      "evidence": "`p: 16` inside css()."
+    },
+    {
+      "text": "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+      "passed": true,
+      "evidence": "`mt: 24` inside css()."
+    },
+    {
+      "text": "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code",
+      "passed": false,
+      "evidence": "`color: 'white'` again — cited packages/gamut/src/Video/lib/ReactPlayer.tsx as real precedent for this exact usage, which is a fair point (fixed white IS sometimes correct) but this run made no attempt to distinguish the fixed-vs-adaptive cases the way the with_skill run now does."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 2, "total": 5, "pass_rate": 0.6 }
+}

@@ -1,0 +1,43 @@
+{
+  "skill_name": "gamut-system-props",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In this gamut monorepo, I need a new `HeroContainer` component for a Teams landing page. It should wrap Gamut's `Box`, laid out as a flex column, with 16px padding on all sides, 24px margin-top, and white text color. Write it in TypeScript using Emotion, matching how the rest of this codebase styles Gamut components. Save it to ./outputs/HeroContainer.tsx.",
+      "expected_output": "A component that passes flex/spacing/color values as system props directly on Box/FlexBox instead of wrapping it in styled() with raw CSS, and uses a semantic color token instead of a literal 'white'.",
+      "files": [],
+      "expectations": [
+        "Does not wrap Box (or any Gamut component) in styled() using a raw tagged-template literal or plain object",
+        "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+        "Expresses the 16px padding via a p (or p-family) prop rather than raw padding CSS",
+        "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+        "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "In this gamut monorepo, build a `CTAContainer` component for the same Teams landing page: wrap Gamut's `FlexBox`, with a 12px gap between children, a background color set to one of the design system's semantic background tokens (not a raw hex value), 8px border radius, and it needs `position: relative` with a `z-index` of 2 so it layers above a background pattern. Save it to ./outputs/CTAContainer.tsx.",
+      "expected_output": "A component that passes gap/background/borderRadius/position/zIndex as system props directly on FlexBox instead of wrapping it in styled() with raw CSS, and uses a semantic background token instead of a raw hex value.",
+      "files": [],
+      "expectations": [
+        "Does not wrap FlexBox/Box in styled() using a raw tagged-template literal or plain object",
+        "Expresses the 12px gap via a gap prop rather than raw CSS",
+        "Uses the bg (or background) prop with a semantic/named token, not a raw hex literal",
+        "Expresses the 8px border radius via a borderRadius prop rather than raw CSS",
+        "Expresses position/z-index via position and zIndex props rather than raw CSS"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "In this gamut monorepo, create a `GradientGlow` decorative component wrapping Gamut's `Box`: it needs a multi-stop radial gradient background (from #3A10E5 at the center fading to transparent at the edges) behind the content, 24px of padding, and it should be a flex container that centers a single child icon. Save it to ./outputs/GradientGlow.tsx.",
+      "expected_output": "A component where the gradient (not expressible as a system prop) is wrapped in css()/variant()/states(), while padding and flex-centering — which ARE expressible as props — are NOT dragged into the same raw CSS escape hatch.",
+      "files": [],
+      "expectations": [
+        "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+        "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+        "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+        "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent"
+      ]
+    }
+  ]
+}

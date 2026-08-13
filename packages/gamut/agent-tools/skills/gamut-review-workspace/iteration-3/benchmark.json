@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "skill_name": "gamut-review",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-28T17:11:22Z",
+    "evals_run": [2],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 152.303,
+        "tokens": 47430,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Flags CardShell (styled(Box) with a raw tagged-template literal, where every property is prop-expressible) as an error/violation, with remediation to delete the wrapper and use Box/FlexBox props directly",
+          "passed": true,
+          "evidence": "Check 3d finding: 'CardShells.tsx:7 -- styled(Box)`display: flex; flex-direction: column; padding: 16px;` -> \u2717 error ... delete the wrapper, use <FlexBox flexDirection=\"column\" p={16} />'"
+        },
+        {
+          "text": "Does NOT flag GlowShell as an error the same way -- it's wrapped in css(), which is the compliant form for a non-expressible gradient",
+          "passed": true,
+          "evidence": "Explicitly states the outer styled(Box)(css({...})) form 'is not itself a wrapper violation' per Step 2 -- the Step 4 finding below it targets the specific padding key, not the wrapper choice."
+        },
+        {
+          "text": "Notes that GlowShell's padding: 24 should still move out to a prop even though the gradient must stay in css()",
+          "passed": true,
+          "evidence": "Check 3d Step 4 finding: 'css({ background: ..., padding: 24 }) -> \u2717 error ... Fix: padding: 24 -> p: 24.' Also correctly leaves background unflagged since it has no scale to miss."
+        },
+        {
+          "text": "Recommends FlexBox instead of Box + display:flex for CardShell",
+          "passed": true,
+          "evidence": "'Since display: flex is present, the recommendation is specifically FlexBox (not Box + a display prop)'"
+        }
+      ],
+      "notes": [
+        "Correctly complied with the no-ESLint-plugin instruction -- no citation of eslint-plugin-gamut."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 315.373,
+        "tokens": 67355,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Flags CardShell (styled(Box) with a raw tagged-template literal, where every property is prop-expressible) as an error/violation, with remediation to delete the wrapper and use Box/FlexBox props directly",
+          "passed": true,
+          "evidence": "Finding #1: 'CardShell reinvents FlexBox instead of using it' -- 'The idiomatic version of this entire file is <FlexBox column p={16} /> -- no wrapper needed.'"
+        },
+        {
+          "text": "Does NOT flag GlowShell as an error the same way -- it's wrapped in css(), which is the compliant form for a non-expressible gradient",
+          "passed": true,
+          "evidence": "Finding #3 targets the specific 'padding' key inside css(), not the styled(Box)(css({...})) composition itself; explicitly notes elsewhere that this composition shape 'matches real internal usage ... is idiomatic; the issue is specifically the property names/values chosen, not the composition mechanism.'"
+        },
+        {
+          "text": "Notes that GlowShell's padding: 24 should still move out to a prop even though the gradient must stay in css()",
+          "passed": true,
+          "evidence": "Finding #3: 'css({ padding: 24 }) doesn't actually use the spacing scale ... The fix is css({ p: 24, ... }).'"
+        },
+        {
+          "text": "Recommends FlexBox instead of Box + display:flex for CardShell",
+          "passed": true,
+          "evidence": "Finding #1 and the suggested-fix code block both replace styled(Box) with styled(FlexBox) / <FlexBox column p={16} />."
+        }
+      ],
+      "notes": [
+        "No skill access, so remediation is derived entirely from reading real Gamut source (FlexBox.tsx, spacing.ts, variance/core.ts, themes/core.ts, Toggle/elements.tsx) rather than citing a named check -- still reaches the same substantive conclusions as with_skill, including the identical Step-4-equivalent padding-vs-p bug and correctly not conflating it with a wrapper violation.",
+        "Went further than with_skill on Finding #4 (dark-mode color-token drift), citing theme.colors.primary interpolation precedent from Toggle/elements.tsx -- a real, verified pattern this session confirmed earlier."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 152.303,
+        "stddev": 0.0,
+        "min": 152.303,
+        "max": 152.303
+      },
+      "tokens": {
+        "mean": 47430.0,
+        "stddev": 0.0,
+        "min": 47430,
+        "max": 47430
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 315.373,
+        "stddev": 0.0,
+        "min": 315.373,
+        "max": 315.373
+      },
+      "tokens": {
+        "mean": 67355.0,
+        "stddev": 0.0,
+        "min": 67355,
+        "max": 67355
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-163.1",
+      "tokens": "-19925"
+    }
+  },
+  "notes": []
+}
