@@ -3,13 +3,14 @@ import {
   Background,
   coreSwatches,
   css,
+  ElevationState,
   lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
-import { useTheme } from '@emotion/react';
+import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
 import { useMemo } from 'react';
@@ -541,3 +542,80 @@ export const getPropRows = (key: keyof typeof ALL_PROPS) =>
     id: prop,
     ...config,
   }));
+
+const ElevationExample = styled(Box)<{
+  exampleShadow?: string;
+  exampleTransform?: string;
+}>(
+  css({
+    bg: 'background-current',
+    border: 1,
+    display: 'inline-block',
+    height: '3rem',
+    width: '5rem',
+  }),
+  ({ exampleShadow, exampleTransform }) => ({
+    boxShadow: exampleShadow,
+    transform: exampleTransform,
+  })
+);
+
+const elevationStates: ElevationState[] = ['rest', 'hover', 'hoverMirrored'];
+
+/**
+ * Every theme emits the same elevation tokens (see `ElevationScale` in
+ * gamut-styles), so each theme's docs page can build its table from its own
+ * scale — see `percipioElements` for the Percipio table.
+ */
+export const createElevationTable = (elevationScale: Theme['elevation']) => ({
+  rows: elevationStates.map((id) => ({
+    id,
+    shadow: elevationScale[`${id}-shadow`],
+    transform: elevationScale[`${id}-transform`],
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id }: any) => (
+        <Box display="grid" gap={4}>
+          <Code>{`theme.elevation['${id}-shadow']`}</Code>
+          <Code>{`theme.elevation['${id}-transform']`}</Code>
+        </Box>
+      ),
+    },
+    {
+      key: 'value',
+      name: 'Value',
+      size: 'lg',
+      render: ({ shadow, transform }: any) => (
+        <Box display="grid" gap={4} maxWidth="24rem">
+          <Code>{shadow}</Code>
+          <Code>{transform}</Code>
+        </Box>
+      ),
+    },
+    {
+      key: 'example',
+      name: 'Example',
+      size: 'fill',
+      // dashed outline marks the resting position the transform lifts from
+      render: ({ shadow, transform }: any) => (
+        <Box
+          border={1}
+          borderColor="border-tertiary"
+          borderStyle="dashed"
+          display="inline-block"
+          m={12}
+        >
+          <ElevationExample
+            exampleShadow={shadow}
+            exampleTransform={transform}
+          />
+        </Box>
+      ),
+    },
+  ],
+});
+
+export const elevation = createElevationTable(theme.elevation);
