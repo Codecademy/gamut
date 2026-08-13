@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "Does not wrap Box/FlexBox in styled() at all (raw or css()-wrapped) since every property here has a direct prop equivalent",
+      "passed": false,
+      "evidence": "`export const HeroContainer = styled(Box)(heroContainerStyles);` where heroContainerStyles = css({ display, flexDirection, p, mt, color }) — kept an unnecessary wrapper, same as iteration 1."
+    },
+    {
+      "text": "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+      "passed": true,
+      "evidence": "css({ display: 'flex', flexDirection: 'column' }) — shorthand keys, not raw pixel/string CSS."
+    },
+    {
+      "text": "Expresses the 16px padding via a p prop rather than raw padding CSS",
+      "passed": true,
+      "evidence": "`p: 16` inside css()."
+    },
+    {
+      "text": "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+      "passed": true,
+      "evidence": "`mt: 24` inside css()."
+    },
+    {
+      "text": "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code",
+      "passed": false,
+      "evidence": "`color: 'white'` — same issue as with_skill and as iteration 1."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 2, "total": 5, "pass_rate": 0.6 }
+}

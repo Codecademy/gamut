@@ -1,3 +1,24 @@
+## 72.5.2 (2026-08-13)
+
+### 🩹 Fixes
+
+- Set temporary zindex values for Popover related components ([#3403](https://github.com/Codecademy/gamut/pull/3403))
+
+### ❤️ Thank You
+
+- Claude Sonnet 5
+- Kenny Lin @LinKCoding
+
+## 72.5.1 (2026-08-06)
+
+### 🩹 Fixes
+
+- Updates Agent skills to better reflect how components and themes work ([#3400](https://github.com/Codecademy/gamut/pull/3400))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 ## 72.5.0 (2026-08-03)
 
 ### 🚀 Features
