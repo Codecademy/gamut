@@ -166,10 +166,10 @@ export const DatePickerInput = forwardRef<HTMLDivElement, DatePickerInputProps>(
       [isRange, rangePart, context, endDate, date, disableDate]
     );
 
-    // Returns the range-level error message for the range that *would* be
-    // committed if `parsed` were applied to this input, or null. Mirrors the
-    // endpoint conditions in handleDateSelectRange so we only flag spans that
-    // would actually become a committed start+end range (both set, in order).
+    /* Returns the range-level error message for the range that *would* be
+       committed if `parsed` were applied to this input, or null. Mirrors the
+       endpoint conditions in handleDateSelectRange so we only flag spans that
+       would actually become a committed start+end range (both set, in order). */
     const getRangeError = useCallback(
       (parsed: Date): string | null => {
         if (!isRange || !rangePart) return null;
