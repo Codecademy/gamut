@@ -288,5 +288,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   if (inline) return content;
 
-  return <BodyPortal>{content}</BodyPortal>;
+  // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
+  return <BodyPortal zIndex={5}>{content}</BodyPortal>;
 };

@@ -26,7 +26,8 @@ export const Toaster: React.FC<ToasterProps> = ({
   colorMode = 'light',
 }) => {
   return (
-    <BodyPortal>
+    // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
+    <BodyPortal zIndex={4}>
       <ColorMode mode={colorMode}>
         <Box aria-live="polite" bottom={88} position="fixed" right={16}>
           <AnimatePresence>

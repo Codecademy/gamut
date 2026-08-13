@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "skill_name": "gamut-style-utilities",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-28T00:46:05Z",
+    "evals_run": [3],
+    "runs_per_configuration": 3,
+    "scope_note": "This iteration is a narrow, single-eval re-check of sparkline-theme-color only, run after correcting the useTheme() color-alias guidance in the skill (see iteration-3's grading notes for the bug this responds to). badge-variant-status and chip-independent-states were not re-run since this fix does not touch either of them; see iteration-3 for their results."
+  },
+  "runs": [
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 40.132,
+        "tokens": 25760,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses useTheme() to read a real theme color token in JS",
+          "passed": true,
+          "evidence": "useColorModes() (built on useTheme()) plus isColorAlias/activeColors/getColorValue."
+        },
+        {
+          "text": "The token path read genuinely exists in the theme",
+          "passed": true,
+          "evidence": "Default color='primary', a real semantic alias; resolved to its raw key before lookup, matching Background.tsx's real resolution chain."
+        },
+        {
+          "text": "Does not try to apply CSS-based styling for the stroke value",
+          "passed": true,
+          "evidence": "No css()/variant()/states(); plain SVG attributes."
+        },
+        {
+          "text": "Rest of the component still follows normal library styling conventions",
+          "passed": true,
+          "evidence": "Clean, correctly-typed component citing the real Background.tsx precedent by name."
+        }
+      ],
+      "notes": [
+        "This is the more defensive of the two valid approaches now documented in the skill -- it resolves to a literal value via getColorValue, which also works for non-DOM consumers (canvas, contrast math), not just DOM/SVG rendering. Slightly more code than the without_skill run's theme.colors[key] approach, but not wrong -- see the corrected useTheme() section for when each is appropriate."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 322.805,
+        "tokens": 37679,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses useTheme() to read a real theme color token in JS",
+          "passed": true,
+          "evidence": "useTheme() from @emotion/react, theme.colors.primary."
+        },
+        {
+          "text": "The token path read genuinely exists in the theme",
+          "passed": true,
+          "evidence": "theme.colors.primary is a real semantic alias."
+        },
+        {
+          "text": "Does not try to apply CSS-based styling for the stroke value",
+          "passed": true,
+          "evidence": "No css()/variant()/states(); plain SVG attributes."
+        },
+        {
+          "text": "Rest of the component still follows normal library styling conventions",
+          "passed": true,
+          "evidence": "Simple, correctly-typed component. This is the same direct theme.colors[key]-on-an-SVG-attribute pattern confirmed as real production precedent in RadialProgress/index.tsx -- the simpler of the two valid approaches now documented in the skill."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 40.132,
+        "stddev": 0.0,
+        "min": 40.132,
+        "max": 40.132
+      },
+      "tokens": {
+        "mean": 25760.0,
+        "stddev": 0.0,
+        "min": 25760,
+        "max": 25760
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 322.805,
+        "stddev": 0.0,
+        "min": 322.805,
+        "max": 322.805
+      },
+      "tokens": {
+        "mean": 37679.0,
+        "stddev": 0.0,
+        "min": 37679,
+        "max": 37679
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-282.7",
+      "tokens": "-11919"
+    }
+  },
+  "notes": [
+    "Both configurations pass all 4 assertions and both are now correct implementations, not a tie caused by the assertions being too loose: with_skill uses the isColorAlias -> getColorValue chain (matching Background.tsx's real precedent), while without_skill uses theme.colors.primary directly (matching RadialProgress's real precedent, confirmed as production code at packages/gamut/src/RadialProgress/index.tsx:45,114). The skill was corrected mid-investigation to present theme.colors[key] as the default, simpler path and reserve the isColorAlias/getColorValue chain for consumers that need a literal (non-var()) value -- e.g. canvas, WebGL, or contrast math -- rather than presenting the longer chain as universally required.",
+    "with_skill is dramatically cheaper and faster here (40.1s/25,760 tokens vs 322.8s/37,679 tokens) -- reading the skill first let the agent go straight to a correct, cited-precedent answer instead of spending several minutes discovering the right pattern from scratch.",
+    "n=1 per configuration -- this was a targeted verification of one specific fix, not a full statistical iteration. Treat as a confirmation check, not a new baseline comparison."
+  ]
+}
