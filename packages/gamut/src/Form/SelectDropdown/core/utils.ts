@@ -1,0 +1,125 @@
+import * as React from 'react';
+import { ActionMeta, Options as OptionsType } from 'react-select';
+
+import { SelectOptionBase } from '../../utils';
+import {
+  BaseOnChangeProps,
+  ExtendedOption,
+  MultiSelectDropdownProps,
+  OptionStrict,
+  SelectDropdownGroup,
+  SelectDropdownOptions,
+  SelectDropdownProps,
+  SingleSelectDropdownProps,
+} from '../types';
+
+export const isMultipleSelectProps = (
+  props: BaseOnChangeProps
+): props is MultiSelectDropdownProps => !!props.multiple;
+
+export const isSingleSelectProps = (
+  props: BaseOnChangeProps
+): props is SingleSelectDropdownProps => !props.multiple;
+
+type CreatableOption = OptionStrict & { __isNew__?: boolean };
+
+/**
+ * Resolves the value for a newly created option from react-select action metadata
+ * or the onChange option payload. Returns undefined when no reliable value exists.
+ */
+export const getCreatedOptionValue = (
+  optionEvent: OptionStrict | OptionsType<OptionStrict>,
+  actionMeta: ActionMeta<OptionStrict>,
+  multiple?: boolean
+): string | undefined => {
+  const metaValue = actionMeta.option?.value;
+  if (metaValue) return metaValue;
+
+  if (!multiple) {
+    const { value } = optionEvent as OptionStrict;
+    return value || undefined;
+  }
+
+  const newOption = (optionEvent as OptionsType<OptionStrict>).find(
+    (option) => (option as CreatableOption).__isNew__
+  );
+
+  return newOption?.value || undefined;
+};
+
+export const isOptionGroup = (obj: unknown): obj is SelectDropdownGroup =>
+  obj != null &&
+  typeof obj === 'object' &&
+  'options' in obj &&
+  obj.options !== undefined;
+
+export const isOptionsGrouped = (
+  options: SelectDropdownOptions
+): options is SelectDropdownGroup[] =>
+  Array.isArray(options) && options.some((option) => isOptionGroup(option));
+
+/**
+ * Filters options based on the selected value(s).
+ * Handles both single values and arrays of values, and works with both
+ * flat option arrays and grouped options.
+ *
+ * @param options - The options to filter from
+ * @param value - The value or values to filter by
+ * @param optionsAreGrouped - Whether the options are grouped
+ * @returns Array of matching options
+ */
+export const filterValueFromOptions = (
+  options: SelectOptionBase[] | SelectDropdownGroup[],
+  value: SelectDropdownProps['value'],
+  optionsAreGrouped: boolean
+) => {
+  if (optionsAreGrouped) {
+    return (options as SelectDropdownGroup[])
+      .map((optionGroup) =>
+        optionGroup.options.filter(
+          (option) =>
+            option.value === value ||
+            (value as string[])?.includes(option.value)
+        )
+      )
+      .flat();
+  }
+  return (options as SelectOptionBase[]).filter(
+    (option: SelectOptionBase) =>
+      option.value === value || (value as string[])?.includes(option.value)
+  );
+};
+
+/**
+ * Removes a value from the selected options array.
+ * Handles both single values and arrays of values to remove.
+ *
+ * @param selectedOptions - The currently selected options
+ * @param value - The value or values to remove
+ * @returns New array with the specified values removed
+ */
+export const resolveNoOptionsMessage = (
+  validationMessage: SelectDropdownProps['validationMessage']
+): ((obj: { inputValue: string }) => React.ReactNode) | undefined => {
+  if (validationMessage === undefined) return undefined;
+  if (typeof validationMessage === 'function') {
+    return validationMessage as (obj: {
+      inputValue: string;
+    }) => React.ReactNode;
+  }
+  return () => validationMessage;
+};
+
+export const removeValueFromSelectedOptions = (
+  selectedOptions: ExtendedOption[] | SelectOptionBase[],
+  value: SelectDropdownProps['value']
+) => {
+  return (selectedOptions as SelectOptionBase[]).filter(
+    (option: SelectOptionBase) => {
+      if (Array.isArray(value)) {
+        return !value.includes(option.value);
+      }
+      return option.value !== value;
+    }
+  );
+};

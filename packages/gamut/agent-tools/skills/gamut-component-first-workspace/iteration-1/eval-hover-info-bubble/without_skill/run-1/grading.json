@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Uses InfoTip or ToolTip from @codecademy/gamut rather than a custom hover popup",
+      "passed": true,
+      "evidence": "Reuses IconButton, which composes ToolTip internally via its tip/tipProps props -- no custom popup markup at all."
+    },
+    {
+      "text": "Does not manually wire onMouseEnter/onMouseLeave plus a custom absolutely-positioned div",
+      "passed": true,
+      "evidence": "No mouse handlers or custom positioning; fully delegated to IconButton/ToolTip."
+    },
+    {
+      "text": "Does not reimplement focus-triggered accessibility by hand",
+      "passed": true,
+      "evidence": "No hand-rolled focus/aria logic beyond the aria-label default."
+    },
+    {
+      "text": "Accessible name/description wiring follows the documented InfoTip/ToolTip pattern",
+      "passed": true,
+      "evidence": "aria-label defaults sensibly to hint text, overridable; tip/tipProps wired exactly per IconButton's real API."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "This is the simpler and more idiomatic of the two implementations for this eval -- reuses IconButton's existing tip/tipProps composition instead of hand-building a styled(Box)+ToolTip wrapper. No TS errors surfaced here (unlike the with_skill run for this same eval, which has real compile errors -- see its grading notes)."
+    ],
+    "workarounds": []
+  }
+}

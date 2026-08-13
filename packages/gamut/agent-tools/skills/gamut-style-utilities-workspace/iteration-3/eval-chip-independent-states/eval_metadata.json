@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "chip-independent-states",
+  "prompt": "In this gamut monorepo, build a new `Chip` component (a brand-new small selectable pill, not wrapping an existing Gamut component) that supports two independent boolean flags: `selected` (highlights the border/background) and `disabled` (dims it and disables pointer events) — both can be true at the same time. Write it in TypeScript using Emotion, matching how the rest of this codebase defines styled components with independent toggle states. Save it to ./outputs/Chip.tsx.",
+  "assertions": [
+    "Uses states() from @codecademy/gamut-styles (base + independent boolean keys) rather than variant() (which is for mutually-exclusive modes), since selected and disabled must be able to apply simultaneously",
+    "Does not hand-write a separate combined branch/style object for the selected+disabled combination — states() layers active keys independently so this should not be needed",
+    "The component's props are typed via StyleProps<typeof theStates> from @codecademy/variance rather than a hand-written boolean prop interface disconnected from the states() call",
+    "Colors used are semantic ColorMode tokens rather than raw hex literals"
+  ]
+}

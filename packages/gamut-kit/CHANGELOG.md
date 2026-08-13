@@ -1,3 +1,57 @@
+## 3.0.14 (2026-08-06)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.5.1
+
+## 3.0.13 (2026-08-03)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.5.0
+
+## 3.0.12 (2026-08-03)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 0.58.16
+- Updated gamut-patterns to 0.10.35
+- Updated gamut-styles to 20.1.0
+- Updated gamut-icons to 9.57.11
+- Updated gamut-tests to 6.0.6
+- Updated gamut to 72.4.0
+
+## 3.0.11 (2026-07-30)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.3.1
+
+## 3.0.10 (2026-07-22)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.3.0
+
+## 3.0.9 (2026-07-20)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.2.5
+
+## 3.0.8 (2026-07-08)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 72.2.4
+
+## 3.0.7 (2026-07-06)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 9.57.10
+- Updated gamut to 72.2.3
+
 ## 3.0.6 (2026-06-25)
 
 ### 🩹 Fixes

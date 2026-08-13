@@ -1,3 +1,20 @@
+## 9.57.11 (2026-08-03)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 20.1.0
+- Updated gamut-tests to 6.0.6
+
+## 9.57.10 (2026-07-06)
+
+### 🩹 Fixes
+
+- Adds TeamIcon to Regular/Interface icons ([#3392](https://github.com/Codecademy/gamut/pull/3392))
+
+### ❤️ Thank You
+
+- Ahmed Abdallah @ahmed-abdallah
+
 ## 9.57.9 (2026-06-16)
 
 ### 🧱 Updated Dependencies
