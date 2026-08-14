@@ -1,3 +1,17 @@
+## 72.5.3 (2026-08-14)
+
+### 🩹 Fixes
+
+- fix(Markdown): Details summary detection at index 0 ([#3411](https://github.com/Codecademy/gamut/pull/3411))
+
+  - Fixed hasSummary check that incorrectly treated summaryIndex === 0 as falsy, causing <summary> elements at the first child position to be ignored
+  - Fixed getStyledDetailChildren guard from if (children && summaryIndex) to if (children), so details without a <summary> now correctly render the fallback "Details" label
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.6
+- Smith Gajjar @smithgajjar09
+
 ## 72.5.2 (2026-08-13)
 
 ### 🩹 Fixes
