@@ -2,6 +2,7 @@ export * from './Alert';
 export * from './Anchor';
 export * from './Animation';
 export * from './AppWrapper';
+export * from './Audio';
 export * from './Badge';
 export * from './BarChart';
 export * from './BodyPortal';
