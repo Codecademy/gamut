@@ -16,6 +16,10 @@ const detailsWithSummary = `
 </details>
 `;
 
+const detailsWithSummaryAtFirstIndex = `
+<details><summary>First Child Summary</summary>${lorem}</details>
+`;
+
 const detailsWithoutSummary = `
 <details>
   ${lorem}
@@ -45,5 +49,12 @@ describe('Details', () => {
     });
     expect(view.queryAllByText('Details')).toHaveLength(0);
     expect(view.queryAllByText('View More')).toHaveLength(1);
+  });
+  it('Renders the authored summary when it is the first child (index 0)', () => {
+    const { view } = renderView({
+      text: detailsWithSummaryAtFirstIndex,
+    });
+    expect(view.queryAllByText('Details')).toHaveLength(0);
+    expect(view.queryAllByText('First Child Summary')).toHaveLength(1);
   });
 });
