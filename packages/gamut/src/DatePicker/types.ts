@@ -67,6 +67,8 @@ interface DatePickerBaseProps<Mode extends 'single' | 'range'>
    * @default "inline"
    */
   placement?: 'inline' | 'floating';
+  /** Description to display between the label and the input(s). In range mode, spans both fields. */
+  description?: string;
 }
 
 export interface DatePickerSingleProps extends DatePickerBaseProps<'single'> {

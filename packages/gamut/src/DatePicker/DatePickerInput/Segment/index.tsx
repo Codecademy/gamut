@@ -1,6 +1,6 @@
 import { type Dispatch, type SetStateAction, useCallback, useId } from 'react';
 
-import type { DatePartKind } from '../utils';
+import type { DatePartKind } from '../DatePickerInputShell/utils';
 import { Segment } from './elements';
 import {
   appendSegmentDigit,

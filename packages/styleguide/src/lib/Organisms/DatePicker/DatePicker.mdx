@@ -335,6 +335,7 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> 
     startDateLabel: 'Start date',
     endDateLabel: 'End date',
     calendarDialogAriaLabel: 'Choose date',
+    invalidDateError: 'Enter a valid date',
     last7DaysDisplayText: 'Last 7 days',
     last30DaysDisplayText: 'Last 30 days',
     last90DaysDisplayText: 'Last 90 days',
@@ -348,7 +349,7 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> 
 `DatePicker` can be rendered with `children` and composed for more flexibility. The following components/hooks are exported and available to use for composition:
 
 - `useDatePicker()` exposes shared shell state. Always narrow on `mode` when mode-specific fields are needed.
-- `DatePickerInput`: month/day/year `role="spinbutton"` segments. In range mode use `rangePart="start"` or `"end"` on each instance.
+- `DatePickerInput`: month/day/year `role="spinbutton"` segments. In range mode use `rangePart="start"` or `"end"` on each instance for custom layouts.
 - `DatePickerCalendar`: calendar UI wired to context; pass a stable `dialogId` that matches the `id` on the `role="dialog"` wrapper for `aria-labelledby` / `aria-controls` wiring.
 
 Example component to be passed as `children` to `DatePicker`:

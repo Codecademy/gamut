@@ -1,4 +1,4 @@
-import { stringifyLocale } from '../utils/locale';
+import { stringifyLocale } from '../../utils/locale';
 
 export type DatePartKind = 'month' | 'day' | 'year';
 

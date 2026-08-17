@@ -9,6 +9,10 @@ export interface DatePickerTranslations {
   endDateLabel?: string;
   /** aria-label for the calendar dialog (default: "Choose date"). */
   calendarDialogAriaLabel?: string;
+  /** aria-label for the calendar icon trigger (default: "Open calendar"). */
+  openCalendarLabel?: string;
+  /** Error message when typed segments do not form a valid date (default: "Enter a valid date"). */
+  invalidDateError?: string;
   /** Label for the last 7 days quick action (default: "Last 7 days"). */
   last7DaysDisplayText?: string;
   /** Label for the last 30 days quick action (default: "Last 30 days"). */
@@ -24,6 +28,8 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> 
     startDateLabel: 'Start date',
     endDateLabel: 'End date',
     calendarDialogAriaLabel: 'Choose date',
+    openCalendarLabel: 'Open calendar',
+    invalidDateError: 'Enter a valid date',
     last7DaysDisplayText: 'Last 7 days',
     last30DaysDisplayText: 'Last 30 days',
     last90DaysDisplayText: 'Last 90 days',

@@ -100,6 +100,8 @@ export const Default: Story = {
     ),
   ],
   render: function DatePickerStory(args) {
+    const description =
+      'Select a date from the calendar. Insert any rules or instructions here. Select a date from the calendar. Insert any rules or instructions here. Select a date from the calendar. Insert any rules or instructions here.';
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
@@ -108,11 +110,17 @@ export const Default: Story = {
       return (
         <DatePicker
           {...args}
+          description={description}
           endDate={endDate}
           mode="range"
           startDate={startDate}
           onEndSelected={setEndDate}
           onStartSelected={setStartDate}
+          translations={{
+            dateLabel: 'Date. Enter your date. I am a long label helloooo',
+            startDateLabel: 'Start date. Enter your start date.',
+            endDateLabel: 'End date. Enter your end date.',
+          }}
         />
       );
     }
@@ -120,6 +128,7 @@ export const Default: Story = {
     return (
       <DatePicker
         {...args}
+        description={description}
         mode="single"
         selectedDate={selectedDate}
         onSelected={setSelectedDate}
