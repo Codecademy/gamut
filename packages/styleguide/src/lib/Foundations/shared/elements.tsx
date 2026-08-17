@@ -552,6 +552,7 @@ const ElevationExample = styled(Box)<{
     border: 1,
     display: 'inline-block',
     height: '3rem',
+    verticalAlign: 'top',
     width: '5rem',
   }),
   ({ exampleShadow, exampleTransform }) => ({
@@ -599,7 +600,6 @@ export const createElevationTable = (elevationScale: Theme['elevation']) => ({
       key: 'example',
       name: 'Example',
       size: 'fill',
-      // dashed outline marks the resting position the transform lifts from
       render: ({ shadow, transform }: any) => (
         <Box
           border={1}
