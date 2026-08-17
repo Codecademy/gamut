@@ -47,6 +47,7 @@ export * from './Toggle';
 export * from './Tip/InfoTip';
 export * from './Tip/PreviewTip';
 export * from './Tip/ToolTip';
+export * from './Tip/shared/types';
 export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';
