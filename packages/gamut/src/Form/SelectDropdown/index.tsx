@@ -1,6 +1,2 @@
-export type {
-  OptionStrict,
-  ExtendedOption,
-  SelectDropdownGroup,
-} from './types/options';
+export * from './types';
 export * from './SelectDropdown';

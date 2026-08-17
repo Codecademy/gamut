@@ -3,7 +3,7 @@ import { RefObject } from 'react';
 import { FocusTrapProps } from '../FocusTrap';
 import { WithChildrenProp } from '../utils';
 
-export type Alignments =
+export type PopoverContainerAlignment =
   | 'top-left'
   | 'top-right'
   | 'bottom-left'
@@ -13,19 +13,7 @@ export type Alignments =
   | 'left'
   | 'right';
 
-export type TargetRef = Pick<
-  HTMLDivElement,
-  | 'getBoundingClientRect'
-  | 'contains'
-  | 'offsetHeight'
-  | 'offsetWidth'
-  | 'offsetTop'
-  | 'offsetLeft'
-  | 'offsetParent'
-> &
-  HTMLElement;
-
-export interface PositionContext {
+export interface PopoverPositionContext {
   width: number;
   height: number;
   top: number;
@@ -34,8 +22,8 @@ export interface PositionContext {
   bottom: number;
 }
 
-export interface ContainerState {
-  parent: PositionContext;
+export interface PopoverContainerState {
+  parent: PopoverPositionContext;
   viewport: DOMRect;
 }
 
@@ -43,7 +31,7 @@ export interface PopoverAlignment {
   /**
    * Which vertical edge of the source component to align against.
    */
-  alignment?: Alignments;
+  alignment?: PopoverContainerAlignment;
   /** Align to the inside edge of the target div */
   invertAxis?: 'x' | 'y';
   /** Whether the popover renders inside the current DOM context or escapes with a portal */
@@ -63,8 +51,8 @@ export interface PopoverAlignment {
 }
 
 export interface PopoverPositionConfig extends PopoverAlignment {
-  container: PositionContext;
-  alignment: Alignments;
+  container: PopoverPositionContext;
+  alignment: PopoverContainerAlignment;
 }
 
 export interface PopoverContainerProps
@@ -84,7 +72,7 @@ export interface PopoverContainerProps
   /**
    * The target element around which the popover will be positioned.
    */
-  targetRef: RefObject<TargetRef>;
+  targetRef: RefObject<HTMLElement>;
   /**
    * If true, it will allow outside page interaction. Popover container will still close when clicking outside of the popover or hitting the escape key.
    */

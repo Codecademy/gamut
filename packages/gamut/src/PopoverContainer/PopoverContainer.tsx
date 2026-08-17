@@ -12,7 +12,7 @@ import {
   useScrollingParents,
   useScrollingParentsEffect,
 } from './hooks';
-import { ContainerState, PopoverContainerProps } from './types';
+import { PopoverContainerProps, PopoverContainerState } from './types';
 import { getContainers, getPosition, isOutOfView } from './utils';
 
 const PopoverContent = styled.div(
@@ -46,7 +46,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const onRequestCloseRef = useRef(onRequestClose);
   const { width: winW, height: winH } = useWindowSize();
   const { x: winX, y: winY } = useWindowScroll();
-  const [containers, setContainers] = useState<ContainerState>();
+  const [containers, setContainers] = useState<PopoverContainerState>();
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const parent = containers?.parent;
 
