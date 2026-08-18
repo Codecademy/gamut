@@ -58,7 +58,7 @@ describe('useCardElevation', () => {
     });
   });
 
-  it('keeps bespoke outline shadows but shares the elevation transforms', () => {
+  it('applies outline shadows but shares the elevation transforms', () => {
     const { animateOutline, initialOutline } = renderElevation('outline');
 
     expect(initialOutline.boxShadow).not.toBe(theme.elevation['rest-shadow']);
