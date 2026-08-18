@@ -8,6 +8,7 @@ export * from './BodyPortal';
 export * from './Box';
 export * from './Breadcrumbs';
 export * from './Button';
+export { ButtonBase } from './ButtonBase';
 export type { ButtonBaseElements } from './ButtonBase/ButtonBase';
 export * from './Card';
 export * from './Coachmark';
