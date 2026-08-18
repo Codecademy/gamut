@@ -7333,28 +7333,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-hooks@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "@testing-library/react-hooks@npm:7.0.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.12.5"
-    "@types/react": "npm:>=16.9.0"
-    "@types/react-dom": "npm:>=16.9.0"
-    "@types/react-test-renderer": "npm:>=16.9.0"
-    react-error-boundary: "npm:^3.1.0"
-  peerDependencies:
-    react: ">=16.9.0"
-    react-dom: ">=16.9.0"
-    react-test-renderer: ">=16.9.0"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-test-renderer:
-      optional: true
-  checksum: 10c0/249fa57551a1ce63fdfbc7944eeaa2ca4eaae160b6f64b631ceeb150b2d82c1478190471961d04b640e87c6d5417f2e7649600b69068485cd2a20de664716859
-  languageName: node
-  linkType: hard
-
 "@testing-library/react@npm:15.0.6":
   version: 15.0.6
   resolution: "@testing-library/react@npm:15.0.6"
@@ -7844,7 +7822,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:18.3.0, @types/react-test-renderer@npm:>=16.9.0":
+"@types/react-test-renderer@npm:18.3.0":
   version: 18.3.0
   resolution: "@types/react-test-renderer@npm:18.3.0"
   dependencies:
@@ -13180,7 +13158,6 @@ __metadata:
     "@testing-library/dom": "npm:^8.11.1"
     "@testing-library/jest-dom": "npm:^5.16.1"
     "@testing-library/react": "npm:15.0.6"
-    "@testing-library/react-hooks": "npm:^7.0.2"
     "@testing-library/user-event": "npm:^14.5.2"
     "@types/classnames": "npm:2.2.10"
     "@types/invariant": "npm:2.2.29"
@@ -13209,11 +13186,9 @@ __metadata:
     identity-obj-proxy: "npm:3.0.0"
     jest: "npm:30.4.2"
     jest-environment-jsdom: "npm:30.4.1"
-    jest-environment-jsdom-global: "npm:4.0.0"
     jest-junit: "npm:^16.0.0"
     lint-staged: "npm:^16.4.0"
     lodash: "npm:^4.18.1"
-    mutationobserver-shim: "npm:^0.3.3"
     nx: "npm:22.6.0"
     nx-cloud: "npm:19.1.0"
     onchange: "npm:^7.0.2"
@@ -15034,15 +15009,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-jsdom-global@npm:4.0.0":
-  version: 4.0.0
-  resolution: "jest-environment-jsdom-global@npm:4.0.0"
-  peerDependencies:
-    jest-environment-jsdom: 22.x || 23.x || 24.x || 25.x || 26.x || 27.x || 28.x || 29.x
-  checksum: 10c0/cb696011c060d1b2be86780d3b3e38d7b31feebe744263384179098ea3851ade1549310ae424a9a05fda672831b6b951654dcc5309c2e81d714a0644e7159345
-  languageName: node
-  linkType: hard
-
 "jest-environment-jsdom@npm:30.4.1":
   version: 30.4.1
   resolution: "jest-environment-jsdom@npm:30.4.1"
@@ -16749,13 +16715,6 @@ __metadata:
   bin:
     multicast-dns: cli.js
   checksum: 10c0/5120171d4bdb1577764c5afa96e413353bff530d1b37081cb29cccc747f989eb1baf40574fe8e27060fc1aef72b59c042f72b9b208413de33bcf411343c69057
-  languageName: node
-  linkType: hard
-
-"mutationobserver-shim@npm:^0.3.3":
-  version: 0.3.7
-  resolution: "mutationobserver-shim@npm:0.3.7"
-  checksum: 10c0/3f03ccf5693744454ec7b8152390cbf1f9dfb72eb6e5397df2e9d44812e528d79257c4f41d86345c68e2fbbb30b03578b0354152c5fec59af6bad2bbb9dc21e0
   languageName: node
   linkType: hard
 
@@ -18790,17 +18749,6 @@ __metadata:
   peerDependencies:
     react: ^18.3.1
   checksum: 10c0/a752496c1941f958f2e8ac56239172296fcddce1365ce45222d04a1947e0cc5547df3e8447f855a81d6d39f008d7c32eab43db3712077f09e3f67c4874973e85
-  languageName: node
-  linkType: hard
-
-"react-error-boundary@npm:^3.1.0":
-  version: 3.1.4
-  resolution: "react-error-boundary@npm:3.1.4"
-  dependencies:
-    "@babel/runtime": "npm:^7.12.5"
-  peerDependencies:
-    react: ">=16.13.1"
-  checksum: 10c0/f977ca61823e43de2381d53dd7aa8b4d79ff6a984c9afdc88dc44f9973b99de7fd382d2f0f91f2688e24bb987c0185bf45d0b004f22afaaab0f990a830253bfb
   languageName: node
   linkType: hard
 
