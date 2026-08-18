@@ -22,16 +22,20 @@ const getStyledDetailChildren = ({
   hasSummary,
   children,
 }: GetDetailChildrenProps) => {
-  if (children && summaryIndex) {
-    const copiedChildren = hasSummary
-      ? children.slice(0, summaryIndex).concat(children.slice(summaryIndex + 1))
-      : children;
+  if (children) {
+    const copiedChildren =
+      hasSummary && summaryIndex !== undefined
+        ? children
+            .slice(0, summaryIndex)
+            .concat(children.slice(summaryIndex + 1))
+        : children;
 
-    const summary = hasSummary ? (
-      children[summaryIndex]
-    ) : (
-      <summary>Details</summary>
-    );
+    const summary =
+      hasSummary && summaryIndex !== undefined ? (
+        children[summaryIndex]
+      ) : (
+        <summary>Details</summary>
+      );
 
     return {
       summary,
@@ -55,7 +59,9 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
 }) => {
   const editedDetails = useMemo(() => {
     const summaryIndex = children?.findIndex((e) => e.type === 'summary');
-    const hasSummary = Boolean(summaryIndex && summaryIndex > 0 && children);
+    const hasSummary = Boolean(
+      children && summaryIndex !== undefined && summaryIndex > -1
+    );
 
     return getStyledDetailChildren({ summaryIndex, hasSummary, children });
   }, [children]);
