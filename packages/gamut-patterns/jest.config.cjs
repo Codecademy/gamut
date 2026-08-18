@@ -1,17 +1,17 @@
 /* eslint-disable */
-import base from '../../jest.config.base';
+const base = require('../../jest.config.base.cjs');
 
-export default base('gamut-icons', {
+module.exports = base('gamut-patterns', {
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
   setupFilesAfterEnv: ['<rootDir>/../../script/jest/rtl-setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coveragePathIgnorePatterns: ['<rootDir>/src/icons/'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/patterns/'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
-    '!src/icons/**',
+    '!src/patterns/**',
     '!src/**/*.d.ts',
     '!src/**/__tests__/**',
     '!tests/**',

@@ -32,7 +32,7 @@
       "dependsOn": ["build"],
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-icons"],
       "options": {
-        "jestConfig": "packages/gamut-icons/jest.config.ts"
+        "jestConfig": "packages/gamut-icons/jest.config.cjs"
       }
     },
     "clean": {

@@ -1,7 +1,7 @@
 /* eslint-disable */
-import base from '../../jest.config.base';
+const base = require('../../jest.config.base.cjs');
 
-export default base('variance', {
+module.exports = base('variance', {
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },

@@ -1,4 +1,4 @@
-export type { ButtonProps } from './shared';
+export type { ButtonProps, ButtonBaseProps } from './shared';
 export * from './CTAButton';
 export * from './FillButton';
 export * from './IconButton';

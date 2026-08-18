@@ -22,7 +22,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/variance"],
       "options": {
-        "jestConfig": "packages/variance/jest.config.ts"
+        "jestConfig": "packages/variance/jest.config.cjs"
       }
     },
     "verify": {

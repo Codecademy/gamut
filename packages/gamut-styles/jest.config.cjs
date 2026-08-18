@@ -1,14 +1,14 @@
 /* eslint-disable */
-import path from 'path';
-import base from '../../jest.config.base';
+const path = require('path');
+const base = require('../../jest.config.base.cjs');
 
-export default base('gamut-styles', {
+module.exports = base('gamut-styles', {
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
     '^.+\\.[tj]sx?$': [
       'babel-jest',
       {
-        configFile: require.resolve(path.join(__dirname, './babel.config.js')),
+        configFile: require.resolve(path.join(__dirname, './babel.config.cjs')),
       },
     ],
   },
