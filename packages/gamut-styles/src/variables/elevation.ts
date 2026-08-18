@@ -1,21 +1,10 @@
 type ThemeColors = Record<string, string>;
 
-/**
- * The visual treatment of a surface at a single elevation state.
- * These are type aliases rather than interfaces so they keep the implicit
- * index signatures `addScale`'s constraint requires.
- */
 export type ElevationStateStyles = {
   shadow: string;
   transform: string;
 };
 
-/**
- * State keys are camelCase: variance's `LiteralPaths` splits token paths on
- * `-`, so a hyphenated key like `hover-mirrored` would resolve to `never` and
- * drop out of the theme type. `hoverMirrored` is for surfaces that cast their
- * shadow to the opposite side (e.g. Card's `patternRight` shadow).
- */
 export type ElevationScale = {
   rest: ElevationStateStyles;
   hover: ElevationStateStyles;
@@ -24,17 +13,6 @@ export type ElevationScale = {
 
 export type ElevationState = keyof ElevationScale;
 
-/**
- * Elevation scales describe how a surface renders shadow and lift at rest and
- * on hover. Each theme provides its own scale via
- * `.addScale('elevation', ...)`, which passes in that theme's `colors` — so
- * `colors['shadow-primary']` resolves per theme and per color mode without
- * this file ever importing a theme (which would be a circular dependency).
- *
- * The shared return type guarantees every theme emits the same elevation
- * tokens, so lookups like `theme.elevation['hover-shadow']` are safe under
- * any theme.
- */
 export type ElevationScaleFactory = (theme: {
   colors: ThemeColors;
 }) => ElevationScale;
