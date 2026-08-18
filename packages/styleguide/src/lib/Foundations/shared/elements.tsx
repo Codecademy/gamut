@@ -563,11 +563,6 @@ const ElevationExample = styled(Box)<{
 
 const elevationStates: ElevationState[] = ['rest', 'hover', 'hoverMirrored'];
 
-/**
- * Every theme emits the same elevation tokens (see `ElevationScale` in
- * gamut-styles), so each theme's docs page can build its table from its own
- * scale — see `percipioElements` for the Percipio table.
- */
 export const createElevationTable = (elevationScale: Theme['elevation']) => ({
   rows: elevationStates.map((id) => ({
     id,
