@@ -12,11 +12,11 @@ import { FlexBox } from '../Box';
 import { ToolTipProps } from '../Tip/ToolTip';
 import { Text } from '../Typography';
 import {
-  ListButton,
-  ListItem,
-  ListItemProps,
-  ListLink,
-  ListLinkProps,
+  MenuListButton,
+  MenuListItem,
+  MenuListItemProps,
+  MenuListLink,
+  MenuListLinkProps,
   MenuToolTipWrapper,
 } from './elements';
 import { useMenuContext } from './MenuContext';
@@ -37,7 +37,7 @@ const currentItemText = {
 
 type HTMLProps = Partial<Pick<HTMLAnchorElement, 'href' | 'target' | 'rel'>>;
 type ForwardListItemProps = Omit<
-  ComponentProps<typeof ListItem>,
+  ComponentProps<typeof MenuListItem>,
   'variant' | 'selected' | 'active-navlink' | 'children'
 >;
 
@@ -108,7 +108,7 @@ export const MenuItem = forwardRef<
       role: listItemRole,
       height,
       width,
-    } as ListItemProps;
+    } as MenuListItemProps;
 
     const ariaLabel = label
       ? typeof label === 'string'
@@ -150,18 +150,18 @@ export const MenuItem = forwardRef<
 
     if (listItemType === 'link' && !disabled) {
       return (
-        <ListItem {...listItemProps}>
+        <MenuListItem {...listItemProps}>
           <MenuToolTipWrapper label={label} tipId={tipId}>
-            <ListLink
-              {...(computed as ListLinkProps)}
+            <MenuListLink
+              {...(computed as MenuListLinkProps)}
               href={href}
               ref={narrowMenuItemRef<HTMLAnchorElement>(ref)}
               target={target}
             >
               {content}
-            </ListLink>
+            </MenuListLink>
           </MenuToolTipWrapper>
-        </ListItem>
+        </MenuListItem>
       );
     }
 
@@ -171,32 +171,32 @@ export const MenuItem = forwardRef<
         : (props.onClick as any as MouseEventHandler<HTMLButtonElement>);
 
       return (
-        <ListItem {...listItemProps}>
+        <MenuListItem {...listItemProps}>
           <MenuToolTipWrapper
             closeOnClick={closeOnClick}
             label={label}
             tipId={tipId}
           >
-            <ListButton
-              {...(computed as ListLinkProps)}
+            <MenuListButton
+              {...(computed as MenuListLinkProps)}
               ref={narrowMenuItemRef<HTMLButtonElement>(ref)}
               onClick={handleClick}
             >
               {content}
-            </ListButton>
+            </MenuListButton>
           </MenuToolTipWrapper>
-        </ListItem>
+        </MenuListItem>
       );
     }
 
     return (
       // These are non-interactive and will never have tooltips (nor should they).
-      <ListItem
-        {...(computed as ListItemProps)}
+      <MenuListItem
+        {...(computed as MenuListItemProps)}
         ref={narrowMenuItemRef<HTMLLIElement>(ref)}
       >
         {content}
-      </ListItem>
+      </MenuListItem>
     );
   }
 );

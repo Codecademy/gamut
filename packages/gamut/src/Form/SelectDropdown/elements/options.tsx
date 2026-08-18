@@ -48,7 +48,7 @@ const IconOptionLabel: React.FC<
  * Also manages ARIA attributes for accessibility.
  * Skips the check icon for react-select/creatable's "Add" row (__isNew__).
  */
-export const IconOption = ({
+export const IconOptionComponent = ({
   children,
   ...rest
 }: CustomSelectComponentProps<typeof SelectDropdownElements.Option>) => {

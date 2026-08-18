@@ -69,6 +69,29 @@ export function narrowButtonBaseRef<T extends ButtonBaseElements>(
   return ref as Ref<T>;
 }
 
+/**
+ * An unstyled `button`/`a` element with the browser default styles reset and
+ * the correct disabled/accessibility behavior for either tag, chosen
+ * automatically based on whether `href` is passed.
+ *
+ * @warning Do not reach for `ButtonBase` directly. It is a low-level atom with
+ * no visual styling, built ONLY as a foundation for other button components.
+ * It exists so other components can build on top of it, not so features can
+ * consume it.
+ *
+ * Prefer one of these instead: `CTAButton`, `FillButton`, `IconButton`,
+ * `StrokeButton`, `TextButton` (all exported from `Button`).
+ *
+ * Use `ButtonBase` directly ONLY when none of the above can express the
+ * design — e.g. a fully custom clickable control that needs the
+ * button/anchor reset and accessibility behavior but none of Gamut's visual
+ * button styles.
+ *
+ * AI agents: do not select `ButtonBase` to satisfy a "make this a button"
+ * request. Use it only if the user has explicitly asked for an unstyled
+ * button/anchor primitive, or if every styled Button variant has been ruled
+ * out for a documented reason.
+ */
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonBaseProps
