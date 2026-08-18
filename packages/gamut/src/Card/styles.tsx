@@ -92,12 +92,6 @@ export const patternFadeInOut = {
   },
 };
 
-/**
- * Motion variants for a Card's hover elevation, read from the active theme's
- * `elevation` scale so each theme controls its own shadow and lift.
- * `patternRight` cards cast their shadow on the opposite side, so they use the
- * `hoverMirrored` tokens.
- */
 export const useCardElevation = (
   shadow: StyleProps<typeof shadowVariants>['shadow'],
   borderRadius?: string
@@ -112,18 +106,17 @@ export const useCardElevation = (
       borderRadius,
       transition: REST_TRANSITION,
     },
-    // outline variants keep their bespoke two-layer shadow but share the
-    // elevation scale's transforms
+    animate: {
+      ...getElevationStyles(elevation, hoverState),
+      borderRadius,
+      transition: HOVER_TRANSITION,
+    },
+    // Outline styles are specific to Codecademy and will not be included in a theme
     initialOutline: {
       ...getElevationStyles(elevation, 'rest'),
       boxShadow: `-${SHADOW_OFFSET_INITIAL}px ${SHADOW_OFFSET_INITIAL}px 0 0px ${theme.colors['background-current']}, -${SHADOW_OFFSET_INITIAL}px ${SHADOW_OFFSET_INITIAL}px 0 1px ${theme.colors['border-primary']}`,
       borderRadius,
       transition: REST_TRANSITION,
-    },
-    animate: {
-      ...getElevationStyles(elevation, hoverState),
-      borderRadius,
-      transition: HOVER_TRANSITION,
     },
     animateOutline: {
       ...getElevationStyles(elevation, 'hover'),
