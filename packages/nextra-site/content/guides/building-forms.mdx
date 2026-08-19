@@ -1,0 +1,25 @@
+---
+title: Building forms
+description: Wire up Gamut form components with validation and errors.
+---
+
+import { Callout } from 'nextra/components';
+
+# Building forms
+
+<Callout type="default">
+  **How-to.** Goal: a working, accessible form with validation.
+</Callout>
+
+For most forms, reach for `ConnectedForm` + `ConnectedFormGroup`, which
+wire [react-hook-form](https://react-hook-form.com/) registration,
+labels, and accessible error regions together. Reach for the lower-level
+`Form` / `FormGroup` scaffolding only when you need control the
+connected components don't give you.
+
+<Callout type="info">
+  Stub — full guide should walk through a real form: connected inputs,
+  validation messages, submit state. See [Components → Inputs &
+  forms](/components/inputs-and-forms) for the component reference. Tracked
+  under ADR 0001's migration.
+</Callout>

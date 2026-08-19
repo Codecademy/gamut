@@ -1,0 +1,116 @@
+---
+title: TextButton
+description: A button that is usually only text, used for tertiary actions.
+---
+
+import { Callout } from 'nextra/components';
+
+import { ButtonAnatomy } from '../../../components/ButtonAnatomy';
+import { buttonCommonProps } from '../../../components/buttonProps';
+import { ComponentHeader } from '../../../components/ComponentHeader';
+import { PropsTable } from '../../../components/PropsTable';
+import {
+  TextButtonAsyncPattern,
+  TextButtonPlayground,
+  TextButtonVariants,
+} from '../../../components/wrappers/TextButtonDemo';
+
+<ComponentHeader
+  title="TextButton"
+  subtitle="A button that is usually only text, used for tertiary actions."
+  status="current"
+  tier="Atom"
+  figmaUrl="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0"
+  githubUrl="https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/TextButton.tsx"
+/>
+
+<Callout type="info">
+  Use the `/gamut-buttons` skill in Cursor or Claude Code for AI-assisted
+  guidance on button selection, variants, disabled patterns, and ToolTip focus
+  management.
+</Callout>
+
+## Usage
+
+Reach for `TextButton` for tertiary actions, or inline actions that
+shouldn't compete visually with a `FillButton` or `StrokeButton`
+nearby (e.g. "Skip", "Show more"). Add a leading or trailing icon from
+the mini icon set when it clarifies the action or helps distinguish
+the button from surrounding bold text.
+
+### Best practices
+
+`TextButton` uses bold formatting to differentiate itself from normal
+text, since color alone doesn't meet the 3:1 contrast ratio required
+for accessibility. Bold formatting alone may not be sufficient in all
+contexts — for example, next to a bold heading.
+
+- In those cases, include a leading or trailing icon so the button
+  stays visually identifiable as an interactive element, not just bold
+  prose.
+
+### When NOT to use
+
+- The action needs more visual weight as the primary action on
+  screen — use [FillButton](/components/actions/fill-button).
+- The action is secondary and should stand apart from body text — use
+  [StrokeButton](/components/actions/stroke-button).
+- It's a plain inline navigation link to another page or resource, not
+  an action — use `Anchor`.
+- There's no visible label, only an icon — use `IconButton`.
+
+### Anatomy
+
+<ButtonAnatomy />
+
+## Patterns
+
+### Load more content on demand
+
+Disable the button and swap its label while the additional content
+loads, so a slow response can't be triggered twice.
+
+<TextButtonAsyncPattern
+  idleLabel="Show more"
+  pendingLabel="Loading…"
+  resultLabel="Loaded 10 more results."
+  delayMs={900}
+/>
+
+```tsx
+const [status, setStatus] = useState<'idle' | 'pending' | 'done'>('idle');
+
+<TextButton
+  disabled={status === 'pending'}
+  onClick={() => {
+    setStatus('pending');
+    loadMoreResults().then(() => setStatus('done'));
+  }}
+>
+  {status === 'pending' ? 'Loading…' : 'Show more'}
+</TextButton>;
+```
+
+## Variants
+
+<TextButtonVariants />
+
+## Accessibility
+
+- Renders a native `<button>` by default, or an `<a>` when `href` is
+  set.
+- Reachable with <kbd>Tab</kbd>; activates with <kbd>Enter</kbd> or
+  <kbd>Space</kbd> for `<button>`, <kbd>Enter</kbd> for `<a>`.
+- Bold weight is a deliberate contrast-independent affordance — don't
+  strip it via custom styling, and don't rely on color alone to signal
+  interactivity.
+- `disabled` removes the element from the tab order.
+- Flips icon order automatically under `dir="rtl"`.
+
+## Props
+
+<PropsTable rows={buttonCommonProps} />
+
+## Playground
+
+<TextButtonPlayground />

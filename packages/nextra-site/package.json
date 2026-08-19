@@ -1,0 +1,33 @@
+{
+  "name": "@codecademy/nextra-site",
+  "description": "Gamut documentation site (Nextra), following ADR 0001's Diátaxis information architecture",
+  "version": "0.1.0",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "dependencies": {
+    "@codecademy/gamut": "72.5.3",
+    "@codecademy/gamut-icons": "9.57.11",
+    "@codecademy/gamut-styles": "20.1.0",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "next": "14.2.35",
+    "nextra": "4.3.0",
+    "nextra-theme-docs": "4.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.0"
+  },
+  "license": "MIT",
+  "private": true,
+  "repository": "git@github.com:Codecademy/gamut.git",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev -p 5555",
+    "lint": "next lint",
+    "start": "next start -p 5555"
+  }
+}

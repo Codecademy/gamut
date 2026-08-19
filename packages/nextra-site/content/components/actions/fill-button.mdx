@@ -1,0 +1,112 @@
+---
+title: FillButton
+description: A button with a solid background color, used for primary actions.
+---
+
+import { Callout } from 'nextra/components';
+
+import { ButtonAnatomy } from '../../../components/ButtonAnatomy';
+import { buttonCommonProps } from '../../../components/buttonProps';
+import { ComponentHeader } from '../../../components/ComponentHeader';
+import { PropsTable } from '../../../components/PropsTable';
+import {
+  FillButtonAsyncPattern,
+  FillButtonPlayground,
+  FillButtonVariants,
+} from '../../../components/wrappers/FillButtonDemo';
+
+<ComponentHeader
+  title="FillButton"
+  subtitle="A button with a solid background color, used for primary actions."
+  status="current"
+  tier="Atom"
+  figmaUrl="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0"
+  githubUrl="https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/FillButton.tsx"
+/>
+
+<Callout type="info">
+  Use the `/gamut-buttons` skill in Cursor or Claude Code for AI-assisted
+  guidance on button selection, variants, disabled patterns, and ToolTip focus
+  management.
+</Callout>
+
+## Usage
+
+Reach for `FillButton` for the primary action in a group — the one thing
+you most want the reader to do (submit, save, continue). A screen should
+rarely show more than one `FillButton` in the same context; competing
+solid buttons undercut the sense of a single primary action. Add a
+leading or trailing icon from the mini icon set when it clarifies the
+action (for example, a download icon on a "Download" button).
+
+### When NOT to use
+
+- The action is secondary to another action on screen — use
+  [StrokeButton](/components/actions/stroke-button) instead.
+- The action is tertiary, or you need a lower-emphasis inline action —
+  use [TextButton](/components/actions/text-button).
+- You're building a marketing/hero call-to-action with its own bespoke
+  treatment — use `CTAButton`.
+- There's no visible label, only an icon — use `IconButton` so the
+  accessible name comes from an explicit label prop instead of visible
+  text.
+- Clicking reveals a list of further actions rather than performing one
+  directly — use `Menu`.
+
+### Anatomy
+
+<ButtonAnatomy />
+
+## Patterns
+
+### Prevent duplicate submissions
+
+Disable the button for the duration of the async action it triggers, and
+swap its label to a pending state. This is the standard shape for any
+`FillButton` that kicks off a network request.
+
+<FillButtonAsyncPattern
+  idleLabel="Save changes"
+  pendingLabel="Saving…"
+  resultLabel="Saved."
+/>
+
+```tsx
+const [status, setStatus] = useState<'idle' | 'pending' | 'done'>('idle');
+
+<FillButton
+  disabled={status === 'pending'}
+  onClick={() => {
+    setStatus('pending');
+    saveChanges().then(() => setStatus('done'));
+  }}
+>
+  {status === 'pending' ? 'Saving…' : 'Save changes'}
+</FillButton>;
+```
+
+## Variants
+
+<FillButtonVariants />
+
+## Accessibility
+
+- Renders a native `<button>` by default, or an `<a>` when `href` is
+  set — both carry correct implicit semantics without an ARIA `role`.
+- Reachable with <kbd>Tab</kbd>; activates with <kbd>Enter</kbd> or
+  <kbd>Space</kbd> for `<button>`, <kbd>Enter</kbd> for `<a>`.
+- `disabled` removes the element from the tab order and sets the native
+  `disabled` attribute (or `aria-disabled` when rendered as an anchor,
+  since anchors have no native disabled state).
+- The visible label is the accessible name — don't rely on an icon
+  alone; pair it with text, or use `IconButton` with an explicit label
+  when there's no visible text.
+- Flips padding and icon order automatically under `dir="rtl"`.
+
+## Props
+
+<PropsTable rows={buttonCommonProps} />
+
+## Playground
+
+<FillButtonPlayground />

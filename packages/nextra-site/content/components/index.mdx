@@ -1,0 +1,35 @@
+---
+title: Components
+description: Every Gamut component, grouped by what it does.
+---
+
+import { Callout } from 'nextra/components';
+
+# Components
+
+<Callout type="default">
+  **Reference.** Components are grouped by function — what you're trying to do —
+  rather than by Gamut's internal Atomic Design tiers
+  (Atoms/Molecules/Organisms). See [ADR 0001
+  §2](https://github.com/Codecademy/gamut/blob/main/docs/adr/0001-documentation-site-information-architecture.md#2-components-are-grouped-by-function-not-by-atomic-design-tier)
+  for the full rationale and the placement rulings for components that could
+  live in two categories.
+</Callout>
+
+| Category                                       | You have to…                                                 |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| [Actions](/components/actions)                 | Let someone trigger something                                |
+| [Containers](/components/containers)           | Group or lay out content                                     |
+| [Inputs & forms](/components/inputs-and-forms) | Collect input                                                |
+| [Navigation](/components/navigation)           | Move between pages or sections                               |
+| [Feedback](/components/feedback)               | Tell someone something happened, or explain a part of the UI |
+| [Status](/components/status)                   | Show progress or state at a glance                           |
+| [Overlays](/components/overlays)               | Show something above the page that can be dismissed          |
+| [Data display](/components/data-display)       | Present a set of data for scanning or comparison             |
+| [Typography](/components/typography)           | Render text with the system's type scale                     |
+| [Media & assets](/components/media-and-assets) | Show an icon, illustration, pattern, or video                |
+| [Utilities](/components/utilities)             | Add cross-cutting behavior (focus, delayed render)           |
+
+Every component page follows one fixed template — see
+[Using this site](/getting-started/using-this-site) — so once you know
+it, every page is navigable the same way.

@@ -1,0 +1,27 @@
+---
+title: Architecture of the system
+description: How Gamut's packages fit together.
+---
+
+import { Callout } from 'nextra/components';
+
+# Architecture of the system
+
+<Callout type="default">
+  **Explanation.** One of the two net-new pages called out in ADR 0001 — largely
+  extractable from the old Foundations prose, but not yet written from scratch
+  here.
+</Callout>
+
+Gamut is split into focused packages: `gamut` (components),
+`gamut-styles` (theme, provider, system props), `gamut-icons`,
+`gamut-illustrations`, `gamut-patterns` (assets), `gamut-kit` (test
+utilities), `gamut-tests`, and `eslint-plugin-gamut`. Components
+depend on `gamut-styles` for theming rather than owning their own
+style primitives, which is why a single `GamutProvider` at the root of
+an app is enough to theme every component consistently.
+
+<Callout type="info">
+  Stub — full page should diagram package dependencies and explain why they're
+  split this way. Tracked under ADR 0001's migration.
+</Callout>

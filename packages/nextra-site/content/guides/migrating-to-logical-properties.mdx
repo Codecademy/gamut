@@ -1,0 +1,24 @@
+---
+title: Migrating to logical properties
+description: Move existing styles from physical to logical CSS properties for RTL support.
+---
+
+import { Callout } from 'nextra/components';
+
+# Migrating to logical properties
+
+<Callout type="default">
+  **How-to.** Goal: an existing screen that still looks correct when rendered
+  `dir="rtl"`.
+</Callout>
+
+Gamut's `useLogicalProperties` theme flag swaps physical properties
+(`margin-left`, `border-right`, …) for their logical equivalents
+(`margin-inline-start`, `border-inline-end`, …) so layouts mirror
+correctly under RTL locales. Turning it on can surface places where a
+screen assumed a physical direction.
+
+<Callout type="info">
+  Stub — full guide should give a before/after property mapping and a checklist
+  for auditing a screen. Tracked under ADR 0001's migration.
+</Callout>

@@ -1,0 +1,35 @@
+---
+title: Actions
+description: Components that let someone trigger something.
+---
+
+import { Callout } from 'nextra/components';
+
+# Actions
+
+Components that let a reader trigger something — a button-family
+component, an action list, or an interactive tag.
+
+- [FillButton](/components/actions/fill-button) — solid background,
+  primary actions.
+- [StrokeButton](/components/actions/stroke-button) — outlined,
+  secondary actions.
+- [TextButton](/components/actions/text-button) — text-only, tertiary
+  actions.
+- `Button` — the low-level primitive `FillButton`/`StrokeButton`/
+  `TextButton` build on. Reach for the named variants above first.
+- `CTAButton` — marketing/hero call-to-action treatment.
+- `IconButton` — icon-only action with no visible label.
+- `Menu` — placed here rather than in Navigation: its action-list role
+  (a button that opens a list of further actions) is the richer half
+  of its API. The navigation-menu role is cross-linked from
+  [Navigation](/components/navigation).
+- `Tag` — placed here rather than in Status: docs emphasize
+  interactive selection/removal, not the read-only display role that
+  overlaps with `Badge`.
+
+<Callout type="info">
+  `Button`, `CTAButton`, `IconButton`, `Menu`, and `Tag` are stubs — only the
+  FillButton/StrokeButton/TextButton pages have been fully migrated through the
+  new template so far. Tracked under ADR 0001's migration.
+</Callout>

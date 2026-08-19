@@ -1,0 +1,24 @@
+---
+title: Contributing to Gamut
+description: Propose and land a change to the Gamut packages.
+---
+
+import { Callout } from 'nextra/components';
+
+# Contributing to Gamut
+
+<Callout type="default">
+  **How-to.** Goal: get a change into `@codecademy/gamut` (or a sibling package)
+  merged.
+</Callout>
+
+Gamut is an Nx/Yarn-workspaces monorepo under `packages/*`. Component
+source lives in `packages/gamut/src`; run `yarn start` to develop
+against the Storybook-based styleguide, `yarn verify` before opening a
+PR, and `yarn build` to confirm every workspace package still builds.
+
+<Callout type="info">
+  Stub — migrated from the old "Meta → Contributing" page. Full guide should
+  cover the PR template, changeset/release process, and where to add a new
+  component's docs page in this site's IA. Tracked under ADR 0001's migration.
+</Callout>

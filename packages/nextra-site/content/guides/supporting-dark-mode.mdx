@@ -1,0 +1,24 @@
+---
+title: Supporting dark mode
+description: Make a screen work correctly in both color modes.
+---
+
+import { Callout } from 'nextra/components';
+
+# Supporting dark mode
+
+<Callout type="default">
+  **How-to.** Goal: a screen that looks correct in both light and dark mode
+  without hardcoded colors.
+</Callout>
+
+Use semantic color aliases (`text`, `background`, `border-primary`, …)
+rather than hex values or palette names — aliases resolve to different
+concrete colors per mode automatically. Reach for `Background` when a
+surface needs an explicit contrast-safe container.
+
+<Callout type="info">
+  Stub — full guide should cover the `ColorMode` component/hook, common
+  hardcoded-color mistakes, and how to test both modes. See [Concepts → Color
+  modes](/concepts/color-modes). Tracked under ADR 0001's migration.
+</Callout>

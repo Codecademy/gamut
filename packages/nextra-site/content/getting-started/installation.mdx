@@ -1,0 +1,39 @@
+---
+title: Installation
+description: Install Gamut and its peer dependencies.
+---
+
+# Installation
+
+import { Callout } from 'nextra/components';
+
+<Callout type="default">
+  **Tutorial.** This page walks through a first-time setup, end to end. For the
+  full package API, see [Reference](/reference/design-tokens).
+</Callout>
+
+Install the core package and its peer dependencies:
+
+```bash
+yarn add @codecademy/gamut @emotion/react @emotion/styled
+```
+
+Wrap your app in `GamutProvider` so components can read theme tokens:
+
+```tsx
+import { coreTheme, GamutProvider } from '@codecademy/gamut-styles';
+
+export const App = ({ children }) => (
+  <GamutProvider theme={coreTheme}>{children}</GamutProvider>
+);
+```
+
+That's it — any Gamut component can now be imported and rendered.
+Continue to [Build your first page](/getting-started/build-your-first-page)
+to put a few together.
+
+<Callout type="info">
+  This page is a stub tracked under ADR 0001's migration — content above
+  reflects the real setup, but hasn't yet been reviewed against the full package
+  README.
+</Callout>

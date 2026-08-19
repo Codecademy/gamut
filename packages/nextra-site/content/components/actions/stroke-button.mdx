@@ -1,0 +1,111 @@
+---
+title: StrokeButton
+description: A button with an outline around its text, used for secondary actions.
+---
+
+import { Callout } from 'nextra/components';
+
+import { ButtonAnatomy } from '../../../components/ButtonAnatomy';
+import { buttonCommonProps } from '../../../components/buttonProps';
+import { ComponentHeader } from '../../../components/ComponentHeader';
+import { PropsTable } from '../../../components/PropsTable';
+import {
+  StrokeButtonConfirmPattern,
+  StrokeButtonPlayground,
+  StrokeButtonVariants,
+} from '../../../components/wrappers/StrokeButtonDemo';
+
+<ComponentHeader
+  title="StrokeButton"
+  subtitle="A button with an outline around its text, used for secondary actions."
+  status="current"
+  tier="Atom"
+  figmaUrl="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0"
+  githubUrl="https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/StrokeButton.tsx"
+/>
+
+<Callout type="info">
+  Use the `/gamut-buttons` skill in Cursor or Claude Code for AI-assisted
+  guidance on button selection, variants, disabled patterns, and ToolTip focus
+  management.
+</Callout>
+
+## Usage
+
+Reach for `StrokeButton` for secondary actions — the alternative to
+whatever a nearby `FillButton` is doing (e.g. "Cancel" next to "Save",
+or "Learn more" next to "Sign up"). It carries less visual weight than
+`FillButton` but more than `TextButton`. Add a leading or trailing icon
+from the mini icon set when it clarifies the action.
+
+### When NOT to use
+
+- This is the single primary action in the group — use
+  [FillButton](/components/actions/fill-button) instead.
+- The action is tertiary or purely inline — use
+  [TextButton](/components/actions/text-button).
+- There's no visible label, only an icon — use `IconButton`.
+- Clicking reveals a list of further actions rather than performing one
+  directly — use `Menu`.
+
+### Anatomy
+
+<ButtonAnatomy />
+
+## Patterns
+
+### Confirm before a destructive action
+
+Destructive secondary actions (delete, remove, revoke) benefit from a
+two-step confirm rather than an immediate irreversible effect. Compose
+local state so the first click asks for confirmation and only the
+second click commits — losing focus resets the confirm window.
+
+<StrokeButtonConfirmPattern
+  idleLabel="Delete item"
+  confirmLabel="Click again to confirm"
+  resultLabel="Deleted."
+/>
+
+```tsx
+const [awaitingConfirm, setAwaitingConfirm] = useState(false);
+
+<StrokeButton
+  variant={awaitingConfirm ? 'danger' : 'secondary'}
+  onBlur={() => setAwaitingConfirm(false)}
+  onClick={() => {
+    if (!awaitingConfirm) {
+      setAwaitingConfirm(true);
+      return;
+    }
+    deleteItem();
+  }}
+>
+  {awaitingConfirm ? 'Click again to confirm' : 'Delete item'}
+</StrokeButton>;
+```
+
+## Variants
+
+<StrokeButtonVariants />
+
+## Accessibility
+
+- Renders a native `<button>` by default, or an `<a>` when `href` is
+  set.
+- Reachable with <kbd>Tab</kbd>; activates with <kbd>Enter</kbd> or
+  <kbd>Space</kbd> for `<button>`, <kbd>Enter</kbd> for `<a>`.
+- `disabled` removes the element from the tab order.
+- If you use the confirm-before-destroy pattern above, announce the
+  state change (e.g. via `role="status"`) so assistive tech users know
+  a second click is required — a purely visual/color change is not
+  enough.
+- Flips padding and icon order automatically under `dir="rtl"`.
+
+## Props
+
+<PropsTable rows={buttonCommonProps} />
+
+## Playground
+
+<StrokeButtonPlayground />

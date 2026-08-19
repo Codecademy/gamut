@@ -1,0 +1,24 @@
+---
+title: Theming your app
+description: Choose and apply a Gamut theme.
+---
+
+import { Callout } from 'nextra/components';
+
+# Theming your app
+
+<Callout type="default">
+  **How-to.** Goal: get the right Gamut theme applied to your app.
+</Callout>
+
+Every Gamut app renders inside a `GamutProvider` with a `theme` prop —
+`coreTheme`, `platformTheme`, `adminTheme`, `lxStudioTheme`, or
+`percipioTheme`, all exported from `@codecademy/gamut-styles`. Pick the
+one matching your product surface; don't hand-roll a new theme unless
+you're building a new product surface (see
+[Concepts → Theming model](/concepts/theming-model) for why).
+
+<Callout type="info">
+  Stub — full guide should cover overriding individual tokens, nesting
+  providers, and SSR/CSP nonce setup. Tracked under ADR 0001's migration.
+</Callout>
