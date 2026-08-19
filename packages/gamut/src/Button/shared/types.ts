@@ -30,9 +30,16 @@ export type InlineIconButtonProps<
     iconPosition?: 'right' | 'left';
   };
 
+/*
+ * These button components currently share a structural type, but ButtonTypes
+ * intentionally enumerates the full set — so no-duplicate-type-constituents is
+ * disabled here rather than letting it silently narrow the union.
+ */
+/* eslint-disable @typescript-eslint/no-duplicate-type-constituents */
 export type ButtonTypes =
   | typeof CTAButton
   | typeof FillButton
   | typeof IconButton
   | typeof StrokeButton
   | typeof TextButton;
+/* eslint-enable @typescript-eslint/no-duplicate-type-constituents */
