@@ -14,7 +14,8 @@ Gamut's documentation lives in a Storybook (`packages/styleguide`) whose structu
 3. **There are no tutorials.** Nothing walks a newcomer from zero to a working page. `Installation` — the most task-critical page — is buried mid-list in a grab-bag "Meta" section.
 4. **"Meta" is a junk drawer** spanning how-to (Installation, Contributing), reference (ESLint rules), and explanation (Brand, Best practices, FAQs), organized by authors' filing convenience rather than reader need.
 
-We are building a new documentation website (Astro + Starlight). This is the moment to fix the information architecture rather than port the current structure.
+We are building a new documentation website. This is the moment to fix the information architecture rather than port the current structure.
+This document will serve as a blueprint for any framework to use and generate a website from.
 
 Diátaxis distinguishes four documentation modes by user need — **tutorials** (learning), **how-to guides** (working toward a goal), **reference** (looking up facts), and **explanation** (understanding) — and holds that each unit of content should serve one mode, with navigation letting readers stay in their mode. It applies fractally: at site scale and again within a topic area such as a single component.
 
