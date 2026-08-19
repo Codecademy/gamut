@@ -1,0 +1,8 @@
+{
+  "label": "Status",
+  "position": 6,
+  "link": {
+    "type": "doc",
+    "id": "components/status/index"
+  }
+}

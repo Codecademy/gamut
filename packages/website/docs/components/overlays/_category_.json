@@ -1,0 +1,8 @@
+{
+  "label": "Overlays",
+  "position": 7,
+  "link": {
+    "type": "doc",
+    "id": "components/overlays/index"
+  }
+}

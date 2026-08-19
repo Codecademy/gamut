@@ -1,0 +1,8 @@
+{
+  "label": "Guides",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "How-to guides for accomplishing a specific task with Gamut."
+  }
+}

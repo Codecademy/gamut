@@ -1,0 +1,8 @@
+{
+  "label": "Data display",
+  "position": 8,
+  "link": {
+    "type": "doc",
+    "id": "components/data-display/index"
+  }
+}

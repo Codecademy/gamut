@@ -1,0 +1,41 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/*
+ * Primary color = Gamut's Core theme `primary` semantic token, which
+ * drives link color, active nav/sidebar items, and the Previous/Next
+ * pagination buttons via Infima's --ifm-color-primary-* scale.
+ *
+ * Base and one shade come straight from Gamut (no invented brand colors);
+ * the rest of the 6-step ramp Infima expects is synthesized by lightness
+ * since Gamut's scale doesn't define that many steps:
+ *   light mode base+hover:  packages/gamut-styles/src/themes/core.ts:63-64
+ *                           packages/gamut-styles/src/variables/colors.ts:65-66 (hyper-500/400)
+ *   dark mode base+hover+900: packages/gamut-styles/src/themes/core.ts:115,129
+ *                             packages/gamut-styles/src/variables/colors.ts:41-46 (yellow-500/400/0/900)
+ */
+:root {
+  --ifm-color-primary: #3a10e5; /* hyper-500 */
+  --ifm-color-primary-dark: #2e0db5;
+  --ifm-color-primary-darker: #280b9d;
+  --ifm-color-primary-darkest: #160656;
+  --ifm-color-primary-light: #5533ff; /* hyper-400 */
+  --ifm-color-primary-lighter: #6f4ff3;
+  --ifm-color-primary-lightest: #aa96f8;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #ffd300; /* yellow-500 */
+  --ifm-color-primary-dark: #cca900; /* yellow-400 */
+  --ifm-color-primary-darker: #b39400;
+  --ifm-color-primary-darkest: #211b00; /* yellow-900 */
+  --ifm-color-primary-light: #ffdc33;
+  --ifm-color-primary-lighter: #ffe04d;
+  --ifm-color-primary-lightest: #fffae5; /* yellow-0 */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}

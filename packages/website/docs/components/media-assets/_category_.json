@@ -1,0 +1,8 @@
+{
+  "label": "Media & assets",
+  "position": 10,
+  "link": {
+    "type": "doc",
+    "id": "components/media-assets/index"
+  }
+}
