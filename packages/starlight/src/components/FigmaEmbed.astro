@@ -1,0 +1,29 @@
+---
+/**
+ * Embeds a Figma frame via Embed Kit 2.0 (embed.figma.com). Static HTML —
+ * no client JS. The target file must be shared as "anyone with the link can
+ * view" for anonymous visitors to see it; otherwise the iframe shows a
+ * Figma login wall. Keep a node-id in the URL so the embed opens zoomed to
+ * the relevant frame instead of the entire file.
+ */
+interface Props {
+  /** Full Figma URL, including node-id for a specific frame */
+  url: string;
+  height?: string;
+}
+
+const { url, height = '28rem' } = Astro.props;
+
+const embedUrl = new URL(
+  url.replace(/www\.figma\.com\/(file|design)\//, 'embed.figma.com/design/')
+);
+embedUrl.searchParams.set('embed-host', 'gamut-docs');
+---
+
+<iframe
+  src={embedUrl.href}
+  title="Figma design"
+  loading="lazy"
+  allowfullscreen
+  style={`width: 100%; height: ${height}; border: 1px solid var(--sl-color-gray-5); border-radius: 0.5rem; margin: 1rem 0;`}
+></iframe>

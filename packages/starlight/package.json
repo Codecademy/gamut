@@ -1,0 +1,33 @@
+{
+  "name": "@codecademy/gamut-docs",
+  "description": "Gamut documentation site (Astro + Starlight)",
+  "version": "0.1.0",
+  "dependencies": {
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/starlight": "^0.36.0",
+    "@codecademy/gamut": "workspace:*",
+    "@codecademy/gamut-icons": "workspace:*",
+    "@codecademy/gamut-styles": "workspace:*",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "astro": "^5.16.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-live": "^4.1.8"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1"
+  },
+  "license": "MIT",
+  "private": true,
+  "repository": "git@github.com:Codecademy/gamut.git",
+  "scripts": {
+    "build": "astro build",
+    "check": "astro check",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "type": "module"
+}

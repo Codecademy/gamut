@@ -1,0 +1,48 @@
+---
+title: Gamut
+description: Codecademy's design system for the web.
+template: splash
+hero:
+  tagline: Codecademy's design system for the web — components, tokens, and guidance for building consistent, accessible product UI.
+  actions:
+    - text: Get started
+      link: /getting-started/installation/
+      icon: right-arrow
+    - text: Browse components
+      link: /components/
+      icon: right-arrow
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Getting started" icon="rocket">
+    Install Gamut and build your first page, step by step.
+
+    [Start the tutorial →](/getting-started/installation/)
+
+  </Card>
+  <Card title="Guides" icon="open-book">
+    Task-oriented recipes: theming an app, building a form, supporting dark
+    mode, and more.
+
+    [Browse guides →](/guides/)
+
+  </Card>
+  <Card title="Components" icon="puzzle">
+    Every component, grouped by what it does — Actions, Containers, Inputs &
+    forms, Navigation, Feedback, Status, Overlays, Data display, Typography,
+    Media & assets, Utilities.
+
+    [Browse components →](/components/)
+
+  </Card>
+  <Card title="Concepts" icon="magnifier">
+    The reasoning behind the system: architecture, theming, color modes,
+    brand, and voice.
+
+    [Read concepts →](/concepts/)
+
+  </Card>
+</CardGrid>
