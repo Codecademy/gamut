@@ -16,6 +16,8 @@ module.exports = {
     'gamut/no-inline-style': 'error',
     'gamut/import-paths': 'error',
     'import/no-extraneous-dependencies': 'off',
+    // Allow the idiomatic `== null` / `!= null` nullish checks.
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
   },
 
   overrides: [
@@ -29,6 +31,13 @@ module.exports = {
       files: ['*.mdx'],
       rules: {
         'gamut/import-paths': 'off',
+        /*
+         * These JS/TS rules misfire on MDX: import/namespace can't parse the
+         * imported workspace packages, and no-unused-expressions flags inline
+         * prose expressions like `{'>'}`. They aren't meaningful for MDX docs.
+         */
+        'import/namespace': 'off',
+        '@typescript-eslint/no-unused-expressions': 'off',
       },
     },
     {
@@ -50,6 +59,19 @@ module.exports = {
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
+        /*
+         * typescript-eslint v8 successors of ban-types / no-empty-interface,
+         * which the shared @codecademy/eslint-config already disables. mono
+         * disables no-empty-object-type as well. Revisit if we adopt them.
+         */
+        '@typescript-eslint/no-empty-object-type': 'off',
+        '@typescript-eslint/no-wrapper-object-types': 'off',
+        /*
+         * New v8 type-aware rule. It flags long-standing ReactNode -> string
+         * coercions for aria labels / ids that are strings at runtime. Hardening
+         * those is an a11y effort of its own, out of scope for the lint bump.
+         */
+        '@typescript-eslint/no-base-to-string': 'off',
         'import/no-cycle': 'off',
         'react/no-unknown-property': [
           'error',
