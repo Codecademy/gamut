@@ -2,7 +2,15 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "module": "commonjs",
+    /*
+     * @typescript-eslint/rule-tester (and the @typescript-eslint/utils/ts-eslint
+     * subpath it depends on) expose their types only via the package "exports"
+     * field, which classic ("node") moduleResolution can't read. Use nodenext
+     * for the test compile so those subpaths resolve; the package is not
+     * "type": "module", so emit stays CommonJS for ts-jest.
+     */
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "outDir": "./dist",
     "types": ["jest", "node"]
   },

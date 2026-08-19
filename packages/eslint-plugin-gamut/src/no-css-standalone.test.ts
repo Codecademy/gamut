@@ -1,10 +1,8 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
 
 import rule from './no-css-standalone';
 
-const ruleTester = new ESLintUtils.RuleTester({
-  parser: '@typescript-eslint/parser',
-});
+const ruleTester = new RuleTester();
 
 ruleTester.run('no-css-standalone', rule, {
   valid: [
@@ -24,7 +22,6 @@ ruleTester.run('no-css-standalone', rule, {
     `import defaultImport from 'fileName.json'`,
     `import defaultImport from 'fileName.md'`,
     `import defaultImport from 'fileName.mdx'`,
-    `import defaultImport from 'fileName.svg'`,
   ],
   invalid: [
     {

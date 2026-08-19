@@ -11,7 +11,7 @@ export default createRule({
     return {
       TaggedTemplateExpression(node) {
         if (node.tag.type === AST_NODE_TYPES.MemberExpression) {
-          if (node.tag.object.type !== 'Identifier') return;
+          if (node.tag.object.type !== AST_NODE_TYPES.Identifier) return;
           const expressionVariable = node.tag.object.name;
           const arrowFuncExpression = node.quasi.expressions[0];
 
@@ -48,7 +48,6 @@ export default createRule({
   meta: {
     docs: {
       description: 'Prefer themed style utility',
-      recommended: 'error',
     },
     fixable: 'code',
     messages: {
