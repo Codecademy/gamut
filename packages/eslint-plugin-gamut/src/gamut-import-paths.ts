@@ -59,6 +59,7 @@ export default createRule({
   meta: {
     docs: {
       description: 'Ensure Gamut import statements have proper module paths.',
+      recommended: false,
     },
     fixable: 'code',
     messages: {

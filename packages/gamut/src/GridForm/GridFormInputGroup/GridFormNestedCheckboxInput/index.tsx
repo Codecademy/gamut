@@ -39,7 +39,7 @@ export const GridFormNestedCheckboxInput: React.FC<
       return;
 
     const expandedValues = [...field.defaultValue];
-    field.defaultValue.forEach((value) =>
+    field.defaultValue.forEach((value: string) =>
       expandedValues.push(...getAllDescendants(value, flatOptions))
     );
 

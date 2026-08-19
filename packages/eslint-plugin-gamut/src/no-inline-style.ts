@@ -22,6 +22,7 @@ export default createRule({
   meta: {
     docs: {
       description: 'Disallow inline style props on JSX elements.',
+      recommended: false,
     },
     messages: {
       noInlineStyle:

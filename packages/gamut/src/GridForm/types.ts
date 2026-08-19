@@ -3,8 +3,11 @@ import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
 import { BoxProps } from '../Box';
 import { MinimalCheckboxProps } from '../ConnectedForm';
-import { CheckboxLabelUnion, TextAreaProps } from '../Form';
-import { CheckboxPaddingProps } from '../Form/types';
+import {
+  CheckboxLabelUnion,
+  CheckboxPaddingProps,
+  TextAreaProps,
+} from '../Form';
 import { ColumnProps } from '../Layout';
 import { InfoTipSubComponentProps } from '../Tip/InfoTip/type-utils';
 import { Text, TextProps } from '../Typography/Text';

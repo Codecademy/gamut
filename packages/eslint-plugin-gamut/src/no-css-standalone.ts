@@ -15,6 +15,7 @@ export default createRule({
   meta: {
     docs: {
       description: 'Ensure no standalone .css or .scss files.',
+      recommended: false,
     },
     messages: {
       noCssStandalone:
