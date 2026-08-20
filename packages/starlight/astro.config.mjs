@@ -7,6 +7,9 @@ import { defineConfig } from 'astro/config';
 // Components + Reference (reference), Concepts (explanation).
 export default defineConfig({
   site: 'https://gamut.codecademy.com',
+  server: {
+    port: 3333,
+  },
   vite: {
     ssr: {
       // CommonJS modules imported with named imports inside @codecademy/gamut.
