@@ -80,14 +80,14 @@ export const patternFadeInOut = {
     opacity: 1,
     transition: {
       duration: timingValues.medium / 1000,
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
     },
   },
   animate: {
     opacity: 0,
     transition: {
       duration: timingValues.medium / 1000,
-      ease: 'easeIn',
+      ease: 'easeIn' as const,
     },
   },
 };

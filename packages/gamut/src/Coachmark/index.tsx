@@ -30,7 +30,7 @@ export type CoachmarkProps = PopoverFocusProps & {
   /**
    * Function that returns the contents of the coachmark.
    */
-  renderPopover: (onDismiss?: () => void) => JSX.Element;
+  renderPopover: (onDismiss?: () => void) => React.JSX.Element;
   /**
    * Props to be passed into the popover component.
    */
