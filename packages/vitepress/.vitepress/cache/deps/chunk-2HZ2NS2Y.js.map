@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../node_modules/get-nonce/dist/es2015/index.js"],
+  "sourcesContent": ["var currentNonce;\nexport var setNonce = function (nonce) {\n    currentNonce = nonce;\n};\nexport var getNonce = function () {\n    if (currentNonce) {\n        return currentNonce;\n    }\n    if (typeof __webpack_nonce__ !== 'undefined') {\n        return __webpack_nonce__;\n    }\n    return undefined;\n};\n"],
+  "mappings": ";AAAA,IAAI;AACG,IAAI,WAAW,SAAU,OAAO;AACnC,iBAAe;AACnB;AACO,IAAI,WAAW,WAAY;AAC9B,MAAI,cAAc;AACd,WAAO;AAAA,EACX;AACA,MAAI,OAAO,sBAAsB,aAAa;AAC1C,WAAO;AAAA,EACX;AACA,SAAO;AACX;",
+  "names": []
+}

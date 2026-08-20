@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../node_modules/@vidstack/react/dev/chunks/vidstack-CvY7pagE.js"],
+  "sourcesContent": ["\"use client\"\n\nimport { scoped } from './vidstack-CH225ns1.js';\nimport { HTMLMediaProvider, HTMLAirPlayAdapter } from './vidstack-C-WrcxmD.js';\nimport 'react';\nimport '@floating-ui/dom';\n\nclass AudioProvider extends HTMLMediaProvider {\n  $$PROVIDER_TYPE = \"AUDIO\";\n  get type() {\n    return \"audio\";\n  }\n  airPlay;\n  constructor(audio, ctx) {\n    super(audio, ctx);\n    scoped(() => {\n      this.airPlay = new HTMLAirPlayAdapter(this.media, ctx);\n    }, this.scope);\n  }\n  setup() {\n    super.setup();\n    if (this.type === \"audio\") this.ctx.notify(\"provider-setup\", this);\n  }\n  /**\n   * The native HTML `<audio>` element.\n   *\n   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement}\n   */\n  get audio() {\n    return this.media;\n  }\n}\n\nexport { AudioProvider };\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAIA,mBAAO;AAGP,IAAM,gBAAN,cAA4B,kBAAkB;AAAA,EAM5C,YAAY,OAAO,KAAK;AACtB,UAAM,OAAO,GAAG;AANlB,2CAAkB;AAIlB;AAGE,WAAO,MAAM;AACX,WAAK,UAAU,IAAI,mBAAmB,KAAK,OAAO,GAAG;AAAA,IACvD,GAAG,KAAK,KAAK;AAAA,EACf;AAAA,EATA,IAAI,OAAO;AACT,WAAO;AAAA,EACT;AAAA,EAQA,QAAQ;AACN,UAAM,MAAM;AACZ,QAAI,KAAK,SAAS,QAAS,MAAK,IAAI,OAAO,kBAAkB,IAAI;AAAA,EACnE;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAMA,IAAI,QAAQ;AACV,WAAO,KAAK;AAAA,EACd;AACF;",
+  "names": []
+}
