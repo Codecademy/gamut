@@ -1,3 +1,20 @@
+# 1.0.0 (2026-08-20)
+
+### ⚠️  Breaking Changes
+
+- React 18+19 compatibility: workspace on React 19; peers support React 18.3 and 19. Includes eslint-plugin-gamut and core Gamut packages (major bumps per plan). ([#3328](https://github.com/Codecademy/gamut/pull/3328), [#3384](https://github.com/Codecademy/gamut/issues/3384))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 21.0.0
+- Updated variance to 1.0.0
+
+### ❤️ Thank You
+
+- Amy Resnik @aresnik11
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
 ## 0.10.35 (2026-08-03)
 
 ### 🧱 Updated Dependencies

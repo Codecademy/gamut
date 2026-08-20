@@ -12,14 +12,15 @@
  *   npx nx run gamut-release:alpha --preid=alpha.abc123 [--manifest[=path]]
  */
 
+import { writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
+
 import { Command } from '@commander-js/extra-typings';
 import {
   createProjectGraphAsync,
   readJsonFile,
   workspaceRoot,
 } from '@nx/devkit';
-import { writeFile } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
 import { releasePublish, releaseVersion } from 'nx/release/index.js';
 
 type AlphaReleaseOptions = {
