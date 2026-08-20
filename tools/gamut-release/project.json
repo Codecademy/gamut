@@ -5,7 +5,7 @@
   "projectType": "library",
   "tags": ["scope:nx"],
   "targets": {
-    "alpha": {
+    "pre-release": {
       "executor": "nx:run-commands",
       "options": {
         "commands": ["node tools/gamut-release/src/main.ts"],

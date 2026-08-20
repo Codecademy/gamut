@@ -6,10 +6,10 @@
  *
  * This script uses the Nx Release programmatic API to publish alpha versions
  * of packages. It is designed to run in CI for pull requests via the Nx target
- * `gamut-release:alpha`, which injects the required Node experimental flags.
+ * `gamut-release:pre-release`, which injects the required Node experimental flags.
  *
  * Usage:
- *   npx nx run gamut-release:alpha --preid=alpha.abc123 [--manifest[=path]]
+ *   npx nx run gamut-release:pre-release --preid=alpha.abc123 [--publish-tag=beta] [--manifest[=path]]
  */
 
 import { writeFile } from 'node:fs/promises';
@@ -25,6 +25,7 @@ import { releasePublish, releaseVersion } from 'nx/release/index.js';
 
 type AlphaReleaseOptions = {
   preid: string;
+  publishTag?: string;
   dryRun?: boolean;
   verbose?: boolean;
   manifest?: string | boolean;
@@ -111,6 +112,10 @@ const program = new Command()
   .name('gamut-release-alpha')
   .description('Publish alpha versions of packages using Nx Release.')
   .requiredOption('--preid <preid>', 'Prerelease identifier, e.g. alpha.abc123')
+  .option(
+    '--publish-tag <tag>',
+    'npm dist-tag for publish (defaults to the same value as --preid)'
+  )
   .option('-d, --dry-run', 'Run without publishing')
   .option('--verbose', 'Enable verbose logging')
   .option(
@@ -123,6 +128,7 @@ program.parse(process.argv);
 const options = program.opts();
 
 const preidArg = options.preid;
+const publishTagArg = options.publishTag?.trim() || preidArg;
 const dryRun = options.dryRun ?? false;
 const verbose = options.verbose ?? false;
 const manifestPath = resolveManifestPath(options.manifest);
@@ -163,10 +169,12 @@ async function releaseAlpha(): Promise<never> {
       });
     }
 
-    // Step 2: Publish packages with alpha tag
-    console.log(`\n📤 Publishing packages with tag: ${preidArg}...`);
+    // Step 2: Publish packages
+    console.log(
+      `\n📤 Publishing packages with npm dist-tag: ${publishTagArg}...`
+    );
     const publishStatus = await releasePublish({
-      tag: preidArg,
+      tag: publishTagArg,
       dryRun,
       verbose,
     });

@@ -1,8 +1,8 @@
-name: Publish Alpha
+name: Publish Beta
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [labeled]
 
 env:
   NODE_VERSION: '22.13.1'
@@ -22,21 +22,22 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  publish-alpha:
-    if: ${{ !contains(github.event.pull_request.labels.*.name, 'beta') }}
+  publish-beta:
+    if: github.event.label.name == 'beta' && github.event.pull_request.head.ref == 'cass-gmt-1607-publish'
     runs-on: ubuntu-22.04
     timeout-minutes: 30
     steps:
+      - uses: actions/checkout@v4
+
       - uses: ./.github/actions/prerelease-publish
         with:
           node-auth-token: ${{ secrets.NODE_AUTH_TOKEN }}
           gh-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
-          manifest-path: alpha-publish-manifest.json
-          comment-path: alpha-publish-comment.md
-          comment-title: Published Alpha Packages
-          sticky-header: Alpha Packages
+          manifest-path: beta-publish-manifest.json
+          comment-path: beta-publish-comment.md
+          comment-title: 'Published Beta Packages (install with `@beta`):'
+          sticky-header: Beta Packages
           publish-run: |
-            SHORT_SHA=${GITHUB_SHA:0:6}
-            PREID="alpha.${SHORT_SHA}"
-            npx nx run gamut-release:pre-release --preid="${PREID}" --manifest
+            PREID="beta.pr${{ github.event.pull_request.number }}.${{ github.run_id }}"
+            npx nx run gamut-release:pre-release --preid="${PREID}" --publish-tag=beta --manifest=beta-publish-manifest.json
