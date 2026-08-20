@@ -537,7 +537,7 @@ export const defaultColumns = [
 ];
 
 export const getPropRows = (key: keyof typeof ALL_PROPS) =>
-  // eslint-disable-next-line import/namespace -- dynamic key access on a namespace import can't be statically validated
+  // eslint-disable-next-line import/namespace -- dynamic keyof on namespace import
   Object.entries(ALL_PROPS[key]).map(([prop, config]) => ({
     id: prop,
     ...config,

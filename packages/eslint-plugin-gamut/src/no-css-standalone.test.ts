@@ -1,8 +1,10 @@
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import { TSESLint } from '@typescript-eslint/utils';
 
 import rule from './no-css-standalone';
 
-const ruleTester = new RuleTester();
+const ruleTester = new TSESLint.RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+});
 
 ruleTester.run('no-css-standalone', rule, {
   valid: [

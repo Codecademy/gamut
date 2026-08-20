@@ -1,8 +1,10 @@
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import { TSESLint } from '@typescript-eslint/utils';
 
 import rule from './prefer-themed';
 
-const ruleTester = new RuleTester();
+const ruleTester = new TSESLint.RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+});
 
 ruleTester.run('prefer-themed', rule, {
   valid: [

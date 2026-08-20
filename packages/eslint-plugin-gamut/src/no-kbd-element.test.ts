@@ -1,13 +1,12 @@
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import { TSESLint } from '@typescript-eslint/utils';
 
 import rule from './no-kbd-element';
 
-const ruleTester = new RuleTester({
-  languageOptions: {
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
-      },
+const ruleTester = new TSESLint.RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
   },
 });
