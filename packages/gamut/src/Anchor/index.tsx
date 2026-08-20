@@ -1,9 +1,19 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
+import {
+  ComponentProps,
+  ComponentType,
+  forwardRef,
+  HTMLProps,
+  Ref,
+} from 'react';
 
-import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
+import {
+  ButtonBase,
+  ButtonSelectors,
+  narrowButtonBaseRef,
+} from '../ButtonBase/ButtonBase';
 import { AppendedIconProps, appendIconToContent } from '../helpers';
 
 export interface AnchorProps
@@ -107,10 +117,17 @@ const anchorProps = variance.compose(
   system.typography
 );
 
-export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
+const AnchorBaseStyled = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorVariants,
   anchorProps
 );
+
+/** AnchorBase ref accepts anchor or button because it can render as ButtonBase when there is no href. */
+export const AnchorBase = AnchorBaseStyled as ComponentType<
+  Omit<ComponentProps<typeof AnchorBaseStyled>, 'ref'> & {
+    ref?: Ref<HTMLAnchorElement | HTMLButtonElement | null>;
+  }
+>;
 
 type AnchorBaseProps =
   | ComponentProps<typeof AnchorBase>
@@ -150,7 +167,7 @@ export const Anchor = forwardRef<
       return (
         <AnchorBase
           as={ButtonBase}
-          ref={ref as RefObject<HTMLAnchorElement>}
+          ref={narrowButtonBaseRef<HTMLButtonElement>(ref)}
           variant={variant}
           {...rest}
         >
@@ -161,7 +178,7 @@ export const Anchor = forwardRef<
 
     return (
       <AnchorBase
-        ref={ref as RefObject<HTMLAnchorElement>}
+        ref={narrowButtonBaseRef<HTMLAnchorElement>(ref)}
         variant={variant}
         {...rest}
       >
