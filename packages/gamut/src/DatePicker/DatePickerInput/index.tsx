@@ -20,10 +20,10 @@ import { SegmentedShell } from './elements';
 import { DatePickerInputSegment } from './Segment';
 import { SegmentLiteral } from './Segment/elements';
 import {
-  type SegmentValues,
   getDateSegmentsFromDate,
   normalizeSegmentValues,
   parseSegmentsToDate,
+  type SegmentValues,
 } from './Segment/utils';
 import {
   type DatePartKind,
