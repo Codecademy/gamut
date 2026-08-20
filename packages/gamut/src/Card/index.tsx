@@ -37,6 +37,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <MotionBox
+      animate={initialVariant}
       height={height}
       initial={initialVariant}
       position="relative"
