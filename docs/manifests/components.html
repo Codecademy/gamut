@@ -582,7 +582,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>6.1s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.9s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -14071,7 +14071,7 @@ export const parameters = {
 
 Use `DelayedRenderWrapper` to wrap around a component that you want to delay rendering for a specified amount of time.
 
-The `delay` prop accepts a number in milliseconds. If a `delay` {&#39;&gt;&#39;} 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
+The `delay` prop accepts a number in milliseconds. If a `delay` value greater than 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
 
 ## Playground
 
@@ -32048,7 +32048,7 @@ export const Alignment: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt
                 justifyContent=&quot;center&quot;
               &gt;
                 {alignment.split(&#39;-&#39;).map((val) =&gt; (
-                  &lt;Text as=&quot;p&quot; variant=&quot;p-small&quot;&gt;
+                  &lt;Text as=&quot;p&quot; key={val} variant=&quot;p-small&quot;&gt;
                     {val}
                   &lt;/Text&gt;
                 ))}
@@ -32329,7 +32329,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
                 justifyContent=&quot;center&quot;
               &gt;
                 {alignment.split(&#39;-&#39;).map((val) =&gt; (
-                  &lt;Text as=&quot;p&quot; variant=&quot;p-small&quot;&gt;
+                  &lt;Text as=&quot;p&quot; key={val} variant=&quot;p-small&quot;&gt;
                     {val}
                   &lt;/Text&gt;
                 ))}
@@ -32620,7 +32620,7 @@ Addition pixel offset from center in the direction of the alignment (e.g. top-le
 
 ### Individual axis offsets `x` and `y`
 
-Absolute offset values irrespective of the relative position. (e.g. x={-4} will be 4 pixels to the left in every position unlike offset).
+Absolute offset values irrespective of the relative position. (e.g. `x={-4}` will be 4 pixels to the left in every position unlike offset).
 
 &lt;Canvas of={PopoverContainerStories.XAndY} /&gt;
 
@@ -37512,8 +37512,13 @@ Pass an `inputProps` object with `hidden` and `combobox` keys to forward attribu
 - `combobox`: forwarded to the visible react-select input
 
 &lt;Callout
-  text=&quot;These props are passed directly to the underlying elements, so they only
-  accept `data-*` and `aria-*` attributes to ensure validity.&quot;
+  text={
+    &lt;&gt;
+      These props are passed directly to the underlying elements, so they only
+      accept &lt;code&gt;data-*&lt;/code&gt; and &lt;code&gt;aria-*&lt;/code&gt; attributes to ensure
+      validity.
+    &lt;/&gt;
+  }
 /&gt;
 
 &lt;Canvas of={SelectDropdownStories.CustomInputProps} /&gt;
@@ -42057,6 +42062,7 @@ export const Alignments: Story = {
         return (
           &lt;IconButton
             icon={SparkleIcon}
+            key={alignment}
             tip={alignment}
             tipProps={{ alignment }}
           /&gt;
@@ -42287,6 +42293,7 @@ export const HorizontalAlignments: Story = {
       return (
         &lt;IconButton
           icon={SparkleIcon}
+          key={alignment}
           tip={alignment}
           tipProps={{ alignment }}
         /&gt;
@@ -56381,7 +56388,7 @@ export const parameters = {
 
 Use `DelayedRenderWrapper` to wrap around a component that you want to delay rendering for a specified amount of time.
 
-The `delay` prop accepts a number in milliseconds. If a `delay` {&#39;&gt;&#39;} 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
+The `delay` prop accepts a number in milliseconds. If a `delay` value greater than 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
 
 ## Playground
 
@@ -74358,7 +74365,7 @@ export const Alignment: React.FC&lt;ComponentProps&lt;typeof PopoverContainer&gt
                 justifyContent=&quot;center&quot;
               &gt;
                 {alignment.split(&#39;-&#39;).map((val) =&gt; (
-                  &lt;Text as=&quot;p&quot; variant=&quot;p-small&quot;&gt;
+                  &lt;Text as=&quot;p&quot; key={val} variant=&quot;p-small&quot;&gt;
                     {val}
                   &lt;/Text&gt;
                 ))}
@@ -74639,7 +74646,7 @@ import { FlexBox, PopoverContainer, Text } from "@codecademy/gamut";</code></pre
                 justifyContent=&quot;center&quot;
               &gt;
                 {alignment.split(&#39;-&#39;).map((val) =&gt; (
-                  &lt;Text as=&quot;p&quot; variant=&quot;p-small&quot;&gt;
+                  &lt;Text as=&quot;p&quot; key={val} variant=&quot;p-small&quot;&gt;
                     {val}
                   &lt;/Text&gt;
                 ))}
@@ -74930,7 +74937,7 @@ Addition pixel offset from center in the direction of the alignment (e.g. top-le
 
 ### Individual axis offsets `x` and `y`
 
-Absolute offset values irrespective of the relative position. (e.g. x={-4} will be 4 pixels to the left in every position unlike offset).
+Absolute offset values irrespective of the relative position. (e.g. `x={-4}` will be 4 pixels to the left in every position unlike offset).
 
 &lt;Canvas of={PopoverContainerStories.XAndY} /&gt;
 
@@ -79822,8 +79829,13 @@ Pass an `inputProps` object with `hidden` and `combobox` keys to forward attribu
 - `combobox`: forwarded to the visible react-select input
 
 &lt;Callout
-  text=&quot;These props are passed directly to the underlying elements, so they only
-  accept `data-*` and `aria-*` attributes to ensure validity.&quot;
+  text={
+    &lt;&gt;
+      These props are passed directly to the underlying elements, so they only
+      accept &lt;code&gt;data-*&lt;/code&gt; and &lt;code&gt;aria-*&lt;/code&gt; attributes to ensure
+      validity.
+    &lt;/&gt;
+  }
 /&gt;
 
 &lt;Canvas of={SelectDropdownStories.CustomInputProps} /&gt;
@@ -84367,6 +84379,7 @@ export const Alignments: Story = {
         return (
           &lt;IconButton
             icon={SparkleIcon}
+            key={alignment}
             tip={alignment}
             tipProps={{ alignment }}
           /&gt;
@@ -84597,6 +84610,7 @@ export const HorizontalAlignments: Story = {
       return (
         &lt;IconButton
           icon={SparkleIcon}
+          key={alignment}
           tip={alignment}
           tipProps={{ alignment }}
         /&gt;
@@ -85577,7 +85591,7 @@ type BreakpointArray&lt;T&gt; = [
   T?, // sm
   T?, // md
   T?, // lg
-  T? // xl
+  T?, // xl
   T?, // c_xs
   T?, // c_sm
   T?, // c_md
@@ -85594,16 +85608,13 @@ type SystemProp&lt;T&gt; = T | BreakpointMap&lt;T&gt; | BreakpointArray&lt;T&gt;
 import { Box } from &#39;@codecademy/gamut&#39;;
 
 // Object Syntax
-&lt;Box width={{ _: &quot;100%&quot;, sm: &quot;50%&quot; }} /&gt;
+&lt;Box width={{ _: &#39;100%&#39;, sm: &#39;50%&#39; }} /&gt;
 
 // Array Syntax
-&lt;Box width={[&quot;100%&quot;, ,&quot;50%&quot;]} /&gt;
+&lt;Box width={[&#39;100%&#39;, , &#39;50%&#39;]} /&gt;
 ```
 
-&lt;Callout
-  text=&quot;If you wish to skip a breakpoint in using the
-    array shorthand you may specify undefined at the index.&quot;
-/&gt;
+&lt;Callout text=&quot;If you wish to skip a breakpoint when using the array shorthand you may specify undefined at the index.&quot; /&gt;
 
 ## Real-world use cases
 
@@ -89409,6 +89420,7 @@ For spacing between components and sections use these as a guide. Each of these 
           &gt;
             {sizes.map((size) =&gt; (
               &lt;Box
+                key={`box-${size}`}
                 width={`${size}px`}
                 height={`${size}px`}
                 display=&quot;inline-block&quot;
@@ -89416,7 +89428,7 @@ For spacing between components and sections use these as a guide. Each of these 
               /&gt;
             ))}
             {sizes.map((size) =&gt; (
-              &lt;Box textAlign=&quot;center&quot; fontSize={14}&gt;
+              &lt;Box key={`label-${size}`} textAlign=&quot;center&quot; fontSize={14}&gt;
                 {size}
               &lt;/Box&gt;
             ))}
