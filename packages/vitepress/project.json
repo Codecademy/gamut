@@ -1,0 +1,24 @@
+{
+  "name": "vitepress-docs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/vitepress",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "docs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/vitepress",
+        "command": "yarn docs:dev"
+      }
+    },
+    "build-docs": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/packages/vitepress/.vitepress/dist"],
+      "options": {
+        "cwd": "packages/vitepress",
+        "command": "yarn docs:build"
+      }
+    }
+  }
+}

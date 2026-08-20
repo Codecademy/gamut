@@ -1,0 +1,26 @@
+{
+  "name": "@codecademy/vitepress-docs",
+  "description": "Gamut documentation site (VitePress), following ADR 0001's information architecture",
+  "version": "0.1.0",
+  "dependencies": {
+    "@codecademy/gamut": "workspace:*",
+    "@codecademy/gamut-icons": "workspace:*",
+    "@codecademy/gamut-styles": "workspace:*",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.0"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "docs:build": "vitepress build .",
+    "docs:dev": "vitepress dev . --port 7777",
+    "docs:preview": "vitepress preview . --port 7777"
+  },
+  "type": "module"
+}
