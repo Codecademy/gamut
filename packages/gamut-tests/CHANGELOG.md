@@ -1,3 +1,34 @@
+## 7.0.1 (2026-08-24)
+
+### 🩹 Fixes
+
+- Just whitespace changes in the changelog for eslint-plugin-gamut, gamut-illustrations, gamut-patterns, gamut-icons, gamut-tests, and variance packages. ([#3410](https://github.com/Codecademy/gamut/pull/3410))
+  For gamut-styles, adds a themed elevation scale for shadows to Gamut and updates Card to use this new theme.
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 21.1.0
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 7.0.0 (2026-08-20)
+
+### ⚠️ Breaking Changes
+
+- React 18+19 compatibility: workspace on React 19; peers support React 18.3 and 19. Includes eslint-plugin-gamut and core Gamut packages (major bumps per plan). ([#3328](https://github.com/Codecademy/gamut/pull/3328), [#3384](https://github.com/Codecademy/gamut/issues/3384))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 21.0.0
+
+### ❤️ Thank You
+
+- Amy Resnik @aresnik11
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
 ## 6.0.6 (2026-08-03)
 
 ### 🧱 Updated Dependencies

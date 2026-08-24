@@ -50,7 +50,13 @@ export const renderColumnChildren = (
       {...props}
       rowspan={span ? span[i] : undefined}
     >
-      <Example>{`${props?.size?.toString()}`}</Example>
+      <Example>
+        {props?.size !== undefined &&
+        props.size !== null &&
+        (typeof props.size === 'string' || typeof props.size === 'number')
+          ? String(props.size)
+          : ''}
+      </Example>
     </Column>
   ));
 };

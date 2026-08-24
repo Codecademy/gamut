@@ -1,10 +1,15 @@
+import { AST_NODE_TYPES } from '@typescript-eslint/utils';
+
 import { createRule } from './createRule';
 
 export default createRule({
   create(context) {
     return {
       JSXAttribute(node) {
-        if (node.name.type === 'JSXIdentifier' && node.name.name === 'style') {
+        if (
+          node.name.type === AST_NODE_TYPES.JSXIdentifier &&
+          node.name.name === 'style'
+        ) {
           context.report({
             messageId: 'noInlineStyle',
             node,
@@ -17,7 +22,6 @@ export default createRule({
   meta: {
     docs: {
       description: 'Disallow inline style props on JSX elements.',
-      recommended: 'error',
     },
     messages: {
       noInlineStyle:
