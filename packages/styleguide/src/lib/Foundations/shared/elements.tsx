@@ -3,13 +3,14 @@ import {
   Background,
   coreSwatches,
   css,
+  ElevationState,
   lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
-import { useTheme } from '@emotion/react';
+import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
 import { useMemo } from 'react';
@@ -542,3 +543,75 @@ export const getPropRows = (key: keyof typeof ALL_PROPS) =>
     id: prop,
     ...config,
   }));
+
+const ElevationExample = styled(Box)<{
+  exampleShadow?: string;
+  exampleTransform?: string;
+}>(
+  css({
+    bg: 'background-current',
+    border: 1,
+    display: 'inline-block',
+    height: '3rem',
+    verticalAlign: 'top',
+    width: '5rem',
+  }),
+  ({ exampleShadow, exampleTransform }) => ({
+    boxShadow: exampleShadow,
+    transform: exampleTransform,
+  })
+);
+
+const elevationStates: ElevationState[] = ['rest', 'hover', 'hoverMirrored'];
+
+export const createElevationTable = (elevationScale: Theme['elevation']) => ({
+  rows: elevationStates.map((id) => ({
+    id,
+    shadow: elevationScale[`${id}-shadow`],
+    transform: elevationScale[`${id}-transform`],
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id }: any) => (
+        <Box display="grid" gap={4}>
+          <Code>{`theme.elevation['${id}-shadow']`}</Code>
+          <Code>{`theme.elevation['${id}-transform']`}</Code>
+        </Box>
+      ),
+    },
+    {
+      key: 'value',
+      name: 'Value',
+      size: 'lg',
+      render: ({ shadow, transform }: any) => (
+        <Box display="grid" gap={4} maxWidth="24rem">
+          <Code>{shadow}</Code>
+          <Code>{transform}</Code>
+        </Box>
+      ),
+    },
+    {
+      key: 'example',
+      name: 'Example',
+      size: 'fill',
+      render: ({ shadow, transform }: any) => (
+        <Box
+          border={1}
+          borderColor="border-tertiary"
+          borderStyle="dashed"
+          display="inline-block"
+          m={12}
+        >
+          <ElevationExample
+            exampleShadow={shadow}
+            exampleTransform={transform}
+          />
+        </Box>
+      ),
+    },
+  ],
+});
+
+export const elevation = createElevationTable(theme.elevation);
