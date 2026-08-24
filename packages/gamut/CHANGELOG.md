@@ -1,3 +1,23 @@
+## 73.1.0 (2026-08-24)
+
+### 🚀 Features
+
+- Just whitespace changes in the changelog for eslint-plugin-gamut, gamut-illustrations, gamut-patterns, gamut-icons, gamut-tests, and variance packages. ([#3410](https://github.com/Codecademy/gamut/pull/3410))
+  For gamut-styles, adds a themed elevation scale for shadows to Gamut and updates Card to use this new theme.
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-illustrations to 1.0.1
+- Updated gamut-patterns to 1.0.1
+- Updated gamut-styles to 21.1.0
+- Updated gamut-icons to 10.0.1
+- Updated gamut-tests to 7.0.1
+- Updated variance to 1.0.1
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 # 73.0.0 (2026-08-20)
 
 ### ⚠️ Breaking Changes
