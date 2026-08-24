@@ -1,11 +1,11 @@
 import { ComponentProps, forwardRef } from 'react';
 
-import { MenuList } from './elements';
+import { List } from './elements';
 import { MenuProvider, useMenu } from './MenuContext';
 
 export const Menu = forwardRef<
   HTMLUListElement | HTMLOListElement,
-  Omit<ComponentProps<typeof MenuList>, 'root'>
+  Omit<ComponentProps<typeof List>, 'root'>
 >(
   (
     { children, variant = 'popover', spacing = 'normal', role, ...rest },
@@ -14,9 +14,9 @@ export const Menu = forwardRef<
     const currentContext = useMenu({ variant, role, spacing });
 
     return (
-      <MenuList {...rest} {...currentContext} ref={ref}>
+      <List {...rest} {...currentContext} ref={ref}>
         <MenuProvider value={currentContext}>{children}</MenuProvider>
-      </MenuList>
+      </List>
     );
   }
 );

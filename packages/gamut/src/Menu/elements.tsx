@@ -31,7 +31,7 @@ const listProps = variance.compose(
   system.color
 );
 
-export interface MenuListProps extends ListStyleProps, StyleStateProps {
+export interface ListProps extends ListStyleProps, StyleStateProps {
   /** How offset spacing should be */
   spacing?: 'normal' | 'condensed';
   /** Menu variants for specific use cases and styles */
@@ -43,7 +43,7 @@ export interface MenuListProps extends ListStyleProps, StyleStateProps {
   showBorder?: boolean;
 }
 
-const StyledList = styled('ul', styledOptions<'ul'>())<MenuListProps>(
+const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
   system.css({
     listStyle: 'none',
     width: 1,
@@ -67,7 +67,7 @@ const StyledList = styled('ul', styledOptions<'ul'>())<MenuListProps>(
   listProps
 );
 
-export const MenuList = forwardRef<
+export const List = forwardRef<
   HTMLUListElement,
   ComponentProps<typeof StyledList>
 >(({ context = true, m = 0, root = true, variant, ...rest }, ref) => (
@@ -192,17 +192,14 @@ const sizeVariants = system.variant({
   },
 });
 
-export interface MenuListItemProps
+export interface ListItemProps
   extends ListStyleProps,
     StyleStateProps,
     StyleProps<typeof interactiveVariants>,
     StyleProps<typeof activeStates>,
     StyleProps<typeof sizeVariants> {}
 
-export const MenuListItem = styled(
-  'li',
-  styledOptions<'li'>()
-)<MenuListItemProps>(
+export const ListItem = styled('li', styledOptions<'li'>())<ListItemProps>(
   interactiveVariants,
   activeStates,
   sizeVariants,
@@ -210,12 +207,12 @@ export const MenuListItem = styled(
   listProps
 );
 
-export interface MenuListLinkProps extends MenuListItemProps {
+export interface ListLinkProps extends ListItemProps {
   active?: boolean;
   navlink?: boolean;
 }
 
-const StyledListLink = styled('a', styledOptions<'a'>())<MenuListLinkProps>(
+const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   resetStyles,
   interactiveVariants,
   activeStates,
@@ -224,17 +221,17 @@ const StyledListLink = styled('a', styledOptions<'a'>())<MenuListLinkProps>(
   listProps
 );
 
-export const MenuListLink = forwardRef<
+export const ListLink = forwardRef<
   HTMLAnchorElement,
   ComponentProps<typeof StyledListLink>
 >(({ zIndex = 1, ...rest }, ref) => (
   <StyledListLink ref={ref} zIndex={zIndex} {...rest} />
 ));
 
-export const MenuListButton = styled(
+export const ListButton = styled(
   'button',
   styledOptions<'button'>()
-)<MenuListLinkProps>(
+)<ListLinkProps>(
   resetStyles,
   interactiveVariants,
   activeStates,

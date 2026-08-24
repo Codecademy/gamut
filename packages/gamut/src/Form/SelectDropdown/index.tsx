@@ -1,3 +1,6 @@
-export * from './types';
-export { IconOptionComponent } from './elements';
+export type {
+  OptionStrict,
+  ExtendedOption,
+  SelectDropdownGroup,
+} from './types/options';
 export * from './SelectDropdown';

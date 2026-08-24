@@ -6,7 +6,7 @@ import {
   CustomInput,
   CustomValueContainer,
   DropdownButton,
-  IconOptionComponent,
+  IconOption,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
   RemoveAllButton,
@@ -20,7 +20,7 @@ const baseDefaultComponents = {
   ValueContainer: CustomValueContainer,
   MultiValue: MultiValueWithColorMode,
   MultiValueRemove: MultiValueRemoveButton,
-  Option: IconOptionComponent,
+  Option: IconOption,
   SingleValue: AbbreviatedSingleValue,
   Input: CustomInput,
 };

@@ -12,4 +12,3 @@ export * from './inputs/TextArea';
 export * from './inputs/Radio';
 export * from './inputs/RadioGroup';
 export * from './inputs/types';
-export * from './types';

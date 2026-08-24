@@ -8,7 +8,6 @@ export * from './BodyPortal';
 export * from './Box';
 export * from './Breadcrumbs';
 export * from './Button';
-export { ButtonBase } from './ButtonBase';
 export type { ButtonBaseElements } from './ButtonBase/ButtonBase';
 export * from './Card';
 export * from './Coachmark';
@@ -23,6 +22,11 @@ export * from './FeatureShimmer';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
+export type {
+  OptionStrict,
+  ExtendedOption,
+  SelectDropdownGroup,
+} from './Form/SelectDropdown';
 export * from './GridForm';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
@@ -48,7 +52,6 @@ export * from './Toggle';
 export * from './Tip/InfoTip';
 export * from './Tip/PreviewTip';
 export * from './Tip/ToolTip';
-export * from './Tip/shared/types';
 export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';
