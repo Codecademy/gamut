@@ -1559,12 +1559,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:10.0.0, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:10.0.1, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
-    "@codecademy/gamut-styles": "npm:21.0.0"
-    "@codecademy/variance": "npm:1.0.0"
+    "@codecademy/gamut-styles": "npm:21.1.0"
+    "@codecademy/variance": "npm:1.0.1"
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
@@ -1573,11 +1573,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-illustrations@npm:1.0.0, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
+"@codecademy/gamut-illustrations@npm:1.0.1, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-illustrations@workspace:packages/gamut-illustrations"
   dependencies:
-    "@codecademy/gamut-styles": "npm:21.0.0"
+    "@codecademy/gamut-styles": "npm:21.1.0"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1591,23 +1591,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:73.0.0"
-    "@codecademy/gamut-icons": "npm:10.0.0"
-    "@codecademy/gamut-illustrations": "npm:1.0.0"
-    "@codecademy/gamut-patterns": "npm:1.0.0"
-    "@codecademy/gamut-styles": "npm:21.0.0"
-    "@codecademy/gamut-tests": "npm:7.0.0"
-    "@codecademy/variance": "npm:1.0.0"
+    "@codecademy/gamut": "npm:73.1.0"
+    "@codecademy/gamut-icons": "npm:10.0.1"
+    "@codecademy/gamut-illustrations": "npm:1.0.1"
+    "@codecademy/gamut-patterns": "npm:1.0.1"
+    "@codecademy/gamut-styles": "npm:21.1.0"
+    "@codecademy/gamut-tests": "npm:7.0.1"
+    "@codecademy/variance": "npm:1.0.1"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-patterns@npm:1.0.0, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
+"@codecademy/gamut-patterns@npm:1.0.1, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-patterns@workspace:packages/gamut-patterns"
   dependencies:
-    "@codecademy/gamut-styles": "npm:21.0.0"
-    "@codecademy/variance": "npm:1.0.0"
+    "@codecademy/gamut-styles": "npm:21.1.0"
+    "@codecademy/variance": "npm:1.0.1"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1617,11 +1617,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:21.0.0, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:21.1.0, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
-    "@codecademy/variance": "npm:1.0.0"
+    "@codecademy/variance": "npm:1.0.1"
     "@emotion/is-prop-valid": "npm:^1.1.0"
     framer-motion: "npm:^12.0.0"
     get-nonce: "npm:^1.0.0"
@@ -1636,11 +1636,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:7.0.0, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:7.0.1, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:21.0.0"
+    "@codecademy/gamut-styles": "npm:21.1.0"
     component-test-setup: "npm:*"
     lodash: "npm:^4.17.23"
   peerDependencies:
@@ -1648,15 +1648,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:73.0.0, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:73.1.0, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:10.0.0"
-    "@codecademy/gamut-illustrations": "npm:1.0.0"
-    "@codecademy/gamut-patterns": "npm:1.0.0"
-    "@codecademy/gamut-styles": "npm:21.0.0"
-    "@codecademy/variance": "npm:1.0.0"
+    "@codecademy/gamut-icons": "npm:10.0.1"
+    "@codecademy/gamut-illustrations": "npm:1.0.1"
+    "@codecademy/gamut-patterns": "npm:1.0.1"
+    "@codecademy/gamut-styles": "npm:21.1.0"
+    "@codecademy/variance": "npm:1.0.1"
     "@formatjs/intl-locale": "npm:5.3.1"
     "@react-aria/interactions": "npm:3.25.0"
     "@types/marked": "npm:^4.0.8"
@@ -1720,7 +1720,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/variance@npm:1.0.0, @codecademy/variance@workspace:packages/variance":
+"@codecademy/variance@npm:1.0.1, @codecademy/variance@workspace:packages/variance":
   version: 0.0.0-use.local
   resolution: "@codecademy/variance@workspace:packages/variance"
   dependencies:
@@ -9639,11 +9639,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.9.0":
-  version: 2.10.8
-  resolution: "baseline-browser-mapping@npm:2.10.8"
+  version: 2.11.15
+  resolution: "baseline-browser-mapping@npm:2.11.15"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 10c0/a77882e8ac37a900a9a0757b9bf4e50f407829ed17ee7630273ab5da0ae10d9c64ed4c5a1e03afb3490e39713440092417ded4bb856eeb9bd44856eacbd97497
+  checksum: 10c0/d89578cc74cd2d788c3cf2dad73bf2a21c4d1bac27fa5498da17caa1c135fe1f99c968b6f8e41c2eaafde21ac8092ec00ad28746aa01e80156908c2bdcc91f76
   languageName: node
   linkType: hard
 
@@ -9977,9 +9977,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001759":
-  version: 1.0.30001780
-  resolution: "caniuse-lite@npm:1.0.30001780"
-  checksum: 10c0/8a88f39758a228852d6f3ac92362ecb7694b1b2b022f194d8dfe59123ad40a5de6202bf2dff0fe316bb3d5ca9caf316c22056e0da693459c3be2771cde4f4bf9
+  version: 1.0.30001809
+  resolution: "caniuse-lite@npm:1.0.30001809"
+  checksum: 10c0/cac2ed4e66cc6c4cbf126b94d2c02012566eb92f93c89949290f99edcd2bdc4ed1290b5c537ccb9b42c773936a479ed468e5d4e9b8938b126a0947090e42e008
   languageName: node
   linkType: hard
 
