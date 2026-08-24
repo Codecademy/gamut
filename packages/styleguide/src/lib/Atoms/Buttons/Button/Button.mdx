@@ -1,6 +1,6 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 import * as ButtonStories from './Button.stories';
 
@@ -25,7 +25,7 @@ export const parameters = {
 
 ## Usage
 
-We have several versions of buttons that you can use.
+Use a button to trigger an action. We have several versions of buttons that you can use.
 Each supports _light_ and _dark_ mode.
 
 See the [Figma designs](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) for a nice grid view of all the variants.
@@ -33,12 +33,42 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 ### Best practices:
 
-- Use `primary` for high priority actions (e.g. Submit).
-- Use `secondary` for low priority buttons (e.g. Close).
+- A tooltip is required to serve as a label for icon-only buttons
+- Include a leading or trailing icon to reinforce the meaning of the action or to further distinguish the button from other bold text
+- Span the entire width of the parent container when the viewport or container is `<768px` wide. This approach ensures optimal usability and accessibility, especially on mobile devices and narrow layouts.
 
 ### When NOT to use:
 
-- Avoid using a color mode outside of its context (no light buttons on navy backgrounds)
+- **Navigation** - for actions that are purely navigational (e.g., linking to another page or section), use an <LinkTo id="Typography/Anchor">Anchor</LinkTo> link instead.
+
+## Anatomy
+
+<ImageWrapper
+  src="./atoms/button.png"
+  alt="The anatomy of Button components, detailed below."
+/>
+
+1. **Leading icon** _(optional)_
+
+- Use to reinforce the meaning of the action
+
+2. **Label**
+
+- Start with an actionable verb
+- Use sentence case
+- Aim for 3 words maximum
+
+3. **Trailing icon** _(optional)_
+
+- Use to reinforce forward movement or navigation to a new page
+
+4. **Tooltip**
+
+- For labeled buttons, tooltip information should be supplementary to the button label, which will have the primary information
+- For icon-only buttons, start with an actionable verb to specify what the button does
+- Can include a CTA, shortcut, or quick tip
+- Triggered on hover and focus
+
 
 ## Variants
 
