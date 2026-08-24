@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-gamut",
   "description": "Shared eslint plugin for Gamut applications",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
     "@typescript-eslint/utils": "^8.57.0"
