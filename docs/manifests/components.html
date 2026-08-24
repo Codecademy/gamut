@@ -582,7 +582,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.4s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.5s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -90711,6 +90711,16 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 **Key**: `borderRadii`
 
 &lt;TokenTable {...TABLES.borderRadii} /&gt;
+
+## Elevation
+
+**Key**: `elevation`
+
+Elevation describes how a surface (such as `Card`) renders shadow and lift. The scale has three states — `rest`, `hover`, and `hoverMirrored` — each providing a `shadow` and a `transform` token, accessible with a dashcase key `elevation[&#39;${state}-${property}&#39;]`. The `hoverMirrored` state is used when a surface casts its shadow to the right instead of the left (e.g. `Card`&#39;s `patternRight` shadow).
+
+Shadow colors reference the `shadow-primary` color mode alias, so they respond to light and dark mode automatically, and themes can provide their own scale via `addScale(&#39;elevation&#39;, ...)` — Percipio, for example, replaces the hard offset shadow with a soft blurred one and no lift.
+
+&lt;TokenTable {...TABLES.elevation} /&gt;
 </code></pre>
           </div>
         </div>
@@ -91586,6 +91596,14 @@ Percipio currently only supports `light` mode.
 The Percipio theme uses Skillsoft Sans for accent text and Skillsoft Text for body text. Roboto Mono is used for monospace, and Roboto sans-serif for the `system` font family slot.
 
 &lt;TokenTable {...TABLES.percipioFontFamily} /&gt;
+
+## Elevation
+
+**Key**: `elevation`
+
+The Percipio theme provides its own elevation scale: surfaces cast a soft, blurred shadow rather than the Core theme&#39;s hard offset shadow, and they do not lift on hover — every `transform` token is `none`. The scale has the same three states as the Core theme — `rest`, `hover`, and `hoverMirrored` — each providing a `shadow` and a `transform` token accessible with a dashcase key `elevation[&#39;${state}-${property}&#39;]`, so components like `Card` work across themes without changes.
+
+&lt;TokenTable {...TABLES.percipioElevation} /&gt;
 </code></pre>
           </div>
         </div>
