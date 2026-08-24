@@ -1,6 +1,7 @@
 import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
+import liveCode from 'astro-live-code';
 
 // Sidebar structure follows docs/adr/0001-documentation-site-information-architecture.md.
 // Top level maps to Diátaxis modes: Getting started (tutorials), Guides (how-to),
@@ -21,6 +22,7 @@ export default defineConfig({
   },
   integrations: [
     react(),
+    liveCode(),
     starlight({
       title: 'Gamut',
       description: "Codecademy's design system for the web",

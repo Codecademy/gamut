@@ -6,12 +6,7 @@ description: A button that has a solid background color and is used for primary 
 import { Aside } from '@astrojs/starlight/components';
 
 import FigmaEmbed from '~/components/FigmaEmbed.astro';
-import {
-  FillButtonDefault,
-  FillButtonModes,
-  FillButtonSizes,
-  FillButtonVariants,
-} from '~/components/FillButtonExamples';
+import { FillButtonDefault } from '~/components/FillButtonExamples';
 
 **Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/FillButton.tsx)
 
@@ -91,36 +86,48 @@ preview the other mode.
 
 `primary` (default) · `secondary` · `danger` · `interface`
 
-<FillButtonVariants client:only="react" />
+```jsx live wrapper=~/components/LiveCodeCanvas props={{ "client:only": "react" }}
+import { FillButton } from '@codecademy/gamut';
 
-```tsx
-<FillButton>Primary</FillButton>
-<FillButton variant="secondary">Secondary</FillButton>
-<FillButton variant="danger">Danger</FillButton>
-<FillButton variant="interface">Interface</FillButton>
+export default () => (
+  <>
+    <FillButton>Primary</FillButton>
+    <FillButton variant="secondary">Secondary</FillButton>
+    <FillButton variant="danger">Danger</FillButton>
+    <FillButton variant="interface">Interface</FillButton>
+  </>
+);
 ```
 
 ### size
 
 `normal` (default) · `small` · `large`
 
-<FillButtonSizes client:only="react" />
+```jsx live wrapper=~/components/LiveCodeCanvas props={{ "client:only": "react" }}
+import { FillButton } from '@codecademy/gamut';
 
-```tsx
-<FillButton size="small">Small</FillButton>
-<FillButton size="normal">Normal</FillButton>
-<FillButton size="large">Large</FillButton>
+export default () => (
+  <>
+    <FillButton size="small">Small</FillButton>
+    <FillButton size="normal">Normal</FillButton>
+    <FillButton size="large">Large</FillButton>
+  </>
+);
 ```
 
 ### mode
 
 Supports both `light` and `dark` color modes; `mode` forces one regardless of the surrounding context.
 
-<FillButtonModes client:only="react" />
+```jsx live wrapper=~/components/LiveCodeCanvas props={{ "client:only": "react" }}
+import { FillButton } from '@codecademy/gamut';
 
-```tsx
-<FillButton mode="light">Light</FillButton>
-<FillButton mode="dark">Dark</FillButton>
+export default () => (
+  <>
+    <FillButton mode="light">Light</FillButton>
+    <FillButton mode="dark">Dark</FillButton>
+  </>
+);
 ```
 
 ## Accessibility

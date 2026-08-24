@@ -1815,6 +1815,7 @@ __metadata:
     "@types/react": "npm:^18.3.12"
     "@types/react-dom": "npm:^18.3.1"
     astro: "npm:^5.16.9"
+    astro-live-code: "npm:^0.0.6"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-live: "npm:^4.1.8"
@@ -10213,6 +10214,17 @@ __metadata:
   peerDependencies:
     astro: ^4.0.0-beta || ^5.0.0-beta || ^3.3.0 || ^6.0.0-beta
   checksum: 10c0/7cfda5107f4731e4b8bb99d67b44d54465848b5ff37c3386b8d2085a216f62407ec99a026193d707a6fda0aa511b8e92bfad07455e30f2c0d117e26c7bcb725b
+  languageName: node
+  linkType: hard
+
+"astro-live-code@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "astro-live-code@npm:0.0.6"
+  dependencies:
+    estree-util-visit: "npm:^2.0.0"
+    magic-string: "npm:^0.30.5"
+    unist-util-visit-parents: "npm:^6.0.1"
+  checksum: 10c0/e3c9a9f6dc0447831ad2562d4c6817647d905920abe9f46944edc6667a9d21e67bcad758f51a50322397cf106f59fa58a807dd32b1086d08db25baed641e95aa
   languageName: node
   linkType: hard
 
