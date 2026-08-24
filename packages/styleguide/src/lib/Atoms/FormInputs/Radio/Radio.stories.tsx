@@ -1,5 +1,6 @@
 import { FormGroup, Radio, RadioGroup } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import { ChangeEvent, useState } from 'react';
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
 import { infotipNestedArgTypes } from '~styleguide/argTypes';
@@ -24,12 +25,32 @@ export const Default: Story = {
 };
 
 export const RadioGroupComponent: Story = {
-  render: () => (
-    <RadioGroup htmlForPrefix="example-radio" name="example-radio">
-      <Radio label="Radio 1" />
-      <Radio label="Radio 2" />
-    </RadioGroup>
-  ),
+  render: () => {
+    const [selected, setSelected] = useState('option-1');
+
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+      setSelected(event.target.value);
+    };
+
+    return (
+      <RadioGroup
+        htmlForPrefix="example-radio"
+        name="example-radio"
+        onChange={changeHandler}
+      >
+        <Radio
+          label="Option 1"
+          value="option-1"
+          checked={selected === 'option-1'}
+        />
+        <Radio
+          label="Option 2"
+          value="option-2"
+          checked={selected === 'option-2'}
+        />
+      </RadioGroup>
+    );
+  },
 };
 
 export const RadioGroupWithInfoTips: Story = {
