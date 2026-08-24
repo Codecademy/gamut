@@ -182,6 +182,6 @@ export const ConnectedForm = forwardRef(
     );
   }
 ) as <Values extends FormValues<Values>>(
-  props: ConnectedFormProps<Values>,
-  ref: React.ForwardedRef<HTMLFormElement>
+  props: React.PropsWithoutRef<ConnectedFormProps<Values>> &
+    React.RefAttributes<HTMLFormElement>
 ) => React.ReactElement;
