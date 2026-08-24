@@ -1,3 +1,14 @@
+## 73.2.0 (2026-08-24)
+
+### 🚀 Features
+
+- Adds inline, localizable validation errors to typed date entry in DatePicker, plus accessibility polish on the calendar trigger and weekday headers. Feature-level change to a single component; no dependency or theme changes. ([#3395](https://github.com/Codecademy/gamut/pull/3395))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
 ## 73.1.0 (2026-08-24)
 
 ### 🚀 Features
