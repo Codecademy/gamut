@@ -37,6 +37,7 @@ export default defineConfig({
         baseUrl:
           'https://github.com/Codecademy/gamut/edit/main/packages/starlight/',
       },
+      customCss: ['./src/styles/gamut-core-theme.css'],
       sidebar: [
         {
           label: 'Getting started',
