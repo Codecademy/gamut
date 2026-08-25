@@ -1,0 +1,129 @@
+---
+title: Alert
+description: An alert displays an important, succinct message and provides actions for users to address or dismiss it. It requires a user action to be dismissed.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40358) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Alert/Alert.tsx)
+
+## Usage
+
+Use an alert to display an important, succinct message with actions for users to address (or dismiss) the alert. It requires a user action to be dismissed.
+
+**Best practices:**
+
+- Choose the alert type that applies most to your case.
+- Only use `feature` for product/feature announcements that are specific to the current page.
+- Alerts should be persistent and non-modal — let the user ignore them or interact with them at any time.
+
+**When NOT to use:**
+
+- **Low priority feedback** — for decorative or celebratory feedback, use **Toast** instead.
+- **Non-critical or promotional content** — for informational content that isn't urgent, use **Banner** instead.
+- **Passive updates** — for non-urgent updates a user can check at their convenience, use **NotificationList** instead.
+- **Form field validation** — for inline form errors, use inline messaging within the form field instead of an alert.
+
+## Anatomy
+
+An `Alert` is composed of up to four parts, left to right:
+
+1. **Icon** — automatically set by `type` (`general`, `success`, `error`, `subtle`, …). It's decorative (`aria-hidden`), so it needs no alt text.
+2. **Text** (`children`) — what happened and, when applicable, what the user can do about it. Write conversationally, front-load the important part.
+3. **CTA button** (optional, `cta`) — prompts the user to act on the alert.
+4. **Dismiss button** (optional, rendered when `onClose` is passed) — lets the user remove the alert once they've acknowledged it. Only omit this when the alert must stay visible until a specific condition is met.
+
+When a floating alert's text would overflow, Alert truncates it to one line and adds an expand/collapse toggle automatically — no extra wiring required.
+
+## Patterns
+
+### Handling dismissal
+
+Pass `onClose` to render a dismiss button and react to it. `Alert` doesn't track its own visibility — unmount it yourself once the user dismisses it:
+
+```tsx
+import { useState } from 'react';
+import { Alert } from '@codecademy/gamut';
+
+export const DismissibleAlert = () => {
+  const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
+
+  return (
+    <Alert type="success" onClose={() => setVisible(false)}>
+      Your changes have been saved.
+    </Alert>
+  );
+};
+```
+
+### Customizing the close button
+
+The close button's tooltip text, tooltip alignment, disabled state, and ref are configured through `closeButtonProps` rather than as top-level props, since they only apply when `onClose` is set:
+
+```tsx
+<Alert
+  type="notice"
+  onClose={() => dismiss()}
+  closeButtonProps={{
+    tip: 'Dismiss this notice',
+    tipAlignment: 'bottom-left',
+  }}
+>
+  Your session will expire in 5 minutes.
+</Alert>
+```
+
+### Adding a call to action
+
+`cta` accepts either a `text` string or full `FillButton` children/props, so you can wire a click handler without composing a separate button element:
+
+```tsx
+<Alert
+  type="general"
+  cta={{ text: 'View details', onClick: () => openDetails() }}
+>
+  A new version is available.
+</Alert>
+```
+
+## Variants
+
+<Aside type="caution" title="Content migration pending">
+  The rendered examples for each alert type, inline vs. floating placement, and
+  small-width stacking behavior live in the current Storybook stories
+  (`Alert.stories.tsx`) and haven't been ported to this page yet. Until then,
+  see the [existing Alert
+  story](https://github.com/Codecademy/gamut/blob/main/packages/styleguide/src/lib/Molecules/Alert/Alert.mdx).
+</Aside>
+
+`type` accepts `general`, `success`, `feature`, `notice`, `error`, or `subtle`. `subtle` is inline-only (see Props). `placement` accepts `inline` or `floating` (default); floating alerts truncate and gain the expand/collapse control described in Anatomy, inline alerts don't. Below 480px wide, the CTA button stacks below the text automatically.
+
+## Accessibility
+
+- The type icon is `aria-hidden` — it's decorative and the alert's `type` doesn't need to be announced separately from its text.
+- The expand/collapse toggle (shown when floating alert text is truncated) is a real button with `aria-expanded`, `aria-controls` pointing at the collapsible region, and an accessible name of "Expand"/"Collapse" — plus a tooltip echoing the same label.
+- The dismiss button's accessible name comes from `closeButtonProps.tip`, which defaults to "Close alert". Set a more specific `tip` (for example "Dismiss session warning") when multiple alerts might be on screen at once.
+- Alert content is not rendered in an ARIA live region. If an alert can appear after the initial render in response to an async action (a save completing, an error), pair it with your own live-region announcement — don't rely on the alert's markup alone to notify screen reader users.
+
+## Props
+
+| Prop               | Type                                                                                                                                                                                       | Default                                                 | Description                                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `children`         | `React.ReactNode`                                                                                                                                                                          | —                                                       | The alert's message content. Required.                                                               |
+| `type`             | `'general' \| 'success' \| 'feature' \| 'notice' \| 'error' \| 'subtle'`                                                                                                                   | `'general'`                                             | Sets the icon and color treatment. `subtle` requires `placement="inline"`.                           |
+| `placement`        | `'inline' \| 'floating'`                                                                                                                                                                   | `'floating'`                                            | `floating` truncates long content behind an expand toggle; `inline` renders content in full.         |
+| `onClose`          | `() => void`                                                                                                                                                                               | —                                                       | Called when the dismiss button is clicked. Renders the dismiss button when provided.                 |
+| `closeButtonProps` | `{ disabled?: boolean; ref?: React.Ref<HTMLButtonElement>; tip?: string; tipAlignment?: 'top-left' \| 'top-center' \| 'top-right' \| 'bottom-left' \| 'bottom-center' \| 'bottom-right' }` | `{ tip: 'Close alert', tipAlignment: 'bottom-center' }` | Configures the dismiss button. Ignored unless `onClose` is set.                                      |
+| `cta`              | `FillButtonProps & { text?: string }`                                                                                                                                                      | —                                                       | Renders a secondary CTA button. Pass `text` for label-only usage or full button props for a handler. |
+| `hidden`           | `boolean`                                                                                                                                                                                  | `false`                                                 | Sets `tabIndex={-1}` on the alert's interactive buttons without removing them from the DOM.          |
+| `className`        | `string`                                                                                                                                                                                   | —                                                       | Passed through to the alert's root element.                                                          |
+
+## Playground
+
+<Aside type="caution" title="Content migration pending">
+  A live, editable playground for `Alert` requires the same interactive example
+  infrastructure as the current Storybook canvas and hasn't been built for this
+  site yet.
+</Aside>

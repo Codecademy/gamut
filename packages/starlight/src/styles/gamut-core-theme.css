@@ -1,0 +1,84 @@
+/**
+ * Custom Starlight color theme derived from Gamut's `coreTheme`
+ * (packages/gamut-styles/src/themes/core.ts).
+ *
+ * Starlight themes are just overrides of its CSS custom properties (see
+ * https://starlight.astro.build/guides/css-and-tailwind/#theming). Each
+ * variable below is paired with the coreTheme color-mode token it stands in
+ * for, so this file can be re-derived if coreTheme's palette changes.
+ *
+ * Only colors are wired up here — coreTheme's typography (fontFamily) relies
+ * on licensed, non-self-hosted fonts (Apercu/Suisse) that this site doesn't
+ * load, so Starlight's default font stack is left in place.
+ */
+
+:root[data-theme="light"] {
+  /* gray-1..7: coreTheme's light-mode navy scale, most-to-least intense */
+  --sl-color-gray-1: #0a0d1c; /* navy-900 — text.accent */
+  --sl-color-gray-2: #10162f; /* navy-800 — text._ (body text) */
+  --sl-color-gray-3: rgba(16, 22, 47, 0.86); /* navy-700 */
+  --sl-color-gray-4: rgba(16, 22, 47, 0.75); /* navy-600 — border.secondary */
+  --sl-color-gray-5: rgba(
+    16,
+    22,
+    47,
+    0.28
+  ); /* navy-300 — border.tertiary (hairline) */
+  --sl-color-gray-6: rgba(
+    16,
+    22,
+    47,
+    0.12
+  ); /* navy-200 — subtle bg tint (inline code) */
+  --sl-color-gray-7: rgba(
+    16,
+    22,
+    47,
+    0.04
+  ); /* navy-100 — background.selected */
+
+  /* white/black are Starlight's text/bg endpoints, inverted per mode */
+  --sl-color-white: #0a0d1c; /* navy-900 — heading text */
+  --sl-color-black: #ffffff; /* background._ — page background */
+
+  /* accent: primary._ / primary.hover (hyper) */
+  --sl-color-accent-low: color-mix(in srgb, #3a10e5 10%, white);
+  --sl-color-accent: #3a10e5; /* hyper-500 */
+  --sl-color-accent-high: color-mix(in srgb, #3a10e5 65%, black);
+
+  /* background.primary — a warm chrome tone behind the top nav, distinct
+     from the white content canvas (background._) */
+  --sl-color-bg-nav: #fff0e5; /* beige */
+}
+
+:root[data-theme="dark"] {
+  /* gray-1..6: coreTheme's dark-mode white scale, most-to-least intense */
+  --sl-color-gray-1: #ffffff; /* white — text._ */
+  --sl-color-gray-2: rgba(255, 255, 255, 0.8); /* white-700 */
+  --sl-color-gray-3: rgba(255, 255, 255, 0.65); /* white-600 — text.secondary */
+  --sl-color-gray-4: rgba(255, 255, 255, 0.5); /* white-500 — border.disabled */
+  --sl-color-gray-5: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* white-300 — border.tertiary (hairline) */
+  --sl-color-gray-6: rgba(
+    255,
+    255,
+    255,
+    0.09
+  ); /* white-200 — subtle bg tint (inline code) */
+
+  --sl-color-white: #ffffff; /* text._ — heading text */
+  --sl-color-black: #10162f; /* navy-800 — background._ (page background) */
+
+  /* accent: primary._ / primary.hover (yellow) */
+  --sl-color-accent-low: color-mix(in srgb, #ffd300 20%, black);
+  --sl-color-accent: #ffd300; /* yellow-500 */
+  --sl-color-accent-high: color-mix(in srgb, #ffd300 85%, white);
+
+  /* background.primary — a deeper chrome tone behind the top nav, distinct
+     from the navy-800 content canvas (background._) */
+  --sl-color-bg-nav: #0a0d1c; /* navy-900 */
+}

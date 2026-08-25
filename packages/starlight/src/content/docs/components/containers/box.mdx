@@ -1,0 +1,58 @@
+---
+title: Box
+description: A utility container component with all system props available.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/Box.tsx)
+
+## Usage
+
+This is our primitive box component that is meant to be a kitchen sink utility component for all basic layouts. This is meant to act as a configurable building block for almost any occasion. It is extremely flexible and has access to nearly all of our `system props`.
+
+**When NOT to use:**
+
+- While this can be made to be a `grid` or `flex` container, we also provide two specific components to handle those in addition to everything that Box does! [GridBox](/components/containers/grid-box/) and [FlexBox](/components/containers/flex-box/)
+
+## Patterns
+
+While the component really has no default styles or props, it can be hard to imagine what you might be able to achieve with it. So we've come up with some examples on how you might use `<Box />` to solve your own problems.
+
+<Aside type="caution" title="Content migration pending">
+  The rendered examples below live in the current Storybook stories
+  (`Box.stories.tsx`) and haven't been ported to this page yet. Until then, see
+  the [existing Box
+  story](https://github.com/Codecademy/gamut/blob/main/packages/styleguide/src/lib/Layouts/Boxes/Box/Box.mdx).
+</Aside>
+
+### Bordered containers
+
+One of the main uses of box is to create bordered containers with their own borders and internal padding. Many times when we want to achieve this kind of bordered container effect it can be tempting to just reinvent the wheel, but as requirements mount and differ between contexts we end up with a lot of variety in implementation. The flexibility of `<Box />` can help limit the amount of redundancy and account for a wild range of possibilities.
+
+### Positioning
+
+So far we've covered examples of using `<Box />` as a visual element on its own, but there are many times where we just need a container to provide a specific context for other design elements.
+
+Positioning elements and maintaining stacking contexts can be annoying, especially when upstream affects can be hard to identify (IE: a `position: relative;` container that is ancient ancestor of some `position: absolute` descendent being tricky to debug). With `<Box />` you can configure these contexts in your mark up, and coordinate them easily.
+
+### Lists
+
+When presenting multiple boxes as a group, it is often necessary to render them as a list to make the content more accessible. An outer `<Box />` can be rendered as a `<ul />` or `<ol />` element, and its `<Box />` children can be rendered as `<li />` elements. The list styles can also be adjusted via the `listStyle`, `listStyleType`, `listStylePosition`, and `listStyleImage` props.
+
+## Props
+
+`Box` has access to nearly all of Gamut's system props.
+
+<Aside type="caution" title="Content migration pending">
+  The full prop table is auto-generated from the component's types in the
+  current Storybook (via Controls) and hasn't been ported to this page yet.
+</Aside>
+
+## Playground
+
+<Aside type="caution" title="Content migration pending">
+  A live, editable playground for `Box` requires the same interactive example
+  infrastructure as the current Storybook canvas and hasn't been built for this
+  site yet.
+</Aside>

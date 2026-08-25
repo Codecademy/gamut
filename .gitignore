@@ -51,6 +51,10 @@ tmp
 dist/storybook
 dist/docs
 
+# Astro / Starlight build
+packages/starlight/dist
+packages/starlight/.astro
+
 # NX
 dist/out-tsc
 *.tsbuildinfo
