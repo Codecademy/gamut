@@ -14,7 +14,8 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { MiniKebabMenuIcon, ViewIcon } from '@codecademy/gamut-icons';
-import { Background } from '@codecademy/gamut-styles';
+import { Background, css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useRef, useState } from 'react';
 
@@ -466,6 +467,18 @@ const allCrewColumns = [
 
 const PINNED_COLUMN_KEY = 'name';
 
+/**
+ * Reserves header-row height so toggling a wrapping label like
+ * "Years of Service" (sm column) does not shift the table body.
+ */
+const HeaderHeightSpacer = styled(Box)(
+  css({
+    '& thead tr': {
+      minHeight: 64,
+    },
+  })
+);
+
 const ColumnVisibilityExample: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [visibleKeys, setVisibleKeys] = useState(
@@ -549,16 +562,18 @@ const ColumnVisibilityExample: React.FC = () => {
         </PopoverContainer>
       </FlexBox>
 
-      <DataTable
-        columns={columns}
-        height="400px"
-        id="crew-column-visibility"
-        idKey="name"
-        rows={crewRows}
-        scrollable
-        shadow
-        spacing="condensed"
-      />
+      <HeaderHeightSpacer>
+        <DataTable
+          columns={columns}
+          height="400px"
+          id="crew-column-visibility"
+          idKey="name"
+          rows={crewRows}
+          scrollable
+          shadow
+          spacing="condensed"
+        />
+      </HeaderHeightSpacer>
     </Box>
   );
 };
