@@ -10,6 +10,7 @@ export * from './Breadcrumbs';
 export * from './Button';
 export { ButtonBase } from './ButtonBase';
 export type { ButtonBaseElements } from './ButtonBase/ButtonBase';
+export { InteractiveSelectors } from './ButtonBase/ButtonBase';
 export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';

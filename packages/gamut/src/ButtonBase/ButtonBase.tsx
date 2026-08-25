@@ -15,7 +15,7 @@ export type ButtonBaseElementProps = HTMLProps<
   ref?: ButtonBaseRef;
 };
 
-export enum ButtonSelectors {
+export enum InteractiveSelectors {
   HOVER = '&:hover',
   ACTIVE = '&:active',
   FOCUS = '&:focus',

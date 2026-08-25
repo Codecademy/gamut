@@ -8,7 +8,7 @@ import {
 import { CSSObject, ThemeProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { ButtonBase, ButtonSelectors } from '../../ButtonBase/ButtonBase';
+import { ButtonBase, InteractiveSelectors } from '../../ButtonBase/ButtonBase';
 import { ButtonBaseProps } from './types';
 
 export const config = styledOptions<'button', 'size'>(['size']);
@@ -55,11 +55,11 @@ export const buttonStyles = system.css({
     'fast',
     'ease-in'
   ),
-  [ButtonSelectors.DISABLED]: {
+  [InteractiveSelectors.DISABLED]: {
     cursor: 'not-allowed',
     userSelect: 'none',
   },
-  [ButtonSelectors.OUTLINE]: {
+  [InteractiveSelectors.OUTLINE]: {
     content: '""',
     transition: transitionConcat(['opacity'], 'fast'),
     position: 'absolute',
@@ -69,7 +69,7 @@ export const buttonStyles = system.css({
     opacity: 0,
     zIndex: 0,
   },
-  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+  [InteractiveSelectors.OUTLINE_FOCUS_VISIBLE]: {
     opacity: 1,
   },
 });
