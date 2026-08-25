@@ -582,7 +582,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>6.1s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>6.0s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -16175,7 +16175,7 @@ export const ButtonsDarkMode: Story = {
               
               <div class="mdx-content"><pre><code>import { Canvas, Meta } from &#39;@storybook/addon-docs/blocks&#39;;
 
-import { ComponentHeader, LinkTo } from &#39;~styleguide/blocks&#39;;
+import { ComponentHeader, ImageWrapper, LinkTo } from &#39;~styleguide/blocks&#39;;
 
 import * as ButtonStories from &#39;./Button.stories&#39;;
 
@@ -16200,7 +16200,7 @@ export const parameters = {
 
 ## Usage
 
-We have several versions of buttons that you can use.
+Use a button to trigger an action. We have several versions of buttons that you can use.
 Each supports _light_ and _dark_ mode.
 
 See the [Figma designs](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) for a nice grid view of all the variants.
@@ -16208,12 +16208,41 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 ### Best practices:
 
-- Use `primary` for high priority actions (e.g. Submit).
-- Use `secondary` for low priority buttons (e.g. Close).
+- A tooltip is required to serve as a label for icon-only buttons
+- Include a leading or trailing icon to reinforce the meaning of the action or to further distinguish the button from other bold text
+- Span the entire width of the parent container when the viewport or container is `&lt;768px` wide. This approach ensures optimal usability and accessibility, especially on mobile devices and narrow layouts.
 
 ### When NOT to use:
 
-- Avoid using a color mode outside of its context (no light buttons on navy backgrounds)
+- **Navigation** - for actions that are purely navigational (e.g., linking to another page or section), use an &lt;LinkTo id=&quot;Typography/Anchor&quot;&gt;Anchor&lt;/LinkTo&gt; link instead.
+
+## Anatomy
+
+&lt;ImageWrapper
+  src=&quot;./atoms/button.png&quot;
+  alt=&quot;The anatomy of Button components, detailed below.&quot;
+/&gt;
+
+1. **Leading icon** _(optional)_
+
+- Use to reinforce the meaning of the action
+
+2. **Label**
+
+- Start with an actionable verb
+- Use sentence case
+- Aim for 3 words maximum
+
+3. **Trailing icon** _(optional)_
+
+- Use to reinforce forward movement or navigation to a new page
+
+4. **Tooltip**
+
+- For labeled buttons, tooltip information should be supplementary to the button label, which will have the primary information
+- For icon-only buttons, start with an actionable verb to specify what the button does
+- Can include a CTA, shortcut, or quick tip
+- Triggered on hover and focus
 
 ## Variants
 
@@ -33679,17 +33708,18 @@ Check out the video example below.
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;Radio&quot; component.
-   5 | import { infotipNestedArgTypes } from &#39;~styleguide/argTypes&#39;;
-   6 |
-&gt;  7 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof Radio&gt;&gt; = {
+   6 | import { infotipNestedArgTypes } from &#39;~styleguide/argTypes&#39;;
+   7 |
+&gt;  8 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof Radio&gt;&gt; = {
      | ^
-   8 |   component: Radio,
-   9 |   args: {
-  10 |     htmlFor: &#39;example-radio&#39;,
+   9 |   component: Radio,
+  10 |   args: {
+  11 |     htmlFor: &#39;example-radio&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/Radio/Radio.stories.tsx:
 import { FormGroup, Radio, RadioGroup } from &#39;@codecademy/gamut&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
+import React, { ChangeEvent, useState } from &#39;react&#39;;
 import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
 
 import { infotipNestedArgTypes } from &#39;~styleguide/argTypes&#39;;
@@ -33713,13 +33743,31 @@ export const Default: Story = {
   args: {},
 };
 
-export const RadioGroupComponent: Story = {
-  render: () =&gt; (
-    &lt;RadioGroup htmlForPrefix=&quot;example-radio&quot; name=&quot;example-radio&quot;&gt;
-      &lt;Radio label=&quot;Radio 1&quot; /&gt;
-      &lt;Radio label=&quot;Radio 2&quot; /&gt;
+export const RadioGroupComponent: React.FC = () =&gt; {
+  const [selected, setSelected] = useState(&#39;option-1&#39;);
+
+  const changeHandler = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setSelected(event.target.value);
+  };
+
+  return (
+    &lt;RadioGroup
+      htmlForPrefix=&quot;example-radio&quot;
+      name=&quot;example-radio&quot;
+      onChange={changeHandler}
+    &gt;
+      &lt;Radio
+        checked={selected === &#39;option-1&#39;}
+        label=&quot;Option 1&quot;
+        value=&quot;option-1&quot;
+      /&gt;
+      &lt;Radio
+        checked={selected === &#39;option-2&#39;}
+        label=&quot;Option 2&quot;
+        value=&quot;option-2&quot;
+      /&gt;
     &lt;/RadioGroup&gt;
-  ),
+  );
 };
 
 export const RadioGroupWithInfoTips: Story = {
@@ -33846,12 +33894,32 @@ export const CustomLabel: Story = {
               </div>
               
               
-              <pre><code>const RadioGroupComponent = () =&gt; (
-  &lt;RadioGroup htmlForPrefix=&quot;example-radio&quot; name=&quot;example-radio&quot;&gt;
-    &lt;Radio label=&quot;Radio 1&quot; /&gt;
-    &lt;Radio label=&quot;Radio 2&quot; /&gt;
-  &lt;/RadioGroup&gt;
-);</code></pre>
+              <pre><code>const RadioGroupComponent = () =&gt; {
+  const [selected, setSelected] = useState(&#39;option-1&#39;);
+
+  const changeHandler = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setSelected(event.target.value);
+  };
+
+  return (
+    &lt;RadioGroup
+      htmlForPrefix=&quot;example-radio&quot;
+      name=&quot;example-radio&quot;
+      onChange={changeHandler}
+    &gt;
+      &lt;Radio
+        checked={selected === &#39;option-1&#39;}
+        label=&quot;Option 1&quot;
+        value=&quot;option-1&quot;
+      /&gt;
+      &lt;Radio
+        checked={selected === &#39;option-2&#39;}
+        label=&quot;Option 2&quot;
+        value=&quot;option-2&quot;
+      /&gt;
+    &lt;/RadioGroup&gt;
+  );
+};</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -33994,13 +34062,45 @@ export const parameters = {
 
 ## Usage
 
-Use Radio to handle single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
+Radio allows single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
 
-## Radio Group
-
-`RadioGroup` is a helper element for grouping multiple `Radio` components semantically.
+Our Radios are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and `onChange`. RadioGroup forwards `name` and `onChange` to every Radio so they are semantically linked and mutually exclusive. For example:
 
 &lt;Canvas of={RadioStories.RadioGroupComponent} /&gt;
+
+```tsx
+import { Radio, RadioGroup } from &#39;@codecademy/gamut&#39;;
+import React, { ChangeEvent, useState } from &#39;react&#39;;
+
+const RadioGroupComponent = () =&gt; {
+  const [selected, setSelected] = useState(&#39;option-1&#39;);
+
+  const changeHandler = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setSelected(event.target.value);
+  };
+
+  return (
+    &lt;RadioGroup
+      htmlForPrefix=&quot;example-radio&quot;
+      name=&quot;example-radio&quot;
+      onChange={changeHandler}
+    &gt;
+      &lt;Radio
+        checked={selected === &#39;option-1&#39;}
+        label=&quot;Option 1&quot;
+        value=&quot;option-1&quot;
+      /&gt;
+      &lt;Radio
+        checked={selected === &#39;option-2&#39;}
+        label=&quot;Option 2&quot;
+        value=&quot;option-2&quot;
+      /&gt;
+    &lt;/RadioGroup&gt;
+  );
+};
+```
+
+RadioGroup can also be used within ConnectedForm via &lt;LinkTo id=&quot;Organisms/ConnectedForm/ConnectedFormInputs&quot;&gt;`ConnectedRadioGroupInput`&lt;/LinkTo&gt; and GridForm via &lt;LinkTo id=&quot;Organisms/GridForm/Fields&quot;&gt;`GridFormRadioGroupInput`&lt;/LinkTo&gt;, which wire up the checked value and `onChange` for you.
 
 ## Input states
 
@@ -58492,7 +58592,7 @@ export const ButtonsDarkMode: Story = {
               
               <div class="mdx-content"><pre><code>import { Canvas, Meta } from &#39;@storybook/addon-docs/blocks&#39;;
 
-import { ComponentHeader, LinkTo } from &#39;~styleguide/blocks&#39;;
+import { ComponentHeader, ImageWrapper, LinkTo } from &#39;~styleguide/blocks&#39;;
 
 import * as ButtonStories from &#39;./Button.stories&#39;;
 
@@ -58517,7 +58617,7 @@ export const parameters = {
 
 ## Usage
 
-We have several versions of buttons that you can use.
+Use a button to trigger an action. We have several versions of buttons that you can use.
 Each supports _light_ and _dark_ mode.
 
 See the [Figma designs](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) for a nice grid view of all the variants.
@@ -58525,12 +58625,41 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 ### Best practices:
 
-- Use `primary` for high priority actions (e.g. Submit).
-- Use `secondary` for low priority buttons (e.g. Close).
+- A tooltip is required to serve as a label for icon-only buttons
+- Include a leading or trailing icon to reinforce the meaning of the action or to further distinguish the button from other bold text
+- Span the entire width of the parent container when the viewport or container is `&lt;768px` wide. This approach ensures optimal usability and accessibility, especially on mobile devices and narrow layouts.
 
 ### When NOT to use:
 
-- Avoid using a color mode outside of its context (no light buttons on navy backgrounds)
+- **Navigation** - for actions that are purely navigational (e.g., linking to another page or section), use an &lt;LinkTo id=&quot;Typography/Anchor&quot;&gt;Anchor&lt;/LinkTo&gt; link instead.
+
+## Anatomy
+
+&lt;ImageWrapper
+  src=&quot;./atoms/button.png&quot;
+  alt=&quot;The anatomy of Button components, detailed below.&quot;
+/&gt;
+
+1. **Leading icon** _(optional)_
+
+- Use to reinforce the meaning of the action
+
+2. **Label**
+
+- Start with an actionable verb
+- Use sentence case
+- Aim for 3 words maximum
+
+3. **Trailing icon** _(optional)_
+
+- Use to reinforce forward movement or navigation to a new page
+
+4. **Tooltip**
+
+- For labeled buttons, tooltip information should be supplementary to the button label, which will have the primary information
+- For icon-only buttons, start with an actionable verb to specify what the button does
+- Can include a CTA, shortcut, or quick tip
+- Triggered on hover and focus
 
 ## Variants
 
@@ -75996,17 +76125,18 @@ Check out the video example below.
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;Radio&quot; component.
-   5 | import { infotipNestedArgTypes } from &#39;~styleguide/argTypes&#39;;
-   6 |
-&gt;  7 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof Radio&gt;&gt; = {
+   6 | import { infotipNestedArgTypes } from &#39;~styleguide/argTypes&#39;;
+   7 |
+&gt;  8 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof Radio&gt;&gt; = {
      | ^
-   8 |   component: Radio,
-   9 |   args: {
-  10 |     htmlFor: &#39;example-radio&#39;,
+   9 |   component: Radio,
+  10 |   args: {
+  11 |     htmlFor: &#39;example-radio&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/Radio/Radio.stories.tsx:
 import { FormGroup, Radio, RadioGroup } from &#39;@codecademy/gamut&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
+import React, { ChangeEvent, useState } from &#39;react&#39;;
 import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
 
 import { infotipNestedArgTypes } from &#39;~styleguide/argTypes&#39;;
@@ -76030,13 +76160,31 @@ export const Default: Story = {
   args: {},
 };
 
-export const RadioGroupComponent: Story = {
-  render: () =&gt; (
-    &lt;RadioGroup htmlForPrefix=&quot;example-radio&quot; name=&quot;example-radio&quot;&gt;
-      &lt;Radio label=&quot;Radio 1&quot; /&gt;
-      &lt;Radio label=&quot;Radio 2&quot; /&gt;
+export const RadioGroupComponent: React.FC = () =&gt; {
+  const [selected, setSelected] = useState(&#39;option-1&#39;);
+
+  const changeHandler = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setSelected(event.target.value);
+  };
+
+  return (
+    &lt;RadioGroup
+      htmlForPrefix=&quot;example-radio&quot;
+      name=&quot;example-radio&quot;
+      onChange={changeHandler}
+    &gt;
+      &lt;Radio
+        checked={selected === &#39;option-1&#39;}
+        label=&quot;Option 1&quot;
+        value=&quot;option-1&quot;
+      /&gt;
+      &lt;Radio
+        checked={selected === &#39;option-2&#39;}
+        label=&quot;Option 2&quot;
+        value=&quot;option-2&quot;
+      /&gt;
     &lt;/RadioGroup&gt;
-  ),
+  );
 };
 
 export const RadioGroupWithInfoTips: Story = {
@@ -76163,12 +76311,32 @@ export const CustomLabel: Story = {
               </div>
               
               
-              <pre><code>const RadioGroupComponent = () =&gt; (
-  &lt;RadioGroup htmlForPrefix=&quot;example-radio&quot; name=&quot;example-radio&quot;&gt;
-    &lt;Radio label=&quot;Radio 1&quot; /&gt;
-    &lt;Radio label=&quot;Radio 2&quot; /&gt;
-  &lt;/RadioGroup&gt;
-);</code></pre>
+              <pre><code>const RadioGroupComponent = () =&gt; {
+  const [selected, setSelected] = useState(&#39;option-1&#39;);
+
+  const changeHandler = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setSelected(event.target.value);
+  };
+
+  return (
+    &lt;RadioGroup
+      htmlForPrefix=&quot;example-radio&quot;
+      name=&quot;example-radio&quot;
+      onChange={changeHandler}
+    &gt;
+      &lt;Radio
+        checked={selected === &#39;option-1&#39;}
+        label=&quot;Option 1&quot;
+        value=&quot;option-1&quot;
+      /&gt;
+      &lt;Radio
+        checked={selected === &#39;option-2&#39;}
+        label=&quot;Option 2&quot;
+        value=&quot;option-2&quot;
+      /&gt;
+    &lt;/RadioGroup&gt;
+  );
+};</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -76311,13 +76479,45 @@ export const parameters = {
 
 ## Usage
 
-Use Radio to handle single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
+Radio allows single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
 
-## Radio Group
-
-`RadioGroup` is a helper element for grouping multiple `Radio` components semantically.
+Our Radios are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and `onChange`. RadioGroup forwards `name` and `onChange` to every Radio so they are semantically linked and mutually exclusive. For example:
 
 &lt;Canvas of={RadioStories.RadioGroupComponent} /&gt;
+
+```tsx
+import { Radio, RadioGroup } from &#39;@codecademy/gamut&#39;;
+import React, { ChangeEvent, useState } from &#39;react&#39;;
+
+const RadioGroupComponent = () =&gt; {
+  const [selected, setSelected] = useState(&#39;option-1&#39;);
+
+  const changeHandler = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setSelected(event.target.value);
+  };
+
+  return (
+    &lt;RadioGroup
+      htmlForPrefix=&quot;example-radio&quot;
+      name=&quot;example-radio&quot;
+      onChange={changeHandler}
+    &gt;
+      &lt;Radio
+        checked={selected === &#39;option-1&#39;}
+        label=&quot;Option 1&quot;
+        value=&quot;option-1&quot;
+      /&gt;
+      &lt;Radio
+        checked={selected === &#39;option-2&#39;}
+        label=&quot;Option 2&quot;
+        value=&quot;option-2&quot;
+      /&gt;
+    &lt;/RadioGroup&gt;
+  );
+};
+```
+
+RadioGroup can also be used within ConnectedForm via &lt;LinkTo id=&quot;Organisms/ConnectedForm/ConnectedFormInputs&quot;&gt;`ConnectedRadioGroupInput`&lt;/LinkTo&gt; and GridForm via &lt;LinkTo id=&quot;Organisms/GridForm/Fields&quot;&gt;`GridFormRadioGroupInput`&lt;/LinkTo&gt;, which wire up the checked value and `onChange` for you.
 
 ## Input states
 
