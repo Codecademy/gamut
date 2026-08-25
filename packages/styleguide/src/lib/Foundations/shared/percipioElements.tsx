@@ -9,11 +9,14 @@ import { Code, ColorScale, TokenTable } from '~styleguide/blocks';
 
 import { applyCorrectNotation } from './applyCorrectNotation';
 import {
+  createElevationTable,
   createExampleColumn,
   PATH_COLUMN,
   PROP_COLUMN,
   VALUE_COLUMN,
 } from './elements';
+
+export const percipioElevation = createElevationTable(percipioTheme.elevation);
 
 export const percipioColor = {
   rows: Object.entries(percipioColors).map(([id, value]) => ({

@@ -2,6 +2,7 @@ import { createTheme } from '@codecademy/variance';
 
 import {
   fontWeightMediumTitle,
+  percipioElevation,
   percipioFontFamily,
   percipioPalette,
 } from '../variables';
@@ -62,6 +63,7 @@ export const percipioTheme = createTheme({
       },
     },
   })
+  .addScale('elevation', percipioElevation)
   .addName('percipio')
   .build();
 

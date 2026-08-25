@@ -1,3 +1,49 @@
+## 21.2.0 (2026-08-25)
+
+### 🚀 Features
+
+- Bumps Jest from 29.6.4 → 30.x across the gamut monorepo, refreshes the testing-library family to match, and removes some dead jest-related deps. ([#3413](https://github.com/Codecademy/gamut/pull/3413))
+
+### 🧱 Updated Dependencies
+
+- Updated variance to 1.1.0
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
+## 21.1.0 (2026-08-24)
+
+### 🚀 Features
+
+- Just whitespace changes in the changelog for eslint-plugin-gamut, gamut-illustrations, gamut-patterns, gamut-icons, gamut-tests, and variance packages. ([#3410](https://github.com/Codecademy/gamut/pull/3410))
+  For gamut-styles, adds a themed elevation scale for shadows to Gamut and updates Card to use this new theme.
+
+### 🧱 Updated Dependencies
+
+- Updated variance to 1.0.1
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+# 21.0.0 (2026-08-20)
+
+### ⚠️ Breaking Changes
+
+- React 18+19 compatibility: workspace on React 19; peers support React 18.3 and 19. Includes eslint-plugin-gamut and core Gamut packages (major bumps per plan). ([#3328](https://github.com/Codecademy/gamut/pull/3328), [#3384](https://github.com/Codecademy/gamut/issues/3384))
+
+### 🧱 Updated Dependencies
+
+- Updated variance to 1.0.0
+
+### ❤️ Thank You
+
+- Amy Resnik @aresnik11
+- cassie spain @dreamwasp
+- Kenny Lin @LinKCoding
+
 ## 20.1.0 (2026-08-03)
 
 ### 🚀 Features

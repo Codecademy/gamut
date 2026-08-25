@@ -48,6 +48,7 @@ export const Alignments: Story = {
         return (
           <IconButton
             icon={SparkleIcon}
+            key={alignment}
             tip={alignment}
             tipProps={{ alignment }}
           />

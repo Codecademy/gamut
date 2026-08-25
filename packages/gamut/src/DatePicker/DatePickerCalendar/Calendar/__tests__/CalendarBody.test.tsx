@@ -6,7 +6,7 @@ import { createRef } from 'react';
 import { getIsoFirstDayFromLocale } from '../../../utils/locale';
 import { CalendarBody } from '../CalendarBody';
 import { getMonthGrid } from '../utils/dateGrid';
-import { formatDateForAriaLabel } from '../utils/format';
+import { formatDateForAriaLabel, getWeekdayNames } from '../utils/format';
 
 const displayDate = new Date(2024, 2, 1);
 const focusedDate = new Date(2024, 2, 15);
@@ -203,14 +203,21 @@ describe('CalendarBody', () => {
     await waitFor(() => expect(march15).toHaveFocus());
   });
 
-  it('renders seven weekday column headers with scope and abbreviations', () => {
+  it('renders seven weekday column headers with full accessible names', () => {
     const { view } = renderView();
+    const locale = new Intl.Locale('en-US');
+    const firstWeekday = getIsoFirstDayFromLocale(locale);
+    const fullNames = getWeekdayNames({
+      format: 'long',
+      locale,
+      firstWeekday,
+    });
 
     const headers = view.getAllByRole('columnheader');
     expect(headers).toHaveLength(7);
-    headers.forEach((th) => {
+    headers.forEach((th, i) => {
       expect(th).toHaveAttribute('scope', 'col');
-      expect(th).toHaveAttribute('abbr');
+      expect(th).toHaveAccessibleName(fullNames[i]);
     });
   });
 

@@ -95,7 +95,7 @@ export const Alignment: React.FC<ComponentProps<typeof PopoverContainer>> = (
                 justifyContent="center"
               >
                 {alignment.split('-').map((val) => (
-                  <Text as="p" variant="p-small">
+                  <Text as="p" key={val} variant="p-small">
                     {val}
                   </Text>
                 ))}

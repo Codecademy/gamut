@@ -13,6 +13,18 @@ export type PopoverContainerAlignment =
   | 'left'
   | 'right';
 
+export type TargetRef = Pick<
+  HTMLDivElement,
+  | 'getBoundingClientRect'
+  | 'contains'
+  | 'offsetHeight'
+  | 'offsetWidth'
+  | 'offsetTop'
+  | 'offsetLeft'
+  | 'offsetParent'
+> &
+  HTMLElement;
+
 export interface PopoverPositionContext {
   width: number;
   height: number;
@@ -71,8 +83,9 @@ export interface PopoverContainerProps
   onRequestClose?: () => void;
   /**
    * The target element around which the popover will be positioned.
+   * Only ref objects (e.g. from useRef) are supported at runtime; RefCallback is not.
    */
-  targetRef: RefObject<HTMLElement>;
+  targetRef: RefObject<TargetRef | null>;
   /**
    * If true, it will allow outside page interaction. Popover container will still close when clicking outside of the popover or hitting the escape key.
    */
