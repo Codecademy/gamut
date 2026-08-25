@@ -5,5 +5,3 @@ Date.now = jest.fn(() => new Date(2011, 6, 1).valueOf());
 function noop() {}
 
 Object.defineProperty(window, 'scrollTo', { value: noop, writable: true });
-
-require('mutationobserver-shim');
