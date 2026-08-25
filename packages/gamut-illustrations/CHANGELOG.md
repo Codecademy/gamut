@@ -1,3 +1,18 @@
+## 1.1.0 (2026-08-25)
+
+### 🚀 Features
+
+- Bumps Jest from 29.6.4 → 30.x across the gamut monorepo, refreshes the testing-library family to match, and removes some dead jest-related deps. ([#3413](https://github.com/Codecademy/gamut/pull/3413))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-styles to 21.2.0
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
 ## 1.0.1 (2026-08-24)
 
 ### 🩹 Fixes
