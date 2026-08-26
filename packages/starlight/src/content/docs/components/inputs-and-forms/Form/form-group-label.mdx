@@ -20,12 +20,17 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 
 ## Patterns
 
-`FormGroupLabel` follows the group's shared `htmlFor`-wiring pattern — see [Form scaffolding: Patterns](/components/inputs-and-forms/form/#patterns). Passing `htmlFor` renders a real `<label>`; omitting it renders a `<div>` instead, for cases where the "label" doesn't correspond to a single labelable element:
+`FormGroupLabel` follows the group's shared `htmlFor`-wiring pattern — see [Form scaffolding: Patterns](/components/inputs-and-forms/form/#patterns). Passing `htmlFor` renders a real `<label>`; omitting it renders a `<div>` instead, for cases where the "label" doesn't correspond to a single labelable element.
+
+#### With htmlFor
 
 <StoryEmbed
   id="atoms-formelements-formgrouplabel--with-html-for"
   height="4rem"
 />
+
+#### Without htmlFor
+
 <StoryEmbed
   id="atoms-formelements-formgrouplabel--without-html-for"
   height="4rem"
@@ -35,6 +40,14 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 
 ### Variant
 
+#### Default
+
 <StoryEmbed id="atoms-formelements-formgrouplabel--default" height="4rem" />
+
+#### Large
+
 <StoryEmbed id="atoms-formelements-formgrouplabel--large-size" height="4rem" />
+
+#### Disabled
+
 <StoryEmbed id="atoms-formelements-formgrouplabel--disabled" height="4rem" />

@@ -1,0 +1,59 @@
+---
+title: InfoTip
+description: A tip triggered by clicking its own info icon rather than the element it describes.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tip/InfoTip/index.tsx)
+
+## Usage
+
+Use `InfoTip` to add supplementary information next to an element, triggered by clicking its own info icon rather than by hovering or focusing another element.
+
+**Best practices:**
+
+- Provide `ariaLabel` or `ariaLabelledby` — exactly one is required — to accessibly name the info button.
+- InfoTip manages its own focus and keyboard behavior: opening moves focus into its content, `Tab`/`Shift+Tab` wrap within a floating tip, and `Escape` closes it — deferring to an enclosing `Modal`'s own `Escape` handling when the InfoTip is nested inside one.
+- Reserve `placement="floating"` for content that would otherwise be clipped by a tight parent container.
+
+**When NOT to use:**
+
+- **A hint on hover or focus of another element** — use [ToolTip](/components/feedback/tips/tooltip/) instead.
+- **A preview of a link's destination** — use [PreviewTip](/components/feedback/tips/previewtip/) instead.
+
+## Patterns
+
+### Choosing an emphasis
+
+`emphasis` accepts `'low'` (default, outline icon) or `'high'` (filled icon):
+
+<StoryEmbed id="molecules-tips-infotip--emphasis" height="8rem" />
+
+### Content with links or buttons
+
+Pass a `ReactNode` to `info` to include interactive content like an `Anchor` — focus moves into the tip's content on open, so interactive content stays reachable by keyboard:
+
+<StoryEmbed id="molecules-tips-infotip--with-links-or-buttons" height="14rem" />
+
+### Nesting inside a Modal
+
+When an `InfoTip` opens inside a `Modal`, `Escape` closes the `InfoTip` first and the `Modal` second — `InfoTip` detects the enclosing modal automatically:
+
+<StoryEmbed id="molecules-tips-infotip--info-tip-inside-modal" height="16rem" />
+
+### Choosing between ariaLabel and ariaLabelledby
+
+Use `ariaLabelledby` to point at visible text that already names the info icon's subject; use `ariaLabel` when there's no visible text to reference:
+
+<StoryEmbed id="molecules-tips-infotip--aria-label" height="10rem" />
+
+## Reference
+
+### Alignment
+
+`alignment` accepts `top-left`, `top-right` (default), `bottom-left`, or `bottom-right`:
+
+<StoryEmbed id="molecules-tips-infotip--alignments" height="16rem" />
+
+`zIndex` overrides stacking order the same way across every Tip — see [Tips](/components/feedback/tips/#overriding-stacking-order).

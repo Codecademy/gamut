@@ -1,0 +1,38 @@
+---
+title: Tips
+description: Small floating hints attached to an element.
+sidebar:
+  label: Overview
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+Tips share one underlying mechanism — each chooses between the same inline and floating renderers — but differ in what triggers them and what they can show:
+
+- [ToolTip](/components/feedback/tips/tooltip/) — a short, plain-text tip triggered by hovering or focusing the element it describes.
+- [InfoTip](/components/feedback/tips/infotip/) — a tip triggered by clicking its own info icon, for content longer than a ToolTip is meant to hold.
+- [PreviewTip](/components/feedback/tips/previewtip/) — a richer tip on a link, previewing content — optionally with an avatar and username — from the link's destination.
+
+All three share a `placement` prop (`'inline'` default, or `'floating'`), a `narrow` prop that forces the tip to its narrowest width for tight or edge-of-page spaces, and, inline only, an `inheritDims` prop and a `zIndex` override.
+
+## Patterns
+
+The patterns below are shared, close to verbatim, across the Tips family — per the documentation template, they're written once here rather than repeated on every sibling page.
+
+### Escaping a tight container with floating placement
+
+`placement="floating"` escapes the confines of a tight parent container. Every Tip's own docs warn to reach for it only when it's actually needed — inline placement keeps the tip in normal document flow and is the safer default:
+
+<StoryEmbed id="molecules-tips-tooltip--floating" height="14rem" />
+
+The same prop works the same way on [InfoTip](https://gamut.codecademy.com/?path=/story/molecules-tips-infotip--placement) and [PreviewTip](https://gamut.codecademy.com/?path=/story/molecules-tips-previewtip--floating-preview-tip).
+
+### Overriding stacking order
+
+Inline tips accept `zIndex` to control stacking against surrounding content that has its own explicit `zIndex`:
+
+<StoryEmbed id="molecules-tips-infotip--z-index" height="12rem" />
+
+## Reference
+
+Alignment is a shared concept — a tip positions itself relative to whatever triggers it — but the exact values differ by component: `ToolTip` aligns to a side (`top-center`, `bottom-center`, `left-center`, `right-center`), while `InfoTip` and `PreviewTip` align to a corner (`top-left`, `top-right`, `bottom-left`, `bottom-right`). See each component's own Reference section for its alignment story, and [ToolTip's horizontal alignment story](https://gamut.codecademy.com/?path=/story/molecules-tips-tooltip--horizontal-alignments) for how alignment adapts under RTL layouts.

@@ -1,0 +1,39 @@
+---
+title: Breadcrumbs
+description: A trail of links showing the current page's position in a hierarchy.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40570&m=dev) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Breadcrumbs/index.tsx)
+
+## Usage
+
+Use `Breadcrumbs` to help a reader understand where the current page sits in a site's hierarchy and to navigate back to any level above it.
+
+Pass a `crumbs` array of `{ title, href? }` objects, in order from the top of the hierarchy down. The last crumb is treated as the current page: if it has no `href`, it renders as bold, non-clickable text with `aria-current="location"` instead of a link.
+
+**Best practices:**
+
+- Reserve `Breadcrumbs` for pages that sit at least two levels deep in a hierarchy — a single level back to a parent doesn't need a trail.
+- Give every crumb a unique `title` within the same array; titles are used as list keys.
+- Attach arbitrary data to a crumb with `payload`, then read it back in `onClick` — useful for analytics or intercepting navigation without changing the link itself.
+
+**When NOT to use:**
+
+- **A single "back" link** — a plain [Anchor](/components/navigation/anchor/) is enough when there's only one level to go back to.
+- **Switching between sibling views on the same page** — use [Tabs](/components/navigation/tabs/) instead.
+
+## Patterns
+
+### Passing a payload to onClick
+
+Attach arbitrary data to a clickable crumb with `payload`, then read it back in `onClick` — for example to intercept navigation or fire an analytics event instead of a plain page load:
+
+<StoryEmbed id="molecules-breadcrumbs--payload" height="6rem" />
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="molecules-breadcrumbs--default" height="6rem" />

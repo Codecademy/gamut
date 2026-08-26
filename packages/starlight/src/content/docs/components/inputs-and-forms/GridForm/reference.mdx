@@ -11,9 +11,18 @@ The full field-type catalog, validation rules, and submit button options for [Gr
 
 ## Field types
 
-Every field in `GridForm`'s `fields` array is a plain object with a `type` discriminator. Text inputs support any HTML input type (`text`, `email`, `password`, `number`, `tel`, `url`, `search`, `date`, `time`, and more) under the same shape:
+Every field in `GridForm`'s `fields` array is a plain object with a `type` discriminator.
+
+### `text`
+
+Text inputs support any HTML input type (`text`, `email`, `password`, `number`, `tel`, `url`, `search`, `date`, `time`, and more) under the same shape.
+
+#### With an explicit type
 
 <StoryEmbed id="organisms-gridform-fields--text-field" height="10rem" />
+
+#### With type omitted (defaults to text)
+
 <StoryEmbed id="organisms-gridform-fields--default-text-field" height="10rem" />
 
 Placeholder text is a `type: 'text'` field using `placeholder` instead of a visible description — use it sparingly. Browsers often render placeholder text with too little contrast for AA, and it should only rephrase the label, never add information the label doesn't already have:
@@ -43,9 +52,14 @@ Accepts a custom `validate` function for restricting file types/size:
 
 ### `checkbox`
 
-`spacing="tight"` fits checkboxes into smaller areas:
+`spacing="tight"` fits checkboxes into smaller areas.
+
+#### Default spacing
 
 <StoryEmbed id="organisms-gridform-fields--checkbox-field" height="12rem" />
+
+#### Tight spacing
+
 <StoryEmbed id="organisms-gridform-fields--checkbox-spacing" height="12rem" />
 
 ### `nested-checkboxes`
@@ -77,10 +91,15 @@ A honeypot field — named to avoid tipping off bots that it's a spam trap, unli
 
 ### InfoTips on fields
 
+#### Auto-labeled
+
 <StoryEmbed
   id="organisms-gridform-fields--info-tip-auto-labelling"
   height="10rem"
 />
+
+#### ReactNode label
+
 <StoryEmbed
   id="organisms-gridform-fields--info-tip-with-react-node-label"
   height="16rem"
@@ -123,31 +142,61 @@ A honeypot field — named to avoid tipping off bots that it's a spam trap, unli
 
 ## Submit button
 
-`submit.type` picks the button component (`'fill'`, the default, or `'cta'`); `submit.position` picks its alignment (`'left'`, the default, `'center'`, `'right'`, or `'stretch'`):
+### Type
+
+`submit.type` picks the button component: `'fill'` (default) or `'cta'`.
+
+#### Fill
 
 <StoryEmbed
   id="organisms-gridform-buttons--submit-button-fill"
   height="10rem"
 />
+
+#### CTA
+
 <StoryEmbed id="organisms-gridform-buttons--submit-button-cta" height="10rem" />
+
+### Position
+
+`submit.position` picks its alignment: `'left'` (default), `'center'`, `'right'`, or `'stretch'`.
+
+#### Left
+
 <StoryEmbed
   id="organisms-gridform-buttons--submit-button-left"
   height="10rem"
 />
+
+#### Center
+
 <StoryEmbed
   id="organisms-gridform-buttons--submit-button-center"
   height="10rem"
 />
+
+#### Right
+
 <StoryEmbed
   id="organisms-gridform-buttons--submit-button-right"
   height="10rem"
 />
+
+#### Stretch
+
 <StoryEmbed
   id="organisms-gridform-buttons--submit-button-stretch"
   height="10rem"
 />
 
-`submit.loading` and `submit.disabled` mirror [SubmitButton](/components/inputs-and-forms/connectedform/submit-button/)'s own props:
+### State
+
+`submit.loading` and `submit.disabled` mirror [SubmitButton](/components/inputs-and-forms/connectedform/submit-button/)'s own props.
+
+#### Loading
 
 <StoryEmbed id="organisms-gridform-buttons--loading" height="10rem" />
+
+#### Disabled
+
 <StoryEmbed id="organisms-gridform-buttons--disabled" height="10rem" />

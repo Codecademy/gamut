@@ -1,0 +1,49 @@
+---
+title: Toast
+description: A brief, dismissible, non-modal notification, rendered through Toaster.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1086-0&m=dev) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Toast/Toast.tsx)
+
+## Usage
+
+Use `Toast` for low-priority, often decorative or celebratory feedback — for example, unlocking an achievement while learning.
+
+**Best practices:**
+
+- Keep only one toast on screen at a time.
+- Keep copy brief — no more than three lines including the title — and relevant to every reader who might see it.
+- Don't repeat a message that's already delivered through the notification bell.
+- `Toast` has no dismiss timer or dismiss button of its own; whatever renders it is responsible for removing it, on a timeout or otherwise. In practice, that's [Toaster](/components/feedback/toaster/) — render `Toast` through it rather than mounting it directly.
+
+**When NOT to use:**
+
+- **A message the reader needs to act on** — use [Alert](/components/feedback/alert/) instead; a toast can disappear without any guarantee the reader saw it.
+
+## Patterns
+
+### Custom icons
+
+`icon` accepts a URL, rendered as a background image, or any other `ReactNode`, centered in a 64×64 circle automatically. A custom `ReactNode` icon must be sized to fit that circle itself:
+
+<StoryEmbed id="molecules-toasts-toast--icons" height="10rem" />
+
+### Rich content in the title or body
+
+Compose an icon or an `Anchor` directly into `title` or `children`.
+
+#### Icon in the title
+
+<StoryEmbed id="molecules-toasts-toast--content-icon" height="8rem" />
+
+#### Anchor in the body
+
+<StoryEmbed id="molecules-toasts-toast--content-link" height="8rem" />
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="molecules-toasts-toast--default" height="8rem" />

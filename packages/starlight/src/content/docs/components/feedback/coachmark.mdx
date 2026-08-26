@@ -1,0 +1,51 @@
+---
+title: Coachmark
+description: A pointed callout that highlights a specific piece of UI.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1083%3A1134) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Coachmark/index.tsx)
+
+## Usage
+
+Use `Coachmark` to guide a user toward a specific piece of UI — introducing a new feature or explaining a complex interaction. Wrap it around the element to highlight; a function passed to `renderPopover` returns the popover content shown alongside it.
+
+**Best practices:**
+
+- Use coachmarks sparingly, so they don't overwhelm the reader with popovers.
+- `Coachmark` has no built-in dismiss button, auto-dismiss timer, or multi-step sequencing — build a dismiss control into whatever `renderPopover` returns, and flip `shouldShow` back to `false` yourself when it's clicked. For a guided tour of several steps, manage that sequencing yourself across separate `Coachmark` instances.
+
+**When NOT to use:**
+
+- **Long-term guidance or reference material** — point to a help center or documentation instead; a coachmark is for a one-time nudge, not something a reader returns to.
+
+### Anatomy
+
+1. **Target wrapper** — `Coachmark`'s children; the popover positions itself relative to this, and it's otherwise invisible.
+2. **Popover container** — the visible callout box; `outline` swaps its style from a drop shadow to a bordered outline.
+3. **Beak** (optional, `beak`) — a pointed triangle connecting the popover to its target.
+4. **Pattern background** (optional, `pattern`) — a decorative pattern layer behind the popover.
+5. **Content** — whatever `renderPopover` returns; entirely consumer-defined, including any dismiss control.
+
+## Patterns
+
+### Showing and dismissing a coachmark
+
+`Coachmark` is fully controlled through `shouldShow` — flip it to `true` to show the popover, then back to `false` from inside the content returned by `renderPopover`:
+
+<StoryEmbed id="molecules-coachmark--default" height="14rem" />
+
+### Delaying appearance
+
+Pass `delay` (in ms) to wait before the popover appears once `shouldShow` becomes `true`:
+
+<StoryEmbed id="molecules-coachmark--delay" height="14rem" />
+
+## Reference
+
+### Popover styling
+
+`popoverProps` configures the popover's `beak`, `outline`, `pattern`, and `position` (`'above' | 'below'`) — passed straight through to the underlying `Popover`, minus its `center` position option:
+
+<StoryEmbed id="molecules-coachmark--customized" height="16rem" />

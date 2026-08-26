@@ -36,12 +36,17 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 
 ### Adding an InfoTip
 
-Pass `infotip` for a tip next to the label — it's auto-labeled by a string `label`, or you can override with `ariaLabel`/`ariaLabelledby` when the label is a `ReactNode`:
+Pass `infotip` for a tip next to the label — it's auto-labeled by a string `label`, or you can override with `ariaLabel`/`ariaLabelledby` when the label is a `ReactNode`.
+
+#### Auto-labeled
 
 <StoryEmbed
   id="organisms-connectedform-connectedformgroup--info-tip-auto-labelling"
   height="8rem"
 />
+
+#### ReactNode label
+
 <StoryEmbed
   id="organisms-connectedform-connectedformgroup--info-tip-with-react-node-label"
   height="14rem"

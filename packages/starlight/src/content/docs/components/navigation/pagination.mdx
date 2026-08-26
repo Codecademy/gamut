@@ -1,0 +1,66 @@
+---
+title: Pagination
+description: Controls for moving between pages of a paginated list.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=8639%3A7128) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Pagination/index.tsx)
+
+## Usage
+
+Use `Pagination` to navigate between content split across multiple pages.
+
+**Best practices:**
+
+- `type` auto-resolves from `totalPages`: `'basic'` under 10 pages, `'includeSkipToButtons'` at 10 or more. Only set it explicitly for an edge case, like forcing skip-to buttons under 10 pages.
+- Pass `pageNumber` to make `Pagination` controlled; omit it and `Pagination` manages the current page itself.
+- When pages are separate URLs, set `isNavigation` and make `onChange` perform real navigation — otherwise browser back/forward and deep links to a specific page break.
+- `variant` (`'stroke'` default, `'text'`) roughly mirrors Gamut's Button styles.
+
+**When NOT to use:**
+
+- **Infinite scroll or a "load more" pattern** — `Pagination` is page-index based, not cursor based.
+- **Progress through a multi-step form or wizard** — its semantics are page navigation (`aria-current="page"`), not step completion.
+
+## Patterns
+
+### Pagination as real navigation
+
+Set `isNavigation` when each page is its own URL, and perform the actual navigation inside `onChange` — this renders `Pagination` as a `<nav>` with real links instead of a plain button group:
+
+<StoryEmbed id="molecules-pagination--navigation" height="8rem" />
+
+### Building controlled pagination
+
+Pass `pageNumber` to drive the current page from your own state, for example to keep it in sync with a query string. `Pagination` calls `onChange` whenever `pageNumber` changes, the same as it would for a click:
+
+<StoryEmbed id="molecules-pagination--controlled" height="12rem" />
+
+## Reference
+
+### Type
+
+`type` auto-resolves from `totalPages`: `basic` under 10 pages, `includeSkipToButtons` at 10 or more.
+
+#### Basic
+
+Page-number buttons plus previous/next.
+
+<StoryEmbed id="molecules-pagination--default" height="6rem" />
+
+#### Include skip to buttons
+
+Adds first/last-page jump buttons and ellipsis buttons that skip ahead by `chapterSize`.
+
+<StoryEmbed id="molecules-pagination--include-skip-to-buttons" height="6rem" />
+
+### Variant
+
+#### Stroke
+
+<StoryEmbed id="molecules-pagination--stroke" height="6rem" />
+
+#### Text
+
+<StoryEmbed id="molecules-pagination--text" height="6rem" />

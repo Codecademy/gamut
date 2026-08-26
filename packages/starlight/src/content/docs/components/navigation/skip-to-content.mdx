@@ -1,0 +1,45 @@
+---
+title: SkipToContent
+description: A keyboard-only link that skips repeated navigation.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/SkipToContent)
+
+## Usage
+
+Use `SkipToContent` to add a link that's hidden until focused (for example, by pressing <kbd>Tab</kbd>), letting keyboard users jump straight past repeated navigation to the page's main content.
+
+**Best practices:**
+
+- Pair every `SkipToContent` with a `SkipToContentTarget` sharing the same id, passed to `SkipToContent` via `contentId`. `SkipToContentTarget` defaults to `tabIndex={-1}`, so it can receive focus programmatically without joining the normal tab order.
+- Place `SkipToContent` at the very top of the page, before the navigation it lets readers skip past.
+
+**When NOT to use:**
+
+- **A page without significant repeated navigation to skip past** — there's nothing for it to skip.
+- **More than once per page** — a single skip link is enough; more than one can confuse tab order.
+
+## Patterns
+
+### Pairing with a target
+
+`SkipToContent` and `SkipToContentTarget` share an id via `contentId`. Clicking, or activating with the keyboard, focuses and scrolls to the target:
+
+```tsx
+<div>
+  <SkipToContent contentId="main-content" />
+  <a href="/">Link 1</a>
+  <a href="/">Link 2</a>
+  <a href="/">Link 3</a>
+</div>
+<SkipToContentTarget id="main-content" />
+<FillButton>I should have focus after skip to content</FillButton>
+```
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-skiptocontent--default" height="6rem" />

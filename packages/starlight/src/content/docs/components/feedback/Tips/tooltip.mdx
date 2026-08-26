@@ -1,0 +1,62 @@
+---
+title: ToolTip
+description: A short tip triggered by hovering or focusing the element it describes.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55279&mode=design&t=fGkWf5GSl5cj5fQo-0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tip/ToolTip/index.tsx)
+
+## Usage
+
+Use `ToolTip` to add a short, plain-text hint that appears on hovering or focusing the element it describes — further explaining an element's primary action, a disabled state, or labeling an icon-only control.
+
+**Best practices:**
+
+- For manual usage, wire `id` on `ToolTip` and `aria-describedby` on the element it describes yourself. `IconButton`'s `tip` prop does this automatically.
+- For a disabled control that still needs to explain why, use `aria-disabled` instead of `disabled` — `disabled` removes the element from the tab order, so a keyboard user could never reach the tooltip.
+- `closeOnClick` (default `true`) closes the tip on click, only reopening once the cursor leaves and re-enters. Pass `false` to keep it open through a click — for example, a "copy → copied" pattern.
+- Reserve `placement="floating"` for tips that would otherwise be clipped or occluded by a tight parent container — see [Tips](/components/feedback/tips/) for why.
+
+**When NOT to use:**
+
+- **Content longer than a short phrase** — use [InfoTip](/components/feedback/tips/infotip/) instead; it's meant for longer supplementary content and doesn't require the reader to keep hovering to read it.
+- **A preview of a link's destination** — use [PreviewTip](/components/feedback/tips/previewtip/) instead.
+
+## Patterns
+
+### Icon-only buttons
+
+`IconButton`'s required `tip` prop wires a `ToolTip` automatically. If no `aria-label` is given, `tip`'s value becomes the accessible name; `tipProps` adjusts its alignment and placement:
+
+<StoryEmbed id="molecules-tips-tooltip--with-icon-button" height="10rem" />
+
+### Disabled controls
+
+Use `aria-disabled` instead of `disabled` so the control stays focusable and its tooltip stays reachable by keyboard:
+
+<StoryEmbed id="molecules-tips-tooltip--disabled" height="10rem" />
+
+### Keeping a tip open through a click
+
+Pass `closeOnClick={false}` to keep the tip open after a click — useful for a "copy → copied" style message:
+
+<StoryEmbed id="molecules-tips-tooltip--close-on-click" height="10rem" />
+
+### Wrapping an arbitrary interactive element
+
+Wrap `ToolTip` directly around any interactive element, not just `IconButton`, wiring `id` and `aria-describedby` yourself:
+
+<StoryEmbed id="molecules-tips-tooltip--interactive-element" height="14rem" />
+
+## Reference
+
+### Alignment
+
+`alignment` accepts `top-center` (default), `bottom-center`, `left-center`, or `right-center`:
+
+<StoryEmbed id="molecules-tips-tooltip--alignments" height="16rem" />
+
+Under RTL layouts, `left-center`/`right-center` mirror to follow reading direction:
+
+<StoryEmbed id="molecules-tips-tooltip--horizontal-alignments" height="16rem" />

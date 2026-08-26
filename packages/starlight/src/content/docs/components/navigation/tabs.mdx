@@ -1,0 +1,83 @@
+---
+title: Tabs
+description: Switches between sibling views without navigating away from the page.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41459) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tabs)
+
+## Usage
+
+Use `Tabs` when there are multiple sections of equal importance, sharing the same structure, and only one should be visible at a time.
+
+**Best practices:**
+
+- `Tabs` is uncontrolled by default — it picks the first tab if no `defaultSelectedKey` is given. Pass `selectedKey` and `onSelectionChange` to make it controlled instead.
+- If tracking selection via `onSelectionChange` on an otherwise uncontrolled `Tabs`, also pass `defaultSelectedKey` — without it, tracking fires twice.
+- For link-based navigation between separate URLs rather than switching in-page content, use `TabNav`/`TabNavLink` instead of `Tabs`/`Tab`/`TabPanel`.
+- `TabPanel` unmounts from the DOM while inactive by default; pass `shouldForceMount` to keep it mounted (still visually hidden) when a panel needs to preserve its state or stay in the DOM for other reasons.
+
+**When NOT to use:**
+
+- **Content that needs to be visible simultaneously** — tabs hide every section but one; don't use them for content a reader needs to compare or see all at once.
+- **Only one section, with nothing to switch to** — a single tab has nothing to organize.
+
+### Anatomy
+
+1. **TabList** — contains the row of `Tab` triggers.
+2. **Tab** — a single tab trigger; its `id` matches its corresponding `TabPanel`'s `id`.
+3. **TabPanels** — wraps the content for every tab.
+4. **TabPanel** — the content shown when its matching `Tab` is selected.
+
+For link-based navigation, swap `TabList`/`Tab` for a **TabNav** (a `<nav>` wrapping `TabNavLink`s, each with its own `href`) — see Patterns below.
+
+## Patterns
+
+### Building controlled tabs
+
+Pass `selectedKey` and `onSelectionChange` to drive the active tab from your own state — the newly selected tab's `id` is passed to the callback:
+
+<StoryEmbed id="molecules-tabs--controlled" height="14rem" />
+
+### Adding a status badge to a tab
+
+Compose a `Badge` into a `Tab`'s children to flag new or updated content:
+
+<StoryEmbed id="molecules-tabs--with-badge" height="8rem" />
+
+### Tab-styled link navigation
+
+Swap `TabList`/`Tab` for `TabNav`/`TabNavLink` when tabs should navigate to a new URL instead of switching in-page content. Give `TabNav` its own `aria-label` to distinguish it from other navigation on the page:
+
+<StoryEmbed id="molecules-tabs--tabs-nav" height="8rem" />
+
+### Tabs with interactive content
+
+When a `TabPanel` contains interactive content, like a button or a link, tabbing into the panel focuses that content directly instead of the whole panel:
+
+<StoryEmbed id="molecules-tabs--interactive-content" height="12rem" />
+
+### Keeping inactive panels mounted
+
+Pass `shouldForceMount` to a `TabPanel` to keep it in the DOM, still visually hidden, while inactive — useful for preserving a panel's internal state across tab switches:
+
+<StoryEmbed id="molecules-tabs--force-mount" height="12rem" />
+
+## Reference
+
+### Variant
+
+#### Standard
+
+<StoryEmbed id="molecules-tabs--default" height="8rem" />
+
+#### Block
+
+<StoryEmbed id="molecules-tabs--block-variant" height="8rem" />
+
+### Disabled
+
+Disable an individual tab with `isDisabled` on the `Tab`, or disable several at once with `disabledKeys` on `Tabs`:
+
+<StoryEmbed id="molecules-tabs--disabled" height="8rem" />

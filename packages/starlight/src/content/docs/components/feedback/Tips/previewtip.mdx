@@ -1,0 +1,51 @@
+---
+title: PreviewTip
+description: An Anchor that previews a snippet of content from its link destination.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tip/PreviewTip/index.tsx)
+
+## Usage
+
+Use `PreviewTip` to preview a snippet of a link's destination without leaving the page. It renders as an `Anchor` — so it requires `href` — and shows `linkDescription` on hover or focus.
+
+**Best practices:**
+
+- Pass `avatar` (a `ReactNode`) together with `username` to render the avatar layout instead of plain preview text.
+- Set `truncateLines` to control how many lines of `linkDescription` show before truncating; the default is 4.
+- Pass `loading` to show a shimmer placeholder while the preview content is still being fetched.
+- Reserve `placement="floating"` for tips that would otherwise be clipped by a tight parent container.
+
+**When NOT to use:**
+
+- **A hint that isn't previewing a link's destination** — use [ToolTip](/components/feedback/tips/tooltip/) or [InfoTip](/components/feedback/tips/infotip/) instead.
+
+## Patterns
+
+### Previewing with an avatar
+
+Pass `avatar` and `username` to render the avatar layout instead of plain preview text:
+
+<StoryEmbed id="molecules-tips-previewtip--avatar-tip" height="10rem" />
+
+### Showing a loading state
+
+Pass `loading` while the preview content is still being fetched:
+
+<StoryEmbed id="molecules-tips-previewtip--loading-tip" height="12rem" />
+
+### Truncating longer previews
+
+`truncateLines` limits `linkDescription` to a set number of lines before truncating; the default is 4:
+
+<StoryEmbed id="molecules-tips-previewtip--truncation" height="14rem" />
+
+## Reference
+
+### Playground
+
+`alignment` accepts `top-left`, `top-right` (default), `bottom-left`, or `bottom-right`, the same corner set as `InfoTip`:
+
+<StoryEmbed id="molecules-tips-previewtip--default" height="10rem" />

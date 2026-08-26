@@ -44,9 +44,14 @@ Use `DatePicker` to let a reader select a single date or a date range, either by
 
 ### Disabling specific dates
 
-Pass a `disableDate` function returning `true` for any date that shouldn't be selectable. Use `matchDisabledDates` to disable a fixed list, or write your own predicate for rules like "no weekends":
+Pass a `disableDate` function returning `true` for any date that shouldn't be selectable. Use `matchDisabledDates` to disable a fixed list, or write your own predicate for rules like "no weekends".
+
+#### Disabling a fixed list
 
 <StoryEmbed id="organisms-datepicker--match-disabled-dates" height="26rem" />
+
+#### Disabling weekends
+
 <StoryEmbed id="organisms-datepicker--range-disabled-weekends" height="26rem" />
 
 A few more `disableDate` recipes (before today, more than 30 days before today, within a 30-day window of the start date) each have their own story too:
@@ -63,9 +68,14 @@ Pass `children` to skip the default layout entirely — `DatePicker` still provi
 
 ### Localizing
 
-`locale` drives segment order, month/weekday names, and date `aria-label`s via `Intl` APIs. `translations` overrides the UI strings (button labels, quick-action text, validation messages) directly:
+`locale` drives segment order, month/weekday names, and date `aria-label`s via `Intl` APIs. `translations` overrides the UI strings (button labels, quick-action text, validation messages) directly.
+
+#### Locale
 
 <StoryEmbed id="organisms-datepicker--locale" height="22rem" />
+
+#### Custom translations
+
 <StoryEmbed id="organisms-datepicker--translations" height="26rem" />
 
 ## Reference
@@ -82,20 +92,31 @@ Covered above under Patterns — [single](#building-a-single-date-picker) and [r
 
 ### Quick actions
 
-Default (single: Yesterday/Today/Tomorrow; range: Last 7/30/90 days), disabled (`quickActions={null}`), and custom (`CalendarQuickAction[]`) are each their own story, for both modes:
+Default (single: Yesterday/Today/Tomorrow; range: Last 7/30/90 days), disabled (`quickActions={null}`), and custom (`CalendarQuickAction[]`) are each their own story, for both modes.
+
+#### Single, default
 
 <StoryEmbed
   id="organisms-datepicker--single-default-quick-actions"
   height="24rem"
 />
+
+#### Range, default
+
 <StoryEmbed
   id="organisms-datepicker--range-default-quick-actions"
   height="26rem"
 />
+
+#### Single, custom
+
 <StoryEmbed
   id="organisms-datepicker--single-custom-quick-actions"
   height="24rem"
 />
+
+#### Range, custom
+
 <StoryEmbed
   id="organisms-datepicker--range-custom-quick-actions"
   height="26rem"

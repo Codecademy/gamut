@@ -3,7 +3,7 @@ title: Alert
 description: An alert displays an important, succinct message and provides actions for users to address or dismiss it. It requires a user action to be dismissed.
 ---
 
-import { Aside } from '@astrojs/starlight/components';
+import StoryEmbed from '~/components/StoryEmbed.astro';
 
 **Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40358) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Alert/Alert.tsx)
 
@@ -41,39 +41,13 @@ When a floating alert's text would overflow, Alert truncates it to one line and 
 
 Pass `onClose` to render a dismiss button and react to it. `Alert` doesn't track its own visibility — unmount it yourself once the user dismisses it:
 
-```tsx
-import { useState } from 'react';
-import { Alert } from '@codecademy/gamut';
-
-export const DismissibleAlert = () => {
-  const [visible, setVisible] = useState(true);
-
-  if (!visible) return null;
-
-  return (
-    <Alert type="success" onClose={() => setVisible(false)}>
-      Your changes have been saved.
-    </Alert>
-  );
-};
-```
+<StoryEmbed id="molecules-alert--dismissible" height="10rem" />
 
 ### Customizing the close button
 
 The close button's tooltip text, tooltip alignment, disabled state, and ref are configured through `closeButtonProps` rather than as top-level props, since they only apply when `onClose` is set:
 
-```tsx
-<Alert
-  type="notice"
-  onClose={() => dismiss()}
-  closeButtonProps={{
-    tip: 'Dismiss this notice',
-    tipAlignment: 'bottom-left',
-  }}
->
-  Your session will expire in 5 minutes.
-</Alert>
-```
+<StoryEmbed id="molecules-alert--close-button-customization" height="10rem" />
 
 ### Adding a call to action
 
@@ -88,42 +62,48 @@ The close button's tooltip text, tooltip alignment, disabled state, and ref are 
 </Alert>
 ```
 
-## Variants
+## Reference
 
-<Aside type="caution" title="Content migration pending">
-  The rendered examples for each alert type, inline vs. floating placement, and
-  small-width stacking behavior live in the current Storybook stories
-  (`Alert.stories.tsx`) and haven't been ported to this page yet. Until then,
-  see the [existing Alert
-  story](https://github.com/Codecademy/gamut/blob/main/packages/styleguide/src/lib/Molecules/Alert/Alert.mdx).
-</Aside>
+### Type
 
-`type` accepts `general`, `success`, `feature`, `notice`, `error`, or `subtle`. `subtle` is inline-only (see Props). `placement` accepts `inline` or `floating` (default); floating alerts truncate and gain the expand/collapse control described in Anatomy, inline alerts don't. Below 480px wide, the CTA button stacks below the text automatically.
+`type` accepts `general`, `success`, `feature`, `notice`, `error`, or `subtle`, setting the icon and color treatment. `subtle` requires `placement="inline"` — see Placement below.
 
-## Accessibility
+#### General
 
-- The type icon is `aria-hidden` — it's decorative and the alert's `type` doesn't need to be announced separately from its text.
-- The expand/collapse toggle (shown when floating alert text is truncated) is a real button with `aria-expanded`, `aria-controls` pointing at the collapsible region, and an accessible name of "Expand"/"Collapse" — plus a tooltip echoing the same label.
-- The dismiss button's accessible name comes from `closeButtonProps.tip`, which defaults to "Close alert". Set a more specific `tip` (for example "Dismiss session warning") when multiple alerts might be on screen at once.
-- Alert content is not rendered in an ARIA live region. If an alert can appear after the initial render in response to an async action (a save completing, an error), pair it with your own live-region announcement — don't rely on the alert's markup alone to notify screen reader users.
+<StoryEmbed id="molecules-alert--general" height="5rem" />
 
-## Props
+#### Success
 
-| Prop               | Type                                                                                                                                                                                       | Default                                                 | Description                                                                                          |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `children`         | `React.ReactNode`                                                                                                                                                                          | —                                                       | The alert's message content. Required.                                                               |
-| `type`             | `'general' \| 'success' \| 'feature' \| 'notice' \| 'error' \| 'subtle'`                                                                                                                   | `'general'`                                             | Sets the icon and color treatment. `subtle` requires `placement="inline"`.                           |
-| `placement`        | `'inline' \| 'floating'`                                                                                                                                                                   | `'floating'`                                            | `floating` truncates long content behind an expand toggle; `inline` renders content in full.         |
-| `onClose`          | `() => void`                                                                                                                                                                               | —                                                       | Called when the dismiss button is clicked. Renders the dismiss button when provided.                 |
-| `closeButtonProps` | `{ disabled?: boolean; ref?: React.Ref<HTMLButtonElement>; tip?: string; tipAlignment?: 'top-left' \| 'top-center' \| 'top-right' \| 'bottom-left' \| 'bottom-center' \| 'bottom-right' }` | `{ tip: 'Close alert', tipAlignment: 'bottom-center' }` | Configures the dismiss button. Ignored unless `onClose` is set.                                      |
-| `cta`              | `FillButtonProps & { text?: string }`                                                                                                                                                      | —                                                       | Renders a secondary CTA button. Pass `text` for label-only usage or full button props for a handler. |
-| `hidden`           | `boolean`                                                                                                                                                                                  | `false`                                                 | Sets `tabIndex={-1}` on the alert's interactive buttons without removing them from the DOM.          |
-| `className`        | `string`                                                                                                                                                                                   | —                                                       | Passed through to the alert's root element.                                                          |
+<StoryEmbed id="molecules-alert--success" height="5rem" />
 
-## Playground
+#### Feature
 
-<Aside type="caution" title="Content migration pending">
-  A live, editable playground for `Alert` requires the same interactive example
-  infrastructure as the current Storybook canvas and hasn't been built for this
-  site yet.
-</Aside>
+<StoryEmbed id="molecules-alert--feature" height="5rem" />
+
+#### Notice
+
+<StoryEmbed id="molecules-alert--notice" height="5rem" />
+
+#### Error
+
+<StoryEmbed id="molecules-alert--error" height="5rem" />
+
+### Placement
+
+`placement` accepts `inline` or `floating` (default). Floating alerts truncate long content behind the expand/collapse toggle described in Anatomy; inline alerts render in full. `subtle` only appears at `inline` placement.
+
+#### General, inline
+
+<StoryEmbed id="molecules-alert--general-inline" height="4rem" />
+
+#### Subtle, inline
+
+<StoryEmbed id="molecules-alert--subtle-inline" height="4rem" />
+
+Every other type follows the same pattern at `inline` placement: [success](https://gamut.codecademy.com/?path=/story/molecules-alert--success-inline), [feature](https://gamut.codecademy.com/?path=/story/molecules-alert--feature-inline), [notice](https://gamut.codecademy.com/?path=/story/molecules-alert--notice-inline), [error](https://gamut.codecademy.com/?path=/story/molecules-alert--error-inline).
+
+### Small width
+
+Below 480px wide, the CTA button stacks below the text automatically:
+
+<StoryEmbed id="molecules-alert--small-width" height="10rem" />

@@ -24,10 +24,15 @@ Use `SelectDropdown` when a design calls for a styled dropdown menu, searchable 
 
 ### Pairing with FormGroup
 
+#### Default
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--form-group-select-dropdown"
   height="10rem"
 />
+
+#### Error
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--form-group-error"
   height="12rem"
@@ -42,10 +47,15 @@ Set `multiple` to let users pick more than one option — selected values render
 | Single | Not supported                                          | Pass `value` (an option value string) and update it in `onChange`. |
 | Multi  | Omit `value`, or pass a non-array (`undefined`, `''`). | Pass `value` as `string[]` and update it in `onChange`.            |
 
+#### Uncontrolled
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--multiple-select"
   height="10rem"
 />
+
+#### Controlled
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--multiple-select-controlled"
   height="10rem"
@@ -53,13 +63,21 @@ Set `multiple` to let users pick more than one option — selected values render
 
 ### Letting users create new options
 
-Set `isCreatable` to show an **Add "value"** row when the input doesn't match an existing option. Selecting it fires `onCreateOption` with the typed string — you own persisting it to `options`. `onChange` still fires too, with `meta.action === 'create-option'`:
+Set `isCreatable` to show an **Add "value"** row when the input doesn't match an existing option. Selecting it fires `onCreateOption` with the typed string — you own persisting it to `options`. `onChange` still fires too, with `meta.action === 'create-option'`.
+
+#### Single-select
 
 <StoryEmbed id="atoms-forminputs-selectdropdown--creatable" height="10rem" />
+
+#### Multi-select, uncontrolled
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--creatable-multi-uncontrolled"
   height="10rem"
 />
+
+#### Multi-select, controlled
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--creatable-multi"
   height="10rem"
@@ -87,11 +105,22 @@ Pass `inputProps.hidden` to render a native `<input type="hidden">` with the sel
 
 ### Option content
 
-`icon`, `subtitle`, `rightLabel`, and `abbreviation` can each be added to an option to enrich how it renders:
+`icon`, `subtitle`, `rightLabel`, and `abbreviation` can each be added to an option to enrich how it renders.
+
+#### Icon
 
 <StoryEmbed id="atoms-forminputs-selectdropdown--icons" height="10rem" />
+
+#### Subtitle
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--subtitles" height="10rem" />
+
+#### Right label
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--right-labels" height="10rem" />
+
+#### Abbreviation
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--abbreviated-input"
   height="10rem"
@@ -99,20 +128,30 @@ Pass `inputProps.hidden` to render a native `<input type="hidden">` with the sel
 
 ### Grouped options
 
+#### Dividers
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--group-dividers"
   height="10rem"
 />
+
+#### Labels
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--group-labels" height="10rem" />
 
 ### Layout & positioning
 
-`inputWidth`/`dropdownWidth` size the input and menu independently, and `menuAlignment="right"` aligns the menu to the input's right edge instead of its left:
+`inputWidth`/`dropdownWidth` size the input and menu independently, and `menuAlignment="right"` aligns the menu to the input's right edge instead of its left.
+
+#### Independent widths
 
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--independent-widths"
   height="10rem"
 />
+
+#### Menu alignment
+
 <StoryEmbed
   id="atoms-forminputs-selectdropdown--menu-alignment-right"
   height="10rem"
@@ -125,11 +164,24 @@ Pass `inputProps.hidden` to render a native `<input type="hidden">` with the sel
 
 ### Size
 
+#### Base
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--base" height="8rem" />
+
+#### Small
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--small" height="8rem" />
 
 ### State
 
+#### Searchable
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--searchable" height="8rem" />
+
+#### Disabled
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--disabled" height="8rem" />
+
+#### Error
+
 <StoryEmbed id="atoms-forminputs-selectdropdown--error" height="8rem" />

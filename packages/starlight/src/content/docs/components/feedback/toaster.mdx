@@ -1,0 +1,31 @@
+---
+title: Toaster
+description: Renders and animates a stack of Toasts, fully controlled by the consumer.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1086-0&m=dev) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Toaster/index.tsx)
+
+## Usage
+
+Use `Toaster` to render one shared, animated stack of [Toast](/components/feedback/toast/)s near the root of your app. Gamut ships no `useToast` hook or imperative toast API — `Toaster` is a fully controlled list renderer, so the array of active toasts lives in your own state.
+
+**Best practices:**
+
+- Keep a `toasts` array in your own state — each item is a unique `id` plus `Toast`'s `title`/`icon`/`children` — and pass it straight to `Toaster`'s `toasts` prop.
+- Wire a single `onClose(id)` handler that filters the closed toast's `id` out of that state. `Toaster` calls it per toast; it never removes anything itself.
+- If a toast should disappear automatically, add your own timeout that calls the same removal logic — neither `Toast` nor `Toaster` auto-dismiss.
+- Render exactly one `Toaster`. It portals to `document.body`, fixed to the bottom-right of the screen, so a second instance would just stack on top of the first.
+
+**When NOT to use:**
+
+- **Feedback that needs to persist across a reload** — `Toaster`'s list lives in component state; anything not re-added after mount disappears with the page.
+
+## Reference
+
+### Playground
+
+The story below exercises the full controlled pattern: two buttons add or remove all four example toasts from state, and `Toaster` simply renders whatever that state currently holds:
+
+<StoryEmbed id="molecules-toasts-toaster--default" height="20rem" />

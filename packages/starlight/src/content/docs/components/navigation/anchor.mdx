@@ -1,0 +1,64 @@
+---
+title: Anchor
+description: A clickable text element that navigates to another page, resource, or location on the same page.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Anchor)
+
+## Usage
+
+Use `Anchor` to navigate to another page, a resource, or a location on the same page.
+
+**Best practices:**
+
+- Include a leading or trailing icon to clarify the link's destination, or to further distinguish it from surrounding text.
+- Consider `target="_blank"` when navigating away would interrupt a task the reader is in the middle of.
+- `Anchor` is polymorphic: pass `href` to render a real `<a>`; omit it and pass `onClick` instead to render a real `<button>` styled the same way. Use the button form sparingly — only when a control needs to look like a link but can't navigate directly via `href`.
+
+**When NOT to use:**
+
+- **Performing an action** — use a [Button](/components/actions/buttons/) instead.
+
+### Anatomy
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0" />
+
+1. **Leading icon** (optional) — clarifies or reinforces the link's destination.
+2. **Label** — states where the link goes. Use sentence case and aim for 3–5 words.
+3. **Trailing icon** (optional) — reinforces forward movement to a new page. For links to external pages, use `MiniOpenIcon`.
+
+## Patterns
+
+### Adding icons
+
+Pass `icon` and `iconPosition` (`'left' | 'right'`) to place an icon relative to the label:
+
+<StoryEmbed id="typography-anchor--icon-anchor" height="6rem" />
+
+### Icons within running text
+
+An `Anchor` can sit inline inside a `Text` block, icon and all, without breaking the surrounding paragraph's flow:
+
+<StoryEmbed id="typography-anchor--icon-anchor-example" height="8rem" />
+
+### Rendering as a button
+
+Omit `href` and pass `onClick` to render `Anchor` as a real `<button>` — useful when a link-styled control needs button semantics, for example triggering navigation programmatically instead of via a real `href`:
+
+<StoryEmbed id="typography-anchor--polymorphic-anchor" height="6rem" />
+
+## Reference
+
+### Variant
+
+- `inline` (default) — for use within paragraphs; styled with color and an underline so it stays visible in text-heavy content.
+- `interface` — for menus, or anywhere the surrounding context already makes it clear that the text is clickable.
+- `standard` — for links outside a paragraph or menu.
+- `standard-secondary` — like `standard`, at a lower level of visual prominence, for secondary links where `standard` would feel too bold.
+
+<StoryEmbed id="typography-anchor--modes" height="20rem" />
+
+Every variant also renders with an icon — see [with icons](https://gamut.codecademy.com/?path=/story/typography-anchor--icon-modes).
