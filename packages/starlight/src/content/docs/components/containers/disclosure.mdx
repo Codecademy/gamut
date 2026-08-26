@@ -1,0 +1,65 @@
+---
+title: Disclosure
+description: An expandable container with a heading that toggles a collapsible content section.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40432&m=dev) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Disclosure/index.tsx)
+
+## Usage
+
+Use a `Disclosure` to progressively reveal information, letting a reader access additional detail only when they want it — hiding it up front reduces cognitive load and keeps the page scannable.
+
+**Best practices:**
+
+- Reach for a `Disclosure` when there's a good amount of information that not every reader needs, but some readers will want.
+- `Disclosure` takes flat props (`heading`, `body`, `overline`, `subheading`, ...) rather than composed children — it builds its own toggle button and animated panel internally.
+
+**When NOT to use:**
+
+- **Several disclosures in a list** — use [List](/components/data-display/list/) with its expandable row pattern instead.
+
+### Anatomy
+
+1. **Overline** (optional, `overline`) — short label above the heading.
+2. **Heading** (required, `heading`) — the toggle's visible label; `headingLevel` sets its semantic level (`h2`–`h5`, default `h3`).
+3. **Subheading** (optional, `subheading`) — text below the heading.
+4. **Chevron icon** — decorative, rotates to indicate expanded/collapsed state.
+5. **Body** (`body`) — the collapsible content. If it's plain text, keep its container to 600px wide for readability.
+6. **Call-to-action button** (optional) — rendered only when both `ctaText` and `ctaCallback` are set.
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40432&m=dev" />
+
+## Patterns
+
+### Adding a call-to-action button
+
+Pass `ctaText` and `ctaCallback` together to render a button at the bottom of the body — both are required for it to appear. `buttonType` (`'FillButton' | 'StrokeButton' | 'TextButton'`, default `'TextButton'`) picks which button component renders it, and `buttonPlacement` (`'left' | 'right'`, default `'right'`) picks its alignment:
+
+```tsx
+<Disclosure
+  heading="Why was I charged twice?"
+  body="Duplicate charges are refunded automatically within 3–5 business days."
+  ctaText="Contact support"
+  ctaCallback={() => openSupportChat()}
+  buttonType="StrokeButton"
+/>
+```
+
+## Reference
+
+The toggle button sets `aria-expanded` to reflect state; it doesn't currently link to the body panel with `aria-controls`.
+
+### Variant
+
+<StoryEmbed id="molecules-disclosure--default-background" height="10rem" />
+<StoryEmbed id="molecules-disclosure--subtle-bg-bordered" height="10rem" />
+<StoryEmbed id="molecules-disclosure--transparent" height="10rem" />
+
+### Spacing
+
+<StoryEmbed id="molecules-disclosure--normal" height="12rem" />
+<StoryEmbed id="molecules-disclosure--condensed" height="12rem" />
+<StoryEmbed id="molecules-disclosure--compact" height="12rem" />

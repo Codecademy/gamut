@@ -1,0 +1,33 @@
+---
+title: ContentContainer
+description: A container that holds page content within a maximum width, centers it, and applies responsive horizontal padding.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ZUJ7cfVgyoh1kiQYNN8Hbt) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ContentContainer)
+
+## Usage
+
+Use `ContentContainer` when building a page layout, to contain content within a maximum width, center it, and get responsive horizontal padding that matches Gamut's grid system.
+
+**Best practices:**
+
+- Use it for full-page layouts, not for containing smaller areas of a page.
+
+**When NOT to use:**
+
+- **Containing a smaller area of the page** — use a [Box](/components/containers/boxes/box/), [FlexBox](/components/containers/boxes/flex-box/), or [GridBox](/components/containers/boxes/grid-box/) instead.
+
+<FigmaEmbed url="https://www.figma.com/file/ZUJ7cfVgyoh1kiQYNN8Hbt" />
+
+## Reference
+
+### Variant
+
+<StoryEmbed id="layouts-contentcontainer--default" />
+
+`size` has a dedicated story for `wide` in addition to the `medium` default shown above — `small` is only reachable via the Controls panel:
+
+- [Wide](https://gamut.codecademy.com/?path=/story/layouts-contentcontainer--wide)

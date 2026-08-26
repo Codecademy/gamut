@@ -1,0 +1,49 @@
+---
+title: Box
+description: A utility container component with nearly all of Gamut's system props available.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/Box.tsx)
+
+## Usage
+
+`Box` is a kitchen-sink utility component for basic layouts — a configurable building block for almost any occasion, with access to nearly all of Gamut's system props.
+
+**Best practices:**
+
+- Reach for `Box` first for a one-off layout need; only reach for [FlexBox](/components/containers/boxes/flex-box/) or [GridBox](/components/containers/boxes/grid-box/) once the container specifically needs to be a flex or grid context.
+- Three boolean shorthand states are available on `Box` (and inherited by `FlexBox`/`GridBox`): `fit` (fills its container), `context` (establishes a positioning context), and `no-select` (disables text selection).
+- `as` swaps the rendered element (for example `as="ul"` with `as="li"` children) — this comes from Emotion's styled-component `as` prop, not custom Gamut behavior.
+
+**When NOT to use:**
+
+- **Specifically a flex container** — use [FlexBox](/components/containers/boxes/flex-box/) instead.
+- **Specifically a grid container** — use [GridBox](/components/containers/boxes/grid-box/) instead.
+
+## Patterns
+
+### Bordered containers
+
+`Box` is commonly used to build a bordered container with its own padding, rather than reinventing that shape per context:
+
+<StoryEmbed id="layouts-boxes-box--bordered" height="8rem" />
+
+### Creating a positioning context
+
+Pass `position="relative"` (or the `context` shorthand) on a `Box` to give descendants a stacking/positioning context, then position them with `position="absolute"` and edge props:
+
+<StoryEmbed id="layouts-boxes-box--positioning" height="18rem" />
+
+### Rendering as a list
+
+Render an outer `Box` `as="ul"` (or `"ol"`) and its children `as="li"` to present a group of boxes as an accessible list. Adjust list markers with `listStyle`, `listStyleType`, `listStylePosition`, and `listStyleImage`:
+
+<StoryEmbed id="layouts-boxes-box--lists" height="14rem" />
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="layouts-boxes-box--default" />

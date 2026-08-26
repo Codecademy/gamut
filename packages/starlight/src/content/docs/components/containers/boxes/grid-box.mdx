@@ -1,0 +1,26 @@
+---
+title: GridBox
+description: A Box preset to display:grid, with boolean shorthands for centering and fitting content.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Box/GridBox.tsx)
+
+## Usage
+
+`GridBox` extends [Box](/components/containers/boxes/box/) with `display: grid` built in, plus two boolean shorthands: `center` (centers both axes) and `fitContent` (`gridTemplate: minmax(0, 1fr) / minmax(0, 1fr)`, useful for letting a single child fill and clip to the grid area).
+
+## Patterns
+
+### A four-column grid
+
+Combine `columnGap`, `gridAutoColumns`, and `gridAutoFlow` to lay children out in even columns:
+
+<StoryEmbed id="layouts-boxes-gridbox--four-column-grid" height="10rem" />
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="layouts-boxes-gridbox--default" />

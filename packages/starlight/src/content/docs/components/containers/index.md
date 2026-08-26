@@ -5,7 +5,7 @@ description: Components that group, wrap, or lay out other content.
 
 Components that group, wrap, or lay out other content.
 
-- [Box](/components/containers/box/), [FlexBox](/components/containers/flex-box/), [GridBox](/components/containers/grid-box/)
+- [Boxes](/components/containers/boxes/) — Box, FlexBox, GridBox
 - [Card](/components/containers/card/)
 - [ContentContainer](/components/containers/content-container/)
 - [LayoutGrid](/components/containers/layout-grid/)

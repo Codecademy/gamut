@@ -1,0 +1,53 @@
+---
+title: LayoutGrid
+description: A flexible 12-column CSS grid, built from Column children with responsive row and column gaps.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Layout/index.tsx)
+
+## Usage
+
+Use `LayoutGrid` to build a flexible grid for full-page layouts. Any row of content snaps to 12 units of width; each cell is a `Column` with a grid-specified gap to its neighbors. Row and column gaps can be set responsively — a different gap at small viewports than at large ones.
+
+**Best practices:**
+
+- Use `LayoutGrid` for full-page layouts, not for containing smaller areas of a page.
+- Keep row height consistent across a grid when using `rowspan`, so spanned columns line up cleanly.
+
+**When NOT to use:**
+
+- **Containing a smaller area of the page** — use a [Box](/components/containers/boxes/box/), [FlexBox](/components/containers/boxes/flex-box/), or [GridBox](/components/containers/boxes/grid-box/) instead.
+
+## Patterns
+
+### Setting column and row gaps
+
+Set `columnGap` for horizontal space between cells, `rowGap` for vertical space, or `gap` for both — each accepts a responsive value:
+
+<StoryEmbed id="layouts-layoutgrid--grid-gap" height="12rem" />
+
+### Setting a row height
+
+`rowHeight` sets the height of every row in the grid:
+
+<StoryEmbed id="layouts-layoutgrid--row-height" height="14rem" />
+
+### Offsetting a column
+
+Offset a `Column` from the left edge with `offset`, on the same 0–12 scale as `size` — like `size`, it accepts a responsive value:
+
+<StoryEmbed id="layouts-layoutgrid--offset" height="14rem" />
+
+### Spanning multiple rows
+
+Give a `Column` `rowspan` to have it span more than one row:
+
+<StoryEmbed id="layouts-layoutgrid--rowspans" height="16rem" />
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="layouts-layoutgrid--default" />

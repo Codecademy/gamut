@@ -1,0 +1,18 @@
+---
+title: Boxes
+description: Box, FlexBox, and GridBox — a kitchen-sink layout primitive and its flex/grid presets.
+---
+
+`Box` is Gamut's general-purpose layout primitive: a plain `div` with nearly every system prop available, meant to act as a configurable building block for almost any layout need. `FlexBox` and `GridBox` are `Box` with a display preset baked in, plus a few boolean shorthands for that layout mode:
+
+- [Box](/components/containers/boxes/box/) — the base primitive. Start here for anything that isn't specifically a flex or grid container.
+- [FlexBox](/components/containers/boxes/flex-box/) — `Box` preset to `display: flex`.
+- [GridBox](/components/containers/boxes/grid-box/) — `Box` preset to `display: grid`.
+
+All three also share three boolean shorthand states, defined once on `Box` and inherited by the other two:
+
+- `fit` — fills the container (`width: 1`, `height: 1`).
+- `context` — establishes a positioning context (`position: relative`, `zIndex: 1`).
+- `no-select` — disables text selection.
+
+See [Box](/components/containers/boxes/box/) for a fully documented example of the shared system-props API.

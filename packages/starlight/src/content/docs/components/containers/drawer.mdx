@@ -1,0 +1,36 @@
+---
+title: Drawer
+description: A panel that animates open to a responsive width within the page layout, rather than floating above it.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41014&node-type=frame) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Drawer)
+
+## Usage
+
+`Drawer` animates between `0` width and a responsive width — `75vw` below the `sm` breakpoint, `30rem` at `sm` and up — to reveal its content within the page's layout flow, rather than floating above it.
+
+**Best practices:**
+
+- `Drawer` is a controlled component: manage `expanded` in your own state, the same way you would a controlled form input.
+- Whatever toggles the drawer needs `aria-expanded` reflecting the `expanded` value — `Drawer` doesn't set this itself, since it doesn't know what the trigger element is.
+
+**When NOT to use:**
+
+- **Floating above the page instead of expanding within layout flow** — use [Flyout](/components/overlays/flyout/) instead.
+
+### Anatomy
+
+`Drawer` is two nested pieces: an outer container that animates its own width, and an inner content box pinned to whichever edge `alignContentContainer` names (`'left'` or `'right'`, default `'right'`) — the content keeps its full target width throughout the animation, revealed as the outer container's width grows:
+
+<FigmaEmbed url="https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41014&node-type=frame" />
+
+## Reference
+
+### Playground
+
+The story is built exactly the way described above, with a `StrokeButton` whose `aria-expanded` toggles the `Drawer`'s `expanded` prop:
+
+<StoryEmbed id="atoms-drawer--default" height="20rem" />

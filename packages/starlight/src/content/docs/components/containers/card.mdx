@@ -1,0 +1,52 @@
+---
+title: Card
+description: A contained surface with background color variants, optional shadow/pattern treatments, and hover behavior.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975-39392&node-type=frame) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Card)
+
+## Usage
+
+Use `Card` to present a piece of information as a distinct, contained surface, with animated hover/shadow treatment available when the whole card is clickable.
+
+**Best practices:**
+
+- Use `variant="default"` (the default) for a background that follows the current color mode automatically; use `white`/`yellow`/`beige` inside a light-mode surface, or `navy`/`hyper` inside a dark-mode surface, when a static color is what's needed.
+- Add `isInteractive` when wrapping `Card` in an `Anchor` — it applies a `'md'` border radius and a hover shadow effect, and a card with a pattern loses its pattern on hover.
+- `borderRadius` defaults to `'none'` (non-interactive) or `'md'` (`isInteractive`), and can be overridden — the outline/pattern shadow automatically matches whatever `borderRadius` is set.
+
+**When NOT to use:**
+
+- **A plain rectangular container with no color-mode-aware background, shadow, or hover treatment** — a plain [Box](/components/containers/boxes/box/) is enough.
+
+### Anatomy
+
+The shadow/pattern treatment (`shadow`) always renders along the bottom edge plus one side (left or right, depending on the value):
+
+<FigmaEmbed url="https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975-39392&node-type=frame" />
+
+## Patterns
+
+### Using Card as a link
+
+Wrap `Card` in an `Anchor` and add `isInteractive` to get the hover shadow and `'md'` border radius:
+
+<StoryEmbed id="atoms-card--is-interactive" height="14rem" />
+
+## Reference
+
+### Variant
+
+<StoryEmbed id="atoms-card--dynamic" height="12rem" />
+<StoryEmbed id="atoms-card--static-light" height="10rem" />
+<StoryEmbed id="atoms-card--static-dark" height="10rem" />
+
+### Shadow
+
+<StoryEmbed id="atoms-card--shadow-none" height="14rem" />
+<StoryEmbed id="atoms-card--shadow-outline" height="14rem" />
+<StoryEmbed id="atoms-card--shadow-pattern-left" height="14rem" />
+<StoryEmbed id="atoms-card--shadow-pattern-right" height="14rem" />
