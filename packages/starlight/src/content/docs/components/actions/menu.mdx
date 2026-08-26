@@ -1,0 +1,86 @@
+---
+title: Menu
+description: A list of actions, options, or navigation links, usable as a persistent menu or composed into a floating popover.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41119&m=dev) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Menu/Menu.tsx)
+
+## Usage
+
+Use `Menu` to organize and present a list of actions, options, or navigation links, composed from `MenuItem` and `MenuSeparator` children.
+
+**Best practices:**
+
+- If the menu presents actions or options, set `role="menu"` — this is why `Menu` lives in Actions rather than Navigation.
+- If the menu only contains navigation links, don't set `role` on `Menu` at all — wrap it in a `<nav>` element instead, which implicitly provides the `navigation` role.
+- `Menu` is stateless: it doesn't track which item is selected or disabled. Manage `active`/`disabled` on each `MenuItem` yourself.
+- Nested `Menu`s inherit their `variant`/`spacing` from the root `Menu`, and automatically render as `role="group"` when the root is `role="menu"` — there's no need to repeat those props on nested menus.
+
+**When NOT to use:**
+
+- **Choosing from a predefined set of options in a form** — use SelectDropdown instead.
+- **Multiple collapsible sections of navigation links** — use LayoutMenu instead.
+- **Switching between views in the same context** — use [Tabs](/components/navigation/tabs/) instead.
+
+### Anatomy
+
+`Menu` is composed of `MenuItem` and (optionally) `MenuSeparator` children:
+
+1. **Leading icon** (optional, on `MenuItem`) — reinforces the item's purpose and improves scannability.
+2. **Label** — the `MenuItem`'s content. Keep it to 1–3 words: a verb for actions, a noun for links to information.
+3. **Menu separator** (optional) — groups items into sections when a menu has enough items that scanning it gets hard.
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41119&m=dev" />
+
+## Patterns
+
+### Building an action menu
+
+Set `role="menu"` on the root `Menu` when its items trigger actions. Each interactive `MenuItem` then renders with `role="menuitem"`, and its wrapping `<li>` gets `role="none"` so screen readers announce the item itself, not an extra list layer:
+
+<StoryEmbed id="molecules-menu--menu-role" height="16rem" />
+
+### Building a navigation menu
+
+For a menu of links, wrap it in a `<nav>` element instead of setting `role` on `Menu` — the `<nav>` element already provides the `navigation` role natively:
+
+<StoryEmbed id="molecules-menu--nav-menu" height="16rem" />
+
+### Building a floating menu
+
+Compose `Menu` inside `PopoverContainer` to open it from a trigger. After setting the base positioning, offset the y-axis by 48px per item at `spacing="normal"`, or 32px at `spacing="condensed"` — and give the floating menu `role="menu"` if it triggers actions:
+
+<StoryEmbed id="molecules-menu--floating-menu-example" height="24rem" />
+
+### Icon-only items with tooltips
+
+Give every icon-only `MenuItem` a `label` — it becomes the item's `ToolTip` text if the item is interactive, or its `aria-label` if it isn't. Pass an object instead of a string to `label` for tooltip placement/alignment control:
+
+<StoryEmbed id="molecules-menu--icon-menu" height="14rem" />
+
+### Grouping items with a separator
+
+Use `MenuSeparator` to divide a longer menu into sections:
+
+<StoryEmbed id="molecules-menu--popover-menu-separator" height="16rem" />
+
+## Reference
+
+### Variants
+
+#### Popover
+
+<StoryEmbed id="molecules-menu--popover" height="16rem" />
+#### Fixed
+<StoryEmbed id="molecules-menu--fixed" height="16rem" />
+
+### Spacing
+
+#### Condensed (Popover)
+
+<StoryEmbed id="molecules-menu--popover-condensed" height="16rem" />
+#### Condensed (Fixed)
+<StoryEmbed id="molecules-menu--fixed-condensed" height="16rem" />

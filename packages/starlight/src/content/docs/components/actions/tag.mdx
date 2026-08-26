@@ -1,0 +1,94 @@
+---
+title: Tag
+description: A compact label for categorizing content, representing a user's selections, or offering context-relevant actions.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=46539-40954) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tag)
+
+## Usage
+
+Use a tag to categorize content, represent user inputs, or guide users to related actions. Tags can be dismissible individually (`selection`), or read-only when paired with other controls.
+
+**Best practices:**
+
+- Choose the variant (`readOnly`, `selection`, `navigation`, `suggestion`) that matches the use case — each enforces its own required/forbidden props, so mismatching a variant with the wrong handler prop is a type error, not a runtime surprise.
+- Let tags wrap to a second line when they exceed the available width, rather than truncating them.
+- When showing multiple tags, arrange them in a row and let them wrap, rather than scrolling or clipping.
+
+**When NOT to use:**
+
+- **Primary or critical actions** — use a [Button](/components/actions/buttons/) instead.
+- **Standalone, high-priority navigation** — use an [Anchor](/components/navigation/anchor/) instead.
+- **Highlighting a status or attribute, read-only** — use [Badge](/components/status/badge/) instead.
+
+### Anatomy
+
+1. **Leading icon** (optional, `icon`) — clarifies the tag's meaning further.
+2. **Label** (`children`) — 1–2 keywords for most variants; `suggestion` can be a short phrase. Don't truncate it.
+3. **Remove button** (`selection` only) — lets the user dismiss the tag; rendered automatically when `variant="selection"`.
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=46539-40954" />
+
+## Patterns
+
+### Removing a tag from a list
+
+`onDismiss` only fires the callback — `Tag` doesn't track its own presence in a list. Remove the tag from whatever state is tracking the list:
+
+```tsx
+import { useState } from 'react';
+import { Tag } from '@codecademy/gamut';
+
+export const DismissibleTagList = () => {
+  const [tags, setTags] = useState(['React', 'TypeScript', 'Astro']);
+
+  return (
+    <>
+      {tags.map((tag) => (
+        <Tag
+          key={tag}
+          variant="selection"
+          onDismiss={() => setTags(tags.filter((t) => t !== tag))}
+        >
+          {tag}
+        </Tag>
+      ))}
+    </>
+  );
+};
+```
+
+### Adding an icon
+
+Pass `icon` to render one to the left of the label, on any variant:
+
+<StoryEmbed id="atoms-tag--with-icon" height="10rem" />
+
+### Wrapping long labels
+
+A tag's label wraps onto additional lines rather than truncating when it exceeds its container's width:
+
+<StoryEmbed id="atoms-tag--overflow" height="10rem" />
+
+## Reference
+
+### Variants
+
+#### Read-only
+
+<StoryEmbed id="atoms-tag--read-only" height="10rem" />
+
+#### Selection
+
+<StoryEmbed id="atoms-tag--selection" height="10rem" />
+
+#### Navigation
+
+<StoryEmbed id="atoms-tag--navigation" height="10rem" />
+
+#### Suggestion
+
+<StoryEmbed id="atoms-tag--suggestion" height="10rem" />
