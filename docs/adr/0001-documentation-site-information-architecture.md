@@ -78,23 +78,30 @@ Usage             when to reach for it
   When NOT to use every bullet names and links the alternative component
   Anatomy         labeled diagram of the component's parts
 ── HOW-TO (authored in Starlight) ──
-Patterns          goal-first recipes requiring real wiring (state, callbacks,
-                  composition) — one intent sentence + one live example each
+Patterns          goal-first recipes — one intent sentence, then either the
+                  matching Storybook story or (only if no story can show it)
+                  a code snippet; shared verbatim across a component group,
+                  written once on the group's index page (see rule 7)
 ── REFERENCE (authored in Storybook, embedded in Starlight) ──
-Reference         variants, accessibility notes, the props table, and a live
+Reference         accessibility notes, the props table, and a live
                   playground — all still written and maintained as Storybook
-                  stories/MDX, surfaced here via `StoryEmbed`: an iframe onto
-                  the deployed Storybook canvas plus a link to open the full
-                  story
+                  stories/MDX, surfaced here via exactly one `StoryEmbed`: an
+                  iframe onto the deployed Storybook canvas plus a link to
+                  open the full story. If variants each have their own
+                  dedicated story, list and link them too (see rule 5) —
+                  otherwise the single default `StoryEmbed` is the whole
+                  section.
 ```
 
 Template rules:
 
 1. **Required always:** Header, Usage (with When NOT to use), Reference. **Optional but fixed-position:** Anatomy (skip for non-visual utilities), Patterns (skip for stateless components).
 2. **The heading vocabulary is closed.** No page invents new top-level sections ("Specifications", "HTML element"); new headings require updating the template first. `Variants`, `Accessibility`, `Props`, and `Playground` are retired as Starlight headings — that material now lives under the single `Reference` heading, in Storybook.
-3. **Patterns vs. Reference dividing line:** if an example needs wiring (state, callbacks, composition) that no existing story demonstrates, write it as a Starlight Pattern with a live code block. If it's just showing the component in a given configuration, it belongs in Storybook — link or embed it via `Reference` rather than re-authoring it.
-4. **Every component page embeds at least one `StoryEmbed`** in its Reference section (its default/playground story at minimum), pairing the iframe with a link to open that story directly in Storybook — never an iframe with no way to leave it, and never a bare link with no inline preview.
-5. **Tutorials never appear on component pages** — learning-oriented material lives only in Getting started.
+3. **Patterns prefer a matching Storybook story over a code snippet.** If a story already demonstrates the pattern — a dedicated story (`IconButton`'s `CloseOnClick`), or the same behavior reachable by changing a prop in the default story's Controls — embed or point to that story instead of showing static code. Write an inline snippet only when the pattern is a composition the Controls panel can't express (for example, wrapping the component in a `ToolTip` to explain a disabled state): nothing goes in a snippet that already renders live somewhere in Storybook.
+4. **Reference always embeds exactly one `StoryEmbed`** — the component's default/playground story — pairing the iframe with a link to open that story directly in Storybook. A Pattern with its own dedicated matching story embeds it there, in Patterns, not as a second embed in Reference.
+5. **Reference lists variants only when Storybook has a dedicated story for each one.** If a component's `variant`/`type` prop has several values _and_ each has its own named story, list them under Reference and link each to its story — `Alert`'s `type` (General, Success, Feature, Notice, Error, Subtle) is the model case where every value gets one. List only the values that clear this bar: the button family's `variant` has a dedicated story for two of its four values (`Primary`, `Secondary`, on the shared `Button` overview story) — list those two and say so, rather than either inventing stories for `danger`/`interface` or silently listing all four. A value only reachable by changing a Control on a default story doesn't get a list entry. Never write a variant list Storybook itself can't back with a matching story per item.
+6. **Tutorials never appear on component pages** — learning-oriented material lives only in Getting started.
+7. **Shared Patterns and shared Reference material across a component group are written once, on the group's index page.** When sibling components in a multi-component group (Buttons: FillButton, StrokeButton, TextButton, IconButton, CTAButton; similarly Tips, Loaders, Modals) share the same how-to almost verbatim — rendering as a link, adding an icon, explaining a disabled state — that Pattern lives on the group's `index` page (e.g. `Buttons/index.md`), not repeated on every sibling. The same goes for Reference material that exists at the family level rather than per component: Storybook's `Button` overview story demonstrates `variant` values and light/dark mode across the whole family (not any one button), so its `Primary`/`Secondary` stories are listed under the group page's own Reference section (rule 5) and its light/dark-mode story is a group-page Pattern, rather than either being duplicated on every sibling or forced onto whichever button happens to be `component:` in that story's meta. A sibling's own page keeps Usage/Anatomy/Reference plus any Pattern genuinely specific to it — `IconButton`'s tooltip-persistence pattern stays on `IconButton`'s page, since no sibling has it — and links to the group page for the shared ones.
 
 If a component outgrows a single page (heavy guidelines plus a large API, e.g. GridForm), its explanation/how-to content splits into per-mode child pages along the template's section boundaries; its Storybook-side reference content is unaffected.
 
@@ -108,6 +115,8 @@ If a component outgrows a single page (heavy guidelines plus a large API, e.g. G
 - Cross-cutting guides (theming, forms, dark mode) finally have a home instead of being fragmented under component folders.
 - **Splitting reference out to Storybook shrinks the per-component migration to Usage/Anatomy/Patterns only** — the largest, most tedious part of each page (an exhaustive Variants grid, a Props table, a working Playground) is never re-authored; it's already correct in Storybook and stays there.
 - **One source of truth for reference material.** Variants, accessibility notes, and props are authored once, in the system built for that job (Storybook's addon-docs Controls and Canvas). Starlight and Storybook can't drift out of sync on prop tables because only one of them owns that content.
+- **Patterns default to showing something real.** Preferring a matching Storybook story over a code snippet means most Patterns are a live, currently-rendering example rather than prose describing what code would theoretically do — and it can't silently go stale the way an unexecuted snippet can.
+- **Grouped components stop repeating themselves.** Buttons, Tips, Loaders, and similar groups share most of their how-to content near-verbatim; writing it once on the group's index page instead of five times cuts both authoring effort and the chance one sibling's copy quietly drifts from the others.
 
 ### Negative / risks
 
@@ -118,6 +127,8 @@ If a component outgrows a single page (heavy guidelines plus a large API, e.g. G
 - **The site now has a hard runtime dependency on Storybook staying deployed** — this is a durable architectural split, not a transitional bridge until migration finishes. If the Storybook deployment goes down or a story ID changes without a redirect, every component page's Reference section breaks. Mitigation: keep Storybook's build/deploy in CI as a first-class pipeline (not a legacy artifact slated for removal), and treat published story IDs as a stable contract.
 - **Two authoring surfaces for one component page.** A contributor documenting a new prop now touches Storybook (to add/update the story) and, only if it changes usage guidance, Starlight. Mitigation: this is the same trade a "single source of truth" always makes; the Storybook-side workflow doesn't change from today's.
 - **Embedding via iframe, rather than copying code into Starlight, is deliberate: Storybook stays the single source of truth for component code snippets.** A `.stories.tsx` file is the one place a variant's example code is written; Starlight never forks a second copy that can silently drift out of sync with the real component API. The cost is that Starlight's site search (Pagefind) can't index that code, prop names, or accessibility notes, since it lives inside an iframe pointed at a separate deployment — a reader searching Starlight for a prop name won't find it there. Mitigation: every `StoryEmbed` ships with a visible link to open the full story, so a reader can still get to that content manually; if the search gap proves painful in practice, the fallback is indexing Storybook's stories into Pagefind separately, not duplicating the code itself.
+- **A Pattern living on the group's index page is one hop further from a sibling's own page than an inline section would be.** A reader on `FillButton`'s page has to notice and follow a link to `Buttons/index` to find "Rendering as a link," rather than finding it inline. Mitigation: every sibling's Patterns section opens with an explicit pointer to the group page rather than silently omitting the section; a Pattern only moves to the group page once it's confirmed identical across siblings, not merely similar.
+- **Not every "shared" Pattern stays shared forever.** If one button's disabled-state or icon behavior diverges later, it has to be split back out of the group page into that component's own page without breaking the others' links to it. Mitigation: this is the same fixed-section-boundary mechanism §3 already uses for a component outgrowing one page — moving content back down is a known, designed-for operation, not a special case.
 
 ## Alternatives considered
 
@@ -125,6 +136,7 @@ If a component outgrows a single page (heavy guidelines plus a large API, e.g. G
 2. **Flat alphabetical component list** (early proposal). Rejected in favor of functional grouping: alphabetical requires knowing the component's name, functional matches need-driven arrival; search covers name-based lookup. Industry precedent (Adobe Spectrum's Actions/Containers/Feedback/... grouping) favors functional.
 3. **Strict Diátaxis: one page per mode per component** (à la Carbon/Material per-component tabs). Rejected for now: quadruples page count and maintenance for many small components. The template's section boundaries are the designated split points if a component outgrows one page.
 4. **Organize top-level by audience (designers vs. engineers).** Rejected: most Gamut readers wear both hats within a single task; mode-based navigation serves the actual switching behavior.
+5. **Repeat identical Patterns on every sibling page in a component group** (the original approach for Buttons: the same "rendering as a link," icon, and disabled-tooltip patterns copy-pasted across all five). Rejected: five near-identical copies of the same prose is exactly the drift risk this ADR is otherwise trying to eliminate for reference content — a wording fix or a newly-discovered edge case would need to land in five places to stay consistent. Writing it once on the group's index page and linking to it costs one extra click per sibling page in exchange for a single place to keep it correct.
 
 ## References
 

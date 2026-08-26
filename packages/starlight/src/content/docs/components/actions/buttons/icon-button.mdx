@@ -1,0 +1,69 @@
+---
+title: IconButton
+description: An icon-only button with a required accessible tooltip label.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/IconButton.tsx)
+
+<Aside type="tip">
+  Use the `/gamut-buttons` skill in Cursor or Claude Code for AI-assisted
+  guidance on button selection, variants, disabled patterns, and ToolTip focus
+  management.
+</Aside>
+
+## Usage
+
+Use this for secondary or space-constrained actions with a recognizable icon and no room for a text label. `IconButton` defaults to `variant="secondary"` — every other button in this group defaults to `primary`.
+
+**Best practices:**
+
+- `tip` is required, not optional: it's both the tooltip text shown on hover/focus and the button's accessible name, so an `IconButton` is never unlabeled.
+- Only use an icon whose meaning is already established elsewhere in your product (a search icon, a trash icon) — if the icon needs a caption to be understood, use [TextButton](/components/actions/buttons/text-button/) or [StrokeButton](/components/actions/buttons/stroke-button/) with a visible label instead.
+- Use regular-set icons at `size="normal"` and mini-set icons at `size="small"`, matching the icon's detail to the button's size.
+
+**When NOT to use:**
+
+- **A visible label fits** — use [TextButton](/components/actions/buttons/text-button/), [StrokeButton](/components/actions/buttons/stroke-button/), or [FillButton](/components/actions/buttons/fill-button/) instead; don't reach for an icon-only button just to save space if a label would fit.
+- **Marketing / high-visibility CTAs** — use [CTAButton](/components/actions/buttons/cta-button/) instead.
+- **Outside its color-mode context** — don't place a light-mode button on a navy background; wrap the surface in `Background` instead of styling around it.
+
+### Anatomy
+
+The full button spec — variants, sizes, and states — in the Gamut Figma file:
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0" />
+
+## Patterns
+
+`IconButton` follows one of the button family's shared patterns — see [Buttons: Patterns](/components/actions/buttons/#patterns) for rendering as a link. (The leading/trailing icon and disabled-tooltip patterns don't apply here — `IconButton` is icon-only, and its `tip` prop already serves as its tooltip, as shown below.) The two patterns below are specific to `IconButton`.
+
+### Keeping the tooltip open after a click
+
+By default, an `IconButton`'s tooltip closes immediately on click and only reappears once the cursor leaves and re-enters. To keep it open — useful when the click doesn't immediately confirm the action some other way — pass `tipProps={{ closeOnClick: false }}`. The first two buttons below close on click; the last two stay open:
+
+<StoryEmbed id="atoms-buttons-iconbutton--close-on-click" height="14rem" />
+
+### Explaining why it's disabled
+
+Rather than wrapping the button in a second `ToolTip` (as with the other buttons), update `tip` itself to explain the disabled state — it's already the button's tooltip and accessible name. Use `aria-disabled` (without `disabled`) so the explanation stays reachable by keyboard:
+
+```tsx
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+
+<IconButton
+  icon={MiniDeleteIcon}
+  tip="Remove item (finish editing first)"
+  aria-disabled
+/>;
+```
+
+## Reference
+
+Check out the full story in Storybook:
+
+<StoryEmbed id="atoms-buttons-iconbutton--default" />

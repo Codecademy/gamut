@@ -1,0 +1,61 @@
+---
+title: Buttons
+description: Gamut's button family — five components sharing one shape, size scale, and icon behavior.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+Gamut splits "button" into five components rather than one component with a `kind` prop, so each use case gets its own focused API:
+
+- [FillButton](/components/actions/buttons/fill-button/) — the solid, high-contrast button. Start here for most primary/secondary actions.
+- [StrokeButton](/components/actions/buttons/stroke-button/) — an outlined, lower-emphasis alternative to FillButton.
+- [TextButton](/components/actions/buttons/text-button/) — a button with no fill or border, for the lowest-emphasis actions.
+- [IconButton](/components/actions/buttons/icon-button/) — an icon-only button with a required tooltip/accessible label.
+- [CTAButton](/components/actions/buttons/cta-button/) — a marketing-style button with a distinct offset-shadow treatment.
+
+All five support `size="normal" | "small" | "large"` except `CTAButton`, which has no `size` prop at all. `FillButton`, `StrokeButton`, and `TextButton` additionally support a single inline `icon`, positioned with `iconPosition`; `CTAButton` has no `icon` prop, and `IconButton` is icon-only by definition, so there's no separate label to position an icon against.
+
+See [FillButton](/components/actions/buttons/fill-button/) for a fully documented example of the shared API.
+
+## Patterns
+
+The patterns below are shared, close to verbatim, across the button family — per the documentation template, they're written once here rather than repeated on every sibling page. Each button's own page covers only what's genuinely specific to it and links back here for the rest.
+
+### Rendering as a link
+
+`FillButton`, `StrokeButton`, `TextButton`, `IconButton`, and `CTAButton` all render an anchor tag instead of a `<button>` when `href` is defined. `href` combined with `disabled` renders a `<button disabled>` instead — a link-style button can't stay an anchor while disabled.
+
+There's no story dedicated to this pattern specifically — set `href` in any button's Reference playground Controls to see it live. For example:
+
+<StoryEmbed id="atoms-buttons-fillbutton--default" />
+
+### Leading or trailing icon
+
+`FillButton`, `StrokeButton`, and `TextButton` accept `icon` (from the mini icon set, for legibility at button sizes) and `iconPosition` to align it to either side of the label:
+
+<StoryEmbed id="atoms-buttons-button--inline-icons" height="8rem" />
+
+`CTAButton` doesn't support an icon. `IconButton` is icon-only, so there's no separate label to position an icon against — see its own page for how it handles icons.
+
+### Disabled with a readable tooltip
+
+For `FillButton`, `StrokeButton`, `TextButton`, and `CTAButton`: the `disabled` prop removes the button from the tab order, so a tooltip explaining _why_ it's disabled can't be reached by keyboard. In that case, wrap the button in a `ToolTip` and use `aria-disabled` instead of `disabled` — Gamut's disabled styles also match `[aria-disabled='true']`, and the button stays focusable so the tooltip is reachable. `ToolTip`'s own `Disabled` story demonstrates exactly this, with `FillButton`:
+
+<StoryEmbed id="molecules-tips-tooltip--disabled" height="12rem" />
+
+The same wiring works with `StrokeButton`, `TextButton`, or `CTAButton` in place of `FillButton`. `IconButton` has its own version of this pattern, since its `tip` prop already serves as its tooltip — see [IconButton](/components/actions/buttons/icon-button/#patterns).
+
+### Using buttons together in light and dark mode
+
+When several buttons from this family appear together (as in a form or toolbar), check that the full set — not just one button in isolation — reads correctly in both color modes:
+
+<StoryEmbed id="atoms-buttons-button--buttons-light-mode" height="30rem" />
+
+<StoryEmbed id="atoms-buttons-button--buttons-dark-mode" height="30rem" />
+
+## Reference
+
+`variant` has a dedicated story for two of its four values — the rest are only reachable by changing the `variant` Control on each button's own default story (see each button's own Reference section):
+
+- [Primary](https://gamut.codecademy.com/?path=/story/atoms-buttons-button--primary)
+- [Secondary](https://gamut.codecademy.com/?path=/story/atoms-buttons-button--secondary)

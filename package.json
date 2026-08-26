@@ -138,7 +138,7 @@
     "prepare": "husky",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "start": "yarn && yarn start:storybook",
-    "start:docs-site": "nx run starlight:dev",
+    "start:docs": "nx run starlight:dev",
     "start:storybook": "nx storybook styleguide",
     "test": "nx run-many --target=test --all",
     "test:storybook": "nx run styleguide:storybook-test",

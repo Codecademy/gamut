@@ -6,7 +6,7 @@ description: A button that has an outline around its text and is used for second
 import { Aside } from '@astrojs/starlight/components';
 
 import FigmaEmbed from '~/components/FigmaEmbed.astro';
-import { LivePlayground } from '~/components/LivePlayground';
+import StoryEmbed from '~/components/StoryEmbed.astro';
 
 **Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/StrokeButton.tsx)
 
@@ -31,7 +31,7 @@ Use this for secondary actions. Include a leading or trailing icon from our mini
 - **Low-emphasis, inline actions** — use [TextButton](/components/actions/buttons/text-button/) instead.
 - **Icon-only actions** — use [IconButton](/components/actions/buttons/icon-button/) instead; it requires an accessible name via its `tip` prop.
 - **Marketing / high-visibility CTAs** — use [CTAButton](/components/actions/buttons/cta-button/) instead.
-- **Outside its color-mode context** — don't place light-mode buttons on a navy background; wrap the surface in `Background` or pass `mode` instead of styling around it.
+- **Outside its color-mode context** — don't place a light-mode button on a navy background; wrap the surface in `Background` instead of styling around it.
 
 ### Anatomy
 
@@ -41,90 +41,10 @@ The full button spec — variants, sizes, and states — in the Gamut Figma file
 
 ## Patterns
 
-### Rendering as a link
+`StrokeButton` follows the button family's shared patterns with no differences of its own — see [Buttons: Patterns](/components/actions/buttons/#patterns) for rendering as a link, adding a leading/trailing icon, and disabling with a readable tooltip.
 
-If `href` is defined, the component renders an anchor tag instead of a `<button>`:
+## Reference
 
-```tsx
-<StrokeButton href="/pricing">Compare plans</StrokeButton>
-```
+Check out the full story in Storybook:
 
-Note: `href` combined with `disabled` renders a `<button disabled>` — a link-style button cannot stay an anchor while disabled.
-
-### Leading or trailing icon
-
-Pass `icon` (from the mini icon set, for legibility at button sizes) and optionally `iconPosition` to align it to either side of the label:
-
-```tsx
-import { MiniStarIcon } from '@codecademy/gamut-icons';
-
-<StrokeButton icon={MiniStarIcon}>Favorite</StrokeButton>;
-```
-
-### Disabled with a readable tooltip
-
-The `disabled` prop removes the button from the tab order, so a tooltip explaining _why_ it's disabled can't be reached by keyboard. In that case use `aria-disabled` (without `disabled`) — Gamut's disabled styles also match `[aria-disabled='true']`:
-
-```tsx
-<ToolTip id="why-disabled" info="Complete the lesson first">
-  <StrokeButton aria-describedby="why-disabled" aria-disabled>
-    Cancel
-  </StrokeButton>
-</ToolTip>
-```
-
-## Variants
-
-Every variant below can be rendered and modified in the live
-[Playground](#playground) at the bottom of this page.
-
-### variant
-
-`primary` (default) · `secondary` · `danger` · `interface`
-
-The outline and label render in the variant color over a transparent background; the active (pressed) state fills the button with the variant color.
-
-### size
-
-`normal` (default) · `small` · `large`
-
-### mode
-
-Supports both `light` and `dark` color modes; `mode` forces one regardless of the surrounding context.
-
-## Accessibility
-
-- Renders a native `<button>` (or `<a>` when `href` is set), so keyboard reachability and activation come for free.
-- The visible label (`children`) is the accessible name. For icon-only actions, use [IconButton](/components/actions/buttons/icon-button/) instead, which requires a name via `tip`.
-- Prefer `aria-disabled` over `disabled` when a disabled button must stay focusable — for example, to keep an explanatory ToolTip readable (see Patterns).
-
-## Props
-
-| Prop           | Type                                                  | Default     | Description                                                           |
-| -------------- | ----------------------------------------------------- | ----------- | --------------------------------------------------------------------- |
-| `children`     | `React.ReactNode`                                     | —           | The button's label.                                                   |
-| `variant`      | `'primary' \| 'secondary' \| 'danger' \| 'interface'` | `'primary'` | Color emphasis.                                                       |
-| `size`         | `'normal' \| 'small' \| 'large'`                      | `'normal'`  | Height, padding, and font size.                                       |
-| `mode`         | `ColorModes` (`'light' \| 'dark'`)                    | inherited   | Forces which color mode's palette the button uses.                    |
-| `icon`         | Gamut icon component                                  | —           | A single inline icon, rendered alongside the label. Use the mini set. |
-| `iconPosition` | `'left' \| 'right'`                                   | `'left'`    | Which side of the label the icon renders on.                          |
-| `href`         | `string`                                              | —           | If defined, component will use an anchor tag.                         |
-| `disabled`     | `boolean`                                             | `false`     | Disables the button (see Accessibility for the `aria-disabled` case). |
-| `onClick`      | `HTMLProps<HTMLButtonElement>['onClick']`             | —           | Click handler.                                                        |
-
-`StrokeButton` also accepts Gamut's `layout`, `positioning`, `space`, and `border` system props.
-
-## Playground
-
-Edit the code below — the preview re-renders as you type. All Gamut button
-components and a few mini icons are in scope.
-
-<LivePlayground
-  client:only="react"
-  code={`<>
-  <StrokeButton>Primary</StrokeButton>
-  <StrokeButton variant="secondary">Secondary</StrokeButton>
-  <StrokeButton variant="danger">Danger</StrokeButton>
-  <StrokeButton icon={MiniStarIcon}>Favorite</StrokeButton>
-</>`}
-/>
+<StoryEmbed id="atoms-buttons-strokebutton--default" />
