@@ -1,0 +1,38 @@
+---
+title: Select
+description: A native-backed dropdown for single selection.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/Select.tsx)
+
+## Usage
+
+Use `Select` for single selection within a group of options, backed by a native `<select>` element.
+
+**When NOT to use:**
+
+- **Rich option content, multi-select, search, or creatable options** — use [SelectDropdown](/components/inputs-and-forms/select-dropdown/) instead; `Select` only supports plain text options and native browser dropdown behavior.
+- **A small, always-visible set of options** — use [Radio](/components/inputs-and-forms/radio/) instead.
+
+## Patterns
+
+### Pairing with FormGroup
+
+Give `FormGroup` an `htmlFor` and `Select` the matching `id` for an accessible label:
+
+<StoryEmbed id="atoms-forminputs-select--form-group-base" height="8rem" />
+<StoryEmbed id="atoms-forminputs-select--form-group-small" height="8rem" />
+
+## Reference
+
+### Size
+
+<StoryEmbed id="atoms-forminputs-select--base" height="6rem" />
+<StoryEmbed id="atoms-forminputs-select--small" height="6rem" />
+
+### State
+
+<StoryEmbed id="atoms-forminputs-select--disabled" height="6rem" />
+<StoryEmbed id="atoms-forminputs-select--error" height="6rem" />

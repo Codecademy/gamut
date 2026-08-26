@@ -1,6 +1,8 @@
 ---
 title: Data display
 description: Components for showing structured or bulk data.
+sidebar:
+  label: Overview
 ---
 
 Components for showing structured or bulk data.

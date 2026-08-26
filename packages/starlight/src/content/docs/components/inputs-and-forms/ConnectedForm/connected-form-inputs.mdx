@@ -1,0 +1,89 @@
+---
+title: ConnectedFormInputs
+description: Field inputs pre-wired to react-hook-form state.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedInputs/)
+
+## Usage
+
+"ConnectedFormInputs" is a documentation umbrella over seven components — `ConnectedInput`, `ConnectedCheckbox`, `ConnectedRadio`, `ConnectedRadioGroup`, `ConnectedRadioGroupInput`, `ConnectedSelect`, `ConnectedTextArea`, and `ConnectedNestedCheckboxes` — each visually identical to its un-connected counterpart, wired to [ConnectedForm](/components/inputs-and-forms/connectedform/connected-form/)'s context for field registration, validation, and required/disabled state.
+
+**Best practices:**
+
+- Use these through [ConnectedFormGroup](/components/inputs-and-forms/connectedform/connected-form-group/)'s `field` prop, not on their own — using them outside `ConnectedFormGroup` removes most of the accessibility and type-safety they're built for.
+- Use `ConnectedRadioGroupInput` rather than composing `ConnectedRadioGroup` and `ConnectedRadio` yourself — `ConnectedRadioGroup`/`ConnectedRadio` should rarely, if ever, appear outside it.
+
+**When NOT to use:**
+
+- **A field outside a `ConnectedForm`** — use the un-connected counterpart directly: [Input](/components/inputs-and-forms/input/), [Select](/components/inputs-and-forms/select/), [Checkbox](/components/inputs-and-forms/checkbox/), [TextArea](/components/inputs-and-forms/text-area/), or [Radio](/components/inputs-and-forms/radio/).
+
+## Patterns
+
+### Delaying updates for performance
+
+For many nested and/or array-like fields, calling react-hook-form's `setValue` on every keystroke can get expensive. `useDebouncedField` is the escape hatch — it only commits on blur — but don't combine it with the standard connected input components, since both would register the same field independently:
+
+```tsx
+// DebouncedInput.tsx
+import { Input } from '@codecademy/gamut';
+import { useDebouncedField } from '@codecademy/gamut';
+
+export const DebouncedInput: React.FC<{ name: string }> = ({ name }) => {
+  const { onChange, onBlur, value } = useDebouncedField({ name, type: 'text' });
+
+  return (
+    <Input
+      name={name}
+      type="text"
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
+      htmlFor={name}
+    />
+  );
+};
+```
+
+```tsx
+// FormPage.tsx
+import { ConnectedForm } from '@codecademy/gamut';
+import { DebouncedInput } from './DebouncedInput';
+
+export const FormPage: React.FC = () => (
+  <ConnectedForm
+    defaultValues={{ favoriteEpisode: 'Bad Blood' }}
+    onSubmit={(values) => submit(values)}
+  >
+    <DebouncedInput name="favoriteEpisode" />
+  </ConnectedForm>
+);
+```
+
+## Reference
+
+### Input types
+
+Four of the seven have a visually identical, un-connected counterpart with its own full reference:
+
+| Connected input     | Un-connected counterpart                            |
+| ------------------- | --------------------------------------------------- |
+| `ConnectedInput`    | [Input](/components/inputs-and-forms/input/)        |
+| `ConnectedSelect`   | [Select](/components/inputs-and-forms/select/)      |
+| `ConnectedCheckbox` | [Checkbox](/components/inputs-and-forms/checkbox/)  |
+| `ConnectedTextArea` | [TextArea](/components/inputs-and-forms/text-area/) |
+
+`ConnectedRadioGroupInput` (built from `ConnectedRadioGroup` + `ConnectedRadio`) is the connected equivalent of [Radio](/components/inputs-and-forms/radio/) grouped together — its `options` shape differs from a plain `Radio` group, so see the Playground below rather than the Radio page for its exact API.
+
+`ConnectedNestedCheckboxes` has no un-connected counterpart — it's a recursive parent/child checkbox tree (any depth), where a parent's checked/indeterminate state derives from its children, and the submitted value is an array of every selected descendant's value.
+
+### Playground
+
+The form below exercises every connected input type together — checkbox, select, input, radio group, textarea, and nested checkboxes:
+
+<StoryEmbed
+  id="organisms-connectedform-connectedform--default"
+  height="30rem"
+/>

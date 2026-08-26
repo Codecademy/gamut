@@ -1,0 +1,31 @@
+---
+title: Form scaffolding
+description: The structural components every Gamut form is built from.
+sidebar:
+  label: Overview
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+Most consumers shouldn't reach for these atoms directly — use [GridForm](/components/inputs-and-forms/gridform/) or [ConnectedForm](/components/inputs-and-forms/connectedform/) instead, both of which give you accessibility and [react-hook-form](https://react-hook-form.com) validation out of the box. Reach for these individually only when an interface needs form-shaped structure without the technical machinery of an actual form.
+
+- [Form](/components/inputs-and-forms/form/form/) — the root `<form>` element
+- [FormGroup](/components/inputs-and-forms/form/form-group/) — wraps a field with its label, description, and error region
+- [FormGroupLabel](/components/inputs-and-forms/form/form-group-label/) — the label `FormGroup` renders internally
+- [FormGroupDescription](/components/inputs-and-forms/form/form-group-description/) — the description text `FormGroup` renders internally
+- [FormRequiredText](/components/inputs-and-forms/form/form-required-text/) — the "\* Required" legend for forms with required fields
+
+## Patterns
+
+### Wiring a FormGroup to its field manually
+
+`FormGroup` doesn't automatically connect its label, description, or error to the field it wraps — no `aria-describedby`, no `id` injection. Match `htmlFor` on `FormGroup` to `id` on the field yourself:
+
+<StoryEmbed
+  id="atoms-formelements-formgroup--form-group-html-for"
+  height="8rem"
+/>
+
+Omitting `htmlFor` renders the label as a `<div>` instead of a `<label>` — pass `aria-labelledby` on the field directly to stay accessible without a real label element:
+
+<StoryEmbed id="atoms-formelements-formgroup--form-group-div" height="8rem" />

@@ -1,0 +1,59 @@
+---
+title: ConnectedFormGroup
+description: A FormGroup wired to react-hook-form state.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedFormGroup.tsx)
+
+## Usage
+
+`ConnectedFormGroup` is the `FormGroup` that reads [ConnectedForm](/components/inputs-and-forms/connectedform/connected-form/)'s context for error and disabled states, and types its `field` prop to match whichever `ConnectedFormInput` you pass as `field.component`.
+
+**Best practices:**
+
+- Use it primarily through the `useConnectedForm` hook — see [ConnectedForm](/components/inputs-and-forms/connectedform/) for the full pattern.
+- Options for `ConnectedRadioGroupInput` (and similar) need `{ label, value }` objects, not plain strings — the type system catches the mistake, but it's easy to reach for a plain array first:
+
+```tsx
+<ConnectedFormGroup
+  name="radioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // Correct — each option needs both label and value:
+    options: [
+      { label: 'one', value: 'one' },
+      { label: 'two', value: 'two' },
+      { label: 'zero', value: 'zero' },
+    ],
+  }}
+/>
+```
+
+## Patterns
+
+### Adding an InfoTip
+
+Pass `infotip` for a tip next to the label — it's auto-labeled by a string `label`, or you can override with `ariaLabel`/`ariaLabelledby` when the label is a `ReactNode`:
+
+<StoryEmbed
+  id="organisms-connectedform-connectedformgroup--info-tip-auto-labelling"
+  height="8rem"
+/>
+<StoryEmbed
+  id="organisms-connectedform-connectedformgroup--info-tip-with-react-node-label"
+  height="14rem"
+/>
+
+## Reference
+
+### State
+
+A `ConnectedFormGroup` can be `default`, `error` (via `customError`), or `disabled`:
+
+<StoryEmbed
+  id="organisms-connectedform-connectedformgroup--states"
+  height="10rem"
+/>

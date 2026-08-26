@@ -1,6 +1,8 @@
 ---
 title: Media & assets
 description: Icons, illustrations, patterns, animation helpers, and video.
+sidebar:
+  label: Overview
 ---
 
 Icons, illustrations, patterns, animation helpers, and video.

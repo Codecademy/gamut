@@ -42,9 +42,9 @@ The "Meta" section is dissolved: its pages distribute into Getting started (Inst
 
 Readers arrive with a need ("I have to tell the user something went wrong"), not knowledge of Gamut's composition hierarchy. The Atoms/Molecules/Organisms tiers are retired from navigation (the tier may survive as a metadata badge on component pages). Components are grouped by what they do:
 
-- **Actions** — Button, CTAButton, FillButton, StrokeButton, TextButton, IconButton, Menu, Tag
+- **Actions** — Button, CTAButton, FillButton, StrokeButton, TextButton, IconButton, Toggle, Menu, Tag
 - **Containers** — Box, FlexBox, GridBox, Card, ContentContainer, LayoutGrid, Disclosure, Drawer
-- **Inputs & forms** — Input, TextArea, Checkbox, Radio, Toggle, Select, SelectDropdown, DatePicker; Form scaffolding (Form, FormGroup, FormGroupLabel, FormGroupDescription, FormRequiredText); ConnectedForm (ConnectedForm, ConnectedFormGroup, ConnectedFormInputs, SubmitButton); GridForm
+- **Inputs & forms** — Input, TextArea, Checkbox, Radio, Select, SelectDropdown, DatePicker; Form scaffolding (Form, FormGroup, FormGroupLabel, FormGroupDescription, FormRequiredText); ConnectedForm (ConnectedForm, ConnectedFormGroup, ConnectedFormInputs, SubmitButton); GridForm
 - **Navigation** — Anchor, Breadcrumbs, Pagination, Tabs, SkipToContent
 - **Feedback** — Alert, Toast, Toaster, Coachmark, Tips (ToolTip, InfoTip, PreviewTip)
 - **Status** — Badge, ProgressBar, RadialProgress, Loaders (Spinner, Shimmer), FeatureShimmer
@@ -56,15 +56,18 @@ Readers arrive with a need ("I have to tell the user something went wrong"), not
 
 Placement rulings for components that could live in two categories (the losing category's landing page cross-links them):
 
-| Component | Ruling     | Rationale                                                                                                     |
-| --------- | ---------- | ------------------------------------------------------------------------------------------------------------- |
-| Menu      | Actions    | The action-list role is the richer half of its API; nav role is cross-linked                                  |
-| Tag       | Actions    | Docs emphasize interactive selection/removal; read-only overlap with Badge is arbitrated by "When NOT to use" |
-| Tips      | Feedback   | Readers think "the system explaining something"; Overlays is reserved for things you open and dismiss         |
-| Drawer    | Containers | Collapses within page flow, unlike Flyout which floats above it (Overlays)                                    |
-| Anchor    | Navigation | Functionally navigation despite its typography implementation                                                 |
+| Component | Ruling     | Rationale                                                                                                                                                                                          |
+| --------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Menu      | Actions    | The action-list role is the richer half of its API; nav role is cross-linked                                                                                                                       |
+| Tag       | Actions    | Docs emphasize interactive selection/removal; read-only overlap with Badge is arbitrated by "When NOT to use"                                                                                      |
+| Tips      | Feedback   | Readers think "the system explaining something"; Overlays is reserved for things you open and dismiss                                                                                              |
+| Drawer    | Containers | Collapses within page flow, unlike Flyout which floats above it (Overlays)                                                                                                                         |
+| Anchor    | Navigation | Functionally navigation despite its typography implementation                                                                                                                                      |
+| Toggle    | Actions    | Most effective as an immediate on/off action, like a button, rather than a value collected on form submission; cross-linked from Inputs & forms since it's visually/functionally close to Checkbox |
 
-Existing multi-component group index pages (Buttons, Tips, Modals, Loaders, etc.) survive as collapsible group nodes within their category.
+Existing multi-component group index pages (Buttons, Tips, Modals, Loaders, etc.) survive as collapsible group nodes within their category. Each such group folder is named in Title Case on disk (`Buttons/`, `Tips/`, `ConnectedForm/`, `GridForm/`) — Starlight takes a nested folder's sidebar group label directly from its literal directory name, with no case transformation, so this is the only way to get a properly capitalized group header. (Top-level categories don't have this problem: their labels are set explicitly in `astro.config.mjs`, independent of the `components/actions`-style lowercase folder underneath.) Every group's own index page — at every level, from `/components/` down to `Buttons/index` — uses the sidebar label `Overview` rather than repeating the group's name a second time as its own first child item.
+
+Astro's slug generation lowercases the URL regardless of this folder casing, with no separator reinserted at a word boundary — `ConnectedForm/` and `GridForm/` become `/connectedform/` and `/gridform/`, not `/connected-form/` or `/grid-form/`. This is accepted as-is rather than fixed with a `slug:` override on every file in those two folders; the payoff (a correctly capitalized sidebar group) is worth the minor URL cosmetic cost, and nothing currently depends on those URLs having a separator.
 
 ### 3. Component pages re-apply Diátaxis at page scale, split across two systems by mode
 
@@ -131,6 +134,7 @@ If a component outgrows a single page (heavy guidelines plus a large API, e.g. G
 - **Embedding via iframe, rather than copying code into Starlight, is deliberate: Storybook stays the single source of truth for component code snippets.** A `.stories.tsx` file is the one place a variant's example code is written; Starlight never forks a second copy that can silently drift out of sync with the real component API. The cost is that Starlight's site search (Pagefind) can't index that code, prop names, or accessibility notes, since it lives inside an iframe pointed at a separate deployment — a reader searching Starlight for a prop name won't find it there. Mitigation: every `StoryEmbed` ships with a visible link to open the full story, so a reader can still get to that content manually; if the search gap proves painful in practice, the fallback is indexing Storybook's stories into Pagefind separately, not duplicating the code itself.
 - **A Pattern living on the group's index page is one hop further from a sibling's own page than an inline section would be.** A reader on `FillButton`'s page has to notice and follow a link to `Buttons/index` to find "Rendering as a link," rather than finding it inline. Mitigation: every sibling's Patterns section opens with an explicit pointer to the group page rather than silently omitting the section; a Pattern only moves to the group page once it's confirmed identical across siblings, not merely similar.
 - **Not every "shared" Pattern stays shared forever.** If one button's disabled-state or icon behavior diverges later, it has to be split back out of the group page into that component's own page without breaking the others' links to it. Mitigation: this is the same fixed-section-boundary mechanism §3 already uses for a component outgrowing one page — moving content back down is a known, designed-for operation, not a special case.
+- **Title-Case group folders produce a squished, separator-less URL segment for compound names** (`ConnectedForm/` → `/connectedform/`, `GridForm/` → `/gridform/`), since Astro's slug generation lowercases but doesn't re-insert word breaks. Mitigation: accepted as a cosmetic cost, not fixed with per-file `slug:` overrides, since nothing currently depends on a separator being present; revisit only if that changes.
 
 ## Alternatives considered
 

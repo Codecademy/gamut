@@ -1,11 +1,14 @@
 ---
 title: Actions
 description: Components a user acts through — triggering something, choosing from options, or removing something.
+sidebar:
+  label: Overview
 ---
 
 Things a user does: trigger something, choose from a set of options, or remove something.
 
 - [Buttons](/components/actions/buttons/) — FillButton, StrokeButton, TextButton, IconButton, CTAButton
+- [Toggle](/components/actions/toggle/)
 - [Menu](/components/actions/menu/)
 - [Tag](/components/actions/tag/)
 

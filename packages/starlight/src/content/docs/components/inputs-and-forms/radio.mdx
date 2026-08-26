@@ -1,0 +1,50 @@
+---
+title: Radio
+description: A single choice from a mutually exclusive set of options.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/Radio.tsx)
+
+## Usage
+
+Use `Radio` for one choice from a small, visible set of mutually exclusive options, grouped with `RadioGroup`.
+
+**Best practices:**
+
+- `Radio` is a controlled component — its `checked` value must be driven by external state and `onChange`.
+- `RadioGroup` forwards `name` and `onChange` to every `Radio` child, so they stay semantically linked and mutually exclusive — build groups with `RadioGroup`, not by wiring `name` on each `Radio` yourself.
+- Inside [ConnectedForm](/components/inputs-and-forms/connectedform/) or [GridForm](/components/inputs-and-forms/gridform/), use `ConnectedRadioGroupInput` or the equivalent GridForm field type instead — they wire up `checked`/`onChange` for you.
+- Avoid passing `id` to `Radio` — it's appended as a suffix to the input's own id, but the visible `<label>`'s `htmlFor` doesn't get that same suffix, which can break the label/input association. `htmlFor` alone is enough to identify a `Radio`.
+
+**When NOT to use:**
+
+- **A boolean value** — use [Checkbox](/components/inputs-and-forms/checkbox/) instead.
+- **Many options, or options that don't need to all be visible at once** — use [Select](/components/inputs-and-forms/select/) or [SelectDropdown](/components/inputs-and-forms/select-dropdown/) instead.
+
+## Patterns
+
+### Building a RadioGroup
+
+`RadioGroup` renders a plain `<div>` and clones `name`/`onChange` onto its `Radio` children — track the selected value yourself and pass it back down:
+
+<StoryEmbed id="atoms-forminputs-radio--radio-group-component" height="8rem" />
+
+### Adding InfoTips to a group or its options
+
+Wrap a `RadioGroup` in a `FormGroup` with `infotip` for a group-level tip, auto-linked to the group's label via `aria-labelledby`. Individual `Radio` options can carry their own `infotip` too:
+
+<StoryEmbed
+  id="atoms-forminputs-radio--radio-group-with-info-tips"
+  height="10rem"
+/>
+
+## Reference
+
+### State
+
+<StoryEmbed id="atoms-forminputs-radio--checked" height="4rem" />
+<StoryEmbed id="atoms-forminputs-radio--disabled" height="4rem" />
+<StoryEmbed id="atoms-forminputs-radio--disabled-checked" height="4rem" />
+<StoryEmbed id="atoms-forminputs-radio--error" height="4rem" />

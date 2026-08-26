@@ -1,6 +1,8 @@
 ---
 title: Overlays
 description: Things a user explicitly opens and dismisses, floating above the page.
+sidebar:
+  label: Overview
 ---
 
 Things a user explicitly opens and dismisses, floating above the rest of the page.

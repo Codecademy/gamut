@@ -1,6 +1,8 @@
 ---
 title: Containers
 description: Components that group, wrap, or lay out other content.
+sidebar:
+  label: Overview
 ---
 
 Components that group, wrap, or lay out other content.

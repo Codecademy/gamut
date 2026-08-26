@@ -1,0 +1,105 @@
+---
+title: DatePicker
+description: Single-date or range selection with a segmented date field, calendar popover, and quick actions.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=127461-42132) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DatePicker/DatePicker.tsx)
+
+## Usage
+
+Use `DatePicker` to let a reader select a single date or a date range, either by typing into a segmented field or picking from a calendar popover. It's a fully controlled component — there's no internal date state, so `selectedDate`/`onSelected` (single mode) or `startDate`/`endDate`/`onStartSelected`/`onEndSelected` (range mode) are all required.
+
+**Best practices:**
+
+- Include quick actions when readers are likely to want common or recurring dates or ranges.
+- Include `disableDate` to prevent selecting dates that are unavailable or invalid in context.
+
+**When NOT to use:**
+
+- **A fixed set of date-related options** (like "This month," "Last quarter") — use [Select](/components/inputs-and-forms/select/) or [SelectDropdown](/components/inputs-and-forms/select-dropdown/) instead.
+
+### Anatomy
+
+1. **Date input(s)** — one segmented month/day/year field in single mode, two (Start date/End date) in range mode. Typing updates the calendar immediately.
+2. **Calendar** — opens on click of either date input, or `Alt`+`↓` when an input is focused. Closes automatically once selection is complete. Shows 2 months by default, collapsing to 1 below the `sm` breakpoint.
+3. **Today marker** — highlights the current date.
+4. **Disabled dates** (optional) — marked non-selectable. In range mode, a range that overlaps a disabled date is invalid; that click is instead treated as a new Start date.
+5. **Clear** (range mode only) — clears the current selection.
+6. **Quick actions** (optional) — up to 3 shortcuts in the calendar footer.
+
+<FigmaEmbed url="https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=127461-42132" />
+
+## Patterns
+
+### Building a single date picker
+
+<StoryEmbed id="organisms-datepicker--single-date" height="26rem" />
+
+### Building a range picker
+
+<StoryEmbed id="organisms-datepicker--range" height="26rem" />
+
+### Disabling specific dates
+
+Pass a `disableDate` function returning `true` for any date that shouldn't be selectable. Use `matchDisabledDates` to disable a fixed list, or write your own predicate for rules like "no weekends":
+
+<StoryEmbed id="organisms-datepicker--match-disabled-dates" height="26rem" />
+<StoryEmbed id="organisms-datepicker--range-disabled-weekends" height="26rem" />
+
+A few more `disableDate` recipes (before today, more than 30 days before today, within a 30-day window of the start date) each have their own story too:
+
+- [Disabled before today](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-disabled-before-today)
+- [Disabled more than 30 days before today](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-disabled-more-than-30-days-before-today)
+- [30-day window from the start date](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-30-day-window-from-start)
+
+### Composing a custom layout
+
+Pass `children` to skip the default layout entirely — `DatePicker` still provides context, so you can compose your own arrangement of `DatePickerInput`(s) and `DatePickerCalendar` via `useDatePicker()`:
+
+<StoryEmbed id="organisms-datepicker--composed-with-context" height="26rem" />
+
+### Localizing
+
+`locale` drives segment order, month/weekday names, and date `aria-label`s via `Intl` APIs. `translations` overrides the UI strings (button labels, quick-action text, validation messages) directly:
+
+<StoryEmbed id="organisms-datepicker--locale" height="22rem" />
+<StoryEmbed id="organisms-datepicker--translations" height="26rem" />
+
+## Reference
+
+### Mode
+
+Covered above under Patterns — [single](#building-a-single-date-picker) and [range](#building-a-range-picker).
+
+### Placement
+
+`placement="inline"` (used throughout this page) renders the calendar in normal layout flow; `placement="floating"` escapes via a portal:
+
+<StoryEmbed id="organisms-datepicker--floating-placement" height="26rem" />
+
+### Quick actions
+
+Default (single: Yesterday/Today/Tomorrow; range: Last 7/30/90 days), disabled (`quickActions={null}`), and custom (`CalendarQuickAction[]`) are each their own story, for both modes:
+
+<StoryEmbed
+  id="organisms-datepicker--single-default-quick-actions"
+  height="24rem"
+/>
+<StoryEmbed
+  id="organisms-datepicker--range-default-quick-actions"
+  height="26rem"
+/>
+<StoryEmbed
+  id="organisms-datepicker--single-custom-quick-actions"
+  height="24rem"
+/>
+<StoryEmbed
+  id="organisms-datepicker--range-custom-quick-actions"
+  height="26rem"
+/>
+
+- [Single, no quick actions](https://gamut.codecademy.com/?path=/story/organisms-datepicker--single-no-quick-actions)
+- [Range, no quick actions](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-no-quick-actions)

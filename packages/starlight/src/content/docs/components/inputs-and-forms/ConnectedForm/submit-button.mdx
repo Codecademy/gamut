@@ -1,0 +1,23 @@
+---
+title: SubmitButton
+description: A submit button aware of the connected form's submitting/valid state.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/SubmitButton.tsx)
+
+## Usage
+
+`SubmitButton` is a submit-type button that reads [ConnectedForm](/components/inputs-and-forms/connectedform/connected-form/)'s context for its loading/disabled state. It must be used within a `ConnectedForm`.
+
+**Best practices:**
+
+- `disabled` and `loading` each accept a plain `boolean` **or** a function of react-hook-form's `formState`. They default to `false`, not to `formState.isValid` — passing a static `false` (the default) means the button is never automatically disabled by validation. To tie it to form validity, pass a function explicitly: `disabled={(formState) => !formState.isValid}`.
+- `as` swaps the rendered button component; it defaults to `FillButton`.
+
+## Reference
+
+### State
+
+<StoryEmbed id="organisms-connectedform-submitbutton--states" height="8rem" />

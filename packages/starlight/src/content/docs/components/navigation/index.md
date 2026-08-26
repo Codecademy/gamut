@@ -1,6 +1,8 @@
 ---
 title: Navigation
 description: Components that move a user between pages or views.
+sidebar:
+  label: Overview
 ---
 
 Components that move a user between pages or views.

@@ -1,0 +1,153 @@
+---
+title: 'GridForm: Reference'
+description: Every GridForm field type, validation option, and submit button configuration.
+sidebar:
+  label: Reference
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+The full field-type catalog, validation rules, and submit button options for [GridForm](/components/inputs-and-forms/gridform/) — see [Patterns](/components/inputs-and-forms/gridform/patterns/) for layout and state recipes.
+
+## Field types
+
+Every field in `GridForm`'s `fields` array is a plain object with a `type` discriminator. Text inputs support any HTML input type (`text`, `email`, `password`, `number`, `tel`, `url`, `search`, `date`, `time`, and more) under the same shape:
+
+<StoryEmbed id="organisms-gridform-fields--text-field" height="10rem" />
+<StoryEmbed id="organisms-gridform-fields--default-text-field" height="10rem" />
+
+Placeholder text is a `type: 'text'` field using `placeholder` instead of a visible description — use it sparingly. Browsers often render placeholder text with too little contrast for AA, and it should only rephrase the label, never add information the label doesn't already have:
+
+<StoryEmbed
+  id="organisms-gridform-fields--placeholder-text-field"
+  height="10rem"
+/>
+
+### `textarea`
+
+<StoryEmbed id="organisms-gridform-fields--textarea-field" height="12rem" />
+
+### `select`
+
+<StoryEmbed id="organisms-gridform-fields--select-field" height="10rem" />
+
+### `radio-group`
+
+<StoryEmbed id="organisms-gridform-fields--radio-group-field" height="12rem" />
+
+### `file`
+
+Accepts a custom `validate` function for restricting file types/size:
+
+<StoryEmbed id="organisms-gridform-fields--file-upload-field" height="10rem" />
+
+### `checkbox`
+
+`spacing="tight"` fits checkboxes into smaller areas:
+
+<StoryEmbed id="organisms-gridform-fields--checkbox-field" height="12rem" />
+<StoryEmbed id="organisms-gridform-fields--checkbox-spacing" height="12rem" />
+
+### `nested-checkboxes`
+
+Infinite levels of nesting are supported. A parent is `checked` when every child is checked, `indeterminate` when some are, and the submitted value is an array of every selected value, including children:
+
+<StoryEmbed
+  id="organisms-gridform-fields--nested-checkboxes-field"
+  height="16rem"
+/>
+
+### `custom` and `custom-group`
+
+`custom` takes a `render` prop for a fully custom field. `custom-group` wraps that same render prop in a `FormGroup` — use it when the custom field still needs a label and `GridForm`-managed error region:
+
+<StoryEmbed id="organisms-gridform-fields--custom-inputs" height="14rem" />
+
+### `hidden`
+
+Submits `defaultValue` with the rest of the form, with no visible field at all:
+
+<StoryEmbed id="organisms-gridform-fields--hidden-input" height="10rem" />
+
+### `sweet-container`
+
+A honeypot field — named to avoid tipping off bots that it's a spam trap, unlike the more recognizable "honeypot":
+
+<StoryEmbed id="organisms-gridform-fields--sweet-container" height="10rem" />
+
+### InfoTips on fields
+
+<StoryEmbed
+  id="organisms-gridform-fields--info-tip-auto-labelling"
+  height="10rem"
+/>
+<StoryEmbed
+  id="organisms-gridform-fields--info-tip-with-react-node-label"
+  height="16rem"
+/>
+
+## Validation
+
+`GridForm` validates through [react-hook-form](https://react-hook-form.com). Each field's `validation` property accepts its `RegisterOptions` (`required`, `pattern`, `validate`, `minLength`/`maxLength`, `min`/`max`). The form-level `validation` prop controls when that validation runs:
+
+- `"onSubmit"` (default) — validate only on submit.
+- `"onChange"` — validate on every change; the submit button stays disabled until every required field is valid.
+- `"onTouched"` — validate on blur.
+
+```tsx
+// Required, with a custom message
+{ type: 'text', name: 'email', label: 'Email', validation: { required: 'Please enter your email address' } }
+
+// Pattern
+{ type: 'text', name: 'email', label: 'Email', validation: { pattern: { value: /^\S+@\S+$/, message: 'Enter a valid email address' } } }
+
+// Custom validate function
+{
+  type: 'file',
+  name: 'upload',
+  label: 'Upload',
+  validation: {
+    validate: (files: FileList) => {
+      const file = files[0];
+      if (!['image/png', 'image/jpeg'].includes(file.type)) return 'PNG or JPEG only';
+      if (file.size > 2 * 1024 * 1024) return 'Must be under 2MB';
+      return true;
+    },
+  },
+}
+
+// Length / range
+{ type: 'text', name: 'username', label: 'Username', validation: { minLength: { value: 3, message: 'At least 3 characters' } } }
+{ type: 'number', name: 'age', label: 'Age', validation: { min: { value: 18, message: 'Must be 18 or older' }, max: { value: 99, message: 'Must be 99 or younger' } } }
+```
+
+## Submit button
+
+`submit.type` picks the button component (`'fill'`, the default, or `'cta'`); `submit.position` picks its alignment (`'left'`, the default, `'center'`, `'right'`, or `'stretch'`):
+
+<StoryEmbed
+  id="organisms-gridform-buttons--submit-button-fill"
+  height="10rem"
+/>
+<StoryEmbed id="organisms-gridform-buttons--submit-button-cta" height="10rem" />
+<StoryEmbed
+  id="organisms-gridform-buttons--submit-button-left"
+  height="10rem"
+/>
+<StoryEmbed
+  id="organisms-gridform-buttons--submit-button-center"
+  height="10rem"
+/>
+<StoryEmbed
+  id="organisms-gridform-buttons--submit-button-right"
+  height="10rem"
+/>
+<StoryEmbed
+  id="organisms-gridform-buttons--submit-button-stretch"
+  height="10rem"
+/>
+
+`submit.loading` and `submit.disabled` mirror [SubmitButton](/components/inputs-and-forms/connectedform/submit-button/)'s own props:
+
+<StoryEmbed id="organisms-gridform-buttons--loading" height="10rem" />
+<StoryEmbed id="organisms-gridform-buttons--disabled" height="10rem" />

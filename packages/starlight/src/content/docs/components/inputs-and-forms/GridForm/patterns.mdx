@@ -1,0 +1,91 @@
+---
+title: 'GridForm: Patterns'
+description: Layout and state recipes for GridForm.
+sidebar:
+  label: Patterns
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+How-to recipes for [GridForm](/components/inputs-and-forms/gridform/) — see [Reference](/components/inputs-and-forms/gridform/reference/) for the full field-type catalog and validation options.
+
+## Building sections
+
+Pass section objects (each with a `title` and its own `fields`) alongside loose fields in the `fields` array. A section's `layout` can be `"left"` (title takes 3 columns) or centered (the default); `as` sets the title's heading level (default `h2`) and must be a heading tag:
+
+<StoryEmbed id="organisms-gridform-layout--sections" height="40rem" />
+
+## Hiding the required-text legend
+
+Pass `hideRequiredText` when a form has no required fields at all — otherwise leave the legend in place:
+
+<StoryEmbed id="organisms-gridform-layout--hide-required-text" height="14rem" />
+
+## A solo-field form
+
+A form with exactly one visible field automatically skips the required-text legend and treats that field as required — no extra prop needed, unless the form also has a hidden or custom-rendered input alongside it (then pass `hasSoloField` explicitly):
+
+<StoryEmbed id="organisms-gridform-layout--solo-field" height="12rem" />
+
+## Reacting to a field's value before submit
+
+Give a field an `onUpdate` callback to read its value in a parent component as it changes, without waiting for `onSubmit`:
+
+<StoryEmbed id="organisms-gridform-states--on-field-update" height="14rem" />
+
+## Disabling fields
+
+### While editing
+
+Set `disabled` on any field to make it visually and functionally unusable:
+
+<StoryEmbed id="organisms-gridform-states--disabled-inputs" height="12rem" />
+
+### After a successful submission
+
+`disableFieldsOnSubmit` disables every field once the form submits successfully. Pair it with `wasSubmitSuccessful` if you have server-side validation to run after the client-side checks pass:
+
+<StoryEmbed
+  id="organisms-gridform-states--disabled-fields-on-submit"
+  height="14rem"
+/>
+
+## Resetting after a successful submission
+
+`resetOnSubmit` clears the form back to its defaults once it submits successfully — same `wasSubmitSuccessful` caveat as above:
+
+<StoryEmbed id="organisms-gridform-states--reset-on-submit" height="14rem" />
+
+## Combining loading, disabling, and resetting
+
+`disableFieldsOnSubmit`, `resetOnSubmit`, and a `submit.loading` state driven by your own `onSubmit` handler compose into a full submit lifecycle:
+
+<StoryEmbed id="organisms-gridform-states--form-loading" height="14rem" />
+
+## Custom and markdown errors
+
+A field can carry a `customError` in addition to its `validation` rules — a failing validation rule always wins over `customError` when both apply. Error text renders through Gamut's `Markdown` component, so a validation message can include a link:
+
+<StoryEmbed id="organisms-gridform-states--custom-error" height="12rem" />
+<StoryEmbed id="organisms-gridform-states--markdown-errors" height="12rem" />
+
+## Adding a cancel button
+
+Pass `cancel` alongside `submit` to render a `TextButton` next to the submit button:
+
+<StoryEmbed id="organisms-gridform-buttons--cancel-button" height="10rem" />
+
+## Making the submit button inline with a field
+
+Size a field and the submit button to share a row (for example, field `size={6}`, `submit.size={4}`). Pair this with `hideLabel` on the field so its label doesn't throw off the alignment — but if you hide the visible label, provide an `aria-label` or another nearby label so the field stays accessible:
+
+<StoryEmbed
+  id="organisms-gridform-buttons--submit-button-inline"
+  height="10rem"
+/>
+
+## Adding an InfoTip to a field
+
+Pass `infotip` on any field — it's auto-labeled by the field's own label unless you override it with `ariaLabel`/`ariaLabelledby`:
+
+<StoryEmbed id="organisms-gridform-layout--info-tip" height="30rem" />

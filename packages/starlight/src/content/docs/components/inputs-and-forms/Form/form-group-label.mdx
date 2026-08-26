@@ -1,0 +1,40 @@
+---
+title: FormGroupLabel
+description: An accessible label for a FormGroup field.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormGroupLabel.tsx)
+
+## Usage
+
+`FormGroupLabel` is the label [FormGroup](/components/inputs-and-forms/form/form-group/) renders internally from its `label` prop — reach for it directly only when building custom form scaffolding outside `FormGroup`.
+
+**Best practices:**
+
+- `isSoloField` suppresses both the required asterisk and the "(optional)" text — use it when a field is the only one in its form and is always required.
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0" />
+
+## Patterns
+
+`FormGroupLabel` follows the group's shared `htmlFor`-wiring pattern — see [Form scaffolding: Patterns](/components/inputs-and-forms/form/#patterns). Passing `htmlFor` renders a real `<label>`; omitting it renders a `<div>` instead, for cases where the "label" doesn't correspond to a single labelable element:
+
+<StoryEmbed
+  id="atoms-formelements-formgrouplabel--with-html-for"
+  height="4rem"
+/>
+<StoryEmbed
+  id="atoms-formelements-formgrouplabel--without-html-for"
+  height="4rem"
+/>
+
+## Reference
+
+### Variant
+
+<StoryEmbed id="atoms-formelements-formgrouplabel--default" height="4rem" />
+<StoryEmbed id="atoms-formelements-formgrouplabel--large-size" height="4rem" />
+<StoryEmbed id="atoms-formelements-formgrouplabel--disabled" height="4rem" />

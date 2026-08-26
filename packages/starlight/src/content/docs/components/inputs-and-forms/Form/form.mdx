@@ -1,0 +1,26 @@
+---
+title: Form
+description: The root form element and submit handling.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/Form.tsx)
+
+## Usage
+
+`Form` is the styled `<form>` element that [GridForm](/components/inputs-and-forms/gridform/) and [ConnectedForm](/components/inputs-and-forms/connectedform/) are built on.
+
+**Best practices:**
+
+- `Form` always sets `method="post"` (overridable) and `noValidate` (not overridable) — it expects validation to be handled in JS, not the browser's native HTML validation UI.
+
+**When NOT to use:**
+
+- **Building an actual form** — use [GridForm](/components/inputs-and-forms/gridform/) or [ConnectedForm](/components/inputs-and-forms/connectedform/) instead; both add the accessibility and validation wiring `Form` alone doesn't.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-formelements-form--default" />

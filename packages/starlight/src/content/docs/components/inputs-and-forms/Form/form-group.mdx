@@ -1,0 +1,46 @@
+---
+title: FormGroup
+description: Groups a field with its label, description, and error region.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormGroup.tsx)
+
+## Usage
+
+Use `FormGroup` to pair a form field with a label, an optional description, and an optional error message, in that fixed order.
+
+**Best practices:**
+
+- Pass `label` and `description` as plain strings, not JSX — `FormGroup` renders its own `FormGroupLabel`/`FormGroupDescription` internally from them, rather than accepting them as composed children.
+- Pass `error` as a string to show an error message below the field, and pass the field's own `error` boolean too, so the field's styling matches the message.
+
+**When NOT to use:**
+
+- **The interface doesn't need form-shaped structure at all** — see [Form scaffolding](/components/inputs-and-forms/form/) for when to reach for these atoms directly instead of GridForm/ConnectedForm.
+
+## Patterns
+
+`FormGroup` follows the group's shared `htmlFor`-wiring pattern — see [Form scaffolding: Patterns](/components/inputs-and-forms/form/#patterns) for connecting its label to the field it wraps.
+
+### Adding an InfoTip
+
+Pass `infotip` to render an `InfoTip` next to the label. It's auto-labeled by the field's `label` unless you pass `infotip.ariaLabel`/`ariaLabelledby`:
+
+<StoryEmbed
+  id="atoms-formelements-formgroup--low-emphasis-info-tip"
+  height="8rem"
+/>
+<StoryEmbed
+  id="atoms-formelements-formgroup--high-emphasis-info-tip"
+  height="8rem"
+/>
+
+## Reference
+
+### State
+
+<StoryEmbed id="atoms-formelements-formgroup--default-state" height="10rem" />
+<StoryEmbed id="atoms-formelements-formgroup--error" height="10rem" />
+<StoryEmbed id="atoms-formelements-formgroup--valid" height="10rem" />

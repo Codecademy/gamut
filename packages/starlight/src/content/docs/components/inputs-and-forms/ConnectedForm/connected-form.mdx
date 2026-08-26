@@ -1,0 +1,52 @@
+---
+title: ConnectedForm
+description: A Form wired to react-hook-form state.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedForm.tsx)
+
+## Usage
+
+`ConnectedForm` is the `Form` that provides [react-hook-form](https://react-hook-form.com) context to every `Connected` component nested inside it — see [ConnectedForm](/components/inputs-and-forms/connectedform/) for how it composes with `ConnectedFormGroup`, the connected inputs, and `SubmitButton`.
+
+**Best practices:**
+
+- Always pass `defaultValues` — it's required for reliable behavior, particularly resets.
+- Every key in `validationRules` must have a matching key in `defaultValues`.
+- `validation="onChange"` (the default is `"onChange"` via `useConnectedForm`) disables the submit button until every required field is valid; other [react-hook-form modes](https://react-hook-form.com/docs/useform#mode) validate at different times.
+- `watchedFields` is useful for conditionally rendering fields based on another field's live value, but re-runs on every render — only reach for it when you actually need a value before submission.
+
+**When NOT to use:**
+
+- **A form that sticks to a 12-column grid with consistent spacing** — use [GridForm](/components/inputs-and-forms/gridform/) instead.
+
+## Patterns
+
+### Watching field values
+
+Pass `watchedFields` to react to a field's value changing before submission — here, checking a checkbox reveals a radio group:
+
+<StoryEmbed
+  id="organisms-connectedform-connectedform--watched-fields"
+  height="16rem"
+/>
+
+### Validating rules that depend on runtime state
+
+`validationRules` is memoized on mount. When a field's valid values depend on another field's current value, pass `customValidations` to that field instead — it re-evaluates on every render:
+
+<StoryEmbed
+  id="organisms-connectedform-connectedform--custom-field-validations"
+  height="14rem"
+/>
+
+## Reference
+
+### Playground
+
+<StoryEmbed
+  id="organisms-connectedform-connectedform--default"
+  height="20rem"
+/>

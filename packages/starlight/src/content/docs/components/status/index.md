@@ -1,6 +1,8 @@
 ---
 title: Status
 description: Components that communicate a state at a glance, without needing to be dismissed.
+sidebar:
+  label: Overview
 ---
 
 Components that communicate a state at a glance, without needing to be dismissed.

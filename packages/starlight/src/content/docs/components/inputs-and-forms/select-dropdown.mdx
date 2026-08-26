@@ -1,0 +1,135 @@
+---
+title: SelectDropdown
+description: A custom single/multi-select dropdown with search, grouping, rich option content, and creatable options.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/SelectDropdown/SelectDropdown.tsx)
+
+## Usage
+
+Use `SelectDropdown` when a design calls for a styled dropdown menu, searchable options, multi-select tags, creatable options, or rich option content (icons, subtitles, grouping). It's built on [react-select](https://react-select.com), which is a meaningfully larger JavaScript dependency than [Select](/components/inputs-and-forms/select/) — prefer `Select` for a simple single-select field where that extra weight isn't earning its keep.
+
+**Best practices:**
+
+- Provide an `id` (or a `name`, used as a fallback `id`) matching the `htmlFor` of the associated `FormGroupLabel`/`<label>`.
+- Don't pass `isSearchable={false}` together with `isCreatable` — creating an option requires a text input, so Gamut's types reject that combination.
+
+**When NOT to use:**
+
+- **A simple single-select with plain text options** — use [Select](/components/inputs-and-forms/select/) instead.
+
+## Patterns
+
+### Pairing with FormGroup
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--form-group-select-dropdown"
+  height="10rem"
+/>
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--form-group-error"
+  height="12rem"
+/>
+
+### Selecting more than one option
+
+Set `multiple` to let users pick more than one option — selected values render as removable tags, and `onChange` receives the full array of selected option objects rather than a single value. Single-select is always controlled; multi-select supports both modes:
+
+| Mode   | Uncontrolled                                           | Controlled                                                         |
+| ------ | ------------------------------------------------------ | ------------------------------------------------------------------ |
+| Single | Not supported                                          | Pass `value` (an option value string) and update it in `onChange`. |
+| Multi  | Omit `value`, or pass a non-array (`undefined`, `''`). | Pass `value` as `string[]` and update it in `onChange`.            |
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--multiple-select"
+  height="10rem"
+/>
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--multiple-select-controlled"
+  height="10rem"
+/>
+
+### Letting users create new options
+
+Set `isCreatable` to show an **Add "value"** row when the input doesn't match an existing option. Selecting it fires `onCreateOption` with the typed string — you own persisting it to `options`. `onChange` still fires too, with `meta.action === 'create-option'`:
+
+<StoryEmbed id="atoms-forminputs-selectdropdown--creatable" height="10rem" />
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--creatable-multi-uncontrolled"
+  height="10rem"
+/>
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--creatable-multi"
+  height="10rem"
+/>
+
+### Validating created options
+
+Use `isValidNewOption` to control when the "Add" row appears (minimum length, pattern matching, dedup, a cap on item count) and `validationMessage` to replace the in-menu "No options" text with validation-specific copy:
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--creatable-with-validation"
+  height="12rem"
+/>
+
+### Submitting without JavaScript
+
+Pass `inputProps.hidden` to render a native `<input type="hidden">` with the selected value(s), so the field participates in a plain HTML form submission:
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--custom-input-props"
+  height="10rem"
+/>
+
+## Reference
+
+### Option content
+
+`icon`, `subtitle`, `rightLabel`, and `abbreviation` can each be added to an option to enrich how it renders:
+
+<StoryEmbed id="atoms-forminputs-selectdropdown--icons" height="10rem" />
+<StoryEmbed id="atoms-forminputs-selectdropdown--subtitles" height="10rem" />
+<StoryEmbed id="atoms-forminputs-selectdropdown--right-labels" height="10rem" />
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--abbreviated-input"
+  height="10rem"
+/>
+
+### Grouped options
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--group-dividers"
+  height="10rem"
+/>
+<StoryEmbed id="atoms-forminputs-selectdropdown--group-labels" height="10rem" />
+
+### Layout & positioning
+
+`inputWidth`/`dropdownWidth` size the input and menu independently, and `menuAlignment="right"` aligns the menu to the input's right edge instead of its left:
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--independent-widths"
+  height="10rem"
+/>
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--menu-alignment-right"
+  height="10rem"
+/>
+
+`shownOptionsLimit` (default and max `6`) and `zIndex` (default `auto`) each have their own dedicated story too:
+
+- [Shown options limit](https://gamut.codecademy.com/?path=/story/atoms-forminputs-selectdropdown--shown-options-three)
+- [Z-index stacking](https://gamut.codecademy.com/?path=/story/atoms-forminputs-selectdropdown--z-index-on-menu)
+
+### Size
+
+<StoryEmbed id="atoms-forminputs-selectdropdown--base" height="8rem" />
+<StoryEmbed id="atoms-forminputs-selectdropdown--small" height="8rem" />
+
+### State
+
+<StoryEmbed id="atoms-forminputs-selectdropdown--searchable" height="8rem" />
+<StoryEmbed id="atoms-forminputs-selectdropdown--disabled" height="8rem" />
+<StoryEmbed id="atoms-forminputs-selectdropdown--error" height="8rem" />

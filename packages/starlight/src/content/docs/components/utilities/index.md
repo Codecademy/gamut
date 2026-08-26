@@ -1,6 +1,8 @@
 ---
 title: Utilities
 description: Non-visual helper components.
+sidebar:
+  label: Overview
 ---
 
 Non-visual helper components.

@@ -1,0 +1,27 @@
+---
+title: FormRequiredText
+description: The "required" indicator text for a field.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormRequiredText.tsx)
+
+## Usage
+
+Include `FormRequiredText` in any form that has required fields, so readers know what the required-field asterisk convention means.
+
+**Best practices:**
+
+- Its text is fixed to "\* Required" — it always renders that, regardless of `children`.
+- It's `aria-hidden` by default, matching the required asterisk rendered elsewhere in Gamut's form components (also `aria-hidden`).
+
+**When NOT to use:**
+
+- **No fields in the form are required** — omit it; there's nothing for it to explain.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-formelements-formrequiredtext--default" />

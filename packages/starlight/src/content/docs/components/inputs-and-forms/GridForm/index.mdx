@@ -1,0 +1,45 @@
+---
+title: GridForm
+description: An efficient way to build and design forms on a 12-column grid.
+sidebar:
+  label: Overview
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/GridForm/GridForm.tsx)
+
+`GridForm` is large enough to split across pages, following the same explanation/how-to/reference split every component page uses — this page covers Usage and Anatomy; [Patterns](/components/inputs-and-forms/gridform/patterns/) and [Reference](/components/inputs-and-forms/gridform/reference/) are their own pages.
+
+## Usage
+
+Give `GridForm` a `fields` array — a list of field descriptions — and it strings together the right form scaffolding inside a [LayoutGrid](/components/containers/layout-grid/), built on [ConnectedForm](/components/inputs-and-forms/connectedform/) underneath.
+
+**Best practices:**
+
+- Let `GridForm` compute `defaultValues`, required-field detection, and solo-field detection from `fields` — only override `hasSoloField` when a form has a single visible field _plus_ a hidden or custom-rendered input (otherwise the detection is automatic).
+- The Figma library ships matching `❖ GridForm` variants (Starter, Sections, Inline Submit) — detach the component to modify the underlying `📐 LayoutGrid`, then add, remove, or edit `⬦ Form Inputs`.
+
+**When NOT to use:**
+
+- **A form that doesn't fit a 12-column grid, or needs more layout freedom** — use [ConnectedForm](/components/inputs-and-forms/connectedform/) instead.
+
+### Anatomy
+
+`GridForm` renders a single `LayoutGrid` inside a `ConnectedForm`. Each field, section title, and the final submit/cancel row is its own grid `Column`:
+
+1. **Required-text legend** (`FormRequiredText`, unless `hideRequiredText` or the form has a single required field) — the first `Column`, unless the very first field is a section (then it moves into that section's title instead).
+2. **Fields** — each wrapped in a `Column` sized/spanned by `field.size`/`field.rowspan`, except `hidden`/`sweet-container` fields, which render with no layout wrapper at all.
+3. **Sections** (optional) — a `GridFormSectionTitle` `Column`, followed by that section's fields, followed by a `GridFormSectionBreak` (`<hr>`) — except after the last section.
+4. **Submit / cancel row** — always the final grid item, built from the `submit` and optional `cancel` props.
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910" />
+
+## Reference
+
+### Playground
+
+The playground below is a kitchen-sink form exercising most field types at once — see [Reference](/components/inputs-and-forms/gridform/reference/) for each field type on its own, and [Patterns](/components/inputs-and-forms/gridform/patterns/) for layout and state recipes:
+
+<StoryEmbed id="organisms-gridform-usage--default" height="34rem" />

@@ -1,0 +1,76 @@
+---
+title: Checkbox
+description: A binary or indeterminate selection control.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/Checkbox.tsx)
+
+## Usage
+
+Use `Checkbox` to handle boolean values within forms.
+
+**Best practices:**
+
+- `Checkbox` is a controlled component — its `checked` value must be driven by external state and `onChange`, the same as a native React controlled input.
+- `indeterminate` and `checked` are mutually exclusive; when a checkbox is indeterminate, `checked` must be `false` (or omitted) — Gamut's types enforce this.
+- If `label` is a `ReactNode` rather than a plain string, `aria-label` becomes required — Gamut's types enforce this too.
+- Group related checkboxes with `<fieldset>`/`<legend>`, and put nested checkboxes in a list (`<ul>`/`<li>`).
+
+**When NOT to use:**
+
+- **One choice from a group of options** — use [Radio](/components/inputs-and-forms/radio/) instead.
+- **An on/off action with its own trigger, outside a form** — use [Toggle](/components/actions/toggle/) instead.
+
+## Patterns
+
+### Building a controlled checkbox
+
+Drive `checked` from your own state and update it in `onChange`:
+
+<StoryEmbed id="atoms-forminputs-checkbox--custom-checkbox" height="6rem" />
+<StoryEmbed
+  id="atoms-forminputs-checkbox--controlled-checkbox"
+  height="12rem"
+/>
+
+### Building a parent/child indeterminate group
+
+Compute the parent's `checked`/`indeterminate` from its children's state — `checked` when all children are checked, `indeterminate` when some are, neither when none are:
+
+<StoryEmbed id="atoms-forminputs-checkbox--nested-checkboxes" height="14rem" />
+
+### Labels as ReactNodes
+
+A `ReactNode` label (for example, one containing a link) needs `aria-label`, and — if the link itself needs to be independently reachable by screen readers — `dontAriaHideLabel`, since the visible label text is `aria-hidden` by default:
+
+<StoryEmbed
+  id="atoms-forminputs-checkbox--labels-as-react-nodes"
+  height="10rem"
+/>
+
+### Adding an InfoTip
+
+Pass `infotip` to render an `InfoTip` next to the label — it's auto-labeled by the checkbox's own label unless you override with `ariaLabel`/`ariaLabelledby`:
+
+<StoryEmbed id="atoms-forminputs-checkbox--info-tip" height="6rem" />
+
+## Reference
+
+### State
+
+<StoryEmbed id="atoms-forminputs-checkbox--unchecked" height="4rem" />
+<StoryEmbed id="atoms-forminputs-checkbox--checked" height="4rem" />
+<StoryEmbed id="atoms-forminputs-checkbox--indeterminate" height="4rem" />
+<StoryEmbed id="atoms-forminputs-checkbox--disabled" height="4rem" />
+<StoryEmbed
+  id="atoms-forminputs-checkbox--checked-and-disabled"
+  height="4rem"
+/>
+
+### Spacing
+
+`spacing="tight"` has a dedicated story; the default (`"base"`) is shown in every example above.
+
+- [Tight](https://gamut.codecademy.com/?path=/story/atoms-forminputs-checkbox--spacing-tight)

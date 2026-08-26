@@ -1,0 +1,54 @@
+---
+title: Toggle
+description: An on/off switch control.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30067-40001&node-type=frame) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Toggle)
+
+## Usage
+
+Use `Toggle` for a boolean value that's functionally similar to a checkbox, but is most effective when it triggers an immediate, visible action (like showing a section or changing copy) rather than waiting on a form submission.
+
+**Best practices:**
+
+- `Toggle` is a controlled component — its `checked` value must be driven by external state and `onChange`/`onClick`.
+- Always give it a label: pass `label` as a string, or pass `ariaLabel` if the visible label is a `ReactNode` or absent.
+- Use `as="input"` when the toggle lives in a form and a separate action (like a submit button) does something with its value; use `as="button"` when the toggle should act immediately on its own — this also gives it `role="switch"` and `aria-checked`, since a native button has no built-in switch semantics.
+- `medium` (the default) is preferred inside forms; use `size="small"` for compact UI toggles outside a form context.
+
+**When NOT to use:**
+
+- **A value that's only read on form submission, with no immediate effect** — use [Checkbox](/components/inputs-and-forms/checkbox/) instead.
+
+## Patterns
+
+### Building an input toggle
+
+Track `checked` in your own state and pass `onChange`:
+
+<StoryEmbed id="atoms-toggle--interactive-input-toggle" height="8rem" />
+
+### Building a button toggle
+
+Same pattern, but with `as="button"` and `onClick` instead of `onChange` — Gamut's types prevent mixing `onClick` with `as="input"` or `onChange` with `as="button"`:
+
+<StoryEmbed id="atoms-toggle--interactive-button-toggle" height="8rem" />
+
+## Reference
+
+### Element
+
+<StoryEmbed id="atoms-toggle--input-element" height="6rem" />
+<StoryEmbed id="atoms-toggle--button-element" height="6rem" />
+
+### Size
+
+<StoryEmbed id="atoms-toggle--medium" height="6rem" />
+<StoryEmbed id="atoms-toggle--small" height="6rem" />
+
+### Label side
+
+<StoryEmbed id="atoms-toggle--label-left" height="6rem" />
+<StoryEmbed id="atoms-toggle--label-right" height="6rem" />

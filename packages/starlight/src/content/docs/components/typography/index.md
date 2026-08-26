@@ -1,6 +1,8 @@
 ---
 title: Typography
 description: Text rendering.
+sidebar:
+  label: Overview
 ---
 
 Text rendering.

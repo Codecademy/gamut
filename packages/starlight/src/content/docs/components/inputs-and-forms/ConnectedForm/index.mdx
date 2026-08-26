@@ -1,0 +1,96 @@
+---
+title: ConnectedForm
+description: react-hook-form-connected wrappers around form scaffolding.
+sidebar:
+  label: Overview
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+`ConnectedForm` is a flexible way to build forms with all the reliability of [GridForm](/components/inputs-and-forms/gridform/), but without its strict grid structure. Four pieces compose together:
+
+- [ConnectedForm](/components/inputs-and-forms/connectedform/connected-form/) — a `Form` that provides [react-hook-form](https://react-hook-form.com) context to every `Connected` component inside it
+- [ConnectedFormGroup](/components/inputs-and-forms/connectedform/connected-form-group/) — a `FormGroup` that reads that context for error and disabled states
+- [ConnectedFormInputs](/components/inputs-and-forms/connectedform/connected-form-inputs/) — the field components (`ConnectedInput`, `ConnectedSelect`, `ConnectedCheckbox`, and others) that read the context for registration, validation, required, and disabled states — meant to be used through `ConnectedFormGroup`, not on their own
+- [SubmitButton](/components/inputs-and-forms/connectedform/submit-button/) — a submit button that reads the context for its loading/disabled state
+
+The primary access pattern is the `useConnectedForm` hook, which builds a type-safe `ConnectedForm` + `ConnectedFormGroup` pair from the `defaultValues` you give it — a field name that doesn't match a `defaultValues` key is a type error, not a runtime bug. It also returns a `FormRequiredText`, which you should render unless every field is optional.
+
+## Patterns
+
+### Putting it all together
+
+<StoryEmbed
+  id="organisms-connectedform-connectedform--default"
+  height="30rem"
+/>
+
+```tsx
+import {
+  ConnectedCheckbox,
+  ConnectedInput,
+  ConnectedSelect,
+  SubmitButton,
+  useConnectedForm,
+} from '@codecademy/gamut';
+import { TerminalIcon } from '@codecademy/gamut-icons';
+
+export const GoodForm = () => {
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+    FormRequiredText,
+  } = useConnectedForm({
+    defaultValues: {
+      thisField: true,
+      thatField: 'zero',
+      anotherField: 'state your name.',
+    },
+    validationRules: {
+      thisField: { required: 'you need to check this.' },
+      thatField: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'literally anything but zero',
+        },
+      },
+    },
+  });
+
+  return (
+    <ConnectedForm
+      onSubmit={({ thisField }) => console.log(thisField)}
+      resetOnSubmit
+      {...connectedFormProps}
+    >
+      <SubmitButton>submit this form.</SubmitButton>
+      <ConnectedFormGroup
+        name="thisField"
+        label="cool checkbox bruh"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check it ouuut',
+        }}
+      />
+      <ConnectedFormGroup
+        name="thatField"
+        label="cool select dude"
+        field={{
+          component: ConnectedSelect,
+          options: ['one', 'two', 'zero'],
+        }}
+      />
+      <ConnectedFormGroup
+        name="anotherField"
+        label="cool input"
+        field={{
+          component: ConnectedInput,
+          icon: TerminalIcon,
+        }}
+      />
+      <FormRequiredText />
+    </ConnectedForm>
+  );
+};
+```
