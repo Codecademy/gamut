@@ -3,9 +3,6 @@ title: Brand
 description: How Codecademy's brand identity relates to Gamut.
 ---
 
-import { Aside } from '@astrojs/starlight/components';
+The [Brand Library](https://brand-storybook.codecademy.com/) is a separate collection of assets, components, and themes for branded and internal-only experiences. It's distinct from Gamut, which is built for Codecademy's core product experience — reach for it specifically when building something branded or internal, not as a substitute for Gamut components.
 
-<Aside type="caution" title="Content migration pending">
-  This page hasn't been migrated to the new template yet. See the [existing
-  documentation](https://github.com/Codecademy/gamut/blob/main/packages/styleguide/src/lib/Meta/Brand.mdx) in the meantime.
-</Aside>
+Questions about Brand go to `#gamut-team` on Slack.
