@@ -1,0 +1,70 @@
+---
+title: Dialog
+description: A structured, single-view confirmation prompt with binary options.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Modals/Dialog.tsx)
+
+## Usage
+
+Use `Dialog` for a structured confirmation prompt with two options — for example, confirming a destructive action before it happens.
+
+**Best practices:**
+
+- Keep the message to 1–2 lines, write the title as a clear question, and keep both button labels distinct and specific about what each one does.
+- Use `Dialog` sparingly — of Gamut's overlays, it's the most disruptive. Showing more than one at a time overwhelms the reader.
+- Both `confirmCta` and `cancelCta` call `onRequestClose` automatically before their own `onClick` — you don't need to close the Dialog yourself.
+- `size` only accepts `'small'` (default) or `'medium'` — unlike [Modal](/components/overlays/modal/), there's no `large` or `fluid` option.
+
+**When NOT to use:**
+
+- **A general-purpose titled panel, or a multi-step flow** — use [Modal](/components/overlays/modal/) instead; `Dialog` is deliberately more restrictive: a single view, no `views`, no per-CTA `disabled`.
+- **A bare overlay with no title or built-in buttons** — use [Overlay](/components/overlays/overlay/) directly instead.
+
+### Anatomy
+
+1. **Title** (required) — rendered as `h2`.
+2. **Close button** — the same `closeButtonProps` shape as [Modal](/components/overlays/modal/#customizing-the-close-button); its tooltip defaults to "Close dialog".
+3. **Content** — `children`.
+4. **Cancel button** (optional, `cancelCta`) and **Confirm button** (required, `confirmCta`) — laid out side by side beneath the content.
+
+## Patterns
+
+### Confirming a destructive action
+
+Pass `variant="danger"` for a destructive confirm action, paired with a `cancelCta` as the safe way out:
+
+<StoryEmbed id="molecules-modals-dialog--danger" height="12rem" />
+
+### Customizing the close button
+
+The same `closeButtonProps` shape as [Modal](/components/overlays/modal/#customizing-the-close-button):
+
+<StoryEmbed
+  id="molecules-modals-dialog--close-button-customization"
+  height="14rem"
+/>
+
+### Replacing the close button entirely
+
+<StoryEmbed id="molecules-modals-dialog--custom-close" height="14rem" />
+
+### Managing focus
+
+<StoryEmbed id="molecules-modals-dialog--focus-management" height="14rem" />
+
+### Responding to ColorMode
+
+<StoryEmbed id="molecules-modals-dialog--dark-mode" height="12rem" />
+
+## Reference
+
+### Variant
+
+#### Primary (default)
+
+<StoryEmbed id="molecules-modals-dialog--default" height="12rem" />
+
+`danger` is covered above, under [confirming a destructive action](#confirming-a-destructive-action).

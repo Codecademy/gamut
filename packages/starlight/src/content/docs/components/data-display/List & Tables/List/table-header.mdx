@@ -1,0 +1,30 @@
+---
+title: TableHeader
+description: Sticky header row for lists that render as HTML tables.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/TableHeader.tsx)
+
+## Usage
+
+Use `TableHeader` for the header row of a [List](/components/data-display/list--tables/list/) rendered `as="table"`. It's always sticky, and reads `spacing`, `scrollable`, and `variant` from the parent `List` the same way `ListRow` does — it has no layout props of its own beyond standard `<tr>` attributes.
+
+**Best practices:**
+
+- Place `ListCol` cells directly inside `TableHeader`, not wrapped in a `ListRow`, and mark each one `columnHeader` — see [ListCol](/components/data-display/list--tables/list/list-col/#composing-a-table-header).
+- Add `aria-sort` to a header cell when its column is sortable.
+
+**When NOT to use:**
+
+- **A List that doesn't render `as="table"`** — plain and card-style lists don't need a `TableHeader` at all.
+
+## Reference
+
+### Playground
+
+<StoryEmbed
+  id="organisms-lists-tables-list-tableheader--with-table-header"
+  height="16rem"
+/>

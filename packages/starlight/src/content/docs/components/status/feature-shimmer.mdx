@@ -1,0 +1,30 @@
+---
+title: FeatureShimmer
+description: A shimmering highlight used to draw attention to a new feature.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=61818-3459) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FeatureShimmer)
+
+## Usage
+
+Use `FeatureShimmer` to subtly draw attention to a secondary new feature or element — something worth noticing, but not the primary focus of the page.
+
+**Best practices:**
+
+- Apply it to only one element at a time.
+- Don't show it indefinitely — cap how often a reader sees it (for example, up to 3 times across sessions), or stop showing it once they interact with the element.
+- It animates only once the wrapped element scrolls into view, and automatically does nothing under `prefers-reduced-motion` — no extra wiring needed for either.
+
+**When NOT to use:**
+
+- **A primary feature or critical update** — use [Coachmark](/components/feedback/coachmark/) or [Badge](/components/status/badge/) instead.
+- **A critical alert or error** — use [Alert](/components/feedback/alert/) instead.
+- **An indeterminate loading state** — despite the similar name, `FeatureShimmer` shares no implementation with [Shimmer](/components/status/loaders/shimmer/); it's a one-shot attention sweep triggered by scrolling into view, not a continuous loading animation. Use `Shimmer` for loading placeholders instead.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-featureshimmer--default" height="12rem" />

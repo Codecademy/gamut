@@ -1,0 +1,56 @@
+---
+title: PopoverContainer
+description: An unstyled primitive for positioning floating content relative to a target element.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/PopoverContainer)
+
+## Usage
+
+Use `PopoverContainer` when you need Gamut's floating-positioning logic without any of [Popover](/components/overlays/popover/)'s built-in visual chrome — for example, floating a `Menu` or a calendar dialog with your own styling. Despite the name, it isn't what `Popover` is built on; the two solve the same positioning problem independently, sharing only a couple of internal hooks.
+
+**Best practices:**
+
+- `PopoverContainer` positions its content and nothing else — it has no styles of its own, so whatever you pass it needs to supply its own visual chrome (background, border, shadow).
+- Use `inline` to render relative to the nearest positioned ancestor instead of portaling to `<body>` — it avoids jumpy repositioning on scroll or resize, but skip it when the surrounding stacking context is too small, or an ancestor has `overflow: hidden`.
+- Escalate positioning props only as far as needed: `alignment` alone is usually enough. Reach for `invertAxis`, then `offset`, then explicit `x`/`y` only when the default doesn't fit.
+- Turn on `closeOnViewportExit` for informational popovers that should clean themselves up when their target scrolls away. Leave it off (the default) for interactive menus, where a reader might scroll the trigger out of view without meaning to dismiss it.
+
+**When NOT to use:**
+
+- **A floating panel with built-in beak, outline, and pattern styling** — use [Popover](/components/overlays/popover/) instead.
+- **Small, non-interactive content** — use [ToolTip](/components/feedback/tips/tooltip/) instead.
+
+## Patterns
+
+### Composing with other components
+
+`PopoverContainer` has no visual styling of its own — pair it with something that supplies its own chrome, like [Menu](/components/actions/menu/#building-a-floating-menu) for a floating action menu.
+
+## Reference
+
+### Alignment
+
+`alignment` accepts a target edge (`'top'`, `'bottom'`, `'left'`, `'right'`) or corner (`'top-left'`, `'top-right'`, `'bottom-left'`, `'bottom-right'`), default `'bottom-left'`:
+
+<StoryEmbed id="atoms-popovercontainer--alignment" height="20rem" />
+
+### Inverting the axis
+
+For the four corner alignments, `invertAxis` (`'x'` or `'y'`) flips the content to the inside edge of the target instead of the outside:
+
+<StoryEmbed id="atoms-popovercontainer--invert-axis" height="20rem" />
+
+### Offset
+
+`offset` pushes the popover further in the direction of `alignment`:
+
+<StoryEmbed id="atoms-popovercontainer--offset" height="20rem" />
+
+### Explicit x/y offsets
+
+`x` and `y` set per-axis pixel offsets directly, independent of `alignment`:
+
+<StoryEmbed id="atoms-popovercontainer--x-and-y" height="20rem" />

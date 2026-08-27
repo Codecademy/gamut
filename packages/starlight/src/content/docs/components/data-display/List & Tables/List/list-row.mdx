@@ -1,0 +1,53 @@
+---
+title: ListRow
+description: A single row in a List, with optional expandable content.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/ListRow.tsx)
+
+## Usage
+
+Use `ListRow` to render one row inside a [List](/components/data-display/list--tables/list/) — it inherits `spacing`, `variant`, and layout from its parent `List` through context, so those props aren't set directly on `ListRow` itself.
+
+**Best practices:**
+
+- To make a row expandable, pass `expanded` and `renderExpanded` together (along with the optional `expandedRowAriaLabel`/`keepSpacingWhileExpanded`) — Gamut's types require all of these together or none of them.
+- Expand a row either from a dedicated `ExpandControl` button in a `control` column, or by making the whole row clickable with `onClick` — pick one, not both, so the interaction target stays unambiguous.
+- Passing `onClick` (outside a table) makes the row keyboard-activatable — it becomes `role="button"` with `tabIndex={0}`, Enter triggers it, and it gets hover/focus styling automatically.
+
+**When NOT to use:**
+
+- **The header row of a table-style List** — use [TableHeader](/components/data-display/list--tables/list/table-header/) instead.
+
+## Patterns
+
+### Expanding from a dedicated control
+
+Pass `expanded`/`renderExpanded` and put an `ExpandControl` in a `control` column — its chevron rotates automatically to match `expanded`, and the rest of the row stays inert:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listrow--expandable-button"
+  height="20rem"
+/>
+
+### Expanding the whole row
+
+Pass `onClick` alongside `expanded`/`renderExpanded` to make the entire row the expand trigger, instead of a separate button:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listrow--expandable-clickable-row"
+  height="20rem"
+/>
+
+## Reference
+
+### Playground
+
+With `variant="plain"` on the parent `List`, wrap `ListRow` in your own `styled()` call to emphasize or group specific rows:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listrow--plain-styled"
+  height="16rem"
+/>

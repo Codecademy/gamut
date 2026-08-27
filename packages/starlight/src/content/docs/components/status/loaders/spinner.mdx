@@ -1,0 +1,28 @@
+---
+title: Spinner
+description: A rotating indeterminate loading indicator.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975%3A39412) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Loading/Spinner.tsx)
+
+## Usage
+
+Use `Spinner` for a compact, indeterminate loading indicator inside an already-loaded component — for example, inside a button while an action is in flight.
+
+**Best practices:**
+
+- `size` is the only prop `Spinner` exposes. Its color comes from `currentColor` — set it by wrapping `Spinner` in an element with the text color you want — and its rotation speed is fixed at one second per turn.
+- Reserve it for small, compact spaces. For a loading state that covers a whole section or page, [Shimmer](/components/status/loaders/shimmer/) reads better, since it previews the shape of what's loading.
+
+**When NOT to use:**
+
+- **A known amount of progress** — use [ProgressBar](/components/status/progress-bar/) or [RadialProgress](/components/status/radial-progress/) instead.
+- **A section-sized loading placeholder that previews content shape** — use [Shimmer](/components/status/loaders/shimmer/) instead.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-loaders-spinner--default" height="6rem" />

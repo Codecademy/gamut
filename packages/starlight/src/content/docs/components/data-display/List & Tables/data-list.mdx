@@ -1,0 +1,70 @@
+---
+title: DataList
+description: An item-focused list with row expansion and selection.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DataList/DataList.tsx)
+
+## Usage
+
+Use `DataList` for engaging with individual items one at a time — selecting them, or expanding a row to reveal more detail. It's built on [List](/components/data-display/list--tables/list/), restricted to `variant="default"` or `"card"`.
+
+**Best practices:**
+
+- Use [DataTable](/components/data-display/list--tables/data-table/) instead if the point is comparing information across items rather than engaging with one at a time — `DataList` always disables horizontal scrolling (`scrollable`/`shadow` are forced off), so it doesn't suit many columns.
+- Omit `onRowSelect` to disable selection entirely, and omit `onRowExpand`/`expandedContent` to disable expansion. There's no separate `selectable` boolean — each capability is enabled purely by providing its handler.
+- `disableContainerQuery` opts out of the responsive column-stacking behavior — the same escape hatch as [List](/components/data-display/list--tables/list/#opting-out-of-container-query-stacking).
+
+**When NOT to use:**
+
+- **Comparing many records with lots of columns** — use [DataTable](/components/data-display/list--tables/data-table/) instead; `DataList` can't scroll horizontally.
+- **Mixed column content or row-level controls beyond what DataList's columns support** — use [List](/components/data-display/list--tables/list/) directly instead.
+
+## Patterns
+
+### Expanding a row
+
+Pass `expanded` (the expanded row keys), `onRowExpand`, and `expandedContent` to reveal more detail inline — the expanded content can be anything, including a nested `DataTable`:
+
+<StoryEmbed id="organisms-lists-tables-datalist--expanded" height="20rem" />
+
+### Selecting rows
+
+Pass `selected` and `onRowSelect`:
+
+<StoryEmbed id="organisms-lists-tables-datalist--selected" height="20rem" />
+
+### Disabling selection and expansion
+
+Omit `onRowSelect`, `onRowExpand`, and `expandedContent` entirely to render plain, non-interactive rows:
+
+<StoryEmbed
+  id="organisms-lists-tables-datalist--non-selectable"
+  height="16rem"
+/>
+
+### Handling an empty state
+
+<StoryEmbed id="organisms-lists-tables-datalist--empty-state" height="12rem" />
+
+For full control — a custom heading, icon, and reason:
+
+<StoryEmbed
+  id="organisms-lists-tables-datalist--empty-state-custom"
+  height="14rem"
+/>
+
+### Opting out of container-query stacking
+
+<StoryEmbed
+  id="organisms-lists-tables-datalist--disable-container-query"
+  height="20rem"
+/>
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="organisms-lists-tables-datalist--default" height="20rem" />

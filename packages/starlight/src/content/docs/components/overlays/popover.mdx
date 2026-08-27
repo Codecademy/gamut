@@ -1,0 +1,117 @@
+---
+title: Popover
+description: A non-blocking floating panel anchored to a trigger.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41577) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Popover/Popover.tsx)
+
+## Usage
+
+Use `Popover` for interactive floating content anchored to a target element — for example, a new-feature callout or a floating menu.
+
+**Best practices:**
+
+- `Popover` is controlled: pass `isOpen` and a `targetRef` pointing at the element it's anchored to.
+- It closes itself automatically if its target scrolls fully out of the viewport — that's always on, not configurable, unlike [PopoverContainer](/components/overlays/popover-container/)'s opt-in `closeOnViewportExit`.
+- `align`, `position`, and `beak` are RTL-aware — under `GamutProvider`'s logical properties, `left`/`right` follow reading direction rather than fixed physical sides.
+
+**When NOT to use:**
+
+- **Small, non-interactive content** — use [ToolTip](/components/feedback/tips/tooltip/) instead.
+- **Purely positioning logic, with your own visual styling** — use [PopoverContainer](/components/overlays/popover-container/) instead; `Popover` always renders its own beak, outline, and pattern chrome.
+
+### Anatomy
+
+1. **Beak** (optional, `beak`) — a pointed triangle connecting the popover to its target; pass `left`/`right` to pin a corner, or `center` for a centered triangle.
+2. **Pattern background** (optional, `pattern`) — a decorative pattern layer; unavailable when `position="center"`.
+3. **Content** — `children`.
+
+## Patterns
+
+### Animating on open
+
+Pass `animation="fade"`:
+
+<StoryEmbed id="molecules-popover--animation" height="10rem" />
+
+### Handling content with no focusable element
+
+When a popover's content has nothing to focus, the popover itself becomes the fallback focus target — so opening it never throws a focus-trap error:
+
+<StoryEmbed id="molecules-popover--without-focus" height="10rem" />
+
+## Reference
+
+### Position
+
+`position` (`'above'`, `'below'`, or `'center'`) and `align` (`'left'`, `'right'`, or `'center'`) together place the popover relative to `targetRef`.
+
+#### Above
+
+<StoryEmbed id="molecules-popover--above" height="10rem" />
+
+#### Below
+
+<StoryEmbed id="molecules-popover--below" height="10rem" />
+
+#### Center, aligned left
+
+<StoryEmbed id="molecules-popover--center-left" height="10rem" />
+
+#### Center, aligned right
+
+<StoryEmbed id="molecules-popover--center-right" height="10rem" />
+
+### Beak
+
+#### Pinned to a corner
+
+<StoryEmbed id="molecules-popover--beak" height="10rem" />
+
+#### Centered
+
+<StoryEmbed id="molecules-popover--beak-centered" height="8rem" />
+
+### Outline
+
+<StoryEmbed id="molecules-popover--outline" height="10rem" />
+
+### Pattern background
+
+#### Checker, dense
+
+<StoryEmbed id="molecules-popover--popover-checker-dense" height="10rem" />
+
+#### Checker, loose
+
+<StoryEmbed id="molecules-popover--popover-checker-loose" height="10rem" />
+
+#### Checker, regular
+
+<StoryEmbed id="molecules-popover--popover-checker-regular" height="10rem" />
+
+#### Diagonal, dense
+
+<StoryEmbed id="molecules-popover--popover-diagonal-a-dense" height="10rem" />
+
+#### Diagonal, loose
+
+<StoryEmbed id="molecules-popover--popover-diagonal-a-loose" height="10rem" />
+
+#### Diagonal, regular
+
+<StoryEmbed id="molecules-popover--popover-diagonal-a-regular" height="10rem" />
+
+### Variant
+
+#### Primary (default)
+
+<StoryEmbed id="molecules-popover--default" height="10rem" />
+
+#### Secondary
+
+A smaller, tooltip-like style: a smaller beak and padding, with different colors in each ColorMode.
+
+<StoryEmbed id="molecules-popover--variant" height="10rem" />

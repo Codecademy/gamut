@@ -1,0 +1,118 @@
+---
+title: Modal
+description: A blocking, centered overlay for focused tasks.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Modals/Modal.tsx)
+
+## Usage
+
+Use `Modal` for a titled dialog that sits on top of a full-screen overlay, for a task that needs the reader's focused attention.
+
+**Best practices:**
+
+- Choose `size` (`small`, `medium`, `large`, or `fluid` — the default) to fit the content. `fluid` sizes to the content itself; the other three are fixed widths with a matching minimum height.
+- Use `headingLevel="h1"` only if the Modal takes up the entire page; otherwise leave it at the default `h2`.
+- Built on [Overlay](/components/overlays/overlay/) — `clickOutsideCloses`, `escapeCloses`, `shroud`, and `zIndex` all pass straight through to it.
+
+**When NOT to use:**
+
+- **A structured yes/no confirmation prompt** — use [Dialog](/components/overlays/dialog/) instead; it's a more constrained, purpose-built version of this pattern.
+- **A bare overlay with no title or built-in buttons** — use [Overlay](/components/overlays/overlay/) directly instead.
+
+### Anatomy
+
+1. **Title** (optional) — rendered at `headingLevel` (default `h2`).
+2. **Close button** (optional) — dismisses the Modal; its tooltip text defaults to "Close modal", and can be hidden via `closeButtonProps.hidden`.
+3. **Image** (optional, single-view only) — a full-width, pre-sized illustration or photo, with a fixed height per `size`.
+4. **Content** — `children` in single-view mode, or `views` in multi-view mode.
+
+## Patterns
+
+### Customizing the close button
+
+Configure the close button's tooltip, alignment, disabled state, and ref through `closeButtonProps` — these only apply when the button isn't hidden:
+
+<StoryEmbed
+  id="molecules-modals-modal--close-button-customization"
+  height="16rem"
+/>
+
+### Replacing the close button entirely
+
+Hide the built-in close button with `closeButtonProps={{ hidden: true }}` and provide your own control. Outside-click and Escape still work unless you disable those too:
+
+<StoryEmbed id="molecules-modals-modal--custom-close" height="16rem" />
+
+### Closing on outside click or Escape
+
+Both are enabled by default, via `Overlay` underneath — set `clickOutsideCloses={false}` or `escapeCloses={false}` to turn either off:
+
+<StoryEmbed id="molecules-modals-modal--click-outside" height="16rem" />
+
+### Scrolling long content
+
+Pass `scrollable` when content is taller than the Modal's fixed height:
+
+<StoryEmbed id="molecules-modals-modal--scrollable" height="20rem" />
+
+### Managing focus
+
+Pass `containerFocusRef` to move focus to the Modal's container programmatically — useful for refocusing after an in-modal action, since the container already auto-focuses once on open:
+
+<StoryEmbed id="molecules-modals-modal--focus-management" height="16rem" />
+
+### Adding an image
+
+Pass `image` for a full-width, pre-sized illustration or photo above the content:
+
+<StoryEmbed id="molecules-modals-modal--with-image" height="20rem" />
+
+### Building a multi-step flow
+
+Pass `views` — an array of `{ children, title?, primaryCta, secondaryCta }` — instead of `children`, and `Modal` manages moving between them. `primaryCta`'s `actionType` is `'next'` or `'confirm'`; `secondaryCta`'s is `'back'` or `'cancel'`. `cancel` closes the Modal automatically; `next`, `back`, and `confirm` don't — call `onRequestClose` yourself wherever one of those should close it:
+
+<StoryEmbed id="molecules-modals-modal--multiple-views" height="20rem" />
+
+#### Gating progress
+
+Pass `disabled` on a CTA to block moving forward until some condition is met:
+
+<StoryEmbed
+  id="molecules-modals-modal--multiple-views-disabled"
+  height="20rem"
+/>
+
+#### Confirming a destructive action
+
+Give a `confirm` CTA `variant="danger"`:
+
+<StoryEmbed id="molecules-modals-modal--multiple-views-danger" height="16rem" />
+
+### Confirming before closing
+
+Open a second Modal from `onRequestClose` when there's unsaved state, instead of closing immediately:
+
+<StoryEmbed id="molecules-modals-modal--confirmation-on-close" height="20rem" />
+
+## Reference
+
+### Size
+
+#### Fluid (default)
+
+<StoryEmbed id="molecules-modals-modal--fluid" height="16rem" />
+
+#### Large
+
+<StoryEmbed id="molecules-modals-modal--large" height="20rem" />
+
+#### Medium
+
+<StoryEmbed id="molecules-modals-modal--medium" height="16rem" />
+
+#### Small
+
+<StoryEmbed id="molecules-modals-modal--small" height="12rem" />

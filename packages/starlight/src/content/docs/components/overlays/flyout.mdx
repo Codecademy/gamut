@@ -1,0 +1,35 @@
+---
+title: Flyout
+description: A panel that slides in and floats above the page.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-40034) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Flyout/index.tsx)
+
+## Usage
+
+Use `Flyout` for a general-purpose panel that slides in from the edge of the screen and floats above the rest of the page — for example, supplementary content triggered from a button.
+
+**Best practices:**
+
+- `Flyout` is a controlled component — drive `expanded` from your own state and close it in `onClose`.
+- Give whatever toggles the flyout an `aria-expanded` attribute matching `expanded`, so its state is announced correctly.
+- `Flyout` is built from [Overlay](/components/overlays/overlay/) (backdrop, focus trap, outside-click/Escape dismissal) and [Drawer](/components/containers/drawer/) (the slide animation and responsive width) — those are always on for `Flyout` and aren't individually configurable through its own props.
+
+**When NOT to use:**
+
+- **A blocking overlay for a focused task, centered on the page** — use [Modal](/components/overlays/modal/) instead.
+- **A panel that collapses within page flow instead of floating above it** — use [Drawer](/components/containers/drawer/) directly instead.
+
+### Anatomy
+
+1. **Title** — a top-left `h1`, set via `title`.
+2. **Close button** — always rendered; dismisses the flyout, with its accessible label coming from `closeLabel`.
+3. **Content** — `children`, rendered below the title/close-button header row.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="molecules-flyout--default" height="20rem" />

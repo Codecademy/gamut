@@ -7,8 +7,6 @@ sidebar:
 
 Components for showing structured or bulk data.
 
-- [DataTable](/components/data-display/data-table/) — bulk comparison/analysis
-- [DataList](/components/data-display/data-list/) — item-focused lists with row expansion/selection
-- [List](/components/data-display/list/)
+- [List & Tables](/components/data-display/list--tables/) — List, DataTable, DataList
 - [BarChart](/components/data-display/bar-chart/)
 - [Markdown](/components/data-display/markdown/)

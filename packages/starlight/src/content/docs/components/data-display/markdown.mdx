@@ -1,0 +1,57 @@
+---
+title: Markdown
+description: Renders Markdown content with Gamut typography styles.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Markdown/index.tsx)
+
+## Usage
+
+Use `Markdown` to render a markdown (or markdown-plus-HTML) string with Gamut's typography styles already applied.
+
+**Best practices:**
+
+- Output is sanitized against an allowlist of tags and attributes before it ever reaches React — nothing renders unless it's on that allowlist, including anything added through `overrides`. This is the component's XSS defense; don't work around it by rendering raw HTML some other way.
+- Use `inline` for markdown that sits inside running text — it renders a `<span>`, parsed with no block-level wrapping. Leave it `false` (the default) for standalone block content, which renders a `<div>`.
+- `headerIds` (default `true`) generates deep-linkable ids on headings. Turn it off, or keep only one `Markdown` per page, to avoid duplicate ids.
+- `spacing` (`'loose'`, `'tight'` — the default, or `'none'`) controls the type scale and margins applied to rendered elements.
+
+**When NOT to use:**
+
+- **Plain, non-markdown text** — use [Text](/components/typography/text/) instead; parsing and sanitizing a string that's already plain text is wasted work.
+
+## Patterns
+
+### Overriding a standard tag
+
+Pass `overrides`, keyed by tag name, to replace how a specific element renders — for example, changing an `h3`'s font size:
+
+<StoryEmbed id="organisms-markdown--header-override" height="8rem" />
+
+### Replacing a built-in override
+
+`a`, `iframe`, and `table` already have built-in overrides — to Gamut's `Anchor`, `Video`, and a scrollable table wrapper, respectively. Pass your own `overrides` entry for the same tag to replace one; there's no need for `skipDefaultOverrides` unless you want the tag to fall back to plain sanitized HTML instead:
+
+<StoryEmbed id="organisms-markdown--link-override" height="6rem" />
+
+### Adding a custom tag
+
+Introduce an entirely custom, non-standard tag name in `overrides`, with `allowedAttributes` to let specific attributes through sanitization:
+
+<StoryEmbed id="organisms-markdown--overrides" height="12rem" />
+
+### Rendering inline
+
+Pass `inline` to render as a `<span>` with no block-level wrapping, for markdown that sits inside a sentence:
+
+<StoryEmbed id="organisms-markdown--inline-markdown" height="8rem" />
+
+## Reference
+
+### Playground
+
+The story below renders most of what `Markdown` supports in one pass — headings, lists (including nested lists and task-list checkboxes), blockquotes, code blocks, tables, `<details>`, and embedded video:
+
+<StoryEmbed id="organisms-markdown--full-example" height="40rem" />

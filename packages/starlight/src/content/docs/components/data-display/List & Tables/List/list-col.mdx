@@ -1,0 +1,95 @@
+---
+title: ListCol
+description: Column cells for list and table rows — sizing, types, alignment, and header semantics.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/ListCol.tsx)
+
+## Usage
+
+Use `ListCol` for each cell within a [ListRow](/components/data-display/list--tables/list/list-row/) or [TableHeader](/components/data-display/list--tables/list/table-header/) — it inherits layout context from the parent [List](/components/data-display/list--tables/list/), the same way `ListRow` does.
+
+**Best practices:**
+
+- `type` (`header`, `content`, `select`, `control`, `tableControl`, `expand`, `expandControl` — default `content`) drives both which HTML tag the cell renders as inside a table, and how it reorders when the row stacks responsively. Use at most one `control` column per row.
+- Mark a cell `columnHeader` when it's placed directly inside `TableHeader`, rather than `type="header"`, which is for the primary column of a body row instead.
+- Use `fill` to let a column grow and consume remaining row width, instead of sizing it with a fixed `size`.
+- Responsive stacking triggers below `rowBreakpoint` (set on the parent `List`, default `'xs'`) or by container width — override it there, not on `ListCol` itself.
+
+**When NOT to use:**
+
+- **A cell inside `TableHeader`** that needs header semantics — use `columnHeader` instead; `type="header"` is for a body row's primary column.
+
+## Patterns
+
+### Sizing columns
+
+`size` accepts `content` (default, sized to its own contents) or a fixed token: `sm`, `md`, `lg`, `xl`:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--column-sizing"
+  height="16rem"
+/>
+
+### Filling remaining space
+
+Pass `fill` on one or more columns in a row to have them grow and consume whatever width the fixed-size columns don't use:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--filling-empty-space"
+  height="8rem"
+/>
+
+### Right-aligning content
+
+Pass `justify="right"`. Avoid mixing left- and right-justified columns within the same list — it makes scanning harder:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--justification"
+  height="8rem"
+/>
+
+### Pinning a column while scrolling
+
+When the parent `List` has `scrollable`, its `type="header"` column stays pinned to the edge while the rest of the row scrolls horizontally:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--horizontal-scrolling"
+  height="20rem"
+/>
+
+### Composing a table header
+
+Place `columnHeader` `ListCol`s directly inside `TableHeader`, and pair them with `type="header"`/plain body cells in each `ListRow` below:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--header-column-cells"
+  height="16rem"
+/>
+
+## Reference
+
+### Column type
+
+Responsive stacking reorders cells by role — header, content, and control — shown here as a labeled diagram:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--responsive-anatomy"
+  height="12rem"
+/>
+
+Below `rowBreakpoint`, columns stack according to that same role, shown here combined with `List as="ol"`:
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--responsive"
+  height="12rem"
+/>
+
+### Playground
+
+<StoryEmbed
+  id="organisms-lists-tables-list-listcol--playground"
+  height="16rem"
+/>

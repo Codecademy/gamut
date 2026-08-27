@@ -1,0 +1,96 @@
+---
+title: ProgressBar
+description: A horizontal bar for displaying determinate progress.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=18448-19639&node-type=frame&t=zRqgxQkQhUaLzOe7-0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ProgressBar)
+
+## Usage
+
+Use `ProgressBar` to indicate a known amount of progress along a fixed course — for example, how many questions of a quiz are complete.
+
+**Best practices:**
+
+- Only the `large` and `xl` sizes show the percentage as text; reach for one of those when readers need the exact number, not just a sense of progress.
+- Pass `flat="flat-top"` or `"flat-bottom"` when the bar sits flush against a Card's edge, so its own corner radius doesn't clash with the Card's.
+
+**When NOT to use:**
+
+- **Progress as a share of a whole, shown as a ring rather than a bar** — use [RadialProgress](/components/status/radial-progress/) instead.
+- **Indeterminate loading, with no known amount of progress** — use [Spinner](/components/status/loaders/spinner/) or [Shimmer](/components/status/loaders/shimmer/) instead.
+
+## Patterns
+
+### Setting a minimum visible fill
+
+Pass `minimumPercent` so a bar reads as "started" even when the real percentage is at or near zero — the bar fills to whichever is larger, `percent` or `minimumPercent`:
+
+<StoryEmbed id="atoms-progressbar--minimum-percent" height="6rem" />
+
+### Adding a pattern background
+
+Pass a component from `@codecademy/gamut-patterns` to `pattern` for a textured background instead of a flat fill.
+
+#### Regular
+
+<StoryEmbed
+  id="atoms-progressbar--pattern-background-stripes-regular"
+  height="8rem"
+/>
+
+#### Dense
+
+<StoryEmbed
+  id="atoms-progressbar--pattern-background-stripes-dense"
+  height="6rem"
+/>
+
+### Sitting flush against a Card
+
+Pass `flat="flat-top"` or `"flat-bottom"` to square off the matching edge, so the bar sits flush against a Card's corner instead of showing its own rounded one.
+
+#### Flat top
+
+<StoryEmbed id="atoms-progressbar--flat-top" height="8rem" />
+
+#### Flat bottom
+
+<StoryEmbed id="atoms-progressbar--flat-bottom" height="8rem" />
+
+## Reference
+
+### Variant
+
+#### Default
+
+<StoryEmbed id="atoms-progressbar--default" height="4rem" />
+
+#### Blue
+
+<StoryEmbed id="atoms-progressbar--blue" height="4rem" />
+
+#### Yellow
+
+<StoryEmbed id="atoms-progressbar--yellow" height="4rem" />
+
+### Size
+
+Only `large` and `xl` show the percentage as text.
+
+#### Small
+
+<StoryEmbed id="atoms-progressbar--small" height="4rem" />
+
+#### Medium
+
+<StoryEmbed id="atoms-progressbar--medium" height="4rem" />
+
+#### Large
+
+<StoryEmbed id="atoms-progressbar--large" height="6rem" />
+
+#### XL
+
+<StoryEmbed id="atoms-progressbar--xl" height="8rem" />

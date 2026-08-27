@@ -1,0 +1,28 @@
+---
+title: Shimmer
+description: An animated gradient sweep over a Box, used as a loading placeholder.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975%3A39412) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Loading/Shimmer.tsx)
+
+## Usage
+
+Use `Shimmer` to preview the shape of content that's still loading. It accepts any `Box` prop (`height`, `width`, `bg`, spacing, and so on), so it can be sized and positioned like the content it's standing in for.
+
+**Best practices:**
+
+- `Shimmer` takes only standard `Box`/system props — there's no dedicated `shape`, `count`, or line-based skeleton API. Compose several `Shimmer`s, each sized to match a piece of real content, to build a multi-line placeholder.
+- Its gradient adapts automatically to light and dark ColorMode.
+
+**When NOT to use:**
+
+- **A known amount of progress** — use [ProgressBar](/components/status/progress-bar/) or [RadialProgress](/components/status/radial-progress/) instead.
+- **A small, compact loading indicator inside an already-loaded component** — use [Spinner](/components/status/loaders/spinner/) instead.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-loaders-shimmer--default" height="14rem" />

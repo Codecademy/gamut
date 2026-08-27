@@ -1,0 +1,125 @@
+---
+title: BarChart
+description: A horizontal bar chart for visualizing comparative data.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=55123-4176) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/BarChart)
+
+## Usage
+
+Use `BarChart` to visualize comparative data across categories, as a horizontal bar chart.
+
+**Best practices:**
+
+- Keep units consistent across every bar, and show 5–10 bars at a time — more gets hard to scan.
+- Use the stacked variant (`seriesTwoValue`) to show progress toward a total, not just a comparison between categories.
+- Sort descending when the chart's purpose is ranking.
+- Keep bar-to-background contrast at least 3:1.
+
+**When NOT to use:**
+
+- **Progress or completion toward a single goal** — use [ProgressBar](/components/status/progress-bar/) instead.
+
+### Anatomy
+
+<FigmaEmbed url="https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=55123-4176" />
+
+1. **Bar row**
+2. **Category icon** (optional)
+3. **Category label**
+4. **Scale/value axis** — the minimum is always 0; dividers and the maximum are adjustable via `scaleInterval`/`maxScaleValue`.
+5. **Series one value**
+6. **Series two value** (optional, via `seriesTwoValue`) — creates the stacked effect.
+7. **Series one bar** — defaults to the text color; gains an automatic white/navy border for contrast when needed.
+8. **Series two bar** — defaults to the primary color; same automatic border rule.
+
+## Patterns
+
+### Stacking two series
+
+Pass `seriesTwoValue` alongside `seriesOneValue` to show progress toward a total instead of a single comparison:
+
+<StoryEmbed id="organisms-barchart--stacked" height="20rem" />
+
+### Adding category icons
+
+<StoryEmbed id="organisms-barchart--with-icons" height="20rem" />
+
+### Animating on mount
+
+Pass `animate`:
+
+<StoryEmbed id="organisms-barchart--animated" height="20rem" />
+
+### Making rows interactive
+
+Pass `onClick` or `href` per bar to render it as a button or a link — `BarChart` generates the accessible label automatically either way.
+
+#### Button rows
+
+<StoryEmbed id="organisms-barchart--interactive" height="20rem" />
+
+#### Link rows
+
+<StoryEmbed id="organisms-barchart--with-links" height="20rem" />
+
+### Choosing where the title lives
+
+Provide `title` directly (the default), hide it visually while keeping it in the accessibility tree with `hideTitle`, or skip `title` entirely and point `aria-labelledby` at an external heading instead.
+
+#### Hidden title and description
+
+<StoryEmbed
+  id="organisms-barchart--with-hidden-title-and-description"
+  height="20rem"
+/>
+
+#### External title
+
+<StoryEmbed id="organisms-barchart--with-external-title" height="20rem" />
+
+### Adding a sort control
+
+Pass `sortFns` to render a sort dropdown — omit it and no dropdown renders at all. Use the built-in `'alphabetically'`, `'numerically'`, and `'none'` options, or supply custom `{ label, value, sortFn }` objects for domain-specific sorting.
+
+#### Built-in options
+
+<StoryEmbed id="organisms-barchart--with-sorting" height="20rem" />
+
+#### Custom sort functions
+
+<StoryEmbed id="organisms-barchart--with-custom-sorting" height="20rem" />
+
+### Customizing colors
+
+`styleConfig` overrides the text, bar, and label colors — all as semantic color tokens, so they still adapt across light/dark ColorMode:
+
+<StoryEmbed id="organisms-barchart--custom-styles" height="20rem" />
+
+### Setting a custom scale interval
+
+<StoryEmbed id="organisms-barchart--custom-scale" height="20rem" />
+
+### Translating and customizing accessibility summaries
+
+`translations` overrides the sort label/options and the per-row accessibility summary text, along with `locale` for number formatting.
+
+#### String overrides
+
+<StoryEmbed id="organisms-barchart--with-string-translations" height="20rem" />
+
+#### Function overrides
+
+<StoryEmbed
+  id="organisms-barchart--with-function-translations"
+  height="20rem"
+/>
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="organisms-barchart--default" height="20rem" />

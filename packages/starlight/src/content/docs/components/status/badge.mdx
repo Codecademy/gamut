@@ -1,0 +1,92 @@
+---
+title: Badge
+description: A small, read-only label for statuses, attributes, or emphasized information.
+---
+
+import FigmaEmbed from '~/components/FigmaEmbed.astro';
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Badge)
+
+## Usage
+
+Use `Badge` to display read-only information like statuses, attributes, or other information that needs emphasis.
+
+**Best practices:**
+
+- Use badges sparingly — too many on a page dilutes their effectiveness.
+- Keep the label to 1–2 words.
+- Custom colors (`variant="custom"`) should be used sparingly, applied consistently across similar contexts, and with sufficient contrast for accessibility.
+
+**When NOT to use:**
+
+- **Interactive, clickable text** — use a [Button](/components/actions/buttons/) or [Anchor](/components/navigation/anchor/) instead.
+- **Labeling or categorizing content** — use [Tag](/components/actions/tag/) instead.
+- **A count or notification dot** — `Badge` has no dedicated count/number-display mode; it's a labeled chip, not a counter.
+
+### Anatomy
+
+<FigmaEmbed url="https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0" />
+
+1. **Leading icon** (optional) — reinforces the badge's message and improves scannability. It's always `aria-hidden`, so it's never a substitute for the label text.
+2. **Label** — 1–2 words of read-only status or attribute text.
+
+## Patterns
+
+### Sitting above unpredictable content
+
+Use `tertiaryFill` instead of `tertiary` when a badge needs to sit over other content — its opaque background stands in for `tertiary`'s transparent one, which would otherwise let whatever's underneath show through:
+
+<StoryEmbed id="atoms-badge--tertiary-fill" height="8rem" />
+
+### Custom colors
+
+Set `variant="custom"` with `bg` or `background` — the two are mutually exclusive — for a badge that doesn't fit any of the built-in color schemes:
+
+<StoryEmbed id="atoms-badge--custom" height="6rem" />
+
+### Leading icons at each size
+
+Icons are sized and spaced automatically to match `size`.
+
+#### Default size
+
+<StoryEmbed id="atoms-badge--default-size-with-icon" height="4rem" />
+
+#### Small size
+
+<StoryEmbed id="atoms-badge--small-size-with-icon" height="4rem" />
+
+## Reference
+
+### Variant
+
+#### Primary (default)
+
+<StoryEmbed id="atoms-badge--default" height="4rem" />
+
+#### Secondary
+
+<StoryEmbed id="atoms-badge--secondary" height="4rem" />
+
+#### Tertiary
+
+<StoryEmbed id="atoms-badge--tertiary" height="4rem" />
+
+#### Accent
+
+Doesn't respond to ColorMode, unlike every other variant.
+
+<StoryEmbed id="atoms-badge--accent" height="4rem" />
+
+`tertiaryFill` and `custom` are covered above, under [sitting above unpredictable content](#sitting-above-unpredictable-content) and [custom colors](#custom-colors).
+
+### Size
+
+#### Default (base)
+
+<StoryEmbed id="atoms-badge--default-size" height="4rem" />
+
+#### Small
+
+<StoryEmbed id="atoms-badge--small-size" height="4rem" />

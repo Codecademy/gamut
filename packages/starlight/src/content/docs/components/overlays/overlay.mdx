@@ -1,0 +1,29 @@
+---
+title: Overlay
+description: The lower-level primitive Modal and Dialog are built on.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Overlay/index.tsx)
+
+## Usage
+
+Use `Overlay` only for actual full-screen overlay content, not dropdowns or other small interactive elements. It's a bare primitive: no background styling, no title, no buttons, and no animation.
+
+**Best practices:**
+
+- `Overlay` is a controlled component — pass `isOpen`, and close it yourself in `onRequestClose`, called for an outside click and/or the Escape key depending on `clickOutsideCloses`/`escapeCloses`.
+- It renders a single child element, not arbitrary `children`, traps focus inside that element while open (unless `inline` is set), and portals to the end of `<body>` unless `inline` is set.
+- `zIndex` defaults to `3` to sit above common UI like headers — override it only for custom stacking needs.
+
+**When NOT to use:**
+
+- **A titled panel with close and CTA buttons already built in** — use [Modal](/components/overlays/modal/) or [Dialog](/components/overlays/dialog/) instead; both are built on `Overlay` and add that structure.
+- **A small floating element anchored to a trigger, like a dropdown** — use [Popover](/components/overlays/popover/) instead.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="molecules-modals-overlay--default" height="16rem" />
