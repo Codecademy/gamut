@@ -14,11 +14,9 @@ import {
 } from './styles/base';
 import { patternContainerBaseStyles } from './styles/pattern';
 import {
-  beakBorderStates,
   beakBoxVariants,
   beakSize,
   beakVariants,
-  outlineVariants,
   patternVariantStyles,
   widthStates,
 } from './styles/variants';
@@ -29,23 +27,16 @@ export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
 };
 
 export const RaisedDiv = styled.div<
-  StyleProps<typeof outlineVariants> &
-    StyleProps<typeof raisedDivVariants> &
+  StyleProps<typeof raisedDivVariants> &
     StyleProps<typeof popoverToolTipBodyAlignments> &
     StyleProps<typeof widthStates>
->(
-  outlineVariants,
-  popoverToolTipBodyAlignments,
-  raisedDivVariants,
-  widthStates
-);
+>(popoverToolTipBodyAlignments, raisedDivVariants, widthStates);
 
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
     StyleProps<typeof beakVariants> &
-    StyleProps<typeof beakSize> &
-    StyleProps<typeof beakBorderStates>
->(beakBorderStates, beakVariants, beakSize);
+    StyleProps<typeof beakSize>
+>(beakVariants, beakSize);
 
 export const BeakBox =
   styled(FlexBox)<StyleProps<typeof beakBoxVariants>>(beakBoxVariants);

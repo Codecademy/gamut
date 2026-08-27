@@ -28,7 +28,6 @@ export const Popover: React.FC<PopoverProps> = ({
   className,
   isOpen,
   onRequestClose,
-  outline = false,
   skipFocusTrap,
   pattern: Pattern,
   popoverContainerRef,
@@ -223,7 +222,6 @@ export const Popover: React.FC<PopoverProps> = ({
     >
       <RaisedDiv
         alignment={alignment}
-        outline={outline ? 'outline' : 'boxShadow'}
         ref={combinedRef as React.Ref<HTMLDivElement>}
         variant={variant}
         widthRestricted={widthRestricted}
@@ -238,7 +236,6 @@ export const Popover: React.FC<PopoverProps> = ({
                 variant,
               })}
               data-testid="popover-beak"
-              hasBorder={outline || variant === 'secondary'}
               size={variant === 'secondary' ? 'sml' : 'lrg'}
             />
           </BeakBox>
