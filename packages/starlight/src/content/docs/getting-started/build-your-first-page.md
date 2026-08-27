@@ -125,7 +125,7 @@ You should now have a page with:
 - A responsive two-column layout that collapses to one column on narrow screens.
 - A card containing a secondary heading, copy, and a primary button that links to the component reference.
 
-Every prop you used above — `bg`, `p`, `gap`, `mt`, `shadow`, `variant` — comes from Gamut's shared system props or a component's own variant list, which is why they work the same way across components. The [Components](/components/) reference documents the full prop table for each one, and each component page's **Variants** section shows every value a prop like `shadow` or `variant` can take.
+Every prop you used above — `bg`, `p`, `gap`, `mt`, `shadow`, `variant` — comes from Gamut's shared [system props](/reference/system-props/) or a component's own variant list, which is why they work the same way across components. The [Components](/components/) reference documents each one, and each component page's **Prop Reference** section shows every value a prop like `shadow` or `variant` can take.
 
 ## Next steps
 

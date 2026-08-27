@@ -24,13 +24,10 @@ Every component page follows the same section order, so once you know the patter
 1. **Header** — title, status, links to Figma and source.
 2. **Usage** — when to reach for this component, including a "When NOT to use" list that names the alternative.
 3. **Anatomy** — a labeled diagram of the component's parts (skipped for non-visual utilities).
-4. **Patterns** — goal-first recipes that need real wiring (state, callbacks, composition), skipped for components with no state.
-5. **Variants** — every prop value rendered, with no persuasion about which to pick.
-6. **Accessibility** — keyboard behavior, ARIA, focus handling, and RTL notes.
-7. **Props** — the canonical API table. This is the only place prop behavior is documented in prose.
-8. **Playground** — a live, editable example.
+4. **Patterns** — goal-first recipes that need real wiring (state, callbacks, composition), skipped for components with no state to wire up.
+5. **Playground or Prop Reference** — a live, embedded Storybook example. If no prop drives a genuinely different look, it's a single **Playground** heading; as soon as a prop does (`variant`, `size`, `state`, and the like), it becomes **Prop Reference** instead, broken into one subheading per prop, each showing every value that prop can take.
 
-Sections 2–4 are explanation and how-to material; sections 5–8 are reference. If you're debugging a specific prop, skip straight to Props; if you're deciding whether to use the component at all, start at Usage.
+Sections 2–4 are explanation and how-to material; section 5 is reference, and always lives in Storybook rather than being retyped here — the embed is the source of truth. If you're deciding whether to use the component at all, start at Usage; if you just need to see what a prop looks like, skip straight to the bottom.
 
 ## This site is a work in progress
 
