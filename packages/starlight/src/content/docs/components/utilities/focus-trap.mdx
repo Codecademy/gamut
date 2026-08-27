@@ -1,0 +1,27 @@
+---
+title: FocusTrap
+description: Traps keyboard focus within its children, e.g. for a modal.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FocusTrap)
+
+## Usage
+
+Use `FocusTrap` to keep keyboard focus cycling within its children for as long as it's active — for example, while a modal is open. It's a thin wrapper around [react-focus-on](https://github.com/theKashey/react-focus-on); pass `focusOnProps` to reach any of that library's own props directly.
+
+**Best practices:**
+
+- `active` (default `true`) is the on/off switch. Tab/Shift+Tab wrap within the trapped children only while it's active, and focus returns to whatever triggered it once the trap deactivates.
+- Set `allowPageInteraction` for a non-modal trap, like a dropdown or popover, where the rest of the page should stay scrollable and clickable while focus still cycles within the trap.
+- `onClickOutside`/`onEscapeKey` fire independently of `active` — wire them to whatever should actually close the thing the trap is protecting.
+- Most of Gamut's overlay-style components already compose `FocusTrap` for you: [Overlay](/components/overlays/overlay/) (active whenever it's open, `allowPageInteraction` mirroring its own `allowScroll`) and [PopoverContainer](/components/overlays/popover-container/)/[Popover](/components/overlays/popover/) (always active with `allowPageInteraction`, unless a consumer opts `Popover` out with `skipFocusTrap`). Reach for `FocusTrap` directly only when composing something new.
+
+**When NOT to use:**
+
+- **A tooltip or other transient hint that shouldn't steal focus at all** — skip it entirely; [ToolTip](/components/feedback/tips/tooltip/) and [PreviewTip](/components/feedback/tips/previewtip/) intentionally opt out of focus trapping.
+
+## Playground
+
+<StoryEmbed id="atoms-utilitycomponents-focustrap--default" height="14rem" />

@@ -1,0 +1,30 @@
+---
+title: DelayedRenderWrapper
+description: Delays rendering its children by a given duration.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DelayedRenderWrapper/DelayedRenderWrapper.tsx)
+
+## Usage
+
+Use `DelayedRenderWrapper` to delay mounting its children by a given number of milliseconds.
+
+**Best practices:**
+
+- Nothing renders during the delay — not even a placeholder. If the wait itself matters to the reader, pair it with your own loading state rather than relying on `DelayedRenderWrapper` to show one.
+- Pass `delay={0}`, or omit it, to render children immediately with no timer at all.
+- Changing `delay` while its timer is still pending resets the wait — the component clears the previous timeout and starts a new one.
+- Gamut's own [Coachmark](/components/feedback/coachmark/) uses this to delay when its popover first appears, starting the timer the moment it's asked to show — see [Coachmark's delay pattern](/components/feedback/coachmark/#delaying-appearance).
+
+**When NOT to use:**
+
+- **A delay that should show a loading state while it waits** — build your own; `DelayedRenderWrapper` renders nothing at all during the wait.
+
+## Playground
+
+<StoryEmbed
+  id="atoms-utilitycomponents-delayedrenderwrapper--default"
+  height="8rem"
+/>
