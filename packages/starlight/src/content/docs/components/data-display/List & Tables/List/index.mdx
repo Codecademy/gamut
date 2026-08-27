@@ -1,107 +1,15 @@
 ---
 title: List
-description: A general-purpose list/table layout primitive.
+description: A general-purpose list/table layout primitive, and the sub-components it's composed from.
 sidebar:
   label: Overview
 ---
 
-import StoryEmbed from '~/components/StoryEmbed.astro';
+`List` provides shared layout context — `variant`, `spacing`, and the like — to the components it's composed from:
 
-**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=32521-43421&m=dev) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/List.tsx)
+- [List](/components/data-display/list--tables/list/list/) — the primitive itself; renders the shared context and top-level layout.
+- [TableHeader](/components/data-display/list--tables/list/table-header/) — a sticky header row, built directly from `ListCol` children.
+- [ListRow](/components/data-display/list--tables/list/list-row/) — one row of content, optionally expandable.
+- [ListCol](/components/data-display/list--tables/list/list-col/) — one cell within a row.
 
-## Usage
-
-Use `List` to lay out repeated rows of content. It can look and behave like a table, but isn't exclusively for tabular data. Reach for it directly when rows need mixed column content or row-level controls that [DataTable](/components/data-display/list--tables/data-table/) and [DataList](/components/data-display/list--tables/data-list/) don't expose.
-
-**Best practices:**
-
-- Compose `List` from `ListRow` and `ListCol` children, optionally with a `TableHeader` built directly from `ListCol`s (not wrapped in a `ListRow`). `variant`, `spacing`, and the other layout props are set once on `List` and inherited by its children through context — they aren't repeated on each `ListRow`/`ListCol`.
-- Choose `spacing` and `variant` to match the density and visual weight the content needs.
-- `disableContainerQuery` opts out of the responsive column-stacking behavior that kicks in below a breakpoint. Reach for it only when a `List` sits in a container whose width doesn't reflect the space actually available — a fixed-width sidebar, for example.
-
-**When NOT to use:**
-
-- **Bulk data that needs sorting, filtering, or pagination** — use [DataTable](/components/data-display/list--tables/data-table/) instead; it's `List` wired up with those controls out of the box.
-- **Individual items a reader selects or expands one at a time** — use [DataList](/components/data-display/list--tables/data-list/) instead.
-
-### Anatomy
-
-1. **[TableHeader](/components/data-display/list--tables/list/table-header/)** (optional) — a header row built directly from `ListCol` children, not wrapped in a `ListRow`; sticky by default when the list scrolls.
-2. **[ListRow](/components/data-display/list--tables/list/list-row/)** — one row of content; can be expandable (`expanded`/`renderExpanded`) or plain.
-3. **[ListCol](/components/data-display/list--tables/list/list-col/)** — one cell within a row; `type` (`content`, `select`, `control`, `expand`, and more) drives its grid placement and how it stacks responsively below `rowBreakpoint`.
-
-## Patterns
-
-### Building a realistic row
-
-A row combining icons, stat columns, and row-level controls (`TextButton`, `FillButton`, `IconButton`), at condensed spacing:
-
-<StoryEmbed
-  id="organisms-lists-tables-list-list--condensed-spacing-guide"
-  height="20rem"
-/>
-
-### Rendering as an ordered list
-
-Pass `as="ol"`:
-
-<StoryEmbed
-  id="organisms-lists-tables-list-list--ordered-list"
-  height="16rem"
-/>
-
-### Opting out of container-query stacking
-
-Pass `disableContainerQuery` when `List` sits in a container whose width doesn't reflect the space actually available:
-
-<StoryEmbed
-  id="organisms-lists-tables-list-list--disable-container-query"
-  height="20rem"
-/>
-
-## Reference
-
-### Variant
-
-#### Default
-
-<StoryEmbed id="organisms-lists-tables-list-list--default" height="12rem" />
-
-#### Table
-
-<StoryEmbed id="organisms-lists-tables-list-list--table" height="12rem" />
-
-#### Card
-
-<StoryEmbed id="organisms-lists-tables-list-list--card" height="16rem" />
-
-#### Block
-
-<StoryEmbed id="organisms-lists-tables-list-list--block" height="12rem" />
-
-#### Plain
-
-<StoryEmbed id="organisms-lists-tables-list-list--plain" height="12rem" />
-
-### Spacing
-
-#### Normal (default)
-
-<StoryEmbed
-  id="organisms-lists-tables-list-list--normal-spacing"
-  height="12rem"
-/>
-
-#### Condensed
-
-<StoryEmbed
-  id="organisms-lists-tables-list-list--condensed-spacing"
-  height="12rem"
-/>
-
-#### Compact
-
-<StoryEmbed
-  id="organisms-lists-tables-list-list--compact-spacing"
-  height="12rem"
-/>
+[DataTable](/components/data-display/list--tables/data-table/) and [DataList](/components/data-display/list--tables/data-list/) are both built from these same components internally, not just visually similar to them.
