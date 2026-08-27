@@ -1,0 +1,27 @@
+---
+title: FadeInSlideOut
+description: Fades and slides content in and out.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Animation/FadeInSlideOut.tsx)
+
+## Usage
+
+Wrap `FadeInSlideOut` around the content to animate, inside an `AnimatePresence`, and conditionally render it from your own state — the same mount/unmount-triggered pattern as [ExpandInCollapseOut](/components/media-and-assets/animations/expand-in-collapse-out/). It has no props of its own beyond `children`.
+
+**Best practices:**
+
+- Despite the name, it only fades in on entry — the slide happens only on exit, alongside a fade and a height collapse.
+- The animation is triggered by mounting and unmounting, not by a prop change — conditionally render it with `&&` or a ternary.
+
+**When NOT to use:**
+
+- **A region that should animate by height alone, without fading or sliding** — use [ExpandInCollapseOut](/components/media-and-assets/animations/expand-in-collapse-out/) instead.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-animations-fadeinslideout--default" height="12rem" />

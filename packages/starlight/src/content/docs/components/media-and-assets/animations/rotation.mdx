@@ -1,0 +1,28 @@
+---
+title: Rotation
+description: Rotates its children, e.g. a chevron icon on expand/collapse.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Animation/Rotation.tsx)
+
+## Usage
+
+Wrap `Rotation` around an icon or other small element, and toggle `rotated` from your own state. Unlike [ExpandInCollapseOut](/components/media-and-assets/animations/expand-in-collapse-out/) and [FadeInSlideOut](/components/media-and-assets/animations/fade-in-slide-out/), it's driven by a prop change, not by mounting or unmounting.
+
+**Best practices:**
+
+- A common use is rotating a chevron icon to indicate that a nearby element can expand and collapse.
+- `degrees` (default `180`) sets how far it rotates — keep it under 360.
+- `height`/`width` default to `16`, to match a mini icon. Override them if wrapping something larger.
+
+**When NOT to use:**
+
+- **Animating a region's height, rather than an icon's rotation** — use [ExpandInCollapseOut](/components/media-and-assets/animations/expand-in-collapse-out/) instead.
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="atoms-animations-rotation--default" height="10rem" />

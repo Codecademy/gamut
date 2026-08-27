@@ -1,0 +1,60 @@
+---
+title: Regular icons
+description: The full-size icon set.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795) · [Source](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons/src/svg/regular)
+
+## Usage
+
+Import a regular icon by name directly — no prefix:
+
+```tsx
+import { AlertIcon } from '@codecademy/gamut-icons';
+
+<AlertIcon />;
+```
+
+**Best practices:**
+
+- Same `size`/system-prop and `aria-hidden` contract as [Mini](/components/media-and-assets/icons/mini/) icons — see there for the accessibility rule.
+- Use `size` to scale an icon uniformly; most regular usage renders larger than the 16px component fallback.
+
+**When NOT to use:**
+
+- **Small, inline, or button-embedded icon usage** — use [Mini](/components/media-and-assets/icons/mini/) icons instead; they're bolder and hold up better at small sizes.
+
+## Reference
+
+### Interface
+
+General user-interface icons with affordances.
+
+<StoryEmbed id="atoms-icons-regular--regular-interface-icons" height="30rem" />
+
+### Learning environment
+
+Icons with specific meanings relative to course content.
+
+<StoryEmbed
+  id="atoms-icons-regular--regular-learning-environment-icons"
+  height="20rem"
+/>
+
+### Vendor
+
+Vendor-specific icons.
+
+<StoryEmbed id="atoms-icons-regular--regular-vendor-icons" height="10rem" />
+
+### Skills
+
+Icons for the languages and subjects Codecademy teaches.
+
+<StoryEmbed id="atoms-icons-regular--regular-skill-icons" height="20rem" />
+
+### Playground
+
+<StoryEmbed id="atoms-icons-regular--default" height="10rem" />

@@ -1,0 +1,38 @@
+---
+title: Mini icons
+description: The small icon set, used inside buttons and inline text.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795) · [Source](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons/src/svg/mini)
+
+## Usage
+
+Import a mini icon by name — every mini icon's component name is prefixed with `Mini`:
+
+```tsx
+import { MiniStarIcon } from '@codecademy/gamut-icons';
+
+<MiniStarIcon />;
+```
+
+**Best practices:**
+
+- Reach for mini icons inside buttons, inline text, and other small-resolution contexts — they're bolder and simpler than [Regular](/components/media-and-assets/icons/regular/) icons, designed to stay legible at 16×16.
+- Pass `size` to scale an icon uniformly (sets width and height together); standard layout, color, space, and border system props cover everything else.
+- Leave `aria-hidden` at its default when the icon sits next to visible text that already conveys its meaning. Set `aria-hidden={false}` with a required `aria-label` only when the icon is the sole conveyor of meaning.
+
+**When NOT to use:**
+
+- **Larger or standalone icon usage** — use [Regular](/components/media-and-assets/icons/regular/) icons instead.
+
+## Reference
+
+### All icons
+
+<StoryEmbed id="atoms-icons-mini--all-mini-icons" height="30rem" />
+
+### Playground
+
+<StoryEmbed id="atoms-icons-mini--default" height="8rem" />

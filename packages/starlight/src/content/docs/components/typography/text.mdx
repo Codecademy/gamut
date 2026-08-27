@@ -1,0 +1,68 @@
+---
+title: Text
+description: The base component for rendering styled text with any semantic element.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=412-324&t=hkNVv1N6nDPVexfd-4) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Typography/Text)
+
+## Usage
+
+`Text` is the preferred component for customizing typography, with three levels of precedence:
+
+1. `as` — a semantic HTML tag (`h1`–`h6`, `p`, `strong`, and more), with a sensible default style matching that tag.
+2. `variant` — overrides the tag's default style with one of Gamut's semantic type scales, for when the semantically-correct tag and the required look don't match (for example, an `h1` that needs to read like an `h4`).
+3. System props (`fontSize`, `lineHeight`, and the rest) — for anything the first two don't cover.
+
+**Best practices:**
+
+- Use `Text` for any HTML text element.
+- Choose `as` for real semantic meaning first, respecting heading order — reach for `variant` only when the semantically-correct tag needs to look like a different one.
+
+**When NOT to use:**
+
+- **Items in a list** — use [List](/components/data-display/list--tables/list/list/) and [ListRow](/components/data-display/list--tables/list/list-row/) instead.
+- **Anchors or links** — use [Anchor](/components/navigation/anchor/) instead.
+
+## Patterns
+
+### Truncating long text
+
+Pass `truncate` (`'ellipsis'` or `'fade'`) together with `truncateLines` (1–5) — Gamut's types require both together, or neither:
+
+<StoryEmbed id="typography-text--truncation" height="20rem" />
+
+### Adding a highlight
+
+Pass `highlight` for a bolded, marker-style background bar behind the text:
+
+<StoryEmbed id="typography-text--highlight" height="6rem" />
+
+### Hiding text visually while keeping it for screen readers
+
+Pass `screenreader` to visually hide text while keeping it in the accessibility tree. Wrap the parent in a `Box` with `aria-labelledby` pointing at the `Text`'s `id`, and add `aria-hidden` on the `Text` itself if the wrapping element already conveys the same information, to avoid it being announced twice:
+
+<StoryEmbed id="typography-text--screenreader" height="10rem" />
+
+## Reference
+
+### HTML element variants
+
+`as` accepts any tag from `typographyElementVariants` (`h1`–`h6`, `p`, `small`, `strong`, `code`, `span`, `div`, `figcaption`, `label`), each with its own default style:
+
+<StoryEmbed id="typography-text--elements" height="30rem" />
+
+### Style variants
+
+`variant` accepts a semantic type scale (`title-xxl` through `title-xs`, `p-large`, `p-base`, `p-small`), independent of `as`:
+
+<StoryEmbed id="typography-text--variants" height="20rem" />
+
+### Font smoothing
+
+<StoryEmbed id="typography-text--font-smoothing" height="8rem" />
+
+### Playground
+
+<StoryEmbed id="typography-text--default" height="6rem" />

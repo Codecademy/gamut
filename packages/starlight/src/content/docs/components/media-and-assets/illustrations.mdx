@@ -1,0 +1,37 @@
+---
+title: Illustrations
+description: Gamut's illustration asset library.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Source](https://github.com/Codecademy/gamut/tree/main/packages/gamut-illustrations/src)
+
+## Usage
+
+Import an illustration by name from `@codecademy/gamut-illustrations`:
+
+```tsx
+import { NumberBlocks } from '@codecademy/gamut-illustrations';
+
+<NumberBlocks width="128px" />;
+```
+
+**Best practices:**
+
+- Illustrations are static, multi-color SVGs with their colors baked in — they don't take a `color` prop, only `width`, `height`, `className`, and `aria-hidden`. Reach for [Patterns](/components/media-and-assets/patterns/) instead if a graphic needs to inherit surrounding text color.
+- Set `width` or `height` (or both) to size an illustration; whichever one is omitted is calculated from the other, or from CSS.
+
+**When NOT to use:**
+
+- **A decorative, recolorable background fill layered behind other content** — use [Patterns](/components/media-and-assets/patterns/) instead.
+
+## Reference
+
+### All illustrations
+
+<StoryEmbed id="illustrations--all-illustrations" height="40rem" />
+
+### Playground
+
+<StoryEmbed id="illustrations--default" height="16rem" />

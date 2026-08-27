@@ -1,0 +1,53 @@
+---
+title: Video
+description: A video player supporting HLS, DASH, YouTube, and Vimeo, with built-in accessibility features.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Updating · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41393) · [Source](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Video/index.tsx)
+
+## Usage
+
+Use `Video` to play a direct video file or stream (MP4, HLS, DASH) or embed a YouTube/Vimeo URL — the same component handles both, and picks the right underlying player automatically. A YouTube or Vimeo URL with no caption tracks renders through a lighter embedded player; everything else (direct sources, or a YouTube/Vimeo URL that does have caption tracks) renders through the full-featured player with captions, chapters, and thumbnail support.
+
+**Best practices:**
+
+- Always provide `videoTitle` for accessibility.
+- Include captions (`textTracks`) when they're available.
+- Provide `placeholderImage` for a better initial-loading experience.
+- Pass `translations` to override the default layout's UI text for i18n.
+- Check that a video's sharing/embed settings actually allow it before going live with a YouTube or Vimeo URL — some videos can't be embedded.
+
+**When NOT to use:**
+
+- **Markdown content that already links to a video** — [Markdown](/components/data-display/markdown/)'s own `<video>` and YouTube/Vimeo `<iframe>` overrides render into `Video` automatically; don't wrap it a second time.
+
+## Patterns
+
+### Embedding YouTube or Vimeo
+
+Pass a YouTube or Vimeo URL as `videoUrl`.
+
+#### YouTube
+
+<StoryEmbed id="molecules-video--youtube" height="16rem" />
+
+#### Vimeo
+
+<StoryEmbed id="molecules-video--vimeo" height="16rem" />
+
+### Adding captions, chapters, and thumbnails
+
+Pass `textTracks` (subtitles, captions, or chapters) and `thumbnails` for scrubber preview images — either one switches an otherwise lightly-embedded YouTube/Vimeo URL to the full-featured player too:
+
+<StoryEmbed
+  id="molecules-video--video-with-tracks-and-thumbnails"
+  height="20rem"
+/>
+
+## Reference
+
+### Playground
+
+<StoryEmbed id="molecules-video--default" height="16rem" />

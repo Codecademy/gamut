@@ -1,0 +1,38 @@
+---
+title: Patterns
+description: Decorative background pattern components.
+---
+
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
+**Status:** Current · [Figma](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1124%3A1569) · [Source](https://github.com/Codecademy/gamut/tree/main/packages/gamut-patterns/src/svg)
+
+## Usage
+
+Import a pattern by name from `@codecademy/gamut-patterns`:
+
+```tsx
+import { DotLoose } from '@codecademy/gamut-patterns';
+
+<DotLoose width="128px" />;
+```
+
+**Best practices:**
+
+- Patterns fill with `currentColor` — they have no `color` prop of their own. Set `color` on a wrapping element to recolor one.
+- Patterns accept the standard layout, positioning, and space system props, plus native SVG attributes.
+- Always layer a pattern behind real content with `position="absolute"`, and never use it to convey information itself. [ProgressBar](/components/status/progress-bar/)'s `pattern` prop is a good example: its fill percentage is a separate element, with the pattern rendered as pure texture behind it.
+
+**When NOT to use:**
+
+- **A static, standalone graphic with its own baked-in colors** — use [Illustrations](/components/media-and-assets/illustrations/) instead.
+
+## Reference
+
+### All patterns
+
+<StoryEmbed id="atoms-patterns--all-patterns" height="30rem" />
+
+### Playground
+
+<StoryEmbed id="atoms-patterns--default" height="12rem" />
