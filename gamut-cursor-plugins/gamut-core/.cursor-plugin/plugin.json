@@ -1,0 +1,11 @@
+{
+  "name": "codecademy-gamut",
+  "version": "1.0.0",
+  "description": "Core Gamut design system usage for application code.",
+  "author": {
+    "name": "Codecademy"
+  },
+  "keywords": ["gamut", "codecademy", "design-system", "react"],
+  "homepage": "https://gamut.codecademy.com/",
+  "repository": "https://github.com/Codecademy/gamut"
+}
