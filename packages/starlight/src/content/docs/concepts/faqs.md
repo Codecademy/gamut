@@ -3,9 +3,9 @@ title: FAQs
 description: Frequently asked questions about using and contributing to Gamut.
 ---
 
-## How can I contribute?
+## What is the contribution process?
 
-Thanks for your interest! We currently accept contributions from Codecademy employees only, but we're working on a process to accept contributions from the wider community — watch this space.
+Thanks for your interest! We currently accept contributions from Codecademy and Skillsoft employees only, but we're working on a process to accept contributions from the wider community — watch this space.
 
 ## To Gamut, or not to Gamut?
 
