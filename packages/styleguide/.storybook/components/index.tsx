@@ -2,6 +2,7 @@ export * from './ImageWrapper';
 export * from './TokenTable';
 export * from './Headers';
 export * from './Elements/Callout';
+export * from './Elements/DetailedCode';
 export * from './Elements/KeyboardKey';
 export * from './Elements/Markdown';
 export * from './Elements/ImageGallery';
