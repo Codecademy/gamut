@@ -10,8 +10,6 @@ Gamut components are built on semantic color aliases, not raw color values. Each
 - `primary` — the color for interactive elements with a primary action.
 - `secondary` — the color for interactive elements with a secondary action.
 
-This set isn't final — it's likely to grow as Gamut's needs grow.
-
 Building components against these aliases, instead of specific values, guarantees:
 
 - Components work correctly in any context, without extra configuration.

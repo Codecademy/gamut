@@ -5,7 +5,7 @@ description: How to propose, build, and document changes to Gamut.
 
 ## Prework
 
-We track planned work for Gamut components in the [Gamut Board](https://skillsoftdev.atlassian.net/jira/software/projects/GM/boards/784) on JIRA.
+We track planned work for Gamut components in the [Gamut Board](https://skillsoftdev.atlassian.net/jira/software/c/projects/GMT/boards/3655/backlog) on JIRA.
 
 - If there's a ticket there you want to take on, send a Slack message to `#gamut-team` or come to Gamut Office Hours to talk it through.
 - If the work you'd like to do isn't captured in a JIRA ticket, talk to us first and we'll help create one.
