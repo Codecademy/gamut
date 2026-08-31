@@ -3,6 +3,8 @@ title: Prop groups
 description: Every system prop group and what it covers.
 ---
 
+Each group below is one example of what it covers, not an exhaustive prop list. For every individual prop in a group — its exact CSS properties, its scale, and its transform — open that group's own page in Storybook (for example, [Layout](https://gamut.codecademy.com/?path=/docs/foundations-system-props-layout--docs)) and see its prop table; that table is generated live from `variance/config.ts`, so it can't drift out of sync the way a static copy here would.
+
 ## Layout
 
 Layout props control the visual structure and dimensions of elements — how components take up space, their display behavior, and how they align within their containers.

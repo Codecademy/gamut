@@ -70,6 +70,13 @@ Pass `onClick` or `href` per bar to render it as a button or a link — `BarChar
 
 Provide `title` directly (the default), hide it visually while keeping it in the accessibility tree with `hideTitle`, or skip `title` entirely and point `aria-labelledby` at an external heading instead.
 
+#### Visual title and description
+
+<StoryEmbed
+  id="organisms-barchart--with-visual-title-and-description"
+  height="20rem"
+/>
+
 #### Hidden title and description
 
 <StoryEmbed
@@ -117,6 +124,16 @@ Pass `sortFns` to render a sort dropdown — omit it and no dropdown renders at 
   id="organisms-barchart--with-function-translations"
   height="20rem"
 />
+
+## Responsive layout
+
+`BarChart` uses a CSS container query on its wrapping `<figure>`, so its layout responds to the width of its parent rather than the viewport — useful when the chart sits in a constrained space like a sidebar. Below 480px, the label and value stack together above the bar; at 480px and up, the label sits to the left of the bar and the value to its right.
+
+## Writing chart copy
+
+- Keep category labels to 1–3 words.
+- Use a consistent unit label across every bar (for example, always "XP" or always "hours").
+- Use locale-aware number formatting for an international audience — see [Translating and customizing accessibility summaries](#translating-and-customizing-accessibility-summaries) for the `locale` option.
 
 ## Playground
 

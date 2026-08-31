@@ -3,6 +3,8 @@ title: Responsive properties
 description: The array/object syntax every system prop accepts for breakpoint- and container-query-driven values.
 ---
 
+import StoryEmbed from '~/components/StoryEmbed.astro';
+
 Every system prop accepts a responsive syntax, so breakpoint-driven behavior is visible at the point a prop is set, rather than hidden inside a separate media query elsewhere.
 
 ```tsx
@@ -55,3 +57,26 @@ Set a fallback media-query value alongside any container-query value, for browse
 - Use media breakpoints for page-level layout shifts; use container queries for components that need to react to their own allotted space, not the viewport.
 - Always declare a `containerType` on the element whose descendants should listen for container breakpoints.
 - Prefer object syntax for isolated, single-breakpoint overrides; prefer array syntax when a value changes at every breakpoint in sequence.
+
+## Examples
+
+### Media queries
+
+<StoryEmbed
+  id="foundations-system-responsiveproperties--media-queries"
+  height="10rem"
+/>
+
+### Container queries
+
+<StoryEmbed
+  id="foundations-system-responsiveproperties--container-queries"
+  height="10rem"
+/>
+
+### Combined queries
+
+<StoryEmbed
+  id="foundations-system-responsiveproperties--combined-queries"
+  height="10rem"
+/>

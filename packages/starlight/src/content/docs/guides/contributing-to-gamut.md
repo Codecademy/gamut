@@ -60,6 +60,11 @@ Clear, descriptive names reduce the need for comments and make code self-documen
 - Name the folder to match the component, and the file inside it to match the folder: `Button/Button.tsx`.
 - Use names that indicate purpose — `SkipToContent`, `RadialProgress`, `Toggle` — and avoid generic ones like `Component`, `Container`, or `Wrapper` without further context.
 
+### Consistency
+
+- Use a single term for the same concept, in the heading, body copy, and code examples alike — and don't reuse a term for two different concepts.
+- Keep component naming consistent across packages, following the patterns established by existing components.
+
 ### Code comments
 
 Comments should explain _why_ code exists, not _what_ it does — well-named variables and functions already handle the "what." Reserve comments for non-obvious decisions, complex logic, and important context:
@@ -135,7 +140,11 @@ The folder structure mirrors both Gamut's atomic-design tiers and the generated 
 
 A component's `.mdx` file combines its interactive stories with written documentation, usage guidance, and metadata. A good one has four parts:
 
-1. **General information** — set in the file's `parameters` object: `title` (the component's name, used for linking), `subtitle` (what it does and when to reach for it), `source` (its package and a GitHub link), `status` (`current`, `updating`, `deprecated`, or `static`), and `design` (a Figma link).
+1. **General information** — set in the file's `parameters` object: `title` (the component's name, used for linking), `subtitle` (what it does and when to reach for it), `source` (its package and a GitHub link), `design` (a Figma link), and `status`:
+   - `current` — stable, recommended for use.
+   - `updating` — in progress; the API may still change.
+   - `deprecated` — still supported, but slated for removal — don't use it for new work.
+   - `static` — reference material, with no active development.
 2. **Flagship story and props** — a single default story showing the component's baseline state, with `sourceState="shown"` on its `Canvas` so the code is visible, and a connected props table right below it.
 3. **Variation stories** — a subsection per meaningful behavior or configuration, each showing one variation with a short description and any variant-specific guidance.
 4. **Usage instructions** — when to use the component (and when not to), plus any guidelines a reader should follow.

@@ -16,7 +16,7 @@ Use `Dialog` for a structured confirmation prompt with two options — for examp
 - Keep the message to 1–2 lines, write the title as a clear question, and keep both button labels distinct and specific about what each one does.
 - Use `Dialog` sparingly — of Gamut's overlays, it's the most disruptive. Showing more than one at a time overwhelms the reader.
 - Both `confirmCta` and `cancelCta` call `onRequestClose` automatically before their own `onClick` — you don't need to close the Dialog yourself.
-- `size` only accepts `'small'` (default) or `'medium'` — unlike [Modal](/components/overlays/modal/), there's no `large` or `fluid` option.
+- `size` accepts `'small'` (default), `'medium'`, or `'large'` — unlike [Modal](/components/overlays/modal/), there's no `fluid` option.
 
 **When NOT to use:**
 

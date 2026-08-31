@@ -40,6 +40,12 @@ Wrap a `RadioGroup` in a `FormGroup` with `infotip` for a group-level tip, auto-
   height="10rem"
 />
 
+### Using a custom label
+
+`label` is a `ReactNode`, so it can hold more than plain text. If a `Radio`'s label includes its own `InfoTip`, pass it as `infotip` rather than composing it into `label` directly, so it isn't announced twice by screen readers:
+
+<StoryEmbed id="atoms-forminputs-radio--custom-label" height="6rem" />
+
 ## Prop Reference
 
 ### State

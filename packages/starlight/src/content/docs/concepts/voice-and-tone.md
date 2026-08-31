@@ -24,6 +24,10 @@ Use present tense for current functionality — it's the most direct form of a v
 
 Active voice and imperative mood often make pronouns unnecessary. When one is still needed, prefer "we"; "you" is acceptable when necessary. Avoid "I"/"my"/"me" entirely.
 
+## Articles
+
+Use articles ("a," "an," "the") for clarity; omit them in a list when brevity doesn't cost clarity.
+
 ## Abbreviations and acronyms
 
 Spell out an abbreviation on first use — "Web Content Accessibility Guidelines (WCAG)" — except for terms common in web design and development (HTML, CSS, API, UI, UX, and the like), which don't need spelling out.

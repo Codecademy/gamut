@@ -126,6 +126,15 @@ Pass `inputProps.hidden` to render a native `<input type="hidden">` with the sel
   height="10rem"
 />
 
+#### Disabled option
+
+Set `disabled` on an individual option to keep it visible but unselectable:
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--disabled-options"
+  height="10rem"
+/>
+
 ### Grouped options
 
 #### Dividers
@@ -157,10 +166,23 @@ Pass `inputProps.hidden` to render a native `<input type="hidden">` with the sel
   height="10rem"
 />
 
-`shownOptionsLimit` (default and max `6`) and `zIndex` (default `auto`) each have their own dedicated story too:
+#### Shown options limit
 
-- [Shown options limit](https://gamut.codecademy.com/?path=/story/atoms-forminputs-selectdropdown--shown-options-three)
-- [Z-index stacking](https://gamut.codecademy.com/?path=/story/atoms-forminputs-selectdropdown--z-index-on-menu)
+`shownOptionsLimit` controls how many options are visible before the menu scrolls — the default and maximum is `6`:
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--shown-options-three"
+  height="14rem"
+/>
+
+#### Z-index
+
+`zIndex` (default `auto`) raises the dropdown above other positioned elements, like a sticky table header:
+
+<StoryEmbed
+  id="atoms-forminputs-selectdropdown--z-index-on-menu"
+  height="14rem"
+/>
 
 ### Size
 

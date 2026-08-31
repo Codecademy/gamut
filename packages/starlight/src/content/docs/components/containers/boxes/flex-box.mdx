@@ -14,7 +14,15 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 **Best practices:**
 
 - Use `FlexBox` when a container needs flex-specific behavior, not just a flex child prop like `flex` or `alignSelf` — those are already available directly on `Box`.
-- Five boolean shorthands are available: `inline` (`display: inline-flex`), `wrap` (`flexWrap: wrap`), `center` (centers both axes), `row` (`flexDirection: row`), and `column` (`flexDirection: column`).
+- Five boolean shorthands are available as a more concise alternative to the system props they set:
+
+```tsx
+<FlexBox inline /> // display="inline-flex"
+<FlexBox wrap /> // flexWrap="wrap"
+<FlexBox center /> // alignItems="center" justifyContent="center"
+<FlexBox row /> // flexDirection="row"
+<FlexBox column /> // flexDirection="column"
+```
 
 **When NOT to use:**
 

@@ -43,6 +43,33 @@ Pass `icon` (any `gamut-icons` component) to render it inside the field:
 
 <StoryEmbed id="atoms-forminputs-input--custom-icon" height="6rem" />
 
+### Styling an iframe as an Input
+
+Use styled-components' `withComponent` on Gamut's `iFrameWrapper` to give a third-party iframe `Input`'s styling — you'll still need to handle the iframe's own behavior separately:
+
+```tsx
+import { FormGroup, Input, iFrameWrapper } from '@codecademy/gamut';
+
+import { GnarlyIframe } from './constants';
+
+const StyledIframe = iFrameWrapper.withComponent(GnarlyIframe);
+
+export const CustomFormGroup: React.FC<{
+  errorMessage?: string;
+  disabled?: boolean;
+}> = ({ errorMessage, disabled }) => (
+  <FormGroup error={errorMessage} disabled={disabled}>
+    <Input
+      as={StyledIframe}
+      onChange={() => {}}
+      onBlur={() => {}}
+      placeholder="Placeholder"
+      error={!!errorMessage}
+    />
+  </FormGroup>
+);
+```
+
 ## Prop Reference
 
 ### Type
@@ -76,3 +103,27 @@ Pass `icon` (any `gamut-icons` component) to render it inside the field:
 #### Placeholder
 
 <StoryEmbed id="atoms-forminputs-input--placeholder" height="6rem" />
+
+### Size
+
+`size="small"` reduces padding for a more compact field, across every type and state:
+
+#### Text
+
+<StoryEmbed id="atoms-forminputs-input--text-small" height="6rem" />
+
+#### Text, error
+
+<StoryEmbed id="atoms-forminputs-input--text-small-error" height="6rem" />
+
+#### Number
+
+<StoryEmbed id="atoms-forminputs-input--number-small" height="6rem" />
+
+#### File
+
+<StoryEmbed id="atoms-forminputs-input--file-small" height="6rem" />
+
+#### Disabled
+
+<StoryEmbed id="atoms-forminputs-input--disabled-small" height="6rem" />

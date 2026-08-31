@@ -15,6 +15,7 @@ Use `InfoTip` to add supplementary information next to an element, triggered by 
 
 - Provide `ariaLabel` or `ariaLabelledby` — exactly one is required — to accessibly name the info button.
 - InfoTip manages its own focus and keyboard behavior: opening moves focus into its content, `Tab`/`Shift+Tab` wrap within a floating tip, and `Escape` closes it — deferring to an enclosing `Modal`'s own `Escape` handling when the InfoTip is nested inside one.
+- The info button's `aria-roledescription` defaults to "More information button" — override it with `ariaRoleDescription` for translation or other accessibility needs.
 - Reserve `placement="floating"` for content that would otherwise be clipped by a tight parent container.
 
 **When NOT to use:**
@@ -35,6 +36,12 @@ Use `InfoTip` to add supplementary information next to an element, triggered by 
 Pass a `ReactNode` to `info` to include interactive content like an `Anchor` — focus moves into the tip's content on open, so interactive content stays reachable by keyboard:
 
 <StoryEmbed id="molecules-tips-infotip--with-links-or-buttons" height="14rem" />
+
+### Navigating with a keyboard
+
+Opening an InfoTip moves focus into its content. In a floating tip, `Tab` cycles forward through its focusable elements and wraps back to the InfoTip button after the last one; `Shift+Tab` from the button exits to the previous page element. In an inline tip, `Tab`/`Shift+Tab` just follow normal document flow. `Escape` always closes the tip and returns focus to the InfoTip button:
+
+<StoryEmbed id="molecules-tips-infotip--keyboard-navigation" height="14rem" />
 
 ### Nesting inside a Modal
 

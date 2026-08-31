@@ -49,6 +49,12 @@ For a menu of links, wrap it in a `<nav>` element instead of setting `role` on `
 
 <StoryEmbed id="molecules-menu--nav-menu" height="16rem" />
 
+### Building a menu with no role
+
+If `Menu` isn't given `role="menu"` and isn't wrapped in a `<nav>`, it renders as a plain `<ul>` with no ARIA role, and its `MenuItem` children render as plain `<li>` — reach for this only when the list isn't semantically a menu or navigation at all:
+
+<StoryEmbed id="molecules-menu--no-role-menu" height="16rem" />
+
 ### Building a floating menu
 
 Compose `Menu` inside `PopoverContainer` to open it from a trigger. After setting the base positioning, offset the y-axis by 48px per item at `spacing="normal"`, or 32px at `spacing="condensed"` — and give the floating menu `role="menu"` if it triggers actions:
@@ -65,7 +71,13 @@ Give every icon-only `MenuItem` a `label` — it becomes the item's `ToolTip` te
 
 Use `MenuSeparator` to divide a longer menu into sections:
 
+#### Popover
+
 <StoryEmbed id="molecules-menu--popover-menu-separator" height="16rem" />
+
+#### Fixed
+
+<StoryEmbed id="molecules-menu--fixed-menu-separator" height="16rem" />
 
 ## Prop Reference
 

@@ -42,6 +42,21 @@ Use `DatePicker` to let a reader select a single date or a date range, either by
 
 <StoryEmbed id="organisms-datepicker--range" height="26rem" />
 
+### Starting with a date already selected
+
+Set `selectedDate` (single mode) or `startDate`/`endDate` (range mode) to a non-null value up front to open with a date already chosen, instead of starting empty:
+
+#### Single date
+
+<StoryEmbed
+  id="organisms-datepicker--with-initial-date-single"
+  height="26rem"
+/>
+
+#### Range
+
+<StoryEmbed id="organisms-datepicker--with-initial-date-range" height="26rem" />
+
 ### Disabling specific dates
 
 Pass a `disableDate` function returning `true` for any date that shouldn't be selectable. Use `matchDisabledDates` to disable a fixed list, or write your own predicate for rules like "no weekends".
@@ -54,11 +69,26 @@ Pass a `disableDate` function returning `true` for any date that shouldn't be se
 
 <StoryEmbed id="organisms-datepicker--range-disabled-weekends" height="26rem" />
 
-A few more `disableDate` recipes (before today, more than 30 days before today, within a 30-day window of the start date) each have their own story too:
+#### Disabling before today
 
-- [Disabled before today](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-disabled-before-today)
-- [Disabled more than 30 days before today](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-disabled-more-than-30-days-before-today)
-- [30-day window from the start date](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-30-day-window-from-start)
+<StoryEmbed
+  id="organisms-datepicker--range-disabled-before-today"
+  height="26rem"
+/>
+
+#### Disabling more than 30 days before today
+
+<StoryEmbed
+  id="organisms-datepicker--range-disabled-more-than-30-days-before-today"
+  height="26rem"
+/>
+
+#### Limiting to a 30-day window from the start date
+
+<StoryEmbed
+  id="organisms-datepicker--range-30-day-window-from-start"
+  height="26rem"
+/>
 
 ### Composing a custom layout
 
@@ -89,6 +119,12 @@ Covered above under Patterns — [single](#building-a-single-date-picker) and [r
 `placement="inline"` (used throughout this page) renders the calendar in normal layout flow; `placement="floating"` escapes via a portal:
 
 <StoryEmbed id="organisms-datepicker--floating-placement" height="26rem" />
+
+### Input size
+
+`inputSize="small"` (the default is `"base"`) reduces the date input's padding:
+
+<StoryEmbed id="organisms-datepicker--range-small" height="24rem" />
 
 ### Quick actions
 
@@ -124,3 +160,9 @@ Default (single: Yesterday/Today/Tomorrow; range: Last 7/30/90 days), disabled (
 
 - [Single, no quick actions](https://gamut.codecademy.com/?path=/story/organisms-datepicker--single-no-quick-actions)
 - [Range, no quick actions](https://gamut.codecademy.com/?path=/story/organisms-datepicker--range-no-quick-actions)
+
+## Accessibility considerations
+
+- The calendar lives in a `role="dialog"` region — pair its `id` with `DatePickerCalendar`'s `dialogId`, and the date input's `aria-controls`, if you're composing a custom layout.
+- Segments use `role="spinbutton"`: arrow keys adjust a segment's value, `Left`/`Right` move between segments, and `Alt`+`↓` opens the calendar (or moves focus into the grid, if it's already open).
+- `Escape` closes the popover.

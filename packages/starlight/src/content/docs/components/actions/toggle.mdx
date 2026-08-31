@@ -36,6 +36,12 @@ Same pattern, but with `as="button"` and `onClick` instead of `onChange` — Gam
 
 <StoryEmbed id="atoms-toggle--interactive-button-toggle" height="8rem" />
 
+### Using a React component as the label
+
+Pass a `ReactNode` to `label` when the label needs its own markup or styling — pair it with `ariaLabel` so the toggle still has an accessible name:
+
+<StoryEmbed id="atoms-toggle--react-component-label" height="6rem" />
+
 ## Prop Reference
 
 ### Element
@@ -52,3 +58,15 @@ Same pattern, but with `as="button"` and `onClick` instead of `onChange` — Gam
 
 <StoryEmbed id="atoms-toggle--label-left" height="6rem" />
 <StoryEmbed id="atoms-toggle--label-right" height="6rem" />
+
+### Disabled
+
+Disabling `Toggle` changes its opacity and cursor, but still shows its current checked value:
+
+#### Unchecked
+
+<StoryEmbed id="atoms-toggle--disabled" height="6rem" />
+
+#### Checked
+
+<StoryEmbed id="atoms-toggle--disabled-checked" height="6rem" />

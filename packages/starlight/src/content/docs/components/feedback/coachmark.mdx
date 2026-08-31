@@ -15,6 +15,7 @@ Use `Coachmark` to guide a user toward a specific piece of UI — introducing a 
 
 - Use coachmarks sparingly, so they don't overwhelm the reader with popovers.
 - `Coachmark` has no built-in dismiss button, auto-dismiss timer, or multi-step sequencing — build a dismiss control into whatever `renderPopover` returns, and flip `shouldShow` back to `false` yourself when it's clicked. For a guided tour of several steps, manage that sequencing yourself across separate `Coachmark` instances.
+- `skipFocusTrap` defaults to `true`, so the popover doesn't trap focus — set it to `false` only if the popover genuinely needs to hold focus until dismissed.
 
 **When NOT to use:**
 

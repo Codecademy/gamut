@@ -9,6 +9,12 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 
 How-to recipes for [GridForm](/components/inputs-and-forms/gridform/) — see [Reference](/components/inputs-and-forms/gridform/reference/) for the full field-type catalog and validation options.
 
+## Customizing field layout and the required-text legend
+
+Use a field's `size` and `rowspan` (borrowed from [LayoutGrid](/components/containers/layout-grid/)) to lay out a form on its 12-column grid, and `requiredTextProps` to restyle the `FormRequiredText` legend so it's visually distinct from the text above it:
+
+<StoryEmbed id="organisms-gridform-layout--formatted" height="20rem" />
+
 ## Building sections
 
 Pass section objects (each with a `title` and its own `fields`) alongside loose fields in the `fields` array. A section's `layout` can be `"left"` (title takes 3 columns) or centered (the default); `as` sets the title's heading level (default `h2`) and must be a heading tag:

@@ -17,6 +17,7 @@ Use `PopoverContainer` when you need Gamut's floating-positioning logic without 
 - Use `inline` to render relative to the nearest positioned ancestor instead of portaling to `<body>` — it avoids jumpy repositioning on scroll or resize, but skip it when the surrounding stacking context is too small, or an ancestor has `overflow: hidden`.
 - Escalate positioning props only as far as needed: `alignment` alone is usually enough. Reach for `invertAxis`, then `offset`, then explicit `x`/`y` only when the default doesn't fit.
 - Turn on `closeOnViewportExit` for informational popovers that should clean themselves up when their target scrolls away. Leave it off (the default) for interactive menus, where a reader might scroll the trigger out of view without meaning to dismiss it.
+- `allowPageInteraction` (default `false`) lets the reader keep interacting with the rest of the page while the popover is open — turn it on only when the parent component already manages its own focus and accessibility, since `PopoverContainer` otherwise assumes it's the one in control.
 
 **When NOT to use:**
 

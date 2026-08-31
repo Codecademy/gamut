@@ -29,3 +29,14 @@ Browse the actual catalogs on their own pages:
 
 - If an icon's source SVG has a `<mask>`, ask the designer to remove it; Gamut adds its own mask during the build.
 - If an icon sets `fill="none"` on the root `<svg>`, move `fill="none"` onto each `<path>` instead.
+
+## Contributing a new illustration
+
+If the illustration you need isn't already in the set:
+
+1. In Figma, right-click the illustration's layer and copy it as an SVG.
+2. Minify it with [SVGOMG](https://jakearchibald.github.io/svgomg/) — the default settings work, except you'll need to add the root `viewBox` attribute back afterward.
+3. Paste the SVG into a new component at `packages/gamut-illustrations/src/<IllustrationName>.tsx`.
+4. Run the ESLint auto-fixer to correct the SVG's attribute names for React (`stroke-width` → `strokeWidth`, and the like).
+5. Export the new component from `packages/gamut-illustrations/src/index.ts`.
+6. Open a `feat` pull request.

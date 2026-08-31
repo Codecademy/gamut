@@ -3,7 +3,7 @@ title: Design tokens
 description: Color, spacing, radius, and other token values, and the keys used to access them.
 ---
 
-Every theme exposes the same token categories, each accessible on the Emotion theme object via its own key. Exact values differ per theme — see [Themes](/reference/themes/) for the available theme palettes, or open Storybook's Theme Switcher (paintbrush icon in the toolbar) to browse live values for any theme/color-mode combination.
+Every theme exposes the same token categories, each accessible on the Emotion theme object via its own key. Exact values differ per theme — see [Themes](/reference/themes/) for the available theme palettes, or open Storybook's Theme Switcher (paintbrush icon in the toolbar) to browse live values for any theme/color-mode combination. For the full, exhaustive listing of every value in a category — every color swatch, every spacing step, every border radius — see that theme's own page under Foundations → Theme in Storybook (for example, [Core Theme](https://gamut.codecademy.com/?path=/docs/foundations-theme-core-theme--docs)) rather than a static copy here.
 
 ## Color — `colors`
 
