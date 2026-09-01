@@ -2,10 +2,13 @@ import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
 import liveCode from 'astro-live-code';
+import starlightSidebarTopics from 'starlight-sidebar-topics';
 
 // Sidebar structure follows docs/adr/0001-documentation-site-information-architecture.md.
 // Top level maps to Diátaxis modes: Getting started (tutorials), Guides (how-to),
 // Components + Reference (reference), Concepts (explanation).
+// Each top-level section is its own topic (starlight-sidebar-topics), so its
+// sidebar replaces the others instead of all five being stacked in one long list.
 export default defineConfig({
   site: 'https://gamut.codecademy.com',
   server: {
@@ -38,76 +41,124 @@ export default defineConfig({
           'https://github.com/Codecademy/gamut/edit/main/packages/starlight/',
       },
       customCss: ['./src/styles/gamut-core-theme.css'],
-      sidebar: [
-        {
-          label: 'Getting started',
-          autogenerate: { directory: 'getting-started' },
-        },
-        {
-          label: 'Guides',
-          autogenerate: { directory: 'guides' },
-        },
-        {
-          label: 'Components',
-          items: [
+      plugins: [
+        starlightSidebarTopics(
+          [
             {
-              label: 'Overview',
-              slug: 'components',
+              label: 'Getting started',
+              icon: 'rocket',
+              link: '/getting-started/installation/',
+              items: [{ autogenerate: { directory: 'getting-started' } }],
             },
             {
-              label: 'Actions',
-              autogenerate: { directory: 'components/actions' },
+              label: 'Guides',
+              icon: 'open-book',
+              link: '/guides/',
+              items: [{ autogenerate: { directory: 'guides' } }],
             },
             {
-              label: 'Containers',
-              autogenerate: { directory: 'components/containers' },
+              label: 'Components',
+              icon: 'puzzle',
+              link: '/components/',
+              items: [
+                {
+                  label: 'Overview',
+                  slug: 'components',
+                },
+                {
+                  label: 'Actions',
+                  items: [
+                    { autogenerate: { directory: 'components/actions' } },
+                  ],
+                },
+                {
+                  label: 'Containers',
+                  items: [
+                    { autogenerate: { directory: 'components/containers' } },
+                  ],
+                },
+                {
+                  label: 'Inputs & forms',
+                  items: [
+                    {
+                      autogenerate: {
+                        directory: 'components/inputs-and-forms',
+                      },
+                    },
+                  ],
+                },
+                {
+                  label: 'Navigation',
+                  items: [
+                    { autogenerate: { directory: 'components/navigation' } },
+                  ],
+                },
+                {
+                  label: 'Feedback',
+                  items: [
+                    { autogenerate: { directory: 'components/feedback' } },
+                  ],
+                },
+                {
+                  label: 'Status',
+                  items: [{ autogenerate: { directory: 'components/status' } }],
+                },
+                {
+                  label: 'Overlays',
+                  items: [
+                    { autogenerate: { directory: 'components/overlays' } },
+                  ],
+                },
+                {
+                  label: 'Data display',
+                  items: [
+                    {
+                      autogenerate: { directory: 'components/data-display' },
+                    },
+                  ],
+                },
+                {
+                  label: 'Typography',
+                  items: [
+                    { autogenerate: { directory: 'components/typography' } },
+                  ],
+                },
+                {
+                  label: 'Media & assets',
+                  items: [
+                    {
+                      autogenerate: {
+                        directory: 'components/media-and-assets',
+                      },
+                    },
+                  ],
+                },
+                {
+                  label: 'Utilities',
+                  items: [
+                    { autogenerate: { directory: 'components/utilities' } },
+                  ],
+                },
+              ],
             },
             {
-              label: 'Inputs & forms',
-              autogenerate: { directory: 'components/inputs-and-forms' },
+              label: 'Reference',
+              icon: 'information',
+              link: '/reference/',
+              items: [{ autogenerate: { directory: 'reference' } }],
             },
             {
-              label: 'Navigation',
-              autogenerate: { directory: 'components/navigation' },
-            },
-            {
-              label: 'Feedback',
-              autogenerate: { directory: 'components/feedback' },
-            },
-            {
-              label: 'Status',
-              autogenerate: { directory: 'components/status' },
-            },
-            {
-              label: 'Overlays',
-              autogenerate: { directory: 'components/overlays' },
-            },
-            {
-              label: 'Data display',
-              autogenerate: { directory: 'components/data-display' },
-            },
-            {
-              label: 'Typography',
-              autogenerate: { directory: 'components/typography' },
-            },
-            {
-              label: 'Media & assets',
-              autogenerate: { directory: 'components/media-and-assets' },
-            },
-            {
-              label: 'Utilities',
-              autogenerate: { directory: 'components/utilities' },
+              label: 'Concepts',
+              icon: 'document',
+              link: '/concepts/',
+              items: [{ autogenerate: { directory: 'concepts' } }],
             },
           ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
-        },
-        {
-          label: 'Concepts',
-          autogenerate: { directory: 'concepts' },
-        },
+          {
+            // The splash-template homepage has no topic of its own.
+            exclude: ['/'],
+          }
+        ),
       ],
     }),
   ],

@@ -34,7 +34,7 @@ const MyContainer = ({ children }) => (
 );
 ```
 
-`eslint-plugin-gamut`'s [`no-inline-style`](/reference/eslint-rules/#gamut-no-inline-style) and [`no-css-standalone`](/reference/eslint-rules/#gamut-no-css-standalone) rules enforce this in CI — an inline `style` prop or a standalone stylesheet is almost always a sign a system prop or a `variant`/`states` call should have been used instead.
+`eslint-plugin-gamut`'s [`no-inline-style`](/reference/eslint-rules/#gamutno-inline-style) and [`no-css-standalone`](/reference/eslint-rules/#gamutno-css-standalone) rules enforce this in CI — an inline `style` prop or a standalone stylesheet is almost always a sign a system prop or a `variant`/`states` call should have been used instead.
 
 ## Avoid nested selectors
 

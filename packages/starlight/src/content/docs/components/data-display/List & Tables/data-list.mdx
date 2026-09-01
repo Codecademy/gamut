@@ -15,7 +15,7 @@ Use `DataList` for engaging with individual items one at a time — selecting th
 
 - Use [DataTable](/components/data-display/list--tables/data-table/) instead if the point is comparing information across items rather than engaging with one at a time — `DataList` always disables horizontal scrolling (`scrollable`/`shadow` are forced off), so it doesn't suit many columns.
 - Omit `onRowSelect` to disable selection entirely, and omit `onRowExpand`/`expandedContent` to disable expansion. There's no separate `selectable` boolean — each capability is enabled purely by providing its handler.
-- `disableContainerQuery` opts out of the responsive column-stacking behavior — the same escape hatch as [List](/components/data-display/list--tables/list/#opting-out-of-container-query-stacking).
+- `disableContainerQuery` opts out of the responsive column-stacking behavior — the same escape hatch as [List](/components/data-display/list--tables/list/list/#opting-out-of-container-query-stacking).
 
 **When NOT to use:**
 
