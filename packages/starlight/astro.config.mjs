@@ -57,6 +57,12 @@ export default defineConfig({
               items: [{ autogenerate: { directory: 'guides' } }],
             },
             {
+              label: 'Foundations',
+              icon: 'information',
+              link: '/foundations/',
+              items: [{ autogenerate: { directory: 'foundations' } }],
+            },
+            {
               label: 'Components',
               icon: 'puzzle',
               link: '/components/',
@@ -140,12 +146,6 @@ export default defineConfig({
                   ],
                 },
               ],
-            },
-            {
-              label: 'Reference',
-              icon: 'information',
-              link: '/reference/',
-              items: [{ autogenerate: { directory: 'reference' } }],
             },
             {
               label: 'Concepts',

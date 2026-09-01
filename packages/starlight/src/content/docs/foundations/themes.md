@@ -3,14 +3,14 @@ title: Themes
 description: The theme palettes available (Core, Admin, LX Studio, Percipio, and Platform) and their values.
 ---
 
-Every Emotion component in Gamut has typed access to the current theme's tokens, without any extra imports — most commonly through [system props](/reference/system-props/) or the `theme` prop.
+Every Emotion component in Gamut has typed access to the current theme's tokens, without any extra imports — most commonly through [system props](/foundations/system-props/) or the `theme` prop.
 
 ## Available themes
 
 - **Core** — Codecademy's own public-facing theme.
 - **Admin** — the internal admin/back-office theme.
 - **LX Studio** — the theme for LX Studio.
-- **Percipio** — the theme for Percipio; replaces Core's hard offset shadows with a soft, blurred one and no lift (see [Design tokens: Elevation](/reference/design-tokens/#elevation)).
+- **Percipio** — the theme for Percipio; replaces Core's hard offset shadows with a soft, blurred one and no lift (see [Design tokens: Elevation](/foundations/design-tokens/#elevation)).
 - **Platform** — the shared learning-platform theme.
 
 ## Comparing themes live

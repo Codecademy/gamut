@@ -20,11 +20,11 @@ const Box = styled.div(css({ p: 4 }));
 const OtherCoolThing = styled.div(css({ color: 'primary', p: 4 }));
 ```
 
-`variant` and `states` extend the same idea to whole sets of styles — see [Compose and variants](/reference/system-props/compose-and-variants/) for the full API.
+`variant` and `states` extend the same idea to whole sets of styles — see [Compose and variants](/foundations/system-props/compose-and-variants/) for the full API.
 
 ## Reach for system props first
 
-[System props](/reference/system-props/) exist so writing custom, one-off styles is rarely necessary. They come with type-safe access to the right token scale for the context you're in, and a [responsive syntax](/reference/system-props/responsive-properties/) shared across every prop:
+[System props](/foundations/system-props/) exist so writing custom, one-off styles is rarely necessary. They come with type-safe access to the right token scale for the context you're in, and a [responsive syntax](/foundations/system-props/responsive-properties/) shared across every prop:
 
 ```tsx
 import { Box } from '@codecademy/gamut';
@@ -34,7 +34,7 @@ const MyContainer = ({ children }) => (
 );
 ```
 
-`eslint-plugin-gamut`'s [`no-inline-style`](/reference/eslint-rules/#gamutno-inline-style) and [`no-css-standalone`](/reference/eslint-rules/#gamutno-css-standalone) rules enforce this in CI — an inline `style` prop or a standalone stylesheet is almost always a sign a system prop or a `variant`/`states` call should have been used instead.
+`eslint-plugin-gamut`'s [`no-inline-style`](/foundations/eslint-rules/#gamutno-inline-style) and [`no-css-standalone`](/foundations/eslint-rules/#gamutno-css-standalone) rules enforce this in CI — an inline `style` prop or a standalone stylesheet is almost always a sign a system prop or a `variant`/`states` call should have been used instead.
 
 ## Avoid nested selectors
 

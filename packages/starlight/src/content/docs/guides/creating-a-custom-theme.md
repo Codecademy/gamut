@@ -27,7 +27,7 @@ const myTheme = createTheme({
 
 ## 1. Start from `coreTheme`
 
-Extend `coreTheme` unless you're certain you have a full replacement for every token — see [Themes](/reference/themes/) for what Core already provides:
+Extend `coreTheme` unless you're certain you have a full replacement for every token — see [Themes](/foundations/themes/) for what Core already provides:
 
 ```tsx
 import { createTheme } from '@codecademy/variance';

@@ -15,5 +15,5 @@ Maintainers update the published kit directly in Figma, uploading or editing gui
 
 For generating code from Figma designs:
 
-- [Code Connect](/reference/tooling/figma/code-connect/)
-- [Figma MCP](/reference/tooling/figma/figma-mcp/)
+- [Code Connect](/foundations/tooling/figma/code-connect/)
+- [Figma MCP](/foundations/tooling/figma/figma-mcp/)

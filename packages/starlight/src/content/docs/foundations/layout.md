@@ -5,7 +5,7 @@ description: Target screen sizes, the grid system, and spacing scale for page la
 
 ## Screen sizes
 
-Six target viewports drive Gamut's design work. These aren't the same as the `breakpoints` token — see [Responsive properties](/reference/system-props/responsive-properties/) — they're the actual sizes designs are built for; breakpoints are the implementation detail that gets you there.
+Six target viewports drive Gamut's design work. These aren't the same as the `breakpoints` token — see [Responsive properties](/foundations/system-props/responsive-properties/) — they're the actual sizes designs are built for; breakpoints are the implementation detail that gets you there.
 
 | Alias | Dimensions | Max content width | Fold height |
 | ----- | ---------- | ----------------- | ----------- |
@@ -39,7 +39,7 @@ The example above spans 6 columns at the smallest screen size, and 4 columns fro
 
 ## Spacing
 
-Layout spacing is a practical subset of the full `spacing` scale — see [Design tokens](/reference/design-tokens/) for the complete scale.
+Layout spacing is a practical subset of the full `spacing` scale — see [Design tokens](/foundations/design-tokens/) for the complete scale.
 
 | Use                   | Sizes (px)     |
 | --------------------- | -------------- |

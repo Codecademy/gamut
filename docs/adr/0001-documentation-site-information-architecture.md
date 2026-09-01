@@ -30,13 +30,13 @@ Guides                 HOW-TO      — Theming your app, Building forms, Support
                                      mode, Writing UX copy, Migrating to logical
                                      properties, Contributing to Gamut
 Components             REFERENCE   — all components, grouped by function (see §2)
-Reference              REFERENCE   — design tokens, themes, system props, icon/asset
+Foundations             REFERENCE   — design tokens, themes, system props, icon/asset
                                      catalogs, ESLint rules, tooling
 Concepts               EXPLANATION — architecture of the system, theming model, color
                                      modes, brand, best practices, voice & tone, FAQs
 ```
 
-The "Meta" section is dissolved: its pages distribute into Getting started (Installation, Usage guide), Guides (Contributing), Reference (ESLint rules, Deep Controls), and Concepts (Brand, Best practices, FAQs). "Foundations" splits along the same line: token values and theme palettes are Reference; the rationale behind them is Concepts.
+The "Meta" section is dissolved: its pages distribute into Getting started (Installation, Usage guide), Guides (Contributing), Foundations (ESLint rules, Deep Controls), and Concepts (Brand, Best practices, FAQs). Storybook's `Foundations/` folder splits along the same line: token values and theme palettes move to the new Foundations section; the rationale behind them moves to Concepts.
 
 ### 2. Components are grouped by function, not by Atomic Design tier
 
@@ -116,9 +116,9 @@ If a component outgrows a single page (heavy guidelines plus a large API, e.g. G
 
 ### Positive
 
-- Readers navigate by need: newcomers land in Getting started, task-driven developers in Guides, fact-lookups in Components/Reference — without knowing Gamut's internal taxonomy.
+- Readers navigate by need: newcomers land in Getting started, task-driven developers in Guides, fact-lookups in Components/Foundations — without knowing Gamut's internal taxonomy.
 - Predictable component pages: a fixed section order and closed heading vocabulary make every page scannable the same way, and give doc authors an unambiguous checklist.
-- The migration is mostly mechanical: nearly every existing page has a destination in the new structure. Only two pages are net-new ("Build your first page" tutorial; "Architecture of the system" concept, largely extractable from existing Foundations prose).
+- The migration is mostly mechanical: nearly every existing page has a destination in the new structure. Only two pages are net-new ("Build your first page" tutorial; "Architecture of the system" concept, largely extractable from Storybook's existing `Foundations/` prose).
 - Cross-cutting guides (theming, forms, dark mode) finally have a home instead of being fragmented under component folders.
 - **Splitting reference out to Storybook shrinks the per-component migration to Usage/Anatomy/Patterns only** — the largest, most tedious part of each page (an exhaustive Variants grid, a Props table, a working Playground) is never re-authored; it's already correct in Storybook and stays there.
 - **One source of truth for reference material.** Variants, accessibility notes, and props are authored once, in the system built for that job (Storybook's addon-docs Controls and Canvas). Starlight and Storybook can't drift out of sync on prop tables because only one of them owns that content.

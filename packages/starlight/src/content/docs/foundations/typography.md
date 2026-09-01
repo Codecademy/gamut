@@ -3,7 +3,7 @@ title: Typography
 description: Type scale, line length, and readability guidelines for text.
 ---
 
-See [Design tokens](/reference/design-tokens/) for how to reach `fontFamily`, `fontSize`, `fontWeight`, and `lineHeight` in code. This page covers the design guidance around using them. Gamut uses "Title" to distinguish its visual sizing from semantic heading levels — a `title-md` value doesn't necessarily mean `h2`; see [Text](/components/typography/text/) for how the two compose.
+See [Design tokens](/foundations/design-tokens/) for how to reach `fontFamily`, `fontSize`, `fontWeight`, and `lineHeight` in code. This page covers the design guidance around using them. Gamut uses "Title" to distinguish its visual sizing from semantic heading levels — a `title-md` value doesn't necessarily mean `h2`; see [Text](/components/typography/text/) for how the two compose.
 
 For the full, live-rendered scale — every font family, size, weight, and line-height value with a rendered example — see [Foundations: Typography](https://gamut.codecademy.com/?path=/docs/foundations-typography--docs) in Storybook rather than a static copy here.
 

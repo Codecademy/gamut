@@ -60,4 +60,4 @@ Available only in the Gamut repo itself, never exported — read natively from [
 
 ## Design-to-code (Figma MCP)
 
-MCP-generated code is experimental — always validate and adapt it before shipping. See [Figma MCP](/reference/tooling/figma/figma-mcp/) for setup and prompting. [Code Connect](/reference/tooling/figma/code-connect/) improves MCP output when a design uses connected Gamut components.
+MCP-generated code is experimental — always validate and adapt it before shipping. See [Figma MCP](/foundations/tooling/figma/figma-mcp/) for setup and prompting. [Code Connect](/foundations/tooling/figma/code-connect/) improves MCP output when a design uses connected Gamut components.

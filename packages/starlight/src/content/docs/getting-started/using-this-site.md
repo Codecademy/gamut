@@ -12,7 +12,7 @@ This site is organized around what you're trying to do, not around Gamut's inter
 - **Getting started** — tutorials. Follow these in order if you're new to Gamut; they end with a working page.
 - **Guides** — how-to. Task-oriented recipes for things you're already trying to build: theming an app, building a form, supporting dark mode, migrating to logical properties, and similar.
 - **Components** — reference, grouped by what a component does (Actions, Containers, Inputs & forms, Navigation, Feedback, Status, Overlays, Data display, Typography, Media & assets, Utilities) rather than by Gamut's Atomic Design tier. If you know roughly what you need ("something to tell the user an action succeeded") but not its name, start with the category; use search if you already know the name.
-- **Reference** — everything else you look up rather than read start-to-finish: design tokens, themes, system props, icon and asset catalogs, ESLint rules, tooling.
+- **Foundations** — everything else you look up rather than read start-to-finish: design tokens, themes, system props, icon and asset catalogs, ESLint rules, tooling.
 - **Concepts** — explanation. Background on how and why the system is built the way it is: architecture, the theming model, color modes, brand, best practices, voice and tone, FAQs.
 
 If you're not sure which section has what you need, the search bar covers all of them at once.
