@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 
 import { Anchor } from '../../Anchor';
 import { Box, FlexBox, GridBox } from '../../Box';
-import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
+import { InteractiveSelectors } from '../../ButtonBase/ButtonBase';
 import { Shimmer } from '../../Loading/Shimmer';
 import { patternContainerBaseStyles } from '../../Popover/styles/pattern';
 import { Text } from '../../Typography';
@@ -24,14 +24,14 @@ export const PreviewTipAnchor = styled(Anchor)(
     variants: {
       anchor: {
         textDecorationStyle: 'dotted',
-        [ButtonSelectors.HOVER]: {
+        [InteractiveSelectors.HOVER]: {
           textDecoration: 'underline',
           textDecorationStyle: 'solid',
         },
       },
       avatar: {
         borderRadius: 'sm',
-        [ButtonSelectors.HOVER]: {
+        [InteractiveSelectors.HOVER]: {
           bg: 'background-hover',
         },
       },

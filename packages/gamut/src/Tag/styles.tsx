@@ -1,6 +1,6 @@
 import { css, states, theme, variant } from '@codecademy/gamut-styles';
 
-import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
+import { InteractiveSelectors, Selectors } from '../ButtonBase/ButtonBase';
 
 export const tagLabelFontSize = 14;
 export const tagLabelPadding = 8;
@@ -76,7 +76,7 @@ export const tagUsageVariants = variant({
       bg: 'background-current',
       border: 1,
       borderColor: 'border-secondary',
-      [ButtonSelectors.ACTIVE]: {
+      [InteractiveSelectors.ACTIVE]: {
         bg: 'secondary',
       },
     },
@@ -148,31 +148,31 @@ export const anchorVariants = variant({
       display: 'none',
     },
     color: 'text',
-    [ButtonSelectors.FOCUS_VISIBLE]: {
+    [InteractiveSelectors.FOCUS_VISIBLE]: {
       outline: 'none',
       border: 'none',
     },
-    [ButtonSelectors.FOCUS]: {
+    [InteractiveSelectors.FOCUS]: {
       textDecoration: 'none',
     },
-    [ButtonSelectors.HOVER]: {
+    [InteractiveSelectors.HOVER]: {
       bg: 'background-hover',
     },
-    [ButtonSelectors.DISABLED]: {
+    [InteractiveSelectors.DISABLED]: {
       borderColor: 'border-disabled',
       bg: 'background-current',
     },
   },
   variants: {
     navigation: {
-      [ButtonSelectors.ACTIVE]: {
+      [InteractiveSelectors.ACTIVE]: {
         color: 'background',
         bg: 'secondary',
         textDecoration: 'none',
       },
     },
     suggestion: {
-      [ButtonSelectors.ACTIVE]: {
+      [InteractiveSelectors.ACTIVE]: {
         bg: 'primary',
         color: 'background',
         textDecoration: 'none',
@@ -187,7 +187,7 @@ export const dismissButtonOverrides = {
     display: 'none',
   },
   // This removes a black solid outline on focus
-  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+  [InteractiveSelectors.OUTLINE_FOCUS_VISIBLE]: {
     opacity: 0,
   },
 };
@@ -209,7 +209,7 @@ export const dismissButtonStyling = css({
     color: 'background',
     bg: 'secondary-hover',
   },
-  [ButtonSelectors.DISABLED]: {
+  [InteractiveSelectors.DISABLED]: {
     bg: 'background-disabled',
     color: 'text-disabled',
   },
