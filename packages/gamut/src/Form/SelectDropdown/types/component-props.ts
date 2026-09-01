@@ -2,6 +2,7 @@ import { Ref, SelectHTMLAttributes } from 'react';
 import { Options as OptionsType, Props as NamedProps } from 'react-select';
 
 import { SelectComponentProps } from '../../inputs/Select';
+import { SelectDropdownTranslations } from '../core/translations';
 import {
   OptionStrict,
   SelectDropdownGroup,
@@ -118,6 +119,13 @@ export interface SelectDropdownCoreProps
   validationMessage?:
     | React.ReactNode
     | ((obj: { inputValue: string }) => React.ReactNode);
+  /**
+   * Custom translations for UI / microcopy strings (placeholder, "No options"
+   * text, creatable "Add" label, and remove/clear/focus accessibility strings).
+   * Provided keys are merged over the English defaults. Explicit `placeholder`
+   * and `formatCreateLabel` props take precedence over their translation keys.
+   */
+  translations?: Partial<SelectDropdownTranslations>;
 }
 
 /**

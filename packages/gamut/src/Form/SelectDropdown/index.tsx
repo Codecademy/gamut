@@ -1,3 +1,4 @@
+export type { SelectDropdownTranslations } from './core/translations';
 export type {
   OptionStrict,
   ExtendedOption,

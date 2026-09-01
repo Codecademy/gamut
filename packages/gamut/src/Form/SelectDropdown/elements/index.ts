@@ -7,7 +7,7 @@ export {
 } from './multi-value';
 
 export { DropdownButton } from './controls';
-export { onFocus } from '../core/accessibility';
+export { createOnFocus } from '../core/accessibility';
 
 export {
   SelectDropdownContext,

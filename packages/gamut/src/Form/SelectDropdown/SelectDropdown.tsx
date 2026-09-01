@@ -5,9 +5,10 @@ import { useId, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 import { StylesConfig } from 'react-select';
 
-import { onFocus } from './core/accessibility';
+import { createOnFocus } from './core/accessibility';
 import { getDefaultComponents } from './core/constants';
 import { getMemoizedStyles } from './core/styles';
+import { DEFAULT_SELECT_DROPDOWN_TRANSLATIONS } from './core/translations';
 import { resolveNoOptionsMessage } from './core/utils';
 import {
   formatGroupLabel,
@@ -74,7 +75,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   dropdownWidth,
   error,
-  formatCreateLabel = (inputValue: string) => `Add "${inputValue}"`,
+  formatCreateLabel,
   id,
   inputProps,
   inputWidth,
@@ -89,14 +90,19 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   onInputChange,
   onMenuClose,
   options,
-  placeholder = 'Select an option',
+  placeholder,
   shownOptionsLimit = 6,
   size,
+  translations,
   validationMessage,
   value,
   zIndex,
   ...rest
 }) => {
+  const mergedTranslations = useMemo(
+    () => ({ ...DEFAULT_SELECT_DROPDOWN_TRANSLATIONS, ...translations }),
+    [translations]
+  );
   // isSearchable is forced true when isCreatable is true (CreatableSelect requires a text input)
   const isSearchable = isCreatable || isSearchableProp;
   const rawInputId = useId();
@@ -114,7 +120,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     value: value as string | string[] | undefined,
   });
 
-  const noOptionsMessage = resolveNoOptionsMessage(validationMessage);
+  const noOptionsMessage = resolveNoOptionsMessage(
+    validationMessage,
+    mergedTranslations.noOptionsMessage
+  );
   const { noOptionsMessageComponent, announcement, clearAnnouncement } =
     useNoOptionsAnnouncement();
   const components = useMemo(
@@ -149,17 +158,22 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         setCurrentFocusedValue,
         removeAllButtonRef,
         selectInputRef,
+        translations: mergedTranslations,
       }}
     >
       <TypedReactSelect
         activated={activated}
         aria-live="assertive"
-        ariaLiveMessages={{ onFocus }}
+        ariaLiveMessages={{
+          onFocus: createOnFocus(mergedTranslations.focusedOptionAnnouncement),
+        }}
         components={components}
         createOptionPosition={createOptionPosition}
         dropdownWidth={dropdownWidth}
         error={Boolean(error)}
-        formatCreateLabel={formatCreateLabel}
+        formatCreateLabel={
+          formatCreateLabel ?? mergedTranslations.formatCreateLabel
+        }
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
@@ -178,7 +192,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         name={name}
         noOptionsMessage={noOptionsMessage}
         options={selectOptions}
-        placeholder={placeholder}
+        placeholder={placeholder ?? mergedTranslations.placeholder}
         selectRef={selectInputRef}
         shownOptionsLimit={shownOptionsLimit}
         size={size}

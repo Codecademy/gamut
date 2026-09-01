@@ -101,9 +101,11 @@ export const filterValueFromOptions = (
  * @returns New array with the specified values removed
  */
 export const resolveNoOptionsMessage = (
-  validationMessage: SelectDropdownProps['validationMessage']
-): ((obj: { inputValue: string }) => React.ReactNode) | undefined => {
-  if (validationMessage === undefined) return undefined;
+  validationMessage: SelectDropdownProps['validationMessage'],
+  noOptionsMessage: string
+): ((obj: { inputValue: string }) => React.ReactNode) => {
+  // Fall back to the translated default instead of letting react-select supply its own.
+  if (validationMessage === undefined) return () => noOptionsMessage;
   if (typeof validationMessage === 'function') {
     return validationMessage as (obj: {
       inputValue: string;

@@ -4,6 +4,7 @@ import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import { ControlledModeTable } from './controlledModeTable';
 import { CreatablePropsTable } from './creatablePropsTable';
+import { TranslationsTable } from './translationsTable';
 import * as SelectDropdownStories from './SelectDropdown.stories';
 
 export const parameters = {
@@ -208,6 +209,27 @@ Because the default behavior is to clear the input on blur, use `onInputChange` 
 ### Props
 
 <CreatablePropsTable />
+
+## Translations & i18n
+
+Pass a `translations` object to localize the component's built-in microcopy. Any keys you provide are merged over the English defaults, so you only need to supply the strings you want to change.
+
+<TranslationsTable />
+
+The explicit `placeholder` and `formatCreateLabel` props take precedence over their `translations` equivalents, and an explicit `validationMessage` still overrides `noOptionsMessage`.
+
+<Callout
+  text={
+    <>
+      Some screen-reader announcements come from the underlying{' '}
+      <code>react-select</code> library (results count, keyboard guidance, and
+      selection-change messages) and are not yet covered by{' '}
+      <code>translations</code>; they currently remain in English.
+    </>
+  }
+/>
+
+<Canvas of={SelectDropdownStories.Translations} />
 
 ## Custom input props
 

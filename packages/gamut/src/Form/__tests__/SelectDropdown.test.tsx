@@ -1124,4 +1124,128 @@ describe('SelectDropdown', () => {
       });
     });
   });
+
+  describe('Translations', () => {
+    it('renders the default placeholder when translations is omitted', () => {
+      const { view } = renderView();
+
+      expect(view.getByText('Select an option')).toBeInTheDocument();
+    });
+
+    it('renders a custom placeholder from translations', () => {
+      const { view } = renderView({
+        translations: { placeholder: 'Elige una opción' },
+      });
+
+      expect(view.getByText('Elige una opción')).toBeInTheDocument();
+    });
+
+    it('renders the default "No options" text when translations is omitted', async () => {
+      const { view } = renderView({ options: [] });
+
+      await openDropdown(view);
+
+      expect(view.getByText('No options')).toBeInTheDocument();
+    });
+
+    it('renders a custom noOptionsMessage from translations', async () => {
+      const { view } = renderView({
+        options: [],
+        translations: { noOptionsMessage: 'Sin opciones' },
+      });
+
+      await openDropdown(view);
+
+      expect(view.getByText('Sin opciones')).toBeInTheDocument();
+      expect(view.queryByText('No options')).not.toBeInTheDocument();
+    });
+
+    it('renders a custom creatable label from translations', async () => {
+      const { view } = renderView({
+        isCreatable: true,
+        translations: { formatCreateLabel: (v: string) => `Crear "${v}"` },
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      expect(view.getByText('Crear "purple"')).toBeInTheDocument();
+    });
+
+    it('uses default remove/clear-all aria-labels when translations is omitted', async () => {
+      const { view } = renderView({ multiple: true });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('red'));
+      });
+
+      expect(view.getByLabelText('Remove red')).toBeInTheDocument();
+      // react-select forces aria-hidden onto the clear-indicator, so query the
+      // clear-all button by its aria-label attribute rather than by role.
+      expect(view.getByLabelText('Remove all selected')).toBeInTheDocument();
+    });
+
+    it('applies custom remove/clear-all aria-labels from translations', async () => {
+      const { view } = renderView({
+        multiple: true,
+        translations: {
+          removeOptionLabel: (label: string) => `Quitar ${label}`,
+          clearAllLabel: 'Quitar todo',
+        },
+      });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('red'));
+      });
+
+      expect(view.getByLabelText('Quitar red')).toBeInTheDocument();
+      expect(view.getByLabelText('Quitar todo')).toBeInTheDocument();
+    });
+
+    it('merges partial translations with defaults', async () => {
+      const { view } = renderView({
+        options: [],
+        translations: { placeholder: 'Elige' },
+      });
+
+      // Overridden key.
+      expect(view.getByText('Elige')).toBeInTheDocument();
+
+      // Untouched key still uses the English default.
+      await openDropdown(view);
+      expect(view.getByText('No options')).toBeInTheDocument();
+    });
+
+    it('lets an explicit placeholder prop win over the translations value', () => {
+      const { view } = renderView({
+        placeholder: 'Explicit placeholder',
+        translations: { placeholder: 'Translated placeholder' },
+      });
+
+      expect(view.getByText('Explicit placeholder')).toBeInTheDocument();
+      expect(
+        view.queryByText('Translated placeholder')
+      ).not.toBeInTheDocument();
+    });
+
+    it('lets an explicit formatCreateLabel prop win over the translations value', async () => {
+      const { view } = renderView({
+        isCreatable: true,
+        formatCreateLabel: (v: string) => `Prop "${v}"`,
+        translations: {
+          formatCreateLabel: (v: string) => `Translated "${v}"`,
+        },
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      expect(view.getByText('Prop "purple"')).toBeInTheDocument();
+      expect(view.queryByText('Translated "purple"')).not.toBeInTheDocument();
+    });
+  });
 });
