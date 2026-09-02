@@ -123,7 +123,7 @@ const ShadowExample = styled.div(system.shadow);
 
 ## List
 
-List props adjust bullet styles, positioning, and custom marker images when a component renders as a `ul` or `ol`. For richer list features, see [List](/components/data-display/list--tables/list/list/).
+List props adjust bullet styles, positioning, and custom marker images when a component renders as a `ul` or `ol`. For richer list features, see [List](/components/data-display/list-and-tables/list/list/).
 
 ```tsx
 const ListExample = styled.div(system.list);

@@ -9,18 +9,18 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 
 ## Usage
 
-Use `DataList` for engaging with individual items one at a time — selecting them, or expanding a row to reveal more detail. It's built on [List](/components/data-display/list--tables/list/), restricted to `variant="default"` or `"card"`.
+Use `DataList` for engaging with individual items one at a time — selecting them, or expanding a row to reveal more detail. It's built on [List](/components/data-display/list-and-tables/list/), restricted to `variant="default"` or `"card"`.
 
 **Best practices:**
 
-- Use [DataTable](/components/data-display/list--tables/data-table/) instead if the point is comparing information across items rather than engaging with one at a time — `DataList` always disables horizontal scrolling (`scrollable`/`shadow` are forced off), so it doesn't suit many columns.
+- Use [DataTable](/components/data-display/list-and-tables/data-table/) instead if the point is comparing information across items rather than engaging with one at a time — `DataList` always disables horizontal scrolling (`scrollable`/`shadow` are forced off), so it doesn't suit many columns.
 - Omit `onRowSelect` to disable selection entirely, and omit `onRowExpand`/`expandedContent` to disable expansion. There's no separate `selectable` boolean — each capability is enabled purely by providing its handler.
-- `disableContainerQuery` opts out of the responsive column-stacking behavior — the same escape hatch as [List](/components/data-display/list--tables/list/list/#opting-out-of-container-query-stacking).
+- `disableContainerQuery` opts out of the responsive column-stacking behavior — the same escape hatch as [List](/components/data-display/list-and-tables/list/list/#opting-out-of-container-query-stacking).
 
 **When NOT to use:**
 
-- **Comparing many records with lots of columns** — use [DataTable](/components/data-display/list--tables/data-table/) instead; `DataList` can't scroll horizontally.
-- **Mixed column content or row-level controls beyond what DataList's columns support** — use [List](/components/data-display/list--tables/list/) directly instead.
+- **Comparing many records with lots of columns** — use [DataTable](/components/data-display/list-and-tables/data-table/) instead; `DataList` can't scroll horizontally.
+- **Mixed column content or row-level controls beyond what DataList's columns support** — use [List](/components/data-display/list-and-tables/list/) directly instead.
 
 ## Usage examples
 

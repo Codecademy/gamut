@@ -9,11 +9,11 @@ import StoryEmbed from '~/components/StoryEmbed.astro';
 
 ## Usage
 
-Use `TableHeader` for the header row of a [List](/components/data-display/list--tables/list/) rendered `as="table"`. It's always sticky, and reads `spacing`, `scrollable`, and `variant` from the parent `List` the same way `ListRow` does — it has no layout props of its own beyond standard `<tr>` attributes.
+Use `TableHeader` for the header row of a [List](/components/data-display/list-and-tables/list/) rendered `as="table"`. It's always sticky, and reads `spacing`, `scrollable`, and `variant` from the parent `List` the same way `ListRow` does — it has no layout props of its own beyond standard `<tr>` attributes.
 
 **Best practices:**
 
-- Place `ListCol` cells directly inside `TableHeader`, not wrapped in a `ListRow`, and mark each one `columnHeader` — see [ListCol](/components/data-display/list--tables/list/list-col/#composing-a-table-header).
+- Place `ListCol` cells directly inside `TableHeader`, not wrapped in a `ListRow`, and mark each one `columnHeader` — see [ListCol](/components/data-display/list-and-tables/list/list-col/#composing-a-table-header).
 - Add `aria-sort` to a header cell when its column is sortable.
 
 **When NOT to use:**

@@ -1,0 +1,12 @@
+---
+title: List & Tables
+description: A shared layout primitive, and the two data-driven components built on it.
+sidebar:
+  label: Overview
+---
+
+- [List](/components/data-display/list-and-tables/list/) — the general-purpose layout primitive, for mixed column content or row-level controls the other two don't expose. Composed from [ListRow](/components/data-display/list-and-tables/list/list-row/), [ListCol](/components/data-display/list-and-tables/list/list-col/), and [TableHeader](/components/data-display/list-and-tables/list/table-header/).
+- [DataTable](/components/data-display/list-and-tables/data-table/) — `List` locked to a sortable, filterable table, for bulk comparison across rows.
+- [DataList](/components/data-display/list-and-tables/data-list/) — `List` restricted to selectable, expandable items, for engaging with one item at a time.
+
+`DataTable` and `DataList` are both built from `List`'s own `ListRow`/`ListCol`/`TableHeader` components internally, not just visually similar to them.
