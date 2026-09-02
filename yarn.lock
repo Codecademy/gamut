@@ -1604,7 +1604,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:73.4.0"
+    "@codecademy/gamut": "npm:73.5.0"
     "@codecademy/gamut-icons": "npm:10.2.0"
     "@codecademy/gamut-illustrations": "npm:1.1.0"
     "@codecademy/gamut-patterns": "npm:1.1.0"
@@ -1661,7 +1661,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:73.4.0, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:73.5.0, @codecademy/gamut@workspace:*, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:

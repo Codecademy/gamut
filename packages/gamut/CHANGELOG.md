@@ -1,3 +1,14 @@
+## 73.5.0 (2026-09-02)
+
+### 🚀 Features
+
+- Updates Popover to always render with the outlined border style and deprecates the now-no-op outline prop ([#3427](https://github.com/Codecademy/gamut/pull/3427))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
 ## 73.4.0 (2026-09-01)
 
 ### 🚀 Features
