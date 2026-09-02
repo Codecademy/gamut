@@ -1,19 +1,6 @@
 import * as React from 'react';
 
-/**
- * Shape of the focused option passed to `focusedOptionAnnouncement`.
- * Mirrors the fields react-select exposes on the focused option.
- */
-export interface FocusedOptionAnnouncementContext {
-  /** The display text for the focused option */
-  label: string;
-  /** Optional subtitle text of the focused option */
-  subtitle?: string;
-  /** Optional right-aligned label of the focused option */
-  rightLabel?: string;
-  /** Whether the focused option is disabled */
-  disabled?: boolean;
-}
+import { ExtendedOption } from '../types/options';
 
 /**
  * Message shown inside the menu when no option matches. Either static content
@@ -55,9 +42,7 @@ export interface SelectDropdownTranslations {
    * Builds the screen-reader announcement made when an option is focused.
    * Default describes the option's label, subtitle, right label, and disabled state.
    */
-  focusedOptionAnnouncement: (
-    option: FocusedOptionAnnouncementContext
-  ) => string;
+  focusedOptionAnnouncement: (option: ExtendedOption) => string;
 }
 
 /**
@@ -72,7 +57,12 @@ export const DEFAULT_SELECT_DROPDOWN_TRANSLATIONS: SelectDropdownTranslations =
     removeOptionLabel: (label: string) => `Remove ${label}`,
     clearAllLabel: 'Remove all selected',
     focusedOptionAnnouncement: ({ label, subtitle, rightLabel, disabled }) =>
-      `You are currently focused on option ${label}${
-        subtitle ? `, ${subtitle}` : ''
-      } ${rightLabel ? `, ${rightLabel}` : ''}${disabled ? ', disabled' : ''}`,
+      [
+        `You are currently focused on option ${label}`,
+        subtitle,
+        rightLabel,
+        disabled && 'disabled',
+      ]
+        .filter(Boolean)
+        .join(', '),
   };

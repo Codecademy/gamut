@@ -5,7 +5,6 @@ import { useId, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 import { StylesConfig } from 'react-select';
 
-import { createOnFocus } from './core/accessibility';
 import { getDefaultComponents } from './core/constants';
 import { getMemoizedStyles } from './core/styles';
 import { DEFAULT_SELECT_DROPDOWN_TRANSLATIONS } from './core/translations';
@@ -165,7 +164,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         activated={activated}
         aria-live="assertive"
         ariaLiveMessages={{
-          onFocus: createOnFocus(mergedTranslations.focusedOptionAnnouncement),
+          onFocus: ({ focused }) =>
+            mergedTranslations.focusedOptionAnnouncement(focused),
         }}
         components={components}
         createOptionPosition={createOptionPosition}
