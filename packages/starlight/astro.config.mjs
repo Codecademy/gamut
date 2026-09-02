@@ -1,7 +1,6 @@
 import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
-import liveCode from 'astro-live-code';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 
 // Sidebar structure follows docs/adr/0001-documentation-site-information-architecture.md.
@@ -25,7 +24,6 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    liveCode(),
     starlight({
       title: 'Gamut',
       description: "Codecademy's design system for the web",
