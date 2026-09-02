@@ -93,29 +93,6 @@ export const filterValueFromOptions = (
   );
 };
 
-/** Normalizes a `ValidationMessage` (static content or a function) to react-select's callback shape. */
-const asNoOptionsCallback =
-  (message: ValidationMessage) =>
-  (obj: { inputValue: string }): React.ReactNode =>
-    typeof message === 'function' ? message(obj) : message;
-
-/**
- * Resolves the menu's empty-state text to react-select's `noOptionsMessage`
- * callback. The deprecated top-level `validationMessage` prop wins; otherwise
- * it falls back to the translated `translations.validationMessage` default
- * (rather than letting react-select supply its own English string). Both may
- * be static content or a function of the current input value.
- */
-export const resolveNoOptionsMessage = (
-  validationMessage: SelectDropdownProps['validationMessage'],
-  translationsValidationMessage: ValidationMessage
-): ((obj: { inputValue: string }) => React.ReactNode) =>
-  asNoOptionsCallback(
-    validationMessage === undefined
-      ? translationsValidationMessage
-      : validationMessage
-  );
-
 /**
  * Removes a value from the selected options array.
  * Handles both single values and arrays of values to remove.
@@ -124,6 +101,20 @@ export const resolveNoOptionsMessage = (
  * @param value - The value or values to remove
  * @returns New array with the specified values removed
  */
+export const resolveNoOptionsMessage = (
+  validationMessage: SelectDropdownProps['validationMessage'],
+  translationsValidationMessage: ValidationMessage
+): ((obj: { inputValue: string }) => React.ReactNode) => {
+  const message =
+    validationMessage === undefined
+      ? translationsValidationMessage
+      : validationMessage;
+  if (typeof message === 'function') {
+    return message as (obj: { inputValue: string }) => React.ReactNode;
+  }
+  return () => message;
+};
+
 export const removeValueFromSelectedOptions = (
   selectedOptions: ExtendedOption[] | SelectOptionBase[],
   value: SelectDropdownProps['value']
