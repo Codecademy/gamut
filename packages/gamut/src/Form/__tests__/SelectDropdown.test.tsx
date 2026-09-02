@@ -1147,7 +1147,9 @@ describe('SelectDropdown', () => {
 
       await openDropdown(view);
 
-      view.getByText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string);
+      view.getByText(
+        DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string
+      );
     });
 
     it('renders a custom validationMessage from translations', async () => {
@@ -1246,7 +1248,9 @@ describe('SelectDropdown', () => {
 
       // Untouched key still uses the English default.
       await openDropdown(view);
-      view.getByText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string);
+      view.getByText(
+        DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string
+      );
     });
 
     it('lets an explicit placeholder prop win over the translations value', () => {
