@@ -2,7 +2,10 @@ import { Ref, SelectHTMLAttributes } from 'react';
 import { Options as OptionsType, Props as NamedProps } from 'react-select';
 
 import { SelectComponentProps } from '../../inputs/Select';
-import { SelectDropdownTranslations } from '../core/translations';
+import {
+  SelectDropdownTranslations,
+  ValidationMessage,
+} from '../core/translations';
 import {
   OptionStrict,
   SelectDropdownGroup,
@@ -71,7 +74,10 @@ export interface SelectDropdownCoreProps
   /** Placeholder text shown when no option is selected.
    * Placeholder text is not recommended for accessibility. If you need to use placeholder text,
    * please make sure the placeholder text doesn't add any new information to the input.
-   * I.e - if the placeholder text describes an action you'd like the user to take, please use a label instead. */
+   * I.e - if the placeholder text describes an action you'd like the user to take, please use a label instead.
+   *
+   * @deprecated Use `translations.placeholder` instead.
+   */
   placeholder?: string;
   /** Array of options or option groups to display in the dropdown */
   options?: SelectDropdownOptions | SelectDropdownGroup[];
@@ -90,6 +96,8 @@ export interface SelectDropdownCoreProps
   /**
    * Customises the label shown in the "Add" row.
    * Defaults to: (inputValue) => `Add "${inputValue}"`.
+   *
+   * @deprecated Use `translations.formatCreateLabel` instead.
    */
   formatCreateLabel?: (inputValue: string) => React.ReactNode;
   /**
@@ -115,10 +123,11 @@ export interface SelectDropdownCoreProps
    * searchable SelectDropdown can use it. Accepts a `ReactNode`, or a function
    * receiving `{ inputValue }` for live, input-specific validation/error copy
    * (e.g. "No results for '{inputValue}'").
+   *
+   * @deprecated Use `translations.validationMessage` instead. When both are set
+   * this prop takes precedence.
    */
-  validationMessage?:
-    | React.ReactNode
-    | ((obj: { inputValue: string }) => React.ReactNode);
+  validationMessage?: ValidationMessage;
   /**
    * Custom translations for UI / microcopy strings (placeholder, "No options"
    * text, creatable "Add" label, and remove/clear/focus accessibility strings).

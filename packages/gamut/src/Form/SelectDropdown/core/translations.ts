@@ -16,6 +16,14 @@ export interface FocusedOptionAnnouncementContext {
 }
 
 /**
+ * Message shown inside the menu when no option matches. Either static content
+ * or a function of the current input value.
+ */
+export type ValidationMessage =
+  | React.ReactNode
+  | ((obj: { inputValue: string }) => React.ReactNode);
+
+/**
  * Custom translations for SelectDropdown's UI / microcopy strings.
  * Pass a partial object via the `translations` prop; provided keys are merged
  * over these English defaults (see `DEFAULT_SELECT_DROPDOWN_TRANSLATIONS`).
@@ -24,10 +32,13 @@ export interface SelectDropdownTranslations {
   /** Placeholder text shown when no option is selected (default: "Select an option"). */
   placeholder: string;
   /**
-   * Text shown inside the menu when no option matches the current input
-   * (default: "No options"). Overridden by an explicit `validationMessage` prop.
+   * Content shown inside the menu when no option matches the current input
+   * (default: "No options"). Accepts a `ReactNode`, or a function receiving
+   * `{ inputValue }` for input-specific copy (e.g. a localized
+   * "No results for '{inputValue}'"). Overridden by an explicit (deprecated)
+   * top-level `validationMessage` prop.
    */
-  noOptionsMessage: string;
+  validationMessage: ValidationMessage;
   /**
    * Builds the label for the creatable "Add" row.
    * Default: `(inputValue) => `Add "${inputValue}"``.
@@ -56,7 +67,7 @@ export interface SelectDropdownTranslations {
 export const DEFAULT_SELECT_DROPDOWN_TRANSLATIONS: SelectDropdownTranslations =
   {
     placeholder: 'Select an option',
-    noOptionsMessage: 'No options',
+    validationMessage: 'No options',
     formatCreateLabel: (inputValue: string) => `Add "${inputValue}"`,
     removeOptionLabel: (label: string) => `Remove ${label}`,
     clearAllLabel: 'Remove all selected',

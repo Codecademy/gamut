@@ -32,9 +32,9 @@ const translationRows = [
     defaultValue: <Code>Select an option</Code>,
   },
   {
-    id: 'noOptionsMessage',
-    translationKey: 'noOptionsMessage',
-    type: 'string',
+    id: 'validationMessage',
+    translationKey: 'validationMessage',
+    type: 'ReactNode | (({ inputValue }) => ReactNode)',
     defaultValue: <Code>No options</Code>,
   },
   {

@@ -122,7 +122,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const noOptionsMessage = resolveNoOptionsMessage(
     validationMessage,
-    mergedTranslations.noOptionsMessage
+    mergedTranslations.validationMessage
   );
   const { noOptionsMessageComponent, announcement, clearAnnouncement } =
     useNoOptionsAnnouncement();

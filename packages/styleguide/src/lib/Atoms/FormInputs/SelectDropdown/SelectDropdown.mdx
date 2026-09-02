@@ -200,7 +200,7 @@ Pass `value` as `string[]` and update it in `onChange` on every change, includin
 
 ### Validation
 
-Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `validationMessage` to replace the default "No options" text with contextual feedback, and mirror the same message in `FormGroup`'s `error` prop so it's surfaced below the field.
+Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `translations.validationMessage` to replace the default "No options" text with contextual feedback (the top-level `validationMessage` prop is deprecated but still works), and mirror the same message in `FormGroup`'s `error` prop so it's surfaced below the field.
 
 Because the default behavior is to clear the input on blur, use `onInputChange` to persist validation state: validate on `input-change`, and re-validate from the last typed value on `input-blur` so the `FormGroup` error isn't lost when the input clears.
 
@@ -216,7 +216,7 @@ Pass a `translations` object to localize the component's built-in microcopy. Any
 
 <TranslationsTable />
 
-The explicit `placeholder` and `formatCreateLabel` props take precedence over their `translations` equivalents, and an explicit `validationMessage` still overrides `noOptionsMessage`.
+The top-level `placeholder`, `formatCreateLabel`, and `validationMessage` props are **deprecated** in favor of their `translations` equivalents. They still work and take precedence when set, but prefer `translations` for new code.
 
 <Callout
   text={

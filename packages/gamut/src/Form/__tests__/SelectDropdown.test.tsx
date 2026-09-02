@@ -1148,16 +1148,36 @@ describe('SelectDropdown', () => {
       expect(view.getByText('No options')).toBeInTheDocument();
     });
 
-    it('renders a custom noOptionsMessage from translations', async () => {
+    it('renders a custom validationMessage from translations', async () => {
       const { view } = renderView({
         options: [],
-        translations: { noOptionsMessage: 'Sin opciones' },
+        translations: { validationMessage: 'Sin opciones' },
       });
 
       await openDropdown(view);
 
       expect(view.getByText('Sin opciones')).toBeInTheDocument();
       expect(view.queryByText('No options')).not.toBeInTheDocument();
+    });
+
+    it('supports a function validationMessage that receives the current input', async () => {
+      const { view } = renderView({
+        isSearchable: true,
+        options: selectOptions,
+        translations: {
+          validationMessage: ({ inputValue }: { inputValue: string }) =>
+            `Sin resultados para "${inputValue}"`,
+        },
+      });
+
+      await openDropdown(view);
+      act(() => {
+        fireEvent.change(view.getByRole('combobox'), {
+          target: { value: 'zzz' },
+        });
+      });
+
+      expect(view.getByText('Sin resultados para "zzz"')).toBeInTheDocument();
     });
 
     it('renders a custom creatable label from translations', async () => {
