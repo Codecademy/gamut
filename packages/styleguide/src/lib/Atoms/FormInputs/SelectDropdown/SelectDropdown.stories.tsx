@@ -1379,6 +1379,27 @@ export const CustomInputProps: Story = {
   ),
 };
 
+export const Translations: Story = {
+  args: {
+    name: 'translations-dropdown',
+    multiple: true,
+    isCreatable: true,
+    options: ['Manzana', 'Plátano', 'Cereza'],
+    translations: {
+      placeholder: 'Elige una opción',
+      validationMessage: 'Sin opciones',
+      formatCreateLabel: (inputValue) => `Añadir "${inputValue}"`,
+      removeOptionLabel: (label) => `Quitar ${label}`,
+      clearAllLabel: 'Quitar todo',
+    },
+  },
+  render: (args) => (
+    <Box height="18rem">
+      <SelectDropdown {...args} />
+    </Box>
+  ),
+};
+
 export const Default: Story = {
   args: {},
   render: (args) => (
