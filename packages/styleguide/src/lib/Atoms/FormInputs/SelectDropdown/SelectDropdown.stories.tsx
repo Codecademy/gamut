@@ -1387,7 +1387,7 @@ export const Translations: Story = {
     options: ['Manzana', 'Plátano', 'Cereza'],
     translations: {
       placeholder: 'Elige una opción',
-      noOptionsMessage: 'Sin opciones',
+      validationMessage: 'Sin opciones',
       formatCreateLabel: (inputValue) => `Añadir "${inputValue}"`,
       removeOptionLabel: (label) => `Quitar ${label}`,
       clearAllLabel: 'Quitar todo',
