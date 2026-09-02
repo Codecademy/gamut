@@ -3,6 +3,7 @@ import { createTheme } from '@codecademy/variance';
 import {
   borderRadii,
   containerQueries,
+  coreElevation,
   corePalette,
   elements,
   fontFamily,
@@ -142,6 +143,7 @@ export const coreTheme = createTheme({
     1: `1px solid ${colors['border-primary']}`,
     2: `2px solid ${colors['border-primary']}`,
   }))
+  .addScale('elevation', coreElevation)
   .createScaleVariables('elements')
   .createScaleVariables('zIndexes')
   .addName('core')

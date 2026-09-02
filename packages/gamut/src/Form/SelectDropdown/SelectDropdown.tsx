@@ -18,7 +18,7 @@ import {
 import { useNoOptionsAnnouncement } from './hooks/useNoOptionsAnnouncement';
 import { useSelectHandlers } from './hooks/useSelectHandlers';
 import { useSelectOptions } from './hooks/useSelectOptions';
-import { SelectDropdownProps } from './types';
+import { OptionStrict, SelectDropdownProps } from './types';
 
 /** Announces the custom `validationMessage` menu text - see `useNoOptionsAnnouncement`. */
 const NoOptionsLiveRegion = styled.div(screenReaderOnly);
@@ -169,7 +169,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isCreatable={isCreatable}
         isDisabled={disabled}
         isMulti={multiple}
-        isOptionDisabled={(option) => option.disabled}
+        isOptionDisabled={(option: OptionStrict & { disabled?: boolean }) =>
+          option.disabled ?? false
+        }
         isSearchable={isSearchable}
         isValidNewOption={isValidNewOption}
         menuAlignment={menuAlignment}

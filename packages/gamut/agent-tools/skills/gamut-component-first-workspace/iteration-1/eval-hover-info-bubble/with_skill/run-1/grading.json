@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Uses InfoTip or ToolTip from @codecademy/gamut rather than a custom hover popup",
+      "passed": true,
+      "evidence": "import { ToolTip } from '@codecademy/gamut'; wraps the trigger in <ToolTip>."
+    },
+    {
+      "text": "Does not manually wire onMouseEnter/onMouseLeave plus a custom absolutely-positioned div",
+      "passed": true,
+      "evidence": "No mouse event handlers; ToolTip owns hover/focus reveal."
+    },
+    {
+      "text": "Does not reimplement focus-triggered accessibility by hand",
+      "passed": true,
+      "evidence": "role/aria wiring for the tip body itself comes from ToolTip; only the trigger's own aria-label is set explicitly."
+    },
+    {
+      "text": "Accessible name/description wiring follows the documented InfoTip/ToolTip pattern",
+      "passed": true,
+      "evidence": "Documents id -> aria-describedby reuse pattern; aria-label on the trigger."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Real TypeScript errors present (caught via IDE diagnostics, not the pre-registered assertions): (1) borderRadius: 'circle' is used twice on the hand-built HintTrigger -- not a valid token (the real scale is none/sm/md/lg/xl/full); (2) spreading {...tipProps} onto ToolTip after an explicit id/info causes a placement type mismatch (Omit<ToolTipProps,...> loosens 'placement' to optional, but ToolTip requires placement:'floating'); (3) passing type=\"button\" to the styled(Box) HintTrigger via as=\"button\" doesn't retype it to accept a native button 'type' attribute, so this also fails to typecheck. None of these affect the component-reuse assertions this eval targets, but the component likely does not compile as written.",
+      "Also structurally more complex than necessary: builds a custom styled(Box) trigger with hand-rolled focus-ring pseudo-elements, rather than reusing IconButton (which already provides an accessible icon-only trigger + built-in tip/tipProps wiring) the way the without_skill run for this same eval did. The skill's decision table does point at InfoTip/ToolTip generically but doesn't call out IconButton's tip prop as the more direct route for an icon-only trigger specifically -- worth adding."
+    ],
+    "workarounds": []
+  }
+}

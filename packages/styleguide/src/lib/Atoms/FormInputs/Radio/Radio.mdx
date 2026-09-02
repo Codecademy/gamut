@@ -26,13 +26,45 @@ export const parameters = {
 
 ## Usage
 
-Use Radio to handle single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
+Radio allows single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
 
-## Radio Group
-
-`RadioGroup` is a helper element for grouping multiple `Radio` components semantically.
+Our Radios are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and `onChange`. RadioGroup forwards `name` and `onChange` to every Radio so they are semantically linked and mutually exclusive. For example:
 
 <Canvas of={RadioStories.RadioGroupComponent} />
+
+```tsx
+import { Radio, RadioGroup } from '@codecademy/gamut';
+import React, { ChangeEvent, useState } from 'react';
+
+const RadioGroupComponent = () => {
+  const [selected, setSelected] = useState('option-1');
+
+  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelected(event.target.value);
+  };
+
+  return (
+    <RadioGroup
+      htmlForPrefix="example-radio"
+      name="example-radio"
+      onChange={changeHandler}
+    >
+      <Radio
+        checked={selected === 'option-1'}
+        label="Option 1"
+        value="option-1"
+      />
+      <Radio
+        checked={selected === 'option-2'}
+        label="Option 2"
+        value="option-2"
+      />
+    </RadioGroup>
+  );
+};
+```
+
+RadioGroup can also be used within ConnectedForm via <LinkTo id="Organisms/ConnectedForm/ConnectedFormInputs">`ConnectedRadioGroupInput`</LinkTo> and GridForm via <LinkTo id="Organisms/GridForm/Fields">`GridFormRadioGroupInput`</LinkTo>, which wire up the checked value and `onChange` for you.
 
 ## Input states
 

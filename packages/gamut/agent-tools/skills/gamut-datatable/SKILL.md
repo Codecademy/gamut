@@ -9,7 +9,7 @@ Structured, query-capable table for bulk data analysis and comparison. Sorting, 
 
 Source: `@codecademy/gamut` — `packages/gamut/src/DataList/DataTable.tsx`
 
-See also: [`gamut-datalist`](../gamut-datalist/SKILL.md) — item-focused list with expansion and selection. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction. [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — dark/light mode with `Background`.
+See also: [`gamut-datalist`](../gamut-datalist/SKILL.md) — item-focused list with expansion and selection. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction. [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — dark/light mode with `Background`. [`gamut-z-index`](../gamut-z-index/SKILL.md) — why the row-menu-opens-Modal pattern below needs `inline` to work.
 
 Storybook: [Organisms / Lists & Tables / DataTable](https://gamut.codecademy.com/?path=/docs-organisms-lists-tables-datatable--docs)
 

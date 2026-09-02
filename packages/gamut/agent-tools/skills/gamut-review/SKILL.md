@@ -1,6 +1,6 @@
 ---
 name: gamut-review
-description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, hardcoded colors, raw z-index values, and test setup, with pointers to remediation skills.
+description: Use this skill when auditing existing code for Gamut usage and you need a consolidated report — checks dependencies, setup, import patterns, styled() wrapping that bypasses system props, hardcoded colors, bespoke component duplication, and test setup, with pointers to remediation skills.
 ---
 
 # Gamut Review
@@ -11,7 +11,7 @@ When `DESIGN.md` is present at the audit root, use it as the authoritative refer
 
 Run Check 0 first, then Checks 1–6, then print a single consolidated report using the format at the end of this file.
 
-Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-zindex`](../gamut-zindex/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md)
+Remediation skills: [`gamut-theming`](../gamut-theming/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md) · [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-typography`](../gamut-typography/SKILL.md) · [`gamut-testing`](../gamut-testing/SKILL.md) · [`gamut-z-index`](../gamut-z-index/SKILL.md) · [`gamut-component-first`](../gamut-component-first/SKILL.md)
 
 ---
 
@@ -73,9 +73,9 @@ Report each violation as `file:line`.
 
 ---
 
-## Check 3b — SCSS/CSS module imports and className on Gamut components
+## Check 3b — SCSS/CSS module imports, className, and inline styles on Gamut components
 
-Gamut components are styled via the variance system (system props, `css()`, `variant()`, `states()` from `@codecademy/gamut-styles`). Importing SCSS/CSS modules and passing `className` to Gamut components bypasses this system entirely, breaks ColorMode token propagation, and prevents system props from composing correctly.
+Gamut components are styled via the variance system (system props, `css()`, `variant()`, `states()` from `@codecademy/gamut-styles`). Importing SCSS/CSS modules, passing `className`, and passing an inline `style` prop to Gamut components all bypass this system, break ColorMode token propagation, and prevent system props from composing correctly.
 
 **Step 1 — SCSS/CSS module imports**
 
@@ -112,7 +112,29 @@ Each match is an error. Report as `file:line  <ComponentName className={...}>`.
 
 Severity note: `className` is not always forbidden — some Gamut components accept it for integration with third-party tools (e.g. passing a class to an external drag-and-drop library). Downgrade to ⚠ warning only when the usage is clearly an integration seam, not styling.
 
-Remediation: replace SCSS module rules with system props directly on the Gamut component — use semantic ColorMode tokens as values (`color="text"`, `bg="background"`, `borderColor="border-primary"`, etc.) rather than hardcoded hex or palette names; use `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` (with `styled` from `@emotion/styled`) for styles not expressible as system props; delete the SCSS file when all rules are migrated.
+**Step 3 — inline `style` prop**
+
+Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for an inline `style` prop on any JSX element, and specifically on the known Gamut component names from Step 2:
+
+```
+style=\{\{
+```
+
+and
+
+```
+<(Box|FlexBox|Column|LayoutGrid|GridBox|Card|Text|Anchor|FillButton|StrokeButton|TextButton|CTAButton|IconButton|Toggle|List|ListRow|ListCol|Background|Disclosure)\b[^>]*\bstyle=\{
+```
+
+Skip `node_modules`, `dist`. Each match is an error — an inline `style` object silently bypasses ColorMode and the variance system exactly like `className` does, and its values are almost always hardcoded hex or pixel literals rather than tokens.
+
+Before reporting a match, check the matched line and the line immediately above it for an `eslint-disable` / `eslint-disable-next-line` comment referencing a style-related rule (e.g. `react/forbid-component-props`, `react/forbid-dom-props`, or any bare `eslint-disable(-next-line)` directly above the match). If found, still report the match but annotate it `(eslint-disabled)` and downgrade to ⚠ warning — someone made a deliberate, reviewed exception, but the suppression may be stale or broader than intended, so surface it rather than silently skip it.
+
+Report as `file:line  <ComponentName style={{...}}>` (or the bare JSX tag when not a known Gamut component).
+
+Severity note: like `className`, downgrade to ⚠ warning only for a clear third-party integration seam (e.g. a style object required by an external widget's API) — not for layout or color values that a Gamut component or system prop could express.
+
+Remediation: replace SCSS module rules and inline `style` objects with system props directly on the Gamut component — use semantic ColorMode tokens as values (`color="text"`, `bg="background"`, `borderColor="border-primary"`, etc.) rather than hardcoded hex, pixel literals, or inline objects; use `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` (with `styled` from `@emotion/styled`) for styles not expressible as system props; delete the SCSS file when all rules are migrated.
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) · [`gamut-color-mode`](../gamut-color-mode/SKILL.md)
 
@@ -172,6 +194,82 @@ Replace the parent's nested selector rule with one of the above and remove the s
 _Gamut component selectors_ — pass system props directly to the component (`alignSelf`, `mt`, etc.) rather than targeting it from a parent wrapper. Where dynamic behavior spans multiple children, prefer `css()` with `variant()` or `states()` from `@codecademy/gamut-styles` keyed to data attributes or boolean props on the parent.
 
 Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
+
+---
+
+## Check 3d — `styled(GamutComponent)` bypassing system props
+
+Wrapping an already-Gamut component in `styled()` and writing raw CSS (a tagged template or plain object, not `css()`/`variant()`/`states()`) is the same bypass as `className`/inline `style` on a Gamut component wearing a different hat — none of it gets ColorMode token resolution, responsive-prop scaling, or the variance pipeline, and it duplicates an API the wrapped component already exposes as props.
+
+**Step 1 — scope to files that already import from `@codecademy/gamut`**
+
+Same technique as Check 3c Step 2 (enumerating every component name by hand is brittle and misses new additions). Find files containing:
+
+```
+from '@codecademy/gamut'
+```
+
+**Step 2 — grep those files for `styled(PascalCaseName)` not wrapped in `css()`/`variant()`/`states()`**
+
+Two patterns, both violations:
+
+```
+styled\([A-Z][A-Za-z]+\)`
+```
+
+```
+styled\([A-Z][A-Za-z]+\)\(\s*\{
+```
+
+The first catches the tagged-template form (`` styled(Box)`display: flex;` ``); the second catches the plain-object function-call form (`styled(Box)({ display: 'flex' })`). `styled(Box)(css({...}))`, `styled(Box)(variant({...}))`, and `styled(Box)(states({...}))` do **not** match either pattern — the character right after the opening `(` is a letter, not a backtick or `{`. That's the compliant form; don't flag it.
+
+Confirm the matched name is actually the Gamut import in that file (not an unrelated same-named local component) before reporting.
+
+**Step 3 — classify each match**
+
+Read the properties inside the flagged block:
+
+- **Every property has a direct system-prop equivalent** (layout/flex/space/color/border/positioning/typography — see [`gamut-system-props`](../gamut-system-props/SKILL.md) prop groups) → ✗ error. Remediation: delete the `styled()` wrapper; pass the same values as props directly on the JSX element. Flag `display: 'flex'`/`display:flex` specifically — recommend `FlexBox` instead of `Box` + a `display` prop. Note that `background` (unlike `bg`) has no token scale and takes any CSS value as-is — a gradient string is already valid as a plain `background` prop and does **not** by itself justify a `styled()` wrapper.
+- **Something in the block isn't expressible as a prop** (`background-clip`, `background-blend-mode`, a variant that should branch on a prop, pseudo-selectors) → ⚠ warning. Remediation: keep `styled(ComponentName)`, but move the object into `css()`, `variant()`, or `states()` from `@codecademy/gamut-styles` instead of a raw literal — and pull the properties that _are_ expressible (padding, display, plain colors, gradients via `background`) back out to props rather than leaving them in the escape hatch just because one sibling property forced it.
+
+**Step 4 — raw CSS property names inside `css()` silently skip the scale lookup**
+
+Being wrapped in `css()` (the compliant form from Step 2) isn't enough on its own to guarantee token-scale treatment. `css()`'s scale-aware behavior only applies to the _alias_ keys variance defines (`p`, `m`, `bg`, `borderRadius`, `fontSize`, `fontWeight`, `lineHeight`, …) — not the literal CSS property name. `padding: 24` inside a `css({...})` call is **not** the same as `p: 24`: variance's static-CSS extraction (`getStaticCss` in `packages/variance/src/core.ts`) passes any key it doesn't recognize as an alias straight through as literal, unscaled CSS. A block that _looks_ correct because it's wrapped in `css()` can still bypass the spacing/typography scale entirely if the property inside is spelled out as the raw CSS name instead of its alias.
+
+Grep for raw CSS property names as keys inside a `css({...})` call, where a shorter alias exists:
+
+```
+css\(\s*\{[^}]*\b(padding|margin|background-color|border-radius|font-size|font-weight|line-height)\s*:
+```
+
+(non-exhaustive — the pattern is: any CSS property name used as a key where its alias — `p`/`m`/`bg`/`borderRadius`/`fontSize`/`fontWeight`/`lineHeight` — belongs instead.)
+
+Each match is **✗ error**, not a style nit — the value silently doesn't get the intended token/rem conversion regardless of what number is written, which is a functional bug, not a preference. This check applies independently of Step 3's classification — a block can pass Step 3 (genuinely needs `css()` for one property) and still fail Step 4 (a _different_ property inside that same block used the wrong key name).
+
+**Step 5 — plain `<Box display="flex">`/`<Box display="grid">` (heuristic, not a bypass)**
+
+Unlike Steps 1–4, this isn't a system-props bypass — `display` is a real system prop and the code works correctly. It's a semantic-consistency nit: `FlexBox`/`GridBox` already default to `display: flex`/`display: grid`, so reaching for `Box` + a `display` prop says the same thing more verbosely and loses the more legible component name at the call site.
+
+Grep files already confirmed to import `Box` from `@codecademy/gamut` (Step 1) for:
+
+```
+<Box\b[^>]*\bdisplay=\{?["']flex["']\}?
+<Box\b[^>]*\bdisplay=\{?["']grid["']\}?
+```
+
+Always **⚠ warning**, never ✗ — don't flag `display="inline-flex"`/`"inline-grid"`, or a conditionally-computed `display` (e.g. `display={isOpen ? 'flex' : 'none'}`); both are legitimate reasons to stay on `Box`.
+
+Report as `file:line  styled(ComponentName)` with the classification and the specific properties found, e.g.:
+
+```
+src/HeroSection.tsx:14  styled(Box)`...` — display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props (color: use a semantic token)
+src/ColumnTitle.tsx:8   styled(Box)`...` — background-clip: text + padding → wrap in css(), move padding to a prop
+src/GlowShell.tsx:15    css({ padding: 24, ... }) — 'padding' is not a recognized alias; use 'p' or the value bypasses the spacing scale entirely (renders as an unscaled literal px value), even though the block correctly stays in css() for the gradient
+src/Panel.tsx:9         <Box display="flex" ...> — same defaults as FlexBox, more legible as FlexBox
+src/Grid.tsx:14         <Box display="grid" ...> — same defaults as GridBox, more legible as GridBox
+```
+
+Skill references: [`gamut-system-props`](../gamut-system-props/SKILL.md#dont-wrap-a-gamut-component-in-styled-to-hand-write-css) · [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md)
 
 ---
 
@@ -397,13 +495,16 @@ Import patterns
        src/Thing.tsx:7
        src/Other.tsx:12
 
-SCSS modules & className                             [→ gamut-system-props] [→ gamut-style-utilities]
+SCSS modules, className & inline style               [→ gamut-system-props] [→ gamut-style-utilities] [→ gamut-color-mode]
   ✗  SCSS/CSS imports   14 files — migrate to system props and css()/variant()
        src/components/Card/Card.scss
        src/components/Nav/Nav.scss   (+ 12 more)
   ✗  className on Gamut components   9 occurrences
        src/components/Card/Card.tsx:14   <Box className={styles.wrapper}>
        src/components/Nav/Nav.tsx:7      <Text className={styles.title}>
+  ✗  inline style on Gamut components   3 occurrences — use system props or css()/variant()/states() with semantic tokens
+       src/components/Hero/Hero.tsx:31   <Box style={{ color: '#10162F' }}>
+       src/components/Nav/Nav.tsx:19     <Text style={{ marginTop: 8 }}>  (eslint-disabled)  ⚠
 
 Nested selectors                                    [→ gamut-system-props] [→ gamut-style-utilities]
   ⚠  Tag selectors   3 occurrences — replace with system props or layout components (FlexBox, GridBox)
@@ -411,6 +512,16 @@ Nested selectors                                    [→ gamut-system-props] [�
        src/components/Hero/Hero.tsx:9    * { ... }  (verify scope — may be JSDoc false positive)
   ⚠  Gamut component selectors   1 occurrence — use system props directly instead
        src/components/Layout/Layout.tsx:12   ${Box} { align-self: start; }
+  (or: ✓  none found)
+
+styled(GamutComponent) bypassing system props            [→ gamut-system-props] [→ gamut-style-utilities]
+  ✗  styled(Box) raw CSS   1 occurrence — every property has a prop equivalent
+       src/HeroSection.tsx:14   display, flex-direction, padding, color: white → delete wrapper, use FlexBox + props
+  ⚠  styled(Box) raw CSS   1 occurrence — partially expressible, needs css() not a raw literal
+       src/ColumnTitle.tsx:8   background-clip: text + padding → wrap in css(), move padding to a prop
+  ⚠  Box used where FlexBox/GridBox fits   2 occurrences — same defaults, more legible name
+       src/Panel.tsx:9    <Box display="flex" ...>   → FlexBox
+       src/Grid.tsx:14    <Box display="grid" ...>   → GridBox
   (or: ✓  none found)
 
 Hardcoded colors                                                         [→ gamut-color-mode]
@@ -433,6 +544,11 @@ Test setup                                                               [→ ga
   ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
        src/components/Baz/__tests__/Baz.test.tsx:2
 
+Bespoke component duplication (heuristic — confirm manually)              [→ gamut-component-first]
+  ⚠  src/components/ConfirmDialog/ConfirmDialog.tsx:9   role="dialog" with no Modal/Dialog import — likely reinventing gamut-modal
+  ⚠  src/components/Dropdown/Dropdown.tsx                filename matches a Gamut component; no @codecademy/gamut import found — compare against SelectDropdown
+  (or: ✓  none found)
+
 ══════════════════════════════════════════════════
 <N> error(s), <N> warning(s) found.   (or "All checks passed." if none)
 ```
@@ -440,4 +556,4 @@ Test setup                                                               [→ ga
 Icons: `✓` = pass, `⚠` = warning (recommended, not required), `✗` = error (required).
 `[→ skill-name]` annotations indicate which Gamut skill has remediation guidance for that category.
 
-After printing the report, offer one sentence of prioritized next-step advice based on what was found.
+After printing the report, offer one sentence of prioritized next-step advice based on what was found, then ask the user whether they'd like you to fix the findings — do not apply any remediation unprompted.

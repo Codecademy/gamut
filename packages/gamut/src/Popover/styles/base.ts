@@ -32,6 +32,8 @@ export const popoverStates = states({
 export const raisedDivVariants = variant({
   base: {
     zIndex: 'foreground',
+    ...borderStyles,
+    boxShadow: 'none',
   },
   defaultVariant: 'primary',
   variants: {

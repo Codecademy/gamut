@@ -84,6 +84,6 @@ export type TipPlacementComponentProps = Omit<
     | ((node: HTMLDivElement | null) => void);
   closeOnClick?: boolean;
   type: 'info' | 'tool' | 'preview';
-  wrapperRef?: React.RefObject<HTMLDivElement>;
+  wrapperRef?: React.Ref<HTMLDivElement | null>;
   zIndex?: ZIndexType;
 } & React.PropsWithChildren;

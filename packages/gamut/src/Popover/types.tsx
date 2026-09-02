@@ -1,5 +1,5 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, type RefObject } from 'react';
 
 import { PopoverVariants } from './elements';
 
@@ -94,7 +94,9 @@ export type PopoverProps = PopoverBaseProps &
      */
     horizontalOffset?: number;
     /**
-     * Whether to add outline style (i.e. used for dropdowns and coachmarks).
+     * @deprecated The outline style is now always applied, so this prop no longer
+     * has any effect. It is retained for backwards compatibility and will be removed
+     * in a future major version.
      */
     outline?: boolean;
     /**
@@ -104,17 +106,14 @@ export type PopoverProps = PopoverBaseProps &
 
     /**
      * The target element around which the popover will be positioned.
+     * Only ref objects (e.g. from useRef) are supported at runtime; RefCallback is not.
      */
-    targetRef: React.RefObject<
-      Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-    >;
+    targetRef: RefObject<HTMLElement | null>;
 
     /**
      * The PopoverContainer which contents will be rendered into.
      */
-    popoverContainerRef?:
-      | React.RefObject<HTMLDivElement>
-      | React.RefCallback<HTMLDivElement>;
+    popoverContainerRef?: React.Ref<HTMLDivElement | null>;
 
     /**
      * Whether to add width restrictions to Popover.

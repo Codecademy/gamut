@@ -14,7 +14,7 @@ export type InternalSelectProps = {
 };
 
 /**
- * Ref type for programmatic focus management.
+ * Ref type for programmatic focus management (internal refs from useRef).
  * Used for managing focus on select input and remove all button.
  */
 export type ProgrammaticFocusRef =

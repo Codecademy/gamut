@@ -17,7 +17,9 @@ describe('FeatureShimmer', () => {
   beforeEach(() => {
     mockIntersectionObserver.mockReturnValue({
       observe: jest.fn(),
+      unobserve: jest.fn(),
       disconnect: jest.fn(),
+      unobserve: jest.fn(),
     });
     window.IntersectionObserver = mockIntersectionObserver;
   });
