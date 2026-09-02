@@ -96,7 +96,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
     SelectDropdownContext
   );
 
-  const iconSize = size ?? 'medium';
+  const iconSize = size ?? 'base';
   const { ...iconProps } = indicatorIcons[`${iconSize}Remove`];
   const { icon: IndicatorIcon } = iconProps;
 

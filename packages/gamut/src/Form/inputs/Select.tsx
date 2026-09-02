@@ -34,7 +34,13 @@ export type SelectComponentProps = Pick<
   };
 
 export type SelectWrapperProps = SelectComponentProps &
-  SelectHTMLAttributes<HTMLSelectElement> & {
+  Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'> & {
+    /** Controls the height/density of the select. */
+    size?: 'base' | 'small';
+    /**
+     * @deprecated Use `size` instead. Retained for backwards compatibility and
+     * will be removed in a future major version.
+     */
     sizeVariant?: 'small' | 'base';
   };
 
@@ -83,6 +89,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       options,
       error,
       id,
+      size,
       sizeVariant,
       disabled,
       ...rest
@@ -90,6 +97,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     ref
   ) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
+
+    // `sizeVariant` is the deprecated alias for `size`; prefer `size` when both are set.
+    const resolvedSize = size ?? sizeVariant;
 
     const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
       rest?.onChange?.(event);
@@ -114,10 +124,10 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           color={error ? 'feedback-error' : disabled ? 'text-disabled' : 'text'}
           position="absolute"
           pr={12}
-          right={sizeVariant === 'small' ? 4 : 0}
+          right={resolvedSize === 'small' ? 4 : 0}
           top="0"
         >
-          {sizeVariant === 'small' ? (
+          {resolvedSize === 'small' ? (
             <MiniChevronDownIcon size={12} />
           ) : (
             <ArrowChevronDownIcon size={16} />
@@ -130,7 +140,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           error={error}
           id={id || rest.htmlFor}
           ref={ref}
-          sizeVariant={sizeVariant}
+          sizeVariant={resolvedSize}
           variant={conditionalStyleState(Boolean(error), activatedStyle)}
           onChange={(event) => changeHandler(event)}
         >

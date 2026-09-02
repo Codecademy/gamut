@@ -3,15 +3,15 @@ import { useMemo } from 'react';
 import { parseOptions, SelectOptionBase } from '../../utils';
 import { isOptionsGrouped } from '../core/utils';
 import {
+  NormalizedSelectDropdownSize,
   SelectDropdownGroup,
   SelectDropdownOptions,
-  SelectDropdownSizes,
 } from '../types';
 
 interface UseSelectOptionsArgs {
   options?: SelectDropdownOptions | SelectDropdownGroup[];
   id?: string;
-  size?: SelectDropdownSizes['size'];
+  size?: NormalizedSelectDropdownSize;
   value?: string | string[];
 }
 

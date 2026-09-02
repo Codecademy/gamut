@@ -63,7 +63,7 @@ export const IconOption = ({
     >
       {children}
       {!isNew && rest?.isSelected && (
-        <CheckIcon size={selectedIconSize[size ?? 'medium']} />
+        <CheckIcon size={selectedIconSize[size ?? 'base']} />
       )}
     </SelectDropdownElements.Option>
   );

@@ -5,14 +5,25 @@ import { InternalInputsProps } from './component-props';
 
 /**
  * Size variants for the SelectDropdown component.
+ *
+ * @remarks
+ * The `medium` value is deprecated — use `base` instead. `medium` renders
+ * identically and is normalized to `base` internally; it will be removed in a
+ * future major version.
  */
-export type SelectDropdownSizes = { size?: 'small' | 'medium' };
+export type SelectDropdownSizes = { size?: 'base' | 'small' | 'medium' };
+
+/**
+ * Size value after the deprecated `medium` alias has been normalized to `base`.
+ * This is what gets handed to react-select internals and styling helpers.
+ */
+export type NormalizedSelectDropdownSize = 'base' | 'small';
 
 /**
  * Shared properties available to all SelectDropdown variants.
  * These props control common behavior and styling across single and multi-select modes.
  */
-export interface SharedProps extends InternalInputsProps, SelectDropdownSizes {
+export interface SharedProps extends InternalInputsProps {
   /** Maximum number of options to display in the dropdown before scrolling */
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Width of the input field */
@@ -42,7 +53,10 @@ export interface StateStyleProps
  */
 export interface ReactSelectAdditionalProps
   extends StateStyleProps,
-    SharedProps {}
+    SharedProps {
+  /** Normalized size handed to react-select (`medium` → `base`) */
+  size?: NormalizedSelectDropdownSize;
+}
 
 /**
  * Base props used for styling select components.
@@ -51,6 +65,8 @@ export interface ReactSelectAdditionalProps
 export type BaseSelectComponentProps = {
   selectProps: Omit<SharedProps, 'inputProps'> &
     StateStyleProps & {
+      /** Normalized size handed to react-select internals (`medium` → `base`) */
+      size?: NormalizedSelectDropdownSize;
       /** Whether multiple selection is enabled */
       isMulti?: boolean;
       /** Whether the select is searchable */

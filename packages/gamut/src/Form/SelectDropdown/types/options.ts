@@ -3,7 +3,7 @@ import * as React from 'react';
 import { GroupBase } from 'react-select';
 
 import { SelectOptions } from '../../inputs/Select';
-import { SelectDropdownSizes } from './styles';
+import { NormalizedSelectDropdownSize } from './styles';
 
 /**
  * Basic option structure with required label and value properties.
@@ -29,7 +29,9 @@ export interface IconOption extends OptionStrict {
  * Extended option with additional display features.
  * Supports icons, subtitles, right labels, abbreviations, and disabled state.
  */
-export interface ExtendedOption extends IconOption, SelectDropdownSizes {
+export interface ExtendedOption extends IconOption {
+  /** Normalized size injected internally when parsing options (`medium` → `base`) */
+  size?: NormalizedSelectDropdownSize;
   /** Optional subtitle text displayed below the main label */
   subtitle?: string;
   /** Whether the option is disabled and cannot be selected */
