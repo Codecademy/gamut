@@ -1,3 +1,28 @@
+## 73.5.0 (2026-09-02)
+
+### 🚀 Features
+
+- Updates Popover to always render with the outlined border style and deprecates the now-no-op outline prop ([#3427](https://github.com/Codecademy/gamut/pull/3427))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
+## 73.4.0 (2026-09-01)
+
+### 🚀 Features
+
+- Promote deep-import-only paths to public exports (GMT-1740): InteractiveSelectors, buttonProps, Tip/shared/types, Form/types, PopoverContainer/types, Markdown override factories, and IconStyleProps. The Menu/elements (MenuList\*) and IconOptionComponent renames are moved to a separate PR for independent review. ([#3412](https://github.com/Codecademy/gamut/pull/3412))
+
+### 🧱 Updated Dependencies
+
+- Updated gamut-icons to 10.2.0
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 ## 73.3.0 (2026-08-25)
 
 ### 🚀 Features

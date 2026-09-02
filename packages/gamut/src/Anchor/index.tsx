@@ -11,7 +11,7 @@ import {
 
 import {
   ButtonBase,
-  ButtonSelectors,
+  InteractiveSelectors,
   narrowButtonBaseRef,
 } from '../ButtonBase/ButtonBase';
 import { AppendedIconProps, appendIconToContent } from '../helpers';
@@ -23,7 +23,7 @@ export interface AnchorProps
 }
 
 const outlineFocusVisible = {
-  [ButtonSelectors.OUTLINE]: {
+  [InteractiveSelectors.OUTLINE]: {
     content: "''",
     position: 'absolute',
     inset: -4,
@@ -34,13 +34,13 @@ const outlineFocusVisible = {
     zIndex: 0,
   },
 
-  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+  [InteractiveSelectors.OUTLINE_FOCUS_VISIBLE]: {
     opacity: 1,
   },
 } as const;
 
 const underlineFocusVisible = {
-  [ButtonSelectors.FOCUS_VISIBLE]: {
+  [InteractiveSelectors.FOCUS_VISIBLE]: {
     outline: 'currentColor solid 2px',
     borderRadius: 'sm',
     outlineOffset: '1.5px',
@@ -59,11 +59,11 @@ const anchorVariants = variant({
     position: 'relative',
     color: 'primary',
     whiteSpace: 'nowrap',
-    [ButtonSelectors.HOVER]: {
+    [InteractiveSelectors.HOVER]: {
       textDecoration: 'none',
       cursor: 'pointer',
     },
-    [ButtonSelectors.DISABLED]: {
+    [InteractiveSelectors.DISABLED]: {
       cursor: 'not-allowed',
       textDecoration: 'none',
       color: 'text-disabled',
@@ -75,10 +75,10 @@ const anchorVariants = variant({
       fontWeight: 'bold',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
-      [ButtonSelectors.HOVER]: {
+      [InteractiveSelectors.HOVER]: {
         textDecoration: 'underline',
       },
-      [ButtonSelectors.FOCUS_VISIBLE]: {
+      [InteractiveSelectors.FOCUS_VISIBLE]: {
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
         outline: 'none',
@@ -94,10 +94,10 @@ const anchorVariants = variant({
     interface: {
       color: 'text',
       whiteSpace: 'initial',
-      [ButtonSelectors.HOVER]: {
+      [InteractiveSelectors.HOVER]: {
         color: 'primary',
       },
-      [ButtonSelectors.FOCUS_VISIBLE]: {
+      [InteractiveSelectors.FOCUS_VISIBLE]: {
         color: 'primary',
         outline: 'none',
       },

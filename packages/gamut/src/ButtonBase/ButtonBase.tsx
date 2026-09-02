@@ -12,7 +12,7 @@ export type ButtonBaseElementProps = HTMLProps<
   ref?: ButtonBaseRef;
 };
 
-export enum ButtonSelectors {
+export enum InteractiveSelectors {
   HOVER = '&:hover',
   ACTIVE = '&:active',
   FOCUS = '&:focus',
@@ -69,6 +69,16 @@ export function narrowButtonBaseRef<T extends ButtonBaseElements>(
   return ref as Ref<T>;
 }
 
+/**
+ * An unstyled `button`/`a` element with the browser default styles reset and
+ * the correct disabled/accessibility behavior for either tag, chosen
+ * automatically based on whether `href` is passed.
+ *
+ * Not exported from the root barrel on purpose — it's a foundation other
+ * button components (`CTAButton`, `FillButton`, `IconButton`, `StrokeButton`,
+ * `TextButton`, `Anchor`) build on, not a public API surface. Only
+ * `InteractiveSelectors` is promoted from this module; see GMT-1740.
+ */
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonBaseProps

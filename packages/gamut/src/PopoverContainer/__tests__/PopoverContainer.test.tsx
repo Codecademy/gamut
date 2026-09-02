@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { PopoverContainer } from '..';
-import { PopoverContainerProps, TargetRef } from '../types';
+import { PopoverContainerProps } from '../types';
 import * as utils from '../utils';
 import {
   createMockDOMRect,
@@ -33,8 +33,8 @@ const defaultTarget = {
 };
 
 const mockTargetRef = (
-  target?: Partial<TargetRef>,
-  viewport?: Partial<ReturnType<TargetRef['getBoundingClientRect']>>
+  target?: Partial<HTMLElement>,
+  viewport?: Partial<ReturnType<HTMLElement['getBoundingClientRect']>>
 ) =>
   ({
     current: {
