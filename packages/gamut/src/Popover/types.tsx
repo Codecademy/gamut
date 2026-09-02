@@ -94,7 +94,9 @@ export type PopoverProps = PopoverBaseProps &
      */
     horizontalOffset?: number;
     /**
-     * Whether to add outline style (i.e. used for dropdowns and coachmarks).
+     * @deprecated The outline style is now always applied, so this prop no longer
+     * has any effect. It is retained for backwards compatibility and will be removed
+     * in a future major version.
      */
     outline?: boolean;
     /**
