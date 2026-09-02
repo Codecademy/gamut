@@ -11,6 +11,7 @@ import {
   selectOptionsObject,
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
+import { DEFAULT_SELECT_DROPDOWN_TRANSLATIONS } from '../SelectDropdown/core/translations';
 
 const ToggleValidationMessageHarness = () => {
   const [hasCustomMessage, setHasCustomMessage] = useState(true);
@@ -1129,15 +1130,16 @@ describe('SelectDropdown', () => {
     it('renders the default placeholder when translations is omitted', () => {
       const { view } = renderView();
 
-      expect(view.getByText('Select an option')).toBeInTheDocument();
+      view.getByText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.placeholder);
     });
 
     it('renders a custom placeholder from translations', () => {
+      const placeholder = 'Elige una opción';
       const { view } = renderView({
-        translations: { placeholder: 'Elige una opción' },
+        translations: { placeholder },
       });
 
-      expect(view.getByText('Elige una opción')).toBeInTheDocument();
+      view.getByText(placeholder);
     });
 
     it('renders the default "No options" text when translations is omitted', async () => {
@@ -1145,28 +1147,30 @@ describe('SelectDropdown', () => {
 
       await openDropdown(view);
 
-      expect(view.getByText('No options')).toBeInTheDocument();
+      view.getByText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string);
     });
 
     it('renders a custom validationMessage from translations', async () => {
+      const validationMessage = 'Sin opciones';
       const { view } = renderView({
         options: [],
-        translations: { validationMessage: 'Sin opciones' },
+        translations: { validationMessage },
       });
 
       await openDropdown(view);
 
-      expect(view.getByText('Sin opciones')).toBeInTheDocument();
-      expect(view.queryByText('No options')).not.toBeInTheDocument();
+      view.getByText(validationMessage);
+      expect(view.queryByText('No options')).toBeNull();
     });
 
     it('supports a function validationMessage that receives the current input', async () => {
+      const validationMessage = ({ inputValue }: { inputValue: string }) =>
+        `Sin resultados para "${inputValue}"`;
       const { view } = renderView({
         isSearchable: true,
         options: selectOptions,
         translations: {
-          validationMessage: ({ inputValue }: { inputValue: string }) =>
-            `Sin resultados para "${inputValue}"`,
+          validationMessage,
         },
       });
 
@@ -1177,20 +1181,21 @@ describe('SelectDropdown', () => {
         });
       });
 
-      expect(view.getByText('Sin resultados para "zzz"')).toBeInTheDocument();
+      view.getByText(validationMessage({ inputValue: 'zzz' }));
     });
 
     it('renders a custom creatable label from translations', async () => {
+      const formatCreateLabel = (v: string) => `Crear "${v}"`;
       const { view } = renderView({
         isCreatable: true,
-        translations: { formatCreateLabel: (v: string) => `Crear "${v}"` },
+        translations: { formatCreateLabel },
       });
 
       await act(async () => {
         await userEvent.type(view.getByRole('combobox'), 'purple');
       });
 
-      expect(view.getByText('Crear "purple"')).toBeInTheDocument();
+      view.getByText(formatCreateLabel('purple'));
     });
 
     it('uses default remove/clear-all aria-labels when translations is omitted', async () => {
@@ -1201,18 +1206,22 @@ describe('SelectDropdown', () => {
         await userEvent.click(view.getByText('red'));
       });
 
-      expect(view.getByLabelText('Remove red')).toBeInTheDocument();
+      view.getByLabelText(
+        DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.removeOptionLabel('red')
+      );
       // react-select forces aria-hidden onto the clear-indicator, so query the
       // clear-all button by its aria-label attribute rather than by role.
-      expect(view.getByLabelText('Remove all selected')).toBeInTheDocument();
+      view.getByLabelText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.clearAllLabel);
     });
 
     it('applies custom remove/clear-all aria-labels from translations', async () => {
+      const removeOptionLabel = (label: string) => `Quitar ${label}`;
+      const clearAllLabel = 'Quitar todo';
       const { view } = renderView({
         multiple: true,
         translations: {
-          removeOptionLabel: (label: string) => `Quitar ${label}`,
-          clearAllLabel: 'Quitar todo',
+          removeOptionLabel,
+          clearAllLabel,
         },
       });
 
@@ -1221,42 +1230,45 @@ describe('SelectDropdown', () => {
         await userEvent.click(view.getByText('red'));
       });
 
-      expect(view.getByLabelText('Quitar red')).toBeInTheDocument();
-      expect(view.getByLabelText('Quitar todo')).toBeInTheDocument();
+      view.getByLabelText(removeOptionLabel('red'));
+      view.getByLabelText(clearAllLabel);
     });
 
     it('merges partial translations with defaults', async () => {
+      const placeholder = 'Elige';
       const { view } = renderView({
         options: [],
-        translations: { placeholder: 'Elige' },
+        translations: { placeholder },
       });
 
       // Overridden key.
-      expect(view.getByText('Elige')).toBeInTheDocument();
+      view.getByText(placeholder);
 
       // Untouched key still uses the English default.
       await openDropdown(view);
-      expect(view.getByText('No options')).toBeInTheDocument();
+      view.getByText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string);
     });
 
     it('lets an explicit placeholder prop win over the translations value', () => {
+      const placeholder = 'Explicit placeholder';
+      const translatedPlaceholder = 'Translated placeholder';
       const { view } = renderView({
-        placeholder: 'Explicit placeholder',
-        translations: { placeholder: 'Translated placeholder' },
+        placeholder,
+        translations: { placeholder: translatedPlaceholder },
       });
 
-      expect(view.getByText('Explicit placeholder')).toBeInTheDocument();
-      expect(
-        view.queryByText('Translated placeholder')
-      ).not.toBeInTheDocument();
+      view.getByText(placeholder);
+      expect(view.queryByText(translatedPlaceholder)).toBeNull();
     });
 
     it('lets an explicit formatCreateLabel prop win over the translations value', async () => {
+      const formatCreateLabel = (v: string) => `Prop "${v}"`;
+      const translatedFormatCreateLabel = (v: string) => `Translated "${v}"`;
       const { view } = renderView({
         isCreatable: true,
-        formatCreateLabel: (v: string) => `Prop "${v}"`,
+        formatCreateLabel,
         translations: {
-          formatCreateLabel: (v: string) => `Translated "${v}"`,
+          formatCreateLabel: translatedFormatCreateLabel,
         },
       });
 
@@ -1264,8 +1276,10 @@ describe('SelectDropdown', () => {
         await userEvent.type(view.getByRole('combobox'), 'purple');
       });
 
-      expect(view.getByText('Prop "purple"')).toBeInTheDocument();
-      expect(view.queryByText('Translated "purple"')).not.toBeInTheDocument();
+      view.getByText(formatCreateLabel('purple'));
+      expect(
+        view.queryByText(translatedFormatCreateLabel('purple'))
+      ).toBeNull();
     });
   });
 });
