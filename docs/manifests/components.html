@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/493 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/492 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>5.8s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.2s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -31337,7 +31337,7 @@ import { DotsLoose } from &#39;@codecademy/gamut-patterns&#39;;
       <div class="badges">
         <label for="c-62-molecules-popover-err" class="badge err as-toggle">prop type error</label>
         <label for="c-62-molecules-popover-info" class="badge info as-toggle">1 info</label>
-        <label for="c-62-molecules-popover-stories" class="badge ok as-toggle">17 stories</label>
+        <label for="c-62-molecules-popover-stories" class="badge ok as-toggle">16 stories</label>
         <label for="c-62-molecules-popover-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -31391,6 +31391,11 @@ const meta: Meta&lt;typeof Popover&gt; = {
       options: Object.keys(patterns),
       mapping: patterns,
     },
+    // Deprecated no-op: the outline style is now always applied.
+    outline: {
+      control: false,
+      table: { disable: true },
+    },
   },
 };
 
@@ -31437,12 +31442,6 @@ export const Beak: Story = {
 
 export const BeakCentered: Story = {
   render: (args) =&gt; &lt;PopoverExample {...args} beak=&quot;center&quot; p={0} /&gt;,
-};
-
-export const Outline: Story = {
-  render: (args) =&gt; (
-    &lt;PopoverExample {...args} align=&quot;right&quot; beak=&quot;center&quot; outline /&gt;
-  ),
 };
 
 export const Above: Story = {
@@ -31637,15 +31636,6 @@ export const Variant: Story = {
             </div>
             <div class="note ok">
               <div class="row">
-                <span class="ex-name">Outline</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const Outline = () =&gt; &lt;PopoverExample align=&quot;right&quot; beak=&quot;center&quot; outline&gt;{undefined}&lt;/PopoverExample&gt;;</code></pre>
-            </div>
-            <div class="note ok">
-              <div class="row">
                 <span class="ex-name">Above</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -31818,13 +31808,6 @@ Using the `beak` prop, you can add a beak that is right, left, or center aligned
 Popovers with a _centered_ beak -`center`- are intended to be smaller sized and meant for a single small number of words. They are similar to our &lt;LinkTo id=&quot;Molecules/Tips/ToolTip&quot;&gt;ToolTips&lt;/LinkTo&gt;. Please note that center aligned `Popover`s `align=&quot;center&quot;` can only render a centered beak.
 
 &lt;Canvas of={PopoverStories.BeakCentered} /&gt;
-
-### Outline
-
-Using the outline prop, you can add an outline to the popover.
-The outline color is `theme.colors.secondary` so in Dark Mode, the outline will be white. Please swap the ColorMode in the toolbar above to check this out in action!
-
-&lt;Canvas of={PopoverStories.Outline} /&gt;
 
 ### Position
 
@@ -73754,7 +73737,7 @@ import { DotsLoose } from &#39;@codecademy/gamut-patterns&#39;;
       <div class="badges">
         <label for="c-error-62-molecules-popover-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-62-molecules-popover-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-62-molecules-popover-stories" class="badge ok as-toggle">17 stories</label>
+        <label for="c-error-62-molecules-popover-stories" class="badge ok as-toggle">16 stories</label>
         <label for="c-error-62-molecules-popover-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -73808,6 +73791,11 @@ const meta: Meta&lt;typeof Popover&gt; = {
       options: Object.keys(patterns),
       mapping: patterns,
     },
+    // Deprecated no-op: the outline style is now always applied.
+    outline: {
+      control: false,
+      table: { disable: true },
+    },
   },
 };
 
@@ -73854,12 +73842,6 @@ export const Beak: Story = {
 
 export const BeakCentered: Story = {
   render: (args) =&gt; &lt;PopoverExample {...args} beak=&quot;center&quot; p={0} /&gt;,
-};
-
-export const Outline: Story = {
-  render: (args) =&gt; (
-    &lt;PopoverExample {...args} align=&quot;right&quot; beak=&quot;center&quot; outline /&gt;
-  ),
 };
 
 export const Above: Story = {
@@ -74054,15 +74036,6 @@ export const Variant: Story = {
             </div>
             <div class="note ok">
               <div class="row">
-                <span class="ex-name">Outline</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const Outline = () =&gt; &lt;PopoverExample align=&quot;right&quot; beak=&quot;center&quot; outline&gt;{undefined}&lt;/PopoverExample&gt;;</code></pre>
-            </div>
-            <div class="note ok">
-              <div class="row">
                 <span class="ex-name">Above</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -74235,13 +74208,6 @@ Using the `beak` prop, you can add a beak that is right, left, or center aligned
 Popovers with a _centered_ beak -`center`- are intended to be smaller sized and meant for a single small number of words. They are similar to our &lt;LinkTo id=&quot;Molecules/Tips/ToolTip&quot;&gt;ToolTips&lt;/LinkTo&gt;. Please note that center aligned `Popover`s `align=&quot;center&quot;` can only render a centered beak.
 
 &lt;Canvas of={PopoverStories.BeakCentered} /&gt;
-
-### Outline
-
-Using the outline prop, you can add an outline to the popover.
-The outline color is `theme.colors.secondary` so in Dark Mode, the outline will be white. Please swap the ColorMode in the toolbar above to check this out in action!
-
-&lt;Canvas of={PopoverStories.Outline} /&gt;
 
 ### Position
 
