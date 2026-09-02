@@ -11,7 +11,7 @@ See [Themes](/foundations/themes/) for the available palettes (Core, Admin, LX S
 
 ## 2. Wire up the theme
 
-`GamutProvider` (covered in [Installation](/getting-started/installation/)) already puts the right theme's values on Emotion's context for you. From there, reach a token in one of three ways:
+`GamutProvider` (covered in [Installation](/getting-started/installation/)) already puts the right theme's values on Emotion's context for you. From there, reach a token:
 
 ```tsx
 import { css } from '@codecademy/gamut-styles';
@@ -30,16 +30,6 @@ import styled from '@emotion/styled';
 
 const styles = styled.div`
   color: ${({ theme }) => theme.colors.blue};
-`;
-```
-
-```tsx
-// Or imported directly, outside a styled component
-import { css } from '@emotion/react';
-import { theme } from '@codecademy/gamut-styles';
-
-const myStyles = css`
-  font-size: ${theme.fontSize[14]};
 `;
 ```
 
