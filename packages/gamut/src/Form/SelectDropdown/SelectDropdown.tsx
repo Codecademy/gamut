@@ -91,12 +91,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   placeholder = 'Select an option',
   shownOptionsLimit = 6,
-  size,
+  size: sizeProp,
   validationMessage,
   value,
   zIndex,
   ...rest
 }) => {
+  // `medium` is the deprecated alias for `base`; normalize before use internally.
+  const size = sizeProp === 'medium' ? 'base' : sizeProp;
   // isSearchable is forced true when isCreatable is true (CreatableSelect requires a text input)
   const isSearchable = isCreatable || isSearchableProp;
   const rawInputId = useId();

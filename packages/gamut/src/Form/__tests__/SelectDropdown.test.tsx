@@ -151,12 +151,17 @@ describe('SelectDropdown', () => {
       view.getByTitle('Mini Chevron Down Icon');
     });
 
-    it('renders a medium dropdown when size is "medium"', () => {
+    it('renders a base dropdown when size is "base"', () => {
+      const { view } = renderView({ size: 'base' });
+      view.getByTitle('Arrow Chevron Down Icon');
+    });
+
+    it('renders a base dropdown when size is the deprecated "medium"', () => {
       const { view } = renderView({ size: 'medium' });
       view.getByTitle('Arrow Chevron Down Icon');
     });
 
-    it('renders a medium dropdown by default', () => {
+    it('renders a base dropdown by default', () => {
       const { view } = renderView();
       view.getByTitle('Arrow Chevron Down Icon');
     });

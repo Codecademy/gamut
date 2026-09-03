@@ -20,4 +20,9 @@ export type {
   CustomSelectComponentProps,
 } from './internal';
 
-export type { ControlState, OptionState, SelectDropdownSizes } from './styles';
+export type {
+  ControlState,
+  NormalizedSelectDropdownSizes,
+  OptionState,
+  SelectDropdownSizes,
+} from './styles';

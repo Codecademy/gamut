@@ -49,10 +49,10 @@ export const conditionalBorderStates = states({
 
 const sizeVariants = variant({
   prop: 'size',
-  defaultVariant: 'medium',
+  defaultVariant: 'base',
   variants: {
-    medium: formFieldPaddingStyles,
-    mediumIsMultiSelected: { px: 8, py: 8 },
+    base: formFieldPaddingStyles,
+    baseIsMultiSelected: { px: 8, py: 8 },
     small: { minHeight: '2rem', px: 8, py: 0 },
   },
 });
@@ -109,10 +109,10 @@ export const getMemoizedStyles = (
     },
     control: (provided, state: ControlState) => {
       const { isMulti, size } = state.selectProps;
-      const getSize = size ?? 'medium';
+      const getSize = size ?? 'base';
       const getPadding =
         isMulti && state.hasValue && size !== 'small'
-          ? `mediumIsMultiSelected`
+          ? `baseIsMultiSelected`
           : getSize;
 
       return {
