@@ -5,101 +5,139 @@ description: Use this skill when something needs to float, stick, or portal abov
 
 # Gamut z-index
 
-There is no single documented z-index scale. `DESIGN.md` names exactly one token — `headerZ`. Everything else that floats, sticks, or portals is a small ad hoc integer (0–5) baked into component internals, split across two isolated stacking tiers by `AppWrapper` and `BodyPortal`. Read this before reaching for a bigger number.
+Gamut coordinates stacking order through one semantic scale, `zIndexes`, exported from `@codecademy/gamut-styles`. Every `zIndex` in Gamut should reference a token from this scale rather than a magic number — a repo-wide eslint rule, `gamut/no-raw-z-index`, enforces it.
 
-Source: `packages/gamut-styles/src/variables/elements.ts` · `packages/gamut/src/AppWrapper/index.tsx` · `packages/gamut/src/BodyPortal/index.tsx` · `packages/gamut/src/Overlay/index.tsx` · `packages/gamut/src/Popover/elements.tsx` · `packages/gamut/src/PopoverContainer/PopoverContainer.tsx` · `packages/gamut/src/Toaster/index.tsx`
+Source: `packages/gamut-styles/src/variables/zIndexes.ts` (scale + `ZIndexType`) · `packages/gamut-styles/src/variance/config.ts` (`zIndex` system prop config) · `packages/eslint-plugin-gamut/src/no-raw-z-index.ts` (lint rule).
 
-See also: [`gamut-modal`](../gamut-modal/SKILL.md) — Modal/Dialog composition (this skill covers what happens when something else floats above or inside one). [`gamut-menu`](../gamut-menu/SKILL.md) — floating menus via `PopoverContainer`. [`gamut-datalist`](../gamut-datalist/SKILL.md) / [`gamut-datatable`](../gamut-datatable/SKILL.md) — sticky headers, `EmptyRows`, row-menu-opens-Modal pattern.
-
----
-
-## The only real token: `headerZ`
-
-| Token     | Value | Use                |
-| --------- | ----- | ------------------ |
-| `headerZ` | `15`  | Global page header |
-
-Defined in `packages/gamut-styles/src/variables/elements.ts`; access it via `theme.elements.headerZ` (object styles / `css()`) or `themed('elements.headerZ')` (Emotion template literals) — never hardcode `15`. `SkipToContent`'s focus-revealed link uses `headerZ + 1` (`16`) so it can clear the header once focused (`packages/gamut/src/SkipToContent/index.tsx`) — that's the only other place `headerZ` is referenced.
-
-Everything below this line is **not** a token — it's a component default you can read in source, not a name you can import.
+See also: [`gamut-system-props`](../gamut-system-props/SKILL.md) (`system.positioning`, the rest of the `zIndex` prop group). [`gamut-style-utilities`](../gamut-style-utilities/SKILL.md) (`css()`, `variant()`, `states()`). [`gamut-modal`](../gamut-modal/SKILL.md) — Modal/Dialog composition (this skill covers what happens when something else floats above or inside one). [`gamut-menu`](../gamut-menu/SKILL.md) — floating menus via `PopoverContainer`. [`gamut-datalist`](../gamut-datalist/SKILL.md) / [`gamut-datatable`](../gamut-datatable/SKILL.md) — sticky headers, `EmptyRows`, row-menu-opens-Modal pattern. Storybook: [Foundations / Z-Index](https://gamut.codecademy.com/?path=/docs-foundations-z-index--page), [Meta / ESLint rules](https://gamut.codecademy.com/?path=/docs-meta-eslint-rules--page).
 
 ---
 
-## Two stacking tiers, not one scale
+## The scale
 
-**Tier 1 — in-page**, inside `AppWrapper`. `AppWrapper` (`packages/gamut/src/AppWrapper/index.tsx`) wraps the app root in `position: relative; z-index: 1` specifically to "safely reset the stacking context" — its own comment warns: **do not change its `position`/`z-index` or extend it with overrides to those properties.** Every non-portalled component (sticky List headers, inline Tips, Tabs, inline Popovers, SelectDropdown menus, …) only has to out-rank its _local_ siblings inside this one context. `headerZ` (15) sits comfortably above all of them (the highest non-portalled value in the table below is 5).
+Tokens are spaced by 100, low to high, leaving room for in-between escape-hatch numbers. This is **one flat scale** shared by both in-page content and portaled overlays — there is no separate "portal tier"; a `modal` (500) always outranks an `appBar` (300) numerically, wherever each happens to render in the DOM.
 
-**Tier 2 — body portals**, via `BodyPortal` (`ReactDOM.createPortal(..., document.body)`). `Overlay` (used by `Modal`/`Dialog`), floating `Tip` (`ToolTip`/`InfoTip`/`PreviewTip` with `placement="floating"`, via `Popover`), any non-`inline` `PopoverContainer` (floating menus, `DatePicker` calendar, portalling `SelectDropdown` usage), and `Toaster` all render as a **sibling of `AppWrapper`**, not a descendant of it. Their z-index only has to out-rank _other portals_ — it never has to clear `headerZ`, which is why a plain `Modal` reliably covers a sticky global header without needing `zIndex > 15`.
+| Token        | Value | Use for                                                                                                           |
+| ------------ | ----- | ----------------------------------------------------------------------------------------------------------------- |
+| `underlay`   | -100  | Decorative layer behind content (underlines, backdrops, shadows)                                                  |
+| `base`       | 0     | Ground layer — local stacking context without lifting above siblings                                              |
+| `foreground` | 100   | Raised in-flow layer above `underlay`/siblings, below all portal overlays; also sticky headers                    |
+| `floating`   | 200   | Portal floor — `BodyPortal` default; persistent floating page furniture (AI chat launcher, help bubble)           |
+| `appBar`     | 300   | Global app header/nav bar (aliased by the legacy `elements.headerZ` constant)                                     |
+| `flyout`     | 400   | Portaled side panel (`Flyout` = `Drawer` inside `Overlay`)                                                        |
+| `modal`      | 500   | `Overlay`, `Modal`, `Dialog` (share one portal primitive)                                                         |
+| `popover`    | 600   | Portal-mode `Popover`, the portaled `SelectDropdown` menu/control, and portalled `PopoverContainer` — above modal |
+| `topmost`    | 700   | Top-most transient overlays: floating tooltips, toasts/notifications — nothing in Gamut sits above this           |
 
-`BodyPortal`'s default (`1`) is called out in its own source comment as **"a TEMPORARY stopgap solution to avoid zIndex conflicts... will be reworked with GM-624"** — treat every Tier 2 number here as fragile plumbing, not settled design intent. As of this writing, the current Tier 2 ordering is:
+**Talk to web platform before adding a new token to the scale.** Third-party widgets (injected marketing/chat scripts) set their own z-index and are outside Gamut's control — `topmost` is the ceiling for anything Gamut owns.
 
+`AppWrapper` (`packages/gamut/src/AppWrapper/index.tsx`) still hardcodes `position: relative; z-index: 1` in a plain CSS template literal, outside the scale — its own source comment forbids changing it ("do not change the values of position or z-index here"). This is a structural implementation detail (it resets the stacking context for the app root), not a token; `1` sits below every real token except `base` (0), so it never competes with anything in the table above.
+
+---
+
+## Usage
+
+### `zIndex` system prop
+
+Available on `Box`/`FlexBox`/`GridBox` and any styled component composing `system.positioning`. Accepts, in order of preference:
+
+1. A token name: `zIndex="popover"`
+2. The scale's numeric value: `zIndex={zIndexes.popover}`
+3. Arithmetic on a token, for a deliberate offset within a layer: `zIndex={zIndexes.foreground - 2}`
+4. A raw number as an escape hatch for a genuine one-off: `zIndex={550}` — leave a comment justifying it
+
+```tsx
+<Box position="absolute" zIndex="popover">
+  …
+</Box>
 ```
-Overlay (3) < Toaster (4) < Popover / PopoverContainer, portalled (5, tied)
+
+### In `css()` / `variant()` / `states()`
+
+Token names resolve the same way inside these — including in nested pseudo-selector objects — because they share the same scale-aware property config as the `zIndex` prop:
+
+```tsx
+import { css, variant } from '@codecademy/gamut-styles';
+
+const styles = css({
+  position: 'absolute',
+  zIndex: 'popover',
+  '&::before': {
+    content: '""',
+    zIndex: 'underlay',
+  },
+});
+
+const cardVariants = variant({
+  base: { zIndex: 'base' },
+  variants: { raised: { zIndex: 'foreground' } },
+});
 ```
 
-This isn't derived from any scale — it's a hand-picked, hardcoded stopgap (each override is marked `// TEMPORARY: ... until GM-624 lands a shared z-index scale`) chosen to satisfy exactly the constraints known at patch time: `Toaster` must clear `Overlay` (a toast should never be hidden by a modal/flyout behind it), and `Popover`/`PopoverContainer` must clear `Toaster` (a tooltip or menu — including a toast's own close-button tooltip — must never render behind the toast it belongs to) while staying **tied with each other**, not just above it, because a `Popover`-based tip and a `PopoverContainer`-based menu can be open and overlapping at the same time, and their relative order needs to fall back to DOM mount order (whichever opened later paints on top) rather than a fixed winner. Any new Tier 2 consumer needs a deliberate, explicit `zIndex` fit into this chain — the plain `BodyPortal` default of `1` is now strictly _below_ everything in active use, so silently relying on the default (as `Popover`, `PopoverContainer`, and `Toaster` used to) will render behind an open `Overlay`.
+### Typing a component's `zIndex` prop
+
+Use `ZIndexType` (a token name, a raw number, or a CSS global like `'inherit'`) instead of `number` so consumers can pass a token:
+
+```tsx
+import { ZIndexType } from '@codecademy/gamut-styles';
+
+export interface OverlayProps {
+  zIndex?: ZIndexType;
+}
+```
 
 ---
 
 ## Component reference
 
-| Component / element                                                 | Default z-index                                                                     | Tier                                                     | Override                                                                                                              |
-| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Global header (`headerZ`)                                           | `15`                                                                                | 1                                                        | Token — `theme.elements.headerZ`                                                                                      |
-| `SkipToContent`                                                     | `headerZ + 1` = `16`                                                                | 1                                                        | Computed, not a prop                                                                                                  |
-| `Overlay` (used by `Modal`, `Dialog`)                               | `3`                                                                                 | 2 (via `BodyPortal`)                                     | `zIndex` prop — Modal/Dialog pass it straight through                                                                 |
-| `BodyPortal` (default, e.g. non-`inline` `PopoverContainer`)        | `1`                                                                                 | 2                                                        | `zIndex` prop on `BodyPortal` itself — not exposed by `PopoverContainer`                                              |
-| `PopoverContainer` (`inline`)                                       | `5`                                                                                 | 1 (renders in place)                                     | Fixed — not a prop                                                                                                    |
-| `PopoverContainer` (portalled, not `inline`)                        | `'initial'` → inherits `BodyPortal`'s `1`                                           | 2                                                        | Not exposed                                                                                                           |
-| `SelectDropdown` control                                            | `3`                                                                                 | 1                                                        | Not a prop                                                                                                            |
-| `SelectDropdown` menu                                               | `2`                                                                                 | 1 (or 2 if portalled — same rules as `PopoverContainer`) | `zIndex` prop (`SharedProps.zIndex`)                                                                                  |
-| `DatePicker` calendar                                               | Same as `PopoverContainer` (`5` inline / `1` portalled)                             | same                                                     | Same as `PopoverContainer`                                                                                            |
-| `Menu` item (focus-outline layer)                                   | `1` / `-1`                                                                          | 1, local only                                            | Not a prop — `Menu` doesn't manage its own float; wrap in `PopoverContainer` ([`gamut-menu`](../gamut-menu/SKILL.md)) |
-| Tip (`InfoTip`/`ToolTip`/`PreviewTip`), `placement="inline"`        | `1` (body), `auto` (content), `zIndex - 2` or `-1` (`PreviewTip` decorative shadow) | 1, local only                                            | `zIndex` prop — **not available when `placement="floating"`** (typed `zIndex?: never`)                                |
-| `List` / `TableHeader` sticky header row                            | `2`                                                                                 | 1                                                        | Not a prop                                                                                                            |
-| `List` sticky first column                                          | `1` (cell), `-1` (decorative pseudo-elements)                                       | 1                                                        | Not a prop                                                                                                            |
-| `DataList` `EmptyRows` (and the pattern in a custom `emptyMessage`) | `1`                                                                                 | 1                                                        | Only by copying the pattern in your own `emptyMessage` — no prop                                                      |
-| `Tabs` active-tab / underline layer                                 | `0` (focus outline), `1` (tab button)                                               | 1, local only                                            | Not a prop — purely internal to the tab's own focus-ring stacking                                                     |
+Every component below composes onto the one scale above — no separate tiers to reason about.
+
+| Component / element                                            | Default                                                                                                                                                    | Notes                                                                                                                                     |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Global header (`elements.headerZ`)                             | `zIndexes.appBar` (300)                                                                                                                                    | Legacy alias — new code should reference `zIndexes.appBar` directly.                                                                      |
+| `SkipToContent`                                                | `zIndexes.appBar + 1`                                                                                                                                      | Computed, not a prop — clears the header once focused.                                                                                    |
+| `BodyPortal`                                                   | `"floating"` (200)                                                                                                                                         | Base portal primitive several others build on.                                                                                            |
+| `Overlay` (→ `Modal`, `Dialog`)                                | `"modal"` (500)                                                                                                                                            | `zIndex` prop, passed straight through by `Modal`/`Dialog`.                                                                               |
+| `Flyout`                                                       | `"flyout"` (400)                                                                                                                                           | Passes `zIndex="flyout"` to its internal `Overlay` — sits below `modal`.                                                                  |
+| `PopoverContainer`, `Popover` (portalled)                      | `"popover"` (600)                                                                                                                                          | Portals via `<BodyPortal zIndex="popover">` — already clears `modal`.                                                                     |
+| `PopoverContainer` (`inline`)                                  | `5` (raw, pre-scale legacy value)                                                                                                                          | Renders in place inside the parent's own stacking context instead of portaling; not yet migrated to a token — flag if touching this file. |
+| `SelectDropdown` control and menu                              | `"popover"` (600)                                                                                                                                          | Menu portals via `react-select`'s `menuPortal`, portaled to `document.body`; both default through `ZIndexType`.                           |
+| `DatePicker` calendar                                          | Same as `PopoverContainer`                                                                                                                                 | Built on `PopoverContainer`; `inline` by default.                                                                                         |
+| `Toaster`                                                      | `"topmost"` (700)                                                                                                                                          | Always clears everything else Gamut owns.                                                                                                 |
+| Tip (`InfoTip`/`ToolTip`/`PreviewTip`), `placement="inline"`   | `"foreground"` (body); `PreviewTip`'s decorative shadow sits 2 below whatever the body resolves to, falling back to `"underlay"` if no override was passed | `zIndex` prop.                                                                                                                            |
+| `List`/`TableHeader` sticky header row, `DataList` `EmptyRows` | `"foreground"`                                                                                                                                             | Sticky in-flow layer, not a portal.                                                                                                       |
+| `List` sticky first column                                     | `"foreground"` (cell), `"underlay"` (decorative pseudo-elements)                                                                                           | Not a prop.                                                                                                                               |
+| `Menu` item (focus-outline layer)                              | `"foreground"` / `"underlay"`                                                                                                                              | Local only — `Menu` doesn't manage its own float; wrap in `PopoverContainer` ([`gamut-menu`](../gamut-menu/SKILL.md)).                    |
+| `Tabs` active-tab / underline layer                            | `"base"` (focus outline), `"foreground"` (tab button)                                                                                                      | Local to the tab's own focus-ring stacking.                                                                                               |
+
+One known gap: `PopoverContainer`'s `inline` path still has a raw `zIndex={inline ? 5 : 'initial'}` (`packages/gamut/src/PopoverContainer/PopoverContainer.tsx`) that predates this scale and wasn't part of the migration — the eslint rule doesn't currently catch it because the literal is nested inside a ternary. Treat `5` there as "same idea as `foreground`," not a token you can import.
 
 ---
 
 ## Reusing an existing value vs. adding a new one
 
-1. **Reach for an existing prop first.** `SelectDropdown` (`zIndex` on the dropdown menu) and inline-placement `Tip` (`zIndex` on the tip body) are the two components actually built to be tuned this way — use them instead of wrapping in an extra `Box` with a literal `zIndex`.
-2. **`Overlay`'s `zIndex` (default `3`, passed through by `Modal`/`Dialog`) is explicitly documented as overridable** ("Can be overridden when needed for custom stacking orders") — this is the one you're most likely to legitimately need to touch, e.g. layering two independent `Overlay`-based surfaces (a `Toast` over a `Modal`).
-3. **Never touch `AppWrapper`'s `position`/`z-index`.** Its own source comment forbids it — it's the seam that makes Tier 1 predictable for everything else in this table.
-4. **If nothing existing fits**, decide which tier the new element belongs to first (does it portal to `document.body`, or does it render in place?), then place it relative to the nearest documented neighbor above rather than picking a round number in isolation (e.g. "must clear a sticky `List` header (2)" → something above `2`, safely below `headerZ` if it's Tier 1).
-5. **Only promote a number to a named token** (next to `headerZ` in `gamut-styles/src/variables/elements.ts`, documented in `DESIGN.md`) when the value must be shared across products/themes — not for a one-off layout tweak. A one-off stays a local `zIndex` prop or style.
+1. **Reach for the token first.** `zIndex="modal"`, `zIndex="popover"`, etc. — the name documents intent far better than a number, and most floating/portal components already default to the right one.
+2. **Component `zIndex` props are the intended override point.** `Overlay`/`Modal`/`Dialog`, `Flyout`, `SelectDropdown`'s menu, and inline-placement `Tip` all accept a `zIndex` prop for a deliberate custom stacking order — use them instead of wrapping in an extra `Box` with a literal `zIndex`.
+3. **Never touch `AppWrapper`'s `position`/`z-index`.** Its own source comment forbids it.
+4. **If nothing existing fits**, pick the nearest token and offset from it (`zIndexes.foreground - 2`), or use a raw number with a justifying comment and an inline eslint-disable. Only promote a number to a named scale token when the value must be shared across products/themes — talk to web platform first.
 
 ---
 
-## Layering order against Modal
+## Nesting floating content inside a Modal
 
-`Modal`/`Dialog`'s `Overlay` portal defaults to `zIndex={3}` — Tier 2. That's _why_ a `Modal` reliably sits above the sticky global header: `headerZ` (15) lives in Tier 1, the `Modal` lives in Tier 2, and the two tiers never compete.
+Before this scale existed, `Overlay` defaulted to a raw `zIndex={3}` and `BodyPortal` defaulted to `zIndex={1}` — so a _second_, non-`inline` portal opened from inside an already-open Modal (a portalling `SelectDropdown` menu, a non-`inline` `PopoverContainer`/`Menu`, a non-`inline` `DatePicker` calendar) created a new sibling `BodyPortal` at `1`, which rendered **behind** the Modal's own portal at `3`. That's the bug this scale was built to fix.
 
-What this does **not** protect against: opening a **second, non-`inline` portal from inside an already-open `Modal`** — a portalling `SelectDropdown` menu, a non-`inline` `PopoverContainer`/`Menu`, or a `DatePicker` calendar that isn't `inline`. That opens a **new sibling `BodyPortal`** (default `zIndex={1}`) alongside the Modal's own portal (`zIndex={3}`). Because `1 < 3`, the thing you just opened from inside the Modal can render **behind** it.
-
-**Fix:**
-
-- Keep nested floating elements `inline` wherever the API allows it — `PopoverContainer`, and anything built on it (`Menu`, `DatePicker`), supports `inline`, which renders in place inside the Modal's own Tier-2 stacking context instead of opening a second portal. Inline `PopoverContainer`'s fixed `zIndex={5}` already clears everything else inside a Modal.
-- If a component can't render `inline` and exposes a `zIndex` prop (`SelectDropdown`), raise it above whatever it's nested in — its own default of `2` for the dropdown menu is not automatically aware of the Modal it's inside.
-
-This is exactly why `gamut-datatable`'s row-menu pattern works: `Menu` inside an `inline` `PopoverContainer`, opening a `Modal` from a menu item, renders the `Modal` at `zIndex={3}` "above the table header" — the popover menu stays inline (Tier 1, inside the table), so it never has to fight the Modal's own portal.
+With the scale, `Overlay`/`Modal` default to `"modal"` (500) and the popover-family portals (`PopoverContainer`, `Popover`, `SelectDropdown`'s menu) default to `"popover"` (600) — 600 > 500, so nested floating UI now clears an open Modal **by default**, with no extra work:
 
 ```tsx
-// risky — SelectDropdown's floating menu (zIndex 2, Tier 1 default) opened inside a Modal
-// (Overlay's own content is Tier 2, but the SelectDropdown menu still needs to clear
-// whatever else is stacked around it inside the Modal — don't assume the Modal's zIndex helps it)
+// fine by default now — SelectDropdown's menu portals at "popover" (600), above the Modal's "modal" (500)
 <Modal isOpen={isOpen} onRequestClose={onClose} title="Edit">
   <SelectDropdown options={options} />
 </Modal>
-
-// safer — nested floating UI stays inline
-<Modal isOpen={isOpen} onRequestClose={onClose} title="Actions">
-  <PopoverContainer inline isOpen={menuOpen} targetRef={triggerRef}>
-    <Menu role="menu">
-      <MenuItem onClick={handleAction}>Action</MenuItem>
-    </Menu>
-  </PopoverContainer>
-</Modal>
 ```
+
+`inline` is still worth using on `PopoverContainer`/`Menu`/`DatePicker` for layout/positioning reasons (it renders in place instead of opening a portal), but it is **no longer required purely to avoid a stacking bug** — don't cite "it'll render behind the Modal" as the reason to force `inline` anymore.
+
+The one case that still needs attention: if you deliberately override a nested component's `zIndex` to something below `"modal"` (500), you've reintroduced the old bug yourself — keep overrides at or above the layer they need to clear.
+
+This is exactly why `gamut-datatable`'s row-menu pattern works: `Menu` inside an `inline` `PopoverContainer`, opening a `Modal` from a menu item, renders the `Modal` at `"modal"` — the popover menu stays inline (rendering in the table's own stacking context), so it never has to compete with the Modal's portal.

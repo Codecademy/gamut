@@ -463,7 +463,7 @@ Reporting: `file:line  zIndex={<n>}  →  suggest: zIndexes.<token>` (JSX) or `f
 
 Also check whether the project depends on `@codecademy/gamut-styles` at a version that exports `zIndexes` (see Check 1) — if not, note that upgrading is required before remediation.
 
-Skill reference: [`gamut-zindex`](../gamut-zindex/SKILL.md) — full scale reference, `ZIndexType`, and `gamut/no-raw-z-index` rule details.
+Skill reference: [`gamut-z-index`](../gamut-z-index/SKILL.md) — full scale reference, `ZIndexType`, and `gamut/no-raw-z-index` rule details.
 
 ---
 
@@ -530,12 +530,6 @@ Hardcoded colors                                                         [→ ga
   ⚠  src/Nav.tsx:8     '#BADA55'  →  semantic: (n/a) | palette: — | note: no Gamut token
   ✗  Non-Gamut CSS vars   --darkNeutralColor (8 uses), --whiteColor (5 uses)  →  --color-text, --color-background
 
-Raw z-index                                                              [→ gamut-zindex]
-  ✗  src/HeroBanner.tsx:9    zIndex={3}   →  suggest: zIndexes.foreground
-  ✗  src/Nav.tsx:14     zIndex: 12  →  ⚠ needs manual review — no obvious token
-  ℹ  src/Vendor.tsx:31  zIndex={9999}  (eslint-disable-next-line gamut/no-raw-z-index — justified)
-  (or: ✓  none found)
-
 Test setup                                                               [→ gamut-testing]
   ✓  @codecademy/gamut-tests   used in 12 test files
   ✗  jest.mock(@codecademy/gamut)   2 occurrences — remove; prefer setupRtl (or harness + setupRtl)
@@ -543,6 +537,12 @@ Test setup                                                               [→ ga
        src/components/Bar/__tests__/Bar.test.tsx:5
   ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
        src/components/Baz/__tests__/Baz.test.tsx:2
+
+Raw z-index                                                              [→ gamut-z-index]
+  ✗  src/HeroBanner.tsx:9    zIndex={3}   →  suggest: zIndexes.foreground
+  ✗  src/Nav.tsx:14     zIndex: 12  →  ⚠ needs manual review — no obvious token
+  ℹ  src/Vendor.tsx:31  zIndex={9999}  (eslint-disable-next-line gamut/no-raw-z-index — justified)
+  (or: ✓  none found)
 
 Bespoke component duplication (heuristic — confirm manually)              [→ gamut-component-first]
   ⚠  src/components/ConfirmDialog/ConfirmDialog.tsx:9   role="dialog" with no Modal/Dialog import — likely reinventing gamut-modal
