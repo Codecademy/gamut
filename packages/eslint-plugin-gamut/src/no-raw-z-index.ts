@@ -49,11 +49,10 @@ export default createRule({
     docs: {
       description:
         'Discourage raw numeric z-index values which can lead to z-index stacking issues and encourage usage of semantic tokens from the `zIndexes` scale.',
-      recommended: 'error',
     },
     messages: {
       noRawZIndex:
-        'Semantic tokens from the `zIndexes` scale (e.g. `zIndexes.modal`) are recommendedinstead of a raw z-index number. For a deliberate in-between value, disable this rule inline with a justifying comment.',
+        'Semantic tokens from the `zIndexes` scale (e.g. `zIndexes.modal`) are recommended instead of a raw z-index number. For a deliberate in-between value, disable this rule inline with a justifying comment.',
     },
     type: 'suggestion',
     schema: [],

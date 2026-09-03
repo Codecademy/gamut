@@ -40,10 +40,12 @@ describe('BodyPortal', () => {
   });
 
   it('passes through a raw numeric z-index escape hatch', () => {
+    // eslint-disable-next-line gamut/no-raw-z-index -- testing the raw-number escape hatch itself
     const { view } = renderView({ zIndex: 550 });
 
     const content = view.getByTestId('portal-content');
     expect(content.parentElement).toHaveStyle({
+      // eslint-disable-next-line gamut/no-raw-z-index -- testing the raw-number escape hatch itself
       zIndex: 550,
     });
   });
