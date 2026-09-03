@@ -22,7 +22,7 @@ export type {
 
 export type {
   ControlState,
-  NormalizedSelectDropdownSize,
+  NormalizedSelectDropdownSizes,
   OptionState,
   SelectDropdownSizes,
 } from './styles';

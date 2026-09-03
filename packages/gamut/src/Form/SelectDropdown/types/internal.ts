@@ -3,16 +3,14 @@ import { DropdownIndicatorProps, GroupBase } from 'react-select';
 
 import { SelectOptionBase } from '../../utils';
 import { OptionStrict } from './options';
-import { NormalizedSelectDropdownSize, SharedProps } from './styles';
+import { NormalizedSelectDropdownSizes, SharedProps } from './styles';
 
 /**
  * Internal props passed to custom select components.
  * Contains select-specific props and size information.
  */
 export type InternalSelectProps = {
-  selectProps: Pick<SharedProps, 'inputProps'> & {
-    size?: NormalizedSelectDropdownSize;
-  };
+  selectProps: Pick<SharedProps, 'inputProps'> & NormalizedSelectDropdownSizes;
 };
 
 /**

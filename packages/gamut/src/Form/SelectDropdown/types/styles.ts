@@ -14,10 +14,11 @@ import { InternalInputsProps } from './component-props';
 export type SelectDropdownSizes = { size?: 'base' | 'small' | 'medium' };
 
 /**
- * Size value after the deprecated `medium` alias has been normalized to `base`.
+ * Size shape after the deprecated `medium` alias has been normalized to `base`.
  * This is what gets handed to react-select internals and styling helpers.
+ * Compose it into internal prop types the way `SelectDropdownSizes` is used publicly.
  */
-export type NormalizedSelectDropdownSize = 'base' | 'small';
+export type NormalizedSelectDropdownSizes = { size?: 'base' | 'small' };
 
 /**
  * Shared properties available to all SelectDropdown variants.
@@ -53,10 +54,8 @@ export interface StateStyleProps
  */
 export interface ReactSelectAdditionalProps
   extends StateStyleProps,
-    SharedProps {
-  /** Normalized size handed to react-select (`medium` → `base`) */
-  size?: NormalizedSelectDropdownSize;
-}
+    SharedProps,
+    NormalizedSelectDropdownSizes {}
 
 /**
  * Base props used for styling select components.
@@ -64,9 +63,8 @@ export interface ReactSelectAdditionalProps
  */
 export type BaseSelectComponentProps = {
   selectProps: Omit<SharedProps, 'inputProps'> &
-    StateStyleProps & {
-      /** Normalized size handed to react-select internals (`medium` → `base`) */
-      size?: NormalizedSelectDropdownSize;
+    StateStyleProps &
+    NormalizedSelectDropdownSizes & {
       /** Whether multiple selection is enabled */
       isMulti?: boolean;
       /** Whether the select is searchable */
