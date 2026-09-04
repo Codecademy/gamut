@@ -106,7 +106,7 @@ For optimal accessibility, the empty message should match the pattern below. Thi
     height="inherit"
     position="absolute"
     width="inherit"
-    zIndex={1}
+    zIndex="foreground"
   >
     // each child of `tr` should be `th`
     <FlexBox
@@ -279,7 +279,7 @@ const columns = [
 - Use a `ref` for the menu trigger element (e.g., IconButton) and pass it to `PopoverContainer`'s `targetRef` prop
 - Set `allowPageInteraction={true}` on PopoverContainer to allow interaction with the table while the menu is open
 - The PopoverContainer will automatically close when the target row scrolls out of view, preventing orphaned menus
-- Modals opened from menu items will use `zIndex={3}` by default to appear above table headers
+- Modals opened from menu items will use `zIndex="modal"` by default to appear above table headers
 
 ## Container Query Control
 
