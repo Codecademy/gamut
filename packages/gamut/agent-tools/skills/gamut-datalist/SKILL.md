@@ -206,7 +206,7 @@ For server-side filtering or pagination, manage `query` and `onQueryChange` exte
 
 ## Empty state
 
-DataList shows a default empty state when `rows` is empty. Override with `emptyMessage`. The default and the example below both use `zIndex={1}` to sit above table rows without a token — see [`gamut-z-index`](../gamut-z-index/SKILL.md) before changing it.
+DataList shows a default empty state when `rows` is empty. Override with `emptyMessage`. The default and the example below both use `zIndex="foreground"` to sit above table rows — see [`gamut-z-index`](../gamut-z-index/SKILL.md) before changing it.
 
 ```tsx
 <DataList
@@ -221,7 +221,7 @@ DataList shows a default empty state when `rows` is empty. Override with `emptyM
         height="inherit"
         position="absolute"
         width="inherit"
-        zIndex={1}
+        zIndex="foreground"
       >
         <FlexBox
           as="th"

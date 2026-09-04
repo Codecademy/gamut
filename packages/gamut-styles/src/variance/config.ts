@@ -328,7 +328,14 @@ export const positioning = {
     resolveProperty: getPropertyMode,
     transform: transformSize,
   },
-  zIndex: { property: 'zIndex' },
+  // `scale: 'zIndexes'` resolves token names (e.g. `zIndex="modal"`) to `var(--zIndexes-*)`.
+  // `allowRawValue` keeps the numeric/global escape hatch (e.g. `zIndex={550}`,
+  // `zIndex={zIndexes.foreground + 1}`) that scaled props otherwise reject.
+  zIndex: { property: 'zIndex', scale: 'zIndexes', allowRawValue: true },
+  // Companion to `zIndex`, deliberately unscaled: `isolation: 'isolate'` establishes a local
+  // stacking context so descendant `zIndex` values are scoped to this element, without the
+  // `position` change or z-index lift that `position: relative` + a `zIndexes` token would add.
+  isolation: { property: 'isolation' },
   opacity: { property: 'opacity' },
 } as const;
 

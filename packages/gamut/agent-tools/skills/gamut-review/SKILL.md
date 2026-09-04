@@ -428,45 +428,42 @@ Skill reference for remediation: [`gamut-testing`](../gamut-testing/SKILL.md)
 
 ---
 
-## Check 6 — Bespoke component duplication
+## Check 6 — Raw z-index values
 
-Unlike Checks 1–5, this check is heuristic, not deterministic — every match needs a human glance before acting. **Every Check 6 finding is reported with `⚠`. There is no `✗` option for this check** — if a match feels like a clear-cut violation, that feeling is exactly the failure mode this rule exists to catch (a confident-looking ARIA-role/hand-rolled-listener match is still just a pattern match, not a certainty).
+Gamut coordinates stacking order through one semantic scale, `zIndexes`, from `@codecademy/gamut-styles`: `underlay` (-100), `base` (0), `foreground` (100), `floating` (200), `appBar` (300), `flyout` (400), `modal` (500), `popover` (600), `topmost` (700). A raw numeric z-index bypasses this scale and is what the `gamut/no-raw-z-index` eslint rule (`error` level) exists to catch — this check finds the same violations by grep so they show up even in a repo that hasn't wired the rule into its eslint config yet.
 
-The goal: find custom-built UI that duplicates something `@codecademy/gamut` already provides — a hand-rolled modal, dropdown, tooltip, or focus trap living next to the library that already solves it. See [`gamut-component-first`](../gamut-component-first/SKILL.md) for the full decision table and the "signals" list this check is built from.
+Discovery: Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for a raw numeric literal (optionally negative) in a `zIndex` JSX prop or a `zIndex`/`'z-index'` style-object key. Skip `node_modules`, `dist`, `.next`, `build`, `.turbo`.
 
-**Step 1 — Suspicious ARIA roles without a matching Gamut import**
+- JSX prop: `zIndex=\{-?[0-9]+\}`
+- Style object key: `\bzIndex:\s*-?[0-9]+\b` and `['"]z-index['"]:\s*-?[0-9]+`
 
-Grep source files (`.ts`, `.tsx`, `.js`, `.jsx`) for hand-set roles:
+Exclude a match when:
 
-```
-role=["']?(dialog|menu|tooltip|listbox|alert)["']?
-```
+- The line (or the line above it) has `eslint-disable-next-line gamut/no-raw-z-index` / `eslint-disable-line gamut/no-raw-z-index` with a justifying comment — the rule allows this as a deliberate escape hatch. Report as `ℹ note`, not a violation.
+- The value is arithmetic on a token, e.g. `zIndex={zIndexes.foreground - 2}` — the regexes above only match when a number immediately follows `{`/`:`, so a leading token identifier already excludes these; discard any accidental match where the captured "number" is preceded by an identifier or `.`.
+- A variable is being passed (`zIndex={zIndex}`, `zIndex: props.zIndex`) — not a literal, not flagged (same as the eslint rule).
 
-For each match, check whether the same file imports the corresponding component from `@codecademy/gamut` (`Modal`/`Dialog` for `dialog`, `Menu` for `menu`, `ToolTip`/`PreviewTip`/`InfoTip`/`Tip` for `tooltip`, `SelectDropdown` for `listbox`, `Alert` for `alert`). If the import is absent, report as `⚠  <file>:<line>  role="..." with no matching Gamut import`.
+### Workflow (each match)
 
-**Step 2 — Component files named after a Gamut component that don't import it**
+1. Record the raw number and whether it's a JSX prop or style-object key.
+2. Suggest the nearest scale token:
 
-Look for source files whose filename (not import path) matches a known Gamut component name — `Modal`, `Dialog`, `Dropdown`, `Tooltip`, `Popover`, `Menu`, `Toast`, `Accordion`, `Tabs`, `Pagination`, `Avatar`, `Badge`, `Tag` — and check whether that file imports the matching name from `@codecademy/gamut`. A same-named local file that does _not_ import from the library is a strong signal of a parallel implementation. Report as `⚠  <file>  filename matches a Gamut component; no @codecademy/gamut import found`.
+   | Raw value | Suggested token                                                                                                                                                                                           |
+   | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `-1`      | `zIndexes.underlay`                                                                                                                                                                                       |
+   | `0`       | `zIndexes.base`                                                                                                                                                                                           |
+   | `1`–`3`   | `zIndexes.foreground` (common legacy in-flow/sticky value)                                                                                                                                                |
+   | other     | Nearest token by magnitude (e.g. `12` → `zIndexes.foreground` or `zIndexes.appBar - 288`, depending on stacking intent) — flag `⚠ needs manual review` since intent isn't inferable from the number alone |
 
-**Step 3 — Hand-rolled dismiss/focus-trap logic**
+3. For an "other" value with no obvious nearest token, still report the match but mark it for manual review rather than guessing a token — the developer who wrote the number knows what it needed to sit above/below.
 
-Grep for manual Escape-key or outside-click dismiss handling that isn't going through Gamut's `Overlay`/`FocusTrap`/`PopoverContainer`:
+Severity: ✗ error for every raw literal match (mirrors the eslint rule's `error` level) except lines exempted by an inline disable comment (→ ℹ note).
 
-```
-(key === ['"]Escape['"]|addEventListener\(['"]keydown)
-```
+Reporting: `file:line  zIndex={<n>}  →  suggest: zIndexes.<token>` (JSX) or `file:line  zIndex: <n>  →  suggest: zIndexes.<token>` (style object). For unmapped "other" values: `file:line  zIndex={<n>}  →  ⚠ needs manual review — no obvious token`.
 
-in files that don't import `Overlay`, `FocusTrap`, or `PopoverContainer` from `@codecademy/gamut`. Same idea for manual outside-click listeners (`addEventListener('click'` at the document/window level alongside a "contains" check). Report as `⚠  <file>:<line>  hand-rolled dismiss logic, no FocusTrap/Overlay/PopoverContainer import`.
+Also check whether the project depends on `@codecademy/gamut-styles` at a version that exports `zIndexes` (see Check 1) — if not, note that upgrading is required before remediation.
 
-**Step 4 — SCSS/CSS module files named after a Gamut component**
-
-Cross-reference with Check 3b's SCSS import list: a stylesheet named `Modal.scss`, `Dropdown.module.css`, `Tooltip.scss`, etc. is worth a second look even if Check 3b already flagged the import generically — the filename is the signal that this isn't just "some CSS," it's a parallel version of a specific Gamut component. Report as `⚠  <file>  stylesheet named after a Gamut component`.
-
-**Reporting:** for each match, name the likely Gamut component from the [decision table](../gamut-component-first/SKILL.md#decision-table-common-needs) and note this needs manual confirmation — a real product-specific one-off will look identical to a grep tool.
-
-**Before finalizing the report**, re-scan every line under this section specifically for a `✗` icon. If you find one, that's a mistake — change it to `⚠`. **When computing the final `<N> error(s), <N> warning(s)` tally, count every Check 6 match toward the warning total, never the error total, even if a `✗` slipped through above** — this is the one place a stray icon can't corrupt the report's headline numbers.
-
-Skill reference for remediation: [`gamut-component-first`](../gamut-component-first/SKILL.md)
+Skill reference: [`gamut-z-index`](../gamut-z-index/SKILL.md) — full scale reference, `ZIndexType`, and `gamut/no-raw-z-index` rule details.
 
 ---
 
@@ -540,6 +537,12 @@ Test setup                                                               [→ ga
        src/components/Bar/__tests__/Bar.test.tsx:5
   ⚠  direct component-test-setup import   1 occurrence — import from @codecademy/gamut-tests
        src/components/Baz/__tests__/Baz.test.tsx:2
+
+Raw z-index                                                              [→ gamut-z-index]
+  ✗  src/HeroBanner.tsx:9    zIndex={3}   →  suggest: zIndexes.foreground
+  ✗  src/Nav.tsx:14     zIndex: 12  →  ⚠ needs manual review — no obvious token
+  ℹ  src/Vendor.tsx:31  zIndex={9999}  (eslint-disable-next-line gamut/no-raw-z-index — justified)
+  (or: ✓  none found)
 
 Bespoke component duplication (heuristic — confirm manually)              [→ gamut-component-first]
   ⚠  src/components/ConfirmDialog/ConfirmDialog.tsx:9   role="dialog" with no Modal/Dialog import — likely reinventing gamut-modal

@@ -52,6 +52,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
       escapeCloses
       isOpen={expanded}
       shroud
+      zIndex="flyout"
       onRequestClose={onClose}
     >
       <Background bg={bg}>

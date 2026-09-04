@@ -1,6 +1,6 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 
-import { AboutHeader, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, LinkTo, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 import * as PositioningStories from './Positioning.stories';
@@ -18,13 +18,15 @@ export const parameters = {
 
 Positioning props control how elements are positioned within their parent containers and manage their stacking order. Use these properties to create fixed headers, absolute overlays, sticky navigation, and control layering with z-index. The `inset` shorthand provides a convenient way to set all four position values at once.
 
+`zIndex` is backed by the semantic <LinkTo id="Foundations/Z-Index">z-index scale</LinkTo> — pass a token name (e.g. `zIndex="modal"`) rather than a raw number. `isolation="isolate"` is its companion: it establishes a local stacking context so descendant `zIndex` values are scoped to that element, without the position change or z-index lift you'd get from `position: relative` plus a token.
+
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
 const PositioningExample = styled.div(system.positioning);
 
-<PositioningExample position="absolute" zIndex={2} top="0" left="0" />;
+<PositioningExample position="absolute" zIndex="modal" top="0" left="0" />;
 ```
 
 These positioning props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
