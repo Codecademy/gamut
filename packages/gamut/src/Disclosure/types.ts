@@ -1,9 +1,17 @@
+import { ComponentProps, ComponentPropsWithoutRef } from 'react';
+
+import { DataAttributes } from '../utils';
 import {
   DisclosureBodyWrapperStyles,
+  DisclosureButtonWrapper,
   DisclosureWrapperStyles,
 } from './elements';
 
 export interface DisclosureButtonProps {
+  /**
+   * Props forwarded to the toggle button (the interactive element users actually click), e.g. for `data-*`/`aria-*` attributes that need to land there rather than on the Disclosure's root wrapper.
+   */
+  buttonProps?: ComponentProps<typeof DisclosureButtonWrapper> & DataAttributes;
   /**
    * Renders the Disclosure unclickable.
    */
@@ -61,7 +69,8 @@ export interface DisclosureBodyProps extends DisclosureBodyWrapperStyles {
 export interface DisclosureProps
   extends Omit<DisclosureButtonProps, 'isExpanded' | 'setIsExpanded'>,
     DisclosureBodyProps,
-    DisclosureWrapperStyles {
+    DisclosureWrapperStyles,
+    Omit<ComponentPropsWithoutRef<'div'>, 'onClick' | 'color'> {
   /**
    * Determines whether or not the Disclosure is expanded upon load.
    * Default value is `false`.

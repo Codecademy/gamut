@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { ComponentProps } from 'react';
 
 import { Toaster } from '..';
 
@@ -45,5 +46,31 @@ describe('Toaster', () => {
     expect(view.getAllByText(/Status Toast/i)[2].innerHTML).toBe(
       'Status Toast 3'
     );
+  });
+
+  it('forwards data-* and aria-* attributes to the container', () => {
+    const containerProps = {
+      'data-marker': 'toaster',
+      'aria-keyshortcuts': 't',
+    } as Partial<ComponentProps<typeof Toaster>>;
+    const { view } = renderView(containerProps);
+
+    const container = view.baseElement.querySelector('[data-marker="toaster"]');
+    expect(container).toHaveAttribute('aria-keyshortcuts', 't');
+  });
+
+  it('forwards per-toast data-* and aria-* attributes to the individual toast', () => {
+    const toastsWithMarker = [
+      {
+        id: 'toast-1',
+        title: 'Status Toast 1',
+        'data-marker': 'toast-1',
+        'aria-keyshortcuts': 't1',
+      },
+    ];
+    const { view } = renderView({ toasts: toastsWithMarker });
+
+    const toast = view.baseElement.querySelector('[data-marker="toast-1"]');
+    expect(toast).toHaveAttribute('aria-keyshortcuts', 't1');
   });
 });

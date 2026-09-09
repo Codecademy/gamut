@@ -1,4 +1,5 @@
 import {
+  ComponentProps,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -7,6 +8,7 @@ import {
   useState,
 } from 'react';
 
+import { DataAttributes } from '../../utils';
 import { getFocusableElements as getFocusableElementsUtil } from '../../utils/focus';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -34,6 +36,10 @@ export type InfoTipBaseProps = TipBaseProps & {
    * Called when the InfoTip button is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
+  /**
+   * Props forwarded to the InfoTip's button (the interactive element users actually click), e.g. for `data-*` attributes. `aria-label`, `aria-labelledby`, and `aria-roledescription` set here are overridden by `ariaLabel`, `ariaLabelledby`, and `ariaRoleDescription` respectively.
+   */
+  buttonProps?: ComponentProps<typeof InfoTipButton> & DataAttributes;
   /**
    * Use the camelCase syntax to pass aria-* props to the InfoTip button.
    */
@@ -76,6 +82,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   ariaLabel,
   ariaLabelledby,
   ariaRoleDescription = 'More information button',
+  buttonProps,
   emphasis = 'low',
   info,
   onClick,
@@ -249,6 +256,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   return (
     <Tip {...tipProps} type="info">
       <InfoTipButton
+        {...buttonProps}
         active={!isTipHidden}
         aria-expanded={!isTipHidden}
         aria-label={ariaLabel}

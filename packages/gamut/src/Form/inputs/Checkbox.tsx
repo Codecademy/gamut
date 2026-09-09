@@ -6,7 +6,13 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  InputHTMLAttributes,
+  useEffect,
+  useRef,
+} from 'react';
 
 import { FlexBox } from '../../Box';
 import { InfoTip } from '../../Tip/InfoTip';
@@ -14,6 +20,7 @@ import {
   InfoTipSubComponentProps,
   useInfotipProps,
 } from '../../Tip/InfoTip/type-utils';
+import { DataAttributes } from '../../utils';
 import {
   checkboxElement,
   checkboxElementStates,
@@ -31,10 +38,20 @@ import { CheckboxCheckedUnion, CheckboxLabelUnion } from './types';
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
+/*
+ * Props for the visible `<label>` that wraps the checkbox UI, as opposed to
+ * `CheckboxProps`' own `...rest`, which forwards to the hidden `<input>`.
+ * Intersected with `DataAttributes` since nested prop-bag object literals
+ * don't get the JSX exemption for hyphenated attribute names.
+ */
+export type CheckboxLabelProps = ComponentPropsWithoutRef<'label'> &
+  DataAttributes;
+
 export type CheckboxProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'checked' | 'value' | 'label' | 'aria-label'
 > &
+  DataAttributes &
   CheckboxLabelUnion &
   CheckboxCheckedUnion &
   CheckboxPaddingProps &
@@ -51,6 +68,13 @@ export type CheckboxProps = Omit<
      * To override this behavior, provide `ariaLabel` or `ariaLabelledby`.
      */
     infotip?: InfoTipSubComponentProps;
+    /**
+     * Props to forward to the visible label element that wraps the checkbox
+     * UI - the thing users actually click. Unlike `...rest`, which lands on
+     * the screenreader-only `<input>`, this is the slot for `data-*`/`aria-*`
+     * attributes meant for click tracking or targeting the visible element.
+     */
+    labelProps?: CheckboxLabelProps;
     /**
      * @remarks
      * The `value` prop here gets passed to the underlying `input` component
@@ -148,6 +172,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       id,
       infotip,
       label,
+      labelProps,
       multiline,
       spacing,
       value,
@@ -198,7 +223,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {...rest}
           ref={syncedRefs}
         />
+        {/*
+          labelProps spreads first so Checkbox's own accessibility wiring -
+          disabled/htmlFor/spacing - always wins over anything a consumer
+          passes in.
+        */}
         <CheckboxLabel
+          {...labelProps}
           disabled={disabled}
           htmlFor={id || htmlFor}
           spacing={spacing}

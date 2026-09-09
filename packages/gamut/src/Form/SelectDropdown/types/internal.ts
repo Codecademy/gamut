@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DropdownIndicatorProps, GroupBase } from 'react-select';
 
+import { DataAttributes } from '../../../utils';
 import { SelectOptionBase } from '../../utils';
 import { OptionStrict } from './options';
 import { SelectDropdownSizes, SharedProps } from './styles';
@@ -10,7 +11,9 @@ import { SelectDropdownSizes, SharedProps } from './styles';
  * Contains select-specific props and size information.
  */
 export type InternalSelectProps = {
-  selectProps: Pick<SharedProps, 'inputProps'> & SelectDropdownSizes;
+  selectProps: Pick<SharedProps, 'inputProps'> &
+    SelectDropdownSizes &
+    DataAttributes;
 };
 
 /**

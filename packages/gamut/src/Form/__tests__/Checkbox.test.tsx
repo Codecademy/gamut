@@ -88,6 +88,32 @@ describe('<Checkbox>', () => {
     expect(tip).toBeVisible();
   });
 
+  it('forwards labelProps to the visible label without disturbing the input', () => {
+    const { view } = renderView({
+      labelProps: { 'data-marker': 'checkbox-label', 'aria-keyshortcuts': 'l' },
+      'data-testid': 'checkbox-input',
+    });
+
+    const checkboxLabel = view.container.querySelector('label');
+    expect(checkboxLabel).toHaveAttribute('data-marker', 'checkbox-label');
+    expect(checkboxLabel).toHaveAttribute('aria-keyshortcuts', 'l');
+
+    // regression: ...rest still lands on the hidden input, unchanged
+    expect(view.getByRole('checkbox')).toHaveAttribute(
+      'data-testid',
+      'checkbox-input'
+    );
+  });
+
+  it('does not let labelProps override the label’s own accessibility wiring', () => {
+    const { view } = renderView({
+      labelProps: { htmlFor: 'should-not-win' },
+    });
+
+    const checkboxLabel = view.container.querySelector('label');
+    expect(checkboxLabel).toHaveAttribute('for', 'some-label');
+  });
+
   describe('InfoTip accessibility', () => {
     const info = 'helpful information';
     const labelText = 'Checkbox Label';

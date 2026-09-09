@@ -9,7 +9,7 @@ import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { CloseButtonProps } from '../Modals/types';
 import { ToolTip } from '../Tip/ToolTip';
-import { WithChildrenProp } from '../utils';
+import { DataAttributes, WithChildrenProp } from '../utils';
 import {
   AlertBanner,
   AlertBox,
@@ -48,7 +48,7 @@ export type AlertProps = WithChildrenProp &
     cta?: Exclude<
       React.ComponentProps<typeof FillButton>,
       'variant' | 'mode' | 'size'
-    > & { text?: string };
+    > & { text?: string } & DataAttributes;
     /** Props for customizing the close button */
     closeButtonProps?: Omit<
       NonNullable<CloseButtonProps['closeButtonProps']>,

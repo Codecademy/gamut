@@ -1,6 +1,7 @@
 import { Ref, SelectHTMLAttributes } from 'react';
 import { Options as OptionsType, Props as NamedProps } from 'react-select';
 
+import { DataAttributes } from '../../../utils';
 import { SelectComponentProps } from '../../inputs/Select';
 import {
   OptionStrict,
@@ -64,7 +65,8 @@ export interface SelectDropdownCoreProps
       SelectHTMLAttributes<HTMLSelectElement>,
       'value' | 'disabled' | 'onClick'
     >,
-    SharedProps {
+    SharedProps,
+    DataAttributes {
   /** Required name attribute for the select input */
   name: string;
   /** Placeholder text shown when no option is selected.

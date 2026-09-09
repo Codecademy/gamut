@@ -93,24 +93,34 @@ export const Modal: React.FC<ModalProps> = ({
   containerFocusRef,
   title,
   views,
+  isOpen,
+  clickOutsideCloses,
+  escapeCloses,
+  shroud = true,
+  zIndex,
+  image: imageProp,
   ...rest
 }) => {
   const titleId = useId();
   const [currentView, setCurrentView] = useState(0);
   const view = views?.[currentView];
-  const image = (view?.image || rest?.image) ?? null;
+  const image = (view?.image || imageProp) ?? null;
 
   const titleText = title || views?.[currentView].title;
   const needsLabelledBy = titleText && !ariaLabel;
 
   return (
     <Overlay
+      clickOutsideCloses={clickOutsideCloses}
       data-testid="modal"
-      shroud
+      escapeCloses={escapeCloses}
+      isOpen={isOpen}
+      shroud={shroud}
+      zIndex={zIndex}
       onRequestClose={onRequestClose}
-      {...rest}
     >
       <ModalContainer
+        {...rest}
         aria-hidden="false"
         aria-label={ariaLabel}
         aria-labelledby={needsLabelledBy ? titleId : undefined}

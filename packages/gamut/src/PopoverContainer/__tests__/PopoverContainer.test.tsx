@@ -96,6 +96,40 @@ describe('Popover', () => {
     expect(popoverIsRendered()).toBeTruthy();
   });
 
+  it('keeps its own data-floating when a consumer forces one through', () => {
+    /*
+     * The type rejects data-floating (see the compile-time assertion below), so
+     * this casts past it on purpose: the guarantee under test is that setting
+     * the attribute after {...rest} holds even when the type is bypassed.
+     */
+    const { view } = renderView({
+      isOpen: true,
+      'data-floating': 'hijacked',
+      'data-marker': 'probe',
+    } as unknown as PopoverContainerProps);
+
+    const content = view.getByTestId('popover-content-container');
+
+    // outside-click detection reads this back via closest()
+    expect(content).toHaveAttribute('data-floating', 'popover');
+    expect(content).toHaveAttribute('data-marker', 'probe');
+  });
+
+  it('rejects data-floating at the type level (compile-time only)', () => {
+    /*
+     * PopoverContainerProps extends ReservedDataAttributes, which declares
+     * 'data-floating'?: never. TypeScript skips checking hyphenated JSX
+     * attributes unless the key is declared, so this assertion is what proves
+     * the declaration is still in place.
+     */
+    const reserved: PopoverContainerProps['data-floating'] = undefined;
+    // @ts-expect-error data-floating is reserved for Gamut internals
+    const rejected: PopoverContainerProps['data-floating'] = 'popover';
+
+    expect(reserved).toBeUndefined();
+    expect(rejected).toBe('popover');
+  });
+
   it('accepts targetRef from useRef and renders when open', () => {
     const ContainerWithUseRefTarget = () => {
       const targetRef = React.useRef<HTMLDivElement>(null);

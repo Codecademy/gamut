@@ -42,6 +42,18 @@ describe('Dialog', () => {
     expect(view.queryByRole('dialog')).toBe(null);
   });
 
+  it('forwards data-* and aria-* attributes to the dialog container', () => {
+    const { view } = renderView({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const dialog = view.getByRole('dialog');
+
+    expect(dialog).toHaveAttribute('data-marker', 'probe');
+    expect(dialog).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
   it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
     const ariaLabel = 'Close dialog';

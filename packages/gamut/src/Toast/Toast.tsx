@@ -66,6 +66,7 @@ export const Toast: React.FC<ToastProps> = ({
   children,
   icon,
   onClose,
+  ...rest
 }) => {
   const layoutType = useMemo(() => {
     if (icon) return 'icon-message';
@@ -92,7 +93,12 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   return (
-    <ToastContainer aria-live="polite" layout={layoutType} role="status">
+    <ToastContainer
+      aria-live="polite"
+      layout={layoutType}
+      role="status"
+      {...rest}
+    >
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (

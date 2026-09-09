@@ -58,6 +58,12 @@ export function DataGrid<
     wrapperWidth,
     overflow,
     disableContainerQuery = false,
+    // Consumed via useListControls(props) above, not spread onto List.
+    onQueryChange,
+    onRowSelect,
+    onRowExpand,
+    expandedContent,
+    ...rest
   } = props;
 
   const empty = rows.length === 0;
@@ -136,6 +142,7 @@ export function DataGrid<
           spacing={spacing}
           variant={variant}
           wrapperWidth={wrapperWidth ?? undefined}
+          {...rest}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];

@@ -1,5 +1,6 @@
 import { MiniArrowLeftIcon, MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import { useElementDir } from '@codecademy/gamut-styles';
+import omit from 'lodash/omit';
 import {
   useCallback,
   useEffect,
@@ -37,6 +38,29 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     quickActions,
     placement = 'inline',
   } = props;
+
+  /*
+   * `props` is a discriminated union, so the mode-specific fields
+   * (selectedDate/onSelected or startDate/endDate/onStartSelected/onEndSelected)
+   * can't be destructured directly without narrowing. Strip them out at
+   * runtime instead so only real DOM attributes reach the wrapper below.
+   */
+  const rest = omit(props, [
+    'locale',
+    'disableDate',
+    'children',
+    'mode',
+    'translations',
+    'inputSize',
+    'quickActions',
+    'placement',
+    'selectedDate',
+    'onSelected',
+    'startDate',
+    'endDate',
+    'onStartSelected',
+    'onEndSelected',
+  ]);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [focusGridSignal, setFocusGridSignal] = useState(false);
   const [gridFocusRequested, setGridFocusRequested] = useState(false);
@@ -154,6 +178,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     ) : (
       <>
         <FlexBox
+          {...rest}
           gap={inputSize === 'small' ? 4 : 8}
           ref={inputRef}
           width="fit-content"

@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/dom';
 import { act } from '@testing-library/react';
 import * as React from 'react';
 
-import { Alert } from '../Alert';
+import { Alert, AlertProps } from '../Alert';
 
 const children = 'Hello';
 const onClose = jest.fn();
@@ -140,5 +140,36 @@ describe('Alert', () => {
       const closeButton = view.getByRole('button', { name: 'Close alert' });
       expect(closeButton).not.toBeDisabled();
     });
+
+    it('accepts a data-* attribute on closeButtonProps as a type (compile-time only)', () => {
+      /*
+       * `closeButtonProps` intersects `DataAttributes` (inherited from
+       * `CloseButtonProps` in Modals/types.ts), so `data-marker` here would
+       * be a TS2353 error if that type regressed. Alert doesn't currently
+       * forward arbitrary closeButtonProps keys to the close button at
+       * runtime - only the type accepting the key is asserted here.
+       */
+      const closeButtonProps: AlertProps['closeButtonProps'] = {
+        'data-marker': 'alert-close',
+      };
+
+      expect(closeButtonProps).toEqual({ 'data-marker': 'alert-close' });
+    });
+  });
+
+  it('forwards data-* and aria-* attributes passed via cta to the cta button', () => {
+    // Compile-time assertion: `cta` intersects `DataAttributes`, so
+    // `data-marker` here would be a TS2353 error if that type regressed.
+    const { view } = renderView({
+      cta: {
+        children: 'Click Me!',
+        'data-marker': 'alert-cta',
+        'aria-keyshortcuts': 'c',
+      },
+    });
+
+    const cta = view.getByRole('button', { name: 'Click Me!' });
+    expect(cta).toHaveAttribute('data-marker', 'alert-cta');
+    expect(cta).toHaveAttribute('aria-keyshortcuts', 'c');
   });
 });

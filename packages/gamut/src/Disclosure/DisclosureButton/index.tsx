@@ -12,6 +12,7 @@ import { getRotationSize, getSpacing, getTitleSize } from '../helpers';
 import { DisclosureButtonProps } from '../types';
 
 export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
+  buttonProps,
   disabled = false,
   heading,
   headingLevel = 'h3',
@@ -35,6 +36,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
   return (
     <FlexBox>
       <DisclosureButtonWrapper
+        {...buttonProps}
         aria-expanded={isExpanded}
         disabled={disabled}
         height="100%"

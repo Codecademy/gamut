@@ -63,6 +63,18 @@ describe('Modal', () => {
     view.getByAltText('test');
   });
 
+  it('forwards data-* and aria-* attributes to the modal container', () => {
+    const { view } = renderView({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const modal = view.getByRole('dialog');
+
+    expect(modal).toHaveAttribute('data-marker', 'probe');
+    expect(modal).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
   describe('closeButtonProps functionality', () => {
     it('applies a ref to the close button when closeButtonProps.ref is provided', () => {
       const closeButtonRef = React.createRef<HTMLButtonElement>();

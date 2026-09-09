@@ -69,8 +69,24 @@ export const CustomContainer = ({
         .join(', ')
     : '';
 
+  /*
+   * `data-*` attributes passed to SelectDropdown reach react-select's
+   * selectProps but are otherwise dropped, since react-select ignores
+   * unknown props. Pick them off selectProps and merge them into the
+   * container's innerProps, same as combobox props in
+   * CustomValueContainer. Scoped to `data-*` only - react-select already
+   * sets its own internal `aria-*` props (e.g. `aria-live`) that shouldn't
+   * be blindly forwarded here.
+   */
+  const dataAttributeProps = Object.fromEntries(
+    Object.entries(rest.selectProps).filter(([key]) => key.startsWith('data-'))
+  );
+
   return (
-    <SelectDropdownElements.SelectContainer {...rest}>
+    <SelectDropdownElements.SelectContainer
+      {...rest}
+      innerProps={{ ...rest.innerProps, ...dataAttributeProps }}
+    >
       {children}
       {hasHiddenProps && (
         <input name={name} type="hidden" value={value} {...hiddenProps} />

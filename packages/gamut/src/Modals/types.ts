@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { OverlayProps } from '../Overlay';
 import { TipCenterAlignment } from '../Tip/shared/types';
+import { DataAttributes } from '../utils';
 import { ModalContainer } from './elements';
 
 export interface ModalOverlayProps
@@ -59,5 +60,5 @@ export type CloseButtonProps = {
      * Whether to disable the default close button
      */
     disabled?: boolean;
-  };
+  } & DataAttributes;
 };

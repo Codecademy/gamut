@@ -25,6 +25,18 @@ describe('Coachmark', () => {
     expect(view.queryByTestId('coachmark-ref')).toBeInTheDocument();
   });
 
+  it('forwards data-* and aria-* attributes to the active element wrapper', () => {
+    const { view } = renderView({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const wrapper = view.getByTestId('coachmark-ref').parentElement;
+
+    expect(wrapper).toHaveAttribute('data-marker', 'probe');
+    expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
   it("renders children even when the coachmark's popover is not set to show", () => {
     const { view } = renderView({ shouldShow: false });
 

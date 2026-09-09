@@ -9,6 +9,7 @@ import { Anchor } from '../Anchor';
 import { Markdown } from '../Markdown';
 import { InfoTipSubComponentProps } from '../Tip/InfoTip/type-utils';
 import { Text } from '../Typography';
+import { DataAttributes } from '../utils';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
@@ -44,7 +45,8 @@ export interface ConnectedFormGroupProps<T extends ConnectedField>
    * An object consisting of a `component` key to specify what ConnectedFormInput to render - the remaining key/value pairs are that components desired props.
    */
   field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> &
-    FieldProps<T> & {
+    FieldProps<T> &
+    DataAttributes & {
       customValidations?: RegisterOptions;
     };
 }
@@ -63,6 +65,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   spacing = 'fit',
   isSoloField,
   infotip,
+  ...formGroupProps
 }: ConnectedFormGroupProps<T>) {
   const { component: Component, customValidations, ...rest } = field;
   const { error, isFirstError, isDisabled, setError, validation } = useField({
@@ -102,7 +105,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   const errorId = showError ? `${fieldId}_error` : undefined;
 
   return (
-    <FormGroup spacing={hideLabel ? 'tight' : spacing}>
+    <FormGroup spacing={hideLabel ? 'tight' : spacing} {...formGroupProps}>
       {hideLabel ? <Text screenreader>{renderedLabel}</Text> : renderedLabel}
       <Component
         {...(rest as any)}
