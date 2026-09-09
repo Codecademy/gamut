@@ -1124,4 +1124,48 @@ describe('SelectDropdown', () => {
       });
     });
   });
+
+  describe('menu portal', () => {
+    // The menu portals to `document.body` (rather than rendering inline) so it can't be
+    // clipped by an `overflow: hidden` ancestor. This changed the DOM location of every
+    // menu's options in every consuming app, so it's covered explicitly here.
+    const getPortalNode = (view: ReturnType<typeof renderView>['view']) => {
+      const listbox = view.getByRole('listbox');
+      const portal = listbox.parentElement?.parentElement;
+      if (!portal) throw new Error('Expected portal node to exist');
+      return portal;
+    };
+
+    it('renders the options menu in a portal appended to document.body', async () => {
+      const { view } = renderView();
+
+      await openDropdown(view);
+
+      const listbox = view.getByRole('listbox');
+      expect(view.container).not.toContainElement(listbox);
+      expect(document.body).toContainElement(listbox);
+    });
+
+    it('applies the popover z-index token to the portaled menu by default', async () => {
+      const { view } = renderView();
+
+      await openDropdown(view);
+
+      expect(getPortalNode(view)).toHaveStyle({
+        zIndex: 'var(--zIndexes-popover)',
+      });
+    });
+
+    it('applies a raw zIndex override to the portaled menu when provided', async () => {
+      // eslint-disable-next-line gamut/no-raw-z-index -- testing the raw-number escape hatch itself
+      const { view } = renderView({ zIndex: 12345 });
+
+      await openDropdown(view);
+
+      expect(getPortalNode(view)).toHaveStyle({
+        // eslint-disable-next-line gamut/no-raw-z-index -- testing the raw-number escape hatch itself
+        zIndex: 12345,
+      });
+    });
+  });
 });

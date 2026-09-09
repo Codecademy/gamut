@@ -46,7 +46,7 @@ Two variants of `ModalProps`, distinguished by whether `views` is passed:
 | `clickOutsideCloses` | `boolean`                                           | `true`    | Passed through to `Overlay`.                                                                                                               |
 | `escapeCloses`       | `boolean`                                           | `true`    | Passed through to `Overlay`.                                                                                                               |
 | `shroud`             | `boolean`                                           | `true`    | `Modal` always passes `shroud` to `Overlay`; darkens the backdrop.                                                                         |
-| `zIndex`             | `number`                                            | `3`       | Passed through to `Overlay` → `BodyPortal`. See [`gamut-z-index`](../gamut-z-index/SKILL.md) before overriding.                            |
+| `zIndex`             | `ZIndexType`                                        | `'modal'` | Passed through to `Overlay` → `BodyPortal`. See [`gamut-z-index`](../gamut-z-index/SKILL.md) before overriding.                            |
 
 ## Props — `Dialog`
 
@@ -121,7 +121,7 @@ View-level `headingLevel` and `onRequestClose` are not supported per-view — th
 `Modal`/`Dialog` render `<Overlay shroud onRequestClose={...}>` around `ModalContainer`. Nothing here is bespoke to Modal — it's the same stack every Gamut overlay uses:
 
 1. **Mount gating** — `Overlay` returns `null` when `isOpen` is falsy. There's no unmount transition; if you need an exit animation, animate your own trigger, not the Modal.
-2. **Portal** — content renders into `BodyPortal` (a `ReactDOM.createPortal` to `document.body`), not inline where `<Modal>` is declared. This is why a Modal reliably renders above in-page content regardless of surrounding `overflow`/`position` — but it also means a _second_ portal (a non-inline `PopoverContainer`, `SelectDropdown` menu, or `DatePicker` calendar) opened from inside the Modal is a **separate** sibling portal, not a descendant of the Modal's — see [`gamut-z-index`](../gamut-z-index/SKILL.md) for why that can render behind the Modal.
+2. **Portal** — content renders into `BodyPortal` (a `ReactDOM.createPortal` to `document.body`), not inline where `<Modal>` is declared. This is why a Modal reliably renders above in-page content regardless of surrounding `overflow`/`position` — but it also means a _second_ portal (a non-inline `PopoverContainer`, `SelectDropdown` menu, or `DatePicker` calendar) opened from inside the Modal is a **separate** sibling portal, not a descendant of the Modal's — see [`gamut-z-index`](../gamut-z-index/SKILL.md) for how the `zIndexes` scale keeps that sibling portal correctly stacked above the Modal.
 3. **Focus trap** — `FocusTrap` (`react-focus-on` → `focus-lock`) wraps `ModalContainer` and constrains Tab/Shift+Tab to elements inside it while `active` (mirrors `Overlay`'s `inline` — always active for Modal/Dialog since they're never `inline`).
 4. **Initial focus** — `ModalContainer` carries `data-autofocus` and `tabIndex={-1}`. `focus-lock`'s autofocus engine reads that attribute and focuses the container element itself (not the first focusable child) as soon as the trap activates — this is why the dialog's role and label get announced immediately instead of jumping straight to, say, the close button. `containerFocusRef` gives you a ref to that same node for later imperative `.focus()` calls (e.g. re-focusing after an in-modal validation error) — passing it does **not** change what receives focus on open.
 5. **Dismiss paths** — Escape (`escapeCloses`, default `true`), click on the shroud outside `ModalContainer` (`clickOutsideCloses`, default `true`), and the built-in close `IconButton` (suppress with `closeButtonProps.hidden`) all call `onRequestClose`. `Dialog`'s `confirmCta`/`cancelCta` call `onRequestClose` first, then their own `onClick`.
@@ -146,17 +146,16 @@ const [isOpen, setIsOpen] = useState(false);
 
 ## Stacking order — floating content inside a Modal
 
-`Overlay`'s portal (what `Modal`/`Dialog` render into) defaults to `zIndex={3}`. That default is only safe for what's _outside_ the Modal (it reliably clears a sticky global header, for example) — it says nothing about floating content you put _inside_ the Modal's own `children`/`views`.
-
-Concretely: if content inside a `Modal` opens a **second, non-`inline` portal** — a portalling `SelectDropdown` menu, a non-`inline` `PopoverContainer`/`Menu`, or a `DatePicker` calendar that isn't `inline` — that creates a brand-new sibling `BodyPortal` (default `zIndex={1}`) next to the Modal's own portal (`zIndex={3}`). Because `1 < 3`, the thing you just opened _from inside_ the Modal can render **behind** it.
+`Overlay`'s portal (what `Modal`/`Dialog` render into) defaults to `zIndex="modal"` (500 on the `zIndexes` scale). Floating content you put _inside_ the Modal's own `children`/`views` — a portalling `SelectDropdown` menu, a non-`inline` `PopoverContainer`/`Menu`, or a `DatePicker` calendar that isn't `inline` — opens a **second, sibling portal** via `BodyPortal`, not a descendant of the Modal's own portal. These popover-family portals default to `zIndex="popover"` (600), which already outranks `"modal"` (500), so they clear an open Modal **by default**:
 
 ```tsx
-// risky — if SelectDropdown's menu portals, it can render behind this Modal
+// fine by default — SelectDropdown's menu portals at "popover" (600), above the Modal's "modal" (500)
 <Modal isOpen={isOpen} onRequestClose={onClose} title="Edit">
   <SelectDropdown options={options} />
 </Modal>
 
-// safer — keep nested floating UI inline, inside the Modal's own stacking context
+// also fine — inline still renders in place instead of opening a second portal,
+// useful for layout/positioning reasons, but no longer required just to avoid a stacking bug
 <Modal isOpen={isOpen} onRequestClose={onClose} title="Actions">
   <PopoverContainer inline isOpen={menuOpen} targetRef={triggerRef}>
     <Menu role="menu">
@@ -166,7 +165,9 @@ Concretely: if content inside a `Modal` opens a **second, non-`inline` portal** 
 </Modal>
 ```
 
-Full component-by-component z-index reference, the `AppWrapper`/`BodyPortal` stacking-tier explanation, and when it's actually safe to add a new value: [`gamut-z-index`](../gamut-z-index/SKILL.md).
+The one way to reintroduce the old problem: deliberately overriding a nested component's `zIndex` prop to something below `"modal"` (500) — keep overrides at or above the layer they need to clear.
+
+Full component-by-component z-index reference and when it's actually safe to add a new value: [`gamut-z-index`](../gamut-z-index/SKILL.md).
 
 ---
 

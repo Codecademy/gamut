@@ -9,7 +9,7 @@ Structured, query-capable table for bulk data analysis and comparison. Sorting, 
 
 Source: `@codecademy/gamut` — `packages/gamut/src/DataList/DataTable.tsx`
 
-See also: [`gamut-datalist`](../gamut-datalist/SKILL.md) — item-focused list with expansion and selection. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction. [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — dark/light mode with `Background`. [`gamut-z-index`](../gamut-z-index/SKILL.md) — why the row-menu-opens-Modal pattern below needs `inline` to work.
+See also: [`gamut-datalist`](../gamut-datalist/SKILL.md) — item-focused list with expansion and selection. [`gamut-list`](../gamut-list/SKILL.md) — lower-level list primitives for fully custom layouts. [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA and keyboard interaction. [`gamut-color-mode`](../gamut-color-mode/SKILL.md) — dark/light mode with `Background`. [`gamut-z-index`](../gamut-z-index/SKILL.md) — how the `zIndexes` scale keeps the row-menu-opens-Modal pattern below correctly stacked.
 
 Storybook: [Organisms / Lists & Tables / DataTable](https://gamut.codecademy.com/?path=/docs-organisms-lists-tables-datatable--docs)
 
@@ -227,7 +227,7 @@ Key points:
 
 - `closeOnViewportExit` on `PopoverContainer` closes the menu when its row scrolls out of view.
 - `allowPageInteraction` lets users interact with the table while the menu is open.
-- Modals opened from menu items render at `zIndex={3}` by default, above the table header — this only holds because the row menu's `PopoverContainer` stays `inline`; see [`gamut-z-index`](../gamut-z-index/SKILL.md) for why a portalling menu would break this.
+- Modals opened from menu items render at `zIndex="modal"` by default, above the table header.
 
 ## Scrollable table
 

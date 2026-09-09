@@ -1,4 +1,9 @@
-import { ColorMode, system, useCurrentMode } from '@codecademy/gamut-styles';
+import {
+  ColorMode,
+  system,
+  useCurrentMode,
+  ZIndexType,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
@@ -17,18 +22,13 @@ const PortalWrapper = styled
   )
   .withComponent(ColorMode);
 
-interface BodyPortalProps {
-  /**
-   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
-   * will be reworked with: GM-624
-   * previously, zIndex was set to 1 in the CSS function
-   */
-  zIndex?: number;
+export interface BodyPortalProps {
+  zIndex?: ZIndexType;
 }
 
 export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
   children,
-  zIndex = 1,
+  zIndex = 'floating',
 }) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();

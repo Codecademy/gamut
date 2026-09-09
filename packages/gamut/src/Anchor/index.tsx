@@ -31,7 +31,7 @@ const outlineFocusVisible = {
     border: 2,
     borderColor: 'primary',
     opacity: 0,
-    zIndex: 0,
+    zIndex: 'base',
   },
 
   [InteractiveSelectors.OUTLINE_FOCUS_VISIBLE]: {

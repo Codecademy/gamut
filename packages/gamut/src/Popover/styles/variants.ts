@@ -30,7 +30,7 @@ export const beakVariants = variant({
   base: {
     ...borderStyles,
     background: 'transparent',
-    zIndex: 1,
+    zIndex: 'foreground',
     position: 'fixed',
   },
   prop: 'beak',

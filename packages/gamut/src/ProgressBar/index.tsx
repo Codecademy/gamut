@@ -182,7 +182,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       variant={variant}
     >
       <Text as="label" id={id} screenreader>{`Progress: ${percent}%`}</Text>
-      {Pattern && <Pattern position="absolute" width="100%" zIndex={0} />}
+      {Pattern && <Pattern position="absolute" width="100%" zIndex="base" />}
       <Bar
         borderRadiusBottomRight={flat ? 'none' : 'inherit'}
         borderRadiusTopRight={flat ? 'none' : 'inherit'}
