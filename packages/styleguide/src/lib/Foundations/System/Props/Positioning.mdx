@@ -18,7 +18,7 @@ export const parameters = {
 
 Positioning props control how elements are positioned within their parent containers and manage their stacking order. Use these properties to create fixed headers, absolute overlays, sticky navigation, and control layering with z-index. The `inset` shorthand provides a convenient way to set all four position values at once.
 
-`zIndex` is backed by the semantic <LinkTo id="Foundations/Z-Index">z-index scale</LinkTo> — pass a token name (e.g. `zIndex="modal"`) rather than a raw number. `isolation="isolate"` is its companion: it establishes a local stacking context so descendant `zIndex` values are scoped to that element, without the position change or z-index lift you'd get from `position: relative` plus a token.
+`zIndex` is backed by the semantic <LinkTo id="Foundations/Z-Index">z-index scale</LinkTo> — pass a token name (e.g. `zIndex="modal"`) rather than a raw number.
 
 ```tsx
 import styled from '@emotion/styled';
@@ -32,5 +32,24 @@ const PositioningExample = styled.div(system.positioning);
 These positioning props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
 
 <Canvas of={PositioningStories.PositionExample} />
+
+## Scoping z-index with `isolation`
+
+`isolation="isolate"` is the companion to `zIndex`. It creates a **stacking context**, which scopes every descendant `zIndex` to that element — a child at `zIndex="modal"` can no longer paint above something outside its parent. Unlike `position: relative` plus a `zIndex` token, it does this without changing the element's positioning or lifting it up the scale.
+
+```tsx
+// The child's zIndex is scoped to this Box and can't escape it.
+<Box isolation="isolate">
+  <Box position="absolute" zIndex="modal">
+    …
+  </Box>
+</Box>
+```
+
+Both panels below are identical except for `isolation` on the right, and the same bar at `zIndex="foreground"` (100) crosses both. On the left the child at `zIndex="modal"` (500) paints over the bar; on the right it's trapped inside its parent's stacking context, so the bar covers it.
+
+<Canvas of={PositioningStories.IsolationExample} />
+
+Reach for it when a component shouldn't be able to leak its internal layering into the rest of the page — a card, a row, a widget with its own overlapping decoration. Note that `zIndex="base"` (`z-index: 0`) does **not** create a stacking context on a `position: static` element; use `isolation` when a stacking context is what you actually want.
 
 <TokenTable rows={getPropRows('positioning')} columns={defaultColumns} />
