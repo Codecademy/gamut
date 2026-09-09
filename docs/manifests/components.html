@@ -582,7 +582,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.0s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>5.4s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -12833,9 +12833,18 @@ export const Translations: Story = {
       startDateLabel: &#39;Fecha de inicio&#39;,
       endDateLabel: &#39;Fecha de fin&#39;,
       calendarDialogAriaLabel: &#39;Elegir fecha&#39;,
+      openCalendarLabel: &#39;Abrir calendario&#39;,
       last7DaysDisplayText: &#39;Últimos 7 días&#39;,
       last30DaysDisplayText: &#39;Últimos 30 días&#39;,
       last90DaysDisplayText: &#39;Últimos 90 días&#39;,
+      invalidDate: &#39;Fecha no válida&#39;,
+      invalidDateIncomplete: &#39;Fecha incompleta&#39;,
+      invalidDateInvalidMonth: &#39;El mes debe estar entre 1 y 12&#39;,
+      invalidDateInvalidDay: &#39;{{month}} no tiene {{day}} días&#39;,
+      invalidDateRollover: &#39;{{month}} no tiene {{day}} días&#39;,
+      invalidDateNotAvailable: &#39;Esta fecha no está disponible&#39;,
+      invalidDateRangeContainsDisabledDate:
+        &#39;Este rango de fechas contiene fechas no disponibles&#39;,
     },
     placement: &#39;floating&#39;,
   },
@@ -13427,9 +13436,18 @@ const ComposedDatePickerLayout: React.FC = () =&gt; {
               startDateLabel: &#39;Fecha de inicio&#39;,
               endDateLabel: &#39;Fecha de fin&#39;,
               calendarDialogAriaLabel: &#39;Elegir fecha&#39;,
+              openCalendarLabel: &#39;Abrir calendario&#39;,
               last7DaysDisplayText: &#39;Últimos 7 días&#39;,
               last30DaysDisplayText: &#39;Últimos 30 días&#39;,
               last90DaysDisplayText: &#39;Últimos 90 días&#39;,
+              invalidDate: &#39;Fecha no válida&#39;,
+              invalidDateIncomplete: &#39;Fecha incompleta&#39;,
+              invalidDateInvalidMonth: &#39;El mes debe estar entre 1 y 12&#39;,
+              invalidDateInvalidDay: &#39;{{month}} no tiene {{day}} días&#39;,
+              invalidDateRollover: &#39;{{month}} no tiene {{day}} días&#39;,
+              invalidDateNotAvailable: &#39;Esta fecha no está disponible&#39;,
+              invalidDateRangeContainsDisabledDate:
+                &#39;Este rango de fechas contiene fechas no disponibles&#39;,
             }}
             placement=&quot;floating&quot;
             endDate={endDate}
@@ -13484,6 +13502,7 @@ import {
 } from &#39;~styleguide/blocks&#39;;
 
 import * as DatePickerStories from &#39;./DatePicker.stories&#39;;
+import { ErrorMessagesTable } from &#39;./errorMessagesTable&#39;;
 
 export const parameters = {
   title: &#39;DatePicker&#39;,
@@ -13783,6 +13802,16 @@ We can limit the range of dates that can be selected based on the start date. Fo
 
 &lt;Canvas of={DatePickerStories.RangeDisabledWeekends} /&gt;
 
+## Error handling
+
+Typed dates are validated as they are entered and again on blur. An invalid entry shows an error beneath the input and switches its border to the error variant; in `mode=&quot;range&quot;`, each input surfaces its own error. Invalid inputs stay visible so the user can correct it, and clearing all segments clears the selection.
+
+To see errors in action, open any story and type an incomplete or invalid date and blur the input.
+
+Each scenario maps to a translation key (see [Translations](#translations)):
+
+&lt;ErrorMessagesTable /&gt;
+
 ## Locale
 
 Use the `locale` prop to set the locale of the DatePicker component. The default locale is the runtime default
@@ -13811,11 +13840,22 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required&lt;DatePickerTranslation
     startDateLabel: &#39;Start date&#39;,
     endDateLabel: &#39;End date&#39;,
     calendarDialogAriaLabel: &#39;Choose date&#39;,
+    openCalendarLabel: &#39;Open calendar&#39;,
     last7DaysDisplayText: &#39;Last 7 days&#39;,
     last30DaysDisplayText: &#39;Last 30 days&#39;,
     last90DaysDisplayText: &#39;Last 90 days&#39;,
+    invalidDate: &#39;Invalid date&#39;,
+    invalidDateIncomplete: &#39;Incomplete date&#39;,
+    invalidDateInvalidMonth: &#39;Month must be between 1 and 12&#39;,
+    invalidDateInvalidDay: &#39;{{month}} does not have {{day}} days&#39;,
+    invalidDateRollover: &#39;{{month}} does not have {{day}} days&#39;,
+    invalidDateNotAvailable: &#39;This date is not available&#39;,
+    invalidDateRangeContainsDisabledDate:
+      &#39;This date range contains unavailable dates&#39;,
   };
 ```
+
+The `invalidDateInvalidDay` and `invalidDateRollover` keys support the `{{month}}` and `{{day}}` template variables, which are interpolated with the offending values at runtime. See the [Error handling](#error-handling) section for when each message surfaces.
 
 &lt;Canvas of={DatePickerStories.Translations} /&gt;
 
@@ -55233,9 +55273,18 @@ export const Translations: Story = {
       startDateLabel: &#39;Fecha de inicio&#39;,
       endDateLabel: &#39;Fecha de fin&#39;,
       calendarDialogAriaLabel: &#39;Elegir fecha&#39;,
+      openCalendarLabel: &#39;Abrir calendario&#39;,
       last7DaysDisplayText: &#39;Últimos 7 días&#39;,
       last30DaysDisplayText: &#39;Últimos 30 días&#39;,
       last90DaysDisplayText: &#39;Últimos 90 días&#39;,
+      invalidDate: &#39;Fecha no válida&#39;,
+      invalidDateIncomplete: &#39;Fecha incompleta&#39;,
+      invalidDateInvalidMonth: &#39;El mes debe estar entre 1 y 12&#39;,
+      invalidDateInvalidDay: &#39;{{month}} no tiene {{day}} días&#39;,
+      invalidDateRollover: &#39;{{month}} no tiene {{day}} días&#39;,
+      invalidDateNotAvailable: &#39;Esta fecha no está disponible&#39;,
+      invalidDateRangeContainsDisabledDate:
+        &#39;Este rango de fechas contiene fechas no disponibles&#39;,
     },
     placement: &#39;floating&#39;,
   },
@@ -55827,9 +55876,18 @@ const ComposedDatePickerLayout: React.FC = () =&gt; {
               startDateLabel: &#39;Fecha de inicio&#39;,
               endDateLabel: &#39;Fecha de fin&#39;,
               calendarDialogAriaLabel: &#39;Elegir fecha&#39;,
+              openCalendarLabel: &#39;Abrir calendario&#39;,
               last7DaysDisplayText: &#39;Últimos 7 días&#39;,
               last30DaysDisplayText: &#39;Últimos 30 días&#39;,
               last90DaysDisplayText: &#39;Últimos 90 días&#39;,
+              invalidDate: &#39;Fecha no válida&#39;,
+              invalidDateIncomplete: &#39;Fecha incompleta&#39;,
+              invalidDateInvalidMonth: &#39;El mes debe estar entre 1 y 12&#39;,
+              invalidDateInvalidDay: &#39;{{month}} no tiene {{day}} días&#39;,
+              invalidDateRollover: &#39;{{month}} no tiene {{day}} días&#39;,
+              invalidDateNotAvailable: &#39;Esta fecha no está disponible&#39;,
+              invalidDateRangeContainsDisabledDate:
+                &#39;Este rango de fechas contiene fechas no disponibles&#39;,
             }}
             placement=&quot;floating&quot;
             endDate={endDate}
@@ -55884,6 +55942,7 @@ import {
 } from &#39;~styleguide/blocks&#39;;
 
 import * as DatePickerStories from &#39;./DatePicker.stories&#39;;
+import { ErrorMessagesTable } from &#39;./errorMessagesTable&#39;;
 
 export const parameters = {
   title: &#39;DatePicker&#39;,
@@ -56183,6 +56242,16 @@ We can limit the range of dates that can be selected based on the start date. Fo
 
 &lt;Canvas of={DatePickerStories.RangeDisabledWeekends} /&gt;
 
+## Error handling
+
+Typed dates are validated as they are entered and again on blur. An invalid entry shows an error beneath the input and switches its border to the error variant; in `mode=&quot;range&quot;`, each input surfaces its own error. Invalid inputs stay visible so the user can correct it, and clearing all segments clears the selection.
+
+To see errors in action, open any story and type an incomplete or invalid date and blur the input.
+
+Each scenario maps to a translation key (see [Translations](#translations)):
+
+&lt;ErrorMessagesTable /&gt;
+
 ## Locale
 
 Use the `locale` prop to set the locale of the DatePicker component. The default locale is the runtime default
@@ -56211,11 +56280,22 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required&lt;DatePickerTranslation
     startDateLabel: &#39;Start date&#39;,
     endDateLabel: &#39;End date&#39;,
     calendarDialogAriaLabel: &#39;Choose date&#39;,
+    openCalendarLabel: &#39;Open calendar&#39;,
     last7DaysDisplayText: &#39;Last 7 days&#39;,
     last30DaysDisplayText: &#39;Last 30 days&#39;,
     last90DaysDisplayText: &#39;Last 90 days&#39;,
+    invalidDate: &#39;Invalid date&#39;,
+    invalidDateIncomplete: &#39;Incomplete date&#39;,
+    invalidDateInvalidMonth: &#39;Month must be between 1 and 12&#39;,
+    invalidDateInvalidDay: &#39;{{month}} does not have {{day}} days&#39;,
+    invalidDateRollover: &#39;{{month}} does not have {{day}} days&#39;,
+    invalidDateNotAvailable: &#39;This date is not available&#39;,
+    invalidDateRangeContainsDisabledDate:
+      &#39;This date range contains unavailable dates&#39;,
   };
 ```
+
+The `invalidDateInvalidDay` and `invalidDateRollover` keys support the `{{month}}` and `{{day}}` template variables, which are interpolated with the offending values at runtime. See the [Error handling](#error-handling) section for when each message surfaces.
 
 &lt;Canvas of={DatePickerStories.Translations} /&gt;
 
