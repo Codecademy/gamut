@@ -22,30 +22,43 @@ export type ValidationMessage = React.ReactNode | ValidationMessageFn;
  * over these English defaults (see `DEFAULT_SELECT_DROPDOWN_TRANSLATIONS`).
  */
 export interface SelectDropdownTranslations {
-  /** Placeholder text shown when no option is selected (default: "Select an option"). */
+  /** Placeholder text shown when no option is selected.
+   * Placeholder text is not recommended for accessibility. If you need to use placeholder text,
+   * please make sure the placeholder text doesn't add any new information to the input.
+   * I.e - if the placeholder text describes an action you'd like the user to take, please use a label instead.
+   *
+   * @default "Select an option"
+   */
   placeholder: string;
   /**
-   * Content shown inside the menu when no option matches the current input
-   * (default: "No options"). Accepts a `ReactNode`, or a function receiving
-   * `{ inputValue }` for input-specific copy (e.g. a localized
-   * "No results for '{inputValue}'"). Overridden by an explicit (deprecated)
-   * top-level `validationMessage` prop.
+   * Replaces the default "No options" text shown inside the dropdown menu
+   * whenever no option matches the current input - an empty `options` array,
+   * or every option filtered out by a search. Not tied to `isCreatable`; any
+   * searchable SelectDropdown can use it. Accepts a `ReactNode`, or a function
+   * receiving `{ inputValue }` for live, input-specific validation/error copy
+   * (e.g. "No results for '{inputValue}'").
+   *
+   * @default "No options"
    */
   validationMessage: ValidationMessage;
   /**
-   * Builds the label for the creatable "Add" row.
-   * Default: `(inputValue) => `Add "${inputValue}"``.
+   * Customises the label shown in the "Add" row.
+   *
+   * @default (inputValue) => `Add "${inputValue}"`
    */
   formatCreateLabel: (inputValue: string) => React.ReactNode;
   /**
-   * Builds the aria-label for a multi-select value's remove button.
-   * Default: `(label) => `Remove ${label}``.
+   * aria-label for a multi-select value's remove button.
+   * @default (label) => `Remove ${label}`
    */
   removeOptionLabel: (label: string) => string;
-  /** aria-label for the multi-select "remove all" button (default: "Remove all selected"). */
+  /**
+   * aria-label for the multi-select "remove all" button
+   * @default "Remove all selected"
+   */
   clearAllLabel: string;
   /**
-   * Builds the screen-reader announcement made when an option is focused.
+   * Screen-reader announcement made when an option is focused.
    * Default describes the option's label, subtitle, right label, and disabled state.
    */
   focusedOptionAnnouncement: (option: ExtendedOption) => string;

@@ -60,7 +60,13 @@ const creatableProps = [
     prop: 'formatCreateLabel',
     type: '(inputValue: string) => ReactNode',
     defaultValue: 'Add "inputValue"',
-    description: 'Customises the label shown in the "Add" row.',
+    description: (
+      <>
+        Customises the label shown in the &quot;Add&quot; row.{' '}
+        <strong>Deprecated</strong> — prefer{' '}
+        <Code>translations.formatCreateLabel</Code>.
+      </>
+    ),
   },
   {
     id: 'isValidNewOption',
