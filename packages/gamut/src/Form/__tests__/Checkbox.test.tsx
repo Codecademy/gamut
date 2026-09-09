@@ -91,7 +91,13 @@ describe('<Checkbox>', () => {
   it('forwards labelProps to the visible label without disturbing the input', () => {
     const { view } = renderView({
       labelProps: { 'data-marker': 'checkbox-label', 'aria-keyshortcuts': 'l' },
-      'data-testid': 'checkbox-input',
+      /*
+       * A declared attribute rather than data-*: CheckboxProps intentionally
+       * has no data-* index signature (see the note on the type), and object
+       * literals don't get TypeScript's hyphenated-attribute exemption. This
+       * still proves ...rest reaches the input rather than the label.
+       */
+      'aria-keyshortcuts': 'i',
     });
 
     const checkboxLabel = view.container.querySelector('label');
@@ -100,8 +106,8 @@ describe('<Checkbox>', () => {
 
     // regression: ...rest still lands on the hidden input, unchanged
     expect(view.getByRole('checkbox')).toHaveAttribute(
-      'data-testid',
-      'checkbox-input'
+      'aria-keyshortcuts',
+      'i'
     );
   });
 

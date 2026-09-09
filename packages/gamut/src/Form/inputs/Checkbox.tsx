@@ -47,11 +47,20 @@ export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 export type CheckboxLabelProps = ComponentPropsWithoutRef<'label'> &
   DataAttributes;
 
+/*
+ * Deliberately does NOT intersect DataAttributes. CheckboxProps is already an
+ * intersection of two unions (CheckboxLabelUnion, CheckboxCheckedUnion), and
+ * adding a `data-*` index signature makes any consumer-side
+ * `Omit<CheckboxProps, ...>` degrade into a signature that constrains every
+ * property, plus TS2590 "union type too complex". That broke
+ * ConnectedFormGroup's own `field` type in the mono repo. `data-*` still
+ * reaches the input at runtime via the JSX exemption; only labelProps needs
+ * the declared type, since object literals don't get that exemption.
+ */
 export type CheckboxProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'checked' | 'value' | 'label' | 'aria-label'
 > &
-  DataAttributes &
   CheckboxLabelUnion &
   CheckboxCheckedUnion &
   CheckboxPaddingProps &
