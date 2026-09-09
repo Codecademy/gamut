@@ -3,12 +3,18 @@ import * as React from 'react';
 import { ExtendedOption } from '../types/options';
 
 /**
+ * Function form of the no-options message: receives the current input value
+ * and returns content (e.g. a localized "No results for '{inputValue}'").
+ */
+export type ValidationMessageFn = (obj: {
+  inputValue: string;
+}) => React.ReactNode;
+
+/**
  * Message shown inside the menu when no option matches. Either static content
  * or a function of the current input value.
  */
-export type ValidationMessage =
-  | React.ReactNode
-  | ((obj: { inputValue: string }) => React.ReactNode);
+export type ValidationMessage = React.ReactNode | ValidationMessageFn;
 
 /**
  * Custom translations for SelectDropdown's UI / microcopy strings.
