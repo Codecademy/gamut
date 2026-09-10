@@ -1,3 +1,14 @@
+## 73.6.0 (2026-09-10)
+
+### 🚀 Features
+
+- SelectDropdown: add i18n translationsprop for customizable UI/microcopy (placeholder, empty-state, creatable label, and remove/clear/focus a11y strings), deprecating the standaloneplaceholder, formatCreateLabel, and validationMessageprops in favor of theirtranslations equivalents. ([#3428](https://github.com/Codecademy/gamut/pull/3428))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
 ## 73.5.0 (2026-09-02)
 
 ### 🚀 Features
