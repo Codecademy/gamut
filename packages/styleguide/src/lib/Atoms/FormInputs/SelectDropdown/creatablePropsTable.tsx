@@ -60,7 +60,13 @@ const creatableProps = [
     prop: 'formatCreateLabel',
     type: '(inputValue: string) => ReactNode',
     defaultValue: 'Add "inputValue"',
-    description: 'Customises the label shown in the "Add" row.',
+    description: (
+      <>
+        Customises the label shown in the &quot;Add&quot; row.{' '}
+        <strong>Deprecated</strong> — prefer{' '}
+        <Code>translations.formatCreateLabel</Code>.
+      </>
+    ),
   },
   {
     id: 'isValidNewOption',
@@ -82,8 +88,14 @@ const creatableProps = [
     prop: 'validationMessage',
     type: 'ReactNode | (({ inputValue }) => ReactNode)',
     defaultValue: '"No options"',
-    description:
-      'Replaces the in-menu "No options" text. Useful for surfacing validation/error messages directly inside the dropdown.',
+    description: (
+      <>
+        Replaces the in-menu &quot;No options&quot; text. Useful for surfacing
+        validation/error messages directly inside the dropdown.{' '}
+        <strong>Deprecated</strong> — prefer{' '}
+        <Code>translations.validationMessage</Code>.
+      </>
+    ),
   },
 ];
 

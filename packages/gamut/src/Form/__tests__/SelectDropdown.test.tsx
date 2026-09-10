@@ -11,6 +11,7 @@ import {
   selectOptionsObject,
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
+import { DEFAULT_SELECT_DROPDOWN_TRANSLATIONS } from '../SelectDropdown/core/translations';
 
 const ToggleValidationMessageHarness = () => {
   const [hasCustomMessage, setHasCustomMessage] = useState(true);
@@ -1122,6 +1123,167 @@ describe('SelectDropdown', () => {
 
         expect(view.getByText('No match for "kiwi"')).toBeInTheDocument();
       });
+    });
+  });
+
+  describe('Translations', () => {
+    it('renders the default placeholder when translations is omitted', () => {
+      const { view } = renderView();
+
+      view.getByText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.placeholder);
+    });
+
+    it('renders a custom placeholder from translations', () => {
+      const placeholder = 'Elige una opción';
+      const { view } = renderView({
+        translations: { placeholder },
+      });
+
+      view.getByText(placeholder);
+    });
+
+    it('renders the default "No options" text when translations is omitted', async () => {
+      const { view } = renderView({ options: [] });
+
+      await openDropdown(view);
+
+      view.getByText(
+        DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string
+      );
+    });
+
+    it('renders a custom validationMessage from translations', async () => {
+      const validationMessage = 'Sin opciones';
+      const { view } = renderView({
+        options: [],
+        translations: { validationMessage },
+      });
+
+      await openDropdown(view);
+
+      view.getByText(validationMessage);
+      expect(view.queryByText('No options')).toBeNull();
+    });
+
+    it('supports a function validationMessage that receives the current input', async () => {
+      const validationMessage = ({ inputValue }: { inputValue: string }) =>
+        `Sin resultados para "${inputValue}"`;
+      const { view } = renderView({
+        isSearchable: true,
+        options: selectOptions,
+        translations: {
+          validationMessage,
+        },
+      });
+
+      await openDropdown(view);
+      act(() => {
+        fireEvent.change(view.getByRole('combobox'), {
+          target: { value: 'zzz' },
+        });
+      });
+
+      view.getByText(validationMessage({ inputValue: 'zzz' }));
+    });
+
+    it('renders a custom creatable label from translations', async () => {
+      const formatCreateLabel = (v: string) => `Crear "${v}"`;
+      const { view } = renderView({
+        isCreatable: true,
+        translations: { formatCreateLabel },
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      view.getByText(formatCreateLabel('purple'));
+    });
+
+    it('uses default remove/clear-all aria-labels when translations is omitted', async () => {
+      const { view } = renderView({ multiple: true });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('red'));
+      });
+
+      view.getByLabelText(
+        DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.removeOptionLabel('red')
+      );
+      // react-select forces aria-hidden onto the clear-indicator, so query the
+      // clear-all button by its aria-label attribute rather than by role.
+      view.getByLabelText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.clearAllLabel);
+    });
+
+    it('applies custom remove/clear-all aria-labels from translations', async () => {
+      const removeOptionLabel = (label: string) => `Quitar ${label}`;
+      const clearAllLabel = 'Quitar todo';
+      const { view } = renderView({
+        multiple: true,
+        translations: {
+          removeOptionLabel,
+          clearAllLabel,
+        },
+      });
+
+      await openDropdown(view);
+      await act(async () => {
+        await userEvent.click(view.getByText('red'));
+      });
+
+      view.getByLabelText(removeOptionLabel('red'));
+      view.getByLabelText(clearAllLabel);
+    });
+
+    it('merges partial translations with defaults', async () => {
+      const placeholder = 'Elige';
+      const { view } = renderView({
+        options: [],
+        translations: { placeholder },
+      });
+
+      // Overridden key.
+      view.getByText(placeholder);
+
+      // Untouched key still uses the English default.
+      await openDropdown(view);
+      view.getByText(
+        DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.validationMessage as string
+      );
+    });
+
+    it('lets an explicit placeholder prop win over the translations value', () => {
+      const placeholder = 'Explicit placeholder';
+      const translatedPlaceholder = 'Translated placeholder';
+      const { view } = renderView({
+        placeholder,
+        translations: { placeholder: translatedPlaceholder },
+      });
+
+      view.getByText(placeholder);
+      expect(view.queryByText(translatedPlaceholder)).toBeNull();
+    });
+
+    it('lets an explicit formatCreateLabel prop win over the translations value', async () => {
+      const formatCreateLabel = (v: string) => `Prop "${v}"`;
+      const translatedFormatCreateLabel = (v: string) => `Translated "${v}"`;
+      const { view } = renderView({
+        isCreatable: true,
+        formatCreateLabel,
+        translations: {
+          formatCreateLabel: translatedFormatCreateLabel,
+        },
+      });
+
+      await act(async () => {
+        await userEvent.type(view.getByRole('combobox'), 'purple');
+      });
+
+      view.getByText(formatCreateLabel('purple'));
+      expect(
+        view.queryByText(translatedFormatCreateLabel('purple'))
+      ).toBeNull();
     });
   });
 });

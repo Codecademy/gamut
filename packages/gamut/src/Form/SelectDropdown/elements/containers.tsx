@@ -6,6 +6,7 @@ import ReactSelect, {
 } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
+import { DEFAULT_SELECT_DROPDOWN_TRANSLATIONS } from '../core/translations';
 import {
   CustomSelectComponentProps,
   SelectDropdownContextValueTypes,
@@ -14,7 +15,7 @@ import {
 
 /**
  * React context for sharing state between SelectDropdown components.
- * Provides access to focus state and refs for keyboard navigation.
+ * Provides access to focus state, refs for keyboard navigation, and translations.
  */
 export const SelectDropdownContext =
   createContext<SelectDropdownContextValueTypes>({
@@ -22,6 +23,7 @@ export const SelectDropdownContext =
     setCurrentFocusedValue: undefined,
     selectInputRef: undefined,
     removeAllButtonRef: undefined,
+    translations: DEFAULT_SELECT_DROPDOWN_TRANSLATIONS,
   });
 
 /**

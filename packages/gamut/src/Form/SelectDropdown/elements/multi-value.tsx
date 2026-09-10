@@ -58,9 +58,10 @@ export const MultiValueWithColorMode = (
 export const MultiValueRemoveButton = (
   props: MultiValueRemoveProps<ExtendedOption, true, GroupBase<ExtendedOption>>
 ) => {
+  const { translations } = useContext(SelectDropdownContext);
   const { label } = props?.data ?? { label: '' };
 
-  props.innerProps['aria-label'] = `Remove ${label}`;
+  props.innerProps['aria-label'] = translations.removeOptionLabel(label);
 
   return (
     <MultiValueRemove {...props}>
@@ -92,7 +93,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
     selectProps: { size },
   } = props;
 
-  const { removeAllButtonRef, selectInputRef } = useContext(
+  const { removeAllButtonRef, selectInputRef, translations } = useContext(
     SelectDropdownContext
   );
 
@@ -117,7 +118,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
 
   return (
     <CustomStyledRemoveAllDiv
-      aria-label="Remove all selected"
+      aria-label={translations.clearAllLabel}
       role="button"
       tabIndex={0}
       {...restInnerProps}

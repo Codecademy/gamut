@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DropdownIndicatorProps, GroupBase } from 'react-select';
 
 import { SelectOptionBase } from '../../utils';
+import { SelectDropdownTranslations } from '../core/translations';
 import { OptionStrict } from './options';
 import { SelectDropdownSizes, SharedProps } from './styles';
 
@@ -34,6 +35,8 @@ export interface SelectDropdownContextValueTypes {
   selectInputRef?: ProgrammaticFocusRef;
   /** Ref to the remove all button for programmatic focus */
   removeAllButtonRef?: ProgrammaticFocusRef;
+  /** Merged translations for microcopy consumed by sub-components */
+  translations: SelectDropdownTranslations;
 }
 
 /**
