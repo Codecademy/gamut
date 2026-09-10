@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/492 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/493 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>5.4s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>6.0s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -34705,7 +34705,7 @@ Use Select to handle single selection within a group of options.
       <div class="badges">
         <label for="c-70-atoms-forminputs-selectdropdown-err" class="badge err as-toggle">prop type error</label>
         <label for="c-70-atoms-forminputs-selectdropdown-info" class="badge info as-toggle">1 info</label>
-        <label for="c-70-atoms-forminputs-selectdropdown-stories" class="badge ok as-toggle">32 stories</label>
+        <label for="c-70-atoms-forminputs-selectdropdown-stories" class="badge ok as-toggle">33 stories</label>
         <label for="c-70-atoms-forminputs-selectdropdown-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -34729,13 +34729,13 @@ Use Select to handle single selection within a group of options.
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;SelectDropdown&quot; component.
-  14 | const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;Dragonfruit&#39;, &#39;Eggplant&#39;];
-  15 |
-&gt; 16 | const meta: Meta&lt;typeof SelectDropdown&gt; = {
+  15 | const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;Dragonfruit&#39;, &#39;Eggplant&#39;];
+  16 |
+&gt; 17 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof SelectDropdown&gt;&gt; = {
      | ^
-  17 |   component: SelectDropdown,
-  18 |   args: {
-  19 |     id: &#39;example-select&#39;,
+  18 |   component: SelectDropdown,
+  19 |   args: {
+  20 |     id: &#39;example-select&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/SelectDropdown/SelectDropdown.stories.tsx:
 import {
@@ -34750,10 +34750,11 @@ import { RadarIcon, ResponsiveIcon, RocketIcon } from &#39;@codecademy/gamut-ico
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 import { useRef, useState } from &#39;react&#39;;
 import type { InputActionMeta } from &#39;react-select&#39;;
+import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
 
 const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;Dragonfruit&#39;, &#39;Eggplant&#39;];
 
-const meta: Meta&lt;typeof SelectDropdown&gt; = {
+const meta: TypeWithDeepControls&lt;Meta&lt;typeof SelectDropdown&gt;&gt; = {
   component: SelectDropdown,
   args: {
     id: &#39;example-select&#39;,
@@ -34769,6 +34770,65 @@ const meta: Meta&lt;typeof SelectDropdown&gt; = {
       control: &#39;select&#39;,
       options: fruitOptions,
     },
+    // Deprecated top-level props — hidden in favor of their `translations` equivalents.
+    placeholder: { table: { disable: true } },
+    formatCreateLabel: { table: { disable: true } },
+    validationMessage: { table: { disable: true } },
+    // Expose the nested `translations` keys as deep controls rather than the parent object.
+    translations: { table: { disable: true } },
+    &#39;translations.placeholder&#39;: {
+      control: &#39;text&#39;,
+      description:
+        &quot;Placeholder text shown when no option is selected. Placeholder text is not recommended for accessibility. If you need to use placeholder text, please make sure the placeholder text doesn&#39;t add any new information to the input. I.e - if the placeholder text describes an action you&#39;d like the user to take, please use a label instead.&quot;,
+      table: {
+        type: { summary: &#39;string&#39; },
+        defaultValue: { summary: &#39;Select an option&#39; },
+      },
+    },
+    &#39;translations.validationMessage&#39;: {
+      control: &#39;text&#39;,
+      description:
+        &#39;Replaces the default &quot;No options&quot; text shown inside the dropdown menu whenever no option matches the current input - an empty `options` array, or every option filtered out by a search. Not tied to `isCreatable`; any searchable SelectDropdown can use it. Accepts a `ReactNode`, or a function receiving `{ inputValue }` for live, input-specific validation/error copy (e.g. &quot;No results for \&#39;{inputValue}\&#39;&quot;).&#39;,
+      table: {
+        type: { summary: &#39;ReactNode | (({ inputValue }) =&gt; ReactNode)&#39; },
+        defaultValue: { summary: &#39;No options&#39; },
+      },
+    },
+    &#39;translations.formatCreateLabel&#39;: {
+      control: false,
+      description: &#39;Customises the label shown in the &quot;Add&quot; row.&#39;,
+      table: {
+        type: { summary: &#39;(inputValue: string) =&gt; ReactNode&#39; },
+        defaultValue: { summary: &#39;Add &quot;{inputValue}&quot;&#39; },
+      },
+    },
+    &#39;translations.removeOptionLabel&#39;: {
+      control: false,
+      description: &quot;aria-label for a multi-select value&#39;s remove button.&quot;,
+      table: {
+        type: { summary: &#39;(label: string) =&gt; string&#39; },
+        defaultValue: { summary: &#39;Remove {label}&#39; },
+      },
+    },
+    &#39;translations.clearAllLabel&#39;: {
+      control: &#39;text&#39;,
+      description: &#39;aria-label for the multi-select &quot;remove all&quot; button&#39;,
+      table: {
+        type: { summary: &#39;string&#39; },
+        defaultValue: { summary: &#39;Remove all selected&#39; },
+      },
+    },
+    &#39;translations.focusedOptionAnnouncement&#39;: {
+      control: false,
+      description:
+        &quot;Screen-reader announcement made when an option is focused. Default describes the option&#39;s label, subtitle, right label, and disabled state.&quot;,
+      table: {
+        type: { summary: &#39;(option: ExtendedOption) =&gt; string&#39; },
+        defaultValue: {
+          summary: &#39;You are currently focused on option {label}&#39;,
+        },
+      },
+    },
   },
 };
 
@@ -34779,7 +34839,7 @@ export const Base: Story = {
   args: {
     name: &#39;base-dropdown&#39;,
     options: [],
-    placeholder: &#39;all about that test&#39;,
+    translations: { placeholder: &#39;all about that test&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;12rem&quot;&gt;
@@ -34793,7 +34853,7 @@ export const Searchable: Story = {
     name: &#39;searchable-dropdown&#39;,
     isSearchable: true,
     options: [&#39;wow&#39;, &#39;wowee&#39;, &#39;wooooooow&#39;],
-    placeholder: &#39;i am searchable, it is cool&#39;,
+    translations: { placeholder: &#39;i am searchable, it is cool&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;12rem&quot;&gt;
@@ -34807,7 +34867,7 @@ export const Disabled: Story = {
     name: &#39;disabled-dropdown-standalone&#39;,
     options: [&#39;Disabled&#39;],
     disabled: true,
-    placeholder: &#39;Disabled&#39;,
+    translations: { placeholder: &#39;Disabled&#39; },
   },
 };
 
@@ -34830,7 +34890,7 @@ export const Small: Story = {
     options: [&#39;i am smol&#39;, &#39;yes I am!&#39;, &#39;:)&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
     name: &#39;size-no-search&#39;,
     size: &#39;small&#39;,
-    placeholder: &#39;click here!&#39;,
+    translations: { placeholder: &#39;click here!&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -34857,7 +34917,7 @@ export const SmallSearchable: Story = {
     name: &#39;size-search&#39;,
     isSearchable: true,
     size: &#39;small&#39;,
-    placeholder: &#39;no type here instead!&#39;,
+    translations: { placeholder: &#39;no type here instead!&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -34892,7 +34952,7 @@ export const FormGroupError: Story = {
     options: [&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;],
     id: &#39;error-example-unique&#39;,
     name: &#39;error-example-unique&#39;,
-    placeholder: &#39;cry cry cry&#39;,
+    translations: { placeholder: &#39;cry cry cry&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -35214,7 +35274,7 @@ export const ComplexAbbreviatedOptions: Story = {
     ],
     inputWidth: &#39;80px&#39;,
     dropdownWidth: &#39;400px&#39;,
-    placeholder: &#39;Select seniority level&#39;,
+    translations: { placeholder: &#39;Select seniority level&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;22rem&quot;&gt;
@@ -35369,7 +35429,7 @@ export const ShownOptionsDefault: Story = {
       &#39;asdfsadf&#39;,
     ],
     name: &#39;shownOptionsLimit01&#39;,
-    placeholder: &#39;six is the magic number&#39;,
+    translations: { placeholder: &#39;six is the magic number&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;22rem&quot;&gt;
@@ -35401,7 +35461,7 @@ export const ShownOptionsThree: Story = {
       &#39;asdfsadf&#39;,
     ],
     name: &#39;shownOptionsLimit02&#39;,
-    placeholder: &#39;three is the magic number&#39;,
+    translations: { placeholder: &#39;three is the magic number&#39; },
     shownOptionsLimit: 3,
   },
   render: (args) =&gt; (
@@ -35449,7 +35509,7 @@ export const IndependentWidths: Story = {
     ],
     inputWidth: &#39;150px&#39;,
     dropdownWidth: &#39;350px&#39;,
-    placeholder: &#39;Select a role&#39;,
+    translations: { placeholder: &#39;Select a role&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;20rem&quot;&gt;
@@ -35501,7 +35561,7 @@ export const SmallWithAbbreviations: Story = {
     size: &#39;small&#39;,
     inputWidth: &#39;80px&#39;,
     dropdownWidth: &#39;200px&#39;,
-    placeholder: &#39;Select JScript&#39;,
+    translations: { placeholder: &#39;Select JScript&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -35547,7 +35607,7 @@ export const MenuAlignmentRight: Story = {
     inputWidth: &#39;150px&#39;,
     dropdownWidth: &#39;300px&#39;,
     menuAlignment: &#39;right&#39;,
-    placeholder: &#39;Select a role&#39;,
+    translations: { placeholder: &#39;Select a role&#39; },
   },
   render: (args) =&gt; (
     &lt;FlexBox
@@ -35585,7 +35645,7 @@ export const zIndexOnMenu: Story = {
             id=&quot;usesDefaultZIndex&quot;
             name=&quot;usesDefaultZIndex&quot;
             options={args.options}
-            placeholder=&quot;Uses the default zIndex of 2&quot;
+            translations={{ placeholder: &#39;Uses the default zIndex of 2&#39; }}
           /&gt;
         &lt;/FormGroup&gt;
         &lt;FormGroup
@@ -35597,7 +35657,7 @@ export const zIndexOnMenu: Story = {
             id=&quot;hasSetZIndex&quot;
             name=&quot;hasSetZIndex&quot;
             options={args.options}
-            placeholder=&quot;Has a zIndex of 5&quot;
+            translations={{ placeholder: &#39;Has a zIndex of 5&#39; }}
             zIndex={5}
           /&gt;
         &lt;/FormGroup&gt;
@@ -35703,7 +35763,7 @@ export const MultipleSelectControlled: Story = {
       multiple
       name=&quot;multi-controlled&quot;
       options={multiOptions}
-      placeholder=&quot;Select languages…&quot;
+      translations={{ placeholder: &#39;Select languages…&#39; }}
       value={selected}
       onChange={(opts) =&gt; setSelected(opts.map((o) =&gt; o.value))}
     /&gt;
@@ -35733,7 +35793,7 @@ export const MultipleSelectControlled: Story = {
               multiple
               name=&quot;multi-controlled&quot;
               options={multiOptions}
-              placeholder=&quot;Select languages…&quot;
+              translations={{ placeholder: &#39;Select languages…&#39; }}
               value={selected}
               onChange={(opts) =&gt; setSelected(opts.map((o) =&gt; o.value))}
             /&gt;
@@ -35768,7 +35828,7 @@ export const Creatable: Story = {
       isCreatable
       name=&quot;creatable-dropdown&quot;
       options={options}
-      placeholder=&quot;Select or type to add…&quot;
+      translations={{ placeholder: &#39;Select or type to add…&#39; }}
       onCreateOption={(inputValue) =&gt;
         setOptions((prev) =&gt; [...prev, inputValue])
       }
@@ -35782,7 +35842,7 @@ export const Creatable: Story = {
     name: &#39;creatable-dropdown&#39;,
     isCreatable: true,
     createOptionPosition: &#39;last&#39;,
-    placeholder: &#39;Select or type to add…&#39;,
+    translations: { placeholder: &#39;Select or type to add…&#39; },
   },
   render: (args) =&gt; {
     const CreatableContent = () =&gt; {
@@ -35835,7 +35895,7 @@ Use this when you only need the final value on submit and no other part of the U
       multiple
       name=&quot;creatable-multi-uncontrolled&quot;
       options={options}
-      placeholder=&quot;Select or type to add…&quot;
+      translations={{ placeholder: &#39;Select or type to add…&#39; }}
       onCreateOption={(inputValue) =&gt;
         setOptions((prev) =&gt; [...prev, inputValue])
       }
@@ -35861,7 +35921,7 @@ Use this when you only need the final value on submit and no other part of the U
               multiple
               name=&quot;creatable-multi-uncontrolled&quot;
               options={options}
-              placeholder=&quot;Select or type to add…&quot;
+              translations={{ placeholder: &#39;Select or type to add…&#39; }}
               onCreateOption={(inputValue) =&gt;
                 setOptions((prev) =&gt; [...prev, inputValue])
               }
@@ -35901,7 +35961,7 @@ const [value, setValue] = useState&lt;string[]&gt;([]);
       multiple
       name=&quot;creatable-multi-dropdown&quot;
       options={options}
-      placeholder=&quot;Select or type to add…&quot;
+      translations={{ placeholder: &#39;Select or type to add…&#39; }}
       value={value}
       onChange={(selected, meta) =&gt; {
         setValue(selected.map((option) =&gt; option.value));
@@ -35933,7 +35993,7 @@ const [value, setValue] = useState&lt;string[]&gt;([]);
               multiple
               name=&quot;creatable-multi-dropdown&quot;
               options={options}
-              placeholder=&quot;Select or type to add…&quot;
+              translations={{ placeholder: &#39;Select or type to add…&#39; }}
               value={value}
               onChange={(selected, meta) =&gt; {
                 setValue(selected.map((option) =&gt; option.value));
@@ -36001,12 +36061,13 @@ const handleInputChange = (
       }
       name=&quot;creatable-validated-dropdown&quot;
       options={options}
-      placeholder=&quot;Type at least 3 letters to add…&quot;
-      validationMessage={({ inputValue }) =&gt;
-        // Falls back to &quot;No matching fruit&quot; once the input clears both
-        // validation reasons above but still doesn&#39;t match an option.
-        validate(inputValue) ?? &#39;No matching fruit&#39;
-      }
+      translations={{
+        placeholder: &#39;Type at least 3 letters to add…&#39;,
+        validationMessage: ({ inputValue }) =&gt;
+          // Falls back to &quot;No matching fruit&quot; once the input clears both
+          // validation reasons above but still doesn&#39;t match an option.
+          validate(inputValue) ?? &#39;No matching fruit&#39;,
+      }}
       onChange={() =&gt; {
         lastInputRef.current = &#39;&#39;;
         setError(undefined);
@@ -36070,13 +36131,14 @@ const handleInputChange = (
               }
               name=&quot;creatable-validated-dropdown&quot;
               options={options}
-              placeholder=&quot;Type at least 3 letters to add…&quot;
-              validationMessage={({ inputValue }) =&gt;
-                // Falls back to &quot;No matching fruit&quot; once the input clears
-                // both validation reasons above but still doesn&#39;t match an
-                // option.
-                validate(inputValue) ?? &#39;No matching fruit&#39;
-              }
+              translations={{
+                placeholder: &#39;Type at least 3 letters to add…&#39;,
+                validationMessage: ({ inputValue }) =&gt;
+                  // Falls back to &quot;No matching fruit&quot; once the input clears
+                  // both validation reasons above but still doesn&#39;t match an
+                  // option.
+                  validate(inputValue) ?? &#39;No matching fruit&#39;,
+              }}
               onChange={() =&gt; {
                 lastInputRef.current = &#39;&#39;;
                 setError(undefined);
@@ -36115,6 +36177,27 @@ export const CustomInputProps: Story = {
       &lt;FormGroup htmlFor=&quot;what&quot; isSoloField label=&quot;i am ~styled&quot;&gt;
         &lt;SelectDropdown {...args} /&gt;
       &lt;/FormGroup&gt;
+    &lt;/Box&gt;
+  ),
+};
+
+export const Translations: Story = {
+  args: {
+    name: &#39;translations-dropdown&#39;,
+    multiple: true,
+    isCreatable: true,
+    options: [&#39;Manzana&#39;, &#39;Plátano&#39;, &#39;Cereza&#39;],
+    translations: {
+      placeholder: &#39;Elige una opción&#39;,
+      validationMessage: &#39;Sin opciones&#39;,
+      formatCreateLabel: (inputValue) =&gt; `Añadir &quot;${inputValue}&quot;`,
+      removeOptionLabel: (label) =&gt; `Quitar ${label}`,
+      clearAllLabel: &#39;Quitar todo&#39;,
+    },
+  },
+  render: (args) =&gt; (
+    &lt;Box height=&quot;18rem&quot;&gt;
+      &lt;SelectDropdown {...args} /&gt;
     &lt;/Box&gt;
   ),
 };
@@ -36168,7 +36251,7 @@ export const Default: Story = {
         isSearchable={false}
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
-        placeholder=&quot;all about that test&quot; /&gt;
+        translations={{ placeholder: &#39;all about that test&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -36187,7 +36270,7 @@ export const Default: Story = {
         isSearchable
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
-        placeholder=&quot;i am searchable, it is cool&quot; /&gt;
+        translations={{ placeholder: &#39;i am searchable, it is cool&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -36205,7 +36288,7 @@ export const Default: Story = {
     isSearchable={false}
     value=&quot;&quot;
     aria-label=&quot;Select an option&quot;
-    placeholder=&quot;Disabled&quot; /&gt;;</code></pre>
+    translations={{ placeholder: &#39;Disabled&#39; }} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -36243,7 +36326,7 @@ export const Default: Story = {
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
-        placeholder=&quot;click here!&quot; /&gt;
+        translations={{ placeholder: &#39;click here!&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -36275,7 +36358,7 @@ export const Default: Story = {
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
-        placeholder=&quot;no type here instead!&quot; /&gt;
+        translations={{ placeholder: &#39;no type here instead!&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -36320,7 +36403,7 @@ export const Default: Story = {
             isSearchable={false}
             value=&quot;&quot;
             aria-label=&quot;Select an option&quot;
-            placeholder=&quot;cry cry cry&quot; /&gt;
+            translations={{ placeholder: &#39;cry cry cry&#39; }} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -36670,7 +36753,7 @@ export const Default: Story = {
             aria-label=&quot;Select an option&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;400px&quot;
-            placeholder=&quot;Select seniority level&quot; /&gt;
+            translations={{ placeholder: &#39;Select seniority level&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Shows abbreviated text in input, full details in dropdown
               &lt;/Box&gt;
@@ -36833,7 +36916,7 @@ export const Default: Story = {
             isSearchable={false}
             value=&quot;&quot;
             aria-label=&quot;Select an option&quot;
-            placeholder=&quot;six is the magic number&quot; /&gt;
+            translations={{ placeholder: &#39;six is the magic number&#39; }} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -36869,7 +36952,7 @@ export const Default: Story = {
             isSearchable={false}
             value=&quot;&quot;
             aria-label=&quot;Select an option&quot;
-            placeholder=&quot;three is the magic number&quot;
+            translations={{ placeholder: &#39;three is the magic number&#39; }}
             shownOptionsLimit={3} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -36918,7 +37001,7 @@ export const Default: Story = {
             aria-label=&quot;Select an option&quot;
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;350px&quot;
-            placeholder=&quot;Select a role&quot; /&gt;
+            translations={{ placeholder: &#39;Select a role&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Input is 150px wide, dropdown is 350px wide
               &lt;/Box&gt;
@@ -36973,7 +37056,7 @@ export const Default: Story = {
             size=&quot;small&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;200px&quot;
-            placeholder=&quot;Select JScript&quot; /&gt;
+            translations={{ placeholder: &#39;Select JScript&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Small size, input shows &quot;JS&quot; but dropdown shows
                 &quot;JavaScript&quot;
@@ -37023,7 +37106,7 @@ export const Default: Story = {
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;300px&quot;
             menuAlignment=&quot;right&quot;
-            placeholder=&quot;Select a role&quot; /&gt;
+            translations={{ placeholder: &#39;Select a role&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Dropdown aligns to the right edge of the input
               &lt;/Box&gt;
@@ -37047,7 +37130,7 @@ export const Default: Story = {
                 id=&quot;usesDefaultZIndex&quot;
                 name=&quot;usesDefaultZIndex&quot;
                 options={fruitOptions}
-                placeholder=&quot;Uses the default zIndex of 2&quot; /&gt;
+                translations={{ placeholder: &#39;Uses the default zIndex of 2&#39; }} /&gt;
         &lt;/FormGroup&gt;
         &lt;FormGroup
             htmlFor=&quot;hasSetZIndex&quot;
@@ -37057,7 +37140,7 @@ export const Default: Story = {
                 id=&quot;hasSetZIndex&quot;
                 name=&quot;hasSetZIndex&quot;
                 options={fruitOptions}
-                placeholder=&quot;Has a zIndex of 5&quot;
+                translations={{ placeholder: &#39;Has a zIndex of 5&#39; }}
                 zIndex={5} /&gt;
         &lt;/FormGroup&gt;
     &lt;/FlexBox&gt;
@@ -37150,7 +37233,7 @@ export const Default: Story = {
             multiple
             name=&quot;multi-controlled&quot;
             options={multiOptions}
-            placeholder=&quot;Select languages…&quot;
+            translations={{ placeholder: &#39;Select languages…&#39; }}
             value={selected}
             onChange={(opts) =&gt; setSelected(opts.map((o) =&gt; o.value))}
           /&gt;
@@ -37224,7 +37307,7 @@ export const Default: Story = {
             multiple
             name=&quot;creatable-multi-uncontrolled&quot;
             options={options}
-            placeholder=&quot;Select or type to add…&quot;
+            translations={{ placeholder: &#39;Select or type to add…&#39; }}
             onCreateOption={(inputValue) =&gt;
               setOptions((prev) =&gt; [...prev, inputValue])
             }
@@ -37261,7 +37344,7 @@ export const Default: Story = {
             multiple
             name=&quot;creatable-multi-dropdown&quot;
             options={options}
-            placeholder=&quot;Select or type to add…&quot;
+            translations={{ placeholder: &#39;Select or type to add…&#39; }}
             value={value}
             onChange={(selected, meta) =&gt; {
               setValue(selected.map((option) =&gt; option.value));
@@ -37333,13 +37416,14 @@ export const Default: Story = {
             }
             name=&quot;creatable-validated-dropdown&quot;
             options={options}
-            placeholder=&quot;Type at least 3 letters to add…&quot;
-            validationMessage={({ inputValue }) =&gt;
-              // Falls back to &quot;No matching fruit&quot; once the input clears
-              // both validation reasons above but still doesn&#39;t match an
-              // option.
-              validate(inputValue) ?? &#39;No matching fruit&#39;
-            }
+            translations={{
+              placeholder: &#39;Type at least 3 letters to add…&#39;,
+              validationMessage: ({ inputValue }) =&gt;
+                // Falls back to &quot;No matching fruit&quot; once the input clears
+                // both validation reasons above but still doesn&#39;t match an
+                // option.
+                validate(inputValue) ?? &#39;No matching fruit&#39;,
+            }}
             onChange={() =&gt; {
               lastInputRef.current = &#39;&#39;;
               setError(undefined);
@@ -37388,6 +37472,33 @@ export const Default: Story = {
             </div>
             <div class="note ok">
               <div class="row">
+                <span class="ex-name">Translations</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Translations = () =&gt; &lt;Box height=&quot;18rem&quot;&gt;
+    &lt;SelectDropdown
+        id=&quot;example-select&quot;
+        name=&quot;translations-dropdown&quot;
+        options={[&#39;Manzana&#39;, &#39;Plátano&#39;, &#39;Cereza&#39;]}
+        disabled={false}
+        isSearchable={false}
+        value=&quot;&quot;
+        aria-label=&quot;Select an option&quot;
+        multiple
+        isCreatable
+        translations={{
+          placeholder: &#39;Elige una opción&#39;,
+          validationMessage: &#39;Sin opciones&#39;,
+          formatCreateLabel: (inputValue) =&gt; `Añadir &quot;${inputValue}&quot;`,
+          removeOptionLabel: (label) =&gt; `Quitar ${label}`,
+          clearAllLabel: &#39;Quitar todo&#39;,
+        }} /&gt;
+&lt;/Box&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
                 <span class="ex-name">Default</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -37423,6 +37534,7 @@ import { Callout, ComponentHeader, LinkTo } from &#39;~styleguide/blocks&#39;;
 import { ControlledModeTable } from &#39;./controlledModeTable&#39;;
 import { CreatablePropsTable } from &#39;./creatablePropsTable&#39;;
 import * as SelectDropdownStories from &#39;./SelectDropdown.stories&#39;;
+import { TranslationsTable } from &#39;./translationsTable&#39;;
 
 export const parameters = {
   title: &#39;SelectDropdown&#39;,
@@ -37617,7 +37729,7 @@ Pass `value` as `string[]` and update it in `onChange` on every change, includin
 
 ### Validation
 
-Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `validationMessage` to replace the default &quot;No options&quot; text with contextual feedback, and mirror the same message in `FormGroup`&#39;s `error` prop so it&#39;s surfaced below the field.
+Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `translations.validationMessage` to replace the default &quot;No options&quot; text with contextual feedback (the top-level `validationMessage` prop is deprecated but still works), and mirror the same message in `FormGroup`&#39;s `error` prop so it&#39;s surfaced below the field.
 
 Because the default behavior is to clear the input on blur, use `onInputChange` to persist validation state: validate on `input-change`, and re-validate from the last typed value on `input-blur` so the `FormGroup` error isn&#39;t lost when the input clears.
 
@@ -37626,6 +37738,27 @@ Because the default behavior is to clear the input on blur, use `onInputChange` 
 ### Props
 
 &lt;CreatablePropsTable /&gt;
+
+## Translations &amp; i18n
+
+Pass a `translations` object to localize the component&#39;s built-in microcopy. Any keys you provide are merged over the English defaults, so you only need to supply the strings you want to change.
+
+&lt;TranslationsTable /&gt;
+
+The top-level `placeholder`, `formatCreateLabel`, and `validationMessage` props are **deprecated** in favor of their `translations` equivalents. They still work and take precedence when set, but prefer `translations` for new code.
+
+&lt;Callout
+  text={
+    &lt;&gt;
+      Some screen-reader announcements come from the underlying{&#39; &#39;}
+      &lt;code&gt;react-select&lt;/code&gt; library (results count, keyboard guidance, and
+      selection-change messages) and are not yet covered by{&#39; &#39;}
+      &lt;code&gt;translations&lt;/code&gt;; they currently remain in English.
+    &lt;/&gt;
+  }
+/&gt;
+
+&lt;Canvas of={SelectDropdownStories.Translations} /&gt;
 
 ## Custom input props
 
@@ -77145,7 +77278,7 @@ Use Select to handle single selection within a group of options.
       <div class="badges">
         <label for="c-error-70-atoms-forminputs-selectdropdown-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-70-atoms-forminputs-selectdropdown-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-70-atoms-forminputs-selectdropdown-stories" class="badge ok as-toggle">32 stories</label>
+        <label for="c-error-70-atoms-forminputs-selectdropdown-stories" class="badge ok as-toggle">33 stories</label>
         <label for="c-error-70-atoms-forminputs-selectdropdown-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -77169,13 +77302,13 @@ Use Select to handle single selection within a group of options.
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;SelectDropdown&quot; component.
-  14 | const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;Dragonfruit&#39;, &#39;Eggplant&#39;];
-  15 |
-&gt; 16 | const meta: Meta&lt;typeof SelectDropdown&gt; = {
+  15 | const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;Dragonfruit&#39;, &#39;Eggplant&#39;];
+  16 |
+&gt; 17 | const meta: TypeWithDeepControls&lt;Meta&lt;typeof SelectDropdown&gt;&gt; = {
      | ^
-  17 |   component: SelectDropdown,
-  18 |   args: {
-  19 |     id: &#39;example-select&#39;,
+  18 |   component: SelectDropdown,
+  19 |   args: {
+  20 |     id: &#39;example-select&#39;,
 
 ./packages/styleguide/src/lib/Atoms/FormInputs/SelectDropdown/SelectDropdown.stories.tsx:
 import {
@@ -77190,10 +77323,11 @@ import { RadarIcon, ResponsiveIcon, RocketIcon } from &#39;@codecademy/gamut-ico
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 import { useRef, useState } from &#39;react&#39;;
 import type { InputActionMeta } from &#39;react-select&#39;;
+import type { TypeWithDeepControls } from &#39;storybook-addon-deep-controls&#39;;
 
 const fruitOptions = [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cherry&#39;, &#39;Dragonfruit&#39;, &#39;Eggplant&#39;];
 
-const meta: Meta&lt;typeof SelectDropdown&gt; = {
+const meta: TypeWithDeepControls&lt;Meta&lt;typeof SelectDropdown&gt;&gt; = {
   component: SelectDropdown,
   args: {
     id: &#39;example-select&#39;,
@@ -77209,6 +77343,65 @@ const meta: Meta&lt;typeof SelectDropdown&gt; = {
       control: &#39;select&#39;,
       options: fruitOptions,
     },
+    // Deprecated top-level props — hidden in favor of their `translations` equivalents.
+    placeholder: { table: { disable: true } },
+    formatCreateLabel: { table: { disable: true } },
+    validationMessage: { table: { disable: true } },
+    // Expose the nested `translations` keys as deep controls rather than the parent object.
+    translations: { table: { disable: true } },
+    &#39;translations.placeholder&#39;: {
+      control: &#39;text&#39;,
+      description:
+        &quot;Placeholder text shown when no option is selected. Placeholder text is not recommended for accessibility. If you need to use placeholder text, please make sure the placeholder text doesn&#39;t add any new information to the input. I.e - if the placeholder text describes an action you&#39;d like the user to take, please use a label instead.&quot;,
+      table: {
+        type: { summary: &#39;string&#39; },
+        defaultValue: { summary: &#39;Select an option&#39; },
+      },
+    },
+    &#39;translations.validationMessage&#39;: {
+      control: &#39;text&#39;,
+      description:
+        &#39;Replaces the default &quot;No options&quot; text shown inside the dropdown menu whenever no option matches the current input - an empty `options` array, or every option filtered out by a search. Not tied to `isCreatable`; any searchable SelectDropdown can use it. Accepts a `ReactNode`, or a function receiving `{ inputValue }` for live, input-specific validation/error copy (e.g. &quot;No results for \&#39;{inputValue}\&#39;&quot;).&#39;,
+      table: {
+        type: { summary: &#39;ReactNode | (({ inputValue }) =&gt; ReactNode)&#39; },
+        defaultValue: { summary: &#39;No options&#39; },
+      },
+    },
+    &#39;translations.formatCreateLabel&#39;: {
+      control: false,
+      description: &#39;Customises the label shown in the &quot;Add&quot; row.&#39;,
+      table: {
+        type: { summary: &#39;(inputValue: string) =&gt; ReactNode&#39; },
+        defaultValue: { summary: &#39;Add &quot;{inputValue}&quot;&#39; },
+      },
+    },
+    &#39;translations.removeOptionLabel&#39;: {
+      control: false,
+      description: &quot;aria-label for a multi-select value&#39;s remove button.&quot;,
+      table: {
+        type: { summary: &#39;(label: string) =&gt; string&#39; },
+        defaultValue: { summary: &#39;Remove {label}&#39; },
+      },
+    },
+    &#39;translations.clearAllLabel&#39;: {
+      control: &#39;text&#39;,
+      description: &#39;aria-label for the multi-select &quot;remove all&quot; button&#39;,
+      table: {
+        type: { summary: &#39;string&#39; },
+        defaultValue: { summary: &#39;Remove all selected&#39; },
+      },
+    },
+    &#39;translations.focusedOptionAnnouncement&#39;: {
+      control: false,
+      description:
+        &quot;Screen-reader announcement made when an option is focused. Default describes the option&#39;s label, subtitle, right label, and disabled state.&quot;,
+      table: {
+        type: { summary: &#39;(option: ExtendedOption) =&gt; string&#39; },
+        defaultValue: {
+          summary: &#39;You are currently focused on option {label}&#39;,
+        },
+      },
+    },
   },
 };
 
@@ -77219,7 +77412,7 @@ export const Base: Story = {
   args: {
     name: &#39;base-dropdown&#39;,
     options: [],
-    placeholder: &#39;all about that test&#39;,
+    translations: { placeholder: &#39;all about that test&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;12rem&quot;&gt;
@@ -77233,7 +77426,7 @@ export const Searchable: Story = {
     name: &#39;searchable-dropdown&#39;,
     isSearchable: true,
     options: [&#39;wow&#39;, &#39;wowee&#39;, &#39;wooooooow&#39;],
-    placeholder: &#39;i am searchable, it is cool&#39;,
+    translations: { placeholder: &#39;i am searchable, it is cool&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;12rem&quot;&gt;
@@ -77247,7 +77440,7 @@ export const Disabled: Story = {
     name: &#39;disabled-dropdown-standalone&#39;,
     options: [&#39;Disabled&#39;],
     disabled: true,
-    placeholder: &#39;Disabled&#39;,
+    translations: { placeholder: &#39;Disabled&#39; },
   },
 };
 
@@ -77270,7 +77463,7 @@ export const Small: Story = {
     options: [&#39;i am smol&#39;, &#39;yes I am!&#39;, &#39;:)&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;],
     name: &#39;size-no-search&#39;,
     size: &#39;small&#39;,
-    placeholder: &#39;click here!&#39;,
+    translations: { placeholder: &#39;click here!&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -77297,7 +77490,7 @@ export const SmallSearchable: Story = {
     name: &#39;size-search&#39;,
     isSearchable: true,
     size: &#39;small&#39;,
-    placeholder: &#39;no type here instead!&#39;,
+    translations: { placeholder: &#39;no type here instead!&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -77332,7 +77525,7 @@ export const FormGroupError: Story = {
     options: [&#39;Error&#39;, &#39;oh no&#39;, &#39;:(&#39;],
     id: &#39;error-example-unique&#39;,
     name: &#39;error-example-unique&#39;,
-    placeholder: &#39;cry cry cry&#39;,
+    translations: { placeholder: &#39;cry cry cry&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -77654,7 +77847,7 @@ export const ComplexAbbreviatedOptions: Story = {
     ],
     inputWidth: &#39;80px&#39;,
     dropdownWidth: &#39;400px&#39;,
-    placeholder: &#39;Select seniority level&#39;,
+    translations: { placeholder: &#39;Select seniority level&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;22rem&quot;&gt;
@@ -77809,7 +78002,7 @@ export const ShownOptionsDefault: Story = {
       &#39;asdfsadf&#39;,
     ],
     name: &#39;shownOptionsLimit01&#39;,
-    placeholder: &#39;six is the magic number&#39;,
+    translations: { placeholder: &#39;six is the magic number&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;22rem&quot;&gt;
@@ -77841,7 +78034,7 @@ export const ShownOptionsThree: Story = {
       &#39;asdfsadf&#39;,
     ],
     name: &#39;shownOptionsLimit02&#39;,
-    placeholder: &#39;three is the magic number&#39;,
+    translations: { placeholder: &#39;three is the magic number&#39; },
     shownOptionsLimit: 3,
   },
   render: (args) =&gt; (
@@ -77889,7 +78082,7 @@ export const IndependentWidths: Story = {
     ],
     inputWidth: &#39;150px&#39;,
     dropdownWidth: &#39;350px&#39;,
-    placeholder: &#39;Select a role&#39;,
+    translations: { placeholder: &#39;Select a role&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;20rem&quot;&gt;
@@ -77941,7 +78134,7 @@ export const SmallWithAbbreviations: Story = {
     size: &#39;small&#39;,
     inputWidth: &#39;80px&#39;,
     dropdownWidth: &#39;200px&#39;,
-    placeholder: &#39;Select JScript&#39;,
+    translations: { placeholder: &#39;Select JScript&#39; },
   },
   render: (args) =&gt; (
     &lt;Box height=&quot;15rem&quot;&gt;
@@ -77987,7 +78180,7 @@ export const MenuAlignmentRight: Story = {
     inputWidth: &#39;150px&#39;,
     dropdownWidth: &#39;300px&#39;,
     menuAlignment: &#39;right&#39;,
-    placeholder: &#39;Select a role&#39;,
+    translations: { placeholder: &#39;Select a role&#39; },
   },
   render: (args) =&gt; (
     &lt;FlexBox
@@ -78025,7 +78218,7 @@ export const zIndexOnMenu: Story = {
             id=&quot;usesDefaultZIndex&quot;
             name=&quot;usesDefaultZIndex&quot;
             options={args.options}
-            placeholder=&quot;Uses the default zIndex of 2&quot;
+            translations={{ placeholder: &#39;Uses the default zIndex of 2&#39; }}
           /&gt;
         &lt;/FormGroup&gt;
         &lt;FormGroup
@@ -78037,7 +78230,7 @@ export const zIndexOnMenu: Story = {
             id=&quot;hasSetZIndex&quot;
             name=&quot;hasSetZIndex&quot;
             options={args.options}
-            placeholder=&quot;Has a zIndex of 5&quot;
+            translations={{ placeholder: &#39;Has a zIndex of 5&#39; }}
             zIndex={5}
           /&gt;
         &lt;/FormGroup&gt;
@@ -78143,7 +78336,7 @@ export const MultipleSelectControlled: Story = {
       multiple
       name=&quot;multi-controlled&quot;
       options={multiOptions}
-      placeholder=&quot;Select languages…&quot;
+      translations={{ placeholder: &#39;Select languages…&#39; }}
       value={selected}
       onChange={(opts) =&gt; setSelected(opts.map((o) =&gt; o.value))}
     /&gt;
@@ -78173,7 +78366,7 @@ export const MultipleSelectControlled: Story = {
               multiple
               name=&quot;multi-controlled&quot;
               options={multiOptions}
-              placeholder=&quot;Select languages…&quot;
+              translations={{ placeholder: &#39;Select languages…&#39; }}
               value={selected}
               onChange={(opts) =&gt; setSelected(opts.map((o) =&gt; o.value))}
             /&gt;
@@ -78208,7 +78401,7 @@ export const Creatable: Story = {
       isCreatable
       name=&quot;creatable-dropdown&quot;
       options={options}
-      placeholder=&quot;Select or type to add…&quot;
+      translations={{ placeholder: &#39;Select or type to add…&#39; }}
       onCreateOption={(inputValue) =&gt;
         setOptions((prev) =&gt; [...prev, inputValue])
       }
@@ -78222,7 +78415,7 @@ export const Creatable: Story = {
     name: &#39;creatable-dropdown&#39;,
     isCreatable: true,
     createOptionPosition: &#39;last&#39;,
-    placeholder: &#39;Select or type to add…&#39;,
+    translations: { placeholder: &#39;Select or type to add…&#39; },
   },
   render: (args) =&gt; {
     const CreatableContent = () =&gt; {
@@ -78275,7 +78468,7 @@ Use this when you only need the final value on submit and no other part of the U
       multiple
       name=&quot;creatable-multi-uncontrolled&quot;
       options={options}
-      placeholder=&quot;Select or type to add…&quot;
+      translations={{ placeholder: &#39;Select or type to add…&#39; }}
       onCreateOption={(inputValue) =&gt;
         setOptions((prev) =&gt; [...prev, inputValue])
       }
@@ -78301,7 +78494,7 @@ Use this when you only need the final value on submit and no other part of the U
               multiple
               name=&quot;creatable-multi-uncontrolled&quot;
               options={options}
-              placeholder=&quot;Select or type to add…&quot;
+              translations={{ placeholder: &#39;Select or type to add…&#39; }}
               onCreateOption={(inputValue) =&gt;
                 setOptions((prev) =&gt; [...prev, inputValue])
               }
@@ -78341,7 +78534,7 @@ const [value, setValue] = useState&lt;string[]&gt;([]);
       multiple
       name=&quot;creatable-multi-dropdown&quot;
       options={options}
-      placeholder=&quot;Select or type to add…&quot;
+      translations={{ placeholder: &#39;Select or type to add…&#39; }}
       value={value}
       onChange={(selected, meta) =&gt; {
         setValue(selected.map((option) =&gt; option.value));
@@ -78373,7 +78566,7 @@ const [value, setValue] = useState&lt;string[]&gt;([]);
               multiple
               name=&quot;creatable-multi-dropdown&quot;
               options={options}
-              placeholder=&quot;Select or type to add…&quot;
+              translations={{ placeholder: &#39;Select or type to add…&#39; }}
               value={value}
               onChange={(selected, meta) =&gt; {
                 setValue(selected.map((option) =&gt; option.value));
@@ -78441,12 +78634,13 @@ const handleInputChange = (
       }
       name=&quot;creatable-validated-dropdown&quot;
       options={options}
-      placeholder=&quot;Type at least 3 letters to add…&quot;
-      validationMessage={({ inputValue }) =&gt;
-        // Falls back to &quot;No matching fruit&quot; once the input clears both
-        // validation reasons above but still doesn&#39;t match an option.
-        validate(inputValue) ?? &#39;No matching fruit&#39;
-      }
+      translations={{
+        placeholder: &#39;Type at least 3 letters to add…&#39;,
+        validationMessage: ({ inputValue }) =&gt;
+          // Falls back to &quot;No matching fruit&quot; once the input clears both
+          // validation reasons above but still doesn&#39;t match an option.
+          validate(inputValue) ?? &#39;No matching fruit&#39;,
+      }}
       onChange={() =&gt; {
         lastInputRef.current = &#39;&#39;;
         setError(undefined);
@@ -78510,13 +78704,14 @@ const handleInputChange = (
               }
               name=&quot;creatable-validated-dropdown&quot;
               options={options}
-              placeholder=&quot;Type at least 3 letters to add…&quot;
-              validationMessage={({ inputValue }) =&gt;
-                // Falls back to &quot;No matching fruit&quot; once the input clears
-                // both validation reasons above but still doesn&#39;t match an
-                // option.
-                validate(inputValue) ?? &#39;No matching fruit&#39;
-              }
+              translations={{
+                placeholder: &#39;Type at least 3 letters to add…&#39;,
+                validationMessage: ({ inputValue }) =&gt;
+                  // Falls back to &quot;No matching fruit&quot; once the input clears
+                  // both validation reasons above but still doesn&#39;t match an
+                  // option.
+                  validate(inputValue) ?? &#39;No matching fruit&#39;,
+              }}
               onChange={() =&gt; {
                 lastInputRef.current = &#39;&#39;;
                 setError(undefined);
@@ -78555,6 +78750,27 @@ export const CustomInputProps: Story = {
       &lt;FormGroup htmlFor=&quot;what&quot; isSoloField label=&quot;i am ~styled&quot;&gt;
         &lt;SelectDropdown {...args} /&gt;
       &lt;/FormGroup&gt;
+    &lt;/Box&gt;
+  ),
+};
+
+export const Translations: Story = {
+  args: {
+    name: &#39;translations-dropdown&#39;,
+    multiple: true,
+    isCreatable: true,
+    options: [&#39;Manzana&#39;, &#39;Plátano&#39;, &#39;Cereza&#39;],
+    translations: {
+      placeholder: &#39;Elige una opción&#39;,
+      validationMessage: &#39;Sin opciones&#39;,
+      formatCreateLabel: (inputValue) =&gt; `Añadir &quot;${inputValue}&quot;`,
+      removeOptionLabel: (label) =&gt; `Quitar ${label}`,
+      clearAllLabel: &#39;Quitar todo&#39;,
+    },
+  },
+  render: (args) =&gt; (
+    &lt;Box height=&quot;18rem&quot;&gt;
+      &lt;SelectDropdown {...args} /&gt;
     &lt;/Box&gt;
   ),
 };
@@ -78608,7 +78824,7 @@ export const Default: Story = {
         isSearchable={false}
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
-        placeholder=&quot;all about that test&quot; /&gt;
+        translations={{ placeholder: &#39;all about that test&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -78627,7 +78843,7 @@ export const Default: Story = {
         isSearchable
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
-        placeholder=&quot;i am searchable, it is cool&quot; /&gt;
+        translations={{ placeholder: &#39;i am searchable, it is cool&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -78645,7 +78861,7 @@ export const Default: Story = {
     isSearchable={false}
     value=&quot;&quot;
     aria-label=&quot;Select an option&quot;
-    placeholder=&quot;Disabled&quot; /&gt;;</code></pre>
+    translations={{ placeholder: &#39;Disabled&#39; }} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -78683,7 +78899,7 @@ export const Default: Story = {
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
-        placeholder=&quot;click here!&quot; /&gt;
+        translations={{ placeholder: &#39;click here!&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -78715,7 +78931,7 @@ export const Default: Story = {
         value=&quot;&quot;
         aria-label=&quot;Select an option&quot;
         size=&quot;small&quot;
-        placeholder=&quot;no type here instead!&quot; /&gt;
+        translations={{ placeholder: &#39;no type here instead!&#39; }} /&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -78760,7 +78976,7 @@ export const Default: Story = {
             isSearchable={false}
             value=&quot;&quot;
             aria-label=&quot;Select an option&quot;
-            placeholder=&quot;cry cry cry&quot; /&gt;
+            translations={{ placeholder: &#39;cry cry cry&#39; }} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -79110,7 +79326,7 @@ export const Default: Story = {
             aria-label=&quot;Select an option&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;400px&quot;
-            placeholder=&quot;Select seniority level&quot; /&gt;
+            translations={{ placeholder: &#39;Select seniority level&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Shows abbreviated text in input, full details in dropdown
               &lt;/Box&gt;
@@ -79273,7 +79489,7 @@ export const Default: Story = {
             isSearchable={false}
             value=&quot;&quot;
             aria-label=&quot;Select an option&quot;
-            placeholder=&quot;six is the magic number&quot; /&gt;
+            translations={{ placeholder: &#39;six is the magic number&#39; }} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
             </div>
@@ -79309,7 +79525,7 @@ export const Default: Story = {
             isSearchable={false}
             value=&quot;&quot;
             aria-label=&quot;Select an option&quot;
-            placeholder=&quot;three is the magic number&quot;
+            translations={{ placeholder: &#39;three is the magic number&#39; }}
             shownOptionsLimit={3} /&gt;
     &lt;/FormGroup&gt;
 &lt;/Box&gt;;</code></pre>
@@ -79358,7 +79574,7 @@ export const Default: Story = {
             aria-label=&quot;Select an option&quot;
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;350px&quot;
-            placeholder=&quot;Select a role&quot; /&gt;
+            translations={{ placeholder: &#39;Select a role&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Input is 150px wide, dropdown is 350px wide
               &lt;/Box&gt;
@@ -79413,7 +79629,7 @@ export const Default: Story = {
             size=&quot;small&quot;
             inputWidth=&quot;80px&quot;
             dropdownWidth=&quot;200px&quot;
-            placeholder=&quot;Select JScript&quot; /&gt;
+            translations={{ placeholder: &#39;Select JScript&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Small size, input shows &quot;JS&quot; but dropdown shows
                 &quot;JavaScript&quot;
@@ -79463,7 +79679,7 @@ export const Default: Story = {
             inputWidth=&quot;150px&quot;
             dropdownWidth=&quot;300px&quot;
             menuAlignment=&quot;right&quot;
-            placeholder=&quot;Select a role&quot; /&gt;
+            translations={{ placeholder: &#39;Select a role&#39; }} /&gt;
     &lt;/FormGroup&gt;
     &lt;Box color=&quot;text-secondary&quot; mt={4}&gt;Dropdown aligns to the right edge of the input
               &lt;/Box&gt;
@@ -79487,7 +79703,7 @@ export const Default: Story = {
                 id=&quot;usesDefaultZIndex&quot;
                 name=&quot;usesDefaultZIndex&quot;
                 options={fruitOptions}
-                placeholder=&quot;Uses the default zIndex of 2&quot; /&gt;
+                translations={{ placeholder: &#39;Uses the default zIndex of 2&#39; }} /&gt;
         &lt;/FormGroup&gt;
         &lt;FormGroup
             htmlFor=&quot;hasSetZIndex&quot;
@@ -79497,7 +79713,7 @@ export const Default: Story = {
                 id=&quot;hasSetZIndex&quot;
                 name=&quot;hasSetZIndex&quot;
                 options={fruitOptions}
-                placeholder=&quot;Has a zIndex of 5&quot;
+                translations={{ placeholder: &#39;Has a zIndex of 5&#39; }}
                 zIndex={5} /&gt;
         &lt;/FormGroup&gt;
     &lt;/FlexBox&gt;
@@ -79590,7 +79806,7 @@ export const Default: Story = {
             multiple
             name=&quot;multi-controlled&quot;
             options={multiOptions}
-            placeholder=&quot;Select languages…&quot;
+            translations={{ placeholder: &#39;Select languages…&#39; }}
             value={selected}
             onChange={(opts) =&gt; setSelected(opts.map((o) =&gt; o.value))}
           /&gt;
@@ -79664,7 +79880,7 @@ export const Default: Story = {
             multiple
             name=&quot;creatable-multi-uncontrolled&quot;
             options={options}
-            placeholder=&quot;Select or type to add…&quot;
+            translations={{ placeholder: &#39;Select or type to add…&#39; }}
             onCreateOption={(inputValue) =&gt;
               setOptions((prev) =&gt; [...prev, inputValue])
             }
@@ -79701,7 +79917,7 @@ export const Default: Story = {
             multiple
             name=&quot;creatable-multi-dropdown&quot;
             options={options}
-            placeholder=&quot;Select or type to add…&quot;
+            translations={{ placeholder: &#39;Select or type to add…&#39; }}
             value={value}
             onChange={(selected, meta) =&gt; {
               setValue(selected.map((option) =&gt; option.value));
@@ -79773,13 +79989,14 @@ export const Default: Story = {
             }
             name=&quot;creatable-validated-dropdown&quot;
             options={options}
-            placeholder=&quot;Type at least 3 letters to add…&quot;
-            validationMessage={({ inputValue }) =&gt;
-              // Falls back to &quot;No matching fruit&quot; once the input clears
-              // both validation reasons above but still doesn&#39;t match an
-              // option.
-              validate(inputValue) ?? &#39;No matching fruit&#39;
-            }
+            translations={{
+              placeholder: &#39;Type at least 3 letters to add…&#39;,
+              validationMessage: ({ inputValue }) =&gt;
+                // Falls back to &quot;No matching fruit&quot; once the input clears
+                // both validation reasons above but still doesn&#39;t match an
+                // option.
+                validate(inputValue) ?? &#39;No matching fruit&#39;,
+            }}
             onChange={() =&gt; {
               lastInputRef.current = &#39;&#39;;
               setError(undefined);
@@ -79828,6 +80045,33 @@ export const Default: Story = {
             </div>
             <div class="note ok">
               <div class="row">
+                <span class="ex-name">Translations</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Translations = () =&gt; &lt;Box height=&quot;18rem&quot;&gt;
+    &lt;SelectDropdown
+        id=&quot;example-select&quot;
+        name=&quot;translations-dropdown&quot;
+        options={[&#39;Manzana&#39;, &#39;Plátano&#39;, &#39;Cereza&#39;]}
+        disabled={false}
+        isSearchable={false}
+        value=&quot;&quot;
+        aria-label=&quot;Select an option&quot;
+        multiple
+        isCreatable
+        translations={{
+          placeholder: &#39;Elige una opción&#39;,
+          validationMessage: &#39;Sin opciones&#39;,
+          formatCreateLabel: (inputValue) =&gt; `Añadir &quot;${inputValue}&quot;`,
+          removeOptionLabel: (label) =&gt; `Quitar ${label}`,
+          clearAllLabel: &#39;Quitar todo&#39;,
+        }} /&gt;
+&lt;/Box&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
                 <span class="ex-name">Default</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -79863,6 +80107,7 @@ import { Callout, ComponentHeader, LinkTo } from &#39;~styleguide/blocks&#39;;
 import { ControlledModeTable } from &#39;./controlledModeTable&#39;;
 import { CreatablePropsTable } from &#39;./creatablePropsTable&#39;;
 import * as SelectDropdownStories from &#39;./SelectDropdown.stories&#39;;
+import { TranslationsTable } from &#39;./translationsTable&#39;;
 
 export const parameters = {
   title: &#39;SelectDropdown&#39;,
@@ -80057,7 +80302,7 @@ Pass `value` as `string[]` and update it in `onChange` on every change, includin
 
 ### Validation
 
-Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `validationMessage` to replace the default &quot;No options&quot; text with contextual feedback, and mirror the same message in `FormGroup`&#39;s `error` prop so it&#39;s surfaced below the field.
+Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `translations.validationMessage` to replace the default &quot;No options&quot; text with contextual feedback (the top-level `validationMessage` prop is deprecated but still works), and mirror the same message in `FormGroup`&#39;s `error` prop so it&#39;s surfaced below the field.
 
 Because the default behavior is to clear the input on blur, use `onInputChange` to persist validation state: validate on `input-change`, and re-validate from the last typed value on `input-blur` so the `FormGroup` error isn&#39;t lost when the input clears.
 
@@ -80066,6 +80311,27 @@ Because the default behavior is to clear the input on blur, use `onInputChange` 
 ### Props
 
 &lt;CreatablePropsTable /&gt;
+
+## Translations &amp; i18n
+
+Pass a `translations` object to localize the component&#39;s built-in microcopy. Any keys you provide are merged over the English defaults, so you only need to supply the strings you want to change.
+
+&lt;TranslationsTable /&gt;
+
+The top-level `placeholder`, `formatCreateLabel`, and `validationMessage` props are **deprecated** in favor of their `translations` equivalents. They still work and take precedence when set, but prefer `translations` for new code.
+
+&lt;Callout
+  text={
+    &lt;&gt;
+      Some screen-reader announcements come from the underlying{&#39; &#39;}
+      &lt;code&gt;react-select&lt;/code&gt; library (results count, keyboard guidance, and
+      selection-change messages) and are not yet covered by{&#39; &#39;}
+      &lt;code&gt;translations&lt;/code&gt;; they currently remain in English.
+    &lt;/&gt;
+  }
+/&gt;
+
+&lt;Canvas of={SelectDropdownStories.Translations} /&gt;
 
 ## Custom input props
 
