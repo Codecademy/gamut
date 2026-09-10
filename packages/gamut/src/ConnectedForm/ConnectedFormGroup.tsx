@@ -41,6 +41,19 @@ export interface ConnectedFormGroupBaseProps
 export interface ConnectedFormGroupProps<T extends ConnectedField>
   extends SubmitContextProps,
     ConnectedFormGroupBaseProps {
+  /*
+   * Intersecting `DataAttributes` here is safe today because every current
+   * `ConnectedField` (`ConnectedCheckbox`, `ConnectedInput`,
+   * `ConnectedNestedCheckboxes`, `ConnectedRadioGroupInput`,
+   * `ConnectedSelect`, `ConnectedTextArea`) is a `React.FC` whose props are
+   * built from a flat native element (`<input>`, `<select>`, etc.), not a
+   * `ComponentProps<typeof SomeButtonOrAnchorComponent>` union - confirmed
+   * empirically with a `keyof`/mapped-type extraction over `field` for each
+   * one. If a future `ConnectedField` wraps something union-derived (e.g. a
+   * component built on `ButtonBase`/`Anchor`), this intersection can degrade
+   * into TS2590 "union type too complex" for downstream consumers. See the
+   * `DataAttributes` trap note in `utils/types.ts` for the fix.
+   */
   /**
    * An object consisting of a `component` key to specify what ConnectedFormInput to render - the remaining key/value pairs are that components desired props.
    */
