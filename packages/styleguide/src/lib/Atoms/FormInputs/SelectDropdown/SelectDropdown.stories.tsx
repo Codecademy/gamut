@@ -70,7 +70,7 @@ const meta: TypeWithDeepControls<Meta<typeof SelectDropdown>> = {
         defaultValue: { summary: 'Remove {label}' },
       },
     },
-    'translations.clearAllLabel': {
+    'translations.removeAllLabel': {
       control: 'text',
       description: 'aria-label for the multi-select "remove all" button',
       table: {
@@ -1452,7 +1452,7 @@ export const Translations: Story = {
       validationMessage: 'Sin opciones',
       formatCreateLabel: (inputValue) => `Añadir "${inputValue}"`,
       removeOptionLabel: (label) => `Quitar ${label}`,
-      clearAllLabel: 'Quitar todo',
+      removeAllLabel: 'Quitar todo',
     },
   },
   render: (args) => (

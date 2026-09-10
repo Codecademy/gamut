@@ -1213,17 +1213,17 @@ describe('SelectDropdown', () => {
       );
       // react-select forces aria-hidden onto the clear-indicator, so query the
       // clear-all button by its aria-label attribute rather than by role.
-      view.getByLabelText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.clearAllLabel);
+      view.getByLabelText(DEFAULT_SELECT_DROPDOWN_TRANSLATIONS.removeAllLabel);
     });
 
     it('applies custom remove/clear-all aria-labels from translations', async () => {
       const removeOptionLabel = (label: string) => `Quitar ${label}`;
-      const clearAllLabel = 'Quitar todo';
+      const removeAllLabel = 'Quitar todo';
       const { view } = renderView({
         multiple: true,
         translations: {
           removeOptionLabel,
-          clearAllLabel,
+          removeAllLabel,
         },
       });
 
@@ -1233,7 +1233,7 @@ describe('SelectDropdown', () => {
       });
 
       view.getByLabelText(removeOptionLabel('red'));
-      view.getByLabelText(clearAllLabel);
+      view.getByLabelText(removeAllLabel);
     });
 
     it('merges partial translations with defaults', async () => {

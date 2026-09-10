@@ -118,7 +118,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
 
   return (
     <CustomStyledRemoveAllDiv
-      aria-label={translations.clearAllLabel}
+      aria-label={translations.removeAllLabel}
       role="button"
       tabIndex={0}
       {...restInnerProps}

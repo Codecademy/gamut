@@ -56,7 +56,7 @@ export interface SelectDropdownTranslations {
    * aria-label for the multi-select "remove all" button
    * @default "Remove all selected"
    */
-  clearAllLabel: string;
+  removeAllLabel: string;
   /**
    * Screen-reader announcement made when an option is focused.
    * Default describes the option's label, subtitle, right label, and disabled state.
@@ -74,7 +74,7 @@ export const DEFAULT_SELECT_DROPDOWN_TRANSLATIONS: SelectDropdownTranslations =
     validationMessage: 'No options',
     formatCreateLabel: (inputValue: string) => `Add "${inputValue}"`,
     removeOptionLabel: (label: string) => `Remove ${label}`,
-    clearAllLabel: 'Remove all selected',
+    removeAllLabel: 'Remove all selected',
     focusedOptionAnnouncement: ({ label, subtitle, rightLabel, disabled }) =>
       [
         `You are currently focused on option ${label}`,
