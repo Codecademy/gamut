@@ -109,7 +109,7 @@ export const resolveNoOptionsMessage = (
       ? translationsValidationMessage
       : validationMessage;
   if (typeof message === 'function') {
-    return message as ValidationMessageFn;
+    return message;
   }
   return () => message;
 };
