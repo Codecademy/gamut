@@ -6,11 +6,12 @@ import { Box } from '../Box';
 import { ButtonProps, FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import { DataAttributes } from '../utils';
 import { ModalContainer } from './elements';
 import { ImageContainer } from './ImageContainer';
 import { CloseButtonProps, ModalBaseProps } from './types';
 
-interface DialogButtonProps {
+interface DialogButtonProps extends DataAttributes {
   children: React.ReactNode;
   href?: string;
   onClick?: ButtonProps['onClick'];
