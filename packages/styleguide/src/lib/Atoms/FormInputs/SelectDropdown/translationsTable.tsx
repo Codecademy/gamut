@@ -67,8 +67,8 @@ const translationRows = [
     notes: "aria-label for a multi-select tag's remove button.",
   },
   {
-    id: 'clearAllLabel',
-    translationKey: 'clearAllLabel',
+    id: 'removeAllLabel',
+    translationKey: 'removeAllLabel',
     type: 'string',
     defaultValue: <Code>Remove all selected</Code>,
     notes: 'aria-label for the multi-select "remove all" button.',
