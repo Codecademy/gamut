@@ -1,3 +1,14 @@
+## 73.6.1 (2026-09-10)
+
+### 🩹 Fixes
+
+- update translations key from clearAllLabel to removeAllLabel for consistency ([#3433](https://github.com/Codecademy/gamut/pull/3433))
+
+### ❤️ Thank You
+
+- Amy Resnik
+- Claude Opus 4.8 (1M context)
+
 ## 73.6.0 (2026-09-10)
 
 ### 🚀 Features
