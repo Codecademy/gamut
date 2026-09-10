@@ -8,10 +8,23 @@ import {
 } from './elements';
 
 export interface DisclosureButtonProps {
-  /**
-   * Props forwarded to the toggle button (the interactive element users actually click), e.g. for `data-*`/`aria-*` attributes that need to land there rather than on the Disclosure's root wrapper.
+  /*
+   * Props forwarded to the toggle button (the interactive element users
+   * actually click), e.g. for `data-*`/`aria-*` attributes that need to land
+   * there rather than on the Disclosure's root wrapper. `onClick` is omitted
+   * - `DisclosureButton` always sets its own below - and because leaving it
+   * in intersects `DataAttributes`' index signature with
+   * `DisclosureButtonWrapper`'s full (union-derived, via `Anchor`) prop
+   * type, which degrades any consumer-side `keyof`/mapped type over
+   * `buttonProps` into a signature constraining every property, plus
+   * TS2590 "union type too complex". See the equivalent note on
+   * `DataAttributes` in `utils/types.ts`.
    */
-  buttonProps?: ComponentProps<typeof DisclosureButtonWrapper> & DataAttributes;
+  buttonProps?: Omit<
+    ComponentProps<typeof DisclosureButtonWrapper>,
+    'onClick'
+  > &
+    DataAttributes;
   /**
    * Renders the Disclosure unclickable.
    */
