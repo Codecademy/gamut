@@ -157,19 +157,36 @@ describe('Alert', () => {
     });
   });
 
-  it('forwards data-* and aria-* attributes passed via cta to the cta button', () => {
-    // Compile-time assertion: `cta` intersects `DataAttributes`, so
-    // `data-marker` here would be a TS2353 error if that type regressed.
+  it('forwards aria-* attributes passed via cta to the cta button', () => {
+    // Compile-time assertion: `cta` intersects `ComponentProps<typeof
+    // FillButton>` directly, so `aria-keyshortcuts` here would be a TS2353
+    // error if that type regressed.
     const { view } = renderView({
       cta: {
         children: 'Click Me!',
-        'data-marker': 'alert-cta',
         'aria-keyshortcuts': 'c',
       },
     });
 
     const cta = view.getByRole('button', { name: 'Click Me!' });
-    expect(cta).toHaveAttribute('data-marker', 'alert-cta');
     expect(cta).toHaveAttribute('aria-keyshortcuts', 'c');
+  });
+
+  it('still forwards data-* attributes passed via cta to the cta button at runtime', () => {
+    /*
+     * `cta` deliberately no longer intersects `DataAttributes` (see the note
+     * on `AlertProps['cta']`), so `data-marker` needs a cast here. This only
+     * asserts the runtime `{...cta}` spread still forwards it - the named
+     * type is gone, not the forwarding.
+     */
+    const { view } = renderView({
+      cta: {
+        children: 'Click Me!',
+        'data-marker': 'alert-cta',
+      } as AlertProps['cta'],
+    });
+
+    const cta = view.getByRole('button', { name: 'Click Me!' });
+    expect(cta).toHaveAttribute('data-marker', 'alert-cta');
   });
 });
