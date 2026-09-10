@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 
-import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, ImageWrapper,LinkTo } from '~styleguide/blocks';
 
 import * as DataTableStories from './DataTable.stories';
 
@@ -21,32 +21,65 @@ export const parameters = {
 
 <Callout text="Use the /gamut-datatable skill in Cursor or Claude Code for AI-assisted usage guidance, prop reference, and code patterns." />
 
-## Design principles
-
-**Design principles**
-
-- Recommended for bulk analysis across Rows
-- Tables best support information that needs sorting, filtering, pagination, and querying
-- Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
-
-**Use table affordances for best information design**
-
-- Design and arrange table metrics to encourage finding, scanning, and comparing information
-
-**Use cell-level interactions to activate specific data**
-
-- Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
-- Use Anchors and Links to direct users to another surface
-
-**Be careful about information overload**
-
-- Determine what’s helpful to see en-masse, versus what info should be drilled down into
-- Be mindful about the horizontal spacing between columns and headers
-- Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
-
 ## Usage
 
-Use a `DataTable` to display a table of items that contain a lot of information. The top row of the table is the header, and each row below is a list item. Rows can be customized to show a loading state, scrollability, filtering, and sorting.
+Use a `DataTable` to compare large amounts of data across rows and perform bulk actions on table rows.
+
+
+### Best practices:
+
+- Prioritize the data meant to be compared up front; surface secondary details on other surfaces
+- Arrange columns to support scanning and comparison, and order metrics by priority
+- Use cell-level interactions — tooltips, modals, anchors — to activate or expand specific data
+
+### When NOT to use:
+
+- **Non-comparable content** - for repeating items that aren't compared column-by-column, use the List component instead
+- **Single-record fields** - for the attributes of one entity or an editable form, use a Form layout instead of a table
+
+## Anatomy
+
+<ImageWrapper
+  alt="The anatomy of the DataTable component, detailed below."
+  height="auto"
+  src="./organisms/datatable.png"
+/>
+
+1. **Header row**
+
+- One header cell per column — the column titles plus their sort and filter controls
+- Sticks to the top while the table body scrolls so it stays visible (desktop; releases when columns stack at narrow widths)
+- Sits on the table's surface (background-current) with a 2px bottom border, so rows don't show through as they scroll under it
+
+2. **ColumnConfig**
+
+- Defines one column — its header and all of its data cells
+- type — what the column is:
+  - **content** (default) — a standard data column
+  - **header** — renders the column's cells as row-headers; sticks to the left (frozen, with a divider) when scrollable. You mark your identifying column — it isn’t automatic
+  - **control** — an action column; cells default to an overflow Icon Button (kebab), and its header has no sort or filter
+- sortable adds a SortControl · filters adds a FilterControl · size and justify set width and alignment · fill lets it absorb extra width
+
+3. **ListCol**
+
+- A single data cell; holds the column's value — text or any element
+
+4. **SortControl**
+
+- Shown on a sortable column header; cycles ascending → descending → none
+
+5. **FilterControl**
+
+- Shown on a column header with filters set; opens a menu to filter the table by that column's values
+
+6. **Frozen divider**
+
+- The delimiter on the frozen header column; shown only when scrollable is on
+
+7. **Row**
+
+- One record; with the table variant, rows alternate the background-selected surface
+- Density follows the spacing prop: normal / condensed / compact
 
 ### Sample code
 
