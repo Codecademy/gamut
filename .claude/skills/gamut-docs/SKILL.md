@@ -7,7 +7,7 @@ description: Use this skill when documenting Gamut — writing or revising a com
 
 How to write and revise Gamut documentation so it is accurate, consistent with the writing guide, and free of generated filler.
 
-See also: [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — the universal rules to check a component against before writing an `## Accessibility considerations` section, rather than asserting behavior. The component skills (e.g. [`gamut-buttons`](../gamut-buttons/SKILL.md), [`gamut-datatable`](../gamut-datatable/SKILL.md)) carry verified prop and variant detail worth reading before documenting those components.
+See also: [`gamut-accessibility`](../../../packages/gamut/agent-tools/skills/gamut-accessibility/SKILL.md) — the universal rules to check a component against before writing an `## Accessibility considerations` section, rather than asserting behavior. The component skills (e.g. [`gamut-buttons`](../../../packages/gamut/agent-tools/skills/gamut-buttons/SKILL.md), [`gamut-datatable`](../../../packages/gamut/agent-tools/skills/gamut-datatable/SKILL.md)) carry verified prop and variant detail worth reading before documenting those components. [`gamut-create-skill`](../gamut-create-skill/SKILL.md) — the blueprint this skill's structure follows; read it before authoring a new skill.
 
 Storybook:
 
