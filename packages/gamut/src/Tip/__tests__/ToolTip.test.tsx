@@ -15,6 +15,18 @@ const renderView = setupRtl(ToolTipMock, {
 
 describe('ToolTip', () => {
   describe('inline placement', () => {
+    it('forwards data-* and aria-* attributes to the tip wrapper', () => {
+      const { view } = renderView({
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      } as any);
+
+      const wrapper = view.container.querySelector('[data-marker="probe"]');
+
+      expect(wrapper).not.toBeNull();
+      expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+    });
+
     it('has an accessible tooltip', () => {
       const { view } = renderView({});
 

@@ -1,4 +1,7 @@
-export interface DatePickerSharedProps {
+import { ComponentPropsWithoutRef } from 'react';
+
+export interface DatePickerSharedProps
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'color'> {
   /**
    * Return `true` to disable that calendar day. Use `matchDisabledDates` from `./utils/dateGrid`
    * to disable a fixed list of days.

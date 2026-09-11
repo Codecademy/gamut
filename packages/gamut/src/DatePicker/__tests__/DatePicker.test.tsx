@@ -341,3 +341,23 @@ describe('DatePicker inside a form', () => {
     expect(onFormSubmit).not.toHaveBeenCalled();
   });
 });
+
+describe('Attribute passthrough', () => {
+  const renderDirect = setupRtl(DatePicker, {
+    mode: 'single' as const,
+    selectedDate: null,
+    onSelected: jest.fn(),
+    locale: 'en-US',
+  });
+
+  it('forwards data-* and aria-* attributes to the input wrapper', () => {
+    const { view } = renderDirect({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const wrapper = view.container.querySelector('[data-marker="probe"]');
+    expect(wrapper).not.toBeNull();
+    expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+});

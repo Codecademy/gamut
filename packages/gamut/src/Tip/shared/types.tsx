@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { Text } from '../../Typography';
 
@@ -73,16 +73,19 @@ export type TipWrapperProps = TipPlacementComponentProps & PreviewTipContent;
 export type TipPlacementComponentProps = Omit<
   TipNewBaseProps,
   'placement' | 'emphasis'
-> & {
-  alignment: TipStaticAlignment;
-  escapeKeyPressHandler?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
-  id?: string;
-  isTipHidden?: boolean;
-  contentRef?:
-    | React.RefObject<HTMLDivElement>
-    | ((node: HTMLDivElement | null) => void);
-  closeOnClick?: boolean;
-  type: 'info' | 'tool' | 'preview';
-  wrapperRef?: React.Ref<HTMLDivElement | null>;
-  zIndex?: number;
-} & React.PropsWithChildren;
+> &
+  Omit<ComponentPropsWithoutRef<'div'>, 'id' | 'children' | 'color'> & {
+    alignment: TipStaticAlignment;
+    escapeKeyPressHandler?: (
+      event: React.KeyboardEvent<HTMLDivElement>
+    ) => void;
+    id?: string;
+    isTipHidden?: boolean;
+    contentRef?:
+      | React.RefObject<HTMLDivElement>
+      | ((node: HTMLDivElement | null) => void);
+    closeOnClick?: boolean;
+    type: 'info' | 'tool' | 'preview';
+    wrapperRef?: React.Ref<HTMLDivElement | null>;
+    zIndex?: number;
+  } & React.PropsWithChildren;

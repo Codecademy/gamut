@@ -124,6 +124,19 @@ describe('Overlay', () => {
     expect(onRequestClose).not.toHaveBeenCalled();
   });
 
+  it('forwards data-* and aria-* attributes to the overlay container', () => {
+    const { view } = renderView({
+      isOpen: true,
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as Partial<OverlayProps>);
+
+    const container = view.getByTestId('overlay-content-container');
+
+    expect(container).toHaveAttribute('data-marker', 'probe');
+    expect(container).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
   it('allows additional styles when using the className prop', () => {
     const styleTag = document.createElement('style');
     styleTag.innerHTML = '.fakeClassName { text-align: center; }';

@@ -1,6 +1,6 @@
 import { ColorModes } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { ComponentProps, HTMLProps } from 'react';
+import { ComponentProps, ComponentPropsWithoutRef } from 'react';
 
 import { ButtonBase } from '../../ButtonBase';
 import { IconComponentType } from '../../utils';
@@ -11,8 +11,15 @@ import { StrokeButton } from '../StrokeButton';
 import { TextButton } from '../TextButton';
 import { buttonProps, buttonVariants } from './styles';
 
-export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
-  onClick?: HTMLProps<HTMLButtonElement>['onClick'];
+/*
+ * `WithoutRef` because `ButtonBase` attaches the ref one layer down; this
+ * gives named access to `aria-*`/`data-*` and other native button attributes
+ * without producing a `ref` prop this layer never forwards.
+ */
+export interface ButtonBaseProps
+  extends StyleProps<typeof buttonProps>,
+    Omit<ComponentPropsWithoutRef<'button'>, 'size' | 'onClick'> {
+  onClick?: ComponentPropsWithoutRef<'button'>['onClick'];
   variant?: (typeof buttonVariants)[number];
   size?: 'normal' | 'small' | 'large';
   as?: never;

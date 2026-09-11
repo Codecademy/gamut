@@ -10,6 +10,7 @@ import { DisclosureProps } from './types';
 
 export const Disclosure: React.FC<DisclosureProps> = ({
   body,
+  buttonProps,
   buttonType: button,
   buttonPlacement,
   ctaCallback,
@@ -27,11 +28,13 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   spacing = 'normal',
   subheading,
   variant,
+  ...rest
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 
   return (
     <DisclosureWrapper
+      {...rest}
       as={isListItem ? 'li' : undefined}
       column
       hasBorder={hasBorder}
@@ -39,6 +42,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
       onClick={() => onClick?.()}
     >
       <DisclosureButton
+        buttonProps={buttonProps}
         disabled={disabled}
         heading={heading}
         headingLevel={headingLevel}

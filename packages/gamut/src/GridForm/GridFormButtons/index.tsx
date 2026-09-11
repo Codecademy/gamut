@@ -4,8 +4,10 @@ import * as React from 'react';
 
 import { GridBox } from '../../Box';
 import { ButtonProps, CTAButton, FillButton, TextButton } from '../../Button';
+import { ButtonBaseProps } from '../../Button/shared/types';
 import { SubmitButton, SubmitButtonProps } from '../../ConnectedForm';
 import { Column } from '../../Layout';
+import { DataAttributes } from '../../utils';
 
 export type GridFormButtonsPosition = keyof typeof positions;
 
@@ -27,8 +29,20 @@ export type GridFormCancelButtonProps = {
   onClick?: () => void;
 };
 
-type CancelButtonProps = {
-  cancel?: ButtonProps;
+/*
+ * `onClick` is re-declared with `ButtonBaseProps`' own flat (button-only)
+ * signature rather than left as `ButtonProps`'s version - `ButtonProps` is
+ * `ButtonBaseProps & ComponentProps<typeof ButtonBase>`, and `ButtonBase`
+ * unions button/anchor variants, so its `onClick` still carries that union.
+ * Intersecting `DataAttributes` onto the still-unioned `onClick` is what
+ * degrades a consumer-side `keyof`/mapped type over `cancel` into TS2590
+ * "union type too complex", confirmed empirically. See the equivalent note on
+ * `DataAttributes` in `utils/types.ts`.
+ */
+export type CancelButtonProps = {
+  cancel?: Omit<ButtonProps, 'onClick'> & {
+    onClick?: ButtonBaseProps['onClick'];
+  } & DataAttributes;
 };
 
 const positions = {

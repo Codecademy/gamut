@@ -484,6 +484,16 @@ describe('GridForm', () => {
       expect(buttons.length).toEqual(1);
       expect(buttons[0]).toHaveTextContent('Submit');
     });
+
+    it('forwards data-* attributes passed via cancel to the cancel button', () => {
+      const { view } = renderView({
+        cancel: { children: 'Cancel', 'data-marker': 'cancel-cta' },
+      });
+
+      const cancelButton = view.getByText('Cancel');
+
+      expect(cancelButton).toHaveAttribute('data-marker', 'cancel-cta');
+    });
   });
 
   describe('disableFieldsOnSubmit', () => {

@@ -5,6 +5,8 @@ import { ComponentProps, forwardRef, useEffect } from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
+import { DataAttributes } from '../utils';
+import { splitDataAttributes } from '../utils/dataAttributes';
 import {
   AnimatedListWrapper,
   hiddenVariant,
@@ -16,7 +18,9 @@ import { useScrollabilityCheck } from './hooks';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
-export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
+export interface ListProps
+  extends AllListProps<ComponentProps<typeof ListEl>>,
+    DataAttributes {
   /** Whether List should be an ol, ul element, or table */
   as?: 'ol' | 'ul' | 'table';
   /** Whether a placeholder width should be set when loading */
@@ -70,6 +74,15 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     },
     ref
   ) => {
+    /*
+     * data-* attributes are identity/targeting hooks (Pendo selectors, QA
+     * scripts), so they belong on the same node as `id` - the outer
+     * ListWrapper - rather than the inner semantic list element. Everything
+     * else in `rest` (aria-* and style props from AllListProps) stays on
+     * ListEl, since that's the node those props actually describe.
+     */
+    const [dataAttrs, listElRest] = splitDataAttributes(rest);
+
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const isTable = as === 'table';
 
@@ -99,7 +112,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
         as={isTable ? 'tbody' : as}
         ref={ref}
         variant={value.variant}
-        {...rest}
+        {...listElRest}
       >
         {children}
       </ListEl>
@@ -137,6 +150,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           animate={animationVar}
           disableContainerQuery={disableContainerQuery}
           id={id}
+          {...dataAttrs}
           maxHeight={height}
           overflow={overflow}
           position="relative"

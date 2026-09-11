@@ -6,12 +6,13 @@ import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import { DataAttributes } from '../utils';
 import { isNullish } from '../utils/nullish';
 import { ModalContainer, ModalContainerProps } from './elements';
 import { ImageContainer } from './ImageContainer';
 import { CloseButtonProps, ModalBaseProps } from './types';
 
-interface DialogButtonProps {
+interface DialogButtonProps extends DataAttributes {
   children: React.ReactNode;
   href?: string;
   onClick?: ComponentProps<typeof FillButton>['onClick'];
@@ -45,6 +46,11 @@ export const Dialog: React.FC<DialogProps> = ({
   image,
   containerFocusRef,
   size = 'small',
+  isOpen,
+  clickOutsideCloses,
+  escapeCloses,
+  shroud = true,
+  zIndex,
   ...rest
 }) => {
   const titleId = useId();
@@ -64,8 +70,16 @@ export const Dialog: React.FC<DialogProps> = ({
   };
 
   return (
-    <Overlay shroud onRequestClose={onCancel as () => void} {...rest}>
+    <Overlay
+      clickOutsideCloses={clickOutsideCloses}
+      escapeCloses={escapeCloses}
+      isOpen={isOpen}
+      shroud={shroud}
+      zIndex={zIndex}
+      onRequestClose={onCancel as () => void}
+    >
       <ModalContainer
+        {...rest}
         aria-hidden="false"
         aria-label={isNullish(title) ? 'dialog' : undefined}
         aria-labelledby={!isNullish(title) ? titleId : undefined}
