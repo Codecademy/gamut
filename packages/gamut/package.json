@@ -69,5 +69,6 @@
     "**/*.scss",
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
-  ]
+  ],
+  "types": "./dist/index.d.ts"
 }

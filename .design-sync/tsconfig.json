@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~styleguide/argTypes": [
+        "../packages/styleguide/.storybook/argTypes/index"
+      ],
+      "~styleguide/blocks": [
+        "../packages/styleguide/.storybook/components/index"
+      ]
+    }
+  }
+}
