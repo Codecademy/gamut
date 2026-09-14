@@ -11,6 +11,7 @@ import { ListCol, ListRow } from '../../../List';
 import { ColProps } from '../../../List/elements';
 import { useListContext } from '../../../List/ListProvider';
 import { Shimmer } from '../../../Loading/Shimmer';
+import { DEFAULT_COLUMN_SIZE } from '../../constants';
 import { ExpandControl, SelectControl } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
 import { ColumnConfig, IdentifiableKeys } from '../../types';
@@ -108,7 +109,7 @@ export const TableRow: DataRow = ({
         const newKey = prefixId(`${id}-col-${String(key)}`);
         const colProps = {
           ...listColProps,
-          size,
+          size: size ?? DEFAULT_COLUMN_SIZE,
           justify,
           fill,
           type,
