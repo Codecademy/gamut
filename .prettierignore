@@ -9,3 +9,7 @@ packages/code-connect/**/*
 
 /.nx/cache
 /.nx/workspace-data
+
+# Spike oracles — these artifacts are compared BYTE-FOR-BYTE.
+# Formatting them would destroy the property they exist to prove.
+spikes/gamut-atomics-poc/dist
