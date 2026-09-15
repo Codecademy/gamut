@@ -66,8 +66,6 @@
   },
   "sideEffects": [
     "**/*.css",
-    "**/*.scss",
-    "dist/**/[A-Z]**/[A-Z]*.js",
-    "dist/**/[A-Z]**/index.js"
+    "**/*.scss"
   ]
 }

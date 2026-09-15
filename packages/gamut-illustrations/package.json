@@ -28,8 +28,5 @@
   "scripts": {
     "build": "nx build @codecademy/gamut-illustrations"
   },
-  "sideEffects": [
-    "dist/**/[A-Z]**/[A-Z]*.js",
-    "dist/**/[A-Z]**/index.js"
-  ]
+  "sideEffects": false
 }
