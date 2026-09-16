@@ -4,7 +4,6 @@ import {
   FillButton,
   FlexBox,
   Modal,
-  Overlay,
   StrokeButton,
   Text,
 } from '@codecademy/gamut';
