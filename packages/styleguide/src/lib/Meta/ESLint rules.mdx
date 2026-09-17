@@ -176,6 +176,57 @@ import { theme } from '@codecademy/gamut-styles';
 
 ---
 
+### `gamut/no-raw-z-index`
+
+**Level:** `error`
+
+Discourages raw numeric `z-index` values in favor of semantic tokens from the `zIndexes` scale exported by `gamut-styles`. This applies to both JSX `zIndex` props (e.g. `<Box zIndex={2} />`) and style object properties (`zIndex` / `'z-index'` in `css()` or styled-component style objects).
+
+**Why?** Magic z-index numbers make stacking order hard to reason about and prone to regressions as new overlapping UI gets added. The `zIndexes` scale (`underlay`, `base`, `foreground`, `floating`, `appBar`, `flyout`, `modal`, `popover`, `topmost`) gives every layer a named, semantic role so stacking intent stays legible and consistent across the app.
+
+#### ❌ Incorrect
+
+```tsx
+// Raw number in a JSX prop
+<Box position="relative" zIndex={2} />;
+
+// Raw number in a style object
+const styles = css({
+  position: 'absolute',
+  zIndex: 100,
+});
+```
+
+#### ✅ Correct
+
+```tsx
+import { zIndexes } from '@codecademy/gamut-styles';
+
+// Use a semantic token
+<Box position="relative" zIndex={zIndexes.foreground} />
+
+// Token arithmetic is allowed for a deliberate offset within a layer
+<Box position="relative" zIndex={zIndexes.foreground + 1} />
+
+const styles = css({
+  position: 'absolute',
+  zIndex: zIndexes.popover,
+});
+```
+
+#### Disabling the rule
+
+For a deliberate in-between value that doesn't map to an existing token, disable the rule inline with a comment justifying the choice:
+
+```tsx
+// eslint-disable-next-line gamut/no-raw-z-index -- must sit one layer below the legacy FCN nav (12)
+<Box zIndex={11} />
+```
+
+<Callout text="Please talk to web platform before adding a new token to the zIndexes scale." />
+
+---
+
 ### `gamut/prefer-themed`
 
 **Level:** `off` (by default)
@@ -222,6 +273,7 @@ module.exports = {
     'gamut/no-inline-style': 'error',
     'gamut/no-css-standalone': 'error',
     'gamut/import-paths': 'error',
+    'gamut/no-raw-z-index': 'error',
     'gamut/prefer-themed': 'off',
   },
 };

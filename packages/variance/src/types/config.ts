@@ -35,6 +35,13 @@ export interface Prop extends BaseProperty {
     props?: AbstractProps
   ) => string | number | CSSObject;
   resolveProperty?: (useLogicalProperties: boolean) => PropertyMode;
+  /**
+   * Keep the raw CSS-value escape hatch (arbitrary numbers, globals) available on a
+   * scale-backed prop, alongside the scale's token names. Without this a scale-backed prop
+   * is token-only. Runtime is unaffected — the parser already falls back to the raw value
+   * for anything that isn't a scale token; this only widens the accepted type.
+   */
+  allowRawValue?: boolean;
 }
 
 export interface AbstractPropTransformer extends Prop {
@@ -60,19 +67,30 @@ export type PropertyValues<
 // Uses 'physical' for directional properties (both physical/logical have same value types)
 type BasePropertyKey<P> = P extends DirectionalProperty ? P['physical'] : P;
 
+// When a scale-backed prop opts into `allowRawValue`, also permit the full raw CSS value
+// type (the same type an unscaled prop gets), which includes arbitrary numbers and globals.
+type RawValueEscapeHatch<Config extends Prop> = Config extends {
+  allowRawValue: true;
+}
+  ? PropertyValues<BasePropertyKey<Config['property']>, true>
+  : never;
+
 export type ScaleValue<Config extends Prop> =
   Config['scale'] extends keyof Theme
     ?
         | keyof Theme[Config['scale']]
         | PropertyValues<BasePropertyKey<Config['property']>>
+        | RawValueEscapeHatch<Config>
     : Config['scale'] extends MapScale
     ?
         | keyof Config['scale']
         | PropertyValues<BasePropertyKey<Config['property']>>
+        | RawValueEscapeHatch<Config>
     : Config['scale'] extends ArrayScale
     ?
         | Config['scale'][number]
         | PropertyValues<BasePropertyKey<Config['property']>>
+        | RawValueEscapeHatch<Config>
     : PropertyValues<BasePropertyKey<Config['property']>, true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<

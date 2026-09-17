@@ -81,7 +81,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   const tipBody = (
     <InlineTipBodyWrapper
       alignment={alignment}
-      zIndex={zIndex ?? 1}
+      zIndex={zIndex ?? 'foreground'}
       {...inlineWrapperProps}
     >
       <TipBody
