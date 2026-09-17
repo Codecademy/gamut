@@ -8,6 +8,7 @@ import {
 } from '~styleguide/blocks';
 
 import * as DatePickerStories from './DatePicker.stories';
+import { ErrorMessagesTable } from './errorMessagesTable';
 
 export const parameters = {
   title: 'DatePicker',
@@ -307,6 +308,16 @@ We can limit the range of dates that can be selected based on the start date. Fo
 
 <Canvas of={DatePickerStories.RangeDisabledWeekends} />
 
+## Error handling
+
+Typed dates are validated as they are entered and again on blur. An invalid entry shows an error beneath the input and switches its border to the error variant; in `mode="range"`, each input surfaces its own error. Invalid inputs stay visible so the user can correct it, and clearing all segments clears the selection.
+
+To see errors in action, open any story and type an incomplete or invalid date and blur the input.
+
+Each scenario maps to a translation key (see [Translations](#translations)):
+
+<ErrorMessagesTable />
+
 ## Locale
 
 Use the `locale` prop to set the locale of the DatePicker component. The default locale is the runtime default
@@ -335,11 +346,22 @@ export const DEFAULT_DATE_PICKER_TRANSLATIONS: Required<DatePickerTranslations> 
     startDateLabel: 'Start date',
     endDateLabel: 'End date',
     calendarDialogAriaLabel: 'Choose date',
+    openCalendarLabel: 'Open calendar',
     last7DaysDisplayText: 'Last 7 days',
     last30DaysDisplayText: 'Last 30 days',
     last90DaysDisplayText: 'Last 90 days',
+    invalidDate: 'Invalid date',
+    invalidDateIncomplete: 'Incomplete date',
+    invalidDateInvalidMonth: 'Month must be between 1 and 12',
+    invalidDateInvalidDay: '{{month}} does not have {{day}} days',
+    invalidDateRollover: '{{month}} does not have {{day}} days',
+    invalidDateNotAvailable: 'This date is not available',
+    invalidDateRangeContainsDisabledDate:
+      'This date range contains unavailable dates',
   };
 ```
+
+The `invalidDateInvalidDay` and `invalidDateRollover` keys support the `{{month}}` and `{{day}}` template variables, which are interpolated with the offending values at runtime. See the [Error handling](#error-handling) section for when each message surfaces.
 
 <Canvas of={DatePickerStories.Translations} />
 

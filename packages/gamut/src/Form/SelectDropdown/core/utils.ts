@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ActionMeta, Options as OptionsType } from 'react-select';
 
 import { isDefined } from '../../../utils/nullish';
@@ -13,6 +12,7 @@ import {
   SelectDropdownProps,
   SingleSelectDropdownProps,
 } from '../types';
+import { ValidationMessage, ValidationMessageFn } from './translations';
 
 export const isMultipleSelectProps = (
   props: BaseOnChangeProps
@@ -101,15 +101,17 @@ export const filterValueFromOptions = (
  * @returns New array with the specified values removed
  */
 export const resolveNoOptionsMessage = (
-  validationMessage: SelectDropdownProps['validationMessage']
-): ((obj: { inputValue: string }) => React.ReactNode) | undefined => {
-  if (validationMessage === undefined) return undefined;
-  if (typeof validationMessage === 'function') {
-    return validationMessage as (obj: {
-      inputValue: string;
-    }) => React.ReactNode;
+  validationMessage: SelectDropdownProps['validationMessage'],
+  translationsValidationMessage: ValidationMessage
+): ValidationMessageFn => {
+  const message =
+    validationMessage === undefined
+      ? translationsValidationMessage
+      : validationMessage;
+  if (typeof message === 'function') {
+    return message;
   }
-  return () => validationMessage;
+  return () => message;
 };
 
 export const removeValueFromSelectedOptions = (

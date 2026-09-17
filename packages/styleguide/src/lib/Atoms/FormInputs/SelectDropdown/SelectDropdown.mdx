@@ -5,6 +5,7 @@ import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 import { ControlledModeTable } from './controlledModeTable';
 import { CreatablePropsTable } from './creatablePropsTable';
 import * as SelectDropdownStories from './SelectDropdown.stories';
+import { TranslationsTable } from './translationsTable';
 
 export const parameters = {
   title: 'SelectDropdown',
@@ -199,7 +200,7 @@ Pass `value` as `string[]` and update it in `onChange` on every change, includin
 
 ### Validation
 
-Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `validationMessage` to replace the default "No options" text with contextual feedback, and mirror the same message in `FormGroup`'s `error` prop so it's surfaced below the field.
+Gate which inputs can be created with `isValidNewOption` — return `false` to hide the **Add** row. Use `translations.validationMessage` to replace the default "No options" text with contextual feedback (the top-level `validationMessage` prop is deprecated but still works), and mirror the same message in `FormGroup`'s `error` prop so it's surfaced below the field.
 
 Because the default behavior is to clear the input on blur, use `onInputChange` to persist validation state: validate on `input-change`, and re-validate from the last typed value on `input-blur` so the `FormGroup` error isn't lost when the input clears.
 
@@ -208,6 +209,27 @@ Because the default behavior is to clear the input on blur, use `onInputChange` 
 ### Props
 
 <CreatablePropsTable />
+
+## Translations & i18n
+
+Pass a `translations` object to localize the component's built-in microcopy. Any keys you provide are merged over the English defaults, so you only need to supply the strings you want to change.
+
+<TranslationsTable />
+
+The top-level `placeholder`, `formatCreateLabel`, and `validationMessage` props are **deprecated** in favor of their `translations` equivalents. They still work and take precedence when set, but prefer `translations` for new code.
+
+<Callout
+  text={
+    <>
+      Some screen-reader announcements come from the underlying{' '}
+      <code>react-select</code> library (results count, keyboard guidance, and
+      selection-change messages) and are not yet covered by{' '}
+      <code>translations</code>; they currently remain in English.
+    </>
+  }
+/>
+
+<Canvas of={SelectDropdownStories.Translations} />
 
 ## Custom input props
 
