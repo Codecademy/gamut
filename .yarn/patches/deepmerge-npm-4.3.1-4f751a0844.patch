@@ -1,0 +1,19 @@
+diff --git a/dist/cjs.js b/dist/cjs.js
+index 7c36cbdd06cc22c92d590be3f87a08a91ca06b40..a5bcd4c2e916e9791174bebda8658852688f59db 100644
+--- a/dist/cjs.js
++++ b/dist/cjs.js
+@@ -69,8 +69,14 @@ function propertyIsOnObject(object, property) {
+ 	}
+ }
+ 
++// Keys that can be used to reach up the prototype chain and pollute Object.prototype (CVE-2026-93753).
++var UNSAFE_KEYS = ['__proto__', 'constructor', 'prototype'];
++
+ // Protects from prototype poisoning and unexpected merging up the prototype chain.
+ function propertyIsUnsafe(target, key) {
++	if (UNSAFE_KEYS.indexOf(key) !== -1) {
++		return true
++	}
+ 	return propertyIsOnObject(target, key) // Properties are safe to merge if they don't exist in the target yet,
+ 		&& !(Object.hasOwnProperty.call(target, key) // unsafe if they exist up the prototype chain,
+ 			&& Object.propertyIsEnumerable.call(target, key)) // and also unsafe if they're nonenumerable.
