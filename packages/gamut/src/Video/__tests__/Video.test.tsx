@@ -40,7 +40,7 @@ const renderView = setupRtl(Video, {});
 describe('Video', () => {
   it('loads a video with a vimeo URL', async () => {
     const { view } = renderView({
-      videoUrl: 'https://vimeo.com/145702525',
+      videoUrl: 'https://vimeo.com/1218916076',
       videoTitle: 'Super Science Friends',
     });
 

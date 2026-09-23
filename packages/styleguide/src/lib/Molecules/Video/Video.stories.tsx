@@ -29,7 +29,7 @@ export const Youtube: Story = {
 
 export const Vimeo: Story = {
   args: {
-    videoUrl: 'https://vimeo.com/773539409',
+    videoUrl: 'https://vimeo.com/1218916076',
     videoTitle: 'CODECADEMY | Develop Yourself',
   },
 };
