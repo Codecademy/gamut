@@ -5,7 +5,6 @@ import {
 } from '@vidstack/react/types/vidstack';
 import * as React from 'react';
 import { useState } from 'react';
-import { BaseReactPlayerProps } from 'react-player/base';
 
 import { Box } from '../Box';
 import { useIsMounted } from '../utils';
@@ -84,10 +83,7 @@ export const Video: React.FC<VideoProps> = (props) => {
 
   const config = {
     youtube: {
-      playerVars: { color: 'white' },
-    },
-    vimeo: {
-      title: videoTitle,
+      color: 'white' as const,
     },
   };
 
@@ -148,8 +144,8 @@ export const Video: React.FC<VideoProps> = (props) => {
             muted={muted}
             playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
             playing={autoplay}
+            src={videoUrl as string}
             title={videoTitle}
-            url={videoUrl as BaseReactPlayerProps['url']}
             width="100%"
             onPlay={onPlay}
             onReady={() => {

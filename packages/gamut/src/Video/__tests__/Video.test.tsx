@@ -3,6 +3,16 @@ import * as React from 'react';
 
 import { Video } from '..';
 
+jest.mock('react-player', () => {
+  const react = require('react');
+  return {
+    __esModule: true,
+    // eslint-disable-next-line react/display-name
+    default: ({ src, title }: { src: string; title: string }) =>
+      react.createElement('iframe', { src, title }),
+  };
+});
+
 jest.mock('@vidstack/react', () => {
   const react = require('react');
   return {
