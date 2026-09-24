@@ -347,7 +347,7 @@ Use the `printf()` function.
 
 ### Iframes
 
-Vimeo and Youtube video iframes will be rendered by our Video component (if showPlayerEmbed is true it will be rendered in actual embed), otherwise they'll render the original code.
+Vimeo and Youtube video iframes will be rendered by our Video component (if showPlayerEmbed is true it will be rendered in actual embed) when you pass the `iframeOverride` prop; otherwise they'll render as a plain `iframe`. See the [Video overrides](#video-overrides) section on the Markdown docs page for details.
 
 <iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Ghibli in Real Life"></iframe>
 
@@ -357,7 +357,7 @@ Vimeo and Youtube video iframes will be rendered by our Video component (if show
 
 ### Video
 
-`video`s with an `src` or a `source` video file will be rendered by our Video component, otherwise they'll render the original code. Videos with a `style` prop or another restricted prop will be stripped of that property.
+`video`s with an `src` or a `source` video file will be rendered by our Video component when you pass the `videoOverride` prop; otherwise they'll render as a plain `video` tag. Videos with a `style` prop or another restricted prop will be stripped of that property.
 Insert `track` to add subtitles / captions to the video.
 
 <video width="100%" height="100%" align="middle" controls>

@@ -27,6 +27,12 @@ export const parameters = {
 
 The Video component is a feature-rich video player that supports multiple video sources and formats with enhanced accessibility features.
 
+```tsx
+import { Video } from '@codecademy/gamut/Video';
+```
+
+`Video` is imported from `@codecademy/gamut/Video`, not the main `@codecademy/gamut` barrel. It depends on `react-player`, whose own dependency tree relies on package.json `"exports"` subpaths that legacy bundlers (e.g. webpack 4) can't resolve — keeping it off the main barrel means consumers who don't use `Video` never need to resolve that tree. To render video content embedded in `Markdown` text, see the [Video overrides](../Organisms/Markdown/Markdown.mdx#video-overrides) section on the Markdown docs page instead of importing `Video` directly.
+
 ### Key Features
 
 - **Multiple Sources**: Supports YouTube, Vimeo, HLS, and DASH video streams
