@@ -33,7 +33,8 @@
   "files": [
     "dist",
     "bin",
-    "agent-tools"
+    "agent-tools",
+    "Video"
   ],
   "license": "MIT",
   "main": "./dist/index.js",

@@ -1,4 +1,4 @@
-import { Video } from '@codecademy/gamut';
+import { Video } from '@codecademy/gamut/Video';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Video> = {

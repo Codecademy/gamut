@@ -166,3 +166,14 @@ export const Video: React.FC<VideoProps> = (props) => {
     </>
   );
 };
+
+/*
+  Re-exported here (rather than from the main '@codecademy/gamut' barrel)
+  so Markdown's video/iframe overrides stay opt-in: importing them only
+  pulls in react-player if a consumer explicitly wants Video-in-markdown
+  rendering. See Markdown's videoOverride/iframeOverride props.
+*/
+export { Iframe } from '../Markdown/libs/overrides/Iframe';
+export type { IframeProps } from '../Markdown/libs/overrides/Iframe';
+export { MarkdownVideo } from '../Markdown/libs/overrides/Video';
+export type { MarkdownVideoProps } from '../Markdown/libs/overrides/Video';
