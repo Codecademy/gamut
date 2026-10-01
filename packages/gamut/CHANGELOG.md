@@ -1,3 +1,13 @@
+## 73.6.2 (2026-10-01)
+
+### 🩹 Fixes
+
+- Update Spinner component for Safari browser support ([#3440](https://github.com/Codecademy/gamut/pull/3440))
+
+### ❤️ Thank You
+
+- Jeffery Brown @jybrownSkillsoft
+
 ## 73.6.1 (2026-09-10)
 
 ### 🩹 Fixes
