@@ -1,3 +1,4 @@
+import { css } from '@codecademy/gamut-styles';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { FunctionComponent, SVGProps } from 'react';
@@ -6,20 +7,22 @@ export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: number | string;
 };
 
-// keyframes used due to lack of support for <animateTransform> component for Safari browser
+// Using keyframes since the <animationTransform> element doesn't animate in Safari
 const rotate = keyframes({
   from: { transform: 'rotate(0deg)' },
   to: { transform: 'rotate(360deg)' },
 });
 
-const SpinnerRing = styled.g({
-  animation: `${rotate} 1s linear infinite`,
-  transformBox: 'view-box',
-  transformOrigin: 'center',
-  '@media (prefers-reduced-motion: reduce)': {
-    animationDuration: '3s',
-  },
-});
+const SpinnerRing = styled.g(
+  css({
+    animation: `${rotate} 1s linear infinite`,
+    transformBox: 'view-box',
+    transformOrigin: 'center',
+    '@media (prefers-reduced-motion: reduce)': {
+      animationDuration: '3s',
+    },
+  }),
+);
 
 export const Spinner: FunctionComponent<SpinnerProps> = ({
   size = 24,
