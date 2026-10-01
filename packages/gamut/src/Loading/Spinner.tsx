@@ -21,7 +21,7 @@ const SpinnerRing = styled.g(
     '@media (prefers-reduced-motion: reduce)': {
       animationDuration: '3s',
     },
-  }),
+  })
 );
 
 export const Spinner: FunctionComponent<SpinnerProps> = ({
