@@ -46,4 +46,37 @@ describe('Breadcrumbs', () => {
       expect.objectContaining({ payload })
     );
   });
+
+  it('forwards data-* and aria-* attributes to the nav element', () => {
+    const { view } = renderView({
+      crumbs: [{ title: 'one' }],
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const nav = view.getByRole('navigation');
+    expect(nav).toHaveAttribute('data-marker', 'probe');
+    expect(nav).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
+  it('defaults aria-label when the consumer does not supply one', () => {
+    const { view } = renderView({ crumbs: [{ title: 'one' }] });
+
+    expect(view.getByRole('navigation')).toHaveAttribute(
+      'aria-label',
+      'breadcrumbs'
+    );
+  });
+
+  it('lets a consumer override the default aria-label', () => {
+    const { view } = renderView({
+      crumbs: [{ title: 'one' }],
+      'aria-label': 'my trail',
+    });
+
+    expect(view.getByRole('navigation')).toHaveAttribute(
+      'aria-label',
+      'my trail'
+    );
+  });
 });

@@ -1,6 +1,6 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ColorAlias } from '@codecademy/gamut-styles';
-import { ComponentProps, HTMLProps } from 'react';
+import { ComponentProps, ComponentPropsWithoutRef, HTMLProps } from 'react';
 
 import { ButtonProps } from '../../Button';
 import { Text } from '../../Typography/Text';
@@ -93,39 +93,43 @@ export type InferBarType<T> = T extends readonly (infer U)[]
 
 export type BarChartProps<
   TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
-> = BarChartLabel & {
-  /** Whether to animate bars on mount */
-  animate?: boolean;
-  /** Array of bar data to render */
-  barValues: TBarValues;
-  /** Figure caption for the BarChart. This should be a summary of the information or the overall takeaway of the information in the chart */
-  description: string;
-  /** Hides the visual figcaption */
-  hideDescription?: boolean;
-  /** Hides the visual title for the chart UL */
-  hideTitle?: boolean;
-  /** Maximum value for the value scale */
-  maxScaleValue: MaxScaleValue;
-  /** Unit label to display (e.g., "XP") */
-  unit?: string;
-  /** Style configuration for colors */
-  styleConfig?: BarChartStyles;
-  /** Interval for the value scale markers */
-  scaleInterval?: number;
-  /** Array of sort options to display in the dropdown. Can include string literals ('alphabetically', 'numerically', 'none') or custom sort functions. If not provided, the Select dropdown will not render. */
-  sortFns?: (
-    | 'alphabetically'
-    | 'numerically'
-    | 'none'
-    | CustomSortOption<InferBarType<TBarValues>>
-  )[];
-  /**
-   * Translations for internationalization. Partial translations are merged with defaults.
-   * Accessibility is function-only. Two optional keys: stackedBarSummary, singleValueBarSummary.
-   * stackedBarSummary: used for stacked (two-value) rows; context includes gained (seriesTwoValue - seriesOneValue).
-   * singleValueBarSummary: used for all single-value rows; the returned string is set as aria-label on the row's link/button when interactive, or rendered in screenreader-only text when not.
-   */
-  translations?: PartialBarChartTranslations;
-};
+> = Omit<
+  ComponentPropsWithoutRef<'figure'>,
+  'title' | 'aria-labelledby' | 'color'
+> &
+  BarChartLabel & {
+    /** Whether to animate bars on mount */
+    animate?: boolean;
+    /** Array of bar data to render */
+    barValues: TBarValues;
+    /** Figure caption for the BarChart. This should be a summary of the information or the overall takeaway of the information in the chart */
+    description: string;
+    /** Hides the visual figcaption */
+    hideDescription?: boolean;
+    /** Hides the visual title for the chart UL */
+    hideTitle?: boolean;
+    /** Maximum value for the value scale */
+    maxScaleValue: MaxScaleValue;
+    /** Unit label to display (e.g., "XP") */
+    unit?: string;
+    /** Style configuration for colors */
+    styleConfig?: BarChartStyles;
+    /** Interval for the value scale markers */
+    scaleInterval?: number;
+    /** Array of sort options to display in the dropdown. Can include string literals ('alphabetically', 'numerically', 'none') or custom sort functions. If not provided, the Select dropdown will not render. */
+    sortFns?: (
+      | 'alphabetically'
+      | 'numerically'
+      | 'none'
+      | CustomSortOption<InferBarType<TBarValues>>
+    )[];
+    /**
+     * Translations for internationalization. Partial translations are merged with defaults.
+     * Accessibility is function-only. Two optional keys: stackedBarSummary, singleValueBarSummary.
+     * stackedBarSummary: used for stacked (two-value) rows; context includes gained (seriesTwoValue - seriesOneValue).
+     * singleValueBarSummary: used for all single-value rows; the returned string is set as aria-label on the row's link/button when interactive, or rendered in screenreader-only text when not.
+     */
+    translations?: PartialBarChartTranslations;
+  };
 
 export type BarChartUnit = Pick<BarChartProps, 'unit'>;

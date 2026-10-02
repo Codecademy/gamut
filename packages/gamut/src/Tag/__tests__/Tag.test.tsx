@@ -117,4 +117,33 @@ describe('Tag', () => {
 
     expect(view.getByRole('button')).toBeDisabled();
   });
+
+  it('forwards data-* and aria-* attributes from buttonProps to the anchor for the `navigation` variant', () => {
+    const { view } = renderView({
+      variant: 'navigation',
+      href: 'www.tagteam.com',
+      buttonProps: {
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      },
+    });
+
+    const link = view.getByRole('link');
+    expect(link).toHaveAttribute('data-marker', 'probe');
+    expect(link).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
+  it('forwards data-* and aria-* attributes from dismissButtonProps to the dismiss button for the `selection` variant', () => {
+    const { view } = renderView({
+      variant: 'selection',
+      dismissButtonProps: {
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      },
+    });
+
+    const dismissButton = view.getByRole('button');
+    expect(dismissButton).toHaveAttribute('data-marker', 'probe');
+    expect(dismissButton).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
 });

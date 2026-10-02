@@ -63,6 +63,39 @@ describe('Modal', () => {
     view.getByAltText('test');
   });
 
+  it('forwards data-* and aria-* attributes to the modal container', () => {
+    const { view } = renderView({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const modal = view.getByRole('dialog');
+
+    expect(modal).toHaveAttribute('data-marker', 'probe');
+    expect(modal).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
+  it('forwards a data-* attribute passed via a view primaryCta to the confirm button', () => {
+    // Compile-time assertion: `DialogButtonProps` intersects `DataAttributes`,
+    // so `data-marker` here would be a TS2353 error if that type regressed.
+    const { view } = renderView({
+      views: [
+        {
+          title: 'Multi view',
+          children: <>View 1</>,
+          primaryCta: {
+            actionType: 'confirm',
+            children: 'Confirm',
+            'data-marker': 'primary-cta',
+          },
+        },
+      ],
+    });
+
+    const confirmButton = view.getByText('Confirm');
+    expect(confirmButton).toHaveAttribute('data-marker', 'primary-cta');
+  });
+
   describe('closeButtonProps functionality', () => {
     it('applies a ref to the close button when closeButtonProps.ref is provided', () => {
       const closeButtonRef = React.createRef<HTMLButtonElement>();

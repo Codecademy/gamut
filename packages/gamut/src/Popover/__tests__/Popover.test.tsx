@@ -138,6 +138,19 @@ describe('Popover', () => {
     expect(popoverIsRendered(view)).toBeTruthy();
   });
 
+  it('forwards data-* and aria-* attributes to the popover container', () => {
+    const { view } = renderView({
+      isOpen: true,
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const container = view.getByTestId('popover-content-container');
+
+    expect(container).toHaveAttribute('data-marker', 'probe');
+    expect(container).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
   it('accepts targetRef from useRef and renders when open', () => {
     const PopoverWithUseRefTarget = () => {
       const targetRef = React.useRef<HTMLDivElement>(null);

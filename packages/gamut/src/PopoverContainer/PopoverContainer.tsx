@@ -275,7 +275,6 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       onEscapeKey={onRequestClose}
     >
       <PopoverContent
-        data-floating="popover"
         data-testid="popover-content-container"
         position="absolute"
         ref={popoverRef}
@@ -284,6 +283,12 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
         {...restProps}
+        /*
+         * Set after the spread: this is read back via
+         * closest('[data-floating="popover"]') for outside-click detection, so
+         * a passed-through data-floating must not be able to replace it.
+         */
+        data-floating="popover"
       >
         {children}
       </PopoverContent>

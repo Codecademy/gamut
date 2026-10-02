@@ -42,6 +42,32 @@ describe('Dialog', () => {
     expect(view.queryByRole('dialog')).toBe(null);
   });
 
+  it('forwards data-* and aria-* attributes to the dialog container', () => {
+    const { view } = renderView({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const dialog = view.getByRole('dialog');
+
+    expect(dialog).toHaveAttribute('data-marker', 'probe');
+    expect(dialog).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
+  it('forwards a data-* attribute passed via confirmCta to the confirm button', () => {
+    // Compile-time assertion: `DialogButtonProps` intersects `DataAttributes`,
+    // so `data-marker` here would be a TS2353 error if that type regressed.
+    const { view } = renderView({
+      confirmCta: {
+        ...defaultProps.confirmCta,
+        'data-marker': 'confirm-cta',
+      },
+    });
+
+    const confirmButton = view.getByText(defaultProps.confirmCta.children);
+    expect(confirmButton).toHaveAttribute('data-marker', 'confirm-cta');
+  });
+
   it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
     const ariaLabel = 'Close dialog';

@@ -3,67 +3,70 @@ import {
   DefaultLayoutTranslations,
   ThumbnailSrc,
 } from '@vidstack/react/types/vidstack';
+import { AriaAttributes } from 'react';
 import * as React from 'react';
 import { useState } from 'react';
 import { BaseReactPlayerProps } from 'react-player/base';
 
 import { Box } from '../Box';
 import { useIsMounted } from '../utils';
+import { DataAttributes } from '../utils/types';
 import { OverlayPlayButton, ReactVideoPlayer } from './lib/ReactPlayer';
 import { VidstackPlayer } from './lib/VidstackPlayer';
 
-export type VideoProps = {
-  className?: string;
-  autoplay?: boolean;
-  loop?: boolean;
-  muted?: boolean;
-  onPlay?: () => void;
-  onReady?: () => void;
-  width?: number;
-  height?: number;
-  videoTitle?: string;
-  controls?: boolean;
-  /**
-   * Placeholder image for a poster/thumbnail.
-   */
-  placeholderImage?: string | boolean;
-  /**
-   * The main source for the video file or streaming URL.
-   * @example
-   * <Video videoUrl='https://example.com/video.mp4' />
-   * Or with type
-   * <Video videoUrl={{ src: 'https://example.com/video.mp4', type: 'video/mp4' }} />
-   */
-  videoUrl: PlayerSrc;
-  /**
-   * Optional text track data (subtitles, captions or chapters).
-   * @example
-   * <Video textTracks={[{ label: 'English', src: '/eng.vtt', kind: 'subtitles', language: 'en-US', }]} />
-   *
-   * @see https://vidstack.io/docs/player/api/text-tracks/?styling=default-theme#managing-tracks
-   */
-  textTracks?: TrackProps[];
-  /**
-   * Preview images for different time segments.
-   */
-  thumbnails?: ThumbnailSrc;
-  /**
-   * Translations for the player's default layout labels.
-   * @example
-   * <Video translations={{ Play: 'Play Video' }} />
-   */
-  translations?: Partial<DefaultLayoutTranslations>;
-  /**
-   * Determines if ReactPlayer is used to render youtube/vimeo videos.
-   * @default true
-   */
-  showPlayerEmbed?: boolean;
-  /**
-   * Determines if the default provider/browser controls are shown.
-   * @default false
-   */
-  showDefaultProviderControls?: boolean;
-};
+export type VideoProps = AriaAttributes &
+  DataAttributes & {
+    className?: string;
+    autoplay?: boolean;
+    loop?: boolean;
+    muted?: boolean;
+    onPlay?: () => void;
+    onReady?: () => void;
+    width?: number;
+    height?: number;
+    videoTitle?: string;
+    controls?: boolean;
+    /**
+     * Placeholder image for a poster/thumbnail.
+     */
+    placeholderImage?: string | boolean;
+    /**
+     * The main source for the video file or streaming URL.
+     * @example
+     * <Video videoUrl='https://example.com/video.mp4' />
+     * Or with type
+     * <Video videoUrl={{ src: 'https://example.com/video.mp4', type: 'video/mp4' }} />
+     */
+    videoUrl: PlayerSrc;
+    /**
+     * Optional text track data (subtitles, captions or chapters).
+     * @example
+     * <Video textTracks={[{ label: 'English', src: '/eng.vtt', kind: 'subtitles', language: 'en-US', }]} />
+     *
+     * @see https://vidstack.io/docs/player/api/text-tracks/?styling=default-theme#managing-tracks
+     */
+    textTracks?: TrackProps[];
+    /**
+     * Preview images for different time segments.
+     */
+    thumbnails?: ThumbnailSrc;
+    /**
+     * Translations for the player's default layout labels.
+     * @example
+     * <Video translations={{ Play: 'Play Video' }} />
+     */
+    translations?: Partial<DefaultLayoutTranslations>;
+    /**
+     * Determines if ReactPlayer is used to render youtube/vimeo videos.
+     * @default true
+     */
+    showPlayerEmbed?: boolean;
+    /**
+     * Determines if the default provider/browser controls are shown.
+     * @default false
+     */
+    showDefaultProviderControls?: boolean;
+  };
 
 export const Video: React.FC<VideoProps> = (props) => {
   const {
@@ -81,6 +84,18 @@ export const Video: React.FC<VideoProps> = (props) => {
   } = props;
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
+
+  /*
+   * VideoProps only widens its type for `data-*`/`aria-*` attributes, so
+   * filtering by key prefix picks up exactly (and only) those without also
+   * forwarding unrelated named props (textTracks, thumbnails, etc.) onto the
+   * DOM wrapper below.
+   */
+  const domAttrs = Object.fromEntries(
+    Object.entries(props).filter(
+      ([key]) => key.startsWith('data-') || key.startsWith('aria-')
+    )
+  );
 
   const config = {
     youtube: {
@@ -130,6 +145,7 @@ export const Video: React.FC<VideoProps> = (props) => {
   ) {
     return (
       <Box
+        {...domAttrs}
         bg={loading ? 'black' : undefined}
         borderRadius="md"
         className={className}

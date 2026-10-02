@@ -61,6 +61,19 @@ describe('InfoTip', () => {
       }
     });
 
+    it('forwards data-* and aria-* attributes to the tip wrapper', () => {
+      const { view } = renderView({
+        placement,
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      } as any);
+
+      const wrapper = view.container.querySelector('[data-marker="probe"]');
+
+      expect(wrapper).not.toBeNull();
+      expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+    });
+
     it('closes the tip when Escape key is pressed and returns focus to button', async () => {
       const { view } = renderView({ placement });
       const button = await clickButton(view);
@@ -333,5 +346,18 @@ describe('InfoTip', () => {
         expectTipsClosed();
       });
     });
+  });
+
+  it('forwards data-* and aria-* attributes from buttonProps to the InfoTip button', () => {
+    const { view } = renderView({
+      buttonProps: {
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      },
+    });
+
+    const button = view.getByRole('button');
+    expect(button).toHaveAttribute('data-marker', 'probe');
+    expect(button).toHaveAttribute('aria-keyshortcuts', 'probeAria');
   });
 });

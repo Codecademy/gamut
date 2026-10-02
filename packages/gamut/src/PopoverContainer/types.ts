@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 
 import { FocusTrapProps } from '../FocusTrap';
-import { WithChildrenProp } from '../utils';
+import { ReservedDataAttributes, WithChildrenProp } from '../utils';
 
 export type PopoverContainerAlignment =
   | 'top-left'
@@ -70,6 +70,7 @@ export interface PopoverPositionConfig extends PopoverAlignment {
 export interface PopoverContainerProps
   extends PopoverAlignment,
     WithChildrenProp,
+    ReservedDataAttributes,
     Pick<FocusTrapProps, 'focusOnProps'> {
   className?: string;
   /**

@@ -59,6 +59,24 @@ describe('Toggle', () => {
 
       expect(action).not.toHaveBeenCalled();
     });
+
+    it('forwards inputProps to the input without disturbing the label', () => {
+      const { view } = renderView({
+        inputProps: {
+          'data-marker': 'toggle-input',
+          'aria-keyshortcuts': 'i',
+        },
+        'data-marker': 'toggle-label',
+      } as any);
+
+      const input = view.getByRole('checkbox');
+      expect(input).toHaveAttribute('data-marker', 'toggle-input');
+      expect(input).toHaveAttribute('aria-keyshortcuts', 'i');
+
+      // regression: ...rest still lands on the visible label, unchanged
+      const label = view.container.querySelector('label');
+      expect(label).toHaveAttribute('data-marker', 'toggle-label');
+    });
   });
 
   describe('when the toggle is a button', () => {
@@ -119,6 +137,27 @@ describe('Toggle', () => {
       view.getByLabelText('Toggle Text').click();
 
       expect(action).not.toHaveBeenCalled();
+    });
+
+    it('forwards inputProps to the button without disturbing the label', () => {
+      const { view } = renderView({
+        as: 'button',
+        onChange: undefined,
+        onClick: action,
+        inputProps: {
+          'data-marker': 'toggle-button',
+          'aria-keyshortcuts': 'b',
+        },
+        'data-marker': 'toggle-label',
+      } as any);
+
+      const button = view.getByRole('switch');
+      expect(button).toHaveAttribute('data-marker', 'toggle-button');
+      expect(button).toHaveAttribute('aria-keyshortcuts', 'b');
+
+      // regression: ...rest still lands on the visible label, unchanged
+      const label = view.container.querySelector('label');
+      expect(label).toHaveAttribute('data-marker', 'toggle-label');
     });
   });
 });

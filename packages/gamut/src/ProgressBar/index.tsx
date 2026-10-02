@@ -168,6 +168,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   pattern: Pattern,
   size = 'small',
   variant,
+  ...rest
 }) => {
   const showBarBorder = percent > 0 || minimumPercent > 0;
   const id = React.useId();
@@ -180,6 +181,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       role="figure"
       size={size}
       variant={variant}
+      {...rest}
     >
       <Text as="label" id={id} screenreader>{`Progress: ${percent}%`}</Text>
       {Pattern && <Pattern position="absolute" width="100%" zIndex={0} />}

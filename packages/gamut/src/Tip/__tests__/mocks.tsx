@@ -7,9 +7,9 @@ import { ToolTip, ToolTipProps } from '../ToolTip';
 
 export const ToolTipMock: React.FC<
   ToolTipProps & ComponentProps<typeof FillButton>
-> = ({ info, placement, onClick }) => {
+> = ({ info, placement, onClick, ...rest }) => {
   return (
-    <ToolTip id="tip-id" info={info} placement={placement}>
+    <ToolTip id="tip-id" info={info} placement={placement} {...(rest as any)}>
       <FillButton aria-describedby="tip-id" onClick={onClick}>
         Click me
       </FillButton>

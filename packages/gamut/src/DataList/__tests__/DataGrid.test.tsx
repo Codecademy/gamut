@@ -9,6 +9,8 @@ import {
 } from '@testing-library/react';
 
 import { DataGrid, DataGridProps } from '../DataGrid';
+import { DataList } from '../DataList';
+import { DataTable } from '../DataTable';
 import { ColumnConfig } from '../types';
 
 // Add the custom matchers provided by '@emotion/jest'
@@ -667,6 +669,66 @@ describe('DataGrid', () => {
 
       const wrapper = view.container.querySelector('#test');
       expect(wrapper).toHaveStyleRule('container-type', 'normal');
+    });
+  });
+
+  describe('Attribute passthrough', () => {
+    it('forwards data-* attributes to the outer wrapper, the same node as id', () => {
+      const { view } = renderView({
+        'data-marker': 'probe',
+      } as Partial<Props>);
+
+      const wrapper = view.container.querySelector('#test');
+      const tbody = view.container.querySelector('tbody');
+
+      expect(wrapper).toHaveAttribute('data-marker', 'probe');
+      expect(tbody).not.toHaveAttribute('data-marker');
+    });
+
+    it('still forwards aria-* attributes to the underlying tbody', () => {
+      const { view } = renderView({
+        'aria-keyshortcuts': 'probeAria',
+      } as Partial<Props>);
+
+      const tbody = view.container.querySelector('tbody');
+      expect(tbody).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+    });
+
+    it('marks a node that contains both the header row and the body rows', () => {
+      const { view } = renderView({
+        'data-marker': 'probe',
+      } as Partial<Props>);
+
+      const markedNode = view.container.querySelector('[data-marker="probe"]');
+
+      expect(markedNode?.querySelector('thead')).toBeTruthy();
+      expect(markedNode?.querySelector('tbody')).toBeTruthy();
+    });
+
+    it('lands data-* on the outer wrapper for DataTable, with the header row inside it', () => {
+      const view = render(
+        <MockGamutProvider>
+          <DataTable {...(props as any)} data-marker="probe" />
+        </MockGamutProvider>
+      );
+
+      const markedNode = view.container.querySelector('[data-marker="probe"]');
+
+      expect(markedNode?.id).toBe('test');
+      expect(markedNode?.querySelector('thead')).toBeTruthy();
+      expect(markedNode?.querySelector('tbody')).toBeTruthy();
+    });
+
+    it('lands data-* on the outer wrapper for DataList', () => {
+      const view = render(
+        <MockGamutProvider>
+          <DataList {...(props as any)} data-marker="probe" />
+        </MockGamutProvider>
+      );
+
+      const markedNode = view.container.querySelector('[data-marker="probe"]');
+
+      expect(markedNode?.id).toBe('test');
     });
   });
 });

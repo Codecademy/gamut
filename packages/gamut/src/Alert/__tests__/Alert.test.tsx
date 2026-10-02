@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/dom';
 import { act } from '@testing-library/react';
 import * as React from 'react';
 
-import { Alert } from '../Alert';
+import { Alert, AlertProps } from '../Alert';
 
 const children = 'Hello';
 const onClose = jest.fn();
@@ -140,5 +140,53 @@ describe('Alert', () => {
       const closeButton = view.getByRole('button', { name: 'Close alert' });
       expect(closeButton).not.toBeDisabled();
     });
+
+    it('accepts a data-* attribute on closeButtonProps as a type (compile-time only)', () => {
+      /*
+       * `closeButtonProps` intersects `DataAttributes` (inherited from
+       * `CloseButtonProps` in Modals/types.ts), so `data-marker` here would
+       * be a TS2353 error if that type regressed. Alert doesn't currently
+       * forward arbitrary closeButtonProps keys to the close button at
+       * runtime - only the type accepting the key is asserted here.
+       */
+      const closeButtonProps: AlertProps['closeButtonProps'] = {
+        'data-marker': 'alert-close',
+      };
+
+      expect(closeButtonProps).toEqual({ 'data-marker': 'alert-close' });
+    });
+  });
+
+  it('forwards aria-* attributes passed via cta to the cta button', () => {
+    // Compile-time assertion: `cta` intersects `ComponentProps<typeof
+    // FillButton>` directly, so `aria-keyshortcuts` here would be a TS2353
+    // error if that type regressed.
+    const { view } = renderView({
+      cta: {
+        children: 'Click Me!',
+        'aria-keyshortcuts': 'c',
+      },
+    });
+
+    const cta = view.getByRole('button', { name: 'Click Me!' });
+    expect(cta).toHaveAttribute('aria-keyshortcuts', 'c');
+  });
+
+  it('still forwards data-* attributes passed via cta to the cta button at runtime', () => {
+    /*
+     * `cta` deliberately no longer intersects `DataAttributes` (see the note
+     * on `AlertProps['cta']`), so `data-marker` needs a cast here. This only
+     * asserts the runtime `{...cta}` spread still forwards it - the named
+     * type is gone, not the forwarding.
+     */
+    const { view } = renderView({
+      cta: {
+        children: 'Click Me!',
+        'data-marker': 'alert-cta',
+      } as AlertProps['cta'],
+    });
+
+    const cta = view.getByRole('button', { name: 'Click Me!' });
+    expect(cta).toHaveAttribute('data-marker', 'alert-cta');
   });
 });

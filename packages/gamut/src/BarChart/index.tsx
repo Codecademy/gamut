@@ -44,6 +44,7 @@ export const BarChart = <
   translations,
   unit = '',
   scaleInterval,
+  ...rest
 }: BarChartProps<TBarValues>) => {
   const mergedTranslations = useMemo(
     () => ({
@@ -140,6 +141,7 @@ export const BarChart = <
         containerType="inline-size"
         position="relative"
         width="100%"
+        {...rest}
       >
         <ScaleChartHeader maxScaleValue={maxScaleValue} tickCount={tickCount} />
         <Box position="relative" width="100%">

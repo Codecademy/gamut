@@ -7,9 +7,8 @@ import { Disclosure } from '..';
 const ctaCallback = jest.fn();
 
 const defaultProps = {
-  header: 'hi there!',
+  heading: 'hi there!',
   body: <div>This should render when expanded </div>,
-  withBackground: false,
 };
 
 const renderView = setupRtl(Disclosure, defaultProps);
@@ -58,5 +57,29 @@ describe('Disclosure', () => {
       await userEvent.click(CTAButton);
     });
     expect(ctaCallback).toHaveBeenCalled();
+  });
+
+  it('forwards data-* and aria-* attributes to the wrapper', () => {
+    const { view } = renderView({
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    const wrapper = view.container.firstChild;
+    expect(wrapper).toHaveAttribute('data-marker', 'probe');
+    expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
+  it('forwards data-* and aria-* attributes from buttonProps to the toggle button', () => {
+    const { view } = renderView({
+      buttonProps: {
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      },
+    });
+
+    const button = view.getByRole('button');
+    expect(button).toHaveAttribute('data-marker', 'probe');
+    expect(button).toHaveAttribute('aria-keyshortcuts', 'probeAria');
   });
 });

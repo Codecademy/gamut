@@ -65,6 +65,31 @@ describe('<Radio>', () => {
     );
   });
 
+  it('forwards labelProps to the visible label without disturbing the input', () => {
+    const { view } = renderView({
+      labelProps: { 'data-marker': 'radio-label', 'aria-keyshortcuts': 'l' },
+    });
+
+    const radioLabel = view.container.querySelector('label');
+    expect(radioLabel).toHaveAttribute('data-marker', 'radio-label');
+    expect(radioLabel).toHaveAttribute('aria-keyshortcuts', 'l');
+
+    // regression: ...rest still lands on the input, unchanged
+    expect(view.getByRole('radio', { checked: true })).toHaveAttribute(
+      'data-testid',
+      testid
+    );
+  });
+
+  it('does not let labelProps override the label’s own accessibility wiring', () => {
+    const { view } = renderView({
+      labelProps: { htmlFor: 'should-not-win' },
+    });
+
+    const radioLabel = view.container.querySelector('label');
+    expect(radioLabel).toHaveAttribute('for', 'some-label');
+  });
+
   describe('InfoTip accessibility', () => {
     const info = 'helpful information';
     const labelText = 'Radio Label';

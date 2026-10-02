@@ -1,6 +1,7 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { HTMLAttributes, type RefObject } from 'react';
 
+import { ReservedDataAttributes } from '../utils';
 import { PopoverVariants } from './elements';
 
 export type FocusTrapPopoverProps = {
@@ -70,6 +71,7 @@ export type PopoverBaseProps = PopoverPositionType & PopoverFocusProps;
 
 export type PopoverProps = PopoverBaseProps &
   PopoverVariants &
+  ReservedDataAttributes &
   Pick<HTMLAttributes<HTMLDivElement>, 'role'> & {
     /**
      * Choice of animation - none by default.

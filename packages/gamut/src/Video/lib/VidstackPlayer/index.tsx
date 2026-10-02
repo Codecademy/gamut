@@ -52,6 +52,9 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
   height,
   className,
   showDefaultProviderControls = false,
+  // Consumed by the parent Video component to pick a render branch, not used here.
+  showPlayerEmbed,
+  ...rest
 }) => {
   const player = useRef<MediaPlayerInstance>(null);
   const paused = useMediaState('paused', player);
@@ -76,6 +79,7 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
 
   return (
     <VariableProvider
+      {...rest}
       className={className}
       // eslint-disable-next-line gamut/no-inline-style
       style={{ width, height }}

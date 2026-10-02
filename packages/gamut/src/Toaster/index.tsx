@@ -24,21 +24,24 @@ export const Toaster: React.FC<ToasterProps> = ({
   toasts = [],
   onClose,
   colorMode = 'light',
+  ...rest
 }) => {
   return (
     // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
     <BodyPortal zIndex={4}>
       <ColorMode mode={colorMode}>
-        <Box aria-live="polite" bottom={88} position="fixed" right={16}>
+        <Box
+          aria-live="polite"
+          bottom={88}
+          position="fixed"
+          right={16}
+          {...rest}
+        >
           <AnimatePresence>
-            {toasts.map((toast) => (
-              <FadeInSlideOut key={toast.id}>
-                <Toast
-                  icon={toast.icon}
-                  title={toast.title}
-                  onClose={() => onClose(toast.id)}
-                >
-                  {toast.children}
+            {toasts.map(({ id, children, ...toast }) => (
+              <FadeInSlideOut key={id}>
+                <Toast {...toast} onClose={() => onClose(id)}>
+                  {children}
                 </Toast>
               </FadeInSlideOut>
             ))}

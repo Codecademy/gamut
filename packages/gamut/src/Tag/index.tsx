@@ -13,8 +13,10 @@ import {
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
+  buttonProps,
   children,
   disabled = false,
+  dismissButtonProps,
   href = '',
   icon,
   onClick,
@@ -52,6 +54,7 @@ export const Tag: React.FC<TagProps> = ({
       case 'navigation':
         return (
           <TagAnchor
+            {...buttonProps}
             href={disabled ? '' : href}
             interactiveType="navigation"
             onClick={onClick}
@@ -63,6 +66,7 @@ export const Tag: React.FC<TagProps> = ({
       case 'suggestion':
         return (
           <TagAnchor
+            {...buttonProps}
             interactiveType="suggestion"
             onClick={onClick}
             {...sharedInteractiveProps}
@@ -88,6 +92,7 @@ export const Tag: React.FC<TagProps> = ({
       </TagLabelWrapper>
       {isSelection && (
         <DismissButton
+          {...dismissButtonProps}
           aria-disabled={disabled}
           aria-label={`Dismiss ${
             typeof children === 'string' ? children : ''
