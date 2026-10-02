@@ -5,6 +5,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
+import { Iframe, MarkdownVideo } from '../../Video';
 import { Markdown } from '../index';
 
 const mockTitle = 'a fake youtube';
@@ -119,30 +120,49 @@ describe('<Markdown />', () => {
     ).toEqual(0);
   });
 
-  it('Renders YouTube iframes using the Video component', () => {
+  it('Renders YouTube iframes using the Video component when opted in', () => {
+    renderView({
+      iframeOverride: { component: Iframe },
+      text: youtubeMarkdown,
+    });
+    screen.getByTitle(mockTitle);
+  });
+
+  it('Renders Vimeo iframes using the Video component when opted in', () => {
+    renderView({
+      iframeOverride: { component: Iframe },
+      text: vimeoMarkdown,
+    });
+    screen.getByTitle(mockTitle);
+  });
+
+  it('Renders bare iframes when not opted in', () => {
     renderView({ text: youtubeMarkdown });
+    expect(document.querySelectorAll('iframe').length).toEqual(1);
+    expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
+  });
+
+  it('Renders video tags using the Video component if they have an src when opted in', () => {
+    renderView({
+      text: videoMarkdown,
+      videoOverride: { component: MarkdownVideo },
+    });
     screen.getByTitle(mockTitle);
   });
 
-  it('Renders Vimeo iframes using the Video component', () => {
-    renderView({ text: vimeoMarkdown });
+  it('Renders video tags using the Video component if they have a source when opted in', () => {
+    renderView({
+      text: videoSourceMarkdown,
+      videoOverride: { component: MarkdownVideo },
+    });
     screen.getByTitle(mockTitle);
   });
 
-  it('Renders video tags using the Video component if they have an src', () => {
+  it('Renders bare video tags when not opted in', () => {
     renderView({ text: videoMarkdown });
-    screen.getByTitle(mockTitle);
+    expect(document.querySelectorAll('video').length).toEqual(1);
+    expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
   });
-
-  it('Renders video tags using the Video component if they have a source', () => {
-    renderView({ text: videoSourceMarkdown });
-    screen.getByTitle(mockTitle);
-  });
-  it('Renders YouTube iframes using the Video component', () => {
-    renderView({ text: youtubeMarkdown });
-    screen.getByTitle(mockTitle);
-  });
-
   it('Wraps the markdown in a div by default (block)', () => {
     renderView({ text: basicMarkdown });
     expect(

@@ -1,4 +1,5 @@
 import { Markdown, Text, TextProps } from '@codecademy/gamut';
+import { Iframe, MarkdownVideo } from '@codecademy/gamut/Video';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import exampleMarkdown from './example.md';
@@ -23,8 +24,10 @@ This is markdown
 
 export const FullExample: Story = {
   args: {
+    iframeOverride: { component: Iframe },
     // Not sure why there's a type mismatch, but the story renders
     text: exampleMarkdown as any,
+    videoOverride: { component: MarkdownVideo },
   },
 };
 
@@ -73,6 +76,20 @@ export const LinkOverride: Story = {
         component: (props) => <Text {...props} as="span" color="blue-500" />,
       },
     },
+  },
+};
+
+export const VideoOverride: Story = {
+  args: {
+    iframeOverride: { component: Iframe },
+    text: `<iframe src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop"></iframe>`,
+    videoOverride: { component: MarkdownVideo },
+  },
+};
+
+export const WithoutVideoOverride: Story = {
+  args: {
+    text: `<iframe src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop"></iframe>`,
   },
 };
 

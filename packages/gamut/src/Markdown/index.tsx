@@ -12,18 +12,17 @@ import {
   createInputOverride,
   createTagOverride,
   createVideoOverride,
+  MarkdownOverrideSetting,
   MarkdownOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
 import { MarkdownCheckbox } from './libs/overrides/Checkbox';
 import { Details } from './libs/overrides/Details';
-import { Iframe } from './libs/overrides/Iframe';
 import {
   MarkdownAnchor,
   MarkdownAnchorProps,
 } from './libs/overrides/MarkdownAnchor';
 import { Table } from './libs/overrides/Table';
-import { MarkdownVideo } from './libs/overrides/Video';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 import { markdownStyles } from './styles';
@@ -47,9 +46,7 @@ export type SkipDefaultOverridesSettings = {
   a?: boolean;
   checkbox?: boolean;
   details?: boolean;
-  iframe?: boolean;
   table?: boolean;
-  video?: boolean;
 };
 
 export type MarkdownProps = {
@@ -68,6 +65,18 @@ export type MarkdownProps = {
    * Callback when a markdown anchor tag is clicked
    */
   onAnchorClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+  /**
+   * Renders <iframe> tags with the given component (e.g. Iframe from
+   * '@codecademy/gamut/Video') instead of a bare iframe. Opt-in so Markdown
+   * doesn't statically depend on react-player unless you need it.
+   */
+  iframeOverride?: MarkdownOverrideSetting;
+  /**
+   * Renders <video> tags with the given component (e.g. MarkdownVideo from
+   * '@codecademy/gamut/Video') instead of a bare video tag. Opt-in so
+   * Markdown doesn't statically depend on react-player unless you need it.
+   */
+  videoOverride?: MarkdownOverrideSetting;
 };
 
 export class Markdown extends PureComponent<MarkdownProps> {
@@ -81,6 +90,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
       inline = false,
       headerIds = true,
       onAnchorClick,
+      iframeOverride,
+      videoOverride,
     } = this.props;
 
     if (!text) return null;
@@ -94,10 +105,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     const processingInstructions = [
       ...overrides,
-      !skipDefaultOverrides.iframe &&
-        createTagOverride('iframe', {
-          component: Iframe,
-        }),
+      iframeOverride && createTagOverride('iframe', iframeOverride),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
           component: MarkdownAnchor,
@@ -122,10 +130,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
           component: Table,
           allowedAttributes: ['style'],
         }),
-      !skipDefaultOverrides.video &&
-        createVideoOverride('video', {
-          component: MarkdownVideo,
-        }),
+      videoOverride && createVideoOverride('video', videoOverride),
       !skipDefaultOverrides.details &&
         createTagOverride('details', {
           component: Details,

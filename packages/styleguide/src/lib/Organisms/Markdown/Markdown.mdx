@@ -39,11 +39,34 @@ A common override may be to change the font size of a Header.
 
 <Canvas of={MarkdownStories.HeaderOverride} />
 
-### `skipDefaultOverides`
+### `skipDefaultOverrides`
 
-If you need to override a link, iframe, or table, you do not need to provide the `skipDefaultOverides` prop. This prop is now only used for removing the default heading, paragraph, and list element overrides.
+If you need to override a link or table, you do not need to provide the `skipDefaultOverrides` prop — just pass `overrides`. `skipDefaultOverrides` is only used for removing the default anchor, table, details, and checkbox overrides.
 
 <Canvas of={MarkdownStories.LinkOverride} />
+
+## Video overrides
+
+By default, `<iframe>` and `<video>` tags embedded in markdown text render as plain HTML tags, not Gamut's `Video` component. This is intentional: `Video` depends on `react-player`, whose own dependency tree relies on package.json `"exports"` subpaths that legacy bundlers (e.g. webpack 4) can't resolve. Statically importing it by default would force every `Markdown` consumer to resolve that tree, even ones that never render video content — so it's opt-in instead.
+
+To render YouTube/Vimeo iframes and `<video>` tags with the full `Video` component (play-icon overlay, light-mode thumbnail, captions, etc.), import `Iframe` and `MarkdownVideo` from `@codecademy/gamut/Video` (not the main `@codecademy/gamut` barrel) and pass them via the `iframeOverride`/`videoOverride` props:
+
+```tsx
+import { Markdown } from '@codecademy/gamut';
+import { Iframe, MarkdownVideo } from '@codecademy/gamut/Video';
+
+<Markdown
+  text={content}
+  iframeOverride={{ component: Iframe }}
+  videoOverride={{ component: MarkdownVideo }}
+/>;
+```
+
+<Canvas of={MarkdownStories.VideoOverride} />
+
+### Without the override
+
+<Canvas of={MarkdownStories.WithoutVideoOverride} />
 
 ## Inline Markdown
 

@@ -3,6 +3,16 @@ import * as React from 'react';
 
 import { Video } from '..';
 
+jest.mock('react-player', () => {
+  const react = require('react');
+  return {
+    __esModule: true,
+    // eslint-disable-next-line react/display-name
+    default: ({ src, title }: { src: string; title: string }) =>
+      react.createElement('iframe', { src, title }),
+  };
+});
+
 jest.mock('@vidstack/react', () => {
   const react = require('react');
   return {
@@ -30,7 +40,7 @@ const renderView = setupRtl(Video, {});
 describe('Video', () => {
   it('loads a video with a vimeo URL', async () => {
     const { view } = renderView({
-      videoUrl: 'https://vimeo.com/145702525',
+      videoUrl: 'https://vimeo.com/1218916076',
       videoTitle: 'Super Science Friends',
     });
 
