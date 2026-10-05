@@ -9,7 +9,7 @@ Styled dropdown built on react-select.
 
 Source: `@codecademy/gamut` — [SelectDropdown.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/SelectDropdown/SelectDropdown.tsx)
 
-See also: [`gamut-forms`](../gamut-forms/SKILL.md) — FormGroup wiring, error regions, and validation UX.
+See also: [`gamut-forms`](../gamut-forms/SKILL.md) — FormGroup wiring, error regions, and validation UX. [`gamut-z-index`](../gamut-z-index/SKILL.md) — the `zIndex` prop's `ZIndexType` scale.
 
 Storybook: [Atoms / FormInputs / SelectDropdown](https://gamut.codecademy.com/?path=/docs-atoms-forminputs-selectdropdown--docs)
 
@@ -166,15 +166,15 @@ const lastInput = useRef('');
 
 ## Styling & layout props
 
-| Prop                | Type                     | Default  | Notes                                                     |
-| ------------------- | ------------------------ | -------- | --------------------------------------------------------- |
-| `size`              | `'small' \| 'medium'`    | `medium` | Control height/density                                    |
-| `shownOptionsLimit` | `1`–`6`                  | `6`      | Visible options before the menu scrolls                   |
-| `inputWidth`        | `string \| number`       | —        | Width of the input independent of the menu                |
-| `dropdownWidth`     | `string \| number`       | —        | Width of the menu independent of the input                |
-| `menuAlignment`     | `'left' \| 'right'`      | `left`   | Menu edge alignment                                       |
-| `zIndex`            | `number`                 | `2`      | Menu z-index (control container defaults to `3`)          |
-| `inputProps`        | `{ hidden?, combobox? }` | —        | `data-*` / `aria-*` only, forwarded to the input elements |
+| Prop                | Type                     | Default     | Notes                                                                    |
+| ------------------- | ------------------------ | ----------- | ------------------------------------------------------------------------ |
+| `size`              | `'small' \| 'medium'`    | `medium`    | Control height/density                                                   |
+| `shownOptionsLimit` | `1`–`6`                  | `6`         | Visible options before the menu scrolls                                  |
+| `inputWidth`        | `string \| number`       | —           | Width of the input independent of the menu                               |
+| `dropdownWidth`     | `string \| number`       | —           | Width of the menu independent of the input                               |
+| `menuAlignment`     | `'left' \| 'right'`      | `left`      | Menu edge alignment                                                      |
+| `zIndex`            | `ZIndexType`             | `'popover'` | Menu z-index (the control's own border layer defaults to the same token) |
+| `inputProps`        | `{ hidden?, combobox? }` | —           | `data-*` / `aria-*` only, forwarded to the input elements                |
 
 ---
 

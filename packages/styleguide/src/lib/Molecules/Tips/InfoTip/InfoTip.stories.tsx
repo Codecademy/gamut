@@ -10,6 +10,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { SparkleIcon } from '@codecademy/gamut-icons';
+import { zIndexes } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -292,18 +293,18 @@ export const InfoTipInsideModal: Story = {
 export const ZIndex: Story = {
   args: {
     info: 'I am inline, cool',
-    zIndex: 5,
+    zIndex: zIndexes.foreground,
   },
   render: (args) => (
     <FlexBox center flexDirection="column" m={24} py={64}>
-      <Box bg="background-primary" zIndex={3}>
+      <Box bg="background-primary" zIndex={zIndexes.base}>
         I will not be behind the infotip, sad + unreadable
       </Box>
       <InfoTip
         ariaLabel="z-index example without override"
         info="I am inline, cool"
       />
-      <Box bg="background-primary" zIndex={3}>
+      <Box bg="background-primary" zIndex={zIndexes.base}>
         I will be behind the infotip, nice + great
       </Box>
       <InfoTip {...args} ariaLabel="z-index example with override" />

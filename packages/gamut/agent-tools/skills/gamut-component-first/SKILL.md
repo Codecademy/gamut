@@ -1,13 +1,13 @@
 ---
 name: gamut-component-first
-description: Use this skill BEFORE writing any new custom UI component, control, overlay, or interactive pattern in a codebase that depends on `@codecademy/gamut` — check whether Gamut already provides it before building bespoke markup/CSS. Triggers on requests to build/add a modal, dialog, dropdown, select, tooltip, popover, context menu, tabs, toggle/switch, accordion, avatar, badge, tag/chip, pagination, toast/notification, date picker, progress bar, loading spinner/skeleton, card, alert/banner, breadcrumb, or any custom `position: fixed`/`absolute` overlay, hand-rolled focus trap, or custom `role="dialog"`/`"menu"`/`"tooltip"`/`"listbox"`. Not for auditing code that already exists — see `gamut-review` (Check 6) for that.
+description: Use this skill BEFORE writing any new custom UI component, control, overlay, or interactive pattern in a codebase that depends on `@codecademy/gamut` — check whether Gamut already provides it before building bespoke markup/CSS. Triggers on requests to build/add a modal, dialog, dropdown, select, tooltip, popover, context menu, tabs, toggle/switch, accordion, avatar, badge, tag/chip, pagination, toast/notification, date picker, progress bar, loading spinner/skeleton, card, alert/banner, breadcrumb, or any custom `position: fixed`/`absolute` overlay, hand-rolled focus trap, or custom `role="dialog"`/`"menu"`/`"tooltip"`/`"listbox"`. Not for auditing code that already exists — see `gamut-review`'s bespoke component duplication check for that.
 ---
 
 # Gamut Component-First
 
 Before writing a new component, control, or interactive pattern from scratch, check whether `@codecademy/gamut` already provides it. Building a parallel bespoke version costs more than the one-time effort: it silently bypasses ColorMode/dark-mode support, the variance/system-props styling model, the focus-trap and dismiss conventions, and the accessibility work already done in the library — and it has to be independently maintained forever after.
 
-Source: `packages/gamut/src/*` (component export surface). See also: [`gamut-review`](../gamut-review/SKILL.md) — Check 6 audits existing code for this same problem after the fact.
+Source: `packages/gamut/src/*` (component export surface). See also: [`gamut-review`](../gamut-review/SKILL.md) — its bespoke component duplication check audits existing code for this same problem after the fact.
 
 ---
 

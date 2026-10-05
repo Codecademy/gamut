@@ -7,6 +7,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
+import { zIndexes } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 import type { InputActionMeta } from 'react-select';
@@ -899,7 +900,7 @@ export const zIndexOnMenu: Story = {
         <FormGroup
           htmlFor="usesDefaultZIndex"
           isSoloField
-          label="This menu is rendered behind the header"
+          label="This menu uses the default zIndex"
         >
           <SelectDropdown
             id="usesDefaultZIndex"
@@ -911,14 +912,14 @@ export const zIndexOnMenu: Story = {
         <FormGroup
           htmlFor="hasSetZIndex"
           isSoloField
-          label="This menu floats above the table's header"
+          label="This menu has an explicit zIndex override"
         >
           <SelectDropdown
             id="hasSetZIndex"
             name="hasSetZIndex"
             options={args.options}
             translations={{ placeholder: 'Has a zIndex of 5' }}
-            zIndex={5}
+            zIndex={zIndexes.topmost}
           />
         </FormGroup>
       </FlexBox>

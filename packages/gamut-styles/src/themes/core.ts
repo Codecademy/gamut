@@ -12,6 +12,7 @@ import {
   lineHeight,
   mediaQueries,
   spacing,
+  zIndexes,
 } from '../variables';
 
 /**
@@ -29,6 +30,7 @@ export const coreTheme = createTheme({
   fontWeight,
   spacing,
   elements,
+  zIndexes,
 })
   .addColors(corePalette)
   .addColorModes('light', {
@@ -143,6 +145,7 @@ export const coreTheme = createTheme({
   }))
   .addScale('elevation', coreElevation)
   .createScaleVariables('elements')
+  .createScaleVariables('zIndexes')
   .addName('core')
   .build();
 

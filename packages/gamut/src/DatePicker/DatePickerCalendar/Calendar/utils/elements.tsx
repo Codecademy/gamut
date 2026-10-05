@@ -119,7 +119,7 @@ export const DateCell = styled.td<DateCellProps>(
       borderRadius: 'lg',
       border: 2,
       opacity: 0,
-      zIndex: 0,
+      zIndex: 'base',
     },
     '&:focus-visible::before': {
       opacity: 1,
