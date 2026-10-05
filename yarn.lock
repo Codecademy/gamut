@@ -1692,11 +1692,17 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
+    "@vidstack/react": ^1.12.12
     css-loader: ">=4.0.0"
     react: ^17.0.2 || ^18.3.0 || ^19.0.0
     react-dom: ^17.0.2 || ^18.3.0 || ^19.0.0
+    react-player: ^3.4.0
   peerDependenciesMeta:
+    "@vidstack/react":
+      optional: true
     css-loader:
+      optional: true
+    react-player:
       optional: true
   bin:
     gamut: ./bin/gamut.mjs

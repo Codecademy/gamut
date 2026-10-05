@@ -27,6 +27,16 @@ export const parameters = {
 
 The Video component is a feature-rich video player that supports multiple video sources and formats with enhanced accessibility features.
 
+### Installation
+
+`Video`'s player libraries are optional peer dependencies of `@codecademy/gamut`, so they aren't installed automatically. Add them alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
+
+```bash
+yarn add @vidstack/react react-player
+```
+
+Without them, your bundler will fail with `Can't resolve '@vidstack/react'` (or `'react-player'`) when you import from `@codecademy/gamut/Video`.
+
 ```tsx
 import { Video } from '@codecademy/gamut/Video';
 ```

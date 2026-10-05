@@ -1,3 +1,5 @@
+// @vidstack/react and react-player are optional peer deps of @codecademy/gamut.
+// If they can't be resolved, install them: yarn add @vidstack/react react-player
 import { PlayerSrc, TrackProps } from '@vidstack/react';
 import {
   DefaultLayoutTranslations,
