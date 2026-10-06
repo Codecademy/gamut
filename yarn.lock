@@ -1673,7 +1673,7 @@ __metadata:
     "@formatjs/intl-locale": "npm:5.3.1"
     "@react-aria/interactions": "npm:3.25.0"
     "@types/marked": "npm:^4.0.8"
-    "@vidstack/react": "npm:^1.12.12"
+    "@vidstack/react": "npm:~1.12.12"
     classnames: "npm:^2.2.5"
     framer-motion: "npm:^12.0.0"
     html-to-react: "npm:^1.6.0"
@@ -1692,17 +1692,13 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    "@vidstack/react": ^1.12.12
+    "@vidstack/react": ~1.12.12
     css-loader: ">=4.0.0"
     react: ^17.0.2 || ^18.3.0 || ^19.0.0
     react-dom: ^17.0.2 || ^18.3.0 || ^19.0.0
     react-player: ^3.4.0
   peerDependenciesMeta:
-    "@vidstack/react":
-      optional: true
     css-loader:
-      optional: true
-    react-player:
       optional: true
   bin:
     gamut: ./bin/gamut.mjs
@@ -8464,16 +8460,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vidstack/react@npm:^1.12.12":
-  version: 1.12.12
-  resolution: "@vidstack/react@npm:1.12.12"
+"@vidstack/react@npm:~1.12.12":
+  version: 1.12.13
+  resolution: "@vidstack/react@npm:1.12.13"
   dependencies:
     "@floating-ui/dom": "npm:^1.6.10"
     media-captions: "npm:^1.0.4"
   peerDependencies:
-    "@types/react": ^18.0.0
-    react: ^18.0.0
-  checksum: 10c0/a4deed92f6805b0ba5867e61960e29cf0de0ae2b23b4db197f8d1fbd2fea254a93958cf00227d60272a5f36d6421e55f82e78aa7585c4a633ad8a6767f9b0246
+    "@types/react": ^18.0.0 || ^19.0.0
+    react: ^18.0.0 || ^19.0.0
+  checksum: 10c0/b86f9ad1026b041eae54ba9f0840a826805252083bc6add75490ac243d316b19e937cf2e72db5a527193e1fb65adf73a1cd9ef58523559207947b7123dc4d11a
   languageName: node
   linkType: hard
 
@@ -13418,7 +13414,7 @@ __metadata:
     "@types/stylis": "npm:^4.2.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.57.0"
     "@typescript-eslint/parser": "npm:^8.57.0"
-    "@vidstack/react": "npm:^1.12.12"
+    "@vidstack/react": "npm:~1.12.12"
     babel-jest: "npm:30.4.1"
     babel-plugin-macros: "npm:^3.0.1"
     commander: "npm:^14.0.3"

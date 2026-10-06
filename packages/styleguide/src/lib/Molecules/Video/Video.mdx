@@ -29,11 +29,13 @@ The Video component is a feature-rich video player that supports multiple video 
 
 ### Installation
 
-`Video`'s player libraries are optional peer dependencies of `@codecademy/gamut`, so they aren't installed automatically. Add them alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
+`Video`'s player libraries are peer dependencies of `@codecademy/gamut`, so they aren't installed automatically. Add them alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
 
 ```bash
-yarn add @vidstack/react react-player
+yarn add @vidstack/react@~1.12.12 react-player@^3.4.0
 ```
+
+Pin the versions: `@vidstack/react`'s npm `latest` tag still points to 0.6.x (1.x is published under `next`), so a bare `yarn add @vidstack/react` installs 0.6, which lacks the `@vidstack/react/player/layouts/default` subpath `Video` imports and fails with `Module not found`. Versions 1.14+ use static class blocks, which break Jest in repos whose Babel config can't parse them (see "Babel and newer syntax" on the Installation page).
 
 Without them, your bundler will fail with `Can't resolve '@vidstack/react'` (or `'react-player'`) when you import from `@codecademy/gamut/Video`.
 
