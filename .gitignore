@@ -79,6 +79,10 @@ report*.json
 !.cursor/rules
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+# Share team Cursor skills whose directory name starts with gamut- (e.g. gamut-library-authoring)
+!.cursor/skills
+.cursor/skills/*
+!.cursor/skills/gamut-*
 
 .claude/worktrees
 .claude/settings.local.json
