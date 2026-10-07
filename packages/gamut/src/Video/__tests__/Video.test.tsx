@@ -8,8 +8,11 @@ jest.mock('react-player', () => {
   return {
     __esModule: true,
     // eslint-disable-next-line react/display-name
-    default: ({ src, title }: { src: string; title: string }) =>
-      react.createElement('iframe', { src, title }),
+    // Mimics react-player v3: the inner provider iframe has no title.
+    default: ({ src, onReady }: { src: string; onReady?: () => void }) => {
+      react.useEffect(() => onReady?.(), []);
+      return react.createElement('iframe', { src });
+    },
   };
 });
 
@@ -54,5 +57,13 @@ describe('Video', () => {
     });
 
     await view.findByTitle('Workout with Rick Sanchez');
+  });
+
+  it('gives the provider iframe a default accessible name when no title is passed', async () => {
+    const { view } = renderView({
+      videoUrl: 'https://www.youtube.com/watch?v=Yl8yy5tpVIM',
+    });
+
+    await view.findByTitle('Video player');
   });
 });

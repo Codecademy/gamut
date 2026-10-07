@@ -29,7 +29,7 @@ The Video component is a feature-rich video player that supports multiple video 
 
 ### Installation
 
-`Video`'s player libraries are peer dependencies of `@codecademy/gamut`, so they aren't installed automatically. Add them alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
+`Video`'s player libraries are peer dependencies of `@codecademy/gamut`, so they aren't installed automatically. They're only needed if you import from `@codecademy/gamut/Video`; the main `@codecademy/gamut` barrel never loads them, so apps that don't use `Video` can skip them. Add them alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
 
 ```bash
 yarn add @vidstack/react@~1.12.12 react-player@^3.4.0

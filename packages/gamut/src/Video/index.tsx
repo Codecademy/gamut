@@ -6,7 +6,7 @@ import {
   ThumbnailSrc,
 } from '@vidstack/react/types/vidstack';
 import * as React from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Box } from '../Box';
 import { useIsMounted } from '../utils';
@@ -66,6 +66,8 @@ export type VideoProps = {
   showDefaultProviderControls?: boolean;
 };
 
+const DEFAULT_VIDEO_TITLE = 'Video player';
+
 export const Video: React.FC<VideoProps> = (props) => {
   const {
     autoplay = false,
@@ -82,11 +84,21 @@ export const Video: React.FC<VideoProps> = (props) => {
   } = props;
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
+  const playerWrapperRef = useRef<HTMLDivElement>(null);
 
   const config = {
     youtube: {
       color: 'white' as const,
     },
+  };
+
+  // react-player v3 puts `title` on its custom element, not the inner provider
+  // iframe, so the iframe would otherwise have no accessible name (WCAG 4.1.2).
+  const labelProviderIframe = () => {
+    const iframe = playerWrapperRef.current?.querySelector('iframe');
+    if (iframe && !iframe.title) {
+      iframe.title = videoTitle || DEFAULT_VIDEO_TITLE;
+    }
   };
 
   const isExternallyHostedVideoUrl = (url: string): boolean =>
@@ -134,6 +146,7 @@ export const Video: React.FC<VideoProps> = (props) => {
         overflow="hidden"
         position="relative"
         pt={'56.25%' as any}
+        ref={playerWrapperRef}
         width="100%"
       >
         {isMounted ? (
@@ -151,6 +164,7 @@ export const Video: React.FC<VideoProps> = (props) => {
             width="100%"
             onPlay={onPlay}
             onReady={() => {
+              labelProviderIframe();
               onReady?.();
               setLoading(false);
             }}
