@@ -3,6 +3,7 @@ import { memo, ReactElement } from 'react';
 import { FlexBox } from '../../..';
 import { ListCol } from '../../../List';
 import { useListContext } from '../../../List/ListProvider';
+import { DEFAULT_COLUMN_SIZE } from '../../constants';
 import {
   ExpandControl,
   FilterControl,
@@ -56,7 +57,7 @@ export const TableHeaderRow: HeaderComponent = ({
           )}
         </ListCol>
       )}
-      {columns.map(({ key, header, sortable, filters, ...colProps }) => {
+      {columns.map(({ key, header, sortable, filters, size, ...colProps }) => {
         const rowProperty = key as string;
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = String(header || key);
@@ -73,6 +74,7 @@ export const TableHeaderRow: HeaderComponent = ({
             {...colProps}
             aria-sort={sortable ? ariaSortDirection : undefined}
             columnHeader
+            size={size ?? DEFAULT_COLUMN_SIZE}
           >
             <FlexBox
               alignItems={selectable ? 'center' : 'flex-end'}
