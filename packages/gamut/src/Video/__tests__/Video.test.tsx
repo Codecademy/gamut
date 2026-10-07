@@ -9,9 +9,14 @@ jest.mock('react-player', () => {
     __esModule: true,
     // eslint-disable-next-line react/display-name
     // Mimics react-player v3: the inner provider iframe has no title.
-    default: ({ src, onReady }: { src: string; onReady?: () => void }) => {
-      react.useEffect(() => onReady?.(), []);
-      return react.createElement('iframe', { src });
+    default: ({ src }: { src: string }) => {
+      // Insert the iframe after mount, without ever firing onReady, to prove
+      // the title doesn't depend on that callback.
+      const [show, setShow] = react.useState(false);
+      react.useEffect(() => {
+        setShow(true);
+      }, []);
+      return show ? react.createElement('iframe', { src }) : null;
     },
   };
 });

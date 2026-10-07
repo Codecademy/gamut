@@ -6,7 +6,7 @@ import {
   ThumbnailSrc,
 } from '@vidstack/react/types/vidstack';
 import * as React from 'react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Box } from '../Box';
 import { useIsMounted } from '../utils';
@@ -100,6 +100,18 @@ export const Video: React.FC<VideoProps> = (props) => {
       iframe.title = videoTitle || DEFAULT_VIDEO_TITLE;
     }
   };
+
+  // The provider inserts its iframe asynchronously, often before `onReady`
+  // fires, so label it as soon as it appears rather than waiting.
+  useEffect(() => {
+    const wrapper = playerWrapperRef.current;
+    if (!wrapper) return;
+    labelProviderIframe();
+    const observer = new MutationObserver(labelProviderIframe);
+    observer.observe(wrapper, { childList: true, subtree: true });
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoTitle, videoUrl, isMounted]);
 
   const isExternallyHostedVideoUrl = (url: string): boolean =>
     !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo\.com/));
