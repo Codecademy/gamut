@@ -6,7 +6,7 @@ import {
   ThumbnailSrc,
 } from '@vidstack/react/types/vidstack';
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Box } from '../Box';
 import { useIsMounted } from '../utils';
@@ -66,6 +66,8 @@ export type VideoProps = {
   showDefaultProviderControls?: boolean;
 };
 
+const DEFAULT_VIDEO_TITLE = 'Video player';
+
 export const Video: React.FC<VideoProps> = (props) => {
   const {
     autoplay = false,
@@ -82,12 +84,52 @@ export const Video: React.FC<VideoProps> = (props) => {
   } = props;
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
+  const playerWrapperRef = useRef<HTMLDivElement>(null);
 
   const config = {
     youtube: {
       color: 'white' as const,
     },
   };
+
+  // react-player v3 puts `title` on its custom element, not the inner provider
+  // iframe, so the iframe would otherwise have no accessible name (WCAG 4.1.2).
+  // Provider elements like <youtube-video> render that iframe inside an open
+  // shadow root, so search shadow roots too. `onShadowRoot` lets the observer
+  // below watch each shadow root it finds.
+  const labelProviderIframe = (onShadowRoot?: (root: ShadowRoot) => void) => {
+    const label = (root: ParentNode) => {
+      root.querySelectorAll('iframe').forEach((iframe) => {
+        if (!iframe.title) iframe.title = videoTitle || DEFAULT_VIDEO_TITLE;
+      });
+      root.querySelectorAll('*').forEach((el) => {
+        if (el.shadowRoot) {
+          onShadowRoot?.(el.shadowRoot);
+          label(el.shadowRoot);
+        }
+      });
+    };
+    if (playerWrapperRef.current) label(playerWrapperRef.current);
+  };
+
+  // The provider inserts its iframe asynchronously, often before `onReady`
+  // fires, and may replace it later (e.g. on src change), so label it
+  // whenever it appears rather than waiting.
+  useEffect(() => {
+    const wrapper = playerWrapperRef.current;
+    if (!wrapper) return;
+    const observed = new WeakSet<Node>();
+    const observe = (root: Node) => {
+      if (observed.has(root)) return;
+      observed.add(root);
+      observer.observe(root, { childList: true, subtree: true });
+    };
+    const observer = new MutationObserver(() => labelProviderIframe(observe));
+    observe(wrapper);
+    labelProviderIframe(observe);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoTitle, videoUrl, isMounted]);
 
   const isExternallyHostedVideoUrl = (url: string): boolean =>
     !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo\.com/));
@@ -134,6 +176,7 @@ export const Video: React.FC<VideoProps> = (props) => {
         overflow="hidden"
         position="relative"
         pt={'56.25%' as any}
+        ref={playerWrapperRef}
         width="100%"
       >
         {isMounted ? (
@@ -147,9 +190,11 @@ export const Video: React.FC<VideoProps> = (props) => {
             playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
             playing={autoplay}
             src={videoUrl as string}
+            title={videoTitle}
             width="100%"
             onPlay={onPlay}
             onReady={() => {
+              labelProviderIframe();
               onReady?.();
               setLoading(false);
             }}
