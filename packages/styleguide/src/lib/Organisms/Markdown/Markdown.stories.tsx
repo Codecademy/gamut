@@ -82,14 +82,14 @@ export const LinkOverride: Story = {
 export const VideoOverride: Story = {
   args: {
     iframeOverride: { component: Iframe },
-    text: `<iframe src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop"></iframe>`,
+    text: `<video src="https://static-assets.codecademy.com/skillshorts/introduction-to-quantum-computing/01-Introduction-to-Quantum-Computing.mp4"></video>`,
     videoOverride: { component: MarkdownVideo },
   },
 };
 
 export const WithoutVideoOverride: Story = {
   args: {
-    text: `<iframe src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop"></iframe>`,
+    text: `<video src="https://static-assets.codecademy.com/skillshorts/introduction-to-quantum-computing/01-Introduction-to-Quantum-Computing.mp4"></video>`,
   },
 };
 

@@ -71,10 +71,10 @@ describe('Video', () => {
   it('loads a video with a vimeo URL', async () => {
     const { view } = renderView({
       videoUrl: 'https://vimeo.com/1218916076',
-      videoTitle: 'Super Science Friends',
+      videoTitle: 'Doug Workshop Intro',
     });
 
-    await view.findByTitle('Super Science Friends');
+    await view.findByTitle('Doug Workshop Intro');
   });
 
   it('loads a video with a youtube ID', async () => {

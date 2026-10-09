@@ -130,7 +130,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
           component: Table,
           allowedAttributes: ['style'],
         }),
-      videoOverride && createVideoOverride('video', videoOverride),
+      videoOverride &&
+        createVideoOverride({ tagName: 'video', Override: videoOverride }),
       !skipDefaultOverrides.details &&
         createTagOverride('details', {
           component: Details,

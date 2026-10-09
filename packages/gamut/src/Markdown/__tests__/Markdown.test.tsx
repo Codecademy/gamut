@@ -12,12 +12,16 @@ const mockTitle = 'a fake youtube';
 
 jest.mock('react-player', () => ({
   __esModule: true,
-  default: () => <iframe title={mockTitle} />,
+  default: ({ title }: { title?: string }) => (
+    <iframe title={title ?? mockTitle} />
+  ),
 }));
 
 jest.mock('@vidstack/react', () => ({
   __esModule: true,
-  MediaPlayer: () => <iframe title={mockTitle} />,
+  MediaPlayer: ({ title }: { title?: string }) => (
+    <iframe title={title ?? mockTitle} />
+  ),
   MediaProvider: () => <div />,
   Poster: jest.fn(),
   Track: jest.fn(),
@@ -59,7 +63,7 @@ const vimeoMarkdown = `
 `;
 
 const videoMarkdown = `
-<video src="/example.webm" title="video" />
+<video src="/example.webm" />
 `;
 
 const videoSourceMarkdown = `
@@ -139,6 +143,32 @@ describe('<Markdown />', () => {
   it('Renders bare iframes when not opted in', () => {
     renderView({ text: youtubeMarkdown });
     expect(document.querySelectorAll('iframe').length).toEqual(1);
+    expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
+  });
+
+  it('Keeps the title attribute on bare iframes and video tags', () => {
+    renderView({
+      text: `<iframe src="https://player.vimeo.com/video/1218916076" title="Doug Workshop Intro"></iframe>\n\n<video src="/example.webm" title="Example clip"></video>`,
+    });
+    screen.getByTitle('Doug Workshop Intro');
+    screen.getByTitle('Example clip');
+  });
+
+  it('Passes the iframe title through to the Video component when opted in', () => {
+    renderView({
+      iframeOverride: { component: Iframe },
+      text: `<iframe src="https://player.vimeo.com/video/1218916076" title="Doug Workshop Intro"></iframe>`,
+    });
+    screen.getByTitle('Doug Workshop Intro');
+    expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
+  });
+
+  it('Passes the video title through to the Video component when opted in', () => {
+    renderView({
+      text: `<video src="/example.webm" title="Example clip"></video>`,
+      videoOverride: { component: MarkdownVideo },
+    });
+    screen.getByTitle('Example clip');
     expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
   });
 
