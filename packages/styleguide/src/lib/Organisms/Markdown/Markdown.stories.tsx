@@ -79,17 +79,14 @@ export const LinkOverride: Story = {
   },
 };
 
-export const VideoOverride: Story = {
-  args: {
-    iframeOverride: { component: Iframe },
-    text: `<video src="https://static-assets.codecademy.com/skillshorts/introduction-to-quantum-computing/01-Introduction-to-Quantum-Computing.mp4"></video>`,
-    videoOverride: { component: MarkdownVideo },
-  },
-};
-
 export const WithoutVideoOverride: Story = {
   args: {
-    text: `<video src="https://static-assets.codecademy.com/skillshorts/introduction-to-quantum-computing/01-Introduction-to-Quantum-Computing.mp4"></video>`,
+    text: `<video width="100%" height="100%" align="middle" controls>
+  <source src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4" type="video/mp4" />
+  <track src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt" type="srt" label="English" kind="subtitles" srclang="en-US" default="true" />
+  Your browser does not support the video tag.
+</video>
+`,
   },
 };
 
