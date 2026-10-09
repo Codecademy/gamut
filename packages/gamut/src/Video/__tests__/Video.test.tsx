@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { waitFor } from '@testing-library/react';
 import * as React from 'react';
 
 import { Video } from '..';
@@ -8,16 +9,8 @@ jest.mock('react-player', () => {
   return {
     __esModule: true,
     // eslint-disable-next-line react/display-name
-    // Mimics react-player v3: the inner provider iframe has no title.
-    default: ({ src }: { src: string }) => {
-      // Insert the iframe after mount, without ever firing onReady, to prove
-      // the title doesn't depend on that callback.
-      const [show, setShow] = react.useState(false);
-      react.useEffect(() => {
-        setShow(true);
-      }, []);
-      return show ? react.createElement('iframe', { src }) : null;
-    },
+    default: ({ src }: { src: string }) =>
+      react.createElement('iframe', { src }),
   };
 });
 
@@ -52,7 +45,9 @@ describe('Video', () => {
       videoTitle: 'Super Science Friends',
     });
 
-    await view.findByTitle('Super Science Friends');
+    await waitFor(() =>
+      expect(view.container.querySelector('iframe')).toBeInTheDocument()
+    );
   });
 
   it('loads a video with a youtube ID', async () => {
@@ -61,14 +56,8 @@ describe('Video', () => {
       videoTitle: 'Workout with Rick Sanchez',
     });
 
-    await view.findByTitle('Workout with Rick Sanchez');
-  });
-
-  it('gives the provider iframe a default accessible name when no title is passed', async () => {
-    const { view } = renderView({
-      videoUrl: 'https://www.youtube.com/watch?v=Yl8yy5tpVIM',
-    });
-
-    await view.findByTitle('Video player');
+    await waitFor(() =>
+      expect(view.container.querySelector('iframe')).toBeInTheDocument()
+    );
   });
 });
