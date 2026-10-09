@@ -6,7 +6,7 @@
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@vidstack/react": "^1.12.12",
+    "@vidstack/react": "~1.12.12",
     "core-js": "3.7.0",
     "lodash": "^4.17.23",
     "react": "^19.0.0",

@@ -138,11 +138,16 @@ export const createTagOverride = (
   },
 });
 
+type CreateVideoOverrideArgs = {
+  tagName: string;
+  Override: MarkdownOverrideSetting;
+};
+
 // generic video tag override
-export const createVideoOverride = (
-  tagName: string,
-  Override: MarkdownOverrideSetting
-) => ({
+export const createVideoOverride = ({
+  tagName,
+  Override,
+}: CreateVideoOverrideArgs) => ({
   shouldProcessNode(node: HTMLToReactNode) {
     if (!Override) return false;
 
