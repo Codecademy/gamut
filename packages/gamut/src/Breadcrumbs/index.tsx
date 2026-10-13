@@ -1,5 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { ComponentPropsWithoutRef } from 'react';
 import * as React from 'react';
 
 import { Anchor } from '../Anchor';
@@ -47,7 +48,10 @@ export const isClickableCrumb = <T extends string | object>(
   crumb: Breadcrumb<T>
 ): crumb is ClickableCrumb<T> => !!(crumb as ClickableCrumb<T>).href;
 
-export type BreadcrumbsProps<T extends string | object> = {
+export type BreadcrumbsProps<T extends string | object> = Omit<
+  ComponentPropsWithoutRef<'nav'>,
+  'onClick' | 'className'
+> & {
   crumbs: Breadcrumb<T>[];
   onClick?: (event: React.MouseEvent, crumb: ClickableCrumb<T>) => void;
   className?: string;
@@ -57,8 +61,10 @@ export const Breadcrumbs = <T extends string | object>({
   crumbs,
   onClick,
   className,
+  ...rest
 }: BreadcrumbsProps<T>) => (
-  <nav aria-label="breadcrumbs" className={className}>
+  // rest spreads last so a consumer can override the defaults, per house style
+  <nav aria-label="breadcrumbs" className={className} {...rest}>
     <FlexBox as="ol" m={0} p={0}>
       {crumbs.map((crumb, index) => (
         <BreadcrumbPart as="li" key={crumb.title}>

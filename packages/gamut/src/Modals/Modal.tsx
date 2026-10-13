@@ -6,11 +6,12 @@ import { Box } from '../Box';
 import { ButtonProps, FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import { DataAttributes } from '../utils';
 import { ModalContainer } from './elements';
 import { ImageContainer } from './ImageContainer';
 import { CloseButtonProps, ModalBaseProps } from './types';
 
-interface DialogButtonProps {
+interface DialogButtonProps extends DataAttributes {
   children: React.ReactNode;
   href?: string;
   onClick?: ButtonProps['onClick'];
@@ -93,24 +94,34 @@ export const Modal: React.FC<ModalProps> = ({
   containerFocusRef,
   title,
   views,
+  isOpen,
+  clickOutsideCloses,
+  escapeCloses,
+  shroud = true,
+  zIndex,
+  image: imageProp,
   ...rest
 }) => {
   const titleId = useId();
   const [currentView, setCurrentView] = useState(0);
   const view = views?.[currentView];
-  const image = (view?.image || rest?.image) ?? null;
+  const image = (view?.image || imageProp) ?? null;
 
   const titleText = title || views?.[currentView].title;
   const needsLabelledBy = titleText && !ariaLabel;
 
   return (
     <Overlay
+      clickOutsideCloses={clickOutsideCloses}
       data-testid="modal"
-      shroud
+      escapeCloses={escapeCloses}
+      isOpen={isOpen}
+      shroud={shroud}
+      zIndex={zIndex}
       onRequestClose={onRequestClose}
-      {...rest}
     >
       <ModalContainer
+        {...rest}
         aria-hidden="false"
         aria-label={ariaLabel}
         aria-labelledby={needsLabelledBy ? titleId : undefined}

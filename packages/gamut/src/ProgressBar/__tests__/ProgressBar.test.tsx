@@ -75,4 +75,15 @@ describe('ProgressBar', () => {
 
     expect(view.queryByRole('img', { hidden: true })).toBeNull();
   });
+
+  it('forwards data-* and aria-* attributes to the root element', () => {
+    const { view } = renderView({
+      'data-marker': 'progress-bar',
+      'aria-keyshortcuts': 'p',
+    } as Partial<ProgressBarProps>);
+
+    const root = view.getByRole('figure');
+    expect(root).toHaveAttribute('data-marker', 'progress-bar');
+    expect(root).toHaveAttribute('aria-keyshortcuts', 'p');
+  });
 });

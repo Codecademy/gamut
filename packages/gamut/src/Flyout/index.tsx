@@ -1,5 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, Colors } from '@codecademy/gamut-styles';
+import { ComponentPropsWithoutRef } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../Box';
@@ -9,7 +10,9 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { WithChildrenProp } from '../utils';
 
-export interface FlyoutProps extends WithChildrenProp {
+export interface FlyoutProps
+  extends WithChildrenProp,
+    Omit<ComponentPropsWithoutRef<'div'>, 'children' | 'title'> {
   /**
    * Accessibility label for the close button.
    */
@@ -45,9 +48,11 @@ export const Flyout: React.FC<FlyoutProps> = ({
   openFrom = 'left',
   onClose,
   title,
+  ...rest
 }) => {
   return (
     <Overlay
+      {...rest}
       clickOutsideCloses
       escapeCloses
       isOpen={expanded}

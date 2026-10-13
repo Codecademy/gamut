@@ -3,7 +3,7 @@ import {
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
 import { useElementDir } from '@codecademy/gamut-styles';
-import { useMemo, useRef, useState } from 'react';
+import { ComponentPropsWithoutRef, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Text } from '..';
@@ -22,7 +22,8 @@ import {
   shouldPagesChange,
 } from './utils';
 
-export interface PaginationProps {
+export interface PaginationProps
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange' | 'color'> {
   /**
    * Number of page buttons to show at once
    */
@@ -66,6 +67,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   type,
   variant = 'stroke',
+  ...rest
 }) => {
   const navigation = isNavigation ? '/' : undefined;
   const [currentPage, setCurrentPage] = useState(
@@ -136,6 +138,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   }, [pageNumber]);
 
   return (
+    // rest spreads last so a consumer can override the defaults, per house style
     <FlexBox
       aria-label={
         navigation
@@ -148,6 +151,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         _: 'initial',
         sm: `${showSkipToButtons ? getMinWidth({ chapterSize }) : 'initial'}`,
       }}
+      {...rest}
       ref={rootRef}
     >
       <Text aria-live="polite" screenreader>

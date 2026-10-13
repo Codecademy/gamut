@@ -7,6 +7,7 @@ import { createPromise } from '../../utils';
 import {
   ConnectedForm,
   ConnectedFormGroup,
+  ConnectedFormGroupProps,
   ConnectedInput,
   ConnectedRadioGroupInput,
 } from '..';
@@ -534,5 +535,63 @@ describe('ConnectedRadioGroup InfoTip accessibility', () => {
     });
 
     view.getByRole('button', { name: `${groupLabel}\u00A0(optional)` });
+  });
+});
+
+describe('ConnectedFormGroup data-* and aria-* passthrough', () => {
+  const renderConnectedFormGroupView = setupRtl(ConnectedForm, {
+    defaultValues: { input: '' },
+    onSubmit: jest.fn(),
+    children: null,
+  });
+
+  it('forwards data-* and aria-* attributes to the FormGroup', () => {
+    const { view } = renderConnectedFormGroupView({
+      children: (
+        <ConnectedFormGroup
+          aria-keyshortcuts="g"
+          data-marker="form-group"
+          field={{ component: ConnectedInput }}
+          label="cool-input"
+          name="input"
+        />
+      ),
+    });
+
+    const group = view.container.querySelector('[data-marker="form-group"]');
+    expect(group).toHaveAttribute('aria-keyshortcuts', 'g');
+  });
+
+  it('forwards data-* and aria-* attributes from `field` to the inner input component', () => {
+    const { view } = renderConnectedFormGroupView({
+      children: (
+        <ConnectedFormGroup
+          field={{
+            component: ConnectedInput,
+            'aria-keyshortcuts': 'i',
+            'data-marker': 'input',
+          }}
+          label="cool-input"
+          name="input"
+        />
+      ),
+    });
+
+    const input = view.getByRole('textbox', { name: /cool-input/ });
+    expect(input).toHaveAttribute('data-marker', 'input');
+    expect(input).toHaveAttribute('aria-keyshortcuts', 'i');
+  });
+
+  it('accepts a data-* key on `field` as a type (compile-time only)', () => {
+    /*
+     * `ConnectedFormGroupProps['field']` intersects `DataAttributes`, so
+     * `data-marker` here would be a TS2353 error if that type regressed.
+     */
+    const field: ConnectedFormGroupProps<typeof ConnectedInput>['field'] = {
+      component: ConnectedInput,
+      'data-marker': 'x',
+    };
+
+    expect(field.component).toBe(ConnectedInput);
   });
 });

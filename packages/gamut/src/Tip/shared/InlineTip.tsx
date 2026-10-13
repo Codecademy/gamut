@@ -32,6 +32,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   username,
   wrapperRef,
   zIndex,
+  ...rest
 }) => {
   const isHoverType = type === 'tool' || type === 'preview';
   const [isDismissed, setIsDismissed] = useState(false);
@@ -117,6 +118,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
 
   return (
     <InlineTipWrapper
+      {...rest}
       {...(tipWrapperProps as any)}
       onMouseEnter={isHoverType ? handleMouseEnterAndLeave : undefined}
       onMouseLeave={isHoverType ? handleMouseEnterAndLeave : undefined}

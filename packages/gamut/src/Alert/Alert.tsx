@@ -44,7 +44,19 @@ export type AlertProps = WithChildrenProp &
     className?: string;
     /** Callback to be called when the close icon is clicked */
     onClose?: () => void;
-    /** Call to Action Configuration */
+    /*
+     * Call to Action Configuration. Deliberately does NOT intersect
+     * `DataAttributes`. `ComponentProps<typeof FillButton>` is already a
+     * large type (`ButtonBaseProps` intersected with `ButtonBase`'s
+     * anchor|button prop union), and adding a `data-*` index signature on
+     * top makes any consumer-side `keyof`/mapped type over `cta` (e.g. an
+     * `ExtractableCTAProps` picking a few keys off it) degrade into a
+     * signature that constrains every property, plus TS2590 "union type too
+     * complex" - exactly the failure this caused downstream in the mono
+     * repo's `ExtractableCTAProps`. `data-*` passed via `cta` still reaches
+     * the DOM at runtime through `{...cta}` below; only the named type is
+     * gone, so a `cta={{ 'data-foo': 'bar' }}` literal needs a cast.
+     */
     cta?: Exclude<
       React.ComponentProps<typeof FillButton>,
       'variant' | 'mode' | 'size'

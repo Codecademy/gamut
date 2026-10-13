@@ -7,12 +7,15 @@ import {
   SubmitHandler,
 } from 'react-hook-form';
 
-import { ButtonProps } from '../Button';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
 import { FormRequiredText } from '../Form/elements/FormRequiredText';
 import { FormValues } from '../Form/types';
 import { Column, LayoutGrid, LayoutGridProps } from '../Layout';
-import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
+import {
+  CancelButtonProps,
+  GridFormButtons,
+  GridFormSubmitProps,
+} from './GridFormButtons';
 import {
   GridFormContent,
   GridFormSection,
@@ -58,7 +61,7 @@ export type GridFormProps<Values extends {}> = FormContextProps &
     /**
      * Renders a cancel button with the provided child text and onClick function.
      */
-    cancel?: ButtonProps;
+    cancel?: CancelButtonProps['cancel'];
 
     /**
      * If your form has a single visible field. You should only have to set this if you have a single field in addition to hidden custom rendered inputs, otherwise it should happen automatically.

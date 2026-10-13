@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
-import { act, useState } from 'react';
+import { act, ComponentProps, useState } from 'react';
 
 import {
   openDropdown,
@@ -1285,5 +1285,34 @@ describe('SelectDropdown', () => {
         view.queryByText(translatedFormatCreateLabel('purple'))
       ).toBeNull();
     });
+  });
+});
+
+describe('SelectDropdown data-* passthrough', () => {
+  // Scoped to `data-*` only, per the audit: `...rest` reaches react-select's
+  // selectProps but react-select ignores unknown props, including its own
+  // internal `aria-*` props, so widening this to `aria-*` risks forwarding
+  // react-select's own aria attributes (e.g. `aria-live`) unexpectedly.
+  it('forwards a data-* attribute passed directly to the root container', () => {
+    const { view } = renderView({
+      'data-marker': 'select-dropdown',
+    } as Partial<ComponentProps<typeof SelectDropdown>>);
+
+    const root = view.container.querySelector(
+      '[data-marker="select-dropdown"]'
+    );
+    expect(root).not.toBeNull();
+  });
+
+  it('accepts a data-* key on SelectDropdownProps as a type (compile-time only)', () => {
+    // `SelectDropdownCoreProps` extends `DataAttributes`, so `data-marker`
+    // here would be a TS2353 error if that type regressed.
+    const props: ComponentProps<typeof SelectDropdown> = {
+      name: 'colors',
+      options: selectOptions,
+      'data-marker': 'x',
+    };
+
+    expect(props.name).toBe('colors');
   });
 });

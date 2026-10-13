@@ -727,4 +727,17 @@ describe('BarChart', () => {
       expect(title.tagName).toBe('H2');
     });
   });
+
+  describe('Attribute passthrough', () => {
+    it('forwards data-* and aria-* attributes to the figure element', () => {
+      const { view } = renderView({
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      } as any);
+
+      const figure = view.getByRole('figure');
+      expect(figure).toHaveAttribute('data-marker', 'probe');
+      expect(figure).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+    });
+  });
 });

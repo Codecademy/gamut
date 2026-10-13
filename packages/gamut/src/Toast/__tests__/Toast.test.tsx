@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/react';
+import { ComponentProps } from 'react';
 
 import { Toast } from '../Toast';
 
@@ -39,5 +40,16 @@ describe('Toast', () => {
     const toast = screen.getByRole('status');
     expect(toast.childNodes.length).toBe(4);
     expect(toast.childNodes[0].childNodes.length).toEqual(1);
+  });
+
+  it('forwards data-* and aria-* attributes to the root element', () => {
+    renderView({
+      'data-marker': 'toast',
+      'aria-keyshortcuts': 'p',
+    } as Partial<ComponentProps<typeof Toast>>);
+
+    const toast = screen.getByRole('status');
+    expect(toast).toHaveAttribute('data-marker', 'toast');
+    expect(toast).toHaveAttribute('aria-keyshortcuts', 'p');
   });
 });

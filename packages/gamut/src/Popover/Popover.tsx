@@ -41,8 +41,10 @@ export const Popover: React.FC<PopoverProps> = ({
     variant,
   }),
   verticalOffset = getDefaultOffset({ axis: 'vertical', position, variant }),
-
+  // Deprecated, no runtime effect; destructured so it doesn't leak into `...rest`.
+  outline,
   widthRestricted,
+  ...rest
 }) => {
   const [popoverHeight, setPopoverHeight] = useState<number>(0);
   const [popoverWidth, setPopoverWidth] = useState<number>(0);
@@ -207,6 +209,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const contents = (
     <PopoverContainer
+      {...rest}
       align={resolvedSideAlign}
       className={className}
       data-floating="popover"

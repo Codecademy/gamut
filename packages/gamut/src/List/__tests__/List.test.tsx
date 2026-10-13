@@ -201,4 +201,30 @@ describe('List', () => {
     const wrapper = view.container.querySelector('#list-el');
     expect(wrapper).toHaveStyleRule('container-type', 'normal');
   });
+
+  describe('Attribute passthrough', () => {
+    it('applies data-* attributes to the outer wrapper, the same node as id', () => {
+      const { view } = renderView({
+        'data-marker': 'probe',
+      } as Partial<ListProps>);
+
+      const wrapper = view.container.querySelector('#list-el');
+      const listEl = view.container.querySelector('ul');
+
+      expect(wrapper).toHaveAttribute('data-marker', 'probe');
+      expect(listEl).not.toHaveAttribute('data-marker');
+    });
+
+    it('still forwards aria-* attributes and style props to the inner list element', () => {
+      const { view } = renderView({
+        'aria-keyshortcuts': 'probeAria',
+        className: 'probe-class',
+      } as Partial<ListProps>);
+
+      const listEl = view.container.querySelector('ul');
+
+      expect(listEl).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+      expect(listEl).toHaveClass('probe-class');
+    });
+  });
 });

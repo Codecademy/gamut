@@ -25,16 +25,42 @@ jest.mock('@vidstack/react', () => {
   };
 });
 
+beforeAll(() => {
+  window.matchMedia =
+    window.matchMedia ??
+    ((query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }));
+});
+
 const renderView = setupRtl(Video, {});
 
 describe('Video', () => {
-  it('loads a video with a vimeo URL', async () => {
+  it('loads a video with a vimeo URL and forwards data-*/aria-* attributes to the outer container', async () => {
+    // The legacy ReactPlayer branch lazy-loads its provider module once per
+    // provider type, so this is folded into the existing vimeo test rather
+    // than given its own render: a second render targeting the same
+    // (vimeo) provider trips up react-player's lazy-loading in this test
+    // environment.
     const { view } = renderView({
       videoUrl: 'https://vimeo.com/145702525',
       videoTitle: 'Super Science Friends',
-    });
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
 
     await view.findByTitle('Super Science Friends');
+
+    const wrapper = view.container.querySelector('[data-marker="probe"]');
+    expect(wrapper).not.toBeNull();
+    expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
   });
 
   it('loads a video with a youtube ID', async () => {
@@ -44,5 +70,22 @@ describe('Video', () => {
     });
 
     await view.findByTitle('Workout with Rick Sanchez');
+  });
+
+  describe('Attribute passthrough', () => {
+    it('forwards data-* and aria-* attributes to the outer container on the Vidstack path', async () => {
+      const { view } = renderView({
+        videoUrl: 'https://example.com/video.mp4',
+        videoTitle: 'Self-hosted video',
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      } as any);
+
+      await view.findByTitle('Self-hosted video');
+
+      const wrapper = view.container.querySelector('[data-marker="probe"]');
+      expect(wrapper).not.toBeNull();
+      expect(wrapper).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+    });
   });
 });

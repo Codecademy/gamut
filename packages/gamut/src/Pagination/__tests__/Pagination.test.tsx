@@ -296,4 +296,38 @@ describe('Pagination', () => {
       expect(onChange).toHaveBeenCalledWith(5);
     });
   });
+
+  describe('Attribute passthrough', () => {
+    it('forwards data-* and aria-* attributes to the root element', () => {
+      const { view } = renderView({
+        'data-marker': 'probe',
+        'aria-keyshortcuts': 'probeAria',
+      } as any);
+
+      const root = view.container.firstChild;
+      expect(root).toHaveAttribute('data-marker', 'probe');
+      expect(root).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+    });
+
+    it('defaults aria-label when the consumer does not supply one', () => {
+      const { view } = renderView({ totalPages: 3 });
+
+      expect(view.container.firstChild).toHaveAttribute(
+        'aria-label',
+        'Paginated Navigation, total pages 3'
+      );
+    });
+
+    it('lets a consumer override the default aria-label', () => {
+      const { view } = renderView({
+        totalPages: 3,
+        'aria-label': 'my pager',
+      });
+
+      expect(view.container.firstChild).toHaveAttribute(
+        'aria-label',
+        'my pager'
+      );
+    });
+  });
 });

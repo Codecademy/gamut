@@ -37,6 +37,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   type,
   username,
   wrapperRef,
+  ...rest
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -155,6 +156,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   return (
     <Box
+      {...rest}
       display="inline-flex"
       height={inheritDims ? 'inherit' : undefined}
       position="relative"

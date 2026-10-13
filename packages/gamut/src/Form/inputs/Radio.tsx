@@ -1,7 +1,12 @@
 import { screenReaderOnly } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+} from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../../Box';
@@ -10,6 +15,7 @@ import {
   InfoTipSubComponentProps,
   useInfotipProps,
 } from '../../Tip/InfoTip/type-utils';
+import { DataAttributes } from '../../utils';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
@@ -18,6 +24,22 @@ import {
   radioLabel,
 } from '../styles';
 import { BaseInputProps } from '../types';
+
+/*
+ * Props for the visible `<label>` that wraps the radio UI, as opposed to
+ * `RadioProps`' own `...rest`, which forwards to the hidden `<input>`.
+ * Event handlers (`onChange`, `onCopy`, etc.) are omitted because `RadioLabel`
+ * is typed with `RadioElementProps`, which inherits `RadioProps`' input-shaped
+ * handler signatures rather than a label's own - not something this additive
+ * slot should try to reconcile. Intersected with `DataAttributes` since nested
+ * prop-bag object literals don't get the JSX exemption for hyphenated
+ * attribute names.
+ */
+export type RadioLabelProps = Omit<
+  ComponentPropsWithoutRef<'label'>,
+  keyof React.DOMAttributes<HTMLElement>
+> &
+  DataAttributes;
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
   Omit<BaseInputProps, 'label'> & {
@@ -30,6 +52,13 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
      * To override this behavior, provide `ariaLabel` or `ariaLabelledby`.
      */
     infotip?: InfoTipSubComponentProps;
+    /**
+     * Props to forward to the visible label element that wraps the radio
+     * UI - the thing users actually click. Unlike `...rest`, which lands on
+     * the screenreader-only `<input>`, this is the slot for `data-*`/`aria-*`
+     * attributes meant for click tracking or targeting the visible element.
+     */
+    labelProps?: RadioLabelProps;
     /**
      * A label for your Radio input - should not include infotips or other interactive elements
      */
@@ -71,6 +100,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       id,
       infotip,
       label,
+      labelProps,
       name,
       onChange,
       required,
@@ -99,7 +129,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           {...rest}
         />
+        {/*
+          labelProps spreads first so Radio's own accessibility wiring -
+          disabled/htmlFor/id/variant - always wins over anything a consumer
+          passes in.
+        */}
         <RadioLabel
+          {...labelProps}
           disabled={disabled}
           htmlFor={htmlFor}
           id={infotip && shouldLabelInfoTip ? labelId : undefined}

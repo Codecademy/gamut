@@ -36,6 +36,21 @@ describe('Flyout', () => {
     await expectFlyoutClosed(view);
   });
 
+  it('forwards data-* and aria-* attributes to the overlay container', async () => {
+    const { view } = renderView({
+      expanded: true,
+      'data-marker': 'probe',
+      'aria-keyshortcuts': 'probeAria',
+    } as any);
+
+    await expectFlyoutOpen(view);
+
+    const container = view.getByTestId('overlay-content-container');
+
+    expect(container).toHaveAttribute('data-marker', 'probe');
+    expect(container).toHaveAttribute('aria-keyshortcuts', 'probeAria');
+  });
+
   it('calls onClose on button click', async () => {
     const { props, view } = renderView({ expanded: true });
 
