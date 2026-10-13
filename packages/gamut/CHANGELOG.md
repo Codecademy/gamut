@@ -1,3 +1,13 @@
+## 73.6.3 (2026-10-13)
+
+### 🩹 Fixes
+
+- Fix Card border radius to align to theme values ([#3441](https://github.com/Codecademy/gamut/pull/3441))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
 ## 73.6.2 (2026-10-01)
 
 ### 🩹 Fixes
