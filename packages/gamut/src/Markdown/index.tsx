@@ -35,6 +35,20 @@ const preprocessingInstructions = createPreprocessingInstructions();
 
 const isValidNode = () => true;
 
+/**
+ * Puts each <video> block on its own lines so marked emits an HTML block.
+ * A single-line <video>...</video> is parsed as paragraph text, which wraps
+ * the video's block-level output in a <p>.
+ */
+const normalizeVideoBlocks = (text: string) =>
+  text.replace(
+    /(<video\b[^>]*>)([\s\S]*?)(<\/video>)/gi,
+    (_match, open: string, inner: string, close: string) => {
+      const body = inner.trim();
+      return `\n\n${open}\n${body ? `${body}\n` : ''}${close}\n\n`;
+    }
+  );
+
 const MarkdownWrapper = styled.div<{ spacing: 'loose' | 'tight' | 'none' }>`
   ${({ theme, spacing }) => {
     const spacingStyleFunction = markdownStyles[spacing];
@@ -154,7 +168,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     // Render markdown to html
     const rawHtml = inline
       ? marked.parseInline(text, markedOptions)
-      : marked(text, markedOptions);
+      : marked(normalizeVideoBlocks(text), markedOptions);
 
     const sanitizationConfig = {
       ...defaultSanitizationConfig,
