@@ -1,4 +1,10 @@
-import { theme } from '@codecademy/gamut-styles';
+import {
+  coreTheme,
+  GamutProvider,
+  lxStudioTheme,
+  percipioTheme,
+  theme,
+} from '@codecademy/gamut-styles';
 import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { renderHook } from '@testing-library/react';
 
@@ -37,7 +43,7 @@ describe('Card', () => {
 
 describe('useCardElevation', () => {
   it('maps the theme elevation tokens onto the motion variants', () => {
-    const { animate, initial } = renderElevation('none');
+    const { animate, initial } = renderElevation('none', 'md');
 
     expect(initial).toMatchObject({
       boxShadow: theme.elevation['rest-shadow'],
@@ -50,7 +56,7 @@ describe('useCardElevation', () => {
   });
 
   it('uses the mirrored hover tokens for patternRight shadows', () => {
-    const { animate } = renderElevation('patternRight');
+    const { animate } = renderElevation('patternRight', 'md');
 
     expect(animate).toMatchObject({
       boxShadow: theme.elevation['hoverMirrored-shadow'],
@@ -59,7 +65,7 @@ describe('useCardElevation', () => {
   });
 
   it('applies outline shadows but shares the elevation transforms', () => {
-    const { animateOutline, initialOutline } = renderElevation('outline');
+    const { animateOutline, initialOutline } = renderElevation('outline', 'md');
 
     expect(initialOutline.boxShadow).not.toBe(theme.elevation['rest-shadow']);
     expect(initialOutline.transform).toBe(theme.elevation['rest-transform']);
@@ -68,10 +74,34 @@ describe('useCardElevation', () => {
   });
 
   it('passes borderRadius through to every variant', () => {
-    const variants = renderElevation('none', '8px');
+    const variants = renderElevation('none', 'lg');
 
     Object.values(variants).forEach((variant) => {
-      expect(variant.borderRadius).toBe('8px');
+      expect(variant.borderRadius).toBe(theme.borderRadii.lg);
+    });
+  });
+
+  it.each([
+    ['coreTheme', coreTheme],
+    ['percipioTheme', percipioTheme],
+    ['lxStudioTheme', lxStudioTheme],
+  ])('resolves borderRadius from %s', (_name, activeTheme) => {
+    (['sm', 'md', 'lg'] as const).forEach((token) => {
+      const { result } = renderHook(() => useCardElevation('none', token), {
+        wrapper: ({ children }) => (
+          <GamutProvider
+            theme={activeTheme}
+            useCache={false}
+            useGlobals={false}
+          >
+            {children}
+          </GamutProvider>
+        ),
+      });
+
+      expect(result.current.initial.borderRadius).toBe(
+        activeTheme.borderRadii[token]
+      );
     });
   });
 });
