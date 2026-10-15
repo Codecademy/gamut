@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/493 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">87/87 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">87/87 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/494 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">171 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>3.7s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>6.1s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -27764,7 +27764,7 @@ export const ExpandableRow: React.FC&lt;{
       <div class="badges">
         <label for="c-55-organisms-markdown-err" class="badge err as-toggle">prop type error</label>
         <label for="c-55-organisms-markdown-info" class="badge info as-toggle">1 info</label>
-        <label for="c-55-organisms-markdown-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-55-organisms-markdown-stories" class="badge ok as-toggle">7 stories</label>
         <label for="c-55-organisms-markdown-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -27788,16 +27788,17 @@ export const ExpandableRow: React.FC&lt;{
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;Markdown&quot; component.
-  4 | import exampleMarkdown from &#39;./example.md&#39;;
-  5 |
-&gt; 6 | const meta: Meta&lt;typeof Markdown&gt; = {
-    | ^
-  7 |   component: Markdown,
-  8 |   args: {},
-  9 | };
+   5 | import exampleMarkdown from &#39;./example.md&#39;;
+   6 |
+&gt;  7 | const meta: Meta&lt;typeof Markdown&gt; = {
+     | ^
+   8 |   component: Markdown,
+   9 |   args: {},
+  10 | };
 
 ./packages/styleguide/src/lib/Organisms/Markdown/Markdown.stories.tsx:
 import { Markdown, Text, TextProps } from &#39;@codecademy/gamut&#39;;
+import { Iframe, MarkdownVideo } from &#39;@codecademy/gamut/Video&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 import exampleMarkdown from &#39;./example.md&#39;;
@@ -27822,8 +27823,10 @@ This is markdown
 
 export const FullExample: Story = {
   args: {
+    iframeOverride: { component: Iframe },
     // Not sure why there&#39;s a type mismatch, but the story renders
     text: exampleMarkdown as any,
+    videoOverride: { component: MarkdownVideo },
   },
 };
 
@@ -27872,6 +27875,17 @@ export const LinkOverride: Story = {
         component: (props) =&gt; &lt;Text {...props} as=&quot;span&quot; color=&quot;blue-500&quot; /&gt;,
       },
     },
+  },
+};
+
+export const WithoutVideoOverride: Story = {
+  args: {
+    text: `&lt;video width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; controls&gt;
+  &lt;source src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  &lt;track src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt&quot; type=&quot;srt&quot; label=&quot;English&quot; kind=&quot;subtitles&quot; srclang=&quot;en-US&quot; default=&quot;true&quot; /&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+`,
   },
 };
 
@@ -27938,7 +27952,10 @@ This is markdown
               </div>
               
               
-              <pre><code>const FullExample = () =&gt; &lt;Markdown text={exampleMarkdown as any} /&gt;;</code></pre>
+              <pre><code>const FullExample = () =&gt; &lt;Markdown
+    iframeOverride={{ component: Iframe }}
+    text={exampleMarkdown as any}
+    videoOverride={{ component: MarkdownVideo }} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -27976,6 +27993,21 @@ This is markdown
         component: (props) =&gt; &lt;Text {...props} as=&quot;span&quot; color=&quot;blue-500&quot; /&gt;,
       },
     }} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Without Video Override</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithoutVideoOverride = () =&gt; &lt;Markdown
+    text={`&lt;video width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; controls&gt;
+  &lt;source src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  &lt;track src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt&quot; type=&quot;srt&quot; label=&quot;English&quot; kind=&quot;subtitles&quot; srclang=&quot;en-US&quot; default=&quot;true&quot; /&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+`} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -28048,11 +28080,28 @@ A common override may be to change the font size of a Header.
 
 &lt;Canvas of={MarkdownStories.HeaderOverride} /&gt;
 
-### `skipDefaultOverides`
+### `skipDefaultOverrides`
 
-If you need to override a link, iframe, or table, you do not need to provide the `skipDefaultOverides` prop. This prop is now only used for removing the default heading, paragraph, and list element overrides.
+If you need to override a link or table, you do not need to provide the `skipDefaultOverrides` prop — just pass `overrides`. `skipDefaultOverrides` is only used for removing the default anchor, table, details, and checkbox overrides.
 
 &lt;Canvas of={MarkdownStories.LinkOverride} /&gt;
+
+## Video overrides
+
+By default, `&lt;iframe&gt;` and `&lt;video&gt;` tags embedded in markdown text render as plain HTML tags, not Gamut&#39;s `Video` component. This is intentional: `Video` depends on `react-player`, whose own dependency tree relies on package.json `&quot;exports&quot;` subpaths that legacy bundlers (e.g. webpack 4) can&#39;t resolve. Statically importing it by default would force every `Markdown` consumer to resolve that tree, even ones that never render video content — so it&#39;s opt-in instead.
+
+To render YouTube/Vimeo iframes and `&lt;video&gt;` tags with the full `Video` component (play-icon overlay, light-mode thumbnail, captions, etc.), import `Iframe` and `MarkdownVideo` from `@codecademy/gamut/Video` (not the main `@codecademy/gamut` barrel) and pass them via the `iframeOverride`/`videoOverride` props:
+
+```tsx
+import { Markdown } from &#39;@codecademy/gamut&#39;;
+import { Iframe, MarkdownVideo } from &#39;@codecademy/gamut/Video&#39;;
+
+&lt;Markdown
+  text={content}
+  iframeOverride={{ component: Iframe }}
+  videoOverride={{ component: MarkdownVideo }}
+/&gt;;
+```
 
 ## Inline Markdown
 
@@ -33551,16 +33600,17 @@ The flat prop allows the progress bar to be on top or bottom of a Card.
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;RadialProgress&quot; component.
-  2 | import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
-  3 |
-&gt; 4 | const meta: Meta&lt;typeof RadialProgress&gt; = {
+  3 | import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
+  4 |
+&gt; 5 | const meta: Meta&lt;typeof RadialProgress&gt; = {
     | ^
-  5 |   component: RadialProgress,
-  6 |   args: {
-  7 |     strokeLinecap: &#39;round&#39;,
+  6 |   component: RadialProgress,
+  7 |   args: {
+  8 |     strokeLinecap: &#39;round&#39;,
 
 ./packages/styleguide/src/lib/Atoms/RadialProgress/RadialProgress.stories.tsx:
-import { Box, RadialProgress, Video } from &#39;@codecademy/gamut&#39;;
+import { Box, RadialProgress } from &#39;@codecademy/gamut&#39;;
+import { Video } from &#39;@codecademy/gamut/Video&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 const meta: Meta&lt;typeof RadialProgress&gt; = {
@@ -33623,7 +33673,8 @@ export const Animating: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Box, RadialProgress, Video } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { Box, RadialProgress } from "@codecademy/gamut";
+import { Video } from "@codecademy/gamut/Video";</code></pre>
               </div>
           
           
@@ -42941,7 +42992,7 @@ By default, `ToolTip` closes on click and reappears only after the cursor leaves
   7 | };
 
 ./packages/styleguide/src/lib/Molecules/Video/Video.stories.tsx:
-import { Video } from &#39;@codecademy/gamut&#39;;
+import { Video } from &#39;@codecademy/gamut/Video&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 const meta: Meta&lt;typeof Video&gt; = {
@@ -42972,7 +43023,7 @@ export const Youtube: Story = {
 
 export const Vimeo: Story = {
   args: {
-    videoUrl: &#39;https://vimeo.com/773539409&#39;,
+    videoUrl: &#39;https://vimeo.com/1218916076&#39;,
     videoTitle: &#39;CODECADEMY | Develop Yourself&#39;,
   },
 };
@@ -43029,7 +43080,7 @@ export const VideoWithTracksAndThumbnails: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Video } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { Video } from "@codecademy/gamut/Video";</code></pre>
               </div>
           
           
@@ -43066,7 +43117,7 @@ export const VideoWithTracksAndThumbnails: Story = {
               
               
               <pre><code>const Vimeo = () =&gt; &lt;Video
-    videoUrl=&quot;https://vimeo.com/773539409&quot;
+    videoUrl=&quot;https://vimeo.com/1218916076&quot;
     videoTitle=&quot;CODECADEMY | Develop Yourself&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -43145,6 +43196,37 @@ export const parameters = {
 ## Usage
 
 The Video component is a feature-rich video player that supports multiple video sources and formats with enhanced accessibility features.
+
+### Installation
+
+`Video`&#39;s player libraries are peer dependencies of `@codecademy/gamut`, so they aren&#39;t installed automatically. They&#39;re only needed if the `Video` component is used, which is imported from `@codecademy/gamut/Video`. The main `@codecademy/gamut` barrel never loads them, so apps that don&#39;t use `Video` can skip them. Add the following packages alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
+
+```bash
+yarn add @vidstack/react@~1.12.12 react-player@^3.4.0
+```
+
+Pin the versions: `@vidstack/react`&#39;s npm `latest` tag still points to 0.6.x (1.x is published under `next`), so a bare `yarn add @vidstack/react` installs 0.6, which lacks the `@vidstack/react/player/layouts/default` subpath `Video` imports and fails with `Module not found`. Versions 1.14+ use static class blocks, which break Jest in repos whose Babel config can&#39;t parse them (see &quot;Babel and newer syntax&quot; on the Installation page).
+
+After installing, your `package.json` should list the pinned versions under `dependencies`. No `resolutions` entry is needed:
+
+```json
+// package.json
+{
+  &quot;dependencies&quot;: {
+    &quot;@codecademy/gamut&quot;: &quot;^73.6.2&quot;,
+    &quot;@vidstack/react&quot;: &quot;~1.12.12&quot;,
+    &quot;react-player&quot;: &quot;^3.4.0&quot;
+  }
+}
+```
+
+Without them, your bundler will fail with `Can&#39;t resolve &#39;@vidstack/react&#39;` (or `&#39;react-player&#39;`) when you import from `@codecademy/gamut/Video`.
+
+```tsx
+import { Video } from &#39;@codecademy/gamut/Video&#39;;
+```
+
+To render video content embedded in `Markdown` text, see the [Video overrides](/?path=/docs/organisms-markdown--page#video-overrides) section on the Markdown docs page instead of importing `Video` directly.
 
 ### Key Features
 
@@ -70374,7 +70456,7 @@ export const ExpandableRow: React.FC&lt;{
       <div class="badges">
         <label for="c-error-55-organisms-markdown-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-55-organisms-markdown-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-55-organisms-markdown-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-55-organisms-markdown-stories" class="badge ok as-toggle">7 stories</label>
         <label for="c-error-55-organisms-markdown-docs" class="badge ok as-toggle">1 doc</label>
       </div>
     </div>
@@ -70398,16 +70480,17 @@ export const ExpandableRow: React.FC&lt;{
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;Markdown&quot; component.
-  4 | import exampleMarkdown from &#39;./example.md&#39;;
-  5 |
-&gt; 6 | const meta: Meta&lt;typeof Markdown&gt; = {
-    | ^
-  7 |   component: Markdown,
-  8 |   args: {},
-  9 | };
+   5 | import exampleMarkdown from &#39;./example.md&#39;;
+   6 |
+&gt;  7 | const meta: Meta&lt;typeof Markdown&gt; = {
+     | ^
+   8 |   component: Markdown,
+   9 |   args: {},
+  10 | };
 
 ./packages/styleguide/src/lib/Organisms/Markdown/Markdown.stories.tsx:
 import { Markdown, Text, TextProps } from &#39;@codecademy/gamut&#39;;
+import { Iframe, MarkdownVideo } from &#39;@codecademy/gamut/Video&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 import exampleMarkdown from &#39;./example.md&#39;;
@@ -70432,8 +70515,10 @@ This is markdown
 
 export const FullExample: Story = {
   args: {
+    iframeOverride: { component: Iframe },
     // Not sure why there&#39;s a type mismatch, but the story renders
     text: exampleMarkdown as any,
+    videoOverride: { component: MarkdownVideo },
   },
 };
 
@@ -70482,6 +70567,17 @@ export const LinkOverride: Story = {
         component: (props) =&gt; &lt;Text {...props} as=&quot;span&quot; color=&quot;blue-500&quot; /&gt;,
       },
     },
+  },
+};
+
+export const WithoutVideoOverride: Story = {
+  args: {
+    text: `&lt;video width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; controls&gt;
+  &lt;source src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  &lt;track src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt&quot; type=&quot;srt&quot; label=&quot;English&quot; kind=&quot;subtitles&quot; srclang=&quot;en-US&quot; default=&quot;true&quot; /&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+`,
   },
 };
 
@@ -70548,7 +70644,10 @@ This is markdown
               </div>
               
               
-              <pre><code>const FullExample = () =&gt; &lt;Markdown text={exampleMarkdown as any} /&gt;;</code></pre>
+              <pre><code>const FullExample = () =&gt; &lt;Markdown
+    iframeOverride={{ component: Iframe }}
+    text={exampleMarkdown as any}
+    videoOverride={{ component: MarkdownVideo }} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -70586,6 +70685,21 @@ This is markdown
         component: (props) =&gt; &lt;Text {...props} as=&quot;span&quot; color=&quot;blue-500&quot; /&gt;,
       },
     }} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Without Video Override</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithoutVideoOverride = () =&gt; &lt;Markdown
+    text={`&lt;video width=&quot;100%&quot; height=&quot;100%&quot; align=&quot;middle&quot; controls&gt;
+  &lt;source src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  &lt;track src=&quot;https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt&quot; type=&quot;srt&quot; label=&quot;English&quot; kind=&quot;subtitles&quot; srclang=&quot;en-US&quot; default=&quot;true&quot; /&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+`} /&gt;;</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -70658,11 +70772,28 @@ A common override may be to change the font size of a Header.
 
 &lt;Canvas of={MarkdownStories.HeaderOverride} /&gt;
 
-### `skipDefaultOverides`
+### `skipDefaultOverrides`
 
-If you need to override a link, iframe, or table, you do not need to provide the `skipDefaultOverides` prop. This prop is now only used for removing the default heading, paragraph, and list element overrides.
+If you need to override a link or table, you do not need to provide the `skipDefaultOverrides` prop — just pass `overrides`. `skipDefaultOverrides` is only used for removing the default anchor, table, details, and checkbox overrides.
 
 &lt;Canvas of={MarkdownStories.LinkOverride} /&gt;
+
+## Video overrides
+
+By default, `&lt;iframe&gt;` and `&lt;video&gt;` tags embedded in markdown text render as plain HTML tags, not Gamut&#39;s `Video` component. This is intentional: `Video` depends on `react-player`, whose own dependency tree relies on package.json `&quot;exports&quot;` subpaths that legacy bundlers (e.g. webpack 4) can&#39;t resolve. Statically importing it by default would force every `Markdown` consumer to resolve that tree, even ones that never render video content — so it&#39;s opt-in instead.
+
+To render YouTube/Vimeo iframes and `&lt;video&gt;` tags with the full `Video` component (play-icon overlay, light-mode thumbnail, captions, etc.), import `Iframe` and `MarkdownVideo` from `@codecademy/gamut/Video` (not the main `@codecademy/gamut` barrel) and pass them via the `iframeOverride`/`videoOverride` props:
+
+```tsx
+import { Markdown } from &#39;@codecademy/gamut&#39;;
+import { Iframe, MarkdownVideo } from &#39;@codecademy/gamut/Video&#39;;
+
+&lt;Markdown
+  text={content}
+  iframeOverride={{ component: Iframe }}
+  videoOverride={{ component: MarkdownVideo }}
+/&gt;;
+```
 
 ## Inline Markdown
 
@@ -76161,16 +76292,17 @@ The flat prop allows the progress bar to be on top or bottom of a Card.
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;RadialProgress&quot; component.
-  2 | import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
-  3 |
-&gt; 4 | const meta: Meta&lt;typeof RadialProgress&gt; = {
+  3 | import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
+  4 |
+&gt; 5 | const meta: Meta&lt;typeof RadialProgress&gt; = {
     | ^
-  5 |   component: RadialProgress,
-  6 |   args: {
-  7 |     strokeLinecap: &#39;round&#39;,
+  6 |   component: RadialProgress,
+  7 |   args: {
+  8 |     strokeLinecap: &#39;round&#39;,
 
 ./packages/styleguide/src/lib/Atoms/RadialProgress/RadialProgress.stories.tsx:
-import { Box, RadialProgress, Video } from &#39;@codecademy/gamut&#39;;
+import { Box, RadialProgress } from &#39;@codecademy/gamut&#39;;
+import { Video } from &#39;@codecademy/gamut/Video&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 const meta: Meta&lt;typeof RadialProgress&gt; = {
@@ -76233,7 +76365,8 @@ export const Animating: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Box, RadialProgress, Video } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { Box, RadialProgress } from "@codecademy/gamut";
+import { Video } from "@codecademy/gamut/Video";</code></pre>
               </div>
           
           
@@ -85551,7 +85684,7 @@ By default, `ToolTip` closes on click and reappears only after the cursor leaves
   7 | };
 
 ./packages/styleguide/src/lib/Molecules/Video/Video.stories.tsx:
-import { Video } from &#39;@codecademy/gamut&#39;;
+import { Video } from &#39;@codecademy/gamut/Video&#39;;
 import type { Meta, StoryObj } from &#39;@storybook/react&#39;;
 
 const meta: Meta&lt;typeof Video&gt; = {
@@ -85582,7 +85715,7 @@ export const Youtube: Story = {
 
 export const Vimeo: Story = {
   args: {
-    videoUrl: &#39;https://vimeo.com/773539409&#39;,
+    videoUrl: &#39;https://vimeo.com/1218916076&#39;,
     videoTitle: &#39;CODECADEMY | Develop Yourself&#39;,
   },
 };
@@ -85639,7 +85772,7 @@ export const VideoWithTracksAndThumbnails: Story = {
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Video } from "@codecademy/gamut";</code></pre>
+                <pre><code>import { Video } from "@codecademy/gamut/Video";</code></pre>
               </div>
           
           
@@ -85676,7 +85809,7 @@ export const VideoWithTracksAndThumbnails: Story = {
               
               
               <pre><code>const Vimeo = () =&gt; &lt;Video
-    videoUrl=&quot;https://vimeo.com/773539409&quot;
+    videoUrl=&quot;https://vimeo.com/1218916076&quot;
     videoTitle=&quot;CODECADEMY | Develop Yourself&quot; /&gt;;</code></pre>
             </div>
             <div class="note ok">
@@ -85755,6 +85888,37 @@ export const parameters = {
 ## Usage
 
 The Video component is a feature-rich video player that supports multiple video sources and formats with enhanced accessibility features.
+
+### Installation
+
+`Video`&#39;s player libraries are peer dependencies of `@codecademy/gamut`, so they aren&#39;t installed automatically. They&#39;re only needed if the `Video` component is used, which is imported from `@codecademy/gamut/Video`. The main `@codecademy/gamut` barrel never loads them, so apps that don&#39;t use `Video` can skip them. Add the following packages alongside Gamut to use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides):
+
+```bash
+yarn add @vidstack/react@~1.12.12 react-player@^3.4.0
+```
+
+Pin the versions: `@vidstack/react`&#39;s npm `latest` tag still points to 0.6.x (1.x is published under `next`), so a bare `yarn add @vidstack/react` installs 0.6, which lacks the `@vidstack/react/player/layouts/default` subpath `Video` imports and fails with `Module not found`. Versions 1.14+ use static class blocks, which break Jest in repos whose Babel config can&#39;t parse them (see &quot;Babel and newer syntax&quot; on the Installation page).
+
+After installing, your `package.json` should list the pinned versions under `dependencies`. No `resolutions` entry is needed:
+
+```json
+// package.json
+{
+  &quot;dependencies&quot;: {
+    &quot;@codecademy/gamut&quot;: &quot;^73.6.2&quot;,
+    &quot;@vidstack/react&quot;: &quot;~1.12.12&quot;,
+    &quot;react-player&quot;: &quot;^3.4.0&quot;
+  }
+}
+```
+
+Without them, your bundler will fail with `Can&#39;t resolve &#39;@vidstack/react&#39;` (or `&#39;react-player&#39;`) when you import from `@codecademy/gamut/Video`.
+
+```tsx
+import { Video } from &#39;@codecademy/gamut/Video&#39;;
+```
+
+To render video content embedded in `Markdown` text, see the [Video overrides](/?path=/docs/organisms-markdown--page#video-overrides) section on the Markdown docs page instead of importing `Video` directly.
 
 ### Key Features
 
@@ -87433,6 +87597,16 @@ Add more package scopes inside the non-capturing group if your tree pulls in oth
 Even when those packages are transformed, older Babel configs may not handle every language feature.
 
 To fix that, the necessary plugins need to be added to the Babel config Jest uses, or upgrade **`@babel/preset-env`** / Babel so that feature is covered.
+
+For example, `@vidstack/react` 1.14+ (outside Gamut&#39;s supported `~1.12.12` range) uses static class blocks. If your Babel config includes `@babel/plugin-transform-private-methods` (or another class-features plugin), tests fail with `Static class blocks are not enabled` unless you also add `@babel/plugin-transform-class-static-block`, listed before it:
+
+```js
+// babel.config.js (or equivalent)
+plugins: [
+  &#39;@babel/plugin-transform-class-static-block&#39;,
+  &#39;@babel/plugin-transform-private-methods&#39;,
+],
+```
 </code></pre>
           </div>
         </div>
