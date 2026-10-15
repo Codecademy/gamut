@@ -53,4 +53,10 @@ export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';
 export * from './utils';
-export * from './Video';
+/*
+  Video is intentionally not re-exported here: it pulls in react-player,
+  whose dependency tree relies on package.json "exports" subpaths that
+  legacy bundlers (e.g. webpack 4) can't resolve. Keeping it off the main
+  barrel means consumers who don't use Video never need to resolve that
+  tree. Import it from '@codecademy/gamut/Video' instead.
+*/

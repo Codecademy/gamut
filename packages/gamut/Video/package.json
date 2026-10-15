@@ -1,0 +1,5 @@
+{
+  "main": "../dist/Video/index.js",
+  "module": "../dist/Video/index.js",
+  "types": "../dist/Video/index.d.ts"
+}

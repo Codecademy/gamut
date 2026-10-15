@@ -132,6 +132,5 @@ exports[`Gamut Exported Keys 1`] = `
   "useIsMounted",
   "useLocalQuery",
   "useSubmitState",
-  "Video",
 ]
 `;

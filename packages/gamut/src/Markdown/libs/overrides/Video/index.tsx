@@ -19,12 +19,12 @@ export const MarkdownVideo: React.FC<MarkdownVideoProps> = (props) => {
     const videoProps = {
       autoplay: props?.autoPlay,
       controls: props?.controls,
-      height: Number(props?.height),
+      height: props?.height ? Number(props.height) : undefined,
       loop: props?.loop,
       muted: props?.muted,
       videoTitle: props?.title,
       videoUrl: props?.src,
-      width: Number(props?.width),
+      width: props?.width ? Number(props.width) : undefined,
       textTracks: props?.textTracks,
       showPlayerEmbed: props?.showPlayerEmbed,
     };

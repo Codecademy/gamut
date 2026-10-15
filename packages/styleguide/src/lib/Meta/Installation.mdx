@@ -131,3 +131,13 @@ Add more package scopes inside the non-capturing group if your tree pulls in oth
 Even when those packages are transformed, older Babel configs may not handle every language feature.
 
 To fix that, the necessary plugins need to be added to the Babel config Jest uses, or upgrade **`@babel/preset-env`** / Babel so that feature is covered.
+
+For example, `@vidstack/react` 1.14+ (outside Gamut's supported `~1.12.12` range) uses static class blocks. If your Babel config includes `@babel/plugin-transform-private-methods` (or another class-features plugin), tests fail with `Static class blocks are not enabled` unless you also add `@babel/plugin-transform-class-static-block`, listed before it:
+
+```js
+// babel.config.js (or equivalent)
+plugins: [
+  '@babel/plugin-transform-class-static-block',
+  '@babel/plugin-transform-private-methods',
+],
+```
