@@ -358,10 +358,10 @@ Vimeo and Youtube video iframes will be rendered by our Video component (if show
 ### Video
 
 `video`s with an `src` or a `source` video file will be rendered by our Video component when you pass the `videoOverride` prop; otherwise they'll render as a plain `video` tag. Videos with a `style` prop or another restricted prop will be stripped of that property.
-Insert `track` to add subtitles / captions to the video.
+Insert `track` to add subtitles / captions to the video. The below video has the override, if you'd like to see a video without the override see the story below.
 
 <video width="100%" height="100%" align="middle" controls>
   <source src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4" type="video/mp4" />
   <track src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt" type="srt" label="English" kind="subtitles" srclang="en-US" default="true" />
-  Your browser does not support the video tag. 
+  Your browser does not support the video tag.
 </video>
