@@ -1,3 +1,17 @@
+# 74.0.0 (2026-10-15)
+
+### ⚠️  Breaking Changes
+
+- Move Video out of barrel and update ([#3439](https://github.com/Codecademy/gamut/pull/3439))
+
+  - `Video` is now imported from `@codecademy/gamut/Video` instead of `@codecademy/gamut`.
+  - `@vidstack/react` and `react-player` are now peer dependencies. If you use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides), install them: `yarn add @vidstack/react@~1.12.12 react-player@^3.4.0`. Gamut supports `@vidstack/react` 1.12.x only; note that its npm `latest` tag still points to 0.6.x.
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Claude Sonnet 5
+
 ## 73.6.3 (2026-10-13)
 
 ### 🩹 Fixes
