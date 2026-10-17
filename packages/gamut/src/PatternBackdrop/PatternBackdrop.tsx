@@ -13,7 +13,7 @@ const PatternBackdropBody = styled('div', styledOptions)<
 >(
   system.css({
     position: 'relative',
-    zIndex: 1,
+    zIndex: 'foreground',
     bg: 'background',
     border: 1,
     maxWidth: 1,
@@ -29,7 +29,12 @@ type PatternBackdropProps = ComponentProps<typeof PatternBackdropBody>;
  */
 export const PatternBackdrop = forwardRef<HTMLDivElement, PatternBackdropProps>(
   ({ children, ...rest }, ref) => (
-    <Box display="inline-block" maxWidth="100%" position="relative" zIndex={1}>
+    <Box
+      display="inline-block"
+      maxWidth="100%"
+      position="relative"
+      zIndex="foreground"
+    >
       <CheckerDense
         dimensions={1}
         left="-0.5rem"

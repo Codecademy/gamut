@@ -15,7 +15,7 @@ export const tabContainerVariants = variant({
         bg: 'text',
         position: 'absolute',
         bottom: 0,
-        zIndex: 0,
+        zIndex: 'base',
         width: '100%',
       },
     },

@@ -24,7 +24,7 @@ export const sharedStates = system.states({
   },
   context: {
     position: 'relative',
-    zIndex: 1,
+    zIndex: 'foreground',
   },
   'no-select': {
     WebkitTouchCallout: 'none',

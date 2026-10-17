@@ -15,7 +15,7 @@ export const EmptyRows = () => {
       position="sticky"
       top="calc(50% - 66px)"
       width="320px"
-      zIndex={1}
+      zIndex="foreground"
     >
       <FlexBox as="tr" center column gap={16} width="100%">
         <th>
