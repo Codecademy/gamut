@@ -11,7 +11,8 @@
     "lodash": "^4.17.23",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-helmet-async": "^2.0.5"
+    "react-helmet-async": "^2.0.5",
+    "react-player": "^3.4.0"
   },
   "devDependencies": {
     "@babel/cli": "7.24.7",
