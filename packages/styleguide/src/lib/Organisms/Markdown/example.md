@@ -28,6 +28,14 @@
 
 ### Philosophy
 
+In addition to images, HTML also supports displaying
+videos
+Preview: Docs Embedding videos within a site creates lively and informative pages that are attractive to visitors. Like the `<img>` element, the `<video>` element requires a src attribute with a link to the video source. Unlike the `<img>` element however, the `<video>` element requires an opening and a closing tag.
+
+<video src="myVideo.mp4" width="320" height="240" controls>
+  Video not supported
+</video>
+
 Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
 
 Readability, however, is emphasized above all else. A Markdown-formatted
