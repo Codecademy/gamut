@@ -227,7 +227,7 @@ export const createVideoParagraphOverride = (tagName: string) => ({
   },
   processNode(
     _node: HTMLToReactNode,
-    children: HTMLToReactNode[],
+    children: React.ReactNode[],
     key: React.Key
   ) {
     return <React.Fragment key={key}>{children}</React.Fragment>;
