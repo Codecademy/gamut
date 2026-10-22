@@ -3,7 +3,24 @@ import { css, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import ReactPlayer from 'react-player';
 
-import { FlexBox } from '../../Box';
+import { Box, FlexBox } from '../../Box';
+
+/*
+  react-player v3 renders its splash (preview) as a bare child of the wrapper
+  and doesn't pass `className` to it, so the splash is styled from the frame:
+  filling the 16:9 box at 100% width instead of collapsing to its play icon.
+*/
+export const VideoFrame = styled(Box)(
+  css({
+    '& > .react-player__preview': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    },
+  })
+);
 
 export const ReactVideoPlayer = styled(ReactPlayer)(
   css({

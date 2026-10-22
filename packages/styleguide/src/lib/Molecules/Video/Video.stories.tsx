@@ -1,4 +1,7 @@
+import { Box } from '@codecademy/gamut';
 import { Video } from '@codecademy/gamut/Video';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Video> = {
@@ -8,6 +11,20 @@ const meta: Meta<typeof Video> = {
 
 export default meta;
 type Story = StoryObj<typeof Video>;
+
+/*
+  Mirrors the learning environment's `externalHostedVideo` class, which the
+  LE passes as `className` so an external video fills a positioned frame.
+*/
+const LEVideo = styled(Video)(
+  css({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  })
+);
 
 export const Default: Story = {
   args: {
@@ -64,4 +81,17 @@ export const VideoWithTracksAndThumbnails: Story = {
     ],
     thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
   },
+};
+
+export const LearningEnvironmentFrame: Story = {
+  args: {
+    videoUrl: 'https://www.youtube.com/watch?v=wxds6MAtUQ0',
+    videoTitle: 'Intro to Programming: Loops',
+    placeholderImage: 'https://img.youtube.com/vi/wxds6MAtUQ0/hqdefault.jpg',
+  },
+  render: (args) => (
+    <Box height={400} position="relative" width="100%">
+      <LEVideo {...args} />
+    </Box>
+  ),
 };

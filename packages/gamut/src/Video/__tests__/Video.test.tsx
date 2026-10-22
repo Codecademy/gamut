@@ -12,7 +12,7 @@ jest.mock('react-player', () => {
     __esModule: true,
     // eslint-disable-next-line react/display-name
     // Mimics react-player v3: the inner provider iframe has no title.
-    default: ({ src }: { src: string }) => {
+    default: ({ src, light }: { src: string; light?: string | boolean }) => {
       const hostRef = react.useRef(null);
       // Insert the iframe after mount, without ever firing onReady, to prove
       // the title doesn't depend on that callback.
@@ -31,6 +31,13 @@ jest.mock('react-player', () => {
           shadowRoot.appendChild(iframe);
         });
       }, []);
+      // Mimics react-player v3: the splash is a bare div rendered as a direct
+      // child of the wrapper, without gamut's className.
+      if (light) {
+        return react.createElement('div', {
+          className: 'react-player__preview',
+        });
+      }
       if (mockRenderInShadowRoot) {
         return react.createElement('div', { ref: hostRef });
       }
@@ -92,6 +99,21 @@ describe('Video', () => {
     });
 
     await view.findByTitle('Video player');
+  });
+
+  it('fills the 16:9 box with the splash preview', async () => {
+    const { view } = renderView({
+      videoUrl: 'https://www.youtube.com/watch?v=Yl8yy5tpVIM',
+      placeholderImage: 'https://example.com/splash.jpg',
+    });
+
+    await waitFor(() => {
+      const preview = view.container.querySelector<HTMLElement>(
+        '.react-player__preview'
+      );
+      expect(preview).not.toBeNull();
+      expect(getComputedStyle(preview!).position).toBe('absolute');
+    });
   });
 
   it('labels a provider iframe rendered inside a shadow root', async () => {
