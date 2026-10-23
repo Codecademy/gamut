@@ -1,7 +1,5 @@
-import { Box } from '@codecademy/gamut';
+import { FlexBox } from '@codecademy/gamut';
 import { Video } from '@codecademy/gamut/Video';
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Video> = {
@@ -11,20 +9,6 @@ const meta: Meta<typeof Video> = {
 
 export default meta;
 type Story = StoryObj<typeof Video>;
-
-/*
-  Mirrors the learning environment's `externalHostedVideo` class, which the
-  LE passes as `className` so an external video fills a positioned frame.
-*/
-const LEVideo = styled(Video)(
-  css({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-  })
-);
 
 export const Default: Story = {
   args: {
@@ -83,15 +67,52 @@ export const VideoWithTracksAndThumbnails: Story = {
   },
 };
 
+/*
+  Mirrors the learning environment's Video pane: its `videoContainer` and
+  `externalHostedVideo` CSS-module classes (plain CSS, not Emotion) are passed
+  as `className`, and the frame sits in a full-height flex section.
+*/
+const learningEnvironmentStyles = `
+  .le-video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #10162f;
+    position: relative;
+  }
+  .le-external-hosted-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+
 export const LearningEnvironmentFrame: Story = {
   args: {
-    videoUrl: 'https://www.youtube.com/watch?v=wxds6MAtUQ0',
-    videoTitle: 'Intro to Programming: Loops',
-    placeholderImage: 'https://img.youtube.com/vi/wxds6MAtUQ0/hqdefault.jpg',
+    videoUrl: 'https://youtu.be/np1R108qmdo',
+    videoTitle: 'Prompt Engineering for RAG',
   },
   render: (args) => (
-    <Box height={400} position="relative" width="100%">
-      <LEVideo {...args} />
-    </Box>
+    <FlexBox height={600} position="relative" width="100%">
+      <style>{learningEnvironmentStyles}</style>
+      <FlexBox
+        as="section"
+        flex={1}
+        flexDirection="column"
+        flexShrink={0}
+        height="100%"
+        overflowY="hidden"
+        position="relative"
+      >
+        <Video
+          {...args}
+          className="le-video-container le-external-hosted-video"
+        />
+      </FlexBox>
+    </FlexBox>
   ),
 };
