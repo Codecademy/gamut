@@ -1,4 +1,3 @@
-import { FlexBox } from '@codecademy/gamut';
 import { Video } from '@codecademy/gamut/Video';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -65,54 +64,4 @@ export const VideoWithTracksAndThumbnails: Story = {
     ],
     thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
   },
-};
-
-/*
-  Mirrors the learning environment's Video pane: its `videoContainer` and
-  `externalHostedVideo` CSS-module classes (plain CSS, not Emotion) are passed
-  as `className`, and the frame sits in a full-height flex section.
-*/
-const learningEnvironmentStyles = `
-  .le-video-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background: #10162f;
-    position: relative;
-  }
-  .le-external-hosted-video {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-`;
-
-export const LearningEnvironmentFrame: Story = {
-  args: {
-    videoUrl: 'https://youtu.be/np1R108qmdo',
-    videoTitle: 'Prompt Engineering for RAG',
-  },
-  render: (args) => (
-    <FlexBox height={600} position="relative" width="100%">
-      <style>{learningEnvironmentStyles}</style>
-      <FlexBox
-        as="section"
-        flex={1}
-        flexDirection="column"
-        flexShrink={0}
-        height="100%"
-        overflowY="hidden"
-        position="relative"
-      >
-        <Video
-          {...args}
-          className="le-video-container le-external-hosted-video"
-        />
-      </FlexBox>
-    </FlexBox>
-  ),
 };

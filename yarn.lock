@@ -13442,7 +13442,6 @@ __metadata:
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
     react-helmet-async: "npm:^2.0.5"
-    react-player: "npm:^3.4.0"
     react-test-renderer: "npm:^19.0.0"
     start-server-and-test: "npm:^2.1.5"
     storybook: "npm:^10.3.1"
