@@ -65,6 +65,7 @@ const config: StorybookConfig = {
           '../../gamut-styles/src'
         ),
         '@codecademy/gamut$': resolve(__dirname, '../../gamut/src'),
+        '@codecademy/gamut/Video$': resolve(__dirname, '../../gamut/src/Video'),
         '@codecademy/gamut-illustrations$': resolve(
           __dirname,
           '../../gamut-illustrations/src'
