@@ -8,9 +8,12 @@ import {
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
-import { Box } from '../Box';
 import { useIsMounted } from '../utils';
-import { OverlayPlayButton, ReactVideoPlayer } from './lib/ReactPlayer';
+import {
+  OverlayPlayButton,
+  ReactVideoPlayer,
+  VideoFrame,
+} from './lib/ReactPlayer';
 import { VidstackPlayer } from './lib/VidstackPlayer';
 
 export type VideoProps = {
@@ -169,13 +172,12 @@ export const Video: React.FC<VideoProps> = (props) => {
     showPlayerEmbed
   ) {
     return (
-      <Box
+      <VideoFrame
         bg={loading ? 'black' : undefined}
         borderRadius="md"
         className={className}
         overflow="hidden"
         position="relative"
-        pt={'56.25%' as any}
         ref={playerWrapperRef}
         width="100%"
       >
@@ -192,6 +194,9 @@ export const Video: React.FC<VideoProps> = (props) => {
             src={videoUrl as string}
             title={videoTitle}
             width="100%"
+            // Without a wrapper, react-player v3 drops `className` and the
+            // 100% size from its splash, so it no longer fills the frame.
+            wrapper="div"
             onPlay={onPlay}
             onReady={() => {
               labelProviderIframe();
@@ -200,7 +205,7 @@ export const Video: React.FC<VideoProps> = (props) => {
             }}
           />
         ) : null}
-      </Box>
+      </VideoFrame>
     );
   }
 

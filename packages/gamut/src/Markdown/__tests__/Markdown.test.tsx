@@ -213,6 +213,27 @@ describe('<Markdown />', () => {
     expect(document.querySelectorAll('video').length).toEqual(1);
     expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
   });
+
+  it('Leaves <video> inside inline code alone when a real video follows', () => {
+    renderView({
+      text: 'The `<video>` element needs a closing tag.\n\n<video src="/example.webm" controls>\n  Video not supported\n</video>',
+      videoOverride: { component: MarkdownVideo },
+    });
+    expect(document.querySelector('code')?.textContent).toEqual('<video>');
+    screen.getByTitle(mockTitle);
+  });
+
+  it('Leaves <video> inside fenced code blocks alone', () => {
+    renderView({
+      text: '```html\n<video src="/example.webm"></video>\n```',
+      videoOverride: { component: MarkdownVideo },
+    });
+    expect(document.querySelector('pre code')?.textContent).toContain(
+      '<video src="/example.webm"></video>'
+    );
+    expect(screen.queryByTitle(mockTitle)).not.toBeInTheDocument();
+  });
+
   it('Wraps the markdown in a div by default (block)', () => {
     renderView({ text: basicMarkdown });
     expect(
