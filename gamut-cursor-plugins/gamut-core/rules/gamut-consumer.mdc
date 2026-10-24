@@ -1,0 +1,18 @@
+---
+description: >-
+  Core standards for using @codecademy/gamut and @codecademy/gamut-styles in
+  application code: semantic colors, system props, no unsafe nested selectors.
+globs:
+  - "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+
+# Gamut consumer (core)
+
+- Prefer `Box`, `FlexBox`, `GridBox` and other Gamut components over raw layout divs when building UI.
+- Use **semantic** color props and `gamut-styles` utilities (`css`, `variant`, `states`) with semantic token names (`text`, `background`, `primary`, `danger`, etc.). Avoid hardcoded palette values where tokens exist.
+- Use responsive system props (object keys `_`, `sm`, `md`, … or array syntax). See Storybook foundations for responsive properties.
+- Do not use tag selectors (`div`, `p`, `span`, `*`) or `${Box}`-style nested Gamut component selectors in styled components; use props, `FlexBox`/`GridBox`, and `gamut-styles` helpers instead.
+- Align with `eslint-plugin-gamut` when configured (`no-inline-style`, `no-css-standalone`, `gamut-import-paths`, etc.).
+- Set color context at the app root appropriately; for **ColorMode**, **Background**, hooks, and platform themes, use the **codecademy-gamut-themes** plugin and [ColorMode docs](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page).
+- For accessibility reviews (dialogs, focus, ARIA, forms), enable the **codecademy-gamut-a11y** plugin.
