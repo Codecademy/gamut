@@ -1,0 +1,12 @@
+{
+  "name": "gamut-atomics-poc",
+  "description": "GMT-1715 spike: Gamut generates its OWN prebuilt atomic classes from its own Panda config, keyed on Gamut's prop names and `_` breakpoint key. Not published.",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "panda cssgen --outfile dist/atomics.css && node build-manifest.mjs",
+    "verify": "node verify.mjs",
+    "all": "npm run generate && npm run verify"
+  }
+}
