@@ -9,7 +9,7 @@ import {
   isCheckboxParent,
   isInput,
   isLabelText,
-  isVideoParent,
+  isVideoOnlyParagraph,
 } from './utils';
 
 const processNodeDefinitions = HtmlToReact.ProcessNodeDefinitions();
@@ -221,9 +221,9 @@ export const createVideoOverride = ({
 });
 
 // Drops the <p> marked wraps around a single-line video, since the Video component renders block-level elements
-export const createVideoParagraphOverride = (tagName: string) => ({
+export const createVideoParagraphOverride = () => ({
   shouldProcessNode(node: HTMLToReactNode) {
-    return isVideoParent(node, tagName);
+    return isVideoOnlyParagraph(node);
   },
   processNode(
     _node: HTMLToReactNode,

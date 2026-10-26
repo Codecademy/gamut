@@ -11,13 +11,13 @@ export const isCheckboxParent = (node: HTMLToReactNode, type: string) =>
   );
 
 // a <p> that only holds video tags, i.e. a single-line <video></video> that marked parsed as paragraph text
-export const isVideoParent = (node: HTMLToReactNode, tagName: string) =>
+export const isVideoOnlyParagraph = (node: HTMLToReactNode) =>
   Boolean(
     node.name === 'p' &&
-      node.children?.some((child) => child.name === tagName) &&
+      node.children?.some((child) => child.name === 'video') &&
       node.children.every(
         (child) =>
-          child.name === tagName ||
+          child.name === 'video' ||
           (child.type === 'text' && !child.data.trim())
       )
   );
