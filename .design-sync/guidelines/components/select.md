@@ -15,6 +15,13 @@ Only use `SelectDropdown` when you need advanced features:
 - Grouped options with dividers and group labels
 - Other custom option styling
 
+## Creatable options and validation (`SelectDropdown`)
+
+- `isCreatable` lets users add an option from the input. `onCreateOption(inputValue)` receives the new value; `formatCreateLabel`, `isValidNewOption`, and `createOptionPosition` (`'first' | 'last'`) customize it.
+- `validationMessage` drives the error state. Wire it through `FormGroup` (see `forms.md`).
+- `translations` takes a `Partial<SelectDropdownTranslations>` to localize built-in UI strings.
+- `name` is required.
+
 ## When to use `Select`
 
 For a plain list of options with no enrichment, `Select` is simpler, more performant, and more accessible.

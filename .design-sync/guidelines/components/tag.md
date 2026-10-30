@@ -30,6 +30,15 @@ const { Tag } = window.CodecademyGamut;
 </Tag>
 ```
 
+## Suggestion
+
+`Suggestion` variant is a clickable chip for offering dynamic, context-relevant options (possible responses or next actions). It's interactive, so pass `onClick` rather than `href`:
+
+```jsx
+<Tag variant="suggestion" onClick={() => {}}>Suggestion</Tag>
+<Tag size="large" variant="suggestion" onClick={() => {}}>Large suggestion</Tag>
+```
+
 ## With icon
 
 ```jsx

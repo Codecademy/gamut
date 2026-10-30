@@ -3,6 +3,15 @@
 `DatePicker.prompt.md` truncates before its "Locale" section (source doc
 exceeds the per-component doc size cap) — this file covers what's cut.
 
+## Validation
+
+Typed segment input is validated on entry. Invalid input shows a localized error message, and the failure is reported with one of these reasons: `incomplete`, `invalid-month`, `invalid-day`, `date-rollover`, `disabled-date`, `range-contains-disabled-date`, `invalid-date`. Don't hand-roll date parsing or error text for typed input.
+
+## Translations and quick actions
+
+- `translations` overrides the built-in UI strings (merged over the defaults).
+- `quickActions` replaces the default quick-action buttons. Pass `null` to remove them entirely.
+
 ## Locale
 
 Use the `locale` prop to set the DatePicker's locale — defaults to the

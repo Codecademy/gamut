@@ -13,8 +13,10 @@ Before constructing any custom `<video>`, `<img>` + play-button overlay, or thir
 - `videoTitle` — for accessibility
 - `controls` — show the standard player UI
 
+`Video` is not exported from the root barrel. Import it from its own entry point, and install its peer dependencies (`@vidstack/react` and `react-player`) in the consuming app.
+
 ```tsx
-import { Video } from '@codecademy/gamut';
+import { Video } from '@codecademy/gamut/Video';
 
 <Video
   videoUrl="https://example.com/video.mp4"

@@ -53,6 +53,10 @@ hand-picking a dark color yourself.
 - `Card` → `shadow-primary` (soft, `navy-200`); `patternLeft`/`patternRight` available but rarely used here.
 - Checkbox/Toggle → `bg: primary`, `hover: primary-hover`.
 
+## Elevation
+
+Percipio uses **soft, layered shadows** (`shadow-primary` + `shadow-secondary`) with no movement. The `elevation` scale has `rest` and `hover` states that differ only in shadow depth, and `hoverMirrored` matches `hover`. Use the scale through `Card`'s `isInteractive`/`shadow` props rather than writing `box-shadow` by hand.
+
 ## Agent quick reference
 
 | Scenario       | Tokens                                                                                             |

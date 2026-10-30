@@ -29,20 +29,9 @@ Fonts loaded dynamically via Emotion `@font-face` rules injected by `<Typography
 
 Config key: `runtimeFontPrefixes: ["https://www.codecademy.com/gamut"]`
 
-## Dist patch — re-apply after `yarn build`
+## Video dist patch — no longer needed (removed on `main`)
 
-`packages/gamut/dist/Video/lib/VidstackPlayer.js` line 4: import changed from `.scss` to `.css` for esbuild compatibility.
-`packages/gamut/dist/Video/styles/vds_base_theme.css` (empty): created alongside the `.scss` so the import resolves.
-
-`Markdown` imports `Video` transitively, so both would fail without this patch.
-After any `yarn build` re-run, re-apply:
-
-```bash
-sed -i '' "s|import '../styles/vds_base_theme.scss'|import '../styles/vds_base_theme.css' // patched for design-sync: .scss unsupported by esbuild|" packages/gamut/dist/Video/lib/VidstackPlayer.js
-printf '/* @ds-css-runtime: vds_base_theme.scss patched to .css stub for esbuild compatibility */\n' > packages/gamut/dist/Video/styles/vds_base_theme.css
-```
-
-The `@ds-css-runtime` marker in the CSS stub is important: esbuild extracts the stub into `_ds_bundle.css`, and the validator recognises the marker as "CSS-in-JS, no compiled stylesheet" instead of failing with `[CSS_PLACEHOLDER]`.
+Earlier syncs patched `packages/gamut/dist/Video/lib/VidstackPlayer.js` (`.scss` → `.css`) and stubbed `vds_base_theme.css`. The Video restructure on `main` (react-player v3, `Video` moved to `lib/VidstackPlayer/`) dropped the `.scss` import: the player now imports `./vidstack-styles.css` directly, so `buildCmd` no longer runs a sed. If the build fails on a `.scss` import in `Video/`, re-check `packages/gamut/src/Video/lib/VidstackPlayer/index.tsx` before reintroducing a patch.
 
 ## Re-sync risks
 

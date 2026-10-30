@@ -38,6 +38,10 @@ Platform theme adds palette colors: `lightBeige`, `gold`, `teal`, `purple`.
 - Card background variants: `default`, `white`, `yellow`, `beige` (light contexts), `navy`, `hyper` (dark contexts).
 - `CTAButton` — reserve for marketing/high-visibility promotions, never standard UI actions.
 
+## Elevation
+
+Core uses an **offset hard shadow** (`shadow-primary`, 8px offset) rather than a blur. Elevation is a three-state scale: `rest` (no shadow), `hover` (shadow shifts and the element lifts 4px up and right), and `hoverMirrored` (same lift, mirrored to the left). Use the scale through `Card`'s `isInteractive`/`shadow` props rather than writing `box-shadow` by hand.
+
 ## Agent quick reference
 
 | Scenario               | Tokens                                                                                             |
