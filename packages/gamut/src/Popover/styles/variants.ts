@@ -14,29 +14,11 @@ import {
   patternVariantArray,
 } from './pattern';
 
-export const outlineVariants = variant({
-  defaultVariant: 'boxShadow',
-  prop: 'outline',
-  variants: {
-    boxShadow: {
-      boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
-    },
-    outline: {
-      ...borderStyles,
-      boxShadow: 'none',
-    },
-  },
-});
-
 export const widthStates = states({
   widthRestricted: {
     minWidth: '4rem',
     maxWidth: '16rem',
   },
-});
-
-export const beakBorderStates = states({
-  hasBorder: borderStyles,
 });
 
 const beakVariantStyles = createVariantsFromAlignments(
@@ -46,6 +28,7 @@ const beakVariantStyles = createVariantsFromAlignments(
 
 export const beakVariants = variant({
   base: {
+    ...borderStyles,
     background: 'transparent',
     zIndex: 1,
     position: 'fixed',

@@ -11,3 +11,4 @@ packages/gamut-patterns/src/patterns
 **/code-connect/**
 packages/code-connect
 .nx
+packages/gamut/agent-tools/skills/*-workspace

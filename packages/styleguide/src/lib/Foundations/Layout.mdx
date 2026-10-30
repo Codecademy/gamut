@@ -154,6 +154,7 @@ For spacing between components and sections use these as a guide. Each of these 
           >
             {sizes.map((size) => (
               <Box
+                key={`box-${size}`}
                 width={`${size}px`}
                 height={`${size}px`}
                 display="inline-block"
@@ -161,7 +162,7 @@ For spacing between components and sections use these as a guide. Each of these 
               />
             ))}
             {sizes.map((size) => (
-              <Box textAlign="center" fontSize={14}>
+              <Box key={`label-${size}`} textAlign="center" fontSize={14}>
                 {size}
               </Box>
             ))}

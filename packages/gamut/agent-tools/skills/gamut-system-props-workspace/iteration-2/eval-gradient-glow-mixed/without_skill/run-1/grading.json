@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+      "passed": true,
+      "evidence": "No styled() wrapper used — condition doesn't trigger, satisfied by default."
+    },
+    {
+      "text": "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+      "passed": false,
+      "evidence": "Uses `padding={24}`, not `p={24}`. `padding` is NOT a recognized Gamut system prop (only `p`/`pt`/`pr`/`pb`/`pl`/`px`/`py` exist per packages/gamut-styles/src/variance/config.ts) — this prop is silently dropped/forwarded as an invalid attribute and does not actually apply 24px of padding. Real functional bug."
+    },
+    {
+      "text": "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "Uses the `center` shorthand boolean prop (sets alignItems+justifyContent to center) — a real, valid FlexBox prop per packages/gamut/src/Box/props.ts."
+    },
+    {
+      "text": "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent",
+      "passed": true,
+      "evidence": "`radial-gradient(circle, #3A10E5 0%, rgba(58,16,229,0.5) 45%, rgba(58,16,229,0) 100%)` via `backgroundImage` prop — correct gradient, valid prop (also unscaled, accepts raw CSS)."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 }
+}

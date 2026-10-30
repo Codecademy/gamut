@@ -23,16 +23,18 @@ export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
 
 export type InlineIconButtonProps<
   BaseButtonType extends
-    | keyof JSX.IntrinsicElements
+    | keyof React.JSX.IntrinsicElements
     | React.JSXElementConstructor<any>
 > = ComponentProps<BaseButtonType> &
   Partial<IconComponentType> & {
     iconPosition?: 'right' | 'left';
   };
 
+/* eslint-disable @typescript-eslint/no-duplicate-type-constituents -- createButtonComponent yields structurally identical typeofs; union documents distinct components */
 export type ButtonTypes =
   | typeof CTAButton
   | typeof FillButton
   | typeof IconButton
   | typeof StrokeButton
   | typeof TextButton;
+/* eslint-enable @typescript-eslint/no-duplicate-type-constituents */

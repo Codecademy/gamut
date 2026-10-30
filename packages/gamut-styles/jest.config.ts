@@ -1,3 +1,4 @@
+/** @jest-config-loader ts-node */
 /* eslint-disable */
 import path from 'path';
 import base from '../../jest.config.base';

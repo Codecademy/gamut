@@ -9,7 +9,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../../Box';
-import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
+import { InteractiveSelectors } from '../../ButtonBase/ButtonBase';
 import {
   tooltipArrowHeight,
   tooltipBgColor,
@@ -24,20 +24,20 @@ export const infoButtonStyles = css({
   color: textColor,
   height: 24,
   width: 24,
-  [ButtonSelectors.HOVER]: {
+  [InteractiveSelectors.HOVER]: {
     color: textColor,
     bg: 'background-hover',
   },
-  [ButtonSelectors.FOCUS_VISIBLE]: {
+  [InteractiveSelectors.FOCUS_VISIBLE]: {
     color: textColor,
   },
-  [ButtonSelectors.OUTLINE]: {
+  [InteractiveSelectors.OUTLINE]: {
     borderColor: textColor,
   },
-  [ButtonSelectors.ACTIVE]: {
+  [InteractiveSelectors.ACTIVE]: {
     color: 'text',
   },
-  [ButtonSelectors.DISABLED]: {
+  [InteractiveSelectors.DISABLED]: {
     color: 'text-disabled',
     bg: 'transparent',
   },

@@ -14,11 +14,9 @@ import {
 } from './styles/base';
 import { patternContainerBaseStyles } from './styles/pattern';
 import {
-  beakBorderStates,
   beakBoxVariants,
   beakSize,
   beakVariants,
-  outlineVariants,
   patternVariantStyles,
   widthStates,
 } from './styles/variants';
@@ -29,23 +27,16 @@ export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
 };
 
 export const RaisedDiv = styled.div<
-  StyleProps<typeof outlineVariants> &
-    StyleProps<typeof raisedDivVariants> &
+  StyleProps<typeof raisedDivVariants> &
     StyleProps<typeof popoverToolTipBodyAlignments> &
     StyleProps<typeof widthStates>
->(
-  outlineVariants,
-  popoverToolTipBodyAlignments,
-  raisedDivVariants,
-  widthStates
-);
+>(popoverToolTipBodyAlignments, raisedDivVariants, widthStates);
 
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
     StyleProps<typeof beakVariants> &
-    StyleProps<typeof beakSize> &
-    StyleProps<typeof beakBorderStates>
->(beakBorderStates, beakVariants, beakSize);
+    StyleProps<typeof beakSize>
+>(beakVariants, beakSize);
 
 export const BeakBox =
   styled(FlexBox)<StyleProps<typeof beakBoxVariants>>(beakBoxVariants);
@@ -66,7 +57,8 @@ export const PopoverPortal: React.FC<
   animation ? (
     <AnimatePresence>
       {isOpen && (
-        <BodyPortal>
+        // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
+        <BodyPortal zIndex={5}>
           <motion.div
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -81,7 +73,8 @@ export const PopoverPortal: React.FC<
       )}
     </AnimatePresence>
   ) : (
-    <BodyPortal {...rest} />
+    // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
+    <BodyPortal zIndex={5} {...rest} />
   );
 
 export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;

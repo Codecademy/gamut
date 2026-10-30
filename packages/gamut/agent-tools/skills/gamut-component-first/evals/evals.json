@@ -1,0 +1,41 @@
+{
+  "skill_name": "gamut-component-first",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm building a delete button for a list item in this gamut monorepo (@codecademy/gamut). When clicked, I need to show a confirmation prompt asking 'Are you sure you want to delete this item?' with Cancel and Delete buttons, dismissible via Escape or clicking outside. Build this for me as a component called ConfirmDeletePrompt. Save it to ./outputs/ConfirmDeletePrompt.tsx.",
+      "expected_output": "A component built on Gamut's Dialog (or Modal), not a hand-rolled overlay with manual dismiss/positioning logic.",
+      "files": [],
+      "expectations": [
+        "Uses Dialog or Modal from @codecademy/gamut rather than a hand-rolled overlay",
+        "Does not manually implement Escape-key or outside-click dismiss logic",
+        "Does not use a hand-rolled position:fixed/absolute overlay shell",
+        "Confirm/Cancel wired through the component's real props"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "In this gamut monorepo (@codecademy/gamut), I need a small icon next to a form label that shows extra explanatory text in a floating bubble when the user hovers or focuses it. Build this as a component called FieldHint. Save it to ./outputs/FieldHint.tsx.",
+      "expected_output": "A component built on Gamut's InfoTip/ToolTip, not a custom hover-triggered popup.",
+      "files": [],
+      "expectations": [
+        "Uses InfoTip or ToolTip from @codecademy/gamut rather than a custom hover popup",
+        "Does not manually wire onMouseEnter/onMouseLeave plus a custom absolutely-positioned div",
+        "Does not reimplement focus-triggered accessibility by hand",
+        "Accessible name/description wiring follows the documented InfoTip/ToolTip pattern"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "In this gamut monorepo (@codecademy/gamut), I need a button that, when clicked, shows a small floating list of actions (Edit, Duplicate, Delete) positioned below it, closing when the user clicks elsewhere or presses Escape. Build this as a component called RowActionsMenu. Save it to ./outputs/RowActionsMenu.tsx.",
+      "expected_output": "A component built on Gamut's Menu/MenuItem inside an inline PopoverContainer, not a hand-rolled floating list with manual positioning/dismiss logic.",
+      "files": [],
+      "expectations": [
+        "Uses Menu/MenuItem from @codecademy/gamut for the action list content",
+        "Uses PopoverContainer (inline) for floating positioning",
+        "Does not hand-write outside-click/Escape dismiss logic",
+        "Does not wrap in a bespoke styled(Box) raw-CSS shell"
+      ]
+    }
+  ]
+}

@@ -24,6 +24,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   alignment,
   avatar,
   children,
+  closeOnClick,
   escapeKeyPressHandler,
   inheritDims,
   info,
@@ -43,8 +44,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [isFocused, setIsFocused] = useState(false);
 
   // Use refs to store timeouts to prevent race conditions
-  const hoverDelayRef = useRef<NodeJS.Timeout | undefined>();
-  const focusDelayRef = useRef<NodeJS.Timeout | undefined>();
+  const hoverDelayRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const focusDelayRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
   const dims = getAlignmentStyles({ avatar, alignment, type });
@@ -122,6 +123,21 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     ? (e: FocusOrMouseEvent) => handleShowHideAction(e)
     : undefined;
 
+  const handleClick = useCallback(() => {
+    if (hoverDelayRef.current) {
+      clearTimeout(hoverDelayRef.current);
+      hoverDelayRef.current = undefined;
+    }
+    if (focusDelayRef.current) {
+      clearTimeout(focusDelayRef.current);
+      focusDelayRef.current = undefined;
+    }
+    setIsOpen(false);
+    setIsFocused(false);
+  }, []);
+
+  const clickHandler = closeOnClick && isHoverType ? handleClick : undefined;
+
   const contents = isPreviewType ? (
     <PreviewTipContents
       avatar={avatar}
@@ -142,15 +158,16 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       display="inline-flex"
       height={inheritDims ? 'inherit' : undefined}
       position="relative"
-      ref={wrapperRef}
+      ref={wrapperRef as React.Ref<HTMLDivElement>}
       width={inheritDims ? 'inherit' : undefined}
       onMouseLeave={toolOnlyEventFunc}
     >
       <TargetContainer
         height={inheritDims ? 'inherit' : undefined}
-        ref={ref}
+        ref={ref as React.Ref<HTMLDivElement>}
         width={inheritDims ? 'inherit' : undefined}
         onBlur={toolOnlyEventFunc}
+        onClick={clickHandler}
         onFocus={toolOnlyEventFunc}
         onKeyDown={escapeKeyPressHandler}
         onMouseDown={(e) => e.preventDefault()}

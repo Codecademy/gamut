@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "skill_name": "gamut-style-utilities",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-27T21:56:23Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 314.765,
+        "tokens": 55973,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses variant() with a variants map keyed by status, not manual branching",
+          "passed": true,
+          "evidence": "variant({ prop: 'status', base, variants: {...} })."
+        },
+        {
+          "text": "status prop type is derived from the variant definition via StyleProps",
+          "passed": true,
+          "evidence": "StyleProps<typeof statusBadgeVariants>."
+        },
+        {
+          "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+          "passed": true,
+          "evidence": "background-success/feedback-success, background-warning/feedback-warning used correctly; info falls back to verified-real blue-0/blue-800 with an explicit, well-reasoned comment citing the same gap Alert's general variant hits, and explicitly notes this is NOT a pattern to copy for success/warning. Third consecutive iteration with_skill gets this right."
+        },
+        {
+          "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+          "passed": true,
+          "evidence": "styled.span, no wrapping."
+        }
+      ],
+      "notes": [
+        "This run's own transcript reports it initially wrote a fabricated token (blue-900, which does not exist) and caught/fixed it before finishing -- direct evidence that the new 'verify a scale token exists' callout added to gamut-style-utilities is generalizing beyond the specific borderRadius example it was written around."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 195.309,
+        "tokens": 48050,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+          "passed": true,
+          "evidence": "states({ selected, disabled })."
+        },
+        {
+          "text": "Does not hand-write a separate combined selected+disabled branch",
+          "passed": true,
+          "evidence": "Only selected/disabled blocks, no combined branch."
+        },
+        {
+          "text": "Props typed via StyleProps<typeof theStates>",
+          "passed": true,
+          "evidence": "ChipProps = StyleProps<typeof chipStates> & Omit<ButtonHTMLAttributes<...>, 'disabled'>."
+        },
+        {
+          "text": "Colors are semantic tokens, not raw hex",
+          "passed": true,
+          "evidence": "background, border-secondary, text, background-hover, primary, background-selected, text-accent -- all semantic."
+        }
+      ],
+      "notes": [
+        "Uses borderRadius: 'full' -- the real, valid token. The fabricated 'max' token from iteration 2 did not reappear here; the new scale-verification callout appears to have worked for this eval."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 105.562,
+        "tokens": 37939,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses useTheme() to read a real theme color token in JS",
+          "passed": true,
+          "evidence": "Uses useColorModes() (which itself calls useTheme() internally) and getColorValue -- a documented escape-hatch API, not a hardcoded hex."
+        },
+        {
+          "text": "The token path read genuinely exists in the theme",
+          "passed": true,
+          "evidence": "Default color='primary', a real semantic alias name."
+        },
+        {
+          "text": "Does not try to apply CSS-based styling for the stroke value",
+          "passed": true,
+          "evidence": "No css()/variant()/states(); plain SVG attributes."
+        },
+        {
+          "text": "Rest of the component still follows normal library styling conventions",
+          "passed": true,
+          "evidence": "Clean typed component."
+        }
+      ],
+      "notes": [
+        "This passes the pre-registered assertions but likely has a real runtime bug outside their scope: it calls getColorValue(color) directly with color='primary' (a semantic alias), skipping the alias-to-raw-key resolution step. Per the real precedent in packages/gamut-styles/src/Background.tsx (isColorAlias(activeColors, color) -> activeColors[color] -> getColorValue(...)), getColorValue expects a RAW palette key, not an alias name -- theme._tokens.colors (which getColorValue reads) is populated by addColors(corePalette) with raw palette keys only, aliases like 'primary' are never merged into it. Calling getColorValue('primary') directly likely returns undefined, so stroke={undefined} on the SVG path. The without_skill run for this same eval correctly implements the isColorAlias/activeColors resolution step matching real precedent.",
+        "Consider whether the useTheme() escape-hatch section of gamut-style-utilities should demonstrate the isColorAlias/activeColors resolution pattern for color specifically -- its current example (theme.spacing[4]) doesn't touch color resolution at all, so nothing in the skill currently teaches this two-step alias lookup."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 205.557,
+        "tokens": 46987,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses variant() with a variants map keyed by status, not manual branching",
+          "passed": true,
+          "evidence": "variant({ defaultVariant: 'info', prop: 'status', base, variants: {...} })."
+        },
+        {
+          "text": "status prop type is derived from the variant definition via StyleProps",
+          "passed": true,
+          "evidence": "StyleProps<typeof statusVariants> composed with StyleProps<typeof statusBadgeProps>."
+        },
+        {
+          "text": "Colors used for each status are semantic ColorMode tokens (e.g. background-success/feedback-success, background-warning/feedback-warning) rather than raw hex literals",
+          "passed": false,
+          "evidence": "Uses bare raw palette names 'green'/'yellow'/'blue' with textColor 'white'/'navy'/'white' -- even less nuanced than iteration 2's same-hue pairs (green-100/green-900 etc). Third iteration, third different (all wrong) answer on this exact point for without_skill."
+        },
+        {
+          "text": "Does not wrap an existing Gamut component in styled() -- this is a new primitive",
+          "passed": true,
+          "evidence": "styled('span', styledOptions), no wrapping."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 673.282,
+        "tokens": 62039,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+          "passed": true,
+          "evidence": "states({ selected, disabled })."
+        },
+        {
+          "text": "Does not hand-write a separate combined selected+disabled branch",
+          "passed": true,
+          "evidence": "Only selected/disabled blocks, no combined branch."
+        },
+        {
+          "text": "Props typed via StyleProps<typeof theStates>",
+          "passed": false,
+          "evidence": "selected/disabled are hand-declared booleans on ChipStyleProps (which only derives StyleProps<typeof chipProps> for the spacing/layout/typography composition) -- not derived from StyleProps<typeof chipStates>. Third iteration, third different outcome on this exact point (pass/fail/fail)."
+        },
+        {
+          "text": "Colors are semantic tokens, not raw hex",
+          "passed": true,
+          "evidence": "background, border-secondary, text, background-hover, primary, background-selected -- all semantic. Also correctly uses borderRadius: 'full' (verified valid via a full tsc typecheck this run, per the transcript)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 211.776,
+        "tokens": 49095,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses useTheme() to read a real theme color token in JS",
+          "passed": true,
+          "evidence": "Uses useColorModes() (built on useTheme()) plus isColorAlias/activeColors for correct alias resolution before calling getColorValue."
+        },
+        {
+          "text": "The token path read genuinely exists in the theme",
+          "passed": true,
+          "evidence": "Default color='blue', a real raw palette key (though a raw, non-adaptive default rather than a semantic one like 'primary' -- a minor regression on the semantic-default front, but the resolution mechanism itself is correct)."
+        },
+        {
+          "text": "Does not try to apply CSS-based styling for the stroke value",
+          "passed": true,
+          "evidence": "No css()/variant()/states(); plain SVG attributes."
+        },
+        {
+          "text": "Rest of the component still follows normal library styling conventions",
+          "passed": true,
+          "evidence": "Cites and correctly mirrors real precedent (Background.tsx's isColorAlias/activeColors/getColorValue pattern)."
+        }
+      ],
+      "notes": [
+        "Correctly implements the isColorAlias -> activeColors -> getColorValue resolution chain matching real precedent in Background.tsx, which the with_skill run for this same eval skipped (see its grading notes) -- likely the more correct implementation of the two, though defaults to a raw 'blue' rather than a semantic token."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 205.212,
+        "stddev": 104.9525,
+        "min": 105.562,
+        "max": 314.765
+      },
+      "tokens": {
+        "mean": 47320.6667,
+        "stddev": 9039.0948,
+        "min": 37939,
+        "max": 55973
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 363.5383,
+        "stddev": 268.2639,
+        "min": 205.557,
+        "max": 673.282
+      },
+      "tokens": {
+        "mean": 52707.0,
+        "stddev": 8150.1892,
+        "min": 46987,
+        "max": 62039
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.17",
+      "time_seconds": "-158.3",
+      "tokens": "-5386"
+    }
+  },
+  "notes": [
+    "The borderRadius fix worked: with_skill correctly used borderRadius: 'full' on chip-independent-states (not the fabricated 'max' from iteration 2). Even more telling, with_skill's badge-variant-status run self-caught and fixed a DIFFERENT hallucinated token (blue-900, which does not exist) mid-run per its own transcript -- the new 'verify a scale token exists before typing it' callout appears to be generalizing beyond the one example it was written around, not just pattern-matching the specific borderRadius/full case.",
+    "with_skill hit a clean 1.0 across all 3 evals for the third iteration in a row. without_skill landed at 0.833 again, but via different specific mistakes than iteration 2: badge-variant-status failed on raw palette colors again (third consecutive different wrong answer: bare 'green'/'yellow'/'blue' names this time, even less nuanced than iteration 2's same-hue pairs), and chip-independent-states failed the StyleProps assertion again (hand-written selected/disabled booleans instead of StyleProps<typeof chipStates> -- this is now 2 of 3 iterations without_skill has gotten this specific point wrong).",
+    "Important qualitative finding the assertions did NOT catch: with_skill's sparkline-theme-color output calls getColorValue('primary') directly, skipping the alias-to-raw-key resolution step. Per real precedent in packages/gamut-styles/src/Background.tsx, getColorValue expects a raw palette key -- semantic aliases like 'primary' must first be resolved via isColorAlias(activeColors, color) -> activeColors[color]. theme._tokens.colors (what getColorValue reads) only contains raw palette keys from addColors(), never alias names. This means with_skill's Sparkline likely renders stroke={undefined} for its default 'primary' prop -- a real bug that passed every pre-registered assertion. without_skill's equivalent run correctly implemented the isColorAlias/activeColors/getColorValue chain, matching Background.tsx exactly.",
+    "This is a genuinely new, distinct gap from the borderRadius issue -- the skill's useTheme() escape-hatch section only demonstrates theme.spacing[4] (a non-aliased scale), so nothing in gamut-style-utilities currently teaches the two-step color-alias resolution pattern. Worth a 4th fix: add the isColorAlias -> activeColors -> getColorValue chain (or point directly at Background.tsx as the canonical example) to the useTheme() section, specifically for color values (as opposed to spacing/other non-aliased scales, which resolve in one step).",
+    "with_skill is now consistently faster AND cheaper across all 3 iterations (-158.3s, -5,386 tokens this round) while also being more correct on the pre-registered assertions -- the one place it currently loses is the alias-resolution bug above, which is orthogonal to everything fixed so far."
+  ]
+}

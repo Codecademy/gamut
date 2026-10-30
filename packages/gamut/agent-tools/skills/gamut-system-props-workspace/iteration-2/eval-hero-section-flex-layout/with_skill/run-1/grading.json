@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "Does not wrap Box/FlexBox in styled() at all (raw or css()-wrapped) since every property here has a direct prop equivalent",
+      "passed": true,
+      "evidence": "Renders <FlexBox flexDirection=\"column\" p={16} mt={24} color=\"white\" {...props}> directly — no styled() wrapper."
+    },
+    {
+      "text": "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+      "passed": true,
+      "evidence": "`flexDirection=\"column\"` on FlexBox (already display:flex by default)."
+    },
+    {
+      "text": "Expresses the 16px padding via a p prop rather than raw padding CSS",
+      "passed": true,
+      "evidence": "`p={16}`."
+    },
+    {
+      "text": "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+      "passed": true,
+      "evidence": "`mt={24}`."
+    },
+    {
+      "text": "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code",
+      "passed": false,
+      "evidence": "`color=\"white\"` again — same raw (non-adaptive) palette-token issue as iteration 1. This repeats across both iterations, indicating the skill's semantic-token guidance isn't prominent enough yet."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 1, "total": 5, "pass_rate": 0.8 }
+}

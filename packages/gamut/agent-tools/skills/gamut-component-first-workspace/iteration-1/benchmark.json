@@ -1,0 +1,301 @@
+{
+  "metadata": {
+    "skill_name": "gamut-component-first",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-28T14:42:33Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 1190.042,
+        "tokens": 51771,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses Menu/MenuItem from @codecademy/gamut for the action list content",
+          "passed": true,
+          "evidence": "Menu role=\"menu\" variant=\"popover\" with three MenuItems."
+        },
+        {
+          "text": "Uses PopoverContainer (inline) for floating positioning",
+          "passed": true,
+          "evidence": "<PopoverContainer alignment=\"bottom-right\" inline isOpen={isOpen} targetRef={triggerRef} ...>."
+        },
+        {
+          "text": "Does not hand-write outside-click/Escape dismiss logic",
+          "passed": true,
+          "evidence": "No manual listeners; onRequestClose={() => setIsOpen(false)} is the only close wiring, delegated to PopoverContainer's internal FocusTrap."
+        },
+        {
+          "text": "Does not wrap in a bespoke styled(Box) raw-CSS shell",
+          "passed": true,
+          "evidence": "Uses Background (a real Gamut component) + system props (borderRadius=\"lg\"), no styled()/raw CSS wrapper."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 1198.955,
+        "tokens": 37899,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses Dialog or Modal from @codecademy/gamut rather than a hand-rolled overlay",
+          "passed": true,
+          "evidence": "import { Dialog } from '@codecademy/gamut'; wraps Dialog with variant, confirmCta, cancelCta."
+        },
+        {
+          "text": "Does not manually implement Escape-key or outside-click dismiss logic",
+          "passed": true,
+          "evidence": "No addEventListener/keydown/click handlers anywhere; relies entirely on Dialog's onRequestClose."
+        },
+        {
+          "text": "Does not use a hand-rolled position:fixed/absolute overlay shell",
+          "passed": true,
+          "evidence": "No styled overlay markup at all -- Dialog is used directly."
+        },
+        {
+          "text": "Confirm/Cancel wired through the component's real props",
+          "passed": true,
+          "evidence": "confirmCta={{ children: 'Delete', onClick: onConfirm }}, cancelCta={{ children: 'Cancel' }}."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 1286.753,
+        "tokens": 72209,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses InfoTip or ToolTip from @codecademy/gamut rather than a custom hover popup",
+          "passed": true,
+          "evidence": "import { ToolTip } from '@codecademy/gamut'; wraps the trigger in <ToolTip>."
+        },
+        {
+          "text": "Does not manually wire onMouseEnter/onMouseLeave plus a custom absolutely-positioned div",
+          "passed": true,
+          "evidence": "No mouse event handlers; ToolTip owns hover/focus reveal."
+        },
+        {
+          "text": "Does not reimplement focus-triggered accessibility by hand",
+          "passed": true,
+          "evidence": "role/aria wiring for the tip body itself comes from ToolTip; only the trigger's own aria-label is set explicitly."
+        },
+        {
+          "text": "Accessible name/description wiring follows the documented InfoTip/ToolTip pattern",
+          "passed": true,
+          "evidence": "Documents id -> aria-describedby reuse pattern; aria-label on the trigger."
+        }
+      ],
+      "notes": [
+        "Real TypeScript errors present (caught via IDE diagnostics, not the pre-registered assertions): (1) borderRadius: 'circle' is used twice on the hand-built HintTrigger -- not a valid token (the real scale is none/sm/md/lg/xl/full); (2) spreading {...tipProps} onto ToolTip after an explicit id/info causes a placement type mismatch (Omit<ToolTipProps,...> loosens 'placement' to optional, but ToolTip requires placement:'floating'); (3) passing type=\"button\" to the styled(Box) HintTrigger via as=\"button\" doesn't retype it to accept a native button 'type' attribute, so this also fails to typecheck. None of these affect the component-reuse assertions this eval targets, but the component likely does not compile as written.",
+        "Also structurally more complex than necessary: builds a custom styled(Box) trigger with hand-rolled focus-ring pseudo-elements, rather than reusing IconButton (which already provides an accessible icon-only trigger + built-in tip/tipProps wiring) the way the without_skill run for this same eval did. The skill's decision table does point at InfoTip/ToolTip generically but doesn't call out IconButton's tip prop as the more direct route for an icon-only trigger specifically -- worth adding."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 1371.657,
+        "tokens": 58023,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses Menu/MenuItem from @codecademy/gamut for the action list content",
+          "passed": true,
+          "evidence": "Menu role=\"menu\" variant=\"popover\" with three MenuItems."
+        },
+        {
+          "text": "Uses PopoverContainer (inline) for floating positioning",
+          "passed": false,
+          "evidence": "<PopoverContainer alignment=\"bottom-left\" isOpen={isOpen} targetRef={triggerRef} ...> -- missing the `inline` prop entirely, so this portals to document.body via BodyPortal instead of rendering in place. This deviates from the pattern gamut-menu's own SKILL.md documents for this exact row-menu use case, and from gamut-z-index's guidance to keep nested floating menus inline. Not necessarily broken, but a real, documented-convention deviation."
+        },
+        {
+          "text": "Does not hand-write outside-click/Escape dismiss logic",
+          "passed": true,
+          "evidence": "No manual listeners; onRequestClose={closeMenu} delegated to PopoverContainer."
+        },
+        {
+          "text": "Does not wrap in a bespoke styled(Box) raw-CSS shell",
+          "passed": true,
+          "evidence": "No styled()/raw CSS wrapper around the menu content."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 1234.483,
+        "tokens": 43276,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses Dialog or Modal from @codecademy/gamut rather than a hand-rolled overlay",
+          "passed": true,
+          "evidence": "import { Dialog, DialogProps } from '@codecademy/gamut'; wraps Dialog with variant, confirmCta, cancelCta."
+        },
+        {
+          "text": "Does not manually implement Escape-key or outside-click dismiss logic",
+          "passed": true,
+          "evidence": "No manual keydown/click listeners; onCancel routed through Dialog's onRequestClose."
+        },
+        {
+          "text": "Does not use a hand-rolled position:fixed/absolute overlay shell",
+          "passed": true,
+          "evidence": "No styled overlay markup -- Dialog used directly."
+        },
+        {
+          "text": "Confirm/Cancel wired through the component's real props",
+          "passed": true,
+          "evidence": "confirmCta/cancelCta with configurable text props, containerFocusRef/zIndex forwarded too."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 1199.388,
+        "tokens": 55192,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses InfoTip or ToolTip from @codecademy/gamut rather than a custom hover popup",
+          "passed": true,
+          "evidence": "Reuses IconButton, which composes ToolTip internally via its tip/tipProps props -- no custom popup markup at all."
+        },
+        {
+          "text": "Does not manually wire onMouseEnter/onMouseLeave plus a custom absolutely-positioned div",
+          "passed": true,
+          "evidence": "No mouse handlers or custom positioning; fully delegated to IconButton/ToolTip."
+        },
+        {
+          "text": "Does not reimplement focus-triggered accessibility by hand",
+          "passed": true,
+          "evidence": "No hand-rolled focus/aria logic beyond the aria-label default."
+        },
+        {
+          "text": "Accessible name/description wiring follows the documented InfoTip/ToolTip pattern",
+          "passed": true,
+          "evidence": "aria-label defaults sensibly to hint text, overridable; tip/tipProps wired exactly per IconButton's real API."
+        }
+      ],
+      "notes": [
+        "This is the simpler and more idiomatic of the two implementations for this eval -- reuses IconButton's existing tip/tipProps composition instead of hand-building a styled(Box)+ToolTip wrapper. No TS errors surfaced here (unlike the with_skill run for this same eval, which has real compile errors -- see its grading notes)."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 1225.25,
+        "stddev": 53.4493,
+        "min": 1190.042,
+        "max": 1286.753
+      },
+      "tokens": {
+        "mean": 53959.6667,
+        "stddev": 17259.3952,
+        "min": 37899,
+        "max": 72209
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 1268.5093,
+        "stddev": 91.0357,
+        "min": 1199.388,
+        "max": 1371.657
+      },
+      "tokens": {
+        "mean": 52163.6667,
+        "stddev": 7826.021,
+        "min": 43276,
+        "max": 58023
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "-43.3",
+      "tokens": "+1796"
+    }
+  },
+  "notes": [
+    "The core hypothesis this skill targets -- that an agent without it would build a bespoke overlay/popup from scratch instead of reusing an existing Gamut component -- did NOT materialize in any of the 6 runs. All 3 without_skill runs correctly found and reused Dialog, IconButton/ToolTip, and Menu/PopoverContainer respectively, by grepping the real component source. With generous repo-exploration access and no time pressure, a capable baseline agent reliably discovers the right existing component on its own for these three needs.",
+    "The actual differentiation is in convention-level details, not component choice: click-menu-actions/without_skill omitted the `inline` prop on PopoverContainer, causing it to portal via BodyPortal instead of rendering in place -- a real deviation from the pattern documented in gamut-menu's own SKILL.md and the stacking-order guidance in gamut-z-index. with_skill included `inline` correctly, consistent with the skill's decision-table pointer to gamut-menu.",
+    "hover-info-bubble surfaced a genuinely surprising result: with_skill's FieldHint has real TypeScript compile errors (caught via IDE diagnostics, not the pre-registered assertions) -- borderRadius: 'circle' is not a valid token, and a tipProps spread creates a placement type mismatch -- because it hand-built a styled(Box)+ToolTip composition. without_skill's equivalent is simpler, more idiomatic, and compiles cleanly: it reuses IconButton's existing tip/tipProps composition directly instead of building a new trigger from scratch. This suggests gamut-component-first's decision table should point specifically at IconButton's tip prop for icon-only hover triggers, not just generically at ToolTip/InfoTip -- the more specific pointer would have steered with_skill to the simpler, correct answer.",
+    "confirm-delete-overlay tied cleanly at 1.0/1.0 -- both configurations produced clean, correct Dialog-based implementations.",
+    "Aggregate pass_rate favors with_skill (+0.08), but this is really two different, narrower findings (the missing `inline` prop; a real compile-error avoided) rather than one clean 'component reuse' win, since component reuse itself was never actually at risk in these three runs given full repo access.",
+    "Runtimes were unusually long across the board (~1200-1370s per run, both configurations) -- noticeably higher than the gamut-system-props/gamut-style-utilities evals. This looks like general task complexity/exploration depth rather than a skill-specific effect, since it hit with_skill and without_skill roughly equally."
+  ]
+}

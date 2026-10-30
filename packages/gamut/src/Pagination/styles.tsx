@@ -1,7 +1,7 @@
 import { states, theme, transitionConcat } from '@codecademy/gamut-styles';
 
 import { templateVariants } from '../Button/shared/styles';
-import { ButtonSelectors } from '../ButtonBase/ButtonBase';
+import { InteractiveSelectors } from '../ButtonBase/ButtonBase';
 
 const paginationBaseStyles = {
   color: 'text',
@@ -9,31 +9,31 @@ const paginationBaseStyles = {
   height: 40,
   mx: 4,
   width: 40,
-  [ButtonSelectors.ACTIVE]: {
+  [InteractiveSelectors.ACTIVE]: {
     fontWeight: 'title',
     color: 'text',
   },
-  [ButtonSelectors.DISABLED]: {
+  [InteractiveSelectors.DISABLED]: {
     color: 'text-disabled',
     bg: 'transparent',
   },
-  [ButtonSelectors.OUTLINE]: { borderColor: 'border-primary' },
-  [ButtonSelectors.SHADOW_ACTIVE]: { opacity: 0 },
-  [ButtonSelectors.SHADOW_HOVER]: { opacity: 0 },
+  [InteractiveSelectors.OUTLINE]: { borderColor: 'border-primary' },
+  [InteractiveSelectors.SHADOW_ACTIVE]: { opacity: 0 },
+  [InteractiveSelectors.SHADOW_HOVER]: { opacity: 0 },
 } as const;
 
 export const paginationTextVariant = templateVariants(['secondary'], () => ({
   ...paginationBaseStyles,
   borderColor: 'transparent',
-  [ButtonSelectors.ACTIVE]: {
+  [InteractiveSelectors.ACTIVE]: {
     fontWeight: 'title',
     color: 'text',
     bg: 'background-selected',
   },
-  [ButtonSelectors.SHADOW]: {
+  [InteractiveSelectors.SHADOW]: {
     transition: transitionConcat(['opacity'], 'fast', 'ease-in'),
   },
-  [ButtonSelectors.HOVER]: {
+  [InteractiveSelectors.HOVER]: {
     transition: transitionConcat(
       ['background-color', 'font-weight'],
       'fast',
@@ -55,10 +55,10 @@ export const paginationTextButtonStates = states({
 
 export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
   ...paginationBaseStyles,
-  [ButtonSelectors.ACTIVE]: {
+  [InteractiveSelectors.ACTIVE]: {
     borderColor: 'currentColor',
   },
-  [ButtonSelectors.SHADOW]: {
+  [InteractiveSelectors.SHADOW]: {
     transition: transitionConcat(
       ['opacity', 'border-color'],
       'fast',

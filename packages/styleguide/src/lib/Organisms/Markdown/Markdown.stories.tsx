@@ -1,4 +1,5 @@
 import { Markdown, Text, TextProps } from '@codecademy/gamut';
+import { Iframe, MarkdownVideo } from '@codecademy/gamut/Video';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import exampleMarkdown from './example.md';
@@ -23,8 +24,10 @@ This is markdown
 
 export const FullExample: Story = {
   args: {
+    iframeOverride: { component: Iframe },
     // Not sure why there's a type mismatch, but the story renders
     text: exampleMarkdown as any,
+    videoOverride: { component: MarkdownVideo },
   },
 };
 
@@ -73,6 +76,17 @@ export const LinkOverride: Story = {
         component: (props) => <Text {...props} as="span" color="blue-500" />,
       },
     },
+  },
+};
+
+export const WithoutVideoOverride: Story = {
+  args: {
+    text: `<video width="100%" height="100%" align="middle" controls>
+  <source src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4" type="video/mp4" />
+  <track src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt" type="srt" label="English" kind="subtitles" srclang="en-US" default="true" />
+  Your browser does not support the video tag.
+</video>
+`,
   },
 };
 

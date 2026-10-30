@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags the './HeroSection.scss' import as an SCSS/CSS module violation",
+      "passed": true,
+      "evidence": "Finding #4 explicitly names the SCSS import and recommends deleting it, without citing the ESLint plugin per the no-eslint-plugin instruction."
+    },
+    {
+      "text": "Flags className=\"hero-wrapper\" on the Box component as a violation",
+      "passed": true,
+      "evidence": "Finding #4 explicitly names className as fighting Box's own API."
+    },
+    {
+      "text": "Flags the inline style={{ color: '#10162F' }} on Box as a violation",
+      "passed": true,
+      "evidence": "Finding #1, framed purely via manual code-review reasoning (dark-mode contrast bug) rather than citing a lint rule, per this iteration's instruction."
+    },
+    {
+      "text": "For the hex #10162F, recommends the semantic token 'text' (not just the palette name navy-800) as the primary remediation",
+      "passed": true,
+      "evidence": "\"<Box color=\\\"text\\\">\", with correct dark-mode reasoning."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Correctly complied with the no-ESLint-plugin instruction this iteration -- findings framed entirely through manual source/token reasoning, no eslint-plugin-gamut citations. Still independently found the bare <h1>/Text gap."
+    ],
+    "workarounds": []
+  }
+}

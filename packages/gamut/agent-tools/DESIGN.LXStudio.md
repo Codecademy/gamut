@@ -141,88 +141,97 @@ LX Studio communicates **modern professional craft** — clean, precise, and too
 **Design philosophy**:
 
 - Larger border radii (`sm`–`lg`) for a softer, more modern feel
-- Brand blue (`sapphire` / `primary`) drives CTAs, buttons, and links
+- Brand blue (`sapphire` / `primary`) drives CTAs, buttons, and links in **light mode** — in dark mode `primary` falls back to Core's `yellow-500`, not `sapphire` (see Semantic Color Aliases)
 - Soft shadows (`shadow-primary` → `navy-200`)
 - Skillsoft Text (`base`) and Skillsoft Sans (`accent`) for all UI typography
+- Dark mode is supported but not bespoke — `lxStudioTheme` only overrides light-mode tokens (see `packages/gamut-styles/src/themes/lxStudio.ts`); dark mode falls back to Core's dark palette unmodified
 
 ---
 
 ## Themes
 
-LX Studio uses a single Gamut theme — light mode only.
+LX Studio uses a single Gamut theme with both light and dark modes.
 
-| Theme         | Use case                               | Base font             | Dark mode  |
-| ------------- | -------------------------------------- | --------------------- | ---------- |
-| **LX Studio** | Skillsoft LX Studio authoring platform | Skillsoft Text / Sans | light only |
+| Theme         | Use case                               | Base font             | Dark mode                                             |
+| ------------- | -------------------------------------- | --------------------- | ----------------------------------------------------- |
+| **LX Studio** | Skillsoft LX Studio authoring platform | Skillsoft Text / Sans | ✓ light + dark (dark inherited from Core, unmodified) |
 
-The active theme is set at the app root via `<GamutProvider theme={lxStudioTheme}>`.
+The active theme is set at the app root via `<GamutProvider theme={lxStudioTheme}>`. `lxStudioTheme` calls `.addColorModes('light', { light: {...} })` with **only** a `light` override map — there is no `dark` key in the theme definition, so every semantic token falls back to Core's `dark` values for that token when the app is in dark mode. This is different from `adminTheme`/`platformTheme`, which define their own explicit `dark` overrides on top of Core.
 
 ---
 
 ## Semantic Color Aliases
 
-Use these token names when specifying colors. LX Studio is light mode only — there are no dark mode counterparts.
+Use these token names when specifying colors — they work in both light and dark mode via `<ColorMode>`. **Light** below is LX Studio's own value where it overrides Core (in `lxStudio.ts`); everywhere else, Light is simply inherited from Core. **Dark** is always Core's unmodified dark value for that token, since `lxStudioTheme` never defines a `dark` override map.
 
 ### Text
 
-| Token            | Resolves to | Use for                     |
-| ---------------- | ----------- | --------------------------- |
-| `text`           | `navy-800`  | Default body and UI text    |
-| `text-accent`    | `navy-900`  | Stronger emphasis text      |
-| `text-secondary` | `navy-600`  | Supporting / secondary copy |
-| `text-disabled`  | `navy-500`  | Disabled state labels       |
+Not overridden by LX Studio at all — these are Core's values in both modes.
+
+| Token            | Light      | Dark        | Use for                     |
+| ---------------- | ---------- | ----------- | --------------------------- |
+| `text`           | `navy-800` | `white`     | Default body and UI text    |
+| `text-accent`    | `navy-900` | `beige`     | Stronger emphasis text      |
+| `text-secondary` | `navy-600` | `white-600` | Supporting / secondary copy |
+| `text-disabled`  | `navy-500` | `white-500` | Disabled state labels       |
 
 ### Background
 
-| Token                 | Resolves to         | Use for                           |
-| --------------------- | ------------------- | --------------------------------- |
-| `background`          | `white`             | Default page/component background |
-| `background-primary`  | `lxStudioBgPrimary` | Slightly elevated surfaces        |
-| `background-contrast` | `white`             | Maximum contrast surface          |
-| `background-selected` | `navy-100`          | Selected row / item               |
-| `background-hover`    | `navy-200`          | Hover state overlay               |
-| `background-disabled` | `navy-200`          | Disabled surface                  |
-| `background-success`  | `green-0`           | Success state container           |
-| `background-warning`  | `yellow-0`          | Warning state container           |
-| `background-error`    | `red-0`             | Error state container             |
+| Token                 | Light               | Dark         | Use for                           |
+| --------------------- | ------------------- | ------------ | --------------------------------- |
+| `background`          | `white`             | `navy-800`   | Default page/component background |
+| `background-primary`  | `lxStudioBgPrimary` | `navy-900`   | Slightly elevated surfaces        |
+| `background-contrast` | `white`             | `black`      | Maximum contrast surface          |
+| `background-selected` | `navy-100`          | `white-100`  | Selected row / item               |
+| `background-hover`    | `navy-200`          | `white-200`  | Hover state overlay               |
+| `background-disabled` | `navy-200`          | `white-200`  | Disabled surface                  |
+| `background-success`  | `green-0`           | `green-900`  | Success state container           |
+| `background-warning`  | `yellow-0`          | `yellow-900` | Warning state container           |
+| `background-error`    | `red-0`             | `red-900`    | Error state container             |
+
+`background-primary` is the only row LX Studio overrides in light mode (`lxStudioBgPrimary`); its dark value is Core's plain `navy-900`, not an LX-specific token.
 
 ### Interactive
 
-| Token             | Resolves to  | Use for                              |
-| ----------------- | ------------ | ------------------------------------ |
-| `primary`         | `sapphire`   | Primary CTA, links, focus rings      |
-| `primary-hover`   | `navy-800`   | Hover state of primary interactive   |
-| `primary-inverse` | `yellow-500` | Primary on a colored background      |
-| `secondary`       | `navy-800`   | Secondary CTA, ghost buttons         |
-| `secondary-hover` | `navy-700`   | Hover state of secondary interactive |
-| `danger`          | `red-500`    | Destructive actions, error states    |
-| `danger-hover`    | `red-600`    | Hover on danger interactive          |
+| Token             | Light        | Dark         | Use for                              |
+| ----------------- | ------------ | ------------ | ------------------------------------ |
+| `primary`         | `sapphire`   | `yellow-500` | Primary CTA, links, focus rings      |
+| `primary-hover`   | `navy-800`   | `yellow-400` | Hover state of primary interactive   |
+| `primary-inverse` | `yellow-500` | `hyper-500`  | Primary on a colored background      |
+| `secondary`       | `navy-800`   | `white`      | Secondary CTA, ghost buttons         |
+| `secondary-hover` | `navy-700`   | `white-700`  | Hover state of secondary interactive |
+| `danger`          | `red-500`    | `red-300`    | Destructive actions, error states    |
+| `danger-hover`    | `red-600`    | `red-400`    | Hover on danger interactive          |
+
+**`primary` does not stay LX Studio's brand blue in dark mode.** `sapphire`/`navy-800` are light-mode-only overrides; dark mode uses Core's `yellow-500`/`yellow-400` (the same values Core itself uses), since `lxStudioTheme` never defines a `dark` override. If a design calls for `sapphire` to persist in dark mode, that requires an actual theme change, not a documentation fix.
 
 ### Border
 
-| Token              | Resolves to | Use for                         |
-| ------------------ | ----------- | ------------------------------- |
-| `border-primary`   | `navy-400`  | Standard input and card borders |
-| `border-secondary` | `navy-600`  | Medium-weight borders           |
-| `border-tertiary`  | `navy-800`  | Strong structural borders       |
-| `border-disabled`  | `navy-300`  | Disabled input borders          |
+| Token              | Light      | Dark        | Use for                         |
+| ------------------ | ---------- | ----------- | ------------------------------- |
+| `border-primary`   | `navy-400` | `white`     | Standard input and card borders |
+| `border-secondary` | `navy-600` | `white-600` | Medium-weight borders           |
+| `border-tertiary`  | `navy-800` | `white-300` | Strong structural borders       |
+| `border-disabled`  | `navy-300` | `white-500` | Disabled input borders          |
 
-`border-primary` resolves to `navy-400` — mid-weight borders for inputs and cards.
+`border-primary` resolves to `navy-400` in light mode — mid-weight borders for inputs and cards. `border-secondary` is the only row here LX Studio does not override; it's inherited from Core in both modes.
 
 ### Feedback
 
-| Token              | Resolves to       | Use for                          |
-| ------------------ | ----------------- | -------------------------------- |
-| `feedback-error`   | `red-600`         | Error messages, validation       |
-| `feedback-success` | `lxStudioSuccess` | Success messages, confirmations  |
-| `feedback-warning` | `yellow-500`      | Warning messages, caution states |
+| Token              | Light             | Dark        | Use for                          |
+| ------------------ | ----------------- | ----------- | -------------------------------- |
+| `feedback-error`   | `red-600`         | `red-300`   | Error messages, validation       |
+| `feedback-success` | `lxStudioSuccess` | `green-400` | Success messages, confirmations  |
+| `feedback-warning` | `yellow-500`      | `yellow-0`  | Warning messages, caution states |
+
+`feedback-error` and `feedback-warning` are inherited from Core in light mode too (not LX-specific); `feedback-success` is LX Studio's own light override, but its dark value falls back to Core's `green-400`, not `lxStudioSuccess`.
 
 ### Shadow
 
-| Token              | Resolves to |
-| ------------------ | ----------- |
-| `shadow-primary`   | `navy-200`  |
-| `shadow-secondary` | `navy-600`  |
+| Token              | Light      | Dark        |
+| ------------------ | ---------- | ----------- |
+| `shadow-primary`   | `navy-200` | `white`     |
+| `shadow-secondary` | `navy-600` | `white-600` |
 
 Use `shadow-primary` for standard elevated surfaces.
 
@@ -380,8 +389,8 @@ Key patterns:
 ### Colors
 
 - **Do** use semantic color aliases (`primary`, `text`, `background`, etc.) — never hardcode hex values.
-- **Do** use `primary` (resolves to palette `sapphire`) for buttons and links.
-- **Don't** attempt dark mode — LX Studio is light only.
+- **Do** use `primary` (resolves to palette `sapphire` in light mode) for buttons and links.
+- **Don't** assume LX Studio has a bespoke dark palette — it inherits Core's dark values unmodified (see Semantic Color Aliases). `primary` in particular becomes Core's `yellow-500` in dark mode, not `sapphire` — verify visually rather than assuming brand color persists.
 - **Don't** use raw palette swatches for adaptive UI — use semantic aliases.
 
 ### Typography

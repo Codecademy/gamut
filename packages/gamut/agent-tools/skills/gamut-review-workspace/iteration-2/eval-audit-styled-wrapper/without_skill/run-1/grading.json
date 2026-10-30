@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags CardShell (styled(Box) with a raw tagged-template literal, where every property is prop-expressible) as an error/violation, with remediation to delete the wrapper and use Box/FlexBox props directly",
+      "passed": true,
+      "evidence": "\"The whole component collapses to <FlexBox column p={16} /> -- no bespoke wrapper needed.\""
+    },
+    {
+      "text": "Does NOT flag GlowShell as an error the same way -- it's wrapped in css(), which is the compliant form for a non-expressible gradient",
+      "passed": true,
+      "evidence": "Correctly treats the gradient itself as a legitimate css() case (background has no scale) while still flagging the hardcoded color inside it. Did not reach the 'delete the wrapper entirely' insight with_skill reached, but valid."
+    },
+    {
+      "text": "Notes that GlowShell's padding: 24 should still move out to a prop even though the gradient must stay in css()",
+      "passed": true,
+      "evidence": "Finding #3 goes further than any other run across both iterations: it identifies that `padding` (the raw CSS property, not the `p` alias) inside css() is not recognized by variance's scale lookup at all, so it silently passes through as unscaled literal CSS -- a real, verified bug (confirmed against packages/variance/src/core.ts), distinct from and worse than merely 'should be a prop for cleanliness'. No other run in either iteration caught this."
+    },
+    {
+      "text": "Recommends FlexBox instead of Box + display:flex for CardShell",
+      "passed": true,
+      "evidence": "\"<FlexBox column p={16} />\"."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Found a genuinely novel, verified-accurate technical point missed by all 3 other CardShells runs across both iterations: `padding: 24` inside css() bypasses the spacing scale because variance only scales recognized alias keys (p/px/py/etc), not the raw CSS property name. This means the fixture's GlowShell has a real functional bug (unscaled spacing), not just an avoidable-but-harmless pattern."
+    ],
+    "workarounds": []
+  }
+}

@@ -9,7 +9,7 @@ description: Use this skill when building action menus, navigation menus, floati
 
 Source: `@codecademy/gamut` — [Menu.tsx](https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Menu/Menu.tsx)
 
-See also: [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA roles and focus rules. [`gamut-list`](../gamut-list/SKILL.md) — lower-level List primitives when `Menu` is too opinionated.
+See also: [`gamut-accessibility`](../gamut-accessibility/SKILL.md) — ARIA roles and focus rules. [`gamut-list`](../gamut-list/SKILL.md) — lower-level List primitives when `Menu` is too opinionated. [`gamut-z-index`](../gamut-z-index/SKILL.md) — stacking order for floating menus, including opening one inside a `Modal`.
 
 Storybook: [Molecules / Menu](https://gamut.codecademy.com/?path=/docs-molecules-menu--docs)
 
@@ -147,7 +147,7 @@ Pass `label` on a `disabled` `MenuItem` to explain why it is unavailable.
 
 ## Floating menus with PopoverContainer
 
-Offset the `PopoverContainer` y-axis by `48` (normal spacing) or `32` (condensed) per item to align the popover with the triggering item. Floating menus with actions should use `role="menu"`.
+Offset the `PopoverContainer` y-axis by `48` (normal spacing) or `32` (condensed) per item to align the popover with the triggering item. Floating menus with actions should use `role="menu"`. Keep `inline` set (as below) rather than letting `PopoverContainer` portal — this matters more when the menu opens inside a `Modal` or other floating surface; see [`gamut-z-index`](../gamut-z-index/SKILL.md).
 
 ```tsx
 <PopoverContainer

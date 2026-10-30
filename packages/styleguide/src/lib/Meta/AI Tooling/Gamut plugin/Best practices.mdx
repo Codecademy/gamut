@@ -83,14 +83,18 @@ Without `DESIGN.md` at the repo root, color findings are lower confidence — in
 
 Installed into app repos via `gamut plugin install`. Source: [`packages/gamut/agent-tools/skills/`](https://github.com/Codecademy/gamut/tree/main/packages/gamut/agent-tools/skills/)
 
-- `gamut-review` — codebase audit playbook
+- `gamut-review` — codebase audit playbook, including `styled()` wrappers that bypass system props and bespoke components that duplicate existing ones
+- `gamut-component-first` — check for an existing Gamut component before building bespoke UI; the proactive counterpart to `gamut-review`'s audit
 - `gamut-theming` — theme selection, `GamutProvider`, `theme.d.ts`
 - `gamut-color-mode` — ColorMode and semantic color
 - `gamut-buttons` — button atoms, variants, disabled patterns
+- `gamut-modal` — Modal/Dialog composition, dismiss and focus-trap behavior
+- `gamut-z-index` — z-index scale and stacking order across floating/portalled components
 - `gamut-list` — List, ListRow, ListCol primitives for custom layouts
 - `gamut-menu` — Menu, MenuItem, MenuSeparator for action, navigation, and floating menus
 - `gamut-datatable` — DataTable for sortable/filterable bulk data comparison
 - `gamut-datalist` — DataList for item management with expansion and selection
+- `gamut-select-dropdown` — SelectDropdown single/multi modes, controlled value, and FormGroup wiring
 - `gamut-layout` — spacing scale, breakpoints, page grid
 - `gamut-system-props` — `system.*` / `Box`
 - `gamut-style-utilities` — `css`, `variant`, `states`

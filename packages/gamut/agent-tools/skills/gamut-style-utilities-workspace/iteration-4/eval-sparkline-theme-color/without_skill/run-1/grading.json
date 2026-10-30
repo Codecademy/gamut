@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses useTheme() to read a real theme color token in JS",
+      "passed": true,
+      "evidence": "useTheme() from @emotion/react, theme.colors.primary."
+    },
+    {
+      "text": "The token path read genuinely exists in the theme",
+      "passed": true,
+      "evidence": "theme.colors.primary is a real semantic alias."
+    },
+    {
+      "text": "Does not try to apply CSS-based styling for the stroke value",
+      "passed": true,
+      "evidence": "No css()/variant()/states(); plain SVG attributes."
+    },
+    {
+      "text": "Rest of the component still follows normal library styling conventions",
+      "passed": true,
+      "evidence": "Simple, correctly-typed component. This is the same direct theme.colors[key]-on-an-SVG-attribute pattern confirmed as real production precedent in RadialProgress/index.tsx -- the simpler of the two valid approaches now documented in the skill."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

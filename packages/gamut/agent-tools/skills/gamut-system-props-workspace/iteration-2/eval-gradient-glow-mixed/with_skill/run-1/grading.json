@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+      "passed": true,
+      "evidence": "No styled() wrapper used at all now — renders <FlexBox alignItems=\"center\" justifyContent=\"center\" p={24} background=\"radial-gradient(...)\" {...props}> directly. This is the fix taking effect: the skill now correctly documents that `background` takes any CSS value including gradients, so no wrapper is needed."
+    },
+    {
+      "text": "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "`p={24}` is a valid FlexBox/system.space prop."
+    },
+    {
+      "text": "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+      "passed": true,
+      "evidence": "`alignItems=\"center\" justifyContent=\"center\"` on FlexBox."
+    },
+    {
+      "text": "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent",
+      "passed": true,
+      "evidence": "`radial-gradient(circle, #3A10E5 0%, rgba(58,16,229,0.5) 45%, rgba(58,16,229,0) 100%)` — correct."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

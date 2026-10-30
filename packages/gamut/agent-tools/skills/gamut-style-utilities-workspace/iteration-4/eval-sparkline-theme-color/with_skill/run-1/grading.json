@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Uses useTheme() to read a real theme color token in JS",
+      "passed": true,
+      "evidence": "useColorModes() (built on useTheme()) plus isColorAlias/activeColors/getColorValue."
+    },
+    {
+      "text": "The token path read genuinely exists in the theme",
+      "passed": true,
+      "evidence": "Default color='primary', a real semantic alias; resolved to its raw key before lookup, matching Background.tsx's real resolution chain."
+    },
+    {
+      "text": "Does not try to apply CSS-based styling for the stroke value",
+      "passed": true,
+      "evidence": "No css()/variant()/states(); plain SVG attributes."
+    },
+    {
+      "text": "Rest of the component still follows normal library styling conventions",
+      "passed": true,
+      "evidence": "Clean, correctly-typed component citing the real Background.tsx precedent by name."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "This is the more defensive of the two valid approaches now documented in the skill -- it resolves to a literal value via getColorValue, which also works for non-DOM consumers (canvas, contrast math), not just DOM/SVG rendering. Slightly more code than the without_skill run's theme.colors[key] approach, but not wrong -- see the corrected useTheme() section for when each is appropriate."
+    ],
+    "workarounds": []
+  }
+}

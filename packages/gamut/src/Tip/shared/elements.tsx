@@ -33,6 +33,17 @@ const inlineTipStates = states({
   inheritDims: { height: 'inherit', width: 'inherit' },
 });
 
+const toolTipWrapperStates = states({
+  dismissed: {
+    '&:hover > [data-tooltip-body], &:has(:focus-visible) > [data-tooltip-body]':
+      {
+        opacity: 0,
+        visibility: 'hidden',
+        transition: 'none',
+      },
+  },
+});
+
 export const FloatingTipTextWrapper = styled(FlexBox)<
   StyleProps<typeof floatingTipTextStates>
 >(
@@ -43,16 +54,20 @@ export const FloatingTipTextWrapper = styled(FlexBox)<
   floatingTipTextStates
 );
 
-export const ToolTipWrapper = styled.div<StyleProps<typeof inlineTipStates>>(
+export const ToolTipWrapper = styled.div<
+  StyleProps<typeof inlineTipStates> & StyleProps<typeof toolTipWrapperStates>
+>(
   css({
-    '&:hover > div, &:focus-within > div': {
-      opacity: 1,
-      transition: `opacity ${timing.fast} ${timing.base}`,
-      visibility: 'visible',
-    },
+    '&:hover > [data-tooltip-body], &:has(:focus-visible) > [data-tooltip-body]':
+      {
+        opacity: 1,
+        transition: `opacity ${timing.fast} ${timing.base}`,
+        visibility: 'visible',
+      },
     ...tipWrapperStyles,
   }),
-  inlineTipStates
+  inlineTipStates,
+  toolTipWrapperStates
 );
 
 export const InfoTipWrapper = styled.div(

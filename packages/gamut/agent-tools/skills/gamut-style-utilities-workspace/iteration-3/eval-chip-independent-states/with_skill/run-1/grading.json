@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+      "passed": true,
+      "evidence": "states({ selected, disabled })."
+    },
+    {
+      "text": "Does not hand-write a separate combined selected+disabled branch",
+      "passed": true,
+      "evidence": "Only selected/disabled blocks, no combined branch."
+    },
+    {
+      "text": "Props typed via StyleProps<typeof theStates>",
+      "passed": true,
+      "evidence": "ChipProps = StyleProps<typeof chipStates> & Omit<ButtonHTMLAttributes<...>, 'disabled'>."
+    },
+    {
+      "text": "Colors are semantic tokens, not raw hex",
+      "passed": true,
+      "evidence": "background, border-secondary, text, background-hover, primary, background-selected, text-accent -- all semantic."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Uses borderRadius: 'full' -- the real, valid token. The fabricated 'max' token from iteration 2 did not reappear here; the new scale-verification callout appears to have worked for this eval."
+    ],
+    "workarounds": []
+  }
+}

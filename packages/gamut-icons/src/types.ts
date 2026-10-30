@@ -1,1 +1,1 @@
-export type { GamutIconProps } from './props';
+export type { GamutIconProps, IconStyleProps } from './props';

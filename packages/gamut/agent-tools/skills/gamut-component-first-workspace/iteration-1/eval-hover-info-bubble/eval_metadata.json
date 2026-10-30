@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "hover-info-bubble",
+  "prompt": "In this gamut monorepo (@codecademy/gamut), I need a small icon next to a form label that shows extra explanatory text in a floating bubble when the user hovers or focuses it. Build this as a component called FieldHint. Save it to ./outputs/FieldHint.tsx.",
+  "assertions": [
+    "Uses Gamut's InfoTip (or ToolTip) component imported from @codecademy/gamut rather than a custom hover-triggered popup",
+    "Does not manually wire onMouseEnter/onMouseLeave plus a custom absolutely-positioned div to show/hide the bubble content",
+    "Does not reimplement focus-triggered accessibility (aria-describedby wiring, focus/blur handlers for keyboard users) by hand -- InfoTip/ToolTip already handles this",
+    "The accessible name/description wiring (aria-label or aria-labelledby, or aria-describedby if used as a description) follows the pattern documented for InfoTip/ToolTip, not an ad-hoc one"
+  ]
+}

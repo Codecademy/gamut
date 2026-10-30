@@ -1,5 +1,7 @@
 import { Children, isValidElement } from 'react';
 
+import { isNullish } from './nullish';
+
 /**
  * Recursively extracts plain text content from React children.
  *
@@ -31,11 +33,15 @@ export const extractTextContent = (children: React.ReactNode): string => {
       if (typeof child === 'string' || typeof child === 'number') {
         return String(child);
       }
-      if (typeof child === 'boolean' || child == null) {
+      if (typeof child === 'boolean' || isNullish(child)) {
         return '';
       }
       if (isValidElement(child)) {
-        const textContent = child.props.children ?? child.props.text ?? '';
+        const props = child.props as {
+          children?: React.ReactNode;
+          text?: string;
+        };
+        const textContent = props.children ?? props.text ?? '';
         return extractTextContent(textContent);
       }
       return '';

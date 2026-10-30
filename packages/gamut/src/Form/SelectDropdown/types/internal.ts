@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DropdownIndicatorProps, GroupBase } from 'react-select';
 
 import { SelectOptionBase } from '../../utils';
+import { SelectDropdownTranslations } from '../core/translations';
 import { OptionStrict } from './options';
 import { SelectDropdownSizes, SharedProps } from './styles';
 
@@ -14,10 +15,10 @@ export type InternalSelectProps = {
 };
 
 /**
- * Ref type for programmatic focus management.
+ * Ref type for programmatic focus management (internal refs from useRef).
  * Used for managing focus on select input and remove all button.
  */
-export type ProgramaticFocusRef =
+export type ProgrammaticFocusRef =
   | React.MutableRefObject<HTMLDivElement>
   | React.MutableRefObject<null>;
 
@@ -31,9 +32,11 @@ export interface SelectDropdownContextValueTypes {
   /** Function to update the currently focused value */
   setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
   /** Ref to the select input for programmatic focus */
-  selectInputRef?: ProgramaticFocusRef;
+  selectInputRef?: ProgrammaticFocusRef;
   /** Ref to the remove all button for programmatic focus */
-  removeAllButtonRef?: ProgramaticFocusRef;
+  removeAllButtonRef?: ProgrammaticFocusRef;
+  /** Merged translations for microcopy consumed by sub-components */
+  translations: SelectDropdownTranslations;
 }
 
 /**

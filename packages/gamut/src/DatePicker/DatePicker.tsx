@@ -42,6 +42,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const [gridFocusRequested, setGridFocusRequested] = useState(false);
   const [activeRangePart, setActiveRangePart] =
     useState<DatePickerRangeContextValue['activeRangePart']>(null);
+  const [hasError, setHasError] = useState(false);
   const inputRef = useRef<HTMLDivElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
@@ -106,6 +107,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       disableDate,
       translations,
       quickActions: quickActions === null ? [] : resolvedQuickActions,
+      hasError,
+      setHasError,
     };
     return mode === 'range'
       ? {
@@ -141,6 +144,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     disableDate,
     props,
     activeRangePart,
+    hasError,
+    setHasError,
   ]);
 
   const content =
@@ -182,7 +187,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           isOpen={isCalendarOpen}
           targetRef={inputRef}
           x={-20}
-          y={-16}
+          y={isCalendarOpen && hasError ? 0 : -16}
           onRequestClose={closeCalendar}
         >
           <div

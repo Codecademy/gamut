@@ -1,9 +1,12 @@
+import { timingValues } from '@codecademy/gamut-styles';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import * as React from 'react';
 
 import { BaseEllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
+
+const FADE_DURATION_SECONDS = timingValues.base / 1000;
 
 type PaginationUtils = {
   chapterSize: number;
@@ -76,7 +79,7 @@ export const wrapWithSlideAnimation = (
                 ? 'shown'
                 : 'hidden'
             }
-            transition={{ duration: 0.3 }}
+            transition={{ duration: FADE_DURATION_SECONDS }}
             variants={slideAnimationVariants}
           >
             <WrappedComponent {...props} />
@@ -98,6 +101,13 @@ const fadeAnimationVariants = {
   },
 };
 
+const fadeTransition = {
+  duration: FADE_DURATION_SECONDS,
+  ease: 'easeOut' as const,
+  transitionStart: { visibility: 'visible' as const },
+  transitionEnd: { visibility: 'hidden' as const },
+};
+
 export const createAnimatedFadeButton = (
   WrappedComponent: typeof PaginationButton
 ) => {
@@ -110,12 +120,7 @@ export const createAnimatedFadeButton = (
       }
       disabled={props.showButton === 'hidden'}
       initial={false}
-      transition={{
-        transitionStart: { visibility: 'visible' },
-        duration: 0.3,
-        ease: [0.04, 0.62, 0.23, 0.98],
-        transitionEnd: { visibility: 'hidden' },
-      }}
+      transition={fadeTransition}
       variants={fadeAnimationVariants}
       {...props}
     />

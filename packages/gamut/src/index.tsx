@@ -9,6 +9,7 @@ export * from './Box';
 export * from './Breadcrumbs';
 export * from './Button';
 export type { ButtonBaseElements } from './ButtonBase/ButtonBase';
+export { InteractiveSelectors } from './ButtonBase/ButtonBase';
 export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';
@@ -22,11 +23,6 @@ export * from './FeatureShimmer';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
-export type {
-  OptionStrict,
-  ExtendedOption,
-  SelectDropdownGroup,
-} from './Form/SelectDropdown';
 export * from './GridForm';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
@@ -52,8 +48,15 @@ export * from './Toggle';
 export * from './Tip/InfoTip';
 export * from './Tip/PreviewTip';
 export * from './Tip/ToolTip';
+export * from './Tip/shared/types';
 export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';
 export * from './utils';
-export * from './Video';
+/*
+  Video is intentionally not re-exported here: it pulls in react-player,
+  whose dependency tree relies on package.json "exports" subpaths that
+  legacy bundlers (e.g. webpack 4) can't resolve. Keeping it off the main
+  barrel means consumers who don't use Video never need to resolve that
+  tree. Import it from '@codecademy/gamut/Video' instead.
+*/

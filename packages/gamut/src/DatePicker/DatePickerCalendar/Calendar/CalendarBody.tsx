@@ -171,7 +171,12 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       <thead>
         <tr>
           {weekdayLabels.map((label, i) => (
-            <TableHeader abbr={weekdayFullNames[i]} key={label} scope="col">
+            <TableHeader
+              abbr={weekdayFullNames[i]}
+              aria-label={weekdayFullNames[i]}
+              key={label}
+              scope="col"
+            >
               {label}
             </TableHeader>
           ))}

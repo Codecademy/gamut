@@ -1,6 +1,6 @@
 import { theme, transitionConcat, variant } from '@codecademy/gamut-styles';
 
-import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
+import { InteractiveSelectors } from '../../ButtonBase/ButtonBase';
 import { buttonVariants, templateVariants } from './styles';
 
 const hoverBackgroundTransition = transitionConcat(
@@ -14,18 +14,18 @@ export const fillButtonVariants = templateVariants(
   (variant) => ({
     bg: variant,
     color: 'background',
-    [ButtonSelectors.OUTLINE]: { borderColor: variant },
-    [ButtonSelectors.HOVER]: {
+    [InteractiveSelectors.OUTLINE]: { borderColor: variant },
+    [InteractiveSelectors.HOVER]: {
       bg: `${variant}-hover`,
       color: 'background',
       transition: hoverBackgroundTransition,
     },
-    [ButtonSelectors.ACTIVE]: {
+    [InteractiveSelectors.ACTIVE]: {
       borderColor: 'border-primary',
       bg: variant,
       color: 'background',
     },
-    [ButtonSelectors.DISABLED]: {
+    [InteractiveSelectors.DISABLED]: {
       color: 'text-disabled',
       bg: 'background-disabled',
     },
@@ -37,21 +37,21 @@ export const textButtonVariants = templateVariants(
   (variant) => ({
     borderColor: 'transparent',
     color: variant === 'interface' ? 'text' : variant,
-    [ButtonSelectors.HOVER]: {
+    [InteractiveSelectors.HOVER]: {
       color: variant,
       bg: 'background-hover',
       transition: hoverBackgroundTransition,
     },
-    [ButtonSelectors.FOCUS_VISIBLE]: {
+    [InteractiveSelectors.FOCUS_VISIBLE]: {
       color: variant,
     },
-    [ButtonSelectors.OUTLINE]: {
+    [InteractiveSelectors.OUTLINE]: {
       borderColor: variant,
     },
-    [ButtonSelectors.ACTIVE]: {
+    [InteractiveSelectors.ACTIVE]: {
       color: 'text',
     },
-    [ButtonSelectors.DISABLED]: {
+    [InteractiveSelectors.DISABLED]: {
       color: 'text-disabled',
       bg: 'transparent',
     },
@@ -64,18 +64,18 @@ export const strokeButtonVariants = templateVariants(
     borderColor: variant,
     bg: 'transparent',
     color: variant,
-    [ButtonSelectors.HOVER]: {
+    [InteractiveSelectors.HOVER]: {
       bg: 'background-hover',
       transition: hoverBackgroundTransition,
     },
-    [ButtonSelectors.OUTLINE]: {
+    [InteractiveSelectors.OUTLINE]: {
       borderColor: variant,
     },
-    [ButtonSelectors.ACTIVE]: {
+    [InteractiveSelectors.ACTIVE]: {
       bg: variant,
       color: 'background',
     },
-    [ButtonSelectors.DISABLED]: {
+    [InteractiveSelectors.DISABLED]: {
       borderColor: 'background-disabled',
       color: 'text-disabled',
       bg: 'transparent',
@@ -92,21 +92,21 @@ export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
   py: 12,
   px: 24,
   bg: variant,
-  [ButtonSelectors.OUTLINE]: {
+  [InteractiveSelectors.OUTLINE]: {
     borderColor: variant,
     bottom: -9,
     left: -9,
   },
-  [ButtonSelectors.HOVER]: {
+  [InteractiveSelectors.HOVER]: {
     bg: `${variant}-hover`,
     transition: hoverBackgroundTransition,
     boxShadow: `-8px 8px 0 0 ${theme.colors.text}`,
   },
-  [ButtonSelectors.ACTIVE]: {
+  [InteractiveSelectors.ACTIVE]: {
     boxShadow: 'none',
     bg: 'secondary',
   },
-  [ButtonSelectors.DISABLED]: {
+  [InteractiveSelectors.DISABLED]: {
     boxShadow: 'none',
     color: 'text-disabled',
     bg: 'background-disabled',

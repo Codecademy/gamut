@@ -12,7 +12,7 @@ const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
     <>
       {inputs.map(({ name, counterpart }) => {
         return (
-          <ListRow>
+          <ListRow key={name}>
             <ListCol size="lg" type="header">
               <Text as="code" ml={8}>
                 {name}

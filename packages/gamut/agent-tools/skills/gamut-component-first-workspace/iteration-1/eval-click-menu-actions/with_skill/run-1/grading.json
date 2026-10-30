@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Menu/MenuItem from @codecademy/gamut for the action list content",
+      "passed": true,
+      "evidence": "Menu role=\"menu\" variant=\"popover\" with three MenuItems."
+    },
+    {
+      "text": "Uses PopoverContainer (inline) for floating positioning",
+      "passed": true,
+      "evidence": "<PopoverContainer alignment=\"bottom-right\" inline isOpen={isOpen} targetRef={triggerRef} ...>."
+    },
+    {
+      "text": "Does not hand-write outside-click/Escape dismiss logic",
+      "passed": true,
+      "evidence": "No manual listeners; onRequestClose={() => setIsOpen(false)} is the only close wiring, delegated to PopoverContainer's internal FocusTrap."
+    },
+    {
+      "text": "Does not wrap in a bespoke styled(Box) raw-CSS shell",
+      "passed": true,
+      "evidence": "Uses Background (a real Gamut component) + system props (borderRadius=\"lg\"), no styled()/raw CSS wrapper."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

@@ -3,7 +3,7 @@ import {
   percentageOrAbsolute as percent,
 } from '@codecademy/variance';
 
-import { Alignments, PopoverPositionConfig, TargetRef } from './types';
+import { PopoverContainerAlignment, PopoverPositionConfig } from './types';
 
 export interface PopoverPositionResult {
   /** Edge insets pinning the popover to the container (`left` / `right` / `top` / `bottom`). */
@@ -20,9 +20,9 @@ export interface PopoverPositionResult {
  * uses the same geometry as `bottom-right` in LTR.
  */
 export const mirrorAlignment = (
-  alignment: Alignments,
+  alignment: PopoverContainerAlignment,
   isRtl: boolean
-): Alignments => {
+): PopoverContainerAlignment => {
   if (!isRtl) return alignment;
   switch (alignment) {
     case 'top-left':
@@ -279,7 +279,7 @@ export const getPosition = ({
 };
 
 export const getContainers = (
-  target: TargetRef,
+  target: HTMLElement,
   inline = false,
   scroll: { x: number; y: number }
 ) => {

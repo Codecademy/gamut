@@ -1,4 +1,4 @@
-export {
+export type {
   OptionStrict,
   IconOption,
   ExtendedOption,
@@ -6,7 +6,7 @@ export {
   SelectDropdownOptions,
 } from './options';
 
-export {
+export type {
   SingleSelectDropdownProps,
   MultiSelectDropdownProps,
   SelectDropdownProps,
@@ -14,10 +14,10 @@ export {
   TypedReactSelectProps,
 } from './component-props';
 
-export {
+export type {
   SelectDropdownContextValueTypes,
   SizedIndicatorProps,
   CustomSelectComponentProps,
 } from './internal';
 
-export { ControlState, OptionState, SelectDropdownSizes } from './styles';
+export type { ControlState, OptionState, SelectDropdownSizes } from './styles';

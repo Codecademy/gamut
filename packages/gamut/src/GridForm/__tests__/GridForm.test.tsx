@@ -473,7 +473,7 @@ describe('GridForm', () => {
 
       expect(cancelButton);
       expect(buttons.length).toEqual(2);
-      expect(cancelOnClick).toBeCalled();
+      expect(cancelOnClick).toHaveBeenCalled();
     });
 
     it('renders only a submit when "cancel" props are not provided', () => {

@@ -1,7 +1,8 @@
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
@@ -31,6 +32,30 @@ describe('Menu', () => {
 
     screen.getByRole('link');
     expect(screen.queryByRole('menuitem')).toBeNull();
+  });
+
+  it('forwards ref to the link when MenuItem has href', () => {
+    const ref = React.createRef<HTMLAnchorElement>();
+    render(
+      <Menu>
+        <MenuItem href="#link" ref={ref}>
+          Cool Town
+        </MenuItem>
+      </Menu>
+    );
+    expect(ref.current).toBeInstanceOf(HTMLAnchorElement);
+  });
+
+  it('forwards ref to the button when MenuItem has onClick', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    render(
+      <Menu>
+        <MenuItem ref={ref} onClick={() => null}>
+          Cool Town
+        </MenuItem>
+      </Menu>
+    );
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
   });
   it('renders MenuItems with onClicks as buttons within a li', () => {
     renderView({

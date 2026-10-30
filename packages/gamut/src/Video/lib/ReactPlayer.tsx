@@ -47,9 +47,3 @@ export const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
     </StyledFlexBox>
   );
 };
-
-/**
- * @remarks ReactPlayer has optional key 'wrapper' that we require for the onReady callback
- */
-
-export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };

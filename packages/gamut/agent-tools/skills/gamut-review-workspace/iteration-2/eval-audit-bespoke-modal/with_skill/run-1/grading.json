@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags this component as duplicating an existing Gamut component (bespoke dialog) -- role=\"dialog\" is set by hand with no Modal/Dialog import",
+      "passed": true,
+      "evidence": "\"role=\\\"dialog\\\" with no Modal/Dialog import -- likely reinventing @codecademy/gamut's Modal/Dialog\"."
+    },
+    {
+      "text": "Flags the manual document.addEventListener('keydown', ...) Escape-key handling as hand-rolled dismiss logic that Overlay/FocusTrap already provides",
+      "passed": true,
+      "evidence": "\"hand-rolled Escape-key dismiss logic ... no Overlay/FocusTrap/PopoverContainer import\"."
+    },
+    {
+      "text": "Points remediation at gamut-modal and/or gamut-component-first",
+      "passed": true,
+      "evidence": "\"[→ gamut-component-first]\" tag plus explicit \"see gamut-modal skill for the props/usage pattern to migrate to\"."
+    },
+    {
+      "text": "Treats this as a warning/heuristic finding needing manual confirmation, not an unconditional hard error -- since it's pattern-matching, not a certainty",
+      "passed": true,
+      "evidence": "FIXED from iteration 1: all three Check 6 findings are now correctly marked ⚠ (not ✗), each explicitly says \"needs manual confirmation,\" and the final tally correctly reads \"2 error(s), 3 warning(s)\" -- matching the 2 real Check 3b inline-style errors plus the 3 Check 6 warnings exactly. No severity-icon inconsistency this time."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "This is the direct verification that the Check 6 fix (explicit per-step ⚠ in the reporting template, self-check pass, and tally decoupling) worked as intended -- clean improvement from 0.75 to 1.0 on this exact eval."
+    ],
+    "workarounds": []
+  }
+}

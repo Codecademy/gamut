@@ -19,6 +19,11 @@ const meta: Meta<typeof Popover> = {
       options: Object.keys(patterns),
       mapping: patterns,
     },
+    // Deprecated no-op: the outline style is now always applied.
+    outline: {
+      control: false,
+      table: { disable: true },
+    },
   },
 };
 
@@ -65,12 +70,6 @@ export const Beak: Story = {
 
 export const BeakCentered: Story = {
   render: (args) => <PopoverExample {...args} beak="center" p={0} />,
-};
-
-export const Outline: Story = {
-  render: (args) => (
-    <PopoverExample {...args} align="right" beak="center" outline />
-  ),
 };
 
 export const Above: Story = {

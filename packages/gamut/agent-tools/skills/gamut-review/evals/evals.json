@@ -1,0 +1,41 @@
+{
+  "skill_name": "gamut-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Can you review this file for Gamut design system compliance issues? .../eval-audit-hero-section/fixture/HeroSection.tsx (Box with an SCSS import, a className, and an inline hex-color style) -- write findings to ./outputs/report.md",
+      "expected_output": "A report flagging the SCSS import, className, and inline style as violations, recommending the semantic token 'text' for the hex color.",
+      "files": ["HeroSection.tsx"],
+      "expectations": [
+        "Flags the SCSS import",
+        "Flags className on Box",
+        "Flags the inline style on Box",
+        "Recommends the semantic token 'text' for #10162F"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Can you review this file for Gamut design system compliance issues? .../eval-audit-styled-wrapper/fixture/CardShells.tsx (one unnecessary styled(Box) raw-CSS wrapper, one legitimate css()-wrapped gradient) -- write findings to ./outputs/report.md",
+      "expected_output": "A report that flags CardShell (fully prop-expressible, raw wrapper) but not GlowShell (gradient, css()-wrapped) the same way, with correct remediation for each.",
+      "files": ["CardShells.tsx"],
+      "expectations": [
+        "Flags CardShell as a violation with delete-the-wrapper remediation",
+        "Does not flag GlowShell as an error",
+        "Notes GlowShell's padding should move to a prop",
+        "Recommends FlexBox for CardShell"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Can you review this file for Gamut design system compliance issues? .../eval-audit-bespoke-modal/fixture/CustomConfirm.tsx (a hand-rolled dialog with no Gamut imports at all) -- write findings to ./outputs/report.md",
+      "expected_output": "A report flagging this as a bespoke reimplementation of Modal/Dialog, pointing at gamut-modal/gamut-component-first, reported as a heuristic warning.",
+      "files": ["CustomConfirm.tsx"],
+      "expectations": [
+        "Flags the hand-rolled dialog as duplicating Modal/Dialog",
+        "Flags the manual Escape-key listener as reinvented dismiss logic",
+        "Points remediation at gamut-modal/gamut-component-first",
+        "Reports as a warning/heuristic, not an unconditional error"
+      ]
+    }
+  ]
+}

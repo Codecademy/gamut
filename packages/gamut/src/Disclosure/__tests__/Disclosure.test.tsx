@@ -57,6 +57,6 @@ describe('Disclosure', () => {
     await act(async () => {
       await userEvent.click(CTAButton);
     });
-    expect(ctaCallback).toBeCalled();
+    expect(ctaCallback).toHaveBeenCalled();
   });
 });

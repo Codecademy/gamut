@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "skill_name": "gamut-system-props",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-27T20:42:51Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 64.152,
+        "tokens": 32277,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Does not wrap FlexBox/Box in styled() using a raw tagged-template literal or plain object",
+          "passed": true,
+          "evidence": "No styled() call \u2014 renders <FlexBox gap={12} bg=\"background-primary\" borderRadius={8} position=\"relative\" zIndex={2} {...props}> directly."
+        },
+        {
+          "text": "Expresses the 12px gap via a gap prop rather than raw CSS",
+          "passed": true,
+          "evidence": "`gap={12}`."
+        },
+        {
+          "text": "Uses the bg (or background) prop with a semantic/named token, not a raw hex literal",
+          "passed": true,
+          "evidence": "`bg=\"background-primary\"`."
+        },
+        {
+          "text": "Expresses the 8px border radius via a borderRadius prop rather than raw CSS",
+          "passed": true,
+          "evidence": "`borderRadius={8}`."
+        },
+        {
+          "text": "Expresses position/z-index via position and zIndex props rather than raw CSS",
+          "passed": true,
+          "evidence": "`position=\"relative\" zIndex={2}`."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 144.779,
+        "tokens": 39551,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+          "passed": true,
+          "evidence": "No styled() wrapper used at all \u2014 renders <Box display=\"flex\" alignItems=\"center\" justifyContent=\"center\" p={24} background=\"radial-gradient(...)\" {...props}> directly, consistent with iteration 2's fixed behavior."
+        },
+        {
+          "text": "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+          "passed": true,
+          "evidence": "`p={24}`."
+        },
+        {
+          "text": "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+          "passed": true,
+          "evidence": "`display=\"flex\" alignItems=\"center\" justifyContent=\"center\"`."
+        },
+        {
+          "text": "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent",
+          "passed": true,
+          "evidence": "`radial-gradient(circle, #3A10E5 0%, rgba(58,16,229,0.5) 45%, rgba(58,16,229,0) 100%)` \u2014 correct."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 160.974,
+        "tokens": 31613,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Does not wrap Box/FlexBox in styled() at all (raw or css()-wrapped) since every property here has a direct prop equivalent",
+          "passed": true,
+          "evidence": "Renders <FlexBox flexDirection=\"column\" p={16} mt={24} color=\"text\" {...rest}> directly \u2014 no styled() wrapper."
+        },
+        {
+          "text": "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+          "passed": true,
+          "evidence": "`flexDirection=\"column\"` on FlexBox."
+        },
+        {
+          "text": "Expresses the 16px padding via a p prop rather than raw padding CSS",
+          "passed": true,
+          "evidence": "`p={16}`."
+        },
+        {
+          "text": "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+          "passed": true,
+          "evidence": "`mt={24}`."
+        },
+        {
+          "text": "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code",
+          "passed": true,
+          "evidence": "Uses `color=\"text\"` (semantic ColorMode alias, resolves to white in dark mode) with an explicit comment explaining the choice against the fixed-color alternative (`color=\"white\"`) and when that alternative would apply instead. This is the first run across 3 iterations to get this right, following the newly-added gamut-color-mode cross-reference and fixed-vs-adaptive callout."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 148.728,
+        "tokens": 43805,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Does not wrap FlexBox/Box in styled() using a raw tagged-template literal or plain object",
+          "passed": false,
+          "evidence": "`styled(FlexBox)<FlexBoxProps>(css({ gap, bg, borderRadius, position, zIndex }))` \u2014 kept an unnecessary wrapper (2nd time out of 3 iterations for this eval)."
+        },
+        {
+          "text": "Expresses the 12px gap via a gap prop rather than raw CSS",
+          "passed": true,
+          "evidence": "`gap: 12` shorthand key inside css()."
+        },
+        {
+          "text": "Uses the bg (or background) prop with a semantic/named token, not a raw hex literal",
+          "passed": true,
+          "evidence": "`bg: 'background-primary'`."
+        },
+        {
+          "text": "Expresses the 8px border radius via a borderRadius prop rather than raw CSS",
+          "passed": true,
+          "evidence": "`borderRadius: 'lg'`."
+        },
+        {
+          "text": "Expresses position/z-index via position and zIndex props rather than raw CSS",
+          "passed": true,
+          "evidence": "`position: 'relative', zIndex: 2` inside css()."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 79.513,
+        "tokens": 28110,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "If Box/FlexBox is wrapped in styled(), the style argument is wrapped in css()/variant()/states(), not a bare template literal or plain object",
+          "passed": true,
+          "evidence": "No styled() wrapper used at all \u2014 condition satisfied by default."
+        },
+        {
+          "text": "The 24px padding is expressed as a p prop rather than left inside the same CSS block as the gradient",
+          "passed": true,
+          "evidence": "`p={24}` (no repeat of iteration 2's `padding` typo)."
+        },
+        {
+          "text": "Flex centering is expressed as props rather than left inside the same CSS block as the gradient",
+          "passed": true,
+          "evidence": "`display=\"flex\" alignItems=\"center\" justifyContent=\"center\"`."
+        },
+        {
+          "text": "The gradient itself is present and is a correct multi-stop radial-gradient fading to transparent",
+          "passed": true,
+          "evidence": "Correct 4-stop radial gradient."
+        }
+      ],
+      "notes": [
+        "This run's own transcript states it read the prior iteration-1 and iteration-2 'without_skill' baseline outputs in this same benchmark workspace to match expected style. That's leakage from the benchmark's own scaffolding, not independent baseline behavior -- this run's high quality may be partly attributable to copying a previously-corrected answer rather than the baseline reliably producing it unprompted. Isolate the workspace (or exclude gamut-system-props-workspace from the agent's visible paths) in future iterations to avoid this."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 125.111,
+        "tokens": 40094,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Does not wrap Box/FlexBox in styled() at all (raw or css()-wrapped) since every property here has a direct prop equivalent",
+          "passed": false,
+          "evidence": "`styled(Box)<BoxProps>(css({ display, flexDirection, p, mt, color }))` \u2014 kept an unnecessary wrapper, 3rd time out of 3 iterations for this eval."
+        },
+        {
+          "text": "Expresses flex column layout via props rather than a CSS display:/flex-direction: declaration",
+          "passed": true,
+          "evidence": "css({ display: 'flex', flexDirection: 'column' }) shorthand keys."
+        },
+        {
+          "text": "Expresses the 16px padding via a p prop rather than raw padding CSS",
+          "passed": true,
+          "evidence": "`p: 16` inside css()."
+        },
+        {
+          "text": "Expresses the 24px top margin via an mt prop rather than raw margin-top CSS",
+          "passed": true,
+          "evidence": "`mt: 24` inside css()."
+        },
+        {
+          "text": "Uses a semantic/token value for text color rather than the literal string 'white' or a hex code",
+          "passed": false,
+          "evidence": "`color: 'white'` again \u2014 cited packages/gamut/src/Video/lib/ReactPlayer.tsx as real precedent for this exact usage, which is a fair point (fixed white IS sometimes correct) but this run made no attempt to distinguish the fixed-vs-adaptive cases the way the with_skill run now does."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 123.3017,
+        "stddev": 51.8612,
+        "min": 64.152,
+        "max": 160.974
+      },
+      "tokens": {
+        "mean": 34480.3333,
+        "stddev": 4403.8585,
+        "min": 31613,
+        "max": 39551
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8,
+        "stddev": 0.2,
+        "min": 0.6,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 117.784,
+        "stddev": 35.1844,
+        "min": 79.513,
+        "max": 148.728
+      },
+      "tokens": {
+        "mean": 37336.3333,
+        "stddev": 8202.8532,
+        "min": 28110,
+        "max": 43805
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.20",
+      "time_seconds": "+5.5",
+      "tokens": "-2856"
+    }
+  },
+  "notes": [
+    "with_skill hit a clean 1.0 pass rate across all 3 evals for the first time (up from 0.933 in iterations 1-2), stddev 0 -- the color-token fix closed the last repeat gap.",
+    "hero-section-flex-layout with_skill passed all 5 assertions for the first time across 3 iterations: it used color=\"text\" instead of the raw color=\"white\" it (and every without_skill run) had used in every prior run, and left an explicit comment reasoning through the fixed-vs-adaptive tradeoff and citing gamut-color-mode -- directly following the cross-reference and callout added after iteration 2.",
+    "without_skill (0.6) repeated the same color=\"white\" + unnecessary styled(Box)(css()) wrapper mistake a 3rd consecutive time on hero-section-flex-layout, and this time cited a real precedent in the codebase (Video/lib/ReactPlayer.tsx uses color=\"white\") -- a legitimate data point that raw white IS sometimes correct, but this run made no attempt to distinguish that case from the adaptive default the way with_skill now explicitly does.",
+    "cta-banner-spacing-color without_skill reached for an unnecessary styled(FlexBox)(css()) wrapper again (2nd of 3 iterations) while with_skill has now avoided it in all 3 -- this remains the most consistent, run-to-run-stable differentiator.",
+    "Methodology caveat: the gradient-glow-mixed without_skill run this iteration explicitly stated in its own transcript that it read the prior iteration-1/2 without_skill outputs in this same benchmark workspace to match expected style, since it has full repo read access. That is leakage from the benchmark scaffolding, not independent baseline behavior, and likely explains why this eval keeps tying at 1.0 for without_skill -- a real cold-start baseline (no visibility into prior benchmark runs) would likely score lower. Future iterations should isolate the workspace from the executing agents visible paths, or move eval outputs outside the skill directory tree.",
+    "With the color-token fix in place, with_skill is now ahead on pass_rate (+0.20) while roughly tied on tokens (-2856, i.e. slightly cheaper) and time (+5.5s, roughly a wash) -- a strictly better trade than iteration 1, where the skill cost more on every axis for a smaller quality gain."
+  ]
+}

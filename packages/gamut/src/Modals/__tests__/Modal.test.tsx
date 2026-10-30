@@ -369,6 +369,15 @@ describe('Modal', () => {
               children: 'Cancel',
             },
           },
+          {
+            title: 'Multi view',
+            children: <>View 2</>,
+            primaryCta: { actionType: 'confirm', children: 'Done' },
+            secondaryCta: {
+              actionType: 'cancel',
+              children: 'Cancel',
+            },
+          },
         ],
       });
 

@@ -262,14 +262,18 @@ export const IconMenu: Story = {
       <>
         <MenuItem icon={AiChatSparkIcon} label="Chat" onClick={() => {}} />
         <MenuItem
-          href="#whatsup"
           icon={BashShellIcon}
           label={{ alignment: 'right-center', info: 'Prompt' }}
+          onClick={() => {}}
         />
         <MenuItem
-          href="#whatsup-people"
+          closeOnClick={false}
           icon={PeopleIcon}
-          label={{ alignment: 'right-center', info: 'People' }}
+          label={{
+            alignment: 'right-center',
+            info: "People (won't close tooltip on click)",
+          }}
+          onClick={() => {}}
         />
         <MenuItem
           active

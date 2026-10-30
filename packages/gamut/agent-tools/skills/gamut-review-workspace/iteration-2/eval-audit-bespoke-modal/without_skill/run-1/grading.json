@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags this component as duplicating an existing Gamut component (bespoke dialog) -- role=\"dialog\" is set by hand with no Modal/Dialog import",
+      "passed": true,
+      "evidence": "Finding #1, \"Reinvents an existing component (Dialog) instead of using it\", with a working replacement code sample."
+    },
+    {
+      "text": "Flags the manual document.addEventListener('keydown', ...) Escape-key handling as hand-rolled dismiss logic that Overlay/FocusTrap already provides",
+      "passed": true,
+      "evidence": "Finding #9, correctly compares to Overlay's escapeCloses/clickOutsideCloses props."
+    },
+    {
+      "text": "Points remediation at gamut-modal and/or gamut-component-first",
+      "passed": true,
+      "evidence": "Cannot cite these skills by name (no access), but recommends the same underlying Dialog component with a working code sample -- same substantive remediation."
+    },
+    {
+      "text": "Treats this as a warning/heuristic finding needing manual confirmation, not an unconditional hard error -- since it's pattern-matching, not a certainty",
+      "passed": false,
+      "evidence": "Same as iteration 1: presents all 14 findings with confident, unhedged severity framing and declarative fixes, with no acknowledgment that this is a heuristic judgment that could be wrong for a genuinely custom widget. Consistent, unsurprising result given nothing about this run's instructions changed on this specific point between iterations."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Correctly complied with the no-ESLint-plugin instruction -- no citations of eslint-plugin-gamut this time, findings framed entirely through comparison against real Gamut source (Overlay, ModalContainer, FocusTrap)."
+    ],
+    "workarounds": []
+  }
+}

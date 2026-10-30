@@ -1,5 +1,3 @@
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-
 import { createRule } from './createRule';
 import {
   checkArrowFuncBodyTypesAndReturnThemeVars,
@@ -10,15 +8,14 @@ export default createRule({
   create(context) {
     return {
       TaggedTemplateExpression(node) {
-        if (node.tag.type === AST_NODE_TYPES.MemberExpression) {
+        /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison -- @typescript-eslint/types use string enums; literals match ESTree */
+        if (node.tag.type === 'MemberExpression') {
           if (node.tag.object.type !== 'Identifier') return;
           const expressionVariable = node.tag.object.name;
           const arrowFuncExpression = node.quasi.expressions[0];
 
-          if (
-            arrowFuncExpression?.type !== AST_NODE_TYPES.ArrowFunctionExpression
-          )
-            return;
+          if (arrowFuncExpression?.type !== 'ArrowFunctionExpression') return;
+          /* eslint-enable @typescript-eslint/no-unsafe-enum-comparison */
 
           if (!isNamedVariableTheme(arrowFuncExpression)) return;
 
@@ -48,7 +45,6 @@ export default createRule({
   meta: {
     docs: {
       description: 'Prefer themed style utility',
-      recommended: 'error',
     },
     fixable: 'code',
     messages: {

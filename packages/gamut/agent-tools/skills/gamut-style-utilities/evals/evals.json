@@ -1,0 +1,41 @@
+{
+  "skill_name": "gamut-style-utilities",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In this gamut monorepo, I need a new `StatusBadge` component (a brand-new small pill, not wrapping an existing Gamut component) that shows one of three statuses: 'success', 'warning', or 'info', each with its own background and text color. Write it in TypeScript using Emotion, matching how the rest of this codebase defines styled components with multiple mutually-exclusive visual variants. Save it to ./outputs/StatusBadge.tsx.",
+      "expected_output": "A styled component using variant() with a variants map for the three statuses, typed via StyleProps, using semantic ColorMode tokens rather than raw hex.",
+      "files": [],
+      "expectations": [
+        "Uses variant() with a variants map keyed by status, not manual branching",
+        "status prop type is derived from the variant definition via StyleProps",
+        "Colors are semantic tokens, not raw hex",
+        "Does not wrap an existing Gamut component in styled() — this is a new primitive"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "In this gamut monorepo, build a new `Chip` component (a brand-new small selectable pill, not wrapping an existing Gamut component) that supports two independent boolean flags: `selected` (highlights the border/background) and `disabled` (dims it and disables pointer events) — both can be true at the same time. Write it in TypeScript using Emotion, matching how the rest of this codebase defines styled components with independent toggle states. Save it to ./outputs/Chip.tsx.",
+      "expected_output": "A styled component using states() (not variant()) since selected/disabled are independent booleans, typed via StyleProps, using semantic ColorMode tokens.",
+      "files": [],
+      "expectations": [
+        "Uses states() rather than variant() since the flags are independent, not mutually exclusive",
+        "Does not hand-write a separate combined selected+disabled branch",
+        "Props typed via StyleProps<typeof theStates>",
+        "Colors are semantic tokens, not raw hex"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "In this gamut monorepo, I need a small `Sparkline` component that draws an SVG `<path>` for a trend line, where the stroke color must come from the design system's theme (not a hardcoded hex value) because this is drawn imperatively via an SVG path `d` attribute and `stroke` attribute, not through a styled component's CSS. Write it in TypeScript, matching how the rest of this codebase reads theme values in plain JS/props rather than CSS. Save it to ./outputs/Sparkline.tsx.",
+      "expected_output": "Uses useTheme() from @emotion/react to read a real theme color token for the SVG stroke attribute, instead of a hardcoded hex value or misapplied CSS styling.",
+      "files": [],
+      "expectations": [
+        "Uses useTheme() to read a real theme color token in JS",
+        "The token path read genuinely exists in the theme",
+        "Does not try to apply CSS-based styling (system props/css()/variant()/states()) to the stroke value",
+        "Rest of the component still follows normal library styling conventions"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "Flags CardShell (styled(Box) with a raw tagged-template literal, where every property is prop-expressible) as an error/violation, with remediation to delete the wrapper and use Box/FlexBox props directly",
+      "passed": true,
+      "evidence": "\"CardShells.tsx:7 ... delete wrapper; use FlexBox ... with flexDirection=\\\"column\\\" and p={16}\"."
+    },
+    {
+      "text": "Does NOT flag GlowShell as an error the same way -- it's wrapped in css(), which is the compliant form for a non-expressible gradient",
+      "passed": true,
+      "evidence": "As in iteration 1, this run correctly identifies that background takes the gradient directly (no scale) and flags GlowShell's wrapper as unnecessary too -- more correct than my original assertion anticipated. Graded on substance, consistent with iteration 1's treatment of the same finding."
+    },
+    {
+      "text": "Notes that GlowShell's padding: 24 should still move out to a prop even though the gradient must stay in css()",
+      "passed": true,
+      "evidence": "\"padding maps directly to p={24}\"."
+    },
+    {
+      "text": "Recommends FlexBox instead of Box + display:flex for CardShell",
+      "passed": true,
+      "evidence": "Explicit FlexBox recommendation."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [
+      "Did not catch a subtler bug the without_skill run for this same eval found: `padding` (the raw CSS property name) inside css() is NOT the same as the `p` alias -- variance's getStaticCss only scales recognized alias keys, so `padding: 24` passes through as unscaled literal CSS, bypassing the spacing token system entirely, distinct from (and in addition to) it merely being avoidable as a prop. Verified this claim directly against packages/variance/src/core.ts (createCss/getStaticCss) -- it's accurate. This wasn't part of the pre-registered assertions so it doesn't affect the score, but it's a real miss relative to the without_skill run on this eval."
+    ],
+    "workarounds": []
+  }
+}

@@ -24,7 +24,7 @@ const boxVariants = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     borderColor: 'rgba(0, 0, 0, 0)',
     transition: {
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
       duration: 0.3,
       delay: 4,
     },
@@ -37,12 +37,12 @@ const shimmerVariants = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     transition: {
       left: {
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
         duration: 2,
         delay: 2,
       },
       backgroundColor: {
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
         duration: 1,
         delay: 4,
       },

@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "click-menu-actions",
+  "prompt": "In this gamut monorepo (@codecademy/gamut), I need a button that, when clicked, shows a small floating list of actions (Edit, Duplicate, Delete) positioned below it, closing when the user clicks elsewhere or presses Escape. Build this as a component called RowActionsMenu. Save it to ./outputs/RowActionsMenu.tsx.",
+  "assertions": [
+    "Uses Gamut's Menu/MenuItem components (imported from @codecademy/gamut) for the action list content, rather than a hand-rolled <ul>/<div> list",
+    "Uses Gamut's PopoverContainer (inline) for the floating positioning rather than a custom absolutely-positioned div with manually-computed coordinates",
+    "Does not hand-write outside-click or Escape-key dismiss logic -- PopoverContainer/FocusTrap already provides this via onRequestClose",
+    "Does not wrap the whole thing in a bespoke styled(Box) raw-CSS shell when Menu/PopoverContainer already expose the needed props directly"
+  ]
+}

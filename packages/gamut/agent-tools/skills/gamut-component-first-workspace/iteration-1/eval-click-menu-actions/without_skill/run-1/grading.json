@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Menu/MenuItem from @codecademy/gamut for the action list content",
+      "passed": true,
+      "evidence": "Menu role=\"menu\" variant=\"popover\" with three MenuItems."
+    },
+    {
+      "text": "Uses PopoverContainer (inline) for floating positioning",
+      "passed": false,
+      "evidence": "<PopoverContainer alignment=\"bottom-left\" isOpen={isOpen} targetRef={triggerRef} ...> -- missing the `inline` prop entirely, so this portals to document.body via BodyPortal instead of rendering in place. This deviates from the pattern gamut-menu's own SKILL.md documents for this exact row-menu use case, and from gamut-z-index's guidance to keep nested floating menus inline. Not necessarily broken, but a real, documented-convention deviation."
+    },
+    {
+      "text": "Does not hand-write outside-click/Escape dismiss logic",
+      "passed": true,
+      "evidence": "No manual listeners; onRequestClose={closeMenu} delegated to PopoverContainer."
+    },
+    {
+      "text": "Does not wrap in a bespoke styled(Box) raw-CSS shell",
+      "passed": true,
+      "evidence": "No styled()/raw CSS wrapper around the menu content."
+    }
+  ],
+  "summary": { "passed": 3, "failed": 1, "total": 4, "pass_rate": 0.75 }
+}

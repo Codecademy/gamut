@@ -139,7 +139,7 @@ describe('ConnectedForm - useDebouncedField', () => {
     input.blur();
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockInputKey, 'tifa', {
       shouldDirty: true,
     });
   });
@@ -162,7 +162,7 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     input.blur();
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockInputKey, 'tifa', {
       shouldDirty: true,
     });
   });
@@ -194,12 +194,14 @@ describe('ConnectedForm - useDebouncedField', () => {
     });
     // Form has been dirtied by changing input
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
+    expect(mockedSetValue).toHaveBeenLastCalledWith('', '', {
+      shouldDirty: true,
+    });
 
     input.blur();
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(2);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockInputKey, 'tifa', {
       shouldDirty: false,
     });
 
@@ -213,7 +215,9 @@ describe('ConnectedForm - useDebouncedField', () => {
     });
     // Form has been dirtied by changing input
     expect(mockedSetValue).toHaveBeenCalledTimes(3);
-    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
+    expect(mockedSetValue).toHaveBeenLastCalledWith('', '', {
+      shouldDirty: true,
+    });
   });
 
   it('can handle non-string values (aka a checkbox)', async () => {

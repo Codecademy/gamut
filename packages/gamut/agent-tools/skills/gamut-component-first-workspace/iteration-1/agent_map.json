@@ -1,0 +1,8 @@
+{
+  "a55d757dc54302d57": "eval-confirm-delete-overlay/with_skill",
+  "aa15e81ea99d1a7ef": "eval-confirm-delete-overlay/without_skill",
+  "a82668c513df934d0": "eval-hover-info-bubble/with_skill",
+  "a7932cc02d423d9ef": "eval-hover-info-bubble/without_skill",
+  "ad6a2504a52c91bd2": "eval-click-menu-actions/with_skill",
+  "a8a9654014d6349c2": "eval-click-menu-actions/without_skill"
+}

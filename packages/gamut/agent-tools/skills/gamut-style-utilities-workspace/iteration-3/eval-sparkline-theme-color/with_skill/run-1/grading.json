@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Uses useTheme() to read a real theme color token in JS",
+      "passed": true,
+      "evidence": "Uses useColorModes() (which itself calls useTheme() internally) and getColorValue -- a documented escape-hatch API, not a hardcoded hex."
+    },
+    {
+      "text": "The token path read genuinely exists in the theme",
+      "passed": true,
+      "evidence": "Default color='primary', a real semantic alias name."
+    },
+    {
+      "text": "Does not try to apply CSS-based styling for the stroke value",
+      "passed": true,
+      "evidence": "No css()/variant()/states(); plain SVG attributes."
+    },
+    {
+      "text": "Rest of the component still follows normal library styling conventions",
+      "passed": true,
+      "evidence": "Clean typed component."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "user_notes_summary": {
+    "uncertainties": [
+      "This passes the pre-registered assertions but likely has a real runtime bug outside their scope: it calls getColorValue(color) directly with color='primary' (a semantic alias), skipping the alias-to-raw-key resolution step. Per the real precedent in packages/gamut-styles/src/Background.tsx (isColorAlias(activeColors, color) -> activeColors[color] -> getColorValue(...)), getColorValue expects a RAW palette key, not an alias name -- theme._tokens.colors (which getColorValue reads) is populated by addColors(corePalette) with raw palette keys only, aliases like 'primary' are never merged into it. Calling getColorValue('primary') directly likely returns undefined, so stroke={undefined} on the SVG path. The without_skill run for this same eval correctly implements the isColorAlias/activeColors resolution step matching real precedent."
+    ],
+    "needs_review": [
+      "Consider whether the useTheme() escape-hatch section of gamut-style-utilities should demonstrate the isColorAlias/activeColors resolution pattern for color specifically -- its current example (theme.spacing[4]) doesn't touch color resolution at all, so nothing in the skill currently teaches this two-step alias lookup."
+    ],
+    "workarounds": []
+  }
+}

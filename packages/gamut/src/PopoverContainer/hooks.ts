@@ -1,28 +1,79 @@
-import { useEffect, useMemo } from 'react';
+import {
+  type RefObject,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react';
 
+import { isNullish } from '../utils/nullish';
 import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
 
+/**
+ * Minimal element shape required for popover positioning.
+ * Accepts both HTMLElement and TargetRef so Popover and PopoverContainer can share hooks.
+ */
+export interface PopoverTargetElement {
+  getBoundingClientRect(): DOMRect;
+  contains(other: Node | null): boolean;
+}
+
+/** Resolves ref object to current element; returns null when unset. */
+export function getRefElement(
+  ref: RefObject<PopoverTargetElement | null>
+): PopoverTargetElement | null {
+  if (isNullish(ref)) return null;
+  return ref.current;
+}
+
+/** Casts minimal target to HTMLElement for utils that need full DOM (e.g. parentElement). */
+export function getTargetAsElement(
+  target: PopoverTargetElement | null
+): HTMLElement | null {
+  return target as HTMLElement | null;
+}
+
+/**
+ * Syncs ref.current to React state after each commit so hooks can depend on the
+ * resolved element when ref object identity is stable but .current updates.
+ */
+function useResolvedRefTarget(
+  targetRef: RefObject<PopoverTargetElement | null>
+): PopoverTargetElement | null {
+  const [resolved, setResolved] = useState<PopoverTargetElement | null>(() =>
+    getRefElement(targetRef)
+  );
+
+  // ref.current updates do not change targetRef identity; run after every commit
+  // to sync. Functional setState bails out when the resolved node is unchanged.
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional post-commit ref sync
+  useLayoutEffect(() => {
+    const el = getRefElement(targetRef);
+    setResolved((prev) => (prev === el ? prev : el));
+  });
+
+  return resolved;
+}
+
 export const useScrollingParentsEffect = (
-  targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-  >,
+  targetRef: RefObject<PopoverTargetElement | null>,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
-  useEffect(() => {
-    if (!targetRef.current) {
-      return;
-    }
+  const resolvedTarget = useResolvedRefTarget(targetRef);
 
-    const target = targetRef.current as unknown as HTMLElement;
-    const scrollingParents = findAllAdditionalScrollingParents(target);
+  useEffect(() => {
+    if (!resolvedTarget) return;
+
+    const scrollingParents = findAllAdditionalScrollingParents(
+      getTargetAsElement(resolvedTarget)!
+    );
 
     const updatePosition = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
+      setTargetRect(resolvedTarget.getBoundingClientRect());
     };
 
     const cleanup: (() => void)[] = [];
 
-    // Add listeners to all scrolling parents (window scroll handled by useWindowScroll)
     scrollingParents.forEach((parent) => {
       if (parent.addEventListener) {
         parent.addEventListener('scroll', updatePosition, { passive: true });
@@ -35,48 +86,45 @@ export const useScrollingParentsEffect = (
     return () => {
       cleanup.forEach((fn) => fn());
     };
-  }, [targetRef, setTargetRect]);
+  }, [resolvedTarget, setTargetRect]);
 };
 
 export const useResizingParentEffect = (
-  targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-  >,
+  targetRef: RefObject<PopoverTargetElement | null>,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
+  const resolvedTarget = useResolvedRefTarget(targetRef);
+
   useEffect(() => {
-    // handles movement of target within a clipped container e.g. Drawer
-    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
-      return;
-    }
+    if (!resolvedTarget || typeof ResizeObserver === 'undefined') return;
+
     const resizingParent = findResizingParent(
-      targetRef.current as unknown as HTMLElement
+      getTargetAsElement(resolvedTarget)!
     );
-    if (!resizingParent?.addEventListener) {
-      return;
-    }
+    if (!resizingParent?.addEventListener) return;
+
     const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
+      setTargetRect(resolvedTarget.getBoundingClientRect());
     };
     const ro = new ResizeObserver(handler);
     ro.observe(resizingParent);
     return () => ro.unobserve(resizingParent);
-  }, [targetRef, setTargetRect]);
+  }, [resolvedTarget, setTargetRect]);
 };
 
 /**
  * Memoizes the list of scrolling parent elements for a target element.
- * This avoids expensive DOM traversals and getComputedStyle calls on every render.
  * Returns an empty array if the target element is not available.
  */
 export const useScrollingParents = (
-  targetRef: React.RefObject<HTMLElement | null>
+  targetRef: RefObject<PopoverTargetElement | null>
 ): HTMLElement[] => {
+  const resolvedTarget = useResolvedRefTarget(targetRef);
+
   return useMemo(() => {
-    if (!targetRef.current) {
-      return [];
-    }
-    return findAllAdditionalScrollingParents(targetRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetRef.current]);
+    if (!resolvedTarget) return [];
+    return findAllAdditionalScrollingParents(
+      getTargetAsElement(resolvedTarget)!
+    );
+  }, [resolvedTarget]);
 };
