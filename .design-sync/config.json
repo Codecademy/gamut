@@ -7,7 +7,8 @@
   "buildCmd": "yarn nx run-many --target=build --projects=variance,gamut-styles,gamut-tests,gamut-icons,gamut-patterns,gamut-illustrations,gamut",
   "extraEntries": [
     "@codecademy/gamut-styles",
-    "@codecademy/gamut-styles/dist/themes"
+    "@codecademy/gamut-styles/dist/themes",
+    "./dist/Video/index.js"
   ],
   "readmeHeader": ".design-sync/conventions.md",
   "runtimeFontPrefixes": ["https://www.codecademy.com/gamut"],
@@ -56,7 +57,17 @@
     "BarChart": { "cardMode": "single", "primaryStory": "Default" },
     "DatePicker": { "cardMode": "single", "primaryStory": "Default" },
     "GridForm": { "cardMode": "single", "primaryStory": "Default" },
-    "Video": { "cardMode": "column" },
+    "Video": {
+      "cardMode": "column",
+      "skip": [
+        "molecules-video--youtube",
+        "molecules-video--vimeo",
+        "molecules-video--video-with-tracks-and-thumbnails"
+      ]
+    },
+    "IconButton": { "cardMode": "column" },
+    "Input": { "cardMode": "single", "primaryStory": "Default" },
+    "Modal": { "cardMode": "single", "primaryStory": "Default" },
     "Markdown": { "cardMode": "single", "primaryStory": "Default" }
   },
   "provider": {
