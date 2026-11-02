@@ -4,7 +4,13 @@ import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import get from 'lodash/get';
 import * as React from 'react';
 
-import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
+import {
+  getLabel,
+  isCheckboxParent,
+  isInput,
+  isLabelText,
+  isVideoOnlyParagraph,
+} from './utils';
 
 const processNodeDefinitions = HtmlToReact.ProcessNodeDefinitions();
 
@@ -211,6 +217,20 @@ export const createVideoOverride = ({
     return propsWithKey(props, (rest, key) => (
       <Component key={key} {...rest} />
     ));
+  },
+});
+
+// Drops the <p> marked wraps around a single-line video, since the Video component renders block-level elements
+export const createVideoParagraphOverride = () => ({
+  shouldProcessNode(node: HTMLToReactNode) {
+    return isVideoOnlyParagraph(node);
+  },
+  processNode(
+    _node: HTMLToReactNode,
+    children: React.ReactNode[],
+    key: React.Key
+  ) {
+    return <React.Fragment key={key}>{children}</React.Fragment>;
   },
 });
 

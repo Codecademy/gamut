@@ -10,6 +10,18 @@ export const isCheckboxParent = (node: HTMLToReactNode, type: string) =>
       node.children[0]?.attribs?.type === type
   );
 
+// a <p> that only holds video tags, i.e. a single-line <video></video> that marked parsed as paragraph text
+export const isVideoOnlyParagraph = (node: HTMLToReactNode) =>
+  Boolean(
+    node.name === 'p' &&
+      node.children?.some((child) => child.name === 'video') &&
+      node.children.every(
+        (child) =>
+          child.name === 'video' ||
+          (child.type === 'text' && !child.data.trim())
+      )
+  );
+
 export const isLabelText = (node: HTMLToReactNode, type: string) => {
   // we are using this text to create the accessible label, so are basically deduplicating it here
   return Boolean(

@@ -3,7 +3,18 @@ import { css, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import ReactPlayer from 'react-player';
 
-import { FlexBox } from '../../Box';
+import { Box, FlexBox } from '../../Box';
+
+/*
+  16:9 by default, but unlike a padding-top ratio box, a height set by the
+  consumer (e.g. `height: 100%` via `className`) wins, so the player and the
+  provider's own splash fit the consumer's frame instead of overflowing it.
+*/
+export const VideoFrame = styled(Box)(
+  css({
+    aspectRatio: '16 / 9',
+  })
+);
 
 export const ReactVideoPlayer = styled(ReactPlayer)(
   css({
