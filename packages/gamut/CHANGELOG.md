@@ -1,3 +1,15 @@
+## 74.0.1 (2026-11-02)
+
+### 🩹 Fixes
+
+- Fix `Video` YouTube/Vimeo splash not fitting its frame after the react-player v3 upgrade. The frame now uses `aspect-ratio: 16 / 9` instead of a `padding-top` ratio, so a consumer can size it through `className` and the provider's own splash fills it rather than overflowing. `Video` also passes `wrapper="div"` so a `placeholderImage` splash shares the player's wrapper element, as in react-player v2. ([#3442](https://github.com/Codecademy/gamut/pull/3442))
+
+  `Markdown` no longer rewrites `<video>` tags before parsing, so a literal `<video>` in inline code or a fenced code block is left alone. A single-line `<video></video>` is still rendered without a wrapping `<p>`.
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
 # 74.0.0 (2026-10-15)
 
 ### ⚠️  Breaking Changes

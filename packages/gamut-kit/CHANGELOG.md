@@ -1,3 +1,9 @@
+## 3.0.28 (2026-11-02)
+
+### 🧱 Updated Dependencies
+
+- Updated gamut to 74.0.1
+
 ## 3.0.27 (2026-10-15)
 
 ### 🧱 Updated Dependencies
