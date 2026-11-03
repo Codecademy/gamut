@@ -147,7 +147,7 @@ Pass `label` on a `disabled` `MenuItem` to explain why it is unavailable.
 
 ## Floating menus with PopoverContainer
 
-Offset the `PopoverContainer` y-axis by `48` (normal spacing) or `32` (condensed) per item to align the popover with the triggering item. Floating menus with actions should use `role="menu"`. Keep `inline` set (as below) rather than letting `PopoverContainer` portal — this matters more when the menu opens inside a `Modal` or other floating surface; see [`gamut-z-index`](../gamut-z-index/SKILL.md).
+Offset the `PopoverContainer` y-axis by `48` (normal spacing) or `32` (condensed) per item to align the popover with the triggering item. Floating menus with actions should use `role="menu"`. Prefer `inline` (as below) over letting `PopoverContainer` portal — it renders in place instead of opening a second `BodyPortal`, which is simpler to reason about for positioning; the `zIndexes` scale means a portalled menu now clears an open `Modal` by default too, so `inline` isn't required just to avoid a stacking bug — see [`gamut-z-index`](../gamut-z-index/SKILL.md).
 
 ```tsx
 <PopoverContainer

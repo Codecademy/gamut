@@ -76,7 +76,7 @@ const textStates = states({
     fontWeight: 'bold',
     minWidth: '0.4rem',
     position: 'relative',
-    zIndex: 1,
+    zIndex: 'foreground',
     // the text is more legible against the background color with text smoothing
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
@@ -90,7 +90,7 @@ const textStates = states({
       position: 'absolute',
       top: '50%',
       width: 'calc(100% + 0.4rem)',
-      zIndex: -1,
+      zIndex: 'underlay',
     },
   },
   screenreader: {

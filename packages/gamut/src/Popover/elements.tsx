@@ -57,8 +57,7 @@ export const PopoverPortal: React.FC<
   animation ? (
     <AnimatePresence>
       {isOpen && (
-        // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
-        <BodyPortal zIndex={5}>
+        <BodyPortal zIndex="popover">
           <motion.div
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -73,8 +72,7 @@ export const PopoverPortal: React.FC<
       )}
     </AnimatePresence>
   ) : (
-    // TEMPORARY: zIndex override to stay above Overlay's default of 3 until GM-624 lands a shared z-index scale
-    <BodyPortal zIndex={5} {...rest} />
+    <BodyPortal zIndex="popover" {...rest} />
   );
 
 export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;

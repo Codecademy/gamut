@@ -12,7 +12,7 @@ const GridLineWrapper = styled(Box)(
     inset: 0,
     pointerEvents: 'none',
     position: 'absolute',
-    zIndex: 0,
+    zIndex: 'base',
   })
 );
 

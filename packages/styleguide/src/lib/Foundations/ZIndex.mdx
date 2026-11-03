@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { ComponentHeader, LinkTo, TokenTable } from '~styleguide/blocks';
+
+import * as TABLES from './shared/elements';
+
+export const parameters = {
+  title: 'Z-Index',
+  subtitle:
+    'A single semantic scale for coordinating stacking order across Gamut.',
+  status: 'static',
+};
+
+<Meta title="Foundations/Z-Index" />
+
+<ComponentHeader {...parameters} />
+
+z-index should only be used when necessary to override the default stacking order. When possible, use the default stacking order and avoid using z-index.
+
+To standardize z-index values across the application, Gamut exposes one semantic z-index scale, `zIndexes`, so stacking order is coordinated by name
+instead of by scattered magic numbers. Pass a token name directly to the `zIndex` prop:
+
+```tsx
+<Box zIndex="modal">…</Box>
+```
+
+The token name is the form to reach for by default: it resolves through the theme to a CSS variable (`var(--zIndexes-modal)`), so the value stays live with the theme rather than getting baked in at render time.
+
+## The scale
+
+<TokenTable {...TABLES.zIndexes} />
+
+## Creating a stacking context with `isolation`
+
+A `zIndex` token places an element within its **stacking context** — the scope that z-index competition happens inside. To create that scope, use the `isolation` prop:
+
+```tsx
+<Box isolation="isolate">
+  <Box position="absolute" zIndex="modal">
+    …
+  </Box>
+</Box>
+```
+
+`isolation="isolate"` scopes every descendant `zIndex` to that element, so a child at `modal` (500) can't paint above something outside its parent. It does this without changing the element's positioning or lifting it up the scale — which `position: relative` plus a token would both do.
+
+A common gotcha: `zIndexes.base` (`z-index: 0`) does **not** create a stacking context on its own. `z-index` is ignored entirely on a `position: static` element, so `<Box zIndex="base">` creates no scope. Reach for `isolation="isolate"` when a stacking context is the actual goal.
+
+Use it for components that shouldn't leak their internal layering into the rest of the page — a card, a list row, a widget with overlapping decoration. See <LinkTo id="Foundations/System/Props/Positioning">Positioning</LinkTo> for a live side-by-side example.
+
+## Custom z-index values
+
+Beyond the token-name form above, the `zIndex` prop also accepts a plain number — deliberately, for a value that isn't part of the scale. This is the escape hatch, not the default:
+
+```tsx
+import { zIndexes } from '@codecademy/gamut-styles';
+
+<Overlay zIndex={zIndexes.modal + 5}>…</Overlay>; // just above modal
+<Box zIndex={605}>…</Box>; // deliberate one-off
+```
+
+These situations should be rare, but when they do arise, use the scale as a reference point rather than picking a number in isolation.
+
+Note the tradeoff: a number — whether a bare literal or arithmetic on `zIndexes.<token>` — is resolved once at render time and baked into the style as a literal integer. Only the string token form (`zIndex="modal"`) resolves to the CSS variable. Reach for `zIndexes.<token>` itself (the plain numeric export) outside the `zIndex` prop too — anywhere you need the actual number in plain JS, such as a canvas/chart library or a third-party component's own z-index option.
+
+## Guidance
+
+- **Reach for a token name first.** `zIndex="modal"`, `zIndex="foreground"`, etc. — the name
+  documents intent far better than a number, and resolves to the theme's CSS variable.
+- **Escape hatch sparingly.** A raw number is fine for a genuine one-off, but prefer
+  `zIndexes.<token> ± n` so the relationship to the scale stays visible, and leave a comment.
+- **Scope instead of escalating.** If a component's internal layering is fighting the rest of the
+  page, `isolation="isolate"` on its root is usually the fix — not a bigger number.
+- **Third-party widgets** (e.g. injected marketing/chat scripts) set their own z-index and are out
+  of Gamut's control; `topmost` is the highest Gamut layer.
