@@ -115,15 +115,27 @@ export const getMemoizedStyles = (
           ? `mediumIsMultiSelected`
           : getSize;
 
+      const borderStateProps = {
+        isDisabled: state.isDisabled,
+        error: state.selectProps.error,
+        activated: state.selectProps.activated,
+        theme,
+      };
+
       return {
         ...selectDropdownStyles({ theme }),
         ...sizeVariants({ size: getPadding, theme }),
         ...conditionalBorderStates({
           isFocused: state.isFocused,
-          isDisabled: state.isDisabled,
-          error: state.selectProps.error,
-          activated: state.selectProps.activated,
-          theme,
+          ...borderStateProps,
+        }),
+        /*
+         * Non-searchable: focus sits on the trigger, so react-select's isFocused stays false.
+         * Show the same focused border on the control while anything inside it has focus.
+         */
+        '&:focus-within': conditionalBorderStates({
+          isFocused: true,
+          ...borderStateProps,
         }),
       };
     },
@@ -258,6 +270,10 @@ export const getMemoizedStyles = (
     valueContainer: (provided) => ({
       ...provided,
       padding: 0,
+      /* The control shows focus (see `control`), so drop the browser outline on the trigger. */
+      '&:focus, &:focus-visible': {
+        outline: 'none',
+      },
     }),
   };
 };

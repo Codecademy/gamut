@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useEffect, useLayoutEffect } from 'react';
+import {
+  createContext,
+  MouseEvent,
+  ReactNode,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+} from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -81,51 +88,159 @@ export const CustomContainer = ({
   );
 };
 
+/*
+ * With isSearchable={false}, react-select renders a hidden <input role="combobox">.
+ * Screen readers announce it as editable ("type text", "auto complete"), which is
+ * wrong for a control that takes no typing. Instead, the ValueContainer is the
+ * combobox (ARIA APG select-only pattern) and takes focus. react-select's keydown
+ * handling still applies because keydown bubbles up to its container.
+ */
+const SELECT_ONLY_ARIA_PROPS = [
+  'aria-describedby',
+  'aria-errormessage',
+  'aria-invalid',
+  'aria-label',
+  'aria-labelledby',
+  'aria-required',
+];
+
+/* Methods on react-select's Select instance, reached through the selectRef. */
+type SelectInstance = {
+  onMenuClose: () => void;
+  openMenu: (focusOption: 'first' | 'last') => void;
+};
+
+const useSelectOnlyInput = (
+  inputId: string | undefined,
+  isSearchable: boolean | undefined
+) => {
+  useLayoutEffect(() => {
+    if (isSearchable !== false || !inputId) return;
+
+    /* Look the trigger up from the hidden input: the public id is shared with other elements. */
+    const input = document.getElementById(inputId);
+    /* Start at the parent: closest() includes the input itself, which still has role="combobox" here. */
+    const trigger =
+      input?.parentElement?.closest<HTMLElement>('[role="combobox"]');
+    if (!input || !trigger) return;
+
+    /*
+     * A disabled input can't take focus, so react-select's focusInput() calls
+     * become no-ops and focus stays on the trigger.
+     */
+    input.disabled = true;
+    input.setAttribute('aria-hidden', 'true');
+    input.removeAttribute('role');
+
+    /*
+     * react-select only sets aria-activedescendant on the hidden input off Apple devices
+     * (its isAppleDevice check), so VoiceOver on macOS gets nothing from it. Derive the
+     * active option from the rendered menu instead: Gamut sets aria-selected on the
+     * focused option. The container is SelectContainer > Control > ValueContainer.
+     */
+    const container = trigger.parentElement?.parentElement ?? trigger;
+    const syncActiveOption = () => {
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      const listbox = container.querySelector('[role="listbox"]');
+      const activeOption = container.querySelector(
+        '[role="option"][aria-selected="true"]'
+      );
+
+      if (listbox?.id && isExpanded) {
+        trigger.setAttribute('aria-controls', listbox.id);
+      } else {
+        trigger.removeAttribute('aria-controls');
+      }
+
+      if (activeOption?.id && isExpanded) {
+        trigger.setAttribute('aria-activedescendant', activeOption.id);
+      } else {
+        trigger.removeAttribute('aria-activedescendant');
+      }
+    };
+
+    /*
+     * aria-expanded is set on the trigger in a later React commit than the listbox
+     * mounts, so it has to be observed too, or the sync can run while it's still "false".
+     */
+    const observer = new MutationObserver(syncActiveOption);
+    observer.observe(container, {
+      attributeFilter: ['aria-expanded', 'aria-selected'],
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+    syncActiveOption();
+
+    return () => observer.disconnect();
+  }, [inputId, isSearchable]);
+};
+
 /**
- * Custom ValueContainer component that applies combobox props when isSearchable is false.
- * When isSearchable is false, react-select renders a dummy input (div) that doesn't accept
- * custom props, so we apply the combobox data attributes to the ValueContainer's innerProps.
+ * Custom ValueContainer component. When isSearchable is false, it becomes the
+ * select-only combobox trigger (see `useSelectOnlyInput`). Otherwise it renders
+ * react-select's default ValueContainer.
  */
 export const CustomValueContainer = ({
+  innerProps,
   ...rest
 }: CustomSelectComponentProps<
   typeof SelectDropdownElements.ValueContainer
 >) => {
-  const { inputProps, isSearchable } = rest.selectProps;
+  const { selectInputRef, triggerId } = useContext(SelectDropdownContext);
+  const { inputId, inputProps, isDisabled, isSearchable, menuIsOpen } =
+    rest.selectProps;
   const comboboxProps = inputProps?.combobox || {};
 
-  useLayoutEffect(() => {
-    if (isSearchable === false && Object.keys(comboboxProps).length > 0) {
-      // Find the input element by inputId since we can't use a ref on ValueContainer
-      const { inputId } = rest.selectProps;
-      if (inputId) {
-        const inputElement = document.getElementById(inputId);
-        if (inputElement?.getAttribute('role') === 'combobox') {
-          Object.entries(comboboxProps).forEach(([key, value]) => {
-            inputElement.setAttribute(key, value);
-          });
-        }
-      }
-    }
-    // We only want to run this effect when isSearchable or comboboxProps change
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSearchable, comboboxProps, rest.selectProps.inputId]);
+  useSelectOnlyInput(inputId, isSearchable);
 
-  // When isSearchable is false, apply combobox props to ValueContainer's innerProps
-  // since the dummy input doesn't accept custom props
-  if (isSearchable === false && Object.keys(comboboxProps).length > 0) {
-    const { innerProps, ...otherProps } = rest;
-    const mergedInnerProps = { ...innerProps, ...comboboxProps };
-
-    return (
-      <SelectDropdownElements.ValueContainer
-        {...otherProps}
-        innerProps={mergedInnerProps}
-      />
-    );
+  if (isSearchable !== false || !triggerId) {
+    return <SelectDropdownElements.ValueContainer {...rest} />;
   }
 
-  return <SelectDropdownElements.ValueContainer {...rest} />;
+  const ariaProps = Object.fromEntries(
+    SELECT_ONLY_ARIA_PROPS.flatMap((key) => {
+      const value = (rest.selectProps as Record<string, unknown>)[key];
+      return value === undefined ? [] : [[key, value]];
+    })
+  );
+
+  /* Read the ref inside handlers: it is still null during render on the first pass. */
+  const getInstance = () =>
+    selectInputRef?.current as unknown as SelectInstance | null | undefined;
+
+  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.button !== 0 || isDisabled) return;
+
+    // Stops react-select from focusing its hidden input on mousedown.
+    event.preventDefault();
+    event.currentTarget.focus();
+    if (menuIsOpen) getInstance()?.onMenuClose();
+    else getInstance()?.openMenu('first');
+  };
+
+  const handleBlur = () => {
+    if (menuIsOpen) getInstance()?.onMenuClose();
+  };
+
+  return (
+    <SelectDropdownElements.ValueContainer
+      {...rest}
+      innerProps={{
+        ...innerProps,
+        ...ariaProps,
+        ...comboboxProps,
+        'aria-disabled': isDisabled || undefined,
+        'aria-expanded': Boolean(menuIsOpen),
+        'aria-haspopup': 'listbox',
+        id: triggerId,
+        onBlur: handleBlur,
+        onMouseDown: handleMouseDown,
+        role: 'combobox',
+        tabIndex: isDisabled ? -1 : 0,
+      }}
+    />
+  );
 };
 
 /**

@@ -158,14 +158,18 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         removeAllButtonRef,
         selectInputRef,
         translations: mergedTranslations,
+        triggerId: inputId,
       }}
     >
       <TypedReactSelect
         activated={activated}
         aria-live="assertive"
         ariaLiveMessages={{
+          /* Non-searchable: the trigger's own role and state are read, so skip the extra focus text. */
           onFocus: ({ focused }) =>
-            mergedTranslations.focusedOptionAnnouncement(focused),
+            isSearchable
+              ? mergedTranslations.focusedOptionAnnouncement(focused)
+              : '',
         }}
         components={components}
         createOptionPosition={createOptionPosition}
@@ -176,8 +180,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         }
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
-        id={id || rest.htmlFor || rawInputId}
-        inputId={inputId}
+        /* Non-searchable: the public id belongs to the combobox, so keep react-select's container off it. */
+        id={isSearchable ? id || rest.htmlFor || rawInputId : undefined}
+        inputId={isSearchable ? inputId : `${inputId}-input`}
         inputProps={{ ...inputProps }}
         inputWidth={inputWidth}
         isCreatable={isCreatable}
@@ -197,6 +202,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         shownOptionsLimit={shownOptionsLimit}
         size={size}
         styles={memoizedStyles}
+        tabIndex={isSearchable ? undefined : -1}
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
         onInputChange={onInputChange}

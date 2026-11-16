@@ -128,6 +128,62 @@ const renderView = setupRtl(SelectDropdown, {
   name: 'colors',
 });
 
+describe('select-only combobox (isSearchable false)', () => {
+  it('makes the value container the combobox and disables the hidden input', () => {
+    const { view } = renderView();
+
+    const combobox = view.getByRole('combobox');
+    expect(combobox).toHaveAttribute('tabindex', '0');
+    expect(combobox).toHaveAttribute('aria-haspopup', 'listbox');
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(combobox).not.toHaveAttribute('aria-autocomplete');
+
+    const hiddenInput = view.container.querySelector(
+      'input[aria-hidden="true"]'
+    );
+    expect(hiddenInput).toBeDisabled();
+    expect(hiddenInput).not.toHaveAttribute('role');
+  });
+
+  it('keeps the public id on the combobox so labels still point at it', () => {
+    const { view } = renderView();
+
+    expect(view.getByRole('combobox')).toHaveAttribute('id', 'colors');
+  });
+
+  it('opens with the mouse and keeps focus on the combobox', async () => {
+    const { view } = renderView();
+
+    const combobox = view.getByRole('combobox');
+    await userEvent.click(combobox);
+
+    expect(combobox).toHaveFocus();
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+    expect(view.getByRole('listbox')).toBeInTheDocument();
+  });
+
+  it('opens, moves the active option and selects with the keyboard', async () => {
+    const { view } = renderView();
+
+    const combobox = view.getByRole('combobox');
+    combobox.focus();
+    await userEvent.keyboard('{ArrowDown}');
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+    const activeId = combobox.getAttribute('aria-activedescendant');
+    expect(activeId).toBeTruthy();
+    const activeOption = document.getElementById(activeId!);
+    expect(activeOption).toHaveAttribute('role', 'option');
+    expect(activeOption).toHaveTextContent('red');
+
+    await userEvent.keyboard('{ArrowDown}{Enter}');
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(combobox).toHaveTextContent('yellow');
+    expect(combobox).toHaveFocus();
+  });
+});
+
 describe('SelectDropdown', () => {
   describe('default', () => {
     it('sets the id prop on the select tag', () => {
