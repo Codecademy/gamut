@@ -229,7 +229,6 @@ export const CustomValueContainer = ({
       innerProps={{
         ...innerProps,
         ...ariaProps,
-        ...comboboxProps,
         'aria-disabled': isDisabled || undefined,
         'aria-expanded': Boolean(menuIsOpen),
         'aria-haspopup': 'listbox',
@@ -238,6 +237,8 @@ export const CustomValueContainer = ({
         onMouseDown: handleMouseDown,
         role: 'combobox',
         tabIndex: isDisabled ? -1 : 0,
+        /* Last, so consumer data- and aria- props can override the defaults above, as before this change. */
+        ...comboboxProps,
       }}
     />
   );

@@ -145,6 +145,17 @@ describe('select-only combobox (isSearchable false)', () => {
     expect(hiddenInput).not.toHaveAttribute('role');
   });
 
+  it('lets consumer aria props override the trigger defaults', () => {
+    const { view } = renderView({
+      inputProps: { combobox: { 'aria-label': 'Custom label' } },
+    });
+
+    expect(view.getByRole('combobox')).toHaveAttribute(
+      'aria-label',
+      'Custom label'
+    );
+  });
+
   it('keeps the public id on the combobox so labels still point at it', () => {
     const { view } = renderView();
 
