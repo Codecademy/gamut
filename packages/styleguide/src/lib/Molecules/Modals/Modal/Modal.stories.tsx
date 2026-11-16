@@ -8,6 +8,8 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
+import { css, Global } from '@emotion/react';
+import styled from '@emotion/styled';
 import type { Meta } from '@storybook/react';
 import React, { ComponentProps, useEffect, useRef, useState } from 'react';
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
@@ -448,6 +450,49 @@ export const MultipleViewsDanger: React.FC = () => {
         ]}
         onRequestClose={() => setIsOpen(false)}
       />
+    </>
+  );
+};
+
+const noPatternClass = 'no-pattern-border';
+
+/**
+ * The checker pattern svg is the modal's own preceding sibling inside
+ * `overlay-content-container`, not a descendant, so it can only be reached
+ * from a global rule with a sibling combinator, keyed off our own class.
+ */
+const hidePatternStyles = css`
+  [data-testid='overlay-content-container'] svg:has(+ .${noPatternClass}) {
+    display: none;
+  }
+`;
+
+const BorderlessModal = styled(Modal)`
+  border: none;
+
+  [data-testid='overlay-content-container'] svg:has(+ .${noPatternClass}) {
+    display: none;
+  }
+`;
+
+export const NoPatternBorder: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Global styles={hidePatternStyles} />
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <BorderlessModal
+        className={noPatternClass}
+        isOpen={isOpen}
+        size="medium"
+        title="No Pattern Border"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <Text>
+          This modal removes its border via `className` and hides the checker
+          pattern svg (but not the close button icon) with a sibling selector.
+        </Text>
+      </BorderlessModal>
     </>
   );
 };
