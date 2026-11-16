@@ -128,7 +128,7 @@ const useSelectOnlyInput = (
      * A disabled input can't take focus, so react-select's focusInput() calls
      * become no-ops and focus stays on the trigger.
      */
-    input.disabled = true;
+    input.setAttribute('disabled', '');
     input.setAttribute('aria-hidden', 'true');
     input.removeAttribute('role');
 
@@ -199,10 +199,10 @@ export const CustomValueContainer = ({
   }
 
   const ariaProps = Object.fromEntries(
-    SELECT_ONLY_ARIA_PROPS.flatMap((key) => {
-      const value = (rest.selectProps as Record<string, unknown>)[key];
-      return value === undefined ? [] : [[key, value]];
-    })
+    Object.entries(rest.selectProps).filter(
+      ([key, value]) =>
+        SELECT_ONLY_ARIA_PROPS.includes(key) && value !== undefined
+    )
   );
 
   /* Read the ref inside handlers: it is still null during render on the first pass. */
