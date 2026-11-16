@@ -1,15 +1,19 @@
+// @vidstack/react and react-player are peer deps of @codecademy/gamut.
+// If they can't be resolved, install them: yarn add @vidstack/react react-player
 import { PlayerSrc, TrackProps } from '@vidstack/react';
 import {
   DefaultLayoutTranslations,
   ThumbnailSrc,
 } from '@vidstack/react/types/vidstack';
 import * as React from 'react';
-import { useState } from 'react';
-import { BaseReactPlayerProps } from 'react-player/base';
+import { useEffect, useRef, useState } from 'react';
 
-import { Box } from '../Box';
 import { useIsMounted } from '../utils';
-import { OverlayPlayButton, ReactVideoPlayer } from './lib/ReactPlayer';
+import {
+  OverlayPlayButton,
+  ReactVideoPlayer,
+  VideoFrame,
+} from './lib/ReactPlayer';
 import { VidstackPlayer } from './lib/VidstackPlayer';
 
 export type VideoProps = {
@@ -65,6 +69,8 @@ export type VideoProps = {
   showDefaultProviderControls?: boolean;
 };
 
+const DEFAULT_VIDEO_TITLE = 'Video player';
+
 export const Video: React.FC<VideoProps> = (props) => {
   const {
     autoplay = false,
@@ -81,15 +87,52 @@ export const Video: React.FC<VideoProps> = (props) => {
   } = props;
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
+  const playerWrapperRef = useRef<HTMLDivElement>(null);
 
   const config = {
     youtube: {
-      playerVars: { color: 'white' },
-    },
-    vimeo: {
-      title: videoTitle,
+      color: 'white' as const,
     },
   };
+
+  // react-player v3 puts `title` on its custom element, not the inner provider
+  // iframe, so the iframe would otherwise have no accessible name (WCAG 4.1.2).
+  // Provider elements like <youtube-video> render that iframe inside an open
+  // shadow root, so search shadow roots too. `onShadowRoot` lets the observer
+  // below watch each shadow root it finds.
+  const labelProviderIframe = (onShadowRoot?: (root: ShadowRoot) => void) => {
+    const label = (root: ParentNode) => {
+      root.querySelectorAll('iframe').forEach((iframe) => {
+        if (!iframe.title) iframe.title = videoTitle || DEFAULT_VIDEO_TITLE;
+      });
+      root.querySelectorAll('*').forEach((el) => {
+        if (el.shadowRoot) {
+          onShadowRoot?.(el.shadowRoot);
+          label(el.shadowRoot);
+        }
+      });
+    };
+    if (playerWrapperRef.current) label(playerWrapperRef.current);
+  };
+
+  // The provider inserts its iframe asynchronously, often before `onReady`
+  // fires, and may replace it later (e.g. on src change), so label it
+  // whenever it appears rather than waiting.
+  useEffect(() => {
+    const wrapper = playerWrapperRef.current;
+    if (!wrapper) return;
+    const observed = new WeakSet<Node>();
+    const observe = (root: Node) => {
+      if (observed.has(root)) return;
+      observed.add(root);
+      observer.observe(root, { childList: true, subtree: true });
+    };
+    const observer = new MutationObserver(() => labelProviderIframe(observe));
+    observe(wrapper);
+    labelProviderIframe(observe);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoTitle, videoUrl, isMounted]);
 
   const isExternallyHostedVideoUrl = (url: string): boolean =>
     !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo\.com/));
@@ -129,13 +172,13 @@ export const Video: React.FC<VideoProps> = (props) => {
     showPlayerEmbed
   ) {
     return (
-      <Box
+      <VideoFrame
         bg={loading ? 'black' : undefined}
         borderRadius="md"
         className={className}
         overflow="hidden"
         position="relative"
-        pt={'56.25%' as any}
+        ref={playerWrapperRef}
         width="100%"
       >
         {isMounted ? (
@@ -148,17 +191,21 @@ export const Video: React.FC<VideoProps> = (props) => {
             muted={muted}
             playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
             playing={autoplay}
+            src={videoUrl as string}
             title={videoTitle}
-            url={videoUrl as BaseReactPlayerProps['url']}
             width="100%"
+            // Without a wrapper, react-player v3 drops `className` and the
+            // 100% size from its splash, so it no longer fills the frame.
+            wrapper="div"
             onPlay={onPlay}
             onReady={() => {
+              labelProviderIframe();
               onReady?.();
               setLoading(false);
             }}
           />
         ) : null}
-      </Box>
+      </VideoFrame>
     );
   }
 
@@ -170,3 +217,14 @@ export const Video: React.FC<VideoProps> = (props) => {
     </>
   );
 };
+
+/*
+  Re-exported here (rather than from the main '@codecademy/gamut' barrel)
+  so Markdown's video/iframe overrides stay opt-in: importing them only
+  pulls in react-player if a consumer explicitly wants Video-in-markdown
+  rendering. See Markdown's videoOverride/iframeOverride props.
+*/
+export { Iframe } from '../Markdown/libs/overrides/Iframe';
+export type { IframeProps } from '../Markdown/libs/overrides/Iframe';
+export { MarkdownVideo } from '../Markdown/libs/overrides/Video';
+export type { MarkdownVideoProps } from '../Markdown/libs/overrides/Video';

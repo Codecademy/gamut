@@ -1,3 +1,49 @@
+## 74.0.1 (2026-11-02)
+
+### 🩹 Fixes
+
+- Fix `Video` YouTube/Vimeo splash not fitting its frame after the react-player v3 upgrade. The frame now uses `aspect-ratio: 16 / 9` instead of a `padding-top` ratio, so a consumer can size it through `className` and the provider's own splash fills it rather than overflowing. `Video` also passes `wrapper="div"` so a `placeholderImage` splash shares the player's wrapper element, as in react-player v2. ([#3442](https://github.com/Codecademy/gamut/pull/3442))
+
+  `Markdown` no longer rewrites `<video>` tags before parsing, so a literal `<video>` in inline code or a fenced code block is left alone. A single-line `<video></video>` is still rendered without a wrapping `<p>`.
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+
+# 74.0.0 (2026-10-15)
+
+### ⚠️  Breaking Changes
+
+- Move Video out of barrel and update ([#3439](https://github.com/Codecademy/gamut/pull/3439))
+
+  - `Video` is now imported from `@codecademy/gamut/Video` instead of `@codecademy/gamut`.
+  - `@vidstack/react` and `react-player` are now peer dependencies. If you use `Video` (or the Markdown `Iframe`/`MarkdownVideo` overrides), install them: `yarn add @vidstack/react@~1.12.12 react-player@^3.4.0`. Gamut supports `@vidstack/react` 1.12.x only; note that its npm `latest` tag still points to 0.6.x.
+
+### ❤️ Thank You
+
+- cassie spain @dreamwasp
+- Claude Sonnet 5
+
+## 73.6.3 (2026-10-13)
+
+### 🩹 Fixes
+
+- Fix Card border radius to align to theme values ([#3441](https://github.com/Codecademy/gamut/pull/3441))
+
+### ❤️ Thank You
+
+- Kenny Lin @LinKCoding
+
+## 73.6.2 (2026-10-01)
+
+### 🩹 Fixes
+
+- Update Spinner component for Safari browser support ([#3440](https://github.com/Codecademy/gamut/pull/3440))
+
+### ❤️ Thank You
+
+- Jeffery Brown @jybrownSkillsoft
+
 ## 73.6.1 (2026-09-10)
 
 ### 🩹 Fixes
