@@ -1,5 +1,6 @@
 import {
   createContext,
+  FocusEvent,
   MouseEvent,
   ReactNode,
   useContext,
@@ -219,7 +220,11 @@ export const CustomValueContainer = ({
     else getInstance()?.openMenu('first');
   };
 
-  const handleBlur = () => {
+  /* Close only when focus leaves the whole select; focus moving to its own menu or hidden input is not a dismissal. */
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    const selectContainer = event.currentTarget.parentElement?.parentElement;
+    const nextFocus = event.relatedTarget as Node | null;
+    if (nextFocus && selectContainer?.contains(nextFocus)) return;
     if (menuIsOpen) getInstance()?.onMenuClose();
   };
 

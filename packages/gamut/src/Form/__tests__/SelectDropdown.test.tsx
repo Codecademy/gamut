@@ -193,6 +193,34 @@ describe('select-only combobox (isSearchable false)', () => {
     expect(combobox).toHaveTextContent('yellow');
     expect(combobox).toHaveFocus();
   });
+
+  it('sends the selected option to onChange when chosen by keyboard', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({ onChange });
+
+    const combobox = view.getByRole('combobox');
+    combobox.focus();
+    await userEvent.keyboard('{ArrowDown}{ArrowDown}{Enter}');
+
+    expect(onChange).toHaveBeenLastCalledWith(
+      { label: 'yellow', value: 'yellow' },
+      expect.objectContaining({ action: 'select-option' })
+    );
+  });
+
+  it('sends the selected option to onChange when chosen by mouse', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({ onChange });
+
+    await userEvent.click(view.getByRole('combobox'));
+    await userEvent.click(view.getByRole('option', { name: 'green' }));
+
+    expect(onChange).toHaveBeenLastCalledWith(
+      { label: 'green', value: 'green' },
+      expect.objectContaining({ action: 'select-option' })
+    );
+    expect(view.getByRole('combobox')).toHaveTextContent('green');
+  });
 });
 
 describe('SelectDropdown', () => {
