@@ -22,6 +22,7 @@ const meta: TypeWithDeepControls<Meta<typeof SelectDropdown>> = {
     options: fruitOptions,
     disabled: false,
     isSearchable: false,
+    required: false,
     value: '',
     'aria-label': 'Select an option',
   },
@@ -192,14 +193,15 @@ export const FormGroupSelectDropdown: Story = {
     value: 'oh no',
     id: 'big-label',
     name: 'big-label',
+    required: true,
   },
   render: (args) => (
     <Box height="15rem">
       <FormGroup
         htmlFor="big-label"
-        isSoloField
         label="i am big label"
         labelSize="large"
+        required
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -223,50 +225,6 @@ export const FormGroupError: Story = {
         label="i am ~styled... but something is wrong"
       >
         <SelectDropdown error {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const RequiredNonSearchable: Story = {
-  args: {
-    options: ['Apple', 'Banana', 'Cherry'],
-    id: 'required-non-searchable',
-    isSearchable: false,
-    name: 'required-non-searchable',
-    required: true,
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="required-non-searchable"
-        isSoloField={false}
-        label="Required, not searchable (VoiceOver test)"
-        required
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
-  ),
-};
-
-export const RequiredSearchable: Story = {
-  args: {
-    options: ['Apple', 'Banana', 'Cherry'],
-    id: 'required-searchable',
-    isSearchable: true,
-    name: 'required-searchable',
-    required: true,
-  },
-  render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="required-searchable"
-        isSoloField={false}
-        label="Required, searchable (VoiceOver test)"
-        required
-      >
-        <SelectDropdown {...args} />
       </FormGroup>
     </Box>
   ),
