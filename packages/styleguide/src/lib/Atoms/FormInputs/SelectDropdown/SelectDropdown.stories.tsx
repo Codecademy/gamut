@@ -228,6 +228,50 @@ export const FormGroupError: Story = {
   ),
 };
 
+export const RequiredNonSearchable: Story = {
+  args: {
+    options: ['Apple', 'Banana', 'Cherry'],
+    id: 'required-non-searchable',
+    isSearchable: false,
+    name: 'required-non-searchable',
+    required: true,
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="required-non-searchable"
+        isSoloField={false}
+        label="Required, not searchable (VoiceOver test)"
+        required
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const RequiredSearchable: Story = {
+  args: {
+    options: ['Apple', 'Banana', 'Cherry'],
+    id: 'required-searchable',
+    isSearchable: true,
+    name: 'required-searchable',
+    required: true,
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="required-searchable"
+        isSoloField={false}
+        label="Required, searchable (VoiceOver test)"
+        required
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
 export const DisabledOptions: Story = {
   args: {
     id: 'disabled-dropdown',

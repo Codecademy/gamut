@@ -189,8 +189,14 @@ export const CustomValueContainer = ({
   typeof SelectDropdownElements.ValueContainer
 >) => {
   const { selectInputRef, triggerId } = useContext(SelectDropdownContext);
-  const { inputId, inputProps, isDisabled, isSearchable, menuIsOpen } =
-    rest.selectProps;
+  const {
+    inputId,
+    inputProps,
+    isDisabled,
+    isSearchable,
+    menuIsOpen,
+    required,
+  } = rest.selectProps;
   const comboboxProps = inputProps?.combobox || {};
 
   useSelectOnlyInput(inputId, isSearchable);
@@ -235,6 +241,8 @@ export const CustomValueContainer = ({
         ...innerProps,
         ...ariaProps,
         'aria-disabled': isDisabled || undefined,
+        /* react-select puts aria-required on its input; the trigger replaces that input, so set it here. */
+        'aria-required': required || undefined,
         'aria-expanded': Boolean(menuIsOpen),
         'aria-haspopup': 'listbox',
         id: triggerId,
