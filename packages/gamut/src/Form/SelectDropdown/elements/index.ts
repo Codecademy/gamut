@@ -12,6 +12,7 @@ export {
   SelectDropdownContext,
   createNoOptionsMessage,
   CustomContainer,
+  CustomControl,
   CustomInput,
   CustomValueContainer,
   TypedReactSelect,

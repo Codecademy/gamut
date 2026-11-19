@@ -128,12 +128,166 @@ const renderView = setupRtl(SelectDropdown, {
   name: 'colors',
 });
 
+describe('select-only combobox (isSearchable false)', () => {
+  it('makes the value container the combobox and disables the hidden input', () => {
+    const { view } = renderView();
+
+    const combobox = view.getByRole('combobox');
+    expect(combobox).toHaveAttribute('tabindex', '0');
+    expect(combobox).toHaveAttribute('aria-haspopup', 'listbox');
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(combobox).not.toHaveAttribute('aria-autocomplete');
+
+    const hiddenInput = view.container.querySelector(
+      'input[aria-hidden="true"]'
+    );
+    expect(hiddenInput).toBeDisabled();
+    expect(hiddenInput).not.toHaveAttribute('role');
+  });
+
+  it('lets consumer aria props override the trigger defaults', () => {
+    const { view } = renderView({
+      inputProps: { combobox: { 'aria-label': 'Custom label' } },
+    });
+
+    expect(view.getByRole('combobox')).toHaveAttribute(
+      'aria-label',
+      'Custom label'
+    );
+  });
+
+  it('opens the menu when the control padding is clicked', async () => {
+    const { view } = renderView();
+    const combobox = view.getByRole('combobox');
+
+    await userEvent.click(combobox.parentElement!);
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('closes the menu when focus leaves through the clear button', async () => {
+    const { view } = renderView({ multiple: true, value: ['red'] });
+    const combobox = view.getByRole('combobox');
+    await userEvent.click(combobox);
+
+    const clearButton = view.getByLabelText('Remove all selected');
+    act(() => clearButton.focus());
+    fireEvent.focusOut(clearButton, { relatedTarget: document.body });
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('still closes the menu when the consumer onBlur prevents default and stops propagation', async () => {
+    const calls: string[] = [];
+    const { view } = renderView({
+      onBlur: (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        calls.push('consumer blur');
+      },
+    });
+    const combobox = view.getByRole('combobox');
+    await userEvent.click(combobox);
+
+    fireEvent.focusOut(combobox, { relatedTarget: document.body });
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(calls).toEqual(['consumer blur']);
+  });
+
+  it('still opens the menu on focus when the consumer onFocus stops propagation', () => {
+    const calls: string[] = [];
+    const { view } = renderView({
+      openMenuOnFocus: true,
+      onFocus: (event) => {
+        event.stopPropagation();
+        calls.push('consumer focus');
+      },
+    });
+    const combobox = view.getByRole('combobox');
+
+    act(() => combobox.focus());
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+    expect(calls).toEqual(['consumer focus']);
+  });
+
+  it('keeps react-select ids: public id on the container, name on the input', () => {
+    const { view } = renderView({ id: 'country-picker', name: 'country' });
+
+    expect(document.getElementById('country-picker')).toContainElement(
+      view.getByRole('combobox')
+    );
+    expect(document.getElementById('country')).toBeInTheDocument();
+  });
+
+  it('opens with the mouse and keeps focus on the combobox', async () => {
+    const { view } = renderView();
+
+    const combobox = view.getByRole('combobox');
+    await userEvent.click(combobox);
+
+    expect(combobox).toHaveFocus();
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+    expect(view.getByRole('listbox')).toBeInTheDocument();
+  });
+
+  it('opens, moves the active option and selects with the keyboard', async () => {
+    const { view } = renderView();
+
+    const combobox = view.getByRole('combobox');
+    combobox.focus();
+    await userEvent.keyboard('{ArrowDown}');
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+    const activeId = combobox.getAttribute('aria-activedescendant');
+    expect(activeId).toBeTruthy();
+    const activeOption = document.getElementById(activeId!);
+    expect(activeOption).toHaveAttribute('role', 'option');
+    expect(activeOption).toHaveTextContent('red');
+
+    await userEvent.keyboard('{ArrowDown}{Enter}');
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(combobox).toHaveTextContent('yellow');
+    expect(combobox).toHaveFocus();
+  });
+
+  it('sends the selected option to onChange when chosen by keyboard', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({ onChange });
+
+    const combobox = view.getByRole('combobox');
+    combobox.focus();
+    await userEvent.keyboard('{ArrowDown}{ArrowDown}{Enter}');
+
+    expect(onChange).toHaveBeenLastCalledWith(
+      { label: 'yellow', value: 'yellow' },
+      expect.objectContaining({ action: 'select-option' })
+    );
+  });
+
+  it('sends the selected option to onChange when chosen by mouse', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({ onChange });
+
+    await userEvent.click(view.getByRole('combobox'));
+    await userEvent.click(view.getByRole('option', { name: 'green' }));
+
+    expect(onChange).toHaveBeenLastCalledWith(
+      { label: 'green', value: 'green' },
+      expect.objectContaining({ action: 'select-option' })
+    );
+    expect(view.getByRole('combobox')).toHaveTextContent('green');
+  });
+});
+
 describe('SelectDropdown', () => {
   describe('default', () => {
-    it('sets the id prop on the select tag', () => {
-      const { view } = renderView();
+    it('sets the input id from name', () => {
+      renderView();
 
-      expect(view.getByRole('combobox')).toHaveAttribute('id', 'colors');
+      expect(document.getElementById('colors')).toBeInTheDocument();
     });
 
     it.each([

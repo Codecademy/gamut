@@ -22,6 +22,7 @@ const meta: TypeWithDeepControls<Meta<typeof SelectDropdown>> = {
     options: fruitOptions,
     disabled: false,
     isSearchable: false,
+    required: false,
     value: '',
     'aria-label': 'Select an option',
   },
@@ -192,14 +193,15 @@ export const FormGroupSelectDropdown: Story = {
     value: 'oh no',
     id: 'big-label',
     name: 'big-label',
+    required: true,
   },
   render: (args) => (
     <Box height="15rem">
       <FormGroup
         htmlFor="big-label"
-        isSoloField
         label="i am big label"
         labelSize="large"
+        required
       >
         <SelectDropdown {...args} />
       </FormGroup>
