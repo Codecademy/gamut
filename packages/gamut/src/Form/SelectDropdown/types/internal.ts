@@ -37,8 +37,6 @@ export interface SelectDropdownContextValueTypes {
   removeAllButtonRef?: ProgrammaticFocusRef;
   /** Merged translations for microcopy consumed by sub-components */
   translations: SelectDropdownTranslations;
-  /** Public id for the combobox (the select-only trigger when not searchable) */
-  triggerId?: string;
 }
 
 /**

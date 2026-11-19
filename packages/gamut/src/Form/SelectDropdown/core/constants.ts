@@ -3,6 +3,7 @@ import { ComponentType } from 'react';
 import {
   AbbreviatedSingleValue,
   CustomContainer,
+  CustomControl,
   CustomInput,
   CustomValueContainer,
   DropdownButton,
@@ -17,6 +18,7 @@ const baseDefaultComponents = {
   IndicatorSeparator: () => null,
   ClearIndicator: RemoveAllButton,
   SelectContainer: CustomContainer,
+  Control: CustomControl,
   ValueContainer: CustomValueContainer,
   MultiValue: MultiValueWithColorMode,
   MultiValueRemove: MultiValueRemoveButton,

@@ -118,9 +118,7 @@ const useSelectOnlyInput = (
   useLayoutEffect(() => {
     if (isSearchable !== false || !inputId) return;
 
-    /* Look the trigger up from the hidden input: the public id is shared with other elements. */
     const input = document.getElementById(inputId);
-    /* Start at the parent: closest() includes the input itself, which still has role="combobox" here. */
     const trigger =
       input?.parentElement?.closest<HTMLElement>('[role="combobox"]');
     if (!input || !trigger) return;
@@ -132,6 +130,22 @@ const useSelectOnlyInput = (
     input.setAttribute('disabled', '');
     input.setAttribute('aria-hidden', 'true');
     input.removeAttribute('role');
+
+    /*
+     * The label targets the (disabled) input, which can't receive focus or a label click.
+     * Name the trigger from that label instead, and focus the trigger when the label is clicked.
+     */
+    const label = Array.from(document.querySelectorAll('label')).find(
+      (element) => element.htmlFor === inputId
+    );
+    const focusTrigger = () => trigger.focus();
+    if (label) {
+      if (!label.id) label.id = `${inputId}-label`;
+      if (!trigger.hasAttribute('aria-labelledby')) {
+        trigger.setAttribute('aria-labelledby', label.id);
+      }
+      label.addEventListener('click', focusTrigger);
+    }
 
     /*
      * react-select only sets aria-activedescendant on the hidden input off Apple devices
@@ -173,8 +187,52 @@ const useSelectOnlyInput = (
     });
     syncActiveOption();
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      label?.removeEventListener('click', focusTrigger);
+    };
   }, [inputId, isSearchable]);
+};
+
+/**
+ * Non-searchable: react-select opens the menu on mousedown only once its input has
+ * focus, and the hidden input can't take focus. Open from the control instead, so a
+ * click on the padding works. Child handlers (the chevron, the clear button) call
+ * preventDefault first, so they keep their behaviour.
+ */
+export const CustomControl = ({
+  innerProps,
+  ...rest
+}: CustomSelectComponentProps<typeof SelectDropdownElements.Control>) => {
+  const { selectInputRef } = useContext(SelectDropdownContext);
+  const { isDisabled, isSearchable, menuIsOpen } = rest.selectProps;
+
+  if (isSearchable !== false) {
+    return <SelectDropdownElements.Control {...rest} innerProps={innerProps} />;
+  }
+
+  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.defaultPrevented || event.button !== 0 || isDisabled) return;
+
+    event.preventDefault();
+    event.currentTarget
+      .querySelector<HTMLElement>('[role="combobox"]')
+      ?.focus();
+
+    const instance = selectInputRef?.current as unknown as
+      | SelectInstance
+      | null
+      | undefined;
+    if (menuIsOpen) instance?.onMenuClose();
+    else instance?.openMenu('first');
+  };
+
+  return (
+    <SelectDropdownElements.Control
+      {...rest}
+      innerProps={{ ...innerProps, onMouseDown: handleMouseDown }}
+    />
+  );
 };
 
 /**
@@ -188,7 +246,7 @@ export const CustomValueContainer = ({
 }: CustomSelectComponentProps<
   typeof SelectDropdownElements.ValueContainer
 >) => {
-  const { selectInputRef, triggerId } = useContext(SelectDropdownContext);
+  const { selectInputRef } = useContext(SelectDropdownContext);
   const {
     inputId,
     inputProps,
@@ -201,7 +259,7 @@ export const CustomValueContainer = ({
 
   useSelectOnlyInput(inputId, isSearchable);
 
-  if (isSearchable !== false || !triggerId) {
+  if (isSearchable !== false || !inputId) {
     return <SelectDropdownElements.ValueContainer {...rest} />;
   }
 
@@ -245,7 +303,6 @@ export const CustomValueContainer = ({
         'aria-required': required || undefined,
         'aria-expanded': Boolean(menuIsOpen),
         'aria-haspopup': 'listbox',
-        id: triggerId,
         onBlur: handleBlur,
         onMouseDown: handleMouseDown,
         role: 'combobox',

@@ -158,7 +158,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         removeAllButtonRef,
         selectInputRef,
         translations: mergedTranslations,
-        triggerId: inputId,
       }}
     >
       <TypedReactSelect
@@ -181,8 +180,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         /* Non-searchable: the public id belongs to the combobox, so keep react-select's container off it. */
-        id={isSearchable ? id || rest.htmlFor || rawInputId : undefined}
-        inputId={isSearchable ? inputId : `${inputId}-input`}
+        id={id || rest.htmlFor || rawInputId}
+        inputId={inputId}
         inputProps={{ ...inputProps }}
         inputWidth={inputWidth}
         isCreatable={isCreatable}
