@@ -156,10 +156,69 @@ describe('select-only combobox (isSearchable false)', () => {
     );
   });
 
-  it('keeps the public id on the combobox so labels still point at it', () => {
+  it('opens the menu when the control padding is clicked', async () => {
     const { view } = renderView();
+    const combobox = view.getByRole('combobox');
 
-    expect(view.getByRole('combobox')).toHaveAttribute('id', 'colors');
+    await userEvent.click(combobox.parentElement!);
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('closes the menu when focus leaves through the clear button', async () => {
+    const { view } = renderView({ multiple: true, value: ['red'] });
+    const combobox = view.getByRole('combobox');
+    await userEvent.click(combobox);
+
+    const clearButton = view.getByLabelText('Remove all selected');
+    act(() => clearButton.focus());
+    fireEvent.focusOut(clearButton, { relatedTarget: document.body });
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('still closes the menu when the consumer onBlur prevents default and stops propagation', async () => {
+    const calls: string[] = [];
+    const { view } = renderView({
+      onBlur: (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        calls.push('consumer blur');
+      },
+    });
+    const combobox = view.getByRole('combobox');
+    await userEvent.click(combobox);
+
+    fireEvent.focusOut(combobox, { relatedTarget: document.body });
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(calls).toEqual(['consumer blur']);
+  });
+
+  it('still opens the menu on focus when the consumer onFocus stops propagation', () => {
+    const calls: string[] = [];
+    const { view } = renderView({
+      openMenuOnFocus: true,
+      onFocus: (event) => {
+        event.stopPropagation();
+        calls.push('consumer focus');
+      },
+    });
+    const combobox = view.getByRole('combobox');
+
+    act(() => combobox.focus());
+
+    expect(combobox).toHaveAttribute('aria-expanded', 'true');
+    expect(calls).toEqual(['consumer focus']);
+  });
+
+  it('keeps react-select ids: public id on the container, name on the input', () => {
+    const { view } = renderView({ id: 'country-picker', name: 'country' });
+
+    expect(document.getElementById('country-picker')).toContainElement(
+      view.getByRole('combobox')
+    );
+    expect(document.getElementById('country')).toBeInTheDocument();
   });
 
   it('opens with the mouse and keeps focus on the combobox', async () => {
@@ -225,10 +284,10 @@ describe('select-only combobox (isSearchable false)', () => {
 
 describe('SelectDropdown', () => {
   describe('default', () => {
-    it('sets the id prop on the select tag', () => {
-      const { view } = renderView();
+    it('sets the input id from name', () => {
+      renderView();
 
-      expect(view.getByRole('combobox')).toHaveAttribute('id', 'colors');
+      expect(document.getElementById('colors')).toBeInTheDocument();
     });
 
     it.each([

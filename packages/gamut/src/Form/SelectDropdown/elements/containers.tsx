@@ -63,11 +63,21 @@ export const createNoOptionsMessage = (
  */
 export const CustomContainer = ({
   children,
+  innerProps,
   ...rest
 }: CustomSelectComponentProps<
   typeof SelectDropdownElements.SelectContainer
 >) => {
-  const { inputProps, name } = rest.selectProps;
+  const { selectInputRef } = useContext(SelectDropdownContext);
+  const {
+    inputProps,
+    isSearchable,
+    menuIsOpen,
+    name,
+    onBlur,
+    onFocus,
+    openMenuOnFocus,
+  } = rest.selectProps;
   const hiddenProps = inputProps?.hidden || {};
   const hasHiddenProps =
     inputProps?.hidden && Object.keys(inputProps.hidden).length > 0;
@@ -79,8 +89,42 @@ export const CustomContainer = ({
         .join(', ')
     : '';
 
+  /*
+   * Non-searchable: react-select only sees focus and blur on its hidden input, which
+   * can't take focus. Handle them on the whole select, so every internal control counts
+   * (value, clear button, chevron). Our handling runs first and the consumer's callbacks
+   * run after it, so a consumer's callback can't stop the menu from opening or closing.
+   */
+  const handleFocus = (event: FocusEvent<HTMLDivElement>) => {
+    const nextFocus = event.relatedTarget as Node | null;
+    if (nextFocus && event.currentTarget.contains(nextFocus)) return;
+    if (openMenuOnFocus) {
+      (selectInputRef?.current as unknown as SelectInstance | null)?.openMenu(
+        'first'
+      );
+    }
+    onFocus?.(event as unknown as FocusEvent<HTMLInputElement>);
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    const nextFocus = event.relatedTarget as Node | null;
+    if (nextFocus && event.currentTarget.contains(nextFocus)) return;
+    if (menuIsOpen) {
+      (
+        selectInputRef?.current as unknown as SelectInstance | null
+      )?.onMenuClose();
+    }
+    onBlur?.(event as unknown as FocusEvent<HTMLInputElement>);
+  };
+
+  const selectOnlyHandlers =
+    isSearchable === false ? { onBlur: handleBlur, onFocus: handleFocus } : {};
+
   return (
-    <SelectDropdownElements.SelectContainer {...rest}>
+    <SelectDropdownElements.SelectContainer
+      {...rest}
+      innerProps={{ ...innerProps, ...selectOnlyHandlers }}
+    >
       {children}
       {hasHiddenProps && (
         <input name={name} type="hidden" value={value} {...hiddenProps} />
@@ -284,14 +328,6 @@ export const CustomValueContainer = ({
     else getInstance()?.openMenu('first');
   };
 
-  /* Close only when focus leaves the whole select; focus moving to its own menu or hidden input is not a dismissal. */
-  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-    const selectContainer = event.currentTarget.parentElement?.parentElement;
-    const nextFocus = event.relatedTarget as Node | null;
-    if (nextFocus && selectContainer?.contains(nextFocus)) return;
-    if (menuIsOpen) getInstance()?.onMenuClose();
-  };
-
   return (
     <SelectDropdownElements.ValueContainer
       {...rest}
@@ -303,7 +339,6 @@ export const CustomValueContainer = ({
         'aria-required': required || undefined,
         'aria-expanded': Boolean(menuIsOpen),
         'aria-haspopup': 'listbox',
-        onBlur: handleBlur,
         onMouseDown: handleMouseDown,
         role: 'combobox',
         tabIndex: isDisabled ? -1 : 0,
