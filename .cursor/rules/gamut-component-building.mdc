@@ -1,0 +1,19 @@
+---
+description: >-
+  Structure, TypeScript (variance), React, and Storybook conventions for building or editing
+  components in packages/gamut and their docs in packages/styleguide.
+globs:
+  - packages/gamut/**/*
+  - packages/styleguide/**/*
+alwaysApply: false
+---
+
+# Gamut component building
+
+- **Folders** — PascalCase directory under `packages/gamut/src/`; entry `index.tsx` or `index.ts` barrel; tests in `__tests__/<Name>.test.tsx`. Grow with `shared/`, `elements/`, etc. for large UIs (see `Button/`, `Form/`, `BarChart/`).
+- **Public API** — Register exports in `packages/gamut/src/index.tsx`; use `export type { ... }` when only types should surface.
+- **Storybook** — Under `packages/styleguide/src/lib/<Atoms|Molecules|…>/<Component>/`, pair `ComponentName.stories.tsx` + `ComponentName.mdx`. Use VS Code snippets `component-story`, `component-doc`, `toc-story` from `.vscode/stories.code-snippets`. Flagship story + `Controls`; keep “Show code” copy-paste friendly (see `packages/styleguide/src/lib/Meta/Gamut writing guide/Stories/About.mdx`).
+- **TypeScript** — Derive props from implementation: `StyleProps<typeof composed>` after `variance.compose` / `variant`; `ComponentProps<typeof StyledX>` for Emotion styled roots; intersect with bases (`ButtonBaseProps & ComponentProps<typeof ButtonBase>`). Model variant-specific APIs with discriminated unions and `never` for illegal combos. Narrow handlers with `HTMLProps<…>['onClick']` or `ComponentProps<typeof Child>[…]`. Exemplars: `Tag/types.tsx`, `Badge/index.tsx`, `Button/shared/types.ts`, `Form/elements/Form.tsx`, `Anchor/index.tsx`.
+- **React** — Match neighboring `React.FC<Props>` usage; use `forwardRef` when refs matter; follow Rules of Hooks, effect cleanup, and composition over huge prop lists; prefer semantic DOM and Gamut a11y patterns.
+- **Tokens / ColorMode** — Semantic colors and gamut-styles tokens: see `.cursor/rules/gamut-library.mdc`.
+- **Depth** — Full checklists and links: **gamut-library-authoring** skill (`.cursor/skills/gamut-library-authoring/SKILL.md`) and [reference.md](.cursor/skills/gamut-library-authoring/reference.md).

@@ -1,0 +1,53 @@
+name: Cursor plugins
+
+on:
+  pull_request:
+    paths:
+      - '.cursor/**'
+      - 'gamut-cursor-plugins/**'
+      - '.cursor-plugin/**'
+      - '.github/workflows/cursor-plugins.yml'
+      - '.github/scripts/validate-cursor-plugins.mjs'
+      - '.github/scripts/validate-cursor-plugins-helpers.mjs'
+      - '.github/scripts/validate-cursor-plugins-helpers.test.mjs'
+  push:
+    branches:
+      - main
+    paths:
+      - '.cursor/**'
+      - 'gamut-cursor-plugins/**'
+      - '.cursor-plugin/**'
+      - '.github/workflows/cursor-plugins.yml'
+      - '.github/scripts/validate-cursor-plugins.mjs'
+      - '.github/scripts/validate-cursor-plugins-helpers.mjs'
+      - '.github/scripts/validate-cursor-plugins-helpers.test.mjs'
+  workflow_dispatch:
+
+concurrency:
+  group: cursor-plugins-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version-file: '.nvmrc'
+      - name: Test Cursor plugin validator helpers
+        run: node --test .github/scripts/validate-cursor-plugins-helpers.test.mjs
+      - name: Validate Cursor config (marketplace, plugins, .cursor)
+        run: node .github/scripts/validate-cursor-plugins.mjs
+      - name: Validate plugin semver bumps vs PR base
+        if: github.event_name == 'pull_request'
+        env:
+          CURSOR_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          CURSOR_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node .github/scripts/validate-cursor-plugins.mjs --pr-version-bumps

@@ -1,0 +1,26 @@
+{
+  "name": "codecademy-gamut-cursor",
+  "owner": {
+    "name": "Codecademy"
+  },
+  "metadata": {
+    "description": "Cursor plugins for the Gamut design system: core usage, accessibility, and theming."
+  },
+  "plugins": [
+    {
+      "name": "codecademy-gamut",
+      "source": "gamut-cursor-plugins/gamut-core",
+      "description": "Core Gamut consumption: layout, system props, gamut-styles utilities, ESLint alignment, Storybook links."
+    },
+    {
+      "name": "codecademy-gamut-a11y",
+      "source": "gamut-cursor-plugins/gamut-a11y",
+      "description": "WCAG-minded Gamut usage and composition when primitives are incomplete."
+    },
+    {
+      "name": "codecademy-gamut-themes",
+      "source": "gamut-cursor-plugins/gamut-themes",
+      "description": "ColorMode, Background, semantic tokens, hooks, and platform themes."
+    }
+  ]
+}

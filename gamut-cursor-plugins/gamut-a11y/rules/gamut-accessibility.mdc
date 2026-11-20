@@ -1,0 +1,20 @@
+---
+description: >-
+  Use Gamut components per their documented accessibility patterns: forms, overlays,
+  navigation, and content. Prefer Storybook component pages over bespoke a11y wiring.
+globs:
+  - "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+
+# Gamut accessibility
+
+- **Read the component's Storybook page** (especially "Accessibility", "Keyboard", or "Usage" sections on [gamut.codecademy.com](https://gamut.codecademy.com/)) before customizing behavior—Gamut components often manage focus, ARIA, and escape handling by default.
+- **Forms:** Use **`GridForm`** or **`ConnectedForm`** with **`ConnectedFormGroup`** / **`useConnectedForm`**; avoid raw **`Form`** / **`FormGroup`** atoms unless the UI does not need full form behavior. Do not use **`ConnectedFormInputs`** outside **`ConnectedFormGroup`**. Render **`FormRequiredText`** from **`useConnectedForm`** when any field is required. For **`GridForm`** **`custom-group`**, you own labels and errors—follow accessible form patterns linked from GridForm Fields.
+- **Overlays:** Prefer **`Modal`** / **`Flyout`** / **`Drawer`** (and related patterns) from `@codecademy/gamut` instead of custom portals. For **`Modal`**, wire **`onRequestClose`** and **`isOpen`** so outside click and **Esc** still close (defaults are intentional for a11y); use **`containerFocusRef`** only when you must override default focus. **`InfoTip`**: provide **`ariaLabel`** or **`ariaLabelledby`** for the trigger; respect built-in focus move / **Esc** / layering with modals per component docs.
+- **Tabs:** Use **`Tabs`** / **`TabNav`** from Gamut; give **`TabNav`** a unique **`aria-label`** when it is page navigation. Follow docs for keyboard focus when **`TabPanel`** contains interactive content.
+- **Page chrome:** Use **`SkipToContent`** with a matching **`SkipToContentTarget`** (`contentId` / `id`) on long chrome-heavy pages so keyboard users can jump to main content.
+- **Data viz:** For **`BarChart`**, supply **`title`** or **`aria-labelledby`**; prefer documented props and token colors so contrast stays acceptable—do not strip generated labels for interactive bars.
+- **Content:** Follow **[UX Writing — Accessibility guidelines](https://gamut.codecademy.com/?path=/docs-ux-writing-accessibility-guidelines--page)** for copy, headings, links, and alt text; use **`Text`** / imagery patterns as documented when semantics matter.
+- **Theming:** Use semantic colors and **`ColorMode`** / **`Background`** (**codecademy-gamut-themes**) so text and surfaces keep readable contrast.
+- **Gaps:** If Gamut has no primitive, only then mirror headless patterns ([Radix](https://www.radix-ui.com/primitives), [React ARIA](https://react-spectrum.adobe.com/react-aria/)) and style with **`@codecademy/gamut-styles`** semantic tokens.

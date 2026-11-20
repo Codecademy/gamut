@@ -1,0 +1,19 @@
+---
+description: >-
+  ColorMode, Background, semantic color tokens, and provider boundaries for
+  @codecademy/gamut-styles. Use when wiring theme providers or debugging contrast.
+globs:
+  - "**/*.{tsx,jsx,ts,js}"
+alwaysApply: false
+---
+
+# Gamut theming
+
+- Place **`ColorMode`** from `@codecademy/gamut-styles` **as high in the DOM as practical** (e.g. app or root layout) so descendants share one light/dark/`system` context (`mode="light" | "dark" | "system"`; `system` follows OS preference). Avoid deep or repeated `ColorMode` nesting unless a subtree truly needs a different preference.
+- Use **`Background`** with `bg` token names for **page sections** that need a specific surface, a defined **`background-current`** for descendants, or a region that should **not rely on guessing mode**—`Background` picks an accessible mode for that surface and sets up its own context inside. Read [ColorMode / Background](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page).
+- `background-current` reflects the active `Background` color—use when a child needs to match an ancestor surface.
+- Prefer **semantic** color props (`text`, `background`, `primary`, …) in components so they track the active mode.
+- For JS access to mode: `useColorMode`, `useCurrentMode`, or `useTheme` from `@emotion/react` when you need the full theme.
+- Avoid fighting the system with raw CSS variables or hardcoded hex for theme surfaces; extend tokens in the **Gamut library** when new semantics are needed.
+- Mental model: layered **theme + semantic tokens** (similar in spirit to [Chakra theming](https://chakra-ui.com/docs/styled-system/customize-theme) and [React Spectrum theming](https://react.spectrum.adobe.com/react-spectrum/theming.html))—apps compose providers; token keys stay semantic.
+- For layout and generic Gamut usage without provider depth, use **codecademy-gamut** core rules.
